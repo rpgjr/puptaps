@@ -42,7 +42,7 @@
                         Login <i class="fa-solid fa-arrow-right-to-bracket"></i>
                     </button>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="">Login as Alumni</a></li>
+                        <li><a class="dropdown-item" href="{{ route('user.login') }}">Login as Alumni</a></li>
                         <li><a class="dropdown-item" href="">Login as Admin</a></li>
                     </ul>
                     {{-- <a href="{{ route('login') }}" type="button" class="btn btn-primary" style="width: 120px">Login <i class="fa-solid fa-arrow-right-to-bracket"></i></a> --}}
@@ -56,6 +56,7 @@
     </nav>
 {{-- End NavBar --}}
 
+    {{-- Greetings Section --}}
     <section class="greetings pt-5 pb-5" id="home">
         <div class="container container-greetings pt-5 pb-5">
             <div class="row">

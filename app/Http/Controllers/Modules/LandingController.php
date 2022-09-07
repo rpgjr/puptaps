@@ -19,4 +19,9 @@ class LandingController extends Controller
     public function landingPage() {
         return view('landingPage');
     }
+
+    // Return Login Page View for Users
+    public function userLoginView() {
+        return view('auth.login');
+    }
 }
