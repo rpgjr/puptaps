@@ -15,14 +15,15 @@ use Illuminate\Support\Facades\Route;
 
 // ========== Module Route ==========
 
-// Landing Page and Authentication Module
+// Landing Page and Authentication Module for USERS
 Route::group(['middleware' => 'isLoggedIn'], function() {
 
+    //App\Http\Controllers\Modules\
     // Route for Landing Page View
     Route::get('/', ['as' => 'landingPage', 'uses' => 'App\Http\Controllers\Modules\LandingController@landingPage']);
 
     //Route for Login Page
-
+    Route::get('/user/login', ['as' => 'user.login', 'uses' => 'App\Http\Controllers\Modules\LandingController@userLoginView']);
 
     //Route for Registration Page
 
