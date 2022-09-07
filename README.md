@@ -1,76 +1,36 @@
 # puptaps
  
 =====How to install=====
+1. Clone 
+2. Go to puptaps location via terminal/cmd 
+3. run "composer install"
+4. run "copy .env.example .env"
+5. create database in xampp - puptaps_db
+6. change the DB_DATABASE in .env file to puptaps_db 
+7. ASK LOUGEN FOR THE MAIL CREDENTIALS IN .env FILE
+8. run "php artisan key:generate"
+9. run "php artisan migrate"
+10. inport the courses to the courses table in the database
+11. run "php artisan serve"
 
-Clone
-Go to puptaps location via terminal/cmd
-run "composer install"
-run "copy .env.example .env"
-create database in xampp - puptaps_db
-change the DB_DATABASE in .env file to puptaps_db
-ASK LOUGEN FOR THE MAIL CREDENTIALS IN .env FILE
-run "php artisan key:generate"
-run "php artisan migrate"
-inport the courses to the courses table in the database
-run "php artisan serve"
 =====How to comment CSS=====
+1. write the location of the class
+ex. News Section->container->row->col
+if there are many div inside section use the div class instead. 
+2. check format sample in the Public->CSS 
+3. all css inside the system (after login) should be inside styles.css
+4. create another css if necessary 
+5. ALL IMAGES SHOULD BE ROUTED INSIDE THE BLADE.PHP FILE NOT IN THE CSS
 
-write the location of the class ex. News Section->container->row->col if there are many div inside section use the div class instead.
-check format sample in the Public->CSS
-all css inside the system (after login) should be inside styles.css
-create another css if necessary
-ALL IMAGES SHOULD BE ROUTED INSIDE THE BLADE.PHP FILE NOT IN THE CSS
 =====Files needed to be edited=====
+1. auth.login - auth(layout)
+2. auth.register - auth(layout)
+3. homepage - homepage(layout)
+4. landing - landing(layout)
 
-auth.login - auth(layout)
-auth.register - auth(layout)
-homepage - homepage(layout)
-landing - landing(layout)
 =====REMINDER=====
+1. BEFORE PUSHING IN GITHUB PLEASE PULL THE FILES FIRST THEN RUN AGAIN THE SYSTEM, CHECK IF THERE IS NO ERROR, THEN PUSH.
+2. LEAVE A MESSAGE IN GC BEFORE PUSHING
+3. LEAVE A COMMENT IF NECESSARY
 
-BEFORE PUSHING IN GITHUB PLEASE PULL THE FILES FIRST THEN RUN AGAIN THE SYSTEM, CHECK IF THERE IS NO ERROR, THEN PUSH.
-LEAVE A MESSAGE IN GC BEFORE PUSHING
-LEAVE A COMMENT IF NECESSARY
-About
-No description, website, or topics provided.
-Topics
-Resources
- Readme
-Stars
- 0 stars
-Watchers
- 1 watching
-Forks
- 0 forks
-Releases
-No releases published
-Create a new release
-Packages
-No packages published
-Publish your first package
-Contributors 2
-@rpgjr
-rpgjr
-@lougen29
-lougen29
-Languages
-JavaScript
-36.9%
- 
-PHP
-35.2%
- 
-Blade
-25.3%
- 
-CSS
-2.3%
- 
-Shell
-0.3%
-Footer
-© 2022 GitHub, Inc.
-Footer navigation
-Terms
-Privacy
-Securit
+
