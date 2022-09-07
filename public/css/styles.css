@@ -1,0 +1,319 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400&display=swap');
+
+/* All */
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Hover - Account Name button - Upper right*/
+.account-name:hover {
+    color: #ffffff;
+    background-color: #78281F;
+    border-color: #ffffff;
+    transform: scale(1.2);
+}
+
+/* section greetings  */
+.greetings {
+    background: url('../../img/pup-bg.png') no-repeat center center fixed;
+    background-size:cover;
+    height: 100%;
+    color: #000000;
+}
+
+.p-2 {
+    padding: 5%;
+}
+.greetings-welcome h3,h1 {
+    font-weight: bold;
+    color: #000000;
+}
+
+/*Homepage Welcome */
+.welcome-section {
+    display: flex;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.flex-item {
+    display: flex;
+    width: 200px;
+    height: 500px;
+    box-shadow: 10px 10px 10px lightgray;
+}
+
+.flex-item .greet-one {
+    margin-top: 15%;
+    margin-left: 5%;
+}
+
+.flex-item:nth-of-type(1) {
+    background-color: white;
+    width: 80%;   
+}
+
+.flex-item:nth-of-type(2) {
+    width: 100%;
+}
+
+.flex-item .carousel-inner img {
+    width: 750px;
+    height: 500px;
+}
+
+/* End Welcome Homepage */
+
+
+.container-greetings {
+    margin: 70px;
+    width: 1200px;
+}
+
+.container-greetings h1 {
+    font-size: 4em;
+    font-weight: bold;
+}
+
+.form-section h2, .career-section h2 {
+    font-weight: bold;
+}
+
+.carousel-img img {
+    height: 300px;
+    width: 500px;
+}
+
+.carousel slide img {
+    height: 300px;
+    width: 500px;
+}
+
+/* News Homepage */
+.carousel-item img{
+    object-position: center;
+    height: 500px;
+}
+
+.carousel slide{
+    width: 1200px;
+}
+.news-section{
+    margin-top: 50px;
+    margin-left: 100px;
+    margin-right: 100px;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+}
+
+.news-section .card-header{
+    font-size: 25px;
+    font-style: bold;
+    color: #051DE1;
+}
+
+.news {
+    width: 650px;
+}
+
+.news img {
+    border-radius: 10px;
+}
+/* End News Homepage */
+
+.form-section img, .career-section img, .donation-section img, .section-tracer img{
+    height: 300px;
+    border-radius: 10px;
+}
+
+.feature-design{
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-radius: 8px;
+    padding: 20px;
+    margin-top: 60px;
+    margin-bottom: 60px;
+    text-align: center;
+    width: 1100px;
+}
+
+.features {
+    margin-top: 100px;
+}
+
+.features div img {
+    width: 100%;
+    border-radius: 5px;
+}
+
+/* Styles for Login Page and Registration Page */
+.loginBG{
+    background: url('../../img/pupBG.jpg') no-repeat center center fixed;
+    background-size: cover;
+}
+
+.forgot-pass{
+    left: auto;
+}
+
+.button{
+    color: #ffffff;
+    padding: 10px 10px;
+    background-color: #374785;
+    border-radius: 50px;
+}
+
+.form-padding {
+    padding: 30px;
+}
+.box-login img {
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    height: 100%;
+    width: 100%;
+}
+.box-login h1{
+    font-weight: bold;
+    font-family:'Poppins', sans-serif;
+    font-size: 50px;
+    color:#525252;
+    margin-top: 60px;
+    text-align: center;
+}
+
+.box-register h1{
+    color: #ffffff;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.alumni-registration-form{
+    background-color:#374785;
+    box-sizing: border-box;
+    border-top-right-radius: 15px;
+    border-top-left-radius: 15px;
+    padding: 10px;
+}
+
+/*---------------------------------*/
+
+/* Career page  */
+
+.card-deck .card {
+    margin-bottom: 20px;
+}
+
+/* End of Career page */
+.career-box {
+    background-color: #ffffff;
+    border-color: #ffffff;
+    text-align: left;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    padding: 20px;
+    border-radius: 5px;
+    max-height: 400px;
+    max-width: 400px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.desc {
+    white-space: pre-wrap
+}
+
+.position-career {
+    position: fixed;
+}
+
+.homepage-footer {
+    background-color: #45526e;
+    color: #ffffff;
+} 
+
+.account-name {
+    color: #000000;
+    padding: 8px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+    background-color: #ffffff;
+    border-color: #78281F;
+    border-radius: 7px;
+}
+
+.account-name:hover {
+    color: #ffffff;
+    background-color: #78281F;
+    border-color: #ffffff;
+    transition: transform 500ms;
+    transform: translateX(-8px);
+}
+
+.box-tracer {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.box-profile {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 30px;
+    padding-right: 30px;
+    border-radius: 8px;
+}
+
+.box-forms {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+/* Tracer  */
+.box-tracer {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-radius: 20px;
+}
+
+.container h2{
+    font-size: 40px;
+}
+
+hr {
+    background-color:#374785;
+    opacity: 1;
+    width: 700px;
+    height: 5px;   
+}
+
+.box-tracer-form {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-radius: 8px;
+    padding: 20px;
+    background-color: #f2f2f2;;
+}
+
+.table {
+    width: 100%;
+    margin-top: 10px;
+}
+
+.table th {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    background-color:#374785;
+    color: white;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+}
+
+.table td, .table th {
+    border: 2px solid #ddd;
+    text-align: center;
+}
+
+.table tr:nth-child(even){
+    background-color: #f2f2f2;
+}
+
+.table tr:hover {
+    background-color: #ddd;
+}
+/*-----------------------------*/

@@ -1,0 +1,14 @@
+/* navbar */
+.container-fluid {
+    margin: 1px;
+}
+
+.btn-primary {
+    background-color: #374785;
+}
+
+.btn-success {
+    color: black;
+    background-color: #A8D0E6;
+}
+
