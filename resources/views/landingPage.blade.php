@@ -29,7 +29,7 @@
                 <li class="nav-item">
                     <a class="nav-link" aria-current="page" href="#forms">Forms</a>
                 </li>
-        `        <li class="nav-item">
+                <li class="nav-item">
                     <a class="nav-link" aria-current="page" href="#career">Careers</a>
                 </li>
                 <li class="nav-item">
@@ -42,8 +42,8 @@
                         Login <i class="fa-solid fa-arrow-right-to-bracket"></i>
                     </button>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="{{ route('user.login') }}">Login as Alumni</a></li>
-                        <li><a class="dropdown-item" href="">Login as Admin</a></li>
+                        <li><a class="dropdown-item" href="{{ route('login') }}">Login as Alumni</a></li>
+                        <li><a class="dropdown-item" href="{{ route('admin.getLogin') }}">Login as Admin</a></li>
                     </ul>
                     {{-- <a href="{{ route('login') }}" type="button" class="btn btn-primary" style="width: 120px">Login <i class="fa-solid fa-arrow-right-to-bracket"></i></a> --}}
                     <a href="{{ route('register') }}" type="button" class="btn btn-success" style="width: 120px">Register <i class="fa-solid fa-user-plus"></i></a>

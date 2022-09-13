@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
+use Illuminate\Http\Request;
+use App\Http\Controllers\modules\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,28 +18,46 @@ use Illuminate\Support\Facades\Route;
 
 // ========== Module Route ==========
 
-// Landing Page and Authentication Module for USERS
-Route::group(['middleware' => 'isLoggedIn'], function() {
+// Group for Homepage and Landing Page
+Route::group(['controller' => 'App\Http\Controllers\Modules\HomeController'], function() {
 
     //App\Http\Controllers\Modules\
     // Route for Landing Page View
-    Route::get('/', ['as' => 'landingPage', 'uses' => 'App\Http\Controllers\Modules\LandingController@landingPage']);
+    Route::get('/', 'getLandingPage')->middleware('isLoggedIn')->name('landingPage');
 
-    //Route for Login Page
-    Route::get('/user/login', ['as' => 'user.login', 'uses' => 'App\Http\Controllers\Modules\LandingController@userLoginView']);
+    // Route for HomePage View
+    Route::get('/home', 'getUserHomepage')->middleware(['auth', 'verified', 'isLoggedIn'])->name('user.homepage');
 
-    //Route for Registration Page
-
+    Route::get('/admin', 'getAdminHomepage')->name('admin.homepage');
 });
 
+Route::group(['middleware' => 'auth', 'prefix' => 'email', 'as' => 'verification.'], function() {
+    // After Registration Email Verification
+    Route::get('verify', function () {
+        return view('auth.verify-email');
+    })->name('notice');
 
+    //User verified using email
+    Route::get('verify/{id}/{hash}', function (EmailVerificationRequest $request) {
+        $request->fulfill();
+        return redirect('/home');
+    })->middleware(['signed'])->name('verify');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+    //Resending of Email Verification
+    Route::post('verification-notification', function (Request $request) {
+        $request->user()->sendEmailVerificationNotification();
 
+        return back()->with('message', 'Verification link sent!');
+    })->middleware(['throttle:6,1'])->name('send');
+});
+
+// Login - Registration
 require __DIR__.'/auth.php';
 
+Route::group(['controller' => 'App\Http\Controllers\Auth\AdminAuthController', 'prefix' => 'admin', 'as' => 'admin.'], function() {
+    Route::get('login', 'getAdminLogin')->name('getLogin');
+    Route::post('loginAdmin', 'adminLogin')->name('login');
+});
 // ========== End of Module Route ==========
 
 

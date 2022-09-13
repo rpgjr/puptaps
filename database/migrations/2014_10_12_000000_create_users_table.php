@@ -18,13 +18,13 @@ return new class extends Migration
             $table->string('studNumber');
             $table->string('lastName');
             $table->string('firstName');
-            $table->string('middleName');
-            $table->string('extName');
+            $table->string('middleName')->nullable();
+            $table->string('suffix')->nullable();
             $table->string('courseID');
             $table->integer('batch');
             $table->string('gender');
             $table->date('bday');
-            $table->integer('age');
+            $table->integer('age')->nullable();
             $table->string('religion');
             $table->string('cityAddress');
             $table->string('provincialAddress')->nullable();

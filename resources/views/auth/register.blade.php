@@ -12,7 +12,7 @@
     <div class="alert alert-danger">{{ Session::get('fail') }}</div>
     @endif
     @csrf
-    
+
     <section class="form my-4 mx-5">
         <div class="box-register">
             <div class="col-lg-12">
@@ -21,7 +21,7 @@
                 </div>
 
                 <div class="row align-items-center w-100 p-3">
-                    <div class="col-md-4 my-2">
+                    <div class="col-md-3 my-2">
                         <label class="form-label">Last Name</label>
                         <input type="text" class="form-control" placeholder="Last Name" name="lastName" value="{{old('lastName')}}">
                         <span class="text-danger">@error('lastName') {{$message}} @enderror</span>
@@ -33,10 +33,16 @@
                         <span class="text-danger">@error('firstName') {{$message}} @enderror</span>
                     </div>
 
-                    <div class="col-md-4 my-2">
+                    <div class="col-md-3 my-2">
                         <label class="form-label">Middle Name</label>
                         <input type="text" class="form-control" placeholder="Middle Name" name="middleName" value="{{old('middleName')}}">
                         <span class="text-danger">@error('middleName') {{$message}} @enderror</span>
+                    </div>
+
+                    <div class="col-md-2 my-2">
+                        <label class="form-label">Suffix</label>
+                        <input type="text" class="form-control" placeholder="Suffix" name="suffix" value="{{old('suffix')}}">
+                        <span class="text-danger">@error('suffix') {{$message}} @enderror</span>
                     </div>
 
                     <div class="col-md-4 my-2">
@@ -87,7 +93,7 @@
                         <span class="text-danger">@error('age') {{$message}} @enderror</span>
                     </div>
 
-                                            
+
                     <div class="col-md-3 my-2">
                         <label class="form-label">Religion</label>
                         <input type="text" class="form-control" placeholder="Religion" name="religion" value="{{old('religion')}}">
@@ -130,6 +136,8 @@
                         <span class="text-danger">@error('password') {{$message}} @enderror</span>
                     </div>
 
+                    <input type="hidden" name="accessType" value="Alumni">
+
                     <div class="col-md-12 d-flex justify-content-center mt-4 mb-2">
                         <button type="submit" class="button" style="width: 200px">Register</button>
                     </div>
@@ -138,7 +146,7 @@
                     </div>
                 </div>
 
-            </div> 
+            </div>
         </div>
     </section>
 </form>

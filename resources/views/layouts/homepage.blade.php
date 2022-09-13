@@ -24,19 +24,19 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mx-auto mb-2 mb-lg-0" >
                 <li class="nav-item">
-                    <a class="nav-link @yield('home-active')" aria-current="page" href="{{ route('homepage') }}">Home</a>
+                    <a class="nav-link @yield('home-active')" aria-current="page" href="">Home</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link @yield('form-active')" aria-current="page" href="#forms">Forms</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link @yield('job-active')" aria-current="page" href="{{ route('user.careerView') }}">Careers</a>
+                    <a class="nav-link @yield('job-active')" aria-current="page" href="">Careers</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link @yield('tracer-active')" aria-current="page" href="{{ route('user.tracerView') }}">Tracer</a>
+                    <a class="nav-link @yield('tracer-active')" aria-current="page" href="">Tracer</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link @yield('profile-active')" aria-current="page" href="{{ route('user.getProfile') }}">Profile</a>
+                    <a class="nav-link @yield('profile-active')" aria-current="page" href="">Profile</a>
                 </li>
             </ul>
             <div class="d-flex">
@@ -45,11 +45,16 @@
                         <i class="fa-solid fa-circle-user"></i> {{ Auth::user()->username }}
                     </button>
                     <ul class="dropdown-menu dropdown-menu-end">
-                        <li><a class="dropdown-item @yield('setting-active')" aria-current="page" href="{{ route('user.getAccSetting') }}">Account Settings</a></li>
+                        <li><a class="dropdown-item @yield('setting-active')" aria-current="page" href="">Account Settings</a></li>
                         <li><a class="dropdown-item" href="#">Feedback</a></li>
                         <li><a class="dropdown-item" href="#">Report a Problem</a></li>
                         <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="{{ route('logout') }}">Logout</a></li>
+                        <li>
+                            <form action="{{ route('logout') }}" method="post">
+                                @csrf
+                                <button type="submit" class="dropdown-item">Logout</button>
+                            </form>
+                        </li>
                     </ul>
                 </div>
             </div>

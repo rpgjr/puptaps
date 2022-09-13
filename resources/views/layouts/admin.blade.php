@@ -36,7 +36,7 @@
                         <li><a class="dropdown-item" href="#">Feedback</a></li>
                         <li><a class="dropdown-item" href="#">Report a Problem</a></li>
                         <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="{{ route('admin.logout') }}">Logout</a></li>
+                        <li><a class="dropdown-item" href="">Logout</a></li>
                     </ul>
                 </div>
             </div>
@@ -80,7 +80,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="{{ route('admin.alumniList') }}" class="nav-link px-3 @yield('alumni-list-status')">
+                                <a href="" class="nav-link px-3 @yield('alumni-list-status')">
                                     <span class="me-2">
                                         <i class="fa-solid fa-file-circle-plus"></i>
                                     </span>

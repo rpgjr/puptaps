@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class isLoggedIn
 {
@@ -16,7 +17,7 @@ class isLoggedIn
      */
     public function handle(Request $request, Closure $next)
     {
-        if(Session()->has('loginUserID') && !(url('homapage')==$request->url())) {
+        if(Auth::check() && !(url('/home')==$request->url())) {
             return back();
         }
         return $next($request);

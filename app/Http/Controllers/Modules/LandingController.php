@@ -20,8 +20,13 @@ class LandingController extends Controller
         return view('landingPage');
     }
 
-    // Return Login Page View for Users
-    public function userLoginView() {
-        return view('auth.login');
-    }
+    // // Return Login Page View for Users
+    // public function userLoginView() {
+    //     return view('auth.login');
+    // }
+
+    // // Return Registration Page View for Users
+    // public function userRegisterView() {
+    //     return view('auth.register');
+    // }
 }

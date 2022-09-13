@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Courses;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
@@ -20,7 +21,8 @@ class RegisteredUserController extends Controller
      */
     public function create()
     {
-        return view('auth.register');
+        $courses = Courses::all();
+        return view('auth.register', compact('courses'));
     }
 
     /**
@@ -34,18 +36,47 @@ class RegisteredUserController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => ['required', 'string', 'max:255'],
+            'lastName' => ['required'],
+            'firstName' => ['required'],
+            'middleName' => ['required'],
+            'courseID' => ['required'],
+            'batch' => ['required'],
+            'gender' => ['required'],
+            'bday' => ['required'],
+            'age' => ['required'],
+            'religion' => ['required'],
+            'studNumber' => ['required', 'unique:users'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'number' => ['required', 'unique:users'],
+            'cityAddress' => ['required'],
+            'username' => ['required', 'unique:users'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'accessType' => ['required'],
         ]);
 
-        $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-        ]);
+        $user = new User();
+        $user->lastName = $request->lastName;
+        $user->firstName = $request->firstName;
+        $user->middleName = $request->middleName;
+        $user->suffix = $request->suffix;
+        $user->courseID = $request->courseID;
+        $user->batch = $request->batch;
+        $user->gender = $request->gender;
+        $user->bday = $request->bday;
+        $user->age = $request->age;
+        $user->religion = $request->religion;
+        $user->studNumber = $request->studNumber;
+        $user->email = $request->email;
+        $user->number = $request->number;
+        $user->cityAddress = $request->cityAddress;
+        $user->username = $request->username;
+        $user->password = Hash::make($request->password);
+        $user->accessType = $request->accessType;
+        $user->save();
 
         event(new Registered($user));
+
+        // return redirect(route('user.login'));
 
         Auth::login($user);
 

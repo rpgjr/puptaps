@@ -4,7 +4,7 @@
 
 @section('content')
 
-<form class="d-grid gap-2" action="{{ route('auth.loginAsAdmin') }}" method="post">
+<form class="d-grid gap-2" action="{{ route('admin.login') }}" method="post">
     @if(Session::has('success'))
     <div class="alert alert-success">{{ Session::get('success') }}</div>
     @endif
@@ -17,11 +17,11 @@
         <div class="box-login w-75">
             <div class="row g-0">
                 <div class="col-lg-5">
-                    <img src="{{ asset('img/pup-aps.png') }}" class="img-fluid" alt="">       
+                    <img src="{{ asset('img/pup-aps.png') }}" class="img-fluid" alt="">
                 </div>
                 <div class="col-lg-7">
                     <form>
-                        <h1>ADMIN LOGIN</h1> 
+                        <h1>ADMIN LOGIN</h1>
                         <div class="form-padding">
                             <div class="col-mt-1 mb-2">
                                 <label for="exampleInputEmail1" class="form-label">Username</label>
@@ -41,8 +41,8 @@
 
                         </div>
                     </form>
-                </div> 
-            </div> 
+                </div>
+            </div>
         </div>
     </section>
 </form>
