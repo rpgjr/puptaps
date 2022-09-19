@@ -4,23 +4,20 @@
 
 @section('content')
 
-<form class="d-grid gap-2" action="{{ route('register') }}" method="post">
-    @if(Session::has('success'))
-    <div class="alert alert-success">{{ Session::get('success') }}</div>
-    @endif
-    @if(Session::has('fail'))
-    <div class="alert alert-danger">{{ Session::get('fail') }}</div>
-    @endif
-    @csrf
+<section class="form">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 center-register box-register">
 
-    <section class="form my-4 mx-5">
-        <div class="box-register">
-            <div class="col-lg-12">
-                <div class="alumni-registration-form">
-                    <h1>ALUMNI REGISTRATION FORM</h1>
-                </div>
+                <form action="{{ route('register') }}" method="post">
+                @if(Session::has('fail'))
+                <div class="alert alert-danger">{{ Session::get('fail') }}</div>
+                @endif
+                @csrf
 
-                <div class="row align-items-center w-100 p-3">
+                <h1 class="fw-bold mb-5 text-center">Registration</h1>
+
+                <div class="row">
                     <div class="col-md-3 my-2">
                         <label class="form-label">Last Name</label>
                         <input type="text" class="form-control" placeholder="Last Name" name="lastName" value="{{old('lastName')}}">
@@ -139,16 +136,16 @@
                     <input type="hidden" name="accessType" value="Alumni">
 
                     <div class="col-md-12 d-flex justify-content-center mt-4 mb-2">
-                        <button type="submit" class="button" style="width: 200px">Register</button>
+                        <button type="submit" class="btn btn-primary w-50">Register</button>
                     </div>
                     <div class="col-md-12 d-flex justify-content-center mt-3">
                         <p>Already have an account? <a href="{{ route('login') }}">Login here!</a></p>
                     </div>
+                </form>
                 </div>
-
             </div>
         </div>
-    </section>
-</form>
+    </div>
+</section>
 
 @endsection

@@ -29,7 +29,7 @@
             <div class="d-flex">
                 <div class="dropdown">
                     <button class="btn btn-success dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        {{ Session::get('loginAdminID') }} <i class="fa-solid fa-circle-user"></i>
+                        {{ Session::get('adminID') }} <i class="fa-solid fa-circle-user"></i>
                     </button>
                     <ul class="dropdown-menu dropdown-menu-end">
                         <li><a class="dropdown-item" href="#">Account Settings</a></li>

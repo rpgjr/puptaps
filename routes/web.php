@@ -58,6 +58,16 @@ Route::group(['controller' => 'App\Http\Controllers\Auth\AdminAuthController', '
     Route::get('login', 'getAdminLogin')->name('getLogin');
     Route::post('loginAdmin', 'adminLogin')->name('login');
 });
+
+Route::group(['controller' => 'App\Http\Controllers\Modules\CareerController', 'prefix' => 'career', 'as' => 'userCareer.'], function() {
+    Route::get('dashboard', 'getCareerIndex')->name('index');
+    Route::post('add/text-career', 'addTextCareer')->name('addTextCareer');
+    Route::post('add/image-career', 'addImageCareer')->name('addImageCareer');
+});
+
+Route::group(['controller' => 'App\Http\Controllers\Modules\ProfileController', 'prefix' => 'profile', 'as' => 'userProfile.'], function() {
+    Route::get('settings', 'getProfileIndex')->name('index');
+});
 // ========== End of Module Route ==========
 
 

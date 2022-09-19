@@ -1,4 +1,4 @@
-@extends('layouts.homepage')
+@extends('layouts.user')
 
 @section('page-title', 'Homepage')
 

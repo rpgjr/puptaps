@@ -1,0 +1,83 @@
+.box-profile {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 30px;
+    padding-right: 30px;
+    border-radius: 8px;
+}
+
+/* .user-profile {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-radius: 50%;
+} */
+
+/* .user-profile img:hover {
+    background-color: rgba(0,0,0,.8);
+    z-index: 10000;
+    transition: background-color .2s ease-in-out;
+    margin-bottom: 0;
+    content: "Change Image";
+    color: #ffffff;
+    border-radius: 50%;
+}
+
+.user-profile img:hover::after {
+    content: "Change Image!!";
+    color: #000000;
+} */
+
+.profilepic {
+    position: relative;
+    width: 125px;
+    height: 125px;
+    border-radius: 50%;
+    overflow: hidden;
+  }
+
+  .profilepic:hover .profilepic__content {
+    opacity: 1;
+  }
+
+  .profilepic:hover .profilepic__image {
+    opacity: .5;
+  }
+
+  .profilepic__image {
+    object-fit: cover;
+    opacity: 1;
+    transition: opacity .2s ease-in-out;
+    height: 100%;
+    width: 125px;
+  }
+
+  .profilepic__content {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    opacity: 0;
+    transition: opacity .2s ease-in-out;
+  }
+
+  .profilepic__icon {
+    color: white;
+    padding-bottom: 8px;
+  }
+
+  .fas {
+    font-size: 20px;
+  }
+
+  .profilepic__text {
+    text-transform: uppercase;
+    font-size: 12px;
+    width: 50%;
+    text-align: center;
+  }

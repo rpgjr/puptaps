@@ -22,7 +22,7 @@ class AdminAuthController extends Controller
         $admin = Admin::where('username', '=', $request->username)->first();
         if($admin) {
             if(Hash::check($request->password, $admin->password)) {
-                $request->session()->put('adminID', $admin->adminID);
+                $request->session()->put('adminID', $admin->username);
                 return redirect(route('admin.homepage'));
             }
             else {
@@ -32,5 +32,9 @@ class AdminAuthController extends Controller
         else {
             return redirect(route('admin.getLogin'))->with('fail', 'This username is not yet registered.');
         }
+    }
+
+    public function adminLogout() {
+
     }
 }

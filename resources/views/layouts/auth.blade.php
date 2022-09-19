@@ -7,7 +7,6 @@
 
     {{-- CSS --}}
     <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
     <link rel="stylesheet" href="{{ asset('css/auth.css') }}">
     {{-- Fontawesome --}}
     <link rel="stylesheet" href="{{ asset('fontawesome/css/all.css') }}">
@@ -15,27 +14,20 @@
     <title>@yield('page-title')</title>
     <link rel="icon" href="{{ asset('img/pupLogo.png') }}" type="image/icon type">
 </head>
-<body class="loginBG">
+<body style="
+    background: url({{ asset('img/pupBG.jpg') }}) no-repeat center center fixed;
+    background-size: cover;
+    height: 100%;
+">
 
 {{-- NavBar --}}
-    <nav class="navbar navbar-expand-lg bg-light sticky-top">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="">
-                <img src="{{ asset('img/pupLogo.png') }}" style="height: 50px">
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="{{ route('landingPage') }}" style="height: 35px"><b>PUP Taguig Alumni Portal System</b></a>
-                </li>
-            </ul>
-            </div>
-            </div>
-        </div>
-    </nav>
+<nav class="navbar navbar-expand-lg bg-light sticky-top">
+    <div class="container-fluid">
+        <a class="navbar-brand fw-bold" href="{{ route('landingPage') }}">
+            <img src="{{ asset('img/pupLogo.png') }}" style="height: 50px"> <small>PUP Taguig Alumni Portal</small>
+        </a>
+    </div>
+</nav>
 {{-- End NavBar --}}
 
     @yield('content')
