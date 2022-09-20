@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class AuthenticatedSessionController extends Controller
 {
@@ -33,7 +34,23 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect()->intended(RouteServiceProvider::HOME);
+        $alumni = DB::table('tbl_alumni')->where('username', '=', $request->input('username'))->get();
+        foreach ($alumni as $alumni_update)
+        {
+            if(($alumni_update->email_verified_at) == null && Auth::check()) {
+                $update_alumni_table = DB::table('tbl_alumni')->where('alumni_ID', '=', Auth::user()->alumni_ID)->update([
+                    'email_verified_at' => Auth::user()->email_verified_at,
+                ]);
+            }
+        }
+
+        if((Auth::user()->user_role) == 'Alumni') {
+            return redirect()->intended(RouteServiceProvider::HOME);
+        }
+        elseif((Auth::user()->user_role) == 'Admin') {
+            return redirect()->intended(RouteServiceProvider::ADMIN);
+        }
+
     }
 
     /**

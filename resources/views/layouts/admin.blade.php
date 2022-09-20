@@ -14,7 +14,7 @@
 {{-- NavBar --}}
     <nav class="navbar navbar-expand-lg bg-light sticky-top">
         <div class="container-fluid">
-            <a class="navbar-brand" href="">
+            <a class="navbar-brand" href="{{ route('admin.homepage') }}">
                 <img src="{{ asset('img/pupLogo.png') }}" style="height: 50px">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -23,20 +23,25 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="">Admin</a>
+                    <a class="nav-link active" aria-current="page" href="{{ route('admin.homepage') }}">Admin Module</a>
                 </li>
             </ul>
             <div class="d-flex">
                 <div class="dropdown">
                     <button class="btn btn-success dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        {{ Session::get('adminID') }} <i class="fa-solid fa-circle-user"></i>
+                        <i class="fa-solid fa-circle-user"></i> {{ Auth::user()->username }}
                     </button>
                     <ul class="dropdown-menu dropdown-menu-end">
                         <li><a class="dropdown-item" href="#">Account Settings</a></li>
                         <li><a class="dropdown-item" href="#">Feedback</a></li>
                         <li><a class="dropdown-item" href="#">Report a Problem</a></li>
                         <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="">Logout</a></li>
+                        <li>
+                            <form action="{{ route('logout') }}" method="post">
+                                @csrf
+                                <button type="submit" class="dropdown-item">Logout</button>
+                            </form>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -80,7 +85,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="" class="nav-link px-3 @yield('alumni-list-status')">
+                                <a href="{{ route('adminUserManagement.alumniList') }}" class="nav-link px-3 @yield('alumni-list-status')">
                                     <span class="me-2">
                                         <i class="fa-solid fa-file-circle-plus"></i>
                                     </span>

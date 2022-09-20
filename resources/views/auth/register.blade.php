@@ -133,7 +133,7 @@
                         <span class="text-danger">@error('password') {{$message}} @enderror</span>
                     </div>
 
-                    <input type="hidden" name="accessType" value="Alumni">
+                    <input type="hidden" name="user_role" value="Alumni">
 
                     <div class="col-md-12 d-flex justify-content-center mt-4 mb-2">
                         <button type="submit" class="btn btn-primary w-50">Register</button>

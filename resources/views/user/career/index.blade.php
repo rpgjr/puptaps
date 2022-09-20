@@ -31,8 +31,8 @@
                           <li><button class="dropdown-item" data-bs-toggle="modal" data-bs-target="#addCareerImage">Add as Image</button></li>
                           <li><button class="dropdown-item" data-bs-toggle="modal" data-bs-target="#addCareerText">Add as Text</button></li>
                         </ul>
-                        @include('user.components.addCareerImage')
-                        @include('user.components.addCareerText')
+                        @include('user.components.add_career_image')
+                        @include('user.components.add_career_text')
                     </div>
                 </div>
             </div>

@@ -15,7 +15,7 @@
                     @endif
                     @csrf
 
-                        <h1 class="fw-bold mb-5 text-center">ALUMNI LOGIN</h1>
+                        <h1 class="fw-bold mb-5 text-center">Login</h1>
                         <div class="mb-3">
                             <label class="form-label">Username</label>
                             <input type="text" class="form-control" name="username"  value="{{old('username')}}" placeholder="Enter Username">

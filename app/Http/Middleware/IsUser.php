@@ -2,11 +2,12 @@
 
 namespace App\Http\Middleware;
 
+use App\Providers\RouteServiceProvider;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class isLoggedIn
+class IsUser
 {
     /**
      * Handle an incoming request.
@@ -17,7 +18,7 @@ class isLoggedIn
      */
     public function handle(Request $request, Closure $next)
     {
-        if((url('/login') == $request->url()) || (url('/register') == $request->url())) {
+        if((Auth::user()->user_role) == 'Alumni') {
             return back();
         }
         return $next($request);

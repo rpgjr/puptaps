@@ -13,7 +13,8 @@ class Careers extends Model
     protected $primaryKey = 'careerID';
 
     protected $fillable = [
-        'userID',
+        'alumni_ID',
+        'admin_ID',
         'job_ad_image',
         'job_name',
         'company',

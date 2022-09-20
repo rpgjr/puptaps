@@ -16,36 +16,48 @@ return new class extends Migration
     public function up()
     {
         Schema::create('tbl_admin', function (Blueprint $table) {
-            $table->increments('adminID');
-            $table->string('username');
+            $table->increments('admin_ID');
+
+            $table->string('lastName');
+            $table->string('firstName');
+            $table->string('middleName')->nullable();
+            $table->string('suffix')->nullable();
+
             $table->string('email');
+            $table->string('username');
             $table->string('password');
-            $table->string('accessType');
+            $table->string('user_role');
             $table->timestamps();
         });
 
         $accounts = array (
             [
-                'username' => 'IT_admin',
+                'lastName' => 'Admin',
+                'firstName' => 'IT',
                 'email' => 'pupt.alumniportalsystem@gmail.com',
+                'username' => 'IT_admin',
                 'password' => '$2y$10$4T6QsO9Exkivcm7iAQijCuOVoRY.AN91gghpnsrFTINY.Z14Ed7A2',
-                'accessType' => 'IT Admin',
+                'user_role' => 'IT Admin',
             ],
 
             [
-                'username' => 'Admin',
+                'lastName' => 'Admin',
+                'firstName' => 'Regular',
                 'email' => 'pupt.alumniportalsystem@gmail.com',
+                'username' => 'Admin',
                 'password' => '$2y$10$4T6QsO9Exkivcm7iAQijCuOVoRY.AN91gghpnsrFTINY.Z14Ed7A2',
-                'accessType' => 'Admin',
+                'user_role' => 'Admin',
             ],
         );
 
         foreach ($accounts as $account) {
             $admin = new Admin();
-            $admin->username = $account['username'];
+            $admin->lastName = $account['lastName'];
+            $admin->firstName = $account['firstName'];
             $admin->email = $account['email'];
+            $admin->username = $account['username'];
             $admin->password = $account['password'];
-            $admin->accessType = $account['accessType'];
+            $admin->user_role = $account['user_role'];
 
             $admin->save();
         }

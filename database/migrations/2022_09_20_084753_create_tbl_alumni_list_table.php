@@ -13,15 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('tbl_career_applicants', function (Blueprint $table) {
-            $table->increments('applicantID');
-
-            $table->unsignedInteger('userID');
-            $table->foreign('userID')->references('userID')->on('users');
-
-            $table->unsignedInteger('careerID');
-            $table->foreign('careerID')->references('careerID')->on('tbl_careers');
-
+        Schema::create('tbl_alumni_list', function (Blueprint $table) {
+            $table->string('studnumber');
+            $table->string('lastname');
+            $table->string('firstname');
+            $table->string('middlename')->nullable();
+            $table->string('suffix')->nullable();
+            $table->string('course');
             $table->timestamps();
         });
     }
@@ -33,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tbl_career_applicants');
+        Schema::dropIfExists('tbl_alumni_list');
     }
 };

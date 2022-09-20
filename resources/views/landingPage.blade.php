@@ -21,13 +21,14 @@
 
             <div class="d-flex">
                 <div class="btn-group" role="group" aria-label="Basic example">
-                    <button class="btn btn-primary " type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    {{-- <button class="btn btn-primary " type="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Login <i class="fa-solid fa-arrow-right-to-bracket"></i>
                     </button>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="{{ route('login') }}">Login as Alumni</a></li>
                         <li><a class="dropdown-item" href="{{ route('admin.getLogin') }}">Login as Admin</a></li>
-                    </ul>
+                    </ul> --}}
+                    <a href="{{ route('login') }}" type="button" class="btn btn-primary" style="width: 120px">Login <i class="fa-solid fa-arrow-right-to-bracket"></i></a>
                     <a href="{{ route('register') }}" type="button" class="btn btn-success" style="width: 120px">Register <i class="fa-solid fa-user-plus"></i></a>
                 </div>
             </div>

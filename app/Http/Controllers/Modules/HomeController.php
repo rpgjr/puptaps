@@ -4,12 +4,15 @@ namespace App\Http\Controllers\modules;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
     public function getUserHomepage()
     {
-        return view('user.homepage');
+        $users = DB::table('tbl_alumni')->where('alumni_ID', '=', Auth::user()->alumni_ID)->get();
+        return view('user.homepage', compact('users'));
     }
 
     public function getLandingPage() {

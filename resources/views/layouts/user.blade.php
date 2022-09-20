@@ -45,7 +45,10 @@
                 <div class="dropdown">
                     <button class="dropdown-toggle account-name" type="" data-bs-toggle="dropdown" aria-expanded="false">
                         @if (Auth::user()->userProfile == null)
-                            <img src="{{ asset('Uploads/Profiles/noProfile.png') }}" class="user-profile-button">
+                        @foreach ($users as $user)
+                            <img src="/Uploads/Profiles/{{ $user->userProfile }}" class="user-profile-button">
+                        @endforeach
+
                         @endif {{ Auth::user()->username }}
                     </button>
                     <ul class="dropdown-menu dropdown-menu-end">
