@@ -7,10 +7,12 @@
     <link rel="stylesheet" href="{{ asset('css/navbar.css') }}">
     <link rel="stylesheet" href="{{ asset('css/career.css') }}">
     <link rel="stylesheet" href="{{ asset('css/profile.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/forms.css') }}">
     {{-- Fontawesome --}}
     <link rel="stylesheet" href="{{ asset('fontawesome/css/all.css') }}">
     <title>@yield('page-title')</title>
     <link rel="icon" href="{{ asset('img/pupLogo.png') }}" type="image/icon type">
+    @livewireStyles
 </head>
 <body>
 
@@ -32,7 +34,7 @@
                     <a class="nav-link @yield('career-active')" aria-current="page" href="{{ route('userCareer.index') }}">Careers</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link @yield('form-active')" aria-current="page" href="#forms">Forms</a>
+                    <a class="nav-link @yield('form-active')" aria-current="page" href="{{ route('userForm.index') }}">Forms</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link @yield('tracer-active')" aria-current="page" href="">Tracer</a>
@@ -44,12 +46,15 @@
             <div class="d-flex">
                 <div class="dropdown">
                     <button class="dropdown-toggle account-name" type="" data-bs-toggle="dropdown" aria-expanded="false">
-                        @if (Auth::user()->userProfile == null)
-                        @foreach ($users as $user)
+                        {{-- @foreach ($users as $user)
+                        @if ($user->userProfile == null)
+                            <img src="{{ asset('Uploads/Profiles/user-no-profile.png') }}" class="user-profile-button">
+                        @else
                             <img src="/Uploads/Profiles/{{ $user->userProfile }}" class="user-profile-button">
-                        @endforeach
+                        @endif
+                        @endforeach --}}
+                        {{ Auth::user()->username }}
 
-                        @endif {{ Auth::user()->username }}
                     </button>
                     <ul class="dropdown-menu dropdown-menu-end">
                         <li><a class="dropdown-item @yield('setting-active')" aria-current="page" href="">Account Settings</a></li>
@@ -74,6 +79,7 @@
     @yield('content')
 
     {{-- JS --}}
+    @livewireScripts
     <script src="{{ asset('bootstrap/js/bootstrap.bundle.js') }}"></script>
     <script src="{{ asset('js/profilePicture.js') }}"></script>
 

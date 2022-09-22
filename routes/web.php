@@ -57,7 +57,7 @@ require __DIR__.'/auth.php';
 
 // User - Career
 Route::group(['controller' => 'App\Http\Controllers\Modules\CareerController', 'prefix' => 'career', 'as' => 'userCareer.', 'middleware' => 'isAdmin'], function() {
-    Route::get('dashboard', 'getCareerIndex')->name('index');
+    Route::get('index', 'getCareerIndex')->name('index');
     Route::post('add/text-career', 'addTextCareer')->name('addTextCareer');
     Route::post('add/image-career', 'addImageCareer')->name('addImageCareer');
 });
@@ -73,6 +73,14 @@ Route::group(['controller' => 'App\Http\Controllers\Admin\AlumniListController',
     Route::get('alumni-list', 'alumniListIndex')->name('alumniList');
     Route::post('add-alumni-list', 'addAlumniList')->name('addAlumniList');
     Route::post('add-alumni-list', 'addAlumniList')->name('addAlumniList');
+});
+
+Route::group(['controller' => 'App\Http\Controllers\Modules\FormsController', 'prefix' => 'form', 'as' => 'userForm.'], function() {
+    Route::get('index', 'getFormIndex')->name('index');
+});
+
+Route::group(['controller' => 'App\Http\Controllers\User\pdsController', 'prefix' => 'form', 'as' => 'userForm.'], function() {
+    Route::get('personal-data-sheet', 'getPDS')->name('getPDS');
 });
 
 // ========== End of Module Route ==========
