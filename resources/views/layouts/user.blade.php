@@ -45,17 +45,13 @@
             </ul>
             <div class="d-flex">
                 <div class="dropdown">
-                    <button class="dropdown-toggle account-name" type="" data-bs-toggle="dropdown" aria-expanded="false">
-                        {{-- @foreach ($users as $user)
-                        @if ($user->userProfile == null)
-                            <img src="{{ asset('Uploads/Profiles/user-no-profile.png') }}" class="user-profile-button">
-                        @else
-                            <img src="/Uploads/Profiles/{{ $user->userProfile }}" class="user-profile-button">
-                        @endif
-                        @endforeach --}}
-                        {{ Auth::user()->username }}
-
-                    </button>
+                    @foreach ($users as $user)
+                    @if ($user->userProfile == null)
+                        <img src="{{ asset('Uploads/Profiles/user-no-profile.png') }}" class="user-profile-button" data-bs-toggle="dropdown" aria-expanded="false">
+                    @else
+                        <img src="/Uploads/Profiles/{{ $user->userProfile }}" class="user-profile-button" data-bs-toggle="dropdown" aria-expanded="false">
+                    @endif
+                    @endforeach
                     <ul class="dropdown-menu dropdown-menu-end">
                         <li><a class="dropdown-item @yield('setting-active')" aria-current="page" href="">Account Settings</a></li>
                         <li><a class="dropdown-item" href="#">Feedback</a></li>

@@ -8,24 +8,17 @@ body {
 
 /* Hover - Account Name button - Upper right*/
 .user-profile-button {
-    height: 30px;
-    width: 30px;
-}
-
-.account-name {
-    color: #000000;
-    padding: 6px;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    padding: 2px;
     box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
     background-color: #ffffff;
     border-color: #78281F;
-    border-radius: 7px;
     margin-right: 15px;
 }
 
-.account-name:hover {
-    color: #ffffff;
-    background-color: #78281F;
-    border-color: #ffffff;
+.user-profile-button:hover {
     transition: transform 400ms;
     transform: scale(1.2);
 }

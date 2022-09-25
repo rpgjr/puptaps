@@ -15,20 +15,6 @@ class FormPDS extends Model
 
     protected $fillable = [
         'alumni_ID',
-        'lastName',
-        'firstName',
-        'middleName',
-        'suffix',
-        'gender',
-        'age',
-        'bday',
-        'number',
-        'email',
-        'religion',
-        'courseID',
-        'batch',
-        'cityAddress',
-        'provincialAddress',
         'fathersName',
         'fathersNumber',
         'mothersName',
@@ -42,5 +28,9 @@ class FormPDS extends Model
         'seminar2Date',
         'seminar3',
         'seminar3Date',
+
+        'dataPrivacy',
+        'dateSigned',
+        'signature',
     ];
 }

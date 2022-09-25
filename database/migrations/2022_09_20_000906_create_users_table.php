@@ -32,6 +32,18 @@ return new class extends Migration
             $table->timestamps();
         });
 
+        DB::table('users')->insert(
+            array(
+                'alumni_ID' => '1',
+                'studNumber' => '2019-00432-TG-0',
+                'email' => 'lickmyballpen@gmail.com',
+                'email_verified_at' => '2022-09-16 23:20:57',
+                'username' => 'rodgeneta',
+                'password' => '$2y$10$4T6QsO9Exkivcm7iAQijCuOVoRY.AN91gghpnsrFTINY.Z14Ed7A2',
+                'user_role' => 'Alumni',
+            )
+        );
+
         // Schema::create('users', function (Blueprint $table) {
         //     $table->increments('userID');
         //     $table->string('studNumber');

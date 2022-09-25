@@ -6,12 +6,15 @@ use App\Http\Controllers\Controller;
 use App\Models\Careers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use App\Models\Alumni;
 
 class CareerController extends Controller
 {
     //
     public function getCareerIndex() {
-        return view('user.career.index');
+        $users = DB::table('tbl_alumni')->where('alumni_ID', '=', Auth::user()->alumni_ID)->get();
+        return view('user.career.index', compact('users'));
     }
 
     public function addTextCareer(Request $request) {

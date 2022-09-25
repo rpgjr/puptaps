@@ -26,54 +26,51 @@
                         <tr>
                             <th class="align-middle">Exit Interview</th>
                             <td class="align-middle">
-                                {{-- @if (!$exit->count())
-                                    Not yet completed <i class="fa-solid fa-circle-exclamation" style="color: #E74C3C;"></i>
-                                @else
+                                @if (count($userExitInterview) > 0)
                                     Completed <i class="fa-solid fa-circle-check" style="color: #27AE60;"></i>
-                                @endif --}}
+                                @else
+                                    Not yet completed <i class="fa-solid fa-circle-exclamation" style="color: #E74C3C;"></i>
+                                @endif
                             </td>
                             <td>
-                                {{-- @if (!$exit->count())
-                                    <a href="{{ route('user.exitInterview') }}" type="button" class="btn btn-primary">Answer</a>
-                                @else --}}
-                                    ---
-                                    {{-- <button class="btn btn-success" type="button">Print Form</button> --}}
-                                {{-- @endif --}}
+                                @if (count($userExitInterview) > 0)
+                                    <a href="" type="button" class="btn btn-success">Print</a>
+                                @else
+                                    <a href="{{ route('userForm.getExiteInterview') }}" type="button" class="btn btn-primary">Answer</a>
+                                @endif
                             </td>
                         </tr>
                         <tr>
                             <th class="align-middle">SAS Form</th>
                             <td class="align-middle">
-                                {{-- @if (!$sas->count())
-                                    Not yet completed <i class="fa-solid fa-circle-exclamation" style="color: #E74C3C;"></i>
-                                @else
+                                @if (count($userSAS) > 0)
                                     Completed <i class="fa-solid fa-circle-check" style="color: #27AE60;"></i>
-                                @endif --}}
+                                @else
+                                    Not yet completed <i class="fa-solid fa-circle-exclamation" style="color: #E74C3C;"></i>
+                                @endif
                             </td>
                             <td>
-                                {{-- @if (!$sas->count())
-                                    <a href="{{ route('user.sasForm') }}" type="button" class="btn btn-primary">Answer</a>
-                                @else --}}
-                                    ---
-                                    {{-- <button class="btn btn-success" type="button">Print Form</button> --}}
-                                {{-- @endif --}}
+                                @if (count($userSAS) > 0)
+                                    <button class="btn btn-success" type="button">Print Form</button>
+                                @else
+                                    <a href="{{ route('userForm.getSAS') }}" type="button" class="btn btn-primary">Answer</a>
+                                @endif
                             </td>
                         </tr>
                         <tr>
                             <th class="align-middle">Personal Data Sheet</th>
                             <td class="align-middle">
-                                @if (!$userPDS->count())
-                                    Not yet completed <i class="fa-solid fa-circle-exclamation" style="color: #E74C3C;"></i>
-                                @else
+                                @if (count($userPDS) > 0)
                                     Completed <i class="fa-solid fa-circle-check" style="color: #27AE60;"></i>
+                                @else
+                                    Not yet completed <i class="fa-solid fa-circle-exclamation" style="color: #E74C3C;"></i>
                                 @endif
                             </td>
                             <td>
-                                @if (!$userPDS->count())
-                                    <a href="{{ route('userForm.getPDS') }}" type="button" class="btn btn-primary">Answer</a>
+                                @if (count($userPDS) > 0)
+                                    <a href="" type="button" class="btn btn-success">Print</a>
                                 @else
-                                    ---
-                                    <button class="btn btn-success" type="button">Print Form</button>
+                                    <a href="{{ route('userForm.getPDS') }}" type="button" class="btn btn-primary">Answer</a>
                                 @endif
                             </td>
                         </tr>

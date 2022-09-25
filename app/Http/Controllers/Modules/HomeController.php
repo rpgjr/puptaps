@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\modules;
 
 use App\Http\Controllers\Controller;
+use App\Models\Alumni;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;

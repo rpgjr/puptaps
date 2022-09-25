@@ -20,7 +20,7 @@ return new class extends Migration
             $table->unsignedInteger('pds_question_ID')->nullable();
             $table->foreign('pds_question_ID')->references('pds_question_ID')->on('form_pds_questions');
 
-            $table->string('pds_answer');
+            $table->string('pds_answer')->nullable();
 
             $table->timestamps();
         });

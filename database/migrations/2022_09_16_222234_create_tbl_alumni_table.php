@@ -23,10 +23,12 @@ return new class extends Migration
             $table->string('suffix')->nullable();
             $table->string('courseID');
             $table->integer('batch');
+            $table->integer('semesters')->nullable();
             $table->string('gender');
             $table->date('bday')->nullable();
             $table->integer('age')->nullable();
             $table->string('religion')->nullable();
+            $table->string('civilStatus')->nullable();
             $table->string('cityAddress');
             $table->string('provincialAddress')->nullable();
             $table->string('email');
@@ -42,17 +44,18 @@ return new class extends Migration
         DB::table('tbl_alumni')->insert(
             array(
                 'studNumber' => '2019-00432-TG-0',
-                'lastName' => 'Sample',
-                'firstName' => 'Sample',
-                'middleName' => 'Sample',
+                'lastName' => 'Geneta',
+                'firstName' => 'Rodrigo',
+                'middleName' => 'Pilariza',
                 'courseID' => 'BSIT',
                 'batch' => '2022',
                 'gender' => 'Male',
+                'bday' => '2001-01-31',
                 'cityAddress' => 'Sample St., Sample City',
                 'email' => 'lickmyballpen@gmail.com',
                 'email_verified_at' => '2022-09-16 23:20:57',
                 'number' => '0909090909',
-                'username' => 'sample',
+                'username' => 'rodgeneta',
                 'password' => '$2y$10$4T6QsO9Exkivcm7iAQijCuOVoRY.AN91gghpnsrFTINY.Z14Ed7A2',
                 'user_role' => 'Alumni',
             )

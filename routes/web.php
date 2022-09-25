@@ -77,10 +77,9 @@ Route::group(['controller' => 'App\Http\Controllers\Admin\AlumniListController',
 
 Route::group(['controller' => 'App\Http\Controllers\Modules\FormsController', 'prefix' => 'form', 'as' => 'userForm.'], function() {
     Route::get('index', 'getFormIndex')->name('index');
-});
-
-Route::group(['controller' => 'App\Http\Controllers\User\pdsController', 'prefix' => 'form', 'as' => 'userForm.'], function() {
     Route::get('personal-data-sheet', 'getPDS')->name('getPDS');
+    Route::get('exit-interview', 'getExiteInterview')->name('getExiteInterview');
+    Route::get('sas', 'getSAS')->name('getSAS');
 });
 
 // ========== End of Module Route ==========
