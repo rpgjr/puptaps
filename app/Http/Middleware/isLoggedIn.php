@@ -17,7 +17,7 @@ class isLoggedIn
      */
     public function handle(Request $request, Closure $next)
     {
-        if((url('/login') == $request->url()) || (url('/register') == $request->url())) {
+        if((url('/login') == $request->url()) || (url('/register') == $request->url()) || (url('/') == $request->url()) && Auth::check()) {
             return back();
         }
         return $next($request);

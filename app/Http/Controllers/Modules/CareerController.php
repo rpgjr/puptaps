@@ -3,23 +3,26 @@
 namespace App\Http\Controllers\Modules;
 
 use App\Http\Controllers\Controller;
+use App\Models\CareerApplicant;
 use App\Models\Careers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-use App\Models\Alumni;
 
 class CareerController extends Controller
 {
     //
-    public function getCareerIndex() {
+    public function getCareerIndex(Request $request) {
         $users = DB::table('tbl_alumni')->where('alumni_ID', '=', Auth::user()->alumni_ID)->get();
-        return view('user.career.index', compact('users'));
+        $applicants = DB::table('tbl_career_applicants')->where('alumni_ID', '=', Auth::user()->alumni_ID)->get();
+        $data['query'] = $request->get('query');
+        $data['careers'] = Careers::where('category', 'like', '%' . $data['query'] . '%')->paginate(15)->withQueryString();
+        return view('user.career.index', compact(['users', 'applicants']), $data);
     }
 
     public function addTextCareer(Request $request) {
         $this->validate($request,[
-            'userID' => 'required',
+            'alumni_ID' => 'required',
             'job_name' => 'required',
             'company' => 'required',
             'salary' => 'required',
@@ -31,7 +34,7 @@ class CareerController extends Controller
         ]);
 
         $career = new Careers();
-        $career->userID = $request->input('userID');
+        $career->alumni_ID = $request->input('alumni_ID');
         $career->job_name = $request->input('job_name');
         $career->company = $request->input('company');
         $career->salary = $request->input('salary');
@@ -57,11 +60,13 @@ class CareerController extends Controller
     public function addImageCareer(Request $request) {
         $request->validate([
             'job_ad_image' => 'required|mimes:jpg,jpeg,png',
+            'category' => 'required',
         ]);
 
         $career = new Careers();
-        $career->userID = $request->input('userID');
+        $career->alumni_ID = $request->input('alumni_ID');
         $career->approval = $request->input('approval');
+        $career->category = $request->input('category');
 
         if($request->hasFile('job_ad_image')) {
             $file = $request->file('job_ad_image');
@@ -85,5 +90,16 @@ class CareerController extends Controller
         else {
             return back()->with('fail', 'There is an Error Occured');
         }
+    }
+
+    public function applyCareer(Request $request) {
+        $applicant = new CareerApplicant();
+
+        $applicant->alumni_ID = $request->alumni_ID;
+        $applicant->careerID = $request->careerID;
+
+        $applicant->save();
+
+        return back()->with('success', 'Thank you for applying. Hope you get the Job!!!');
     }
 }

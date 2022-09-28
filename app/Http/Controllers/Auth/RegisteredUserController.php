@@ -70,6 +70,8 @@ class RegisteredUserController extends Controller
         $alumni->studNumber = $request->input('studNumber');
         $alumni->email = $request->input('email');
         $alumni->number = $request->input('number');
+        $alumni->semesters = $request->input('semesters');
+        $alumni->civilStatus = $request->input('civilStatus');
         $alumni->cityAddress = $request->input('cityAddress');
         $alumni->username = $request->input('username');
         $alumni->password = Hash::make($request->input('password'));

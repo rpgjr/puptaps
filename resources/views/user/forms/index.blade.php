@@ -12,8 +12,8 @@
             </div>
         </div>
 
-        <div class="row mx-4 box-forms">
-            <div class="col-md-12">
+        <div class="row mx-4 justify-content-center">
+            <div class="col-md-9 box-forms">
                 <table class="table">
                     <thead>
                       <tr>
@@ -51,7 +51,10 @@
                             </td>
                             <td>
                                 @if (count($userSAS) > 0)
-                                    <button class="btn btn-success" type="button">Print Form</button>
+                                    <form action="{{ route('userForm.downloadSAS') }}" method="post" target="__blank">
+                                        @csrf
+                                        <button type="submit" class="btn btn-success">Print</button>
+                                    </form>
                                 @else
                                     <a href="{{ route('userForm.getSAS') }}" type="button" class="btn btn-primary">Answer</a>
                                 @endif
@@ -68,7 +71,10 @@
                             </td>
                             <td>
                                 @if (count($userPDS) > 0)
-                                    <a href="" type="button" class="btn btn-success">Print</a>
+                                    <form action="{{ route('userForm.downloadPDS') }}" method="post" target="__blank">
+                                        @csrf
+                                        <button type="submit" class="btn btn-success">Print</button>
+                                    </form>
                                 @else
                                     <a href="{{ route('userForm.getPDS') }}" type="button" class="btn btn-primary">Answer</a>
                                 @endif

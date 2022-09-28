@@ -34,13 +34,36 @@ return new class extends Migration
 
         DB::table('users')->insert(
             array(
-                'alumni_ID' => '1',
-                'studNumber' => '2019-00432-TG-0',
-                'email' => 'lickmyballpen@gmail.com',
-                'email_verified_at' => '2022-09-16 23:20:57',
-                'username' => 'rodgeneta',
-                'password' => '$2y$10$4T6QsO9Exkivcm7iAQijCuOVoRY.AN91gghpnsrFTINY.Z14Ed7A2',
-                'user_role' => 'Alumni',
+                [
+                    'alumni_ID' => '1',
+                    'studNumber' => '2019-00432-TG-0',
+                    'email' => 'lickmyballpen@gmail.com',
+                    'email_verified_at' => '2022-09-16 23:20:57',
+                    'username' => 'rodgeneta',
+                    'password' => '$2y$10$4T6QsO9Exkivcm7iAQijCuOVoRY.AN91gghpnsrFTINY.Z14Ed7A2',
+                    'user_role' => 'Alumni',
+                ],
+            )
+        );
+
+        DB::table('users')->insert(
+            array(
+                [
+                    'admin_ID' => '1',
+                    'email' => 'pupt.alumniportalsystem@gmail.com',
+                    'username' => 'IT_admin',
+                    'email_verified_at' => '2022-09-16 23:20:57',
+                    'password' => '$2y$10$4T6QsO9Exkivcm7iAQijCuOVoRY.AN91gghpnsrFTINY.Z14Ed7A2',
+                    'user_role' => 'IT Admin',
+                ],
+                [
+                    'admin_ID' => '2',
+                    'email' => 'pupt.alumniportalsystem@gmail.com',
+                    'username' => 'Admin',
+                    'email_verified_at' => '2022-09-16 23:20:57',
+                    'password' => '$2y$10$4T6QsO9Exkivcm7iAQijCuOVoRY.AN91gghpnsrFTINY.Z14Ed7A2',
+                    'user_role' => 'Admin',
+                ],
             )
         );
 

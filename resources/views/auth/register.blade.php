@@ -8,7 +8,6 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12 center-register box-register">
-
                 <form action="{{ route('register') }}" method="post">
                 @if(Session::has('fail'))
                 <div class="alert alert-danger">{{ Session::get('fail') }}</div>
@@ -59,7 +58,6 @@
                             @endfor
                         </select>
                     </div>
-
                     <div class="col-md-4 my-2">
                         <label class="form-label">Student Number</label>
                         <input type="text" class="form-control" placeholder="Student Number" name="studNumber" value="{{old('studNumber')}}">
@@ -109,6 +107,25 @@
                         <span class="text-danger">@error('number') {{$message}} @enderror</span>
                     </div>
 
+                    <div class="col-md-6 my-2">
+                        <label class="form-label">No. of Semesters with PUP</label>
+                        <select class="form-select" name="semesters">
+                            @for ($i = 1; $i <= 20; $i++)
+                                <option value="{{ $i }}">{{ $i }}</option>
+                            @endfor
+                        </select>
+                    </div>
+
+                    <div class="col-md-6 my-2">
+                        <label class="form-label">Civil Status</label>
+                        <select class="form-select" name="civilStatus">
+                            <option value="Single">Single</option>
+                            <option value="Married">Married</option>
+                            <option value="Divorced">Divorced</option>
+                            <option value="Widowed">Widowed</option>
+                        </select>
+                    </div>
+
                     <div class="col-md-12 my-2">
                         <label class="form-label">Address</label>
                         <input type="text" class="form-control" placeholder="Address" name="cityAddress" value="{{old('cityAddress')}}">
@@ -141,7 +158,7 @@
                     <div class="col-md-12 d-flex justify-content-center mt-3">
                         <p>Already have an account? <a href="{{ route('login') }}">Login here!</a></p>
                     </div>
-                </form>
+                    </form>
                 </div>
             </div>
         </div>

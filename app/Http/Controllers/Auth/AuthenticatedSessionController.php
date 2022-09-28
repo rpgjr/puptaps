@@ -50,6 +50,9 @@ class AuthenticatedSessionController extends Controller
         elseif((Auth::user()->user_role) == 'Admin') {
             return redirect()->intended(RouteServiceProvider::ADMIN);
         }
+        elseif((Auth::user()->user_role) == 'IT Admin') {
+            return redirect()->intended(RouteServiceProvider::IT_ADMIN);
+        }
 
     }
 
@@ -67,6 +70,6 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerateToken();
 
-        return redirect('/');
+        return redirect(route('landingPage'));
     }
 }

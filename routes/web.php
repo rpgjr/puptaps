@@ -1,10 +1,8 @@
 <?php
 
-use App\Http\Controllers\Admin\AlumniListController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
-use App\Http\Controllers\modules\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,7 +15,7 @@ use App\Http\Controllers\modules\HomeController;
 |
 */
 
-// ========== Module Route ==========
+// ========== Module Route ==============================================================================================
 
 // Group for Homepage and Landing Page
 Route::group(['controller' => 'App\Http\Controllers\Modules\HomeController'], function() {
@@ -54,44 +52,54 @@ Route::group(['middleware' => 'auth', 'prefix' => 'email', 'as' => 'verification
 
 // Login - Registration
 require __DIR__.'/auth.php';
+// ========== End of Module Route =======================================================================================
+
+
+
+// ========== User Route =================================================================================================
 
 // User - Career
-Route::group(['controller' => 'App\Http\Controllers\Modules\CareerController', 'prefix' => 'career', 'as' => 'userCareer.', 'middleware' => 'isAdmin'], function() {
+Route::group(['controller' => 'App\Http\Controllers\Modules\CareerController', 'prefix' => 'career', 'as' => 'userCareer.', 'middleware' => ['isAdmin', 'auth']], function() {
     Route::get('index', 'getCareerIndex')->name('index');
     Route::post('add/text-career', 'addTextCareer')->name('addTextCareer');
     Route::post('add/image-career', 'addImageCareer')->name('addImageCareer');
+    Route::post('application', 'applyCareer')->name('applyCareer');
 });
 
 // User - Profile
-Route::group(['controller' => 'App\Http\Controllers\Modules\ProfileController', 'prefix' => 'profile', 'as' => 'userProfile.', 'middleware' => 'isAdmin'], function() {
+Route::group(['controller' => 'App\Http\Controllers\Modules\ProfileController', 'prefix' => 'profile', 'as' => 'userProfile.', 'middleware' => ['isAdmin', 'auth']], function() {
     Route::get('settings', 'getProfileIndex')->name('index');
     Route::patch('settings/update-profile/{alumni_ID}', 'updateProfile')->name('updateProfile');
 });
 
-// Admin - User Management
-Route::group(['controller' => 'App\Http\Controllers\Admin\AlumniListController', 'prefix' => 'admin/user-management', 'as' => 'adminUserManagement.'], function() {
-    Route::get('alumni-list', 'alumniListIndex')->name('alumniList');
-    Route::post('add-alumni-list', 'addAlumniList')->name('addAlumniList');
-    Route::post('add-alumni-list', 'addAlumniList')->name('addAlumniList');
-});
-
-Route::group(['controller' => 'App\Http\Controllers\Modules\FormsController', 'prefix' => 'form', 'as' => 'userForm.'], function() {
+// User - Forms
+Route::group(['controller' => 'App\Http\Controllers\Modules\FormsController', 'prefix' => 'form', 'as' => 'userForm.', 'middleware' => ['isAdmin', 'auth']], function() {
     Route::get('index', 'getFormIndex')->name('index');
     Route::get('personal-data-sheet', 'getPDS')->name('getPDS');
     Route::get('exit-interview', 'getExiteInterview')->name('getExiteInterview');
     Route::get('sas', 'getSAS')->name('getSAS');
 });
 
-// ========== End of Module Route ==========
+Route::group(['controller' => 'App\Http\Controllers\Modules\FormPDFController', 'prefix' => 'downloads', 'as' => 'userForm.', 'middleware' => ['isAdmin', 'auth']], function() {
+    Route::post('PDS-form', 'downloadPDS')->name('downloadPDS');
+    Route::post('SAS-form', 'downloadSAS')->name('downloadSAS');
+});
+
+// ========== End of User Route ======================================================================================
 
 
 
-// ========== User Route ==========
+// ========== Admin Route ===========================================================================================
 
-// ========== End of User Route ==========
+// Admin - User Management
+Route::group(['controller' => 'App\Http\Controllers\Admin\AlumniListController', 'prefix' => 'admin/user-management', 'as' => 'adminUserManagement.', 'middleware' => ['isUser', 'auth']], function() {
+    Route::get('alumni-list', 'alumniListIndex')->name('alumniList');
+    Route::post('add-alumni-list', 'addAlumniList')->name('addAlumniList');
+    Route::post('add-alumni-list', 'addAlumniList')->name('addAlumniList');
+});
 
-
-
-// ========== Admin Route ==========
-
-// ========== End of Route ==========
+Route::group(['controller' => 'App\Http\Controllers\Admin\CareerController', 'prefix' => 'admin/career', 'as' => 'adminCareer.', 'middleware' => ['isUser', 'auth']], function() {
+    Route::get('requests', 'getCareerRequest')->name('getCareerRequest');
+    Route::patch('approve-career/{careerID}', 'approveCareer')->name('approveCareer');
+});
+// ========== End of Route ========================================================================================

@@ -1,6 +1,6 @@
 {{-- Modal --}}
 <div class="modal fade" id="addCareerText" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-scrollable" style="max-width: 50%">
+    <div class="modal-dialog modal-dialog-scrollable" style="max-width: 40%">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">Job Ad</h5>
@@ -41,7 +41,7 @@
                     <label class="form-label">Number </label>
                     <input type="text" class="form-control" name="number">
                 </div>
-                <input type="hidden" name="userID" value="{{ Auth::user()->userID }}">
+                <input type="hidden" name="alumni_ID" value="{{ Auth::user()->alumni_ID }}">
                 <input type="hidden" name="approval" value="0">
                 {{-- @if (Session()->get('loginID'))
                     <input type="hidden" name="username" value="{{ $data }}">

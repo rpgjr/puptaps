@@ -174,7 +174,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="" class="nav-link px-3 @yield('admin.careerRequest')">
+                                <a href="{{ route('adminCareer.getCareerRequest') }}" class="nav-link px-3 @yield('admin.careerRequest')">
                                     <span class="me-2">
                                         <i class="fa-solid fa-check"></i>
                                     </span>

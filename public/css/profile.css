@@ -7,26 +7,6 @@
     border-radius: 8px;
 }
 
-/* .user-profile {
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    border-radius: 50%;
-} */
-
-/* .user-profile img:hover {
-    background-color: rgba(0,0,0,.8);
-    z-index: 10000;
-    transition: background-color .2s ease-in-out;
-    margin-bottom: 0;
-    content: "Change Image";
-    color: #ffffff;
-    border-radius: 50%;
-}
-
-.user-profile img:hover::after {
-    content: "Change Image!!";
-    color: #000000;
-} */
-
 .profilepic {
     position: relative;
     width: 125px;

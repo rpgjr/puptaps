@@ -58,6 +58,7 @@
                         <li><a class="dropdown-item" href="#">Report a Problem</a></li>
                         <li><hr class="dropdown-divider"></li>
                         <li>
+                            {{-- <a class="dropdown-item" href="{{ route('logout') }}">Logout</a> --}}
                             <form action="{{ route('logout') }}" method="post">
                                 @csrf
                                 <button type="submit" class="dropdown-item">Logout</button>

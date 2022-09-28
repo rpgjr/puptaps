@@ -105,6 +105,10 @@ class FormSas extends Component
     public $currentPage = 1;
     public $totalPage = 6;
 
+    protected $messages = [
+        'required' => 'Please answers this field.',
+    ];
+
     public function mount() {
         $this->currentPage = 1;
     }

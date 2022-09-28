@@ -6,9 +6,9 @@
 
 @section('content')
 
-    <section class="career-title m-4">
+    <section class="m-4">
         <div class="container-fluid">
-            <div class="row">
+            <div class="row justify-content-center">
                 <div class="col-md-12">
                     <div class="col-md-12">
                         @if(Session::has('success'))
@@ -26,7 +26,7 @@
                 @foreach ($users as $user)
                 {!! Form::model($user, [ 'method' => 'patch','route' => ['userProfile.updateProfile', $user->alumni_ID], 'enctype' => 'multipart/form-data']) !!}
                 <div class="row justify-content-center">
-                    <div class="col-md-10">
+                    <div class="col-md-6">
                         <div  iv class="row box-profile align-items-center">
                             <div class="col-md-12 my-4">
                                 <h3>Information Settings</h3>
