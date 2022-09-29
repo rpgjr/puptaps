@@ -34,7 +34,10 @@
                             </td>
                             <td>
                                 @if (count($userExitInterview) > 0)
-                                    <a href="" type="button" class="btn btn-success">Print</a>
+                                    <form action="{{ route('userForm.downloadEI') }}" method="post" target="__blank">
+                                        @csrf
+                                        <button type="submit" class="btn btn-success">Print</button>
+                                    </form>
                                 @else
                                     <a href="{{ route('userForm.getExiteInterview') }}" type="button" class="btn btn-primary">Answer</a>
                                 @endif

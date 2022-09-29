@@ -27,4 +27,14 @@ class FormPDFController extends Controller
 
         return $pdf->stream();
     }
+
+    public function downloadEI() {
+        $userEI = DB::table('form_exit_interview')->where('alumni_ID', '=', Auth::user()->alumni_ID)->get();
+        $users = DB::table('tbl_alumni')->where('alumni_ID', '=', Auth::user()->alumni_ID)->get();
+        $reasons = DB::table('form_exit_interview')->where('alumni_ID', '=', Auth::user()->alumni_ID)->pluck('reason')->toArray();
+
+        $pdf = PDF::loadView('user.forms.downloadEI', array('userEI' => $userEI), array('users' => $users),)->setPaper('letter', 'portrait');
+
+        return $pdf->stream();
+    }
 }
