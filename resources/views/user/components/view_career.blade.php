@@ -1,6 +1,6 @@
 {{-- View --}}
 @if (($career->job_ad_image) == null)
-    <div class="modal fade" id="viewCareer{{ $career->careerID }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="viewCareer{{ $career->career_ID }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -15,9 +15,9 @@
                     <p><b>Category:</b> {{ $career->category }}</p>
                     <p><b>Email:</b> {{ $career->email }}</p>
                     <p><b>Number:</b> {{ $career->number }}</p>
-                    @foreach ($users as $user)
-                        @if (($user->alumni_ID) == ($career->alumni_ID))
-                            <p><b>Posted by:</b> {{ $user->firstName }} {{ $user->lastName }}</p>
+                    @foreach ($posts as $post)
+                        @if (($post->alumni_ID) == ($career->alumni_ID))
+                            <p><b>Posted by:</b> {{ $post->first_name }} {{ $post->last_name }}</p>
                         @endif
                     @endforeach
                 </div>
@@ -29,7 +29,7 @@
     </div>
 {{-- ============================================================================= --}}
 @else
-    <div class="modal fade" id="viewCareer{{ $career->careerID }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="viewCareer{{ $career->career_ID }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -38,9 +38,9 @@
                 </div>
                 <div class="modal-body">
                     <img src="/Uploads/Career/{{ $career->job_ad_image }}" alt="" style="width: 100%; height: 50%;">
-                    @foreach ($users as $user)
-                        @if (($user->alumni_ID) == ($career->alumni_ID))
-                            <p class="mt-3"><b>Posted by:</b> {{ $user->firstName }} {{ $user->lastName }}</p>
+                    @foreach ($posts as $post)
+                        @if (($post->alumni_ID) == ($career->alumni_ID))
+                            <p class="mt-3"><b>Posted by:</b> {{ $post->first_name }} {{ $post->last_name }}</p>
                         @endif
                     @endforeach
                 </div>

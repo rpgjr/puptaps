@@ -12,9 +12,9 @@ class Admin extends Model
     protected $table = 'tbl_admin';
 
     protected $fillable = [
-        'lastName',
-        'firstName',
-        'middleName',
+        'last_name',
+        'first_name',
+        'middle_name',
         'suffix',
         'email',
         'username',

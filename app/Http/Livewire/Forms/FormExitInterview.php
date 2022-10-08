@@ -2,9 +2,9 @@
 
 namespace App\Http\Livewire\Forms;
 
+use App\Models\Alumni;
 use App\Models\FormExitInterview as ModelsFormExitInterview;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 
 class FormExitInterview extends Component
@@ -74,8 +74,8 @@ class FormExitInterview extends Component
 
     public $comment;
 
-    public $dataPrivacy;
-    public $dateSigned;
+    public $data_privacy;
+    public $date_signed;
     public $signature;
 
     public $currentPage = 1;
@@ -87,7 +87,7 @@ class FormExitInterview extends Component
 
     public function render()
     {
-        $users = DB::table('tbl_alumni')->where('alumni_ID', '=', Auth::user()->alumni_ID)->get();
+        $users = Alumni::where('alumni_ID', '=', Auth::user()->alumni_ID)->get();
         view()->share('users', $users);
         return view('livewire.forms.form-exit-interview');
     }
@@ -117,7 +117,7 @@ class FormExitInterview extends Component
 
         if($this->currentPage == 1) {
             $this->validate([
-                'dataPrivacy' => 'required',
+                'data_privacy' => 'required',
             ]);
         }
         elseif($this->currentPage == 2) {
@@ -200,7 +200,7 @@ class FormExitInterview extends Component
         }
         elseif($this->currentPage == 7) {
             $this->validate([
-                'dateSigned' => 'required',
+                'date_signed' => 'required',
                 'signature' => 'required',
             ]);
         }
@@ -278,8 +278,8 @@ class FormExitInterview extends Component
 
             'comment' => $this->comment,
 
-            'dataPrivacy' => $this->dataPrivacy,
-            'dateSigned' => $this->dateSigned,
+            'data_privacy' => $this->data_privacy,
+            'date_signed' => $this->date_signed,
             'signature' => $this->signature,
         );
 

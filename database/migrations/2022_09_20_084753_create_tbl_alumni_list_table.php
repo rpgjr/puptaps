@@ -14,12 +14,12 @@ return new class extends Migration
     public function up()
     {
         Schema::create('tbl_alumni_list', function (Blueprint $table) {
-            $table->string('studnumber');
-            $table->string('lastname');
-            $table->string('firstname');
-            $table->string('middlename')->nullable();
+            $table->string('stud_number');
+            $table->string('last_name');
+            $table->string('first_name');
+            $table->string('middle_name')->nullable();
             $table->string('suffix')->nullable();
-            $table->string('course');
+            $table->string('course_ID');
             $table->timestamps();
         });
     }

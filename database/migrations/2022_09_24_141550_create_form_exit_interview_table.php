@@ -84,8 +84,8 @@ return new class extends Migration
 
             $table->longText('comment')->nullable();
 
-            $table->string('dataPrivacy');
-            $table->date('dateSigned');
+            $table->string('data_privacy');
+            $table->date('date_signed');
             $table->string('signature');
 
             $table->timestamps();

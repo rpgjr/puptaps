@@ -18,9 +18,9 @@ return new class extends Migration
         Schema::create('tbl_admin', function (Blueprint $table) {
             $table->increments('admin_ID');
 
-            $table->string('lastName');
-            $table->string('firstName');
-            $table->string('middleName')->nullable();
+            $table->string('last_name');
+            $table->string('first_name');
+            $table->string('middle_name')->nullable();
             $table->string('suffix')->nullable();
 
             $table->string('email');
@@ -32,8 +32,8 @@ return new class extends Migration
 
         $accounts = array (
             [
-                'lastName' => 'Admin',
-                'firstName' => 'IT',
+                'last_name' => 'Admin',
+                'first_name' => 'IT',
                 'email' => 'pupt.alumniportalsystem@gmail.com',
                 'username' => 'IT_admin',
                 'password' => '$2y$10$4T6QsO9Exkivcm7iAQijCuOVoRY.AN91gghpnsrFTINY.Z14Ed7A2',
@@ -41,8 +41,8 @@ return new class extends Migration
             ],
 
             [
-                'lastName' => 'Admin',
-                'firstName' => 'Regular',
+                'last_name' => 'Admin',
+                'first_name' => 'Regular',
                 'email' => 'pupt.alumniportalsystem@gmail.com',
                 'username' => 'Admin',
                 'password' => '$2y$10$4T6QsO9Exkivcm7iAQijCuOVoRY.AN91gghpnsrFTINY.Z14Ed7A2',
@@ -52,8 +52,8 @@ return new class extends Migration
 
         foreach ($accounts as $account) {
             $admin = new Admin();
-            $admin->lastName = $account['lastName'];
-            $admin->firstName = $account['firstName'];
+            $admin->last_name = $account['last_name'];
+            $admin->first_name = $account['first_name'];
             $admin->email = $account['email'];
             $admin->username = $account['username'];
             $admin->password = $account['password'];

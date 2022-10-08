@@ -12,11 +12,11 @@ class AlumniList extends Model
     protected $table = 'tbl_alumni_list';
 
     protected $fillable = [
-        'studnumber',
-        'firstname',
-        'lastname',
-        'middlename',
+        'stud_number',
+        'first_name',
+        'last_name',
+        'middle_name',
         'suffix',
-        'course',
+        'course_ID',
     ];
 }

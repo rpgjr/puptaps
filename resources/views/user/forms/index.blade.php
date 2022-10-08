@@ -1,6 +1,6 @@
 @extends('layouts.user')
 
-@section('page-title', 'Alumni Tracer')
+@section('page-title', 'Forms')
 @section('form-active', 'active')
 
 @section('content')

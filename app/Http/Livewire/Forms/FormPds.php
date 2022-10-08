@@ -2,29 +2,29 @@
 
 namespace App\Http\Livewire\Forms;
 
+use App\Models\Alumni;
 use App\Models\FormPDS as PDS;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 
 class FormPds extends Component
 {
-    public $fathersName;
-    public $fathersNumber;
-    public $mothersName;
-    public $mothersNumber;
+    public $fathers_name;
+    public $fathers_number;
+    public $mothers_name;
+    public $mothers_number;
     public $office;
     public $position;
-    public $officeDates;
-    public $seminar1;
-    public $seminar1Date;
-    public $seminar2;
-    public $seminar2Date;
-    public $seminar3;
-    public $seminar3Date;
+    public $office_dates;
+    public $seminar_1;
+    public $seminar_1_Date;
+    public $seminar_2;
+    public $seminar_2_Date;
+    public $seminar_3;
+    public $seminar_3_Date;
 
-    public $dataPrivacy ;
-    public $dateSigned;
+    public $data_privacy ;
+    public $date_signed;
     public $signature;
 
 
@@ -37,7 +37,7 @@ class FormPds extends Component
 
     public function render()
     {
-        $users = DB::table('tbl_alumni')->where('alumni_ID', '=', Auth::user()->alumni_ID)->get();
+        $users = Alumni::where('alumni_ID', '=', Auth::user()->alumni_ID)->get();
         view()->share('users', $users);
         return view('livewire.forms.form-pds');
     }
@@ -63,31 +63,31 @@ class FormPds extends Component
 
         if($this->currentPage == 1) {
             $this->validate([
-                'dataPrivacy' => 'required',
+                'data_privacy' => 'required',
             ]);
         }
         elseif($this->currentPage == 2) {
             $this->validate([
-                'fathersName' => 'required',
-                'mothersName' => 'required',
+                'fathers_name' => 'required',
+                'mothers_name' => 'required',
             ]);
         }
         elseif($this->currentPage == 3) {
             $this->validate([
                 'office' => 'required',
                 'position' => 'required',
-                'officeDates' => 'required',
+                'office_dates' => 'required',
             ]);
         }
         elseif($this->currentPage == 4) {
             $this->validate([
-                'seminar1' => 'required',
-                'seminar1Date' => 'required',
+                'seminar_1' => 'required',
+                'seminar_1_Date' => 'required',
             ]);
         }
         elseif($this->currentPage == 5) {
             $this->validate([
-                'dateSigned' => 'required',
+                'date_signed' => 'required',
                 'signature' => 'required',
             ]);
         }
@@ -100,22 +100,22 @@ class FormPds extends Component
 
         $values = array(
             'alumni_ID' => Auth::user()->alumni_ID,
-            'fathersName' => $this->fathersName,
-            'fathersNumber' => $this->fathersNumber,
-            'mothersName' => $this->mothersName,
-            'mothersNumber' => $this->mothersNumber,
+            'fathers_name' => $this->fathers_name,
+            'fathers_number' => $this->fathers_number,
+            'mothers_name' => $this->mothers_name,
+            'mothers_number' => $this->mothers_number,
             'office' => $this->office,
             'position' => $this->position,
-            'officeDates' => $this->officeDates,
-            'seminar1' => $this->seminar1,
-            'seminar1Date' => $this->seminar1Date,
-            'seminar2' => $this->seminar2,
-            'seminar2Date' => $this->seminar2Date,
-            'seminar3' => $this->seminar3,
-            'seminar3Date' => $this->seminar3Date,
+            'office_dates' => $this->office_dates,
+            'seminar_1' => $this->seminar_1,
+            'seminar_1_Date' => $this->seminar_1_Date,
+            'seminar_2' => $this->seminar_2,
+            'seminar_2_Date' => $this->seminar_2_Date,
+            'seminar_3' => $this->seminar_3,
+            'seminar_3_Date' => $this->seminar_3_Date,
 
-            'dataPrivacy' => $this->dataPrivacy,
-            'dateSigned' => $this->dateSigned,
+            'data_privacy' => $this->data_privacy,
+            'date_signed' => $this->date_signed,
             'signature' => $this->signature,
         );
 

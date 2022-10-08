@@ -37,7 +37,7 @@
                     <a class="nav-link @yield('form-active')" aria-current="page" href="{{ route('userForm.index') }}">Forms</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link @yield('tracer-active')" aria-current="page" href="">Tracer</a>
+                    <a class="nav-link @yield('tracer-active')" aria-current="page" href="{{ route('userTracer.getTracerIndex') }}">Tracer</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link @yield('profile-active')" aria-current="page" href="{{ route('userProfile.index') }}">Profile</a>
@@ -46,10 +46,10 @@
             <div class="d-flex">
                 <div class="dropdown">
                     @foreach ($users as $user)
-                    @if ($user->userProfile == null)
+                    @if ($user->user_profile == null)
                         <img src="{{ asset('Uploads/Profiles/user-no-profile.png') }}" class="user-profile-button" data-bs-toggle="dropdown" aria-expanded="false">
                     @else
-                        <img src="/Uploads/Profiles/{{ $user->userProfile }}" class="user-profile-button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img src="/Uploads/Profiles/{{ $user->user_profile }}" class="user-profile-button" data-bs-toggle="dropdown" aria-expanded="false">
                     @endif
                     @endforeach
                     <ul class="dropdown-menu dropdown-menu-end">

@@ -19,20 +19,20 @@
                 <div class="row">
                     <div class="col-md-3 my-2">
                         <label class="form-label">Last Name</label>
-                        <input type="text" class="form-control" placeholder="Last Name" name="lastName" value="{{old('lastName')}}">
-                        <span class="text-danger">@error('lastName') {{$message}} @enderror</span>
+                        <input type="text" class="form-control" placeholder="Last Name" name="last_name" value="{{old('last_name')}}">
+                        <span class="text-danger">@error('last_name') {{$message}} @enderror</span>
                     </div>
 
                     <div class="col-md-4 my-2">
                         <label class="form-label">First Name</label>
-                        <input type="text" class="form-control" placeholder="First Name" name="firstName" value="{{old('firstName')}}">
-                        <span class="text-danger">@error('firstName') {{$message}} @enderror</span>
+                        <input type="text" class="form-control" placeholder="First Name" name="first_name" value="{{old('first_name')}}">
+                        <span class="text-danger">@error('first_name') {{$message}} @enderror</span>
                     </div>
 
                     <div class="col-md-3 my-2">
                         <label class="form-label">Middle Name</label>
-                        <input type="text" class="form-control" placeholder="Middle Name" name="middleName" value="{{old('middleName')}}">
-                        <span class="text-danger">@error('middleName') {{$message}} @enderror</span>
+                        <input type="text" class="form-control" placeholder="Middle Name" name="middle_name" value="{{old('middle_name')}}">
+                        <span class="text-danger">@error('middle_name') {{$message}} @enderror</span>
                     </div>
 
                     <div class="col-md-2 my-2">
@@ -43,9 +43,9 @@
 
                     <div class="col-md-4 my-2">
                         <label class="form-label">Course</label>
-                        <select class="form-select" name="courseID">
+                        <select class="form-select" name="course_ID">
                             @foreach ($courses as $course)
-                                <option value="{{ $course->courseID }}">{{ $course->courseID }}</option>
+                                <option value="{{ $course->course_ID }}">{{ $course->course_ID }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -60,8 +60,8 @@
                     </div>
                     <div class="col-md-4 my-2">
                         <label class="form-label">Student Number</label>
-                        <input type="text" class="form-control" placeholder="Student Number" name="studNumber" value="{{old('studNumber')}}">
-                        <span class="text-danger">@error('studNumber') {{$message}} @enderror</span>
+                        <input type="text" class="form-control" placeholder="Student Number" name="stud_number" value="{{old('stud_number')}}">
+                        <span class="text-danger">@error('stud_number') {{$message}} @enderror</span>
                     </div>
 
                     <div class="col-md-3 my-2">
@@ -78,8 +78,8 @@
 
                     <div class="col-md-3 my-2">
                         <label class="form-label">Birthday</label>
-                        <input type="date" class="form-control" placeholder="Last Name" name="bday" value="{{old('bday')}}">
-                        <span class="text-danger">@error('bday') {{$message}} @enderror</span>
+                        <input type="date" class="form-control" placeholder="Last Name" name="birthday" value="{{old('birthday')}}">
+                        <span class="text-danger">@error('birthday') {{$message}} @enderror</span>
                     </div>
 
                     <div class="col-md-3 my-2">
@@ -118,7 +118,7 @@
 
                     <div class="col-md-6 my-2">
                         <label class="form-label">Civil Status</label>
-                        <select class="form-select" name="civilStatus">
+                        <select class="form-select" name="civil_status">
                             <option value="Single">Single</option>
                             <option value="Married">Married</option>
                             <option value="Divorced">Divorced</option>
@@ -128,8 +128,8 @@
 
                     <div class="col-md-12 my-2">
                         <label class="form-label">Address</label>
-                        <input type="text" class="form-control" placeholder="Address" name="cityAddress" value="{{old('cityAddress')}}">
-                        <span class="text-danger">@error('cityAddress') {{$message}} @enderror</span>
+                        <input type="text" class="form-control" placeholder="Address" name="city_address" value="{{old('city_address')}}">
+                        <span class="text-danger">@error('city_address') {{$message}} @enderror</span>
                     </div>
 
                     <div class="col-md-4 my-2">
@@ -166,3 +166,4 @@
 </section>
 
 @endsection
+

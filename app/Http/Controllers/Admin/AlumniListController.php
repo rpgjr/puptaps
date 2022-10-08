@@ -12,7 +12,7 @@ class AlumniListController extends Controller
 {
     public function alumniListIndex(Request $request) {
         $data['q'] = $request->get('q');
-        $data['alumni'] = AlumniList::where('lastname', 'like', '%' . $data['q'] . '%')->paginate(15)->withQueryString();
+        $data['alumni'] = AlumniList::where('last_name', 'like', '%' . $data['q'] . '%')->paginate(15)->withQueryString();
         return view('admin.user_management.alumni_list', $data);
     }
 

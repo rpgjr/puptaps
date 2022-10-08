@@ -70,20 +70,18 @@
                                             <th scope="row">{{ $career->category }}</th>
                                             <td>{{ $career->created_at }}</td>
                                             <td>
-                                                <button type="button" class="btn btn-primary my-1" data-bs-toggle="modal" data-bs-target="#viewCareer{{ $career->careerID }}">View</button>
+                                                <button type="button" class="btn btn-primary my-1" data-bs-toggle="modal" data-bs-target="#viewCareer{{ $career->career_ID }}">View</button>
                                                 @include('user.components.view_career')
 
-                                                <button type="button" class="btn btn-success my-1" data-bs-toggle="modal" data-bs-target="#applyCareer{{ $career->careerID }}"
+                                                <button type="button" class="btn btn-success my-1" data-bs-toggle="modal" data-bs-target="#applyCareer{{ $career->career_ID }}"
                                                     @foreach ($applicants as $applicant)
-                                                        @if($career->careerID == $applicant->careerID) {
+                                                        @if($career->career_ID == $applicant->career_ID) {
                                                             disabled
                                                         }
                                                         @endif
                                                     @endforeach
                                                 >Apply</button>
                                                 @include('user.components.apply_career')
-                                                {{-- <button type="button" class="btn btn-success my-1" data-bs-toggle="modal" data-bs-target="#applyCareer{{ $career->careerID }}">Apply</button>
-                                                @include('user.components.apply_career') --}}
                                             </td>
                                         </tr>
                                     @endif

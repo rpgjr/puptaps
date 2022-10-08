@@ -29,8 +29,8 @@ class FormPDS extends Model
         'seminar3',
         'seminar3Date',
 
-        'dataPrivacy',
-        'dateSigned',
+        'data_privacy',
+        'date_signed',
         'signature',
     ];
 }

@@ -76,9 +76,9 @@
         <table style="width:100%">
             <tr>
                 <th colspan="1" style="width: 55px;">Name: </th>
-                <td colspan="1" style="text-align: center;">{{ $user->lastName }}</td>
-                <td colspan="1" style="text-align: center;">{{ $user->firstName }} {{ $user->suffix }}</td>
-                <td colspan="1" style="text-align: center;">{{ $user->middleName }}</td>
+                <td colspan="1" style="text-align: center;">{{ $user->last_name }}</td>
+                <td colspan="1" style="text-align: center;">{{ $user->first_name }} {{ $user->suffix }}</td>
+                <td colspan="1" style="text-align: center;">{{ $user->middle_name }}</td>
                 <td colspan="1" style="width: 30px;"></td>
                 <th colspan="1" style="width: 70px;">Gender: </th>
                 <td colspan="1" style="width: 70px;">{{ $user->gender }}</td>
@@ -96,7 +96,7 @@
         <table style="width:100%; margin-top: 10px;">
             <tr>
                 <th colspan="1" style="width: 15%">Date of Birth: </th>
-                <td colspan="1" style="border-bottom: 1px solid black; width: 20%;">{{ date('F d, Y', strtotime($user->bday)) }}</td>
+                <td colspan="1" style="border-bottom: 1px solid black; width: 20%;">{{ date('F d, Y', strtotime($user->birthday)) }}</td>
                 <td colspan="1" style="width: 5%;"></td>
                 <th colspan="1" style="width: 6%;">Age: </th>
                 <td colspan="1" style="border-bottom: 1px solid black; width: 7%;">{{ $user->age }}</td>
@@ -108,7 +108,7 @@
         <table style="width:100%; margin-top: 10px;">
             <tr>
                 <th colspan="1" style="width: 19%">Degree/Course: </th>
-                <td colspan="1" style="border-bottom: 1px solid black; width: 50%;">{{ $user->courseID }}</td>
+                <td colspan="1" style="border-bottom: 1px solid black; width: 50%;">{{ $user->course_ID }}</td>
                 <td colspan="1" style="width: 5%;"></td>
                 <th colspan="1" style="width: 21%;">Year Graduated: </th>
                 <td colspan="1" style="border-bottom: 1px solid black; width: 10%;">{{ $user->batch }}</td>
@@ -117,13 +117,13 @@
         <table style="width:100%; margin-top: 10px;">
             <tr>
                 <th colspan="1" style="width: 20%">City Address: </th>
-                <td colspan="1" style="border-bottom: 1px solid black; width: 105%;">{{ $user->cityAddress }}</td>
+                <td colspan="1" style="border-bottom: 1px solid black; width: 105%;">{{ $user->city_address }}</td>
             </tr>
         </table>
         <table style="width:100%; margin-top: 10px;">
             <tr>
                 <th colspan="1" style="width: 30%">Provincial Address: </th>
-                <td colspan="1" style="border-bottom: 1px solid black; width: 105%;">{{ $user->provincialAddress }}</td>
+                <td colspan="1" style="border-bottom: 1px solid black; width: 105%;">{{ $user->provincial_address }}</td>
             </tr>
         </table>
         <table style="width:100%; margin-top: 10px;">
@@ -141,19 +141,19 @@
         <table style="width:100%; margin-top: 10px;">
             <tr>
                 <th colspan="1" style="width: 19%">Father's Name: </th>
-                <td colspan="1" style="border-bottom: 1px solid black; width: 45%;">{{ $pds->fathersName }}</td>
+                <td colspan="1" style="border-bottom: 1px solid black; width: 45%;">{{ $pds->fathers_name }}</td>
                 <td colspan="1" style="width: 5%;"></td>
                 <th colspan="1" style="width: 16%;">Father's No.: </th>
-                <td colspan="1" style="border-bottom: 1px solid black; width: 20%;">{{ $pds->fathersNumber }}</td>
+                <td colspan="1" style="border-bottom: 1px solid black; width: 20%;">{{ $pds->fathers_number }}</td>
             </tr>
         </table>
         <table style="width:100%; margin-top: 10px;">
             <tr>
                 <th colspan="1" style="width: 19%">Mother's Name: </th>
-                <td colspan="1" style="border-bottom: 1px solid black; width: 45%;">{{ $pds->mothersName }}</td>
+                <td colspan="1" style="border-bottom: 1px solid black; width: 45%;">{{ $pds->mothers_name }}</td>
                 <td colspan="1" style="width: 5%;"></td>
                 <th colspan="1" style="width: 16%;">Mother's No.: </th>
-                <td colspan="1" style="border-bottom: 1px solid black; width: 20%;">{{ $pds->mothersNumber }}</td>
+                <td colspan="1" style="border-bottom: 1px solid black; width: 20%;">{{ $pds->mothers_number }}</td>
             </tr>
         </table>
 
@@ -167,7 +167,7 @@
             <tr>
                 <td class="td-work">{{ $pds->office }}</td>
                 <td class="td-work">{{ $pds->position }}</td>
-                <td class="td-work">{{ $pds->officeDates }}</td>
+                <td class="td-work">{{ $pds->office_dates }}</td>
             </tr>
         </table>
 
@@ -178,16 +178,16 @@
                 <th class="th-work" colspan="1" style="width: 210px;">Inclusive Dates</th>
             </tr>
             <tr>
-                <td class="td-work">{{ $pds->seminar1 }}</td>
-                <td class="td-work">{{ $pds->seminar1Date }}</td>
+                <td class="td-work">{{ $pds->seminar_1 }}</td>
+                <td class="td-work">{{ $pds->seminar_1_date }}</td>
             </tr>
             <tr>
-                <td class="td-work">{{ $pds->seminar2 }}</td>
-                <td class="td-work">{{ $pds->seminar2Date }}</td>
+                <td class="td-work">{{ $pds->seminar_2 }}</td>
+                <td class="td-work">{{ $pds->seminar_2_date }}</td>
             </tr>
             <tr>
-                <td class="td-work">{{ $pds->seminar3 }}</td>
-                <td class="td-work">{{ $pds->seminar3Date }}</td>
+                <td class="td-work">{{ $pds->seminar_3 }}</td>
+                <td class="td-work">{{ $pds->seminar_3_date }}</td>
             </tr>
         </table>
 
@@ -216,7 +216,7 @@
             <table style="width:100%; margin-top: 30px;">
                 <tr>
                     <td colspan="1" style="width: 40%; text-align: center; text-transform: uppercase;">
-                        {{ date('F d, Y', strtotime($pds->dateSigned)) }}
+                        {{ date('F d, Y', strtotime($pds->date_signed)) }}
                     </td>
                     <td></td>
                     <td colspan="1" style="width: 40%; text-align: center; text-transform: uppercase;">

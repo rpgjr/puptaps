@@ -3,21 +3,22 @@
 namespace App\Http\Controllers\Modules;
 
 use App\Http\Controllers\Controller;
+use App\Models\Alumni;
 use App\Models\CareerApplicant;
 use App\Models\Careers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 
 class CareerController extends Controller
 {
     //
     public function getCareerIndex(Request $request) {
-        $users = DB::table('tbl_alumni')->where('alumni_ID', '=', Auth::user()->alumni_ID)->get();
-        $applicants = DB::table('tbl_career_applicants')->where('alumni_ID', '=', Auth::user()->alumni_ID)->get();
+        $users = Alumni::where('alumni_ID', '=', Auth::user()->alumni_ID)->get();
+        $applicants = CareerApplicant::where('alumni_ID', '=', Auth::user()->alumni_ID)->get();
+        $posts = Alumni::all();
         $data['query'] = $request->get('query');
         $data['careers'] = Careers::where('category', 'like', '%' . $data['query'] . '%')->paginate(15)->withQueryString();
-        return view('user.career.index', compact(['users', 'applicants']), $data);
+        return view('user.career.index', compact(['users', 'applicants', 'posts']), $data);
     }
 
     public function addTextCareer(Request $request) {
@@ -96,7 +97,7 @@ class CareerController extends Controller
         $applicant = new CareerApplicant();
 
         $applicant->alumni_ID = $request->alumni_ID;
-        $applicant->careerID = $request->careerID;
+        $applicant->course_ID = $request->course_ID;
 
         $applicant->save();
 

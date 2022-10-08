@@ -36,24 +36,34 @@
                                 <div class="row">
                                     <div class="col-md-8">
                                         <label class="profilepic" for="uploadProfile">
-                                            <img class="profilepic__image" src="/Uploads/Profiles/{{ $user->userProfile }}" />
+                                            <img class="profilepic__image" src="/Uploads/Profiles/{{ $user->user_profile }}" id="uploadPreview"/>
                                             <div class="profilepic__content">
                                               <span class="profilepic__icon"><i class="fas fa-camera"></i></span>
                                               <span class="profilepic__text">Edit Profile</span>
                                             </div>
                                         </label>
-                                        <input type="file" class="form-control" name="userProfile" id="uploadProfile" hidden />
+                                        <input type="file" class="form-control" name="user_profile" id="uploadProfile" onchange="PreviewImage();" hidden />
                                     </div>
                                     <div class="col-md-8">
                                         <label class="btn btn-primary" for="uploadProfile">Change Profile Picture</label>
                                     </div>
                                 </div>
                                 </center>
+                                <script type="text/javascript">
+                                    function PreviewImage() {
+                                        var oFReader = new FileReader();
+                                        oFReader.readAsDataURL(document.getElementById("uploadProfile").files[0]);
+
+                                        oFReader.onload = function (oFREvent) {
+                                            document.getElementById("uploadPreview").src = oFREvent.target.result;
+                                        };
+                                    };
+                                </script>
                             </div>
                             <div class="col-md-4 my-2">
                                 <label class="form-label">Student Number</label>
-                                <input type="text" class="form-control" name="studNumber" value="{{ $user->studNumber }}">
-                                <span class="text-danger">@error('studNumber') {{$message}} @enderror</span>
+                                <input type="text" class="form-control" name="stud_number" value="{{ $user->stud_number }}">
+                                <span class="text-danger">@error('stud_number') {{$message}} @enderror</span>
                             </div>
                             <div class="col-md-4 my-2">
                                 <label class="form-label">Email</label>
@@ -62,18 +72,18 @@
                             </div>
                             <div class="col-md-3 my-2">
                                 <label class="form-label">Last Name</label>
-                                <input type="text" class="form-control" name="lastName" value="{{ $user->lastName }}">
-                                <span class="text-danger">@error('lastName') {{$message}} @enderror</span>
+                                <input type="text" class="form-control" name="last_name" value="{{ $user->last_name }}">
+                                <span class="text-danger">@error('last_name') {{$message}} @enderror</span>
                             </div>
                             <div class="col-md-3 my-2">
                                 <label class="form-label">First Name</label>
-                                <input type="text" class="form-control" name="firstName" value="{{ $user->firstName }}">
-                                <span class="text-danger">@error('firstName') {{$message}} @enderror</span>
+                                <input type="text" class="form-control" name="first_name" value="{{ $user->first_name }}">
+                                <span class="text-danger">@error('first_name') {{$message}} @enderror</span>
                             </div>
                             <div class="col-md-3 my-2">
                                 <label class="form-label">Middle Name</label>
-                                <input type="text" class="form-control" name="middleName" value="{{ $user->middleName }}">
-                                <span class="text-danger">@error('middleName') {{$message}} @enderror</span>
+                                <input type="text" class="form-control" name="middle_name" value="{{ $user->middle_name }}">
+                                <span class="text-danger">@error('middle_name') {{$message}} @enderror</span>
                             </div>
                             <div class="col-md-3 my-2">
                                 <label class="form-label">Suffix</label>
@@ -82,13 +92,13 @@
                             </div>
                             <div class="col-md-4 my-2">
                                 <label class="form-label">Course</label>
-                                <select class="form-select" name="courseID">
+                                <select class="form-select" name="course_ID">
                                     @foreach ($courses as $course)
-                                        <option value="{{ $course->courseID }}"
-                                            @if (($course->courseID) == $user->courseID)
+                                        <option value="{{ $course->course_ID }}"
+                                            @if (($course->course_ID) == $user->course_ID)
                                                 selected
                                             @endif
-                                            >{{ $course->courseID }}</option>
+                                            >{{ $course->course_ID }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -135,8 +145,8 @@
                             </div>
                             <div class="col-md-3 my-2">
                                 <label class="form-label">Birthday</label>
-                                <input type="date" class="form-control" name="bday" value="{{ $user->bday }}">
-                                <span class="text-danger">@error('bday') {{$message}} @enderror</span>
+                                <input type="date" class="form-control" name="birthday" value="{{ $user->birthday }}">
+                                <span class="text-danger">@error('birthday') {{$message}} @enderror</span>
                             </div>
                             <div class="col-md-3 my-2">
                                 <label class="form-label">Age</label>
@@ -155,34 +165,34 @@
                             </div>
                             <div class="col-md-6 my-2">
                                 <label class="form-label">Civil Status</label>
-                                <select class="form-select" name="civilStatus">
+                                <select class="form-select" name="civil_status">
                                     <option value="Single"
-                                    @if ($user->civilStatus == "Single")
+                                    @if ($user->civil_status == "Single")
                                         selected
                                     @endif>Single</option>
                                     <option value="Married"
-                                    @if ($user->civilStatus == "Married")
+                                    @if ($user->civil_status == "Married")
                                         selected
                                     @endif>Married</option>
                                     <option value="Divorced"
-                                    @if ($user->civilStatus == "Divorced")
+                                    @if ($user->civil_status == "Divorced")
                                         selected
                                     @endif>Divorced</option>
                                     <option value="Widowed"
-                                    @if ($user->civilStatus == "Widowed")
+                                    @if ($user->civil_status == "Widowed")
                                         selected
                                     @endif>Widowed</option>
                                 </select>
                             </div>
                             <div class="col-md-12 my-2">
                                 <label class="form-label">City Address</label>
-                                <input type="text" class="form-control" name="cityAddress" value="{{ $user->cityAddress }}">
-                                <span class="text-danger">@error('cityAddress') {{$message}} @enderror</span>
+                                <input type="text" class="form-control" name="city_address" value="{{ $user->city_address }}">
+                                <span class="text-danger">@error('city_address') {{$message}} @enderror</span>
                             </div>
                             <div class="col-md-12 my-2">
                                 <label class="form-label">Provincial Address</label>
-                                <input type="text" class="form-control" placeholder="Provincial Address" name="provincialAddress" value="{{ $user->provincialAddress }}">
-                                <span class="text-danger">@error('provincialAddress') {{$message}} @enderror</span>
+                                <input type="text" class="form-control" placeholder="Provincial Address" name="provincial_address" value="{{ $user->provincial_address }}">
+                                <span class="text-danger">@error('provincial_address') {{$message}} @enderror</span>
                             </div>
 
                             <div class="col-md-12 text-center mt-5 mb-2">
@@ -197,9 +207,6 @@
         </div>
     </section>
 
-    <section class="career-content">
-
-    </section>
 
 
 @endsection

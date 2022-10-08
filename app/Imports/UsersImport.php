@@ -16,12 +16,12 @@ class UsersImport implements ToModel, WithHeadingRow
     public function model(array $row)
     {
         return new AlumniList([
-            'studnumber'    => $row['studnumber'],
-            'lastname'      => $row['lastname'],
-            'firstname'     => $row['firstname'],
-            'middlename'    => $row['middlename'],
+            'stud_number'    => $row['studnumber'],
+            'last_name'      => $row['lastname'],
+            'first_name'     => $row['firstname'],
+            'middle_name'    => $row['middlename'],
             'suffix'        => $row['suffix'],
-            'course'        => $row['course'],
+            'course_ID'        => $row['course'],
         ]);
     }
 }

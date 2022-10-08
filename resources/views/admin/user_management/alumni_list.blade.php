@@ -56,12 +56,12 @@
                                 @foreach ($alumni as $alum)
                                     <tr>
                                         {{-- {!! Form::model($alum, [ 'method' => 'delete','route' => ['admin.deleteAlumniList', $alum->studNumber] ]) !!} --}}
-                                        <th scope="row">{{ $alum->studnumber }}</th>
-                                        <td>{{ $alum->lastname }}</td>
-                                        <td>{{ $alum->firstname }}</td>
-                                        <td>{{ $alum->middlename }}</td>
+                                        <th scope="row">{{ $alum->stud_number }}</th>
+                                        <td>{{ $alum->last_name }}</td>
+                                        <td>{{ $alum->first_name }}</td>
+                                        <td>{{ $alum->middle_name }}</td>
                                         <td>{{ $alum->suffix }}</td>
-                                        <td>{{ $alum->course }}</td>
+                                        <td>{{ $alum->course_ID }}</td>
                                         <td>
 
                                             <!-- Button trigger modal -->

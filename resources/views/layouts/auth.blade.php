@@ -14,11 +14,11 @@
     <title>@yield('page-title')</title>
     <link rel="icon" href="{{ asset('img/pupLogo.png') }}" type="image/icon type">
 </head>
-<body style="
+{{--  style="
     background: url({{ asset('img/pupBG.jpg') }}) no-repeat center center fixed;
     background-size: cover;
-    height: 100%;
-">
+    height: 100%;" --}}
+<body>
 
 {{-- NavBar --}}
 <nav class="navbar navbar-expand-lg bg-light sticky-top">

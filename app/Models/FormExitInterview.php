@@ -79,8 +79,8 @@ class FormExitInterview extends Model
 
         'comment',
 
-        'dataPrivacy',
-        'dateSigned',
+        'data_privacy',
+        'date_signed',
         'signature',
     ];
 }

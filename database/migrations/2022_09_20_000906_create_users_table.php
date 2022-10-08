@@ -23,7 +23,7 @@ return new class extends Migration
             $table->unsignedInteger('admin_ID')->nullable();
             $table->foreign('admin_ID')->references('admin_ID')->on('tbl_admin');
 
-            $table->string('studNumber')->nullable();
+            $table->string('stud_number')->nullable();
             $table->string('email');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('username');
@@ -36,7 +36,7 @@ return new class extends Migration
             array(
                 [
                     'alumni_ID' => '1',
-                    'studNumber' => '2019-00432-TG-0',
+                    'stud_number' => '2019-00432-TG-0',
                     'email' => 'lickmyballpen@gmail.com',
                     'email_verified_at' => '2022-09-16 23:20:57',
                     'username' => 'rodgeneta',

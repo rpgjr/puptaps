@@ -105,8 +105,8 @@ return new class extends Migration
             $table->integer('sec12_q7');
             $table->integer('sec12_q8');
 
-            $table->string('dataPrivacy');
-            $table->date('dateSigned');
+            $table->string('data_privacy');
+            $table->date('date_signed');
             $table->string('signature');
 
             $table->timestamps();

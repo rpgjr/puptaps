@@ -2,9 +2,9 @@
 
 namespace App\Http\Livewire\Forms;
 
+use App\Models\Alumni;
 use App\Models\FormSAS as ModelsFormSAS;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 
 class FormSas extends Component
@@ -98,8 +98,8 @@ class FormSas extends Component
     public $sec12_q7;
     public $sec12_q8;
 
-    public $dataPrivacy;
-    public $dateSigned;
+    public $data_privacy;
+    public $date_signed;
     public $signature;
 
     public $currentPage = 1;
@@ -132,7 +132,7 @@ class FormSas extends Component
 
     public function render()
     {
-        $users = DB::table('tbl_alumni')->where('alumni_ID', '=', Auth::user()->alumni_ID)->get();
+        $users = Alumni::where('alumni_ID', '=', Auth::user()->alumni_ID)->get();
         view()->share('users', $users);
         return view('livewire.forms.form-sas');
     }
@@ -140,7 +140,7 @@ class FormSas extends Component
     public function validateData() {
         if($this->currentPage == 1) {
             $this->validate([
-                'dataPrivacy' => 'required',
+                'data_privacy' => 'required',
             ]);
         }
         elseif($this->currentPage == 3) {
@@ -240,7 +240,7 @@ class FormSas extends Component
         }
         elseif($this->currentPage == 6) {
             $this->validate([
-                'dateSigned' => 'required',
+                'date_signed' => 'required',
                 'signature' => 'required',
             ]);
         }
@@ -341,8 +341,8 @@ class FormSas extends Component
             'sec12_q7' => $this->sec12_q7,
             'sec12_q8' => $this->sec12_q8,
 
-            'dataPrivacy' => $this->dataPrivacy,
-            'dateSigned' => $this->dateSigned,
+            'data_privacy' => $this->data_privacy,
+            'date_signed' => $this->date_signed,
             'signature' => $this->signature,
         );
 

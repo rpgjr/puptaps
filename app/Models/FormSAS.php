@@ -100,8 +100,8 @@ class FormSAS extends Model
         'sec12_q7',
         'sec12_q8',
 
-        'dataPrivacy',
-        'dateSigned',
+        'data_privacy',
+        'date_signed',
         'signature',
     ];
 }

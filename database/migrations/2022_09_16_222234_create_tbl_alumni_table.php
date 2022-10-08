@@ -16,42 +16,42 @@ return new class extends Migration
     {
         Schema::create('tbl_alumni', function (Blueprint $table) {
             $table->increments('alumni_ID');
-            $table->string('studNumber');
-            $table->string('lastName');
-            $table->string('firstName');
-            $table->string('middleName')->nullable();
+            $table->string('stud_number');
+            $table->string('last_name');
+            $table->string('first_name');
+            $table->string('middle_name')->nullable();
             $table->string('suffix')->nullable();
-            $table->string('courseID');
+            $table->string('course_ID');
             $table->integer('batch');
             $table->integer('semesters')->nullable();
             $table->string('gender');
-            $table->date('bday')->nullable();
+            $table->date('birthday')->nullable();
             $table->integer('age')->nullable();
             $table->string('religion')->nullable();
-            $table->string('civilStatus')->nullable();
-            $table->string('cityAddress');
-            $table->string('provincialAddress')->nullable();
+            $table->string('civil_status')->nullable();
+            $table->string('city_address');
+            $table->string('provincial_address')->nullable();
             $table->string('email');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('number');
             $table->string('username');
             $table->string('password');
             $table->string('user_role');
-            $table->string('userProfile')->nullable();
+            $table->string('user_profile')->nullable();
             $table->timestamps();
         });
 
         DB::table('tbl_alumni')->insert(
             array(
-                'studNumber' => '2019-00432-TG-0',
-                'lastName' => 'Geneta',
-                'firstName' => 'Rodrigo',
-                'middleName' => 'Pilariza',
-                'courseID' => 'BSIT',
+                'stud_number' => '2019-00432-TG-0',
+                'last_name' => 'Geneta',
+                'first_name' => 'Rodrigo',
+                'middle_name' => 'Pilariza',
+                'course_ID' => 'BSIT',
                 'batch' => '2022',
                 'gender' => 'Male',
-                'bday' => '2001-01-31',
-                'cityAddress' => 'Sample St., Sample City',
+                'birthday' => '2001-01-31',
+                'city_address' => 'Sample St., Sample City',
                 'email' => 'lickmyballpen@gmail.com',
                 'email_verified_at' => '2022-09-16 23:20:57',
                 'number' => '0909090909',

@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Models\Alumni;
 use App\Models\Careers;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class CareerController extends Controller
 {
@@ -16,8 +15,8 @@ class CareerController extends Controller
         return view('admin.careers.request', compact(['careers', 'users']));
     }
 
-    public function approveCareer($careerID) {
-        $career = DB::table('tbl_careers')->where('careerID', '=', $careerID)->update(['approval' => 1]);
+    public function approveCareer($career_ID) {
+        $career = Careers::where('career_ID', '=', $career_ID)->update(['approval' => 1]);
 
         return redirect(route('adminCareer.getCareerRequest'));
     }

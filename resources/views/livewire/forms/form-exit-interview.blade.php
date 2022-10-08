@@ -21,10 +21,10 @@
                             </p>
 
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="Agree" wire:model="dataPrivacy">
+                                <input class="form-check-input" type="checkbox" value="Agree" wire:model="data_privacy">
                                 <label class="form-check-label">Agree</label>
                             </div>
-                            <span class="text-danger">@error('dataPrivacy'){{ $message }}@enderror</span>
+                            <span class="text-danger">@error('data_privacy'){{ $message }}@enderror</span>
                         </div>
                     </div>
                 </div>
@@ -63,19 +63,19 @@
                             <div class="col-md-6 mb-3">
                                 <div class="form-group">
                                     <label class="form-label">Last Name</label>
-                                    <input type="text" class="form-control" value="{{ $user->lastName }}">
+                                    <input type="text" class="form-control" value="{{ $user->last_name }}">
                                 </div>
                             </div>
                             <div class="col-md-6 mb-3">
                                 <div class="form-group">
                                     <label class="form-label">First Name</label>
-                                    <input type="text" class="form-control" value="{{ $user->firstName }}">
+                                    <input type="text" class="form-control" value="{{ $user->first_name }}">
                                 </div>
                             </div>
                             <div class="col-md-6 mb-3">
                                 <div class="form-group">
                                     <label class="form-label">Middle Name</label>
-                                    <input type="text" class="form-control" value="{{ $user->middleName }}">
+                                    <input type="text" class="form-control" value="{{ $user->middle_name }}">
                                 </div>
                             </div>
                             <div class="col-md-6 mb-3">
@@ -101,7 +101,7 @@
                             <div class="col-md-6 mb-3">
                                 <div class="form-group">
                                     <label class="form-label">Civil Status</label>
-                                    <input type="text" class="form-control" value="{{ $user->civilStatus }}">
+                                    <input type="text" class="form-control" value="{{ $user->civil_status }}">
                                 </div>
                             </div>
                             <div class="col-md-6 mb-3">
@@ -113,14 +113,14 @@
                             <div class="col-md-6 mb-3">
                                 <div class="form-group">
                                     <label class="form-label">Student Number</label>
-                                    <input type="text" class="form-control" value="{{ $user->studNumber }}">
+                                    <input type="text" class="form-control" value="{{ $user->stud_number }}">
                                 </div>
                             </div>
                             <div class="col-md-6 mb-3">
                                 <div class="form-group">
                                     <label class="form-label">Course</label>
                                     <select class="form-select">
-                                        <option>{{ $user->courseID }}</option>
+                                        <option>{{ $user->course_ID }}</option>
                                     </select>
                                 </div>
                             </div>
@@ -135,7 +135,7 @@
                             <div class="col-md-12 mb-3">
                                 <div class="form-group">
                                     <label class="form-label">City Address</label>
-                                    <input type="text" class="form-control" value="{{ $user->cityAddress }}">
+                                    <input type="text" class="form-control" value="{{ $user->city_address }}">
                                 </div>
                             </div>
                             @endforeach
@@ -1295,10 +1295,10 @@
                             <div class="col-md-12 mb-3">
                                 <div class="form-group">
                                     <label class="form-label">Date</label>
-                                    <input type="date" class="form-control" wire:model="dateSigned">
+                                    <input type="date" class="form-control" wire:model="date_signed">
                                 </div>
                             </div>
-                            <span class="text-danger">@error('dateSigned'){{ $message }}@enderror</span>
+                            <span class="text-danger">@error('date_signed'){{ $message }}@enderror</span>
 
                             <div class="col-md-12 mb-3">
                                 <div class="form-group">

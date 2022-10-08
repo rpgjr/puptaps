@@ -10,7 +10,7 @@ class Careers extends Model
     use HasFactory;
 
     protected $table = 'tbl_careers';
-    protected $primaryKey = 'careerID';
+    protected $primaryKey = 'career_ID';
 
     protected $fillable = [
         'alumni_ID',

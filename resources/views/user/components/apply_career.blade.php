@@ -17,7 +17,7 @@
                     @csrf
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
 
-                    <input type="hidden" name="careerID" value="{{ $career->careerID }}">
+                    <input type="hidden" name="career_ID" value="{{ $career->career_ID }}">
                     <input type="hidden" name="alumni_ID" value="{{ Auth::user()->alumni_ID }}">
                     <button type="submit" class="btn btn-success" data-bs-dismiss="modal">Done</button>
                 </form>

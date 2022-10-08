@@ -15,95 +15,95 @@ return new class extends Migration
     public function up()
     {
         Schema::create('tbl_courses', function (Blueprint $table) {
-            $table->string('courseID');
-            $table->string('courseDesc');
+            $table->string('course_ID');
+            $table->string('course_Desc');
         });
 
         DB::table('tbl_courses')->insert(
             array(
                 [
-                    'courseID' => 'BSEd-English',
-                    'courseDesc' => 'Bachelor in Secondary Education Major in English',
+                    'course_ID' => 'BSEd-English',
+                    'course_Desc' => 'Bachelor in Secondary Education Major in English',
                 ],
                 [
-                    'courseID' => 'BSEd-Social Studies',
-                    'courseDesc' => 'Bachelor in Secondary Education Major in Social Studies',
+                    'course_ID' => 'BSEd-Social Studies',
+                    'course_Desc' => 'Bachelor in Secondary Education Major in Social Studies',
                 ],
                 [
-                    'courseID' => 'BSEd-Mathematics',
-                    'courseDesc' => 'Bachelor in Secondary Education Major in Mathematics',
+                    'course_ID' => 'BSEd-Mathematics',
+                    'course_Desc' => 'Bachelor in Secondary Education Major in Mathematics',
                 ],
                 [
-                    'courseID' => 'DICT',
-                    'courseDesc' => 'Diploma in Information Communication Technology',
+                    'course_ID' => 'DICT',
+                    'course_Desc' => 'Diploma in Information Communication Technology',
                 ],
                 [
-                    'courseID' => 'BSIT',
-                    'courseDesc' => 'Bachelor of Science in Information Technology',
+                    'course_ID' => 'BSIT',
+                    'course_Desc' => 'Bachelor of Science in Information Technology',
                 ],
                 [
-                    'courseID' => 'DICMT',
-                    'courseDesc' => 'Diploma in Information Communication Management Technology',
+                    'course_ID' => 'DICMT',
+                    'course_Desc' => 'Diploma in Information Communication Management Technology',
                 ],
                 [
-                    'courseID' => 'BSAM',
-                    'courseDesc' => 'Bachelor of Science in Actuarial Mathematics',
+                    'course_ID' => 'BSAM',
+                    'course_Desc' => 'Bachelor of Science in Actuarial Mathematics',
                 ],
                 [
-                    'courseID' => 'BSBA-HRDM',
-                    'courseDesc' => 'Bachelor of Science in Business Administration Major in Human Resource Development Managementy',
+                    'course_ID' => 'BSBA-HRDM',
+                    'course_Desc' => 'Bachelor of Science in Business Administration Major in Human Resource Development Managementy',
                 ],
                 [
-                    'courseID' => 'BSBA-MM',
-                    'courseDesc' => 'Bachelor of Science in Business Administration Major in Marketing Management',
+                    'course_ID' => 'BSBA-MM',
+                    'course_Desc' => 'Bachelor of Science in Business Administration Major in Marketing Management',
                 ],
                 [
-                    'courseID' => 'BSECE',
-                    'courseDesc' => 'Bachelor of Science in Electronics and Communications Engineering',
+                    'course_ID' => 'BSECE',
+                    'course_Desc' => 'Bachelor of Science in Electronics and Communications Engineering',
                 ],
                 [
-                    'courseID' => 'BSME',
-                    'courseDesc' => 'Bachelor of Science in Mechanical Engineering',
+                    'course_ID' => 'BSME',
+                    'course_Desc' => 'Bachelor of Science in Mechanical Engineering',
                 ],
                 [
-                    'courseID' => 'BSEM',
-                    'courseDesc' => 'Bachelor of Science in Entrepreneurial Management',
+                    'course_ID' => 'BSEM',
+                    'course_Desc' => 'Bachelor of Science in Entrepreneurial Management',
                 ],
                 [
-                    'courseID' => 'BBA-Management',
-                    'courseDesc' => 'Bachelor in Business Administration Major in Management',
+                    'course_ID' => 'BBA-Management',
+                    'course_Desc' => 'Bachelor in Business Administration Major in Management',
                 ],
                 [
-                    'courseID' => 'BEM',
-                    'courseDesc' => 'Bachelor in Entrepreneurial Management',
+                    'course_ID' => 'BEM',
+                    'course_Desc' => 'Bachelor in Entrepreneurial Management',
                 ],
                 [
-                    'courseID' => 'BCDPM',
-                    'courseDesc' => 'Bachelor of Computer in Data Processing Management',
+                    'course_ID' => 'BCDPM',
+                    'course_Desc' => 'Bachelor of Computer in Data Processing Management',
                 ],
                 [
-                    'courseID' => 'DOMT-LOM',
-                    'courseDesc' => 'Diploma in Office Management Technology with specialization in Legal Office Management',
+                    'course_ID' => 'DOMT-LOM',
+                    'course_Desc' => 'Diploma in Office Management Technology with specialization in Legal Office Management',
                 ],
                 [
-                    'courseID' => 'DAMT',
-                    'courseDesc' => 'Diploma in Accounting Management Technology',
+                    'course_ID' => 'DAMT',
+                    'course_Desc' => 'Diploma in Accounting Management Technology',
                 ],
                 [
-                    'courseID' => 'BSOA-LT',
-                    'courseDesc' => 'Bachelor of Science in Office Administration Major in Legal Transcription',
+                    'course_ID' => 'BSOA-LT',
+                    'course_Desc' => 'Bachelor of Science in Office Administration Major in Legal Transcription',
                 ],
                 [
-                    'courseID' => 'PBDM',
-                    'courseDesc' => 'Post Baccalaureate Diploma in Management',
+                    'course_ID' => 'PBDM',
+                    'course_Desc' => 'Post Baccalaureate Diploma in Management',
                 ],
                 [
-                    'courseID' => 'DMET',
-                    'courseDesc' => 'Diploma in Mechanical Engineering Technology',
+                    'course_ID' => 'DMET',
+                    'course_Desc' => 'Diploma in Mechanical Engineering Technology',
                 ],
                 [
-                    'courseID' => 'BSA',
-                    'courseDesc' => 'Bachelor of Science in Accountancy',
+                    'course_ID' => 'BSA',
+                    'course_Desc' => 'Bachelor of Science in Accountancy',
                 ],
             )
         );
