@@ -54,7 +54,48 @@
                             </div>
                         </div>
 
-                        <table class="table">
+                        @if (count($careers) == 0)
+                            <div class="alert alert-danger" role="alert">
+                                There is no available data yet.
+                            </div>
+
+                            @else
+                            @foreach ($careers as $career)
+                                <table class="table table-borderless career-table">
+                                    <thead class="align-middle">
+                                        @foreach ($alumni as $alum)
+                                            @if (($alum->alumni_ID) == ($career->alumni_ID))
+                                                <tr>
+                                                    <th>
+                                                        @if ($alum->user_profile == null)
+                                                            <img src="{{ asset('Uploads/Profiles/user-no-profile.png') }}" class="user-profile-button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                        @else
+                                                            <img src="/Uploads/Profiles/{{ $alum->user_profile }}" class="user-profile-button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                        @endif
+                                                    </th>
+                                                    <th>{{ $alum->first_name }} {{ $alum->last_name }} {{ $alum->suffix }}</th>
+                                                    <th>{{ $career->category }}</th>
+                                                </tr>
+                                            @endif
+                                        @endforeach
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td></td>
+                                            <td>{{ date('F d, Y h:m:a', strtotime($career->created_at)) }}</td>
+                                            <td class="career-image">
+                                                @if (($career->job_ad_image) == null)
+                                                @else
+                                                    <img src="/Uploads/Career/{{ $career->job_ad_image }}" alt="" style="width: 100%; height: 50%;">
+                                                @endif
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            @endforeach
+                        @endif
+
+                        {{-- <table class="table">
                             <thead>
                             <tr>
                                 <th scope="col" style="width: 20%;">Job Category</th>
@@ -63,7 +104,7 @@
                             </tr>
                             </thead>
                             <tbody>
-                            @if (count($careers))
+                            @if (count($careers) > 0)
                                 @foreach ($careers as $career)
                                     @if (($career->approval) == 1)
                                         <tr>
@@ -88,12 +129,12 @@
                                 @endforeach
                             @else
                                 <tr>
-                                    <td colspan="2" class="text-center"><b>No data found!</b></td>
+                                    <td colspan="3" class="text-center"><b>No data found!</b></td>
                                 </tr>
                             @endif
 
                             </tbody>
-                        </table>
+                        </table> --}}
                     </div>
                 </div>
             </div>

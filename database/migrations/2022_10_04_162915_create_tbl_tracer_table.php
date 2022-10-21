@@ -19,7 +19,7 @@ return new class extends Migration
             $table->unsignedInteger('alumni_ID');
             $table->foreign('alumni_ID')->references('alumni_ID')->on('tbl_alumni');
 
-            $table->date('current_employement');
+            $table->date('current_employment');
             $table->string('current_job_description');
             $table->string('current_job_position');
             $table->string('current_employment_status');
@@ -28,7 +28,7 @@ return new class extends Migration
             $table->string('current_company_number');
             $table->string('relation_to_course');
 
-            $table->date('first_employement');
+            $table->date('first_employment');
             $table->string('first_job_description');
             $table->string('first_job_position');
             $table->string('first_company_email');

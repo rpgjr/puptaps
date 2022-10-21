@@ -167,6 +167,8 @@ Route::group(
     ], function() {
         Route::get('index', 'getTracerIndex')
             ->name('getTracerIndex');
+        Route::get('answer', 'getAnswerPage')
+            ->name('getAnswerPage');
 });
 
 // ========== End of User Route ======================================================================================

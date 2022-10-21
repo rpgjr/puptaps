@@ -15,7 +15,7 @@ class Tracer extends Model
     protected $fillable = [
         'alumni_ID',
 
-        'current_employement',
+        'current_employment',
         'current_job_description',
         'current_job_position',
         'current_employment_status',
@@ -24,7 +24,7 @@ class Tracer extends Model
         'current_company_number',
         'relation_to_course',
 
-        'first_employement',
+        'first_employment',
         'first_job_description',
         'first_job_position',
         'first_company_email',

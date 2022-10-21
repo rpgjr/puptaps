@@ -14,11 +14,12 @@ class CareerController extends Controller
     //
     public function getCareerIndex(Request $request) {
         $users = Alumni::where('alumni_ID', '=', Auth::user()->alumni_ID)->get();
+        $alumni = Alumni::all();
         $applicants = CareerApplicant::where('alumni_ID', '=', Auth::user()->alumni_ID)->get();
         $posts = Alumni::all();
         $data['query'] = $request->get('query');
-        $data['careers'] = Careers::where('category', 'like', '%' . $data['query'] . '%')->paginate(15)->withQueryString();
-        return view('user.career.index', compact(['users', 'applicants', 'posts']), $data);
+        $data['careers'] = Careers::where('approval', '=', 1)->where('category', 'like', '%' . $data['query'] . '%')->paginate(15)->withQueryString();
+        return view('user.career.index', compact(['users', 'applicants', 'posts', 'alumni']), $data);
     }
 
     public function addTextCareer(Request $request) {

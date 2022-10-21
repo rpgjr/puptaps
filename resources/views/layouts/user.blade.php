@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="{{ asset('css/career.css') }}">
     <link rel="stylesheet" href="{{ asset('css/profile.css') }}">
     <link rel="stylesheet" href="{{ asset('css/forms.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/tracer.css') }}">
     {{-- Fontawesome --}}
     <link rel="stylesheet" href="{{ asset('fontawesome/css/all.css') }}">
     <title>@yield('page-title')</title>

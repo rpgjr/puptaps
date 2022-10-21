@@ -4,3 +4,16 @@
     border-radius: 8px;
 }
 
+.career-image {
+    width: 60%;
+}
+
+.career-table tr th{
+    padding: 0px;
+    margin: 0px;
+}
+
+.career-table tr td{
+    padding: 0px;
+    margin: 0px;
+}
