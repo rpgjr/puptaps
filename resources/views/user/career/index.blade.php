@@ -59,7 +59,54 @@
                                 There is no available data yet.
                             </div>
 
-                            @else
+                        @else
+                            @foreach ($careers as $career)
+                                <table class="table table-borderless career-table table-sm align-middle">
+                                    @foreach ($alumni as $alum)
+                                        @if (($alum->alumni_ID) == ($career->alumni_ID))
+                                            <tr>
+                                                <td rowspan="2" style="width: 5%;">
+                                                    @if ($alum->user_profile == null)
+                                                        <img src="{{ asset('Uploads/Profiles/user-no-profile.png') }}" class="career-post-profile" data-bs-toggle="dropdown" aria-expanded="false">
+                                                    @else
+                                                        <img src="/Uploads/Profiles/{{ $alum->user_profile }}" class="career-post-profile" data-bs-toggle="dropdown" aria-expanded="false">
+                                                    @endif
+                                                </td>
+                                                <th style="width: 95%">{{ $alum->username }}</th>
+                                            </tr>
+                                            <tr>
+                                                <td>{{ date('F d, Y h:m:a', strtotime($career->created_at)) }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td></td>
+                                                <td>
+                                                    @if (($career->job_ad_image) == null)
+                                                    @else
+                                                        <a href="#">
+                                                            <div class="career-post-image-box">
+                                                                <img src="/Uploads/Career/{{ $career->job_ad_image }}" alt="" class="career-post-image">
+                                                            </div>
+                                                        </a>
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                        @endif
+                                    @endforeach
+                                    <tr>
+                                        <td>
+
+                                        </td>
+                                    </tr>
+                                </table>
+                            @endforeach
+                        @endif
+
+                        {{-- @if (count($careers) == 0)
+                            <div class="alert alert-danger" role="alert">
+                                There is no available data yet.
+                            </div>
+
+                        @else
                             @foreach ($careers as $career)
                                 <table class="table table-borderless career-table">
                                     <thead class="align-middle">
@@ -93,7 +140,7 @@
                                     </tbody>
                                 </table>
                             @endforeach
-                        @endif
+                        @endif --}}
 
                         {{-- <table class="table">
                             <thead>

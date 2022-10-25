@@ -16,6 +16,7 @@ body {
     background-color: #ffffff;
     border-color: #78281F;
     margin-right: 15px;
+    object-fit: cover;
 }
 
 .user-profile-button:hover {

@@ -8,12 +8,23 @@
     width: 60%;
 }
 
-.career-table tr th{
-    padding: 0px;
-    margin: 0px;
+.career-post-profile {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 5px;
 }
 
-.career-table tr td{
-    padding: 0px;
-    margin: 0px;
+.career-post-image-box {
+    border: 1px solid yellow;
+    width: 900px;
+    height: 300px;
+    overflow: hidden;
+}
+
+.career-post-image {
+    width: 100%;
+    object-fit: cover;
+    overflow: hidden;
 }
