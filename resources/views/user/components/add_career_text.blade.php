@@ -41,7 +41,7 @@
                     <label class="form-label">Number </label>
                     <input type="text" class="form-control" name="number">
                 </div>
-                <input type="hidden" name="alumni_ID" value="{{ Auth::user()->alumni_ID }}">
+                <input type="hidden" name="alumni_id" value="{{ Auth::user()->alumni_id }}">
                 <input type="hidden" name="approval" value="0">
                 {{-- @if (Session()->get('loginID'))
                     <input type="hidden" name="username" value="{{ $data }}">

@@ -22,7 +22,7 @@
                     </select>
                 </div>
 
-                <input type="hidden" name="alumni_ID" value="{{ Auth::user()->alumni_ID }}">
+                <input type="hidden" name="alumni_id" value="{{ Auth::user()->alumni_id }}">
                 <input type="hidden" name="approval" value="0">
 
             </div>

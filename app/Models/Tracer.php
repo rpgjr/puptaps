@@ -13,7 +13,7 @@ class Tracer extends Model
     protected $primaryKey = 'tracer_ID';
 
     protected $fillable = [
-        'alumni_ID',
+        'alumni_id',
 
         'current_employment',
         'current_job_description',

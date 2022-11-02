@@ -132,7 +132,7 @@ class FormSas extends Component
 
     public function render()
     {
-        $users = Alumni::where('alumni_ID', '=', Auth::user()->alumni_ID)->get();
+        $users = Alumni::where('alumni_id', '=', Auth::user()->alumni_id)->get();
         view()->share('users', $users);
         return view('livewire.forms.form-sas');
     }
@@ -251,7 +251,7 @@ class FormSas extends Component
         $this->validateData();
 
         $values = array(
-            'alumni_ID' => Auth::user()->alumni_ID,
+            'alumni_id' => Auth::user()->alumni_id,
 
             'sec1_q1' => $this->sec1_q1,
             'sec1_q2' => $this->sec1_q2,

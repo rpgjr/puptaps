@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Alumni extends Model
 {
     use HasFactory;
-    protected $primaryKey = 'alumni_ID';
+    protected $primaryKey = 'alumni_id';
 
     protected $table = 'tbl_alumni';
 
@@ -18,7 +18,7 @@ class Alumni extends Model
         'first_name',
         'middle_name',
         'suffix',
-        'course_ID',
+        'course_id',
         'batch',
         'semesters',
         'gender',

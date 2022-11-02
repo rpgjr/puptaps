@@ -114,7 +114,7 @@ Route::group(
         Route::get('settings', 'getProfileIndex')
             ->name('index');
 
-        Route::patch('settings/update-profile/{alumni_ID}', 'updateProfile')
+        Route::patch('settings/update-profile/{alumni_id}', 'updateProfile')
             ->name('updateProfile');
 });
 
@@ -205,7 +205,7 @@ Route::group(
         Route::get('requests', 'getCareerRequest')
             ->name('getCareerRequest');
 
-        Route::patch('approve-career/{career_ID}', 'approveCareer')
+        Route::patch('approve-career/{career_id}', 'approveCareer')
             ->name('approveCareer');
 });
 // ========== End of Route ========================================================================================

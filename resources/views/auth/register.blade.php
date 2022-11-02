@@ -43,9 +43,9 @@
 
                     <div class="col-md-4 my-2">
                         <label class="form-label">Course</label>
-                        <select class="form-select" name="course_ID">
+                        <select class="form-select" name="course_id">
                             @foreach ($courses as $course)
-                                <option value="{{ $course->course_ID }}">{{ $course->course_ID }}</option>
+                                <option value="{{ $course->course_id }}">{{ $course->course_id }}</option>
                             @endforeach
                         </select>
                     </div>

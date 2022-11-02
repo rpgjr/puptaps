@@ -16,11 +16,11 @@ return new class extends Migration
         Schema::create('tbl_career_applicants', function (Blueprint $table) {
             $table->increments('applicant_ID');
 
-            $table->unsignedInteger('alumni_ID')->nullable();
-            $table->foreign('alumni_ID')->references('alumni_ID')->on('tbl_alumni');
+            $table->unsignedInteger('alumni_id')->nullable();
+            $table->foreign('alumni_id')->references('alumni_id')->on('tbl_alumni');
 
-            $table->unsignedInteger('career_ID');
-            $table->foreign('career_ID')->references('career_ID')->on('tbl_careers');
+            $table->unsignedInteger('career_id');
+            $table->foreign('career_id')->references('career_id')->on('tbl_careers');
 
             $table->timestamps();
         });

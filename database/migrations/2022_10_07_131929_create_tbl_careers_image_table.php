@@ -16,11 +16,11 @@ return new class extends Migration
         Schema::create('tbl_careers_image', function (Blueprint $table) {
             $table->increments('career_image_ID');
 
-            $table->unsignedInteger('alumni_ID')->nullable();
-            $table->foreign('alumni_ID')->references('alumni_ID')->on('tbl_alumni');
+            $table->unsignedInteger('alumni_id')->nullable();
+            $table->foreign('alumni_id')->references('alumni_id')->on('tbl_alumni');
 
-            $table->unsignedInteger('admin_ID')->nullable();
-            $table->foreign('admin_ID')->references('admin_ID')->on('tbl_admin');
+            $table->unsignedInteger('admin_id')->nullable();
+            $table->foreign('admin_id')->references('admin_id')->on('tbl_admin');
 
             $table->string('job_ad_image')->nullable();
             $table->string('category')->nullable();

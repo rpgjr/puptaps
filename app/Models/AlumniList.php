@@ -17,6 +17,6 @@ class AlumniList extends Model
         'last_name',
         'middle_name',
         'suffix',
-        'course_ID',
+        'course_id',
     ];
 }

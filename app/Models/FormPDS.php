@@ -14,7 +14,7 @@ class FormPDS extends Model
     protected $primaryKey = 'pds_ID';
 
     protected $fillable = [
-        'alumni_ID',
+        'alumni_id',
         'fathersName',
         'fathersNumber',
         'mothersName',

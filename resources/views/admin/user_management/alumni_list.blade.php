@@ -61,7 +61,7 @@
                                         <td>{{ $alum->first_name }}</td>
                                         <td>{{ $alum->middle_name }}</td>
                                         <td>{{ $alum->suffix }}</td>
-                                        <td>{{ $alum->course_ID }}</td>
+                                        <td>{{ $alum->course_id }}</td>
                                         <td>
 
                                             <!-- Button trigger modal -->

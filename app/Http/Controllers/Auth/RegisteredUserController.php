@@ -40,13 +40,13 @@ class RegisteredUserController extends Controller
     {
         $check_studNumber = AlumniList::where('stud_number', '=', $request->stud_number)->first();
         $check_lastName = AlumniList::where('last_name', '=', $request->last_name)->first();
-        $check_course = AlumniList::where('course_ID', '=', $request->course_ID)->first();
+        $check_course = AlumniList::where('course_id', '=', $request->course_id)->first();
 
         $request->validate([
             'last_name' => ['required'],
             'first_name' => ['required'],
             'middle_name' => ['required'],
-            'course_ID' => ['required'],
+            'course_id' => ['required'],
             'batch' => ['required'],
             'gender' => ['required'],
             'birthday' => ['required'],
@@ -67,7 +67,7 @@ class RegisteredUserController extends Controller
             $alumni->first_name = $request->input('first_name');
             $alumni->middle_name = $request->input('middle_name');
             $alumni->suffix = $request->input('suffix');
-            $alumni->course_ID = $request->input('course_ID');
+            $alumni->course_id = $request->input('course_id');
             $alumni->batch = $request->input('batch');
             $alumni->gender = $request->input('gender');
             $alumni->birthday = $request->input('birthday');
@@ -85,11 +85,11 @@ class RegisteredUserController extends Controller
             $alumni->save();
 
             $alumni_to_user = DB::table('tbl_alumni')->where('username', '=', $request->input('username'))->get();
-            //$alumni_to_user = Alumni::where('username', '=', $request->username)->get('alumni_ID');
+            //$alumni_to_user = Alumni::where('username', '=', $request->username)->get('alumni_id');
 
             $user = new User();
             foreach($alumni_to_user as $alumni_info) {
-                $user->alumni_ID = $alumni_info->alumni_ID;
+                $user->alumni_id = $alumni_info->alumni_id;
                 $user->stud_number = $alumni_info->stud_number;
                 $user->email = $alumni_info->email;
                 $user->username = $alumni_info->username;

@@ -63,7 +63,7 @@
                             @foreach ($careers as $career)
                                 <table class="table table-borderless career-table table-sm align-middle">
                                     @foreach ($alumni as $alum)
-                                        @if (($alum->alumni_ID) == ($career->alumni_ID))
+                                        @if (($alum->alumni_id) == ($career->alumni_id))
                                             <tr>
                                                 <td rowspan="2" style="width: 5%;">
                                                     @if ($alum->user_profile == null)
@@ -111,7 +111,7 @@
                                 <table class="table table-borderless career-table">
                                     <thead class="align-middle">
                                         @foreach ($alumni as $alum)
-                                            @if (($alum->alumni_ID) == ($career->alumni_ID))
+                                            @if (($alum->alumni_id) == ($career->alumni_id))
                                                 <tr>
                                                     <th>
                                                         @if ($alum->user_profile == null)
@@ -158,12 +158,12 @@
                                             <th scope="row">{{ $career->category }}</th>
                                             <td>{{ $career->created_at }}</td>
                                             <td>
-                                                <button type="button" class="btn btn-primary my-1" data-bs-toggle="modal" data-bs-target="#viewCareer{{ $career->career_ID }}">View</button>
+                                                <button type="button" class="btn btn-primary my-1" data-bs-toggle="modal" data-bs-target="#viewCareer{{ $career->career_id }}">View</button>
                                                 @include('user.components.view_career')
 
-                                                <button type="button" class="btn btn-success my-1" data-bs-toggle="modal" data-bs-target="#applyCareer{{ $career->career_ID }}"
+                                                <button type="button" class="btn btn-success my-1" data-bs-toggle="modal" data-bs-target="#applyCareer{{ $career->career_id }}"
                                                     @foreach ($applicants as $applicant)
-                                                        @if($career->career_ID == $applicant->career_ID) {
+                                                        @if($career->career_id == $applicant->career_id) {
                                                             disabled
                                                         }
                                                         @endif

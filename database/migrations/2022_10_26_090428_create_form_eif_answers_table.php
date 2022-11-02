@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('form_pds_answers', function (Blueprint $table) {
+        Schema::create('form_eif_answers', function (Blueprint $table) {
             $table->increments('answer_id');
             $table->unsignedInteger('alumni_id')
                   ->nullable();
@@ -24,7 +24,7 @@ return new class extends Migration
                   ->nullable();
             $table->foreign('question_id')
                   ->references('question_id')
-                  ->on('form_pds_questions');
+                  ->on('form_eif_questions');
             $table->string('answer');
         });
     }
@@ -36,6 +36,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('form_pds_answers');
+        Schema::dropIfExists('form_eif_answers');
     }
 };

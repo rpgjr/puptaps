@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('first_name');
             $table->string('middle_name')->nullable();
             $table->string('suffix')->nullable();
-            $table->string('course_ID');
+            $table->string('course_id');
             $table->timestamps();
         });
     }

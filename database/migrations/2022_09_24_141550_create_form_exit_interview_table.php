@@ -16,8 +16,8 @@ return new class extends Migration
         Schema::create('form_exit_interview', function (Blueprint $table) {
             $table->increments('exit_ID');
 
-            $table->unsignedInteger('alumni_ID');
-            $table->foreign('alumni_ID')->references('alumni_ID')->on('tbl_alumni');
+            $table->unsignedInteger('alumni_id');
+            $table->foreign('alumni_id')->references('alumni_id')->on('tbl_alumni');
 
             $table->string('employment_status')->nullable();
             $table->string('reason')->nullable();

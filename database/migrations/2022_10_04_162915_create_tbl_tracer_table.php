@@ -16,8 +16,8 @@ return new class extends Migration
         Schema::create('tbl_tracer', function (Blueprint $table) {
             $table->increments('tracer_ID');
 
-            $table->unsignedInteger('alumni_ID');
-            $table->foreign('alumni_ID')->references('alumni_ID')->on('tbl_alumni');
+            $table->unsignedInteger('alumni_id');
+            $table->foreign('alumni_id')->references('alumni_id')->on('tbl_alumni');
 
             $table->date('current_employment');
             $table->string('current_job_description');

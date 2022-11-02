@@ -12,7 +12,7 @@ class FormSAS extends Model
     protected $table = 'form_sas';
     protected $primaryKey = 'sas_ID';
     protected $fillable = [
-        'alumni_ID',
+        'alumni_id',
 
         'sec1_q1',
         'sec1_q2',

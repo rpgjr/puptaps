@@ -15,13 +15,13 @@ return new class extends Migration
     public function up()
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->increments('user_ID');
+            $table->increments('user_id');
 
-            $table->unsignedInteger('alumni_ID')->nullable();
-            $table->foreign('alumni_ID')->references('alumni_ID')->on('tbl_alumni');
+            $table->unsignedInteger('alumni_id')->nullable();
+            $table->foreign('alumni_id')->references('alumni_id')->on('tbl_alumni');
 
-            $table->unsignedInteger('admin_ID')->nullable();
-            $table->foreign('admin_ID')->references('admin_ID')->on('tbl_admin');
+            $table->unsignedInteger('admin_id')->nullable();
+            $table->foreign('admin_id')->references('admin_id')->on('tbl_admin');
 
             $table->string('stud_number')->nullable();
             $table->string('email');
@@ -35,7 +35,7 @@ return new class extends Migration
         DB::table('users')->insert(
             array(
                 [
-                    'alumni_ID' => '1',
+                    'alumni_id' => '1',
                     'stud_number' => '2019-00432-TG-0',
                     'email' => 'lickmyballpen@gmail.com',
                     'email_verified_at' => '2022-09-16 23:20:57',
@@ -49,7 +49,7 @@ return new class extends Migration
         DB::table('users')->insert(
             array(
                 [
-                    'admin_ID' => '1',
+                    'admin_id' => '1',
                     'email' => 'pupt.alumniportalsystem@gmail.com',
                     'username' => 'IT_admin',
                     'email_verified_at' => '2022-09-16 23:20:57',
@@ -57,7 +57,7 @@ return new class extends Migration
                     'user_role' => 'IT Admin',
                 ],
                 [
-                    'admin_ID' => '2',
+                    'admin_id' => '2',
                     'email' => 'pupt.alumniportalsystem@gmail.com',
                     'username' => 'Admin',
                     'email_verified_at' => '2022-09-16 23:20:57',

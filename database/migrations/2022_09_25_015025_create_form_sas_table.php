@@ -16,8 +16,8 @@ return new class extends Migration
         Schema::create('form_sas', function (Blueprint $table) {
             $table->increments('sas_ID');
 
-            $table->unsignedInteger('alumni_ID');
-            $table->foreign('alumni_ID')->references('alumni_ID')->on('tbl_alumni');
+            $table->unsignedInteger('alumni_id');
+            $table->foreign('alumni_id')->references('alumni_id')->on('tbl_alumni');
 
             $table->integer('sec1_q1');
             $table->integer('sec1_q2');

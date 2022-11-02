@@ -15,13 +15,13 @@ return new class extends Migration
     public function up()
     {
         Schema::create('tbl_alumni', function (Blueprint $table) {
-            $table->increments('alumni_ID');
+            $table->increments('alumni_id');
             $table->string('stud_number');
             $table->string('last_name');
             $table->string('first_name');
             $table->string('middle_name')->nullable();
             $table->string('suffix')->nullable();
-            $table->string('course_ID');
+            $table->string('course_id');
             $table->integer('batch');
             $table->integer('semesters')->nullable();
             $table->string('gender');
@@ -47,7 +47,7 @@ return new class extends Migration
                 'last_name' => 'Geneta',
                 'first_name' => 'Rodrigo',
                 'middle_name' => 'Pilariza',
-                'course_ID' => 'BSIT',
+                'course_id' => 'BSIT',
                 'batch' => '2022',
                 'gender' => 'Male',
                 'birthday' => '2001-01-31',

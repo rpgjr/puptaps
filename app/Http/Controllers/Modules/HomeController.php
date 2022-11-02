@@ -12,7 +12,7 @@ class HomeController extends Controller
 {
     public function getUserHomepage()
     {
-        $users = Alumni::where('alumni_ID', '=', Auth::user()->alumni_ID)->get();
+        $users = Alumni::where('alumni_id', '=', Auth::user()->alumni_id)->get();
         return view('user.homepage', compact('users'));
     }
 

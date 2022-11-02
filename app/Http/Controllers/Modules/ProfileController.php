@@ -13,14 +13,14 @@ class ProfileController extends Controller
     //
     public function getProfileIndex() {
         $courses = Courses::all();
-        $users = Alumni::where('alumni_ID', '=', Auth::user()->alumni_ID)->get();
+        $users = Alumni::where('alumni_id', '=', Auth::user()->alumni_id)->get();
         return view('user.profile.index', compact(['courses', 'users']));
     }
 
-    public function updateProfile(Request $request, $alumni_ID) {
+    public function updateProfile(Request $request, $alumni_id) {
 
         if($request->hasFile('user_profile')) {
-            $alumni = Alumni::where('alumni_ID', '=', Auth::user()->alumni_ID)->get();
+            $alumni = Alumni::where('alumni_id', '=', Auth::user()->alumni_id)->get();
             foreach($alumni as $image) {
                 if(!($image->user_profile) == null) {
                     unlink("Uploads/Profiles/".$image->user_profile);
@@ -33,17 +33,17 @@ class ProfileController extends Controller
             date_default_timezone_set('Asia/Manila');
             $fileName = date('m_d_Y [H-i-s]') . '.' . $extension;
             $file->move('Uploads/Profiles/', $fileName);
-            $account = Alumni::where('alumni_ID', '=', $alumni_ID)->update([
+            $account = Alumni::where('alumni_id', '=', $alumni_id)->update([
                 'user_profile' => $fileName,
             ]);
         }
 
-        $account = Alumni::where('alumni_ID', '=', $alumni_ID)->update([
+        $account = Alumni::where('alumni_id', '=', $alumni_id)->update([
             'last_name' => $request->input('last_name'),
             'first_name' => $request->input('first_name'),
             'middle_name' => $request->input('middle_name'),
             'suffix' => $request->input('suffix'),
-            'course_ID' => $request->input('course_ID'),
+            'course_id' => $request->input('course_id'),
             'batch' => $request->input('batch'),
             'semesters' => $request->input('semesters'),
             'gender' => $request->input('gender'),

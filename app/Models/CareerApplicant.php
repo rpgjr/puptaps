@@ -12,7 +12,7 @@ class CareerApplicant extends Model
     protected $table = 'tbl_career_applicants';
     protected $primaryKey = 'applicant_ID';
     protected $fillable = [
-        'alumni_ID',
-        'career_ID',
+        'alumni_id',
+        'career_id',
     ];
 }

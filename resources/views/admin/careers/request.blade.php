@@ -27,15 +27,15 @@
                                 <tr>
                                     <th scope="row">
                                         @foreach ($users as $user)
-                                            @if (($user->alumni_ID) == ($career->alumni_ID))
+                                            @if (($user->alumni_id) == ($career->alumni_id))
                                                 <p class="mt-3">{{ $user->first_name }} {{ $user->last_name }}</p>
                                             @endif
                                         @endforeach
                                     </th>
                                     <td>
-                                        <button type="button" class="btn btn-primary my-1" data-bs-toggle="modal" data-bs-target="#viewCareer{{ $career->career_ID }}">View</button>
+                                        <button type="button" class="btn btn-primary my-1" data-bs-toggle="modal" data-bs-target="#viewCareer{{ $career->career_id }}">View</button>
                                         @include('admin.components.viewCareer')
-                                        <button type="button" class="btn btn-success my-1" data-bs-toggle="modal" data-bs-target="#approveCareer{{ $career->career_ID }}">Approve</button>
+                                        <button type="button" class="btn btn-success my-1" data-bs-toggle="modal" data-bs-target="#approveCareer{{ $career->career_id }}">Approve</button>
                                         @include('admin.components.approveCareer')
                                         <button type="button" class="btn btn-danger my-1">Delete</button>
                                     </td>

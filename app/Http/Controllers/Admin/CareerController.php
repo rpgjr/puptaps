@@ -15,8 +15,8 @@ class CareerController extends Controller
         return view('admin.careers.request', compact(['careers', 'users']));
     }
 
-    public function approveCareer($career_ID) {
-        $career = Careers::where('career_ID', '=', $career_ID)->update(['approval' => 1]);
+    public function approveCareer($career_id) {
+        $career = Careers::where('career_id', '=', $career_id)->update(['approval' => 1]);
 
         return redirect(route('adminCareer.getCareerRequest'));
     }

@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Models\Forms\Pds;
+namespace App\Models\Forms\Eif;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class PdsQuestions extends Model
+class EifQuestions extends Model
 {
     use HasFactory;
-    protected $table = "form_pds_questions";
+    protected $table = "form_eif_questions";
     protected $primaryKey = "question_id";
     protected $fillable = [
         "category_id",

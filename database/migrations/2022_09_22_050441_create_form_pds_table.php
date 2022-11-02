@@ -16,8 +16,8 @@ return new class extends Migration
         Schema::create('form_pds', function (Blueprint $table) {
           $table->increments('pds_ID');
 
-          $table->unsignedInteger('alumni_ID');
-          $table->foreign('alumni_ID')->references('alumni_ID')->on('tbl_alumni');
+          $table->unsignedInteger('alumni_id');
+          $table->foreign('alumni_id')->references('alumni_id')->on('tbl_alumni');
 
           $table->string('fathers_name')->nullable();
           $table->string('fathers_number')->nullable();

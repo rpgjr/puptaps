@@ -14,13 +14,13 @@ return new class extends Migration
     public function up()
     {
         Schema::create('tbl_careers', function (Blueprint $table) {
-            $table->increments('career_ID');
+            $table->increments('career_id');
 
-            $table->unsignedInteger('alumni_ID')->nullable();
-            $table->foreign('alumni_ID')->references('alumni_ID')->on('tbl_alumni');
+            $table->unsignedInteger('alumni_id')->nullable();
+            $table->foreign('alumni_id')->references('alumni_id')->on('tbl_alumni');
 
-            $table->unsignedInteger('admin_ID')->nullable();
-            $table->foreign('admin_ID')->references('admin_ID')->on('tbl_admin');
+            $table->unsignedInteger('admin_id')->nullable();
+            $table->foreign('admin_id')->references('admin_id')->on('tbl_admin');
 
             $table->string('job_ad_image')->nullable();
             $table->string('job_name')->nullable();

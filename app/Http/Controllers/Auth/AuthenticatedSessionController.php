@@ -38,7 +38,7 @@ class AuthenticatedSessionController extends Controller
         foreach ($alumni as $alumni_update)
         {
             if(($alumni_update->email_verified_at) == null && Auth::check()) {
-                $update_alumni_table = DB::table('tbl_alumni')->where('alumni_ID', '=', Auth::user()->alumni_ID)->update([
+                $update_alumni_table = DB::table('tbl_alumni')->where('alumni_id', '=', Auth::user()->alumni_id)->update([
                     'email_verified_at' => Auth::user()->email_verified_at,
                 ]);
             }

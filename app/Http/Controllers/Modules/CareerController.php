@@ -13,9 +13,9 @@ class CareerController extends Controller
 {
     //
     public function getCareerIndex(Request $request) {
-        $users = Alumni::where('alumni_ID', '=', Auth::user()->alumni_ID)->get();
+        $users = Alumni::where('alumni_id', '=', Auth::user()->alumni_id)->get();
         $alumni = Alumni::all();
-        $applicants = CareerApplicant::where('alumni_ID', '=', Auth::user()->alumni_ID)->get();
+        $applicants = CareerApplicant::where('alumni_id', '=', Auth::user()->alumni_id)->get();
         $posts = Alumni::all();
         $data['query'] = $request->get('query');
         $data['careers'] = Careers::where('approval', '=', 1)->where('category', 'like', '%' . $data['query'] . '%')->paginate(15)->withQueryString();
@@ -24,7 +24,7 @@ class CareerController extends Controller
 
     public function addTextCareer(Request $request) {
         $this->validate($request,[
-            'alumni_ID' => 'required',
+            'alumni_id' => 'required',
             'job_name' => 'required',
             'company' => 'required',
             'salary' => 'required',
@@ -36,7 +36,7 @@ class CareerController extends Controller
         ]);
 
         $career = new Careers();
-        $career->alumni_ID = $request->input('alumni_ID');
+        $career->alumni_id = $request->input('alumni_id');
         $career->job_name = $request->input('job_name');
         $career->company = $request->input('company');
         $career->salary = $request->input('salary');
@@ -66,7 +66,7 @@ class CareerController extends Controller
         ]);
 
         $career = new Careers();
-        $career->alumni_ID = $request->input('alumni_ID');
+        $career->alumni_id = $request->input('alumni_id');
         $career->approval = $request->input('approval');
         $career->category = $request->input('category');
 
@@ -97,8 +97,8 @@ class CareerController extends Controller
     public function applyCareer(Request $request) {
         $applicant = new CareerApplicant();
 
-        $applicant->alumni_ID = $request->alumni_ID;
-        $applicant->course_ID = $request->course_ID;
+        $applicant->alumni_id = $request->alumni_id;
+        $applicant->course_id = $request->course_id;
 
         $applicant->save();
 

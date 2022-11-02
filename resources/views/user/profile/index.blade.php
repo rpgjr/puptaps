@@ -24,7 +24,7 @@
                 </div>
 
                 @foreach ($users as $user)
-                {!! Form::model($user, [ 'method' => 'patch','route' => ['userProfile.updateProfile', $user->alumni_ID], 'enctype' => 'multipart/form-data']) !!}
+                {!! Form::model($user, [ 'method' => 'patch','route' => ['userProfile.updateProfile', $user->alumni_id], 'enctype' => 'multipart/form-data']) !!}
                 <div class="row justify-content-center">
                     <div class="col-md-6">
                         <div  iv class="row box-profile align-items-center">
@@ -92,13 +92,13 @@
                             </div>
                             <div class="col-md-4 my-2">
                                 <label class="form-label">Course</label>
-                                <select class="form-select" name="course_ID">
+                                <select class="form-select" name="course_id">
                                     @foreach ($courses as $course)
-                                        <option value="{{ $course->course_ID }}"
-                                            @if (($course->course_ID) == $user->course_ID)
+                                        <option value="{{ $course->course_id }}"
+                                            @if (($course->course_id) == $user->course_id)
                                                 selected
                                             @endif
-                                            >{{ $course->course_ID }}</option>
+                                            >{{ $course->course_id }}</option>
                                     @endforeach
                                 </select>
                             </div>

@@ -12,7 +12,7 @@ class FormExitInterview extends Model
     protected $table = 'form_exit_interview';
     protected $primaryKey = 'exit_ID';
     protected $fillable = [
-        'alumni_ID',
+        'alumni_id',
 
         'employment_status',
         'reason',

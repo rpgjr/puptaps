@@ -82,7 +82,7 @@ class Answer extends Component
         $this->validateData();
 
         $values = array(
-            'alumni_ID' => Auth::user()->alumni_ID,
+            'alumni_id' => Auth::user()->alumni_id,
 
             'current_employment'            =>  $this->current_employment,
             'current_job_description'       =>  $this->current_job_description,

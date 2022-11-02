@@ -108,7 +108,7 @@
         <table style="width:100%; margin-top: 10px;">
             <tr>
                 <th colspan="1" style="width: 19%">Degree/Course: </th>
-                <td colspan="1" style="border-bottom: 1px solid black; width: 50%;">{{ $user->course_ID }}</td>
+                <td colspan="1" style="border-bottom: 1px solid black; width: 50%;">{{ $user->course_id }}</td>
                 <td colspan="1" style="width: 5%;"></td>
                 <th colspan="1" style="width: 21%;">Year Graduated: </th>
                 <td colspan="1" style="border-bottom: 1px solid black; width: 10%;">{{ $user->batch }}</td>

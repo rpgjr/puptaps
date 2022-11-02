@@ -21,7 +21,7 @@ class UsersImport implements ToModel, WithHeadingRow
             'first_name'     => $row['firstname'],
             'middle_name'    => $row['middlename'],
             'suffix'        => $row['suffix'],
-            'course_ID'        => $row['course'],
+            'course_id'        => $row['course'],
         ]);
     }
 }

@@ -53,7 +53,7 @@
                             </tr>
                             <tr>
                                 <th scope="row">Course</th>
-                                <td>{{ $user->course_ID }}</td>
+                                <td>{{ $user->course_id }}</td>
                             </tr>
                             <tr>
                                 <th scope="row">Year Graduated</th>

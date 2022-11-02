@@ -29,7 +29,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         //
-        // $users = DB::table('tbl_alumni')->where('alumni_ID', '=', Auth::user()->alumni_ID)->get();
+        // $users = DB::table('tbl_alumni')->where('alumni_id', '=', Auth::user()->alumni_id)->get();
         // view()->share('users', $users);
         Paginator::useBootstrap();
     }

@@ -10,11 +10,11 @@ class Careers extends Model
     use HasFactory;
 
     protected $table = 'tbl_careers';
-    protected $primaryKey = 'career_ID';
+    protected $primaryKey = 'career_id';
 
     protected $fillable = [
-        'alumni_ID',
-        'admin_ID',
+        'alumni_id',
+        'admin_id',
         'job_ad_image',
         'job_name',
         'company',

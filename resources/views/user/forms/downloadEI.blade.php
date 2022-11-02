@@ -187,7 +187,7 @@
         <table style="width:100%; margin-top: 10px;">
             <tr>
                 <th colspan="1" style="width: 19%">Degree/Course: </th>
-                <td colspan="1" style="border-bottom: 1px solid black; width: 50%;">{{ $user->course_ID }}</td>
+                <td colspan="1" style="border-bottom: 1px solid black; width: 50%;">{{ $user->course_id }}</td>
                 <td colspan="1" style="width: 5%;"></td>
                 <th colspan="1" style="width: 25%;">Student Number: </th>
                 <td colspan="1" style="border-bottom: 1px solid black; width: 30%;">{{ $user->stud_number }}</td>
