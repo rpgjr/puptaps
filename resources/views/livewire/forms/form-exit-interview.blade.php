@@ -188,6 +188,7 @@
                                                 <input class="form-check-input" type="radio" value="Others" wire:model="arrayAnswers.{{ $key }}.answer">
                                                 <label class="form-check-label">Others</label>
                                             </div>
+                                            <span class="text-danger">@error('arrayAnswers.' . $key . '.answer'){{ $message }}@enderror</span>
                                         @endif
                                     </div>
                                 </div>
@@ -200,7 +201,7 @@
         </div>
         @endif
 
-        {{-- Page 3 --}}
+        {{-- Pages 3 to 16 --}}
         @if (($currentPage != 1) && ($currentPage != 2) && ($currentPage != 17) && ($currentPage == $category->category_id))
         <div class="my-3">
             <div class="card">
@@ -234,7 +235,10 @@
                                     @foreach ($questions as $key => $value)
                                     @if (($value->category_id) == ($category->category_id))
                                     <tr>
-                                        <td>{{ $value->question_text }}</td>
+                                        <td>
+                                            {{ $value->question_text }}
+                                            <span class="text-danger">@error('arrayAnswers.' . $key . '.answer'){{ $message }}@enderror</span>
+                                        </td>
                                         <td>
                                             <div class="form-check">
                                                 <input class="form-check-input" type="radio" value="5" wire:model="arrayAnswers.{{ $key }}.answer">
@@ -260,7 +264,6 @@
                                                 <input class="form-check-input" type="radio" value="1" wire:model="arrayAnswers.{{ $key }}.answer">
                                             </div>
                                         </td>
-                                        <span class="text-danger">@error('arrayAnswers.' . $key . '.answer'){{ $message }}@enderror</span>
                                     </tr>
                                     @endif
                                     @endforeach
@@ -272,6 +275,7 @@
         </div>
         @endif
 
+        {{-- Page 17 --}}
         @if (($currentPage == 17) && ($currentPage == $category->category_id))
         <div class="my-3">
             <div class="card">
@@ -304,8 +308,6 @@
             </div>
         </div>
         @endif
-
-
         @endforeach
 
         {{-- Buttons --}}

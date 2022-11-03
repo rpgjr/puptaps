@@ -219,13 +219,20 @@
 
                     <div class="card-body">
                         <div class="row">
-                            <div class="col-md-12 mb-3">
+                            <div class="col-md-12 mb-1">
                                 <div class="alert alert-warning pb-0" role="alert">
                                     <p><b>*</b> Put <b>N/A</b> if Fields are Not Applicable to you.</p>
                                 </div>
                             </div>
                         </div>
 
+                        <div class="row">
+                            <div class="col-md-12 mb-2 text-end">
+                                <button type="button" class="btn btn-primary" wire:click="addSeminar()">Add Another</button>
+                            </div>
+                        </div>
+
+                        @for ($a=0; $a<$seminarCount; $a++)
                         <div class="row">
                             @foreach ($questions as $key => $value)
                             @if (($value->category_id) == ($category->category_id))
@@ -241,6 +248,7 @@
                             @endif
                             @endforeach
                         </div>
+                        @endfor
                     </div>
                 </div>
             </div>
