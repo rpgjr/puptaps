@@ -114,18 +114,6 @@
                                     @endfor
                                 </select>
                             </div>
-                            <div class="col-md-4 my-2">
-                                <label class="form-label">Number of Semesters with PUP</label>
-                                <select class="form-select" name="semesters">
-                                    @for ($i = 1; $i <= 20; $i++)
-                                        <option value="{{ $i }}"
-                                        @if (($user->semesters) == $i)
-                                            selected
-                                        @endif
-                                        >{{ $i }}</option>
-                                    @endfor
-                                </select>
-                            </div>
                             <div class="col-md-2 my-2">
                                 <label class="form-label">Gender:</label>
                                 <div class="form-check">

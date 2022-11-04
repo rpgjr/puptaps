@@ -232,7 +232,6 @@
                             </div>
                         </div>
 
-                        @for ($a=0; $a<$seminarCount; $a++)
                         <div class="row">
                             @foreach ($questions as $key => $value)
                             @if (($value->category_id) == ($category->category_id))
@@ -248,7 +247,6 @@
                             @endif
                             @endforeach
                         </div>
-                        @endfor
                     </div>
                 </div>
             </div>

@@ -36,7 +36,7 @@ return new class extends Migration
                 [
                     "category_id"   => "2",
                     "question_text" => "Number of Semesters with PUP",
-                    "question_type" => "text",
+                    "question_type" => "select",
                 ],
 
                 [

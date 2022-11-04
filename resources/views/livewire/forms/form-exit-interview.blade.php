@@ -285,11 +285,6 @@
 
                 <div class="card-body">
                     <div class="row justify-content-center">
-                        <div class="col-md-11 my-3">
-                            <p>
-                                This is to signify that I am willing to be subjected to company calls for placement or employment purposes. This shall also authorize the Polytechnic University of The Philippines – Career Development and Placement Office (PUP-CDPO) to include my name and contact details in the directory of graduates.
-                            </p>
-                        </div>
                         @foreach ($questions as $key => $value)
                         @if (($value->category_id) == ($category->category_id))
                             <div class="col-md-12 mb-3">

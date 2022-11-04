@@ -23,7 +23,6 @@ return new class extends Migration
             $table->string('suffix')->nullable();
             $table->string('course_id');
             $table->integer('batch');
-            $table->integer('semesters')->nullable();
             $table->string('gender');
             $table->date('birthday')->nullable();
             $table->integer('age')->nullable();

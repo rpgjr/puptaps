@@ -52,11 +52,12 @@ class FormExitInterview extends Component
     }
 
     protected $rules = [
-        "arrayAnswers.*.answer" => "required",
+        "arrayAnswers.*.answer" => "required|string",
     ];
 
     protected $messages = [
         "arrayAnswers.*.answer.required" => "This is required.",
+        "arrayAnswers.*.answer.string"   => "This is required.",
     ];
 
     public function mount() {

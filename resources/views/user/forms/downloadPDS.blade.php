@@ -8,27 +8,27 @@
 
     <style>
         body {
-            font-family: "Times New Roman", Times, serif;
+            font-family: "Consolas", monospace, monospace;
+            margin: 20px;
         }
 
         .pup-logo {
             float: left;
-            width: 70px;
-            height: 70px;
-            margin: 0;
+            width: 75px;
+            height: 75px;
+            margin-left: 25px;
         }
 
         .title {
             margin-top: 15px;
-            margin-left: 70px;
-            margin-right: 90px;
+            margin-left: 30px;
+            margin-right: 30px;
         }
 
         .title p {
             font-size: 20px;
             margin: 0;
             text-align: center;
-
         }
 
         .title-pds {
@@ -38,8 +38,6 @@
         }
 
         table, th, td {
-            /* border: 1px solid black;
-            border-collapse: collapse; */
             text-align: left;
             border-collapse: collapse;
         }
@@ -137,7 +135,20 @@
         </table>
         @endforeach
 
-        @foreach ($userPDS as $pds)
+        <div class="">
+            @foreach ($formQuestions as $question)
+                @foreach ($userAnswers as $answers)
+                    @if (($answers->question_id) == ($question->question_id))
+                        @if (($question->category_id) != 1 && ($question->category_id) == 2)
+                            <div>{{ $question->question_text }}:</div>
+                            <div>{{ $answers->answer }}</div>
+                        @endif
+                    @endif
+                @endforeach
+            @endforeach
+        </div>
+
+        {{-- @foreach ($userPDS as $pds)
         <table style="width:100%; margin-top: 10px;">
             <tr>
                 <th colspan="1" style="width: 19%">Father's Name: </th>
@@ -234,7 +245,7 @@
                 </tr>
             </table>
         </div>
-        @endforeach
+        @endforeach --}}
     </div>
 </body>
 </html>

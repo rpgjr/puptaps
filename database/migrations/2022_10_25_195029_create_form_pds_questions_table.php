@@ -80,6 +80,26 @@ return new class extends Migration
                     "question_text" => "Inclusive Dates",
                     "question_type" => "text",
                 ],
+                [
+                    "category_id"   => "4",
+                    "question_text" => "Seminar/Training/Workshop",
+                    "question_type" => "text",
+                ],
+                [
+                    "category_id"   => "4",
+                    "question_text" => "Inclusive Dates",
+                    "question_type" => "text",
+                ],
+                [
+                    "category_id"   => "4",
+                    "question_text" => "Seminar/Training/Workshop",
+                    "question_type" => "text",
+                ],
+                [
+                    "category_id"   => "4",
+                    "question_text" => "Inclusive Dates",
+                    "question_type" => "text",
+                ],
 
                 [
                     "category_id"   => "5",

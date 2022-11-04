@@ -76,7 +76,6 @@ class RegisteredUserController extends Controller
             $alumni->stud_number = $request->input('stud_number');
             $alumni->email = $request->input('email');
             $alumni->number = $request->input('number');
-            $alumni->semesters = $request->input('semesters');
             $alumni->civil_status = $request->input('civil_status');
             $alumni->city_address = $request->input('city_address');
             $alumni->username = $request->input('username');

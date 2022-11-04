@@ -45,7 +45,6 @@ class ProfileController extends Controller
             'suffix' => $request->input('suffix'),
             'course_id' => $request->input('course_id'),
             'batch' => $request->input('batch'),
-            'semesters' => $request->input('semesters'),
             'gender' => $request->input('gender'),
             'birthday' => $request->input('birthday'),
             'age' => $request->input('age'),

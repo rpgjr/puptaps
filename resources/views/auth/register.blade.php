@@ -108,15 +108,6 @@
                     </div>
 
                     <div class="col-md-6 my-2">
-                        <label class="form-label">No. of Semesters with PUP</label>
-                        <select class="form-select" name="semesters">
-                            @for ($i = 1; $i <= 20; $i++)
-                                <option value="{{ $i }}">{{ $i }}</option>
-                            @endfor
-                        </select>
-                    </div>
-
-                    <div class="col-md-6 my-2">
                         <label class="form-label">Civil Status</label>
                         <select class="form-select" name="civil_status">
                             <option value="Single">Single</option>

@@ -16,7 +16,6 @@ class FormPds extends Component
     public $totalPage = 5;
     public $currentPage = 1;
     public $countNull = 1;
-    public $seminarCount = 1;
 
     public function render() {
         $this->addNullAnswers();
@@ -54,11 +53,12 @@ class FormPds extends Component
     }
 
     protected $rules = [
-        "arrayAnswers.*.answer" => "required",
+        "arrayAnswers.*.answer" => "required|string",
     ];
 
     protected $messages = [
         "arrayAnswers.*.answer.required" => "This is required.",
+        "arrayAnswers.*.answer.string"   => "This is required.",
     ];
 
     public function mount() {
@@ -84,19 +84,6 @@ class FormPds extends Component
         }
     }
 
-
-    public function addSeminar() {
-        array_push($this->arrayAnswers,
-            [
-                "answer" => "",
-            ],
-            [
-                "answer" => "",
-            ],
-        );
-        $this->seminarCount++;
-    }
-
     public function saveAnswer() {
         $this->validate();
         $questions = count(PdsQuestions::all());
@@ -111,21 +98,10 @@ class FormPds extends Component
                 "question_id"   => $ctr,
                 "answer"        => $value["answer"],
             ]);
-            if($ctr == 9) {
-                if($this->seminarCount > 1) {
-                    $this->seminarCount--;
-                }
-                else {
-                    $ctr++;
-                }
-            }
-            else {
-                $ctr++;
-            }
+            $ctr++;
         }
         $this->arrayAnswers = [];
         $this->countNull = 1;
-        $this->seminarCount = 1;
 
         return redirect(route("userForm.index"));
     }
