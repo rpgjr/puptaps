@@ -1,10 +1,8 @@
 @extends('layouts.auth')
-
 @section('page-title', 'Registration')
-
 @section('content')
 
-<section class="form">
+{{-- <section class="form">
     <div class="container">
         <div class="row">
             <div class="col-md-12 center-register box-register">
@@ -150,6 +148,61 @@
                         <p>Already have an account? <a href="{{ route('login') }}">Login here!</a></p>
                     </div>
                     </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section> --}}
+<section>
+    <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-sm-12 col-md-8 col-lg-9 col-xl-9">
+                <div class="card bg-dark text-white" style="border-radius: 1rem;">
+                    <div class="card-body p-5">
+
+                        <form action="{{ route('login') }}" method="post">
+                        @if(Session::has('fail'))
+                            <div class="alert alert-danger">{{ Session::get('fail') }}</div>
+                        @endif
+                        @csrf
+
+                        <div class="row mb-md-5 mt-md-4 pb-5">
+                            <div class="sm-12 text-center">
+                                <a href="{{ route('landingPage') }}" class="pup-logo">
+                                    <img src="{{ asset('img/pupLogo.png') }}" style="height: 100px;">
+                                </a>
+                                <h2 class="my-3">PUPTAPS - Registration</h2>
+                            </div>
+
+                            <div class="col-sm-12 col-md-12 col-lg-6 col-xl-4 form-outline form-white mb-4">
+                                <label class="form-label" >Email</label>
+                                <input type="text" class="form-control form-control" name="email"/>
+                                <span class="text-danger">@error('email') {{$message}} @enderror</span>
+                            </div>
+
+                            <div class="col-sm-12 col-md-12 col-lg-6 col-xl-4 form-outline form-white mb-4">
+                                <label class="form-label">Password</label>
+                                <input type="text" class="form-control form-control" name="password"/>
+                                <span class="text-danger">@error('password') {{$message}} @enderror</span>
+                            </div>
+
+                            <p class="small mb-5 pb-lg-2">
+                                <a class="text-white fw-bold" href="#!">Forgot password?</a>
+                            </p>
+
+                            <div class="text-center">
+                                <button class="btn btn-outline-light px-5" type="submit">Login</button>
+                            </div>
+
+                        </div>
+
+                        <div>
+                            <p class="mb-0">No account yet? <a href="{{ route('register') }}" class="text-white fw-bold">Register here!</a>
+                            </p>
+                        </div>
+
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>

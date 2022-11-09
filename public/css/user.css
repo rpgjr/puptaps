@@ -1,9 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400&display=swap');
-
 /* All */
 body {
     font-family: 'Poppins', sans-serif;
-    margin-bottom: 100px;
 }
 
 /* Hover - Account Name button - Upper right*/

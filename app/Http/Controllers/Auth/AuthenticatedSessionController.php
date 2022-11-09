@@ -34,7 +34,7 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        $alumni = DB::table('tbl_alumni')->where('username', '=', $request->input('username'))->get();
+        $alumni = DB::table('tbl_alumni')->where('email', '=', $request->input('email'))->get();
         foreach ($alumni as $alumni_update)
         {
             if(($alumni_update->email_verified_at) == null && Auth::check()) {

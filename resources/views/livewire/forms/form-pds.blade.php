@@ -305,7 +305,6 @@
             @if ($currentPage == $totalPage)
                 <button class="btn btn-success" type="submit" style="width: 15%;">Submit</button>
             @endif
-
         </div>
 
     </form>

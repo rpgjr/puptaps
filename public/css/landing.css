@@ -1,37 +1,48 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
-
-
-/* All */
-body {
-    font-family: 'Poppins', sans-serif;
-    font-weight: normal;
-}
-
-/* Footer design */
-.homepage-footer {
-    margin-top: 100px;
-    background-color: #45526e;
+.pupt-title {
     color: #ffffff;
 }
 
-.homepage-footer a {
-    text-decoration: none;
+.container-greetings {
+    padding-top: 100px;
+    padding-bottom: 30px;
+    padding-left: 30px;
+    padding-right: 30px;
     color: #ffffff;
 }
 
-/* section->greetings */
 .welcome-title {
-    font-size: 50px;
+    font-size: 40px;
     font-weight: 600;
 }
 
-.features {
-    margin-top: 100px;
+.icon-socials {
+    color: #ffffff;
+    text-decoration: none;
+    padding: 15px;
+    font-size: 40px;
 }
 
-.container-box {
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    padding: 40px;
-    border-radius: 8px;
+.icon-socials:hover {
+    color: #C0392B;
+}
+
+.img-features {
+    height: 210px;
+    width: 100%;
+    overflow: hidden;
+    border-bottom: 1px solid #D5D8DC;
+}
+
+.card-content {
+    height: 200px;
+    overflow: hidden;
+}
+
+.card-text-title {
+    font-size: 30px;
+    font-weight: 500;
+}
+
+footer {
+    margin-top: 100px;
 }
