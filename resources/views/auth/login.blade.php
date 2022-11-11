@@ -57,18 +57,18 @@
                             @endif
                             @csrf
 
-                            <div class="mb-md-5 mt-md-4 pb-5">
+                            <div class="mb-md-5 mt-md-4">
                                 <div class="text-center">
                                     <a href="{{ route('landingPage') }}" class="pup-logo">
                                         <img src="{{ asset('img/pupLogo.png') }}" style="height: 100px;">
                                     </a>
-                                    <h2 class="my-3">PUPTAPS - Login</h2>
+                                    <h2 class="mt-3 mb-5">PUPTAPS - Login</h2>
                                 </div>
 
                                 <div class="form-outline form-white mb-4">
                                     <label class="form-label" >Email</label>
                                     <input type="text" class="form-control" name="email"/>
-                                    <span class="text-danger">@error('email') {{$message}} @enderror</span>
+                                    <span class="text-danger error-message">@error('email') {{$message}} @enderror</span>
                                 </div>
 
                                 <div class="form-outline form-white mb-4">
@@ -80,24 +80,24 @@
                                     <div class="input-group">
                                         <input type="password" name="password" id="password" class="form-control">
                                         <button class="btn btn-outline-secondary text-white" type="button" id="togglePassword">
-                                            <i class="fa-solid fa-eye" ></i>
+                                            <i id="eye_icon" class="fa-solid fa-eye" ></i>
                                         </button>
                                     </div>
-                                    <span class="text-danger">@error('password') {{$message}} @enderror</span>
+                                    <span class="text-danger error-message">@error('password') {{$message}} @enderror</span>
                                 </div>
 
                                 <p class="small mb-5 pb-lg-2">
                                     <a class="text-white fw-bold" href="#!">Forgot password?</a>
                                 </p>
 
-                                <div class="text-center">
+                                <div class="text-center my-0">
                                     <button class="btn btn-outline-light px-5" type="submit">Login</button>
                                 </div>
 
                             </div>
 
                             <div>
-                                <p class="mb-0">No account yet? <a href="{{ route('register') }}" class="text-white fw-bold">Register here!</a>
+                                <p class="mb-0 mt-5">No account yet? <a href="{{ route('register') }}" class="text-white fw-bold">Register here!</a>
                                 </p>
                             </div>
 

@@ -2,203 +2,132 @@
 @section('page-title', 'Registration')
 @section('content')
 
-{{-- <section class="form">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12 center-register box-register">
-                <form action="{{ route('register') }}" method="post">
-                @if(Session::has('fail'))
-                <div class="alert alert-danger">{{ Session::get('fail') }}</div>
-                @endif
-                @csrf
-
-                <h1 class="fw-bold mb-5 text-center">Registration</h1>
-
-                <div class="row">
-                    <div class="col-md-3 my-2">
-                        <label class="form-label">Last Name</label>
-                        <input type="text" class="form-control" placeholder="Last Name" name="last_name" value="{{old('last_name')}}">
-                        <span class="text-danger">@error('last_name') {{$message}} @enderror</span>
-                    </div>
-
-                    <div class="col-md-4 my-2">
-                        <label class="form-label">First Name</label>
-                        <input type="text" class="form-control" placeholder="First Name" name="first_name" value="{{old('first_name')}}">
-                        <span class="text-danger">@error('first_name') {{$message}} @enderror</span>
-                    </div>
-
-                    <div class="col-md-3 my-2">
-                        <label class="form-label">Middle Name</label>
-                        <input type="text" class="form-control" placeholder="Middle Name" name="middle_name" value="{{old('middle_name')}}">
-                        <span class="text-danger">@error('middle_name') {{$message}} @enderror</span>
-                    </div>
-
-                    <div class="col-md-2 my-2">
-                        <label class="form-label">Suffix</label>
-                        <input type="text" class="form-control" placeholder="Suffix" name="suffix" value="{{old('suffix')}}">
-                        <span class="text-danger">@error('suffix') {{$message}} @enderror</span>
-                    </div>
-
-                    <div class="col-md-4 my-2">
-                        <label class="form-label">Course</label>
-                        <select class="form-select" name="course_id">
-                            @foreach ($courses as $course)
-                                <option value="{{ $course->course_id }}">{{ $course->course_id }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-
-                    <div class="col-md-4 my-2">
-                    <label class="form-label">Batch</label>
-                        <select class="form-select" name="batch">
-                            @for ($i = date('Y'); $i >= 1996; $i--)
-                                <option value="{{ $i }}">{{ $i }}</option>
-                            @endfor
-                        </select>
-                    </div>
-                    <div class="col-md-4 my-2">
-                        <label class="form-label">Student Number</label>
-                        <input type="text" class="form-control" placeholder="Student Number" name="stud_number" value="{{old('stud_number')}}">
-                        <span class="text-danger">@error('stud_number') {{$message}} @enderror</span>
-                    </div>
-
-                    <div class="col-md-3 my-2">
-                        <label class="form-label">Gender:</label>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="gender" value="Male">
-                            <label class="form-check-label">Male</label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="gender" value="Female">
-                            <label class="form-check-label">Female</label>
-                        </div>
-                    </div>
-
-                    <div class="col-md-3 my-2">
-                        <label class="form-label">Birthday</label>
-                        <input type="date" class="form-control" placeholder="Last Name" name="birthday" value="{{old('birthday')}}">
-                        <span class="text-danger">@error('birthday') {{$message}} @enderror</span>
-                    </div>
-
-                    <div class="col-md-3 my-2">
-                        <label class="form-label">Age</label>
-                        <input type="text" class="form-control" placeholder="Age" name="age" value="{{old('age')}}">
-                        <span class="text-danger">@error('age') {{$message}} @enderror</span>
-                    </div>
-
-
-                    <div class="col-md-3 my-2">
-                        <label class="form-label">Religion</label>
-                        <input type="text" class="form-control" placeholder="Religion" name="religion" value="{{old('religion')}}">
-                        <span class="text-danger">@error('religion') {{$message}} @enderror</span>
-                    </div>
-
-                    <div class="col-md-6 my-2">
-                        <label class="form-label">Email</label>
-                        <input type="text" class="form-control" placeholder="Email" name="email" value="{{old('email')}}">
-                        <span class="text-danger">@error('email') {{$message}} @enderror</span>
-                    </div>
-
-                    <div class="col-md-6 my-2">
-                        <label class="form-label">Mobile Number</label>
-                        <input type="text" class="form-control" placeholder="Mobile Number" name="number" value="{{old('number')}}">
-                        <span class="text-danger">@error('number') {{$message}} @enderror</span>
-                    </div>
-
-                    <div class="col-md-6 my-2">
-                        <label class="form-label">Civil Status</label>
-                        <select class="form-select" name="civil_status">
-                            <option value="Single">Single</option>
-                            <option value="Married">Married</option>
-                            <option value="Divorced">Divorced</option>
-                            <option value="Widowed">Widowed</option>
-                        </select>
-                    </div>
-
-                    <div class="col-md-12 my-2">
-                        <label class="form-label">Address</label>
-                        <input type="text" class="form-control" placeholder="Address" name="city_address" value="{{old('city_address')}}">
-                        <span class="text-danger">@error('city_address') {{$message}} @enderror</span>
-                    </div>
-
-                    <div class="col-md-4 my-2">
-                        <label class="form-label">Username</label>
-                        <input type="text" class="form-control" placeholder="Username" name="username" value="{{old('username')}}">
-                        <span class="text-danger">@error('username') {{$message}} @enderror</span>
-                    </div>
-
-                    <div class="col-md-4 my-2">
-                        <label class="form-label">Password</label>
-                        <input type="password" class="form-control" placeholder="********" name="password">
-                        <span class="text-danger">@error('password') {{$message}} @enderror</span>
-                    </div>
-
-                    <div class="col-md-4 my-2">
-                        <label class="form-label">Confirm Password</label>
-                        <input type="password" class="form-control" placeholder="********" name="password_confirmation">
-                        <span class="text-danger">@error('password') {{$message}} @enderror</span>
-                    </div>
-
-                    <input type="hidden" name="user_role" value="Alumni">
-
-                    <div class="col-md-12 d-flex justify-content-center mt-4 mb-2">
-                        <button type="submit" class="btn btn-primary w-50">Register</button>
-                    </div>
-                    <div class="col-md-12 d-flex justify-content-center mt-3">
-                        <p>Already have an account? <a href="{{ route('login') }}">Login here!</a></p>
-                    </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</section> --}}
 <section>
     <div class="container py-5 h-100">
         <div class="row d-flex justify-content-center align-items-center h-100">
             <div class="col-sm-12 col-md-8 col-lg-9 col-xl-9">
-                <div class="card bg-dark text-white" style="border-radius: 1rem;">
+                <div class="card bg-light" style="border-radius: 1rem;">
                     <div class="card-body p-5">
 
-                        <form action="{{ route('login') }}" method="post">
+                        <form action="{{ route('register') }}" method="post">
                         @if(Session::has('fail'))
                             <div class="alert alert-danger">{{ Session::get('fail') }}</div>
                         @endif
                         @csrf
 
-                        <div class="row mb-md-5 mt-md-4 pb-5">
+                        <div class="row mb-md-5 mt-md-4 align-items-center justify-content-center">
                             <div class="sm-12 text-center">
                                 <a href="{{ route('landingPage') }}" class="pup-logo">
                                     <img src="{{ asset('img/pupLogo.png') }}" style="height: 100px;">
                                 </a>
-                                <h2 class="my-3">PUPTAPS - Registration</h2>
+                                <h2 class="mt-3 mb-5">PUPTAPS - Registration</h2>
                             </div>
 
-                            <div class="col-sm-12 col-md-12 col-lg-6 col-xl-4 form-outline form-white mb-4">
-                                <label class="form-label" >Email</label>
+                            <div class="col-sm-12 col-md-12 col-lg-8 col-xl-8 alert alert-warning p-3 text-center text-dark" role="alert">
+                                All fields with <span class="text-danger">*</span> are required.
+                            </div>
+
+                        <!-- Personal Information -->
+                            <hr class="mb-5">
+                            <h4 class="text-center mb-4">Personal Information</h4>
+                            <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 form-outline form-white mb-4">
+                                <label class="form-label" >Last Name <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control form-control" name="last_name"/>
+                                <span class="text-danger error-message">@error('last_name') {{$message}} @enderror</span>
+                            </div>
+
+                            <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 form-outline form-white mb-4">
+                                <label class="form-label">First Name <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control form-control" name="first_name"/>
+                                <span class="text-danger error-message">@error('first_name') {{$message}} @enderror</span>
+                            </div>
+
+                            <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 form-outline form-white mb-4">
+                                <label class="form-label">Middle Name <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control form-control" name="middle_name"/>
+                                <span class="text-danger error-message">@error('middle_name') {{$message}} @enderror</span>
+                            </div>
+
+                            <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 form-outline form-white mb-4">
+                                <label class="form-label">Extension Name</label>
+                                <input type="text" class="form-control form-control" name="suffix"/>
+                                <span class="text-danger error-message">@error('suffix') {{$message}} @enderror</span>
+                            </div>
+
+                        <!-- Student Information -->
+                            <hr class="my-5">
+                            <h4 class="text-center mb-4">Student Information</h4>
+                            <div class="col-sm-6 col-md-6 col-lg-3 col-xl-3 form-outline form-white mb-4">
+                                <label class="form-label">Course <span class="text-danger">*</span></label>
+                                <select class="form-select" name="course_id">
+                                    <option hidden selected value="">Please select...</option>
+                                    @foreach ($courses as $course)
+                                        <option value="{{ $course->course_id }}">{{ $course->course_id }}</option>
+                                    @endforeach
+                                </select>
+                                <span class="text-danger error-message">@error('course_id') {{$message}} @enderror</span>
+                            </div>
+
+                            <div class="col-sm-6 col-md-6 col-lg-3 col-xl-3 form-outline form-white mb-4">
+                                <label class="form-label">Year Graduated <span class="text-danger">*</span></label>
+                                <select class="form-select" name="batch">
+                                    <option hidden selected value="">Please select...</option>
+                                    @for ($i = date('Y'); $i >= 1996; $i--)
+                                        <option value="{{ $i }}">{{ $i }}</option>
+                                    @endfor
+                                </select>
+                                <span class="text-danger error-message">@error('batch') {{$message}} @enderror</span>
+                            </div>
+
+                            <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 form-outline form-white mb-4">
+                                <label class="form-label">Student Number</label>
+                                <input type="text" class="form-control form-control" name="stud_number"/>
+                                <span class="text-danger error-message">@error('stud_number') {{$message}} @enderror</span>
+                            </div>
+                        <!-- Account Information -->
+                            <hr class="my-5">
+                            <h4 class="text-center mb-4">Account Information</h4>
+                            <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 form-outline form-white mb-4">
+                                <label class="form-label">Email Address</label>
                                 <input type="text" class="form-control form-control" name="email"/>
-                                <span class="text-danger">@error('email') {{$message}} @enderror</span>
+                                <span class="text-danger error-message">@error('email') {{$message}} @enderror</span>
                             </div>
 
-                            <div class="col-sm-12 col-md-12 col-lg-6 col-xl-4 form-outline form-white mb-4">
+                            <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 form-outline form-white mb-4">
+                                <label class="form-label">Phone number</label>
+                                <input type="text" class="form-control form-control" name="number"/>
+                                <span class="text-danger error-message">@error('number') {{$message}} @enderror</span>
+                            </div>
+
+                            <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 form-outline form-white mb-4">
                                 <label class="form-label">Password</label>
-                                <input type="text" class="form-control form-control" name="password"/>
-                                <span class="text-danger">@error('password') {{$message}} @enderror</span>
+                                <div class="input-group">
+                                    <input type="password" name="password" id="password" class="form-control">
+                                    <button class="btn btn-outline-secondary" type="button" id="togglePassword">
+                                        <i id="eye_icon" class="fa-solid fa-eye" ></i>
+                                    </button>
+                                </div>
+                                <span class="text-danger error-message">@error('password') {{$message}} @enderror</span>
                             </div>
 
-                            <p class="small mb-5 pb-lg-2">
-                                <a class="text-white fw-bold" href="#!">Forgot password?</a>
-                            </p>
-
-                            <div class="text-center">
-                                <button class="btn btn-outline-light px-5" type="submit">Login</button>
+                            <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 form-outline form-white mb-4">
+                                <label class="form-label">Confirm Password</label>
+                                <div class="input-group">
+                                    <input type="password" name="password_confirmation" id="password_confirmation" class="form-control">
+                                    <button class="btn btn-outline-secondary" type="button" id="toggleConfirmPassword">
+                                        <i id="eye_icon_confirm" class="fa-solid fa-eye" ></i>
+                                    </button>
+                                </div>
+                                <span class="text-danger error-message">@error('password') {{$message}} @enderror</span>
                             </div>
 
+                            <div class="text-center mt-5 mb-0">
+                                <button class="btn btn-outline-dark px-5" type="submit">Register</button>
+                            </div>
                         </div>
 
                         <div>
-                            <p class="mb-0">No account yet? <a href="{{ route('register') }}" class="text-white fw-bold">Register here!</a>
-                            </p>
+                            <p class="mb-0 mt-5">Already have an account? <a href="{{ route('login') }}" class="text-dark fw-bold">Login here!</a></p>
                         </div>
 
                         </form>

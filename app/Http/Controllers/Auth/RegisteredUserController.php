@@ -59,6 +59,9 @@ class RegisteredUserController extends Controller
             'username' => ['required', 'unique:tbl_alumni'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
             'user_role' => ['required'],
+        ],
+        [
+            '*.required' => 'This is required',
         ]);
 
         if($check_studNumber && $check_lastName && $check_course) {

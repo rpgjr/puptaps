@@ -23,12 +23,12 @@ return new class extends Migration
             $table->string('suffix')->nullable();
             $table->string('course_id');
             $table->integer('batch');
-            $table->string('gender');
+            $table->string('gender')->nullable();
             $table->date('birthday')->nullable();
             $table->integer('age')->nullable();
             $table->string('religion')->nullable();
             $table->string('civil_status')->nullable();
-            $table->string('city_address');
+            $table->string('city_address')->nullable();
             $table->string('provincial_address')->nullable();
             $table->string('email');
             $table->timestamp('email_verified_at')->nullable();
