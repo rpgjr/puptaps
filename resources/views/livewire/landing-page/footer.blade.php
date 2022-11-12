@@ -1,33 +1,3 @@
-{{-- <!-- Landing Page Footer -->
-<footer class="homepage-footer p-4">
-    <div class="container">
-        <div class="row">
-            <div class="col">
-                <h6 class="text-uppercase mb-4 font-weight-bold">Contact Us</h6>
-                <p><a>PUP Taguig No.</a></p>
-            </div>
-            <div class="col">
-                <h6 class="text-uppercase mb-4 font-weight-bold">Stay Connected</h6>
-                <p><a href="">PUP Taguig Facebook Page</a> </p>
-                <p><a>Alumni Portal Facebook Page</a></p>
-                <p><a>CSC Facebook Page</a></p>
-            </div>
-            <div class="col">
-                <h6 class="text-uppercase mb-4 font-weight-bold">Need help?</h6>
-                <p><a>FAQs</a></p>
-                <p><a>Report a Problem</a></p>
-            </div>
-        </div>
-
-        <hr>
-        <div class="row">
-            <div class="col-md-12">
-                <div class="">© PUP Taguig Alumni Portal - [All4One]</div>
-            </div>
-        </div>
-    </div>
-</footer> --}}
-
 <footer class="text-center text-lg-start text-white" style="background-color: #45526e">
     <div class="container p-4 pb-0">
         <section class="">

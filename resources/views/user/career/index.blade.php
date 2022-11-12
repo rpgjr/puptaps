@@ -28,18 +28,19 @@
 
                 <div class="row justify-content-center">
                     {{-- Contents --}}
-                    <div class="col-md-9 box-career">
+                    <div class="col-md-9 container-box pt-5">
                         <div class="row">
-                            <div class="col-md-4 my-1">
+                            <div class="col-md-6 my-1">
                                 <form>
                                     @csrf
                                     <div class="input-group mb-3 ">
                                         <input type="text" class="form-control" placeholder="Search for a Category..." name="query" value="{{ $query }}">
                                         <button class="btn btn-primary" type="submit">Search</button>
+                                        <a href="{{ route('userCareer.index') }}" class="btn btn-secondary" type="button">Reset</a>
                                     </div>
                                 </form>
                             </div>
-                            <div class="col-md-8 my-1">
+                            <div class="col-md-6 my-1">
                                 <div class="dropdown float-end">
                                     <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                       Add Job Ad
@@ -48,8 +49,8 @@
                                       <li><button class="dropdown-item" data-bs-toggle="modal" data-bs-target="#addCareerImage">Add as Image</button></li>
                                       <li><button class="dropdown-item" data-bs-toggle="modal" data-bs-target="#addCareerText">Add as Text</button></li>
                                     </ul>
-                                    @include('user.components.add_career_image')
-                                    @include('user.components.add_career_text')
+                                    <livewire:career.add-career-image />
+                                    <livewire:career.add-career-text />
                                 </div>
                             </div>
                         </div>

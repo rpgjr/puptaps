@@ -13,6 +13,10 @@ body {
     font-weight: normal;
 }
 
+.auth-card {
+    border-radius: 1rem;
+}
+
 .normal-text-font-style {
     font-family: 'Montserrat', sans-serif;
 }
