@@ -59,10 +59,6 @@ body {
 }
 /* End Welcome Homepage */
 
-.form-section h2, .career-section h2 {
-    font-weight: bold;
-}
-
 .carousel-img img {
     height: 300px;
     width: 500px;

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Alumni;
 use App\Models\CareerApplicant;
 use App\Models\Careers;
+use Illuminate\Auth\Events\Validated;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -17,9 +18,10 @@ class CareerController extends Controller
         $alumni = Alumni::all();
         $applicants = CareerApplicant::where('alumni_id', '=', Auth::user()->alumni_id)->get();
         $posts = Alumni::all();
+        $title = "Careers";
         $data['query'] = $request->get('query');
         $data['careers'] = Careers::where('approval', '=', 1)->where('category', 'like', '%' . $data['query'] . '%')->paginate(15)->withQueryString();
-        return view('user.career.index', compact(['users', 'applicants', 'posts', 'alumni']), $data);
+        return view('user.career.index', compact(['users', 'applicants', 'posts', 'alumni', 'title']), $data);
     }
 
     public function addTextCareer(Request $request) {
@@ -49,7 +51,7 @@ class CareerController extends Controller
         $career->save();
 
         if(Auth::check()) {
-            return back()->with('success', 'Wait for the admin to Approve your Job Posting. Thank you.');
+            return back()->with('success', 'Thank you for posting. Kindly wait for the admin to Approve your Job Posting.');
         }
         // elseif(Session()->get('loginAdminID')) {
         //     return redirect(route('admin.careerIndex'));
@@ -83,7 +85,7 @@ class CareerController extends Controller
 
         $career->save();
 
-        if(Auth::check()) {
+        if($career->save()) {
             return back()->with('success', 'Wait for the admin to Approve your Job Posting. Thank you.');
         }
         // elseif(Session()->get('loginAdminID')) {

@@ -13,6 +13,8 @@
 
     @yield('content')
 
+    <livewire:components.footer />
+
     {{-- JS --}}
     <livewire:components.scripts />
     @livewireScripts
