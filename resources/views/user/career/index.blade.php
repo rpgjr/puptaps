@@ -26,7 +26,7 @@
 
                         <!-- Career Submenu - Left Side -->
                         <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-3">
-                            <livewire:career.career-submenu />
+                            <livewire:career.career-submenu :query="$query" />
                         </div>
 
                         <!-- Career Contents -->
@@ -41,10 +41,10 @@
                             <!-- If Post/Query has data -->
                             @else
                                 @foreach ($careers as $career)
-                                    @if ($career->job_ad_image == null)
+                                    @if (($career->job_ad_image == null))
                                         <!-- If Post was Text -->
-
-                                    @else
+                                        <livewire:career.career-text :career="$career" :alumni="$alumni" />
+                                    @elseif (($career->job_ad_image != null))
                                         <!-- If Post was Image -->
                                         <livewire:career.career-image-modal :career="$career" :alumni="$alumni" />
                                     @endif

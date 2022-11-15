@@ -14,69 +14,91 @@ class CareerController extends Controller
 {
     //
     public function getCareerIndex(Request $request) {
-        $users = Alumni::where('alumni_id', '=', Auth::user()->alumni_id)->get();
-        $alumni = Alumni::all();
-        $applicants = CareerApplicant::where('alumni_id', '=', Auth::user()->alumni_id)->get();
-        $posts = Alumni::all();
-        $title = "Careers";
-        $data['query'] = $request->get('query');
-        $data['careers'] = Careers::where('approval', '=', 1)->where('category', 'like', '%' . $data['query'] . '%')->paginate(15)->withQueryString();
-        return view('user.career.index', compact(['users', 'applicants', 'posts', 'alumni', 'title']), $data);
+        $users              = Alumni::where('alumni_id', '=', Auth::user()
+                              ->alumni_id)->get();
+        $alumni             = Alumni::all();
+        $applicants         = CareerApplicant::where('alumni_id', '=', Auth::user()
+                              ->alumni_id)->get();
+        $posts              = Alumni::all();
+        $title              = "Careers";
+        $data['query']      = $request->get('query');
+        $data['careers']    = Careers::where('approval', '=', 1)
+                              ->where('category', 'like', '%' . $data['query'] . '%')
+                              ->paginate(15)
+                              ->withQueryString();
+
+        return view('user.career.index',
+            compact([
+                'users',
+                'applicants',
+                'posts',
+                'alumni',
+                'title'
+            ]), $data);
     }
 
     public function addTextCareer(Request $request) {
         $this->validate($request,[
-            'alumni_id' => 'required',
-            'job_name' => 'required',
-            'company' => 'required',
-            'salary' => 'required',
-            'description' => 'required',
-            'category' => 'required',
-            'email' => 'required',
-            'number' => 'required',
-            'approval' => 'required',
+            'alumni_id'     => 'required',
+            'job_name'      => 'required',
+            'company'       => 'required',
+            'salary'        => 'required',
+            'description'   => 'required',
+            'category'      => 'required',
+            'email'         => 'required',
+            'number'        => 'required',
+            'approval'      => 'required',
         ]);
 
         $career = new Careers();
-        $career->alumni_id = $request->input('alumni_id');
-        $career->job_name = $request->input('job_name');
-        $career->company = $request->input('company');
-        $career->salary = $request->input('salary');
-        $career->description = $request->input('description');
-        $career->category = $request->input('category');
-        $career->email = $request->input('email');
-        $career->number = $request->input('number');
-        $career->approval = $request->input('approval');
+        $career->alumni_id      = $request->input('alumni_id');
+        $career->job_name       = $request->input('job_name');
+        $career->company        = $request->input('company');
+        $career->salary         = $request->input('salary');
+        $career->description    = $request->input('description');
+        $career->category       = $request->input('category');
+        $career->email          = $request->input('email');
+        $career->number         = $request->input('number');
+        $career->approval       = $request->input('approval');
 
         $career->save();
 
-        if(Auth::check()) {
-            return back()->with('success', 'Thank you for posting. Kindly wait for the admin to Approve your Job Posting.');
+        if($career->save()) {
+            return back()
+                   ->with(
+                        'success',
+                        'Thank you for posting. Kindly wait for the admin to Approve your Job Posting.'
+                    );
         }
         // elseif(Session()->get('loginAdminID')) {
         //     return redirect(route('admin.careerIndex'));
         // }
         else {
-            return back()->with('fail', 'There is an Error Occured');
+            return back()
+                   ->with(
+                        'fail',
+                        'There is an Error Occured'
+                    );
         }
     }
 
     public function addImageCareer(Request $request) {
         $request->validate([
-            'job_ad_image' => 'required|mimes:jpg,jpeg,png',
-            'category' => 'required',
+            'job_ad_image'  => 'required|mimes:jpg,jpeg,png',
+            'category'      => 'required',
         ]);
 
         $career = new Careers();
-        $career->alumni_id = $request->input('alumni_id');
-        $career->approval = $request->input('approval');
-        $career->category = $request->input('category');
+        $career->alumni_id  = $request->input('alumni_id');
+        $career->approval   = $request->input('approval');
+        $career->category   = $request->input('category');
 
         if($request->hasFile('job_ad_image')) {
-            $file = $request->file('job_ad_image');
-            $extension = $file->getClientOriginalExtension();
+
+            $file       = $request->file('job_ad_image');
+            $extension  = $file->getClientOriginalExtension();
             date_default_timezone_set('Asia/Manila');
-            $fileName = date('m_d_Y [H-i-s]') . '.' . $extension;
+            $fileName   = date('m_d_Y [H-i-s]') . '.' . $extension;
             $file->move('Uploads/Career/', $fileName);
 
             $career->job_ad_image = $fileName;
@@ -86,13 +108,21 @@ class CareerController extends Controller
         $career->save();
 
         if($career->save()) {
-            return back()->with('success', 'Wait for the admin to Approve your Job Posting. Thank you.');
+            return back()
+                   ->with(
+                        'success',
+                        'Thank you for posting. Kindly wait for the admin to Approve your Job Posting.'
+                    );
         }
         // elseif(Session()->get('loginAdminID')) {
         //     return redirect(route('admin.careerIndex'));
         // }
         else {
-            return back()->with('fail', 'There is an Error Occured');
+            return back()
+                   ->with(
+                        'fail',
+                        'There is an Error Occured'
+                    );
         }
     }
 
