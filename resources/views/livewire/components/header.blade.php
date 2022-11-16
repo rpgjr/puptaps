@@ -5,6 +5,7 @@
 {{-- CSS --}}
 <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.min.css') }}">
 <link rel="stylesheet" href="{{ asset('css/common.css') }}">
+<link rel="stylesheet" href="{{ asset('css/admin.css') }}">
 <link rel="stylesheet" href="{{ asset('css/landing.css') }}">
 <link rel="stylesheet" href="{{ asset('css/user.css') }}">
 <link rel="stylesheet" href="{{ asset('css/navbar.css') }}">

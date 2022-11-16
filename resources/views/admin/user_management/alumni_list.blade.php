@@ -1,9 +1,7 @@
 @extends('layouts.admin')
-
-@section('page-title', 'Admin')
-@section('alumni-list-status', 'active')
-@section('monitor-collapse', 'show')
-@section('user-status', 'active')
+@section('page-title', 'Alumni Manager')
+@section('active-alumni-manager', 'active')
+@section('page-name', 'Alumni Manager')
 
 @section('content')
 

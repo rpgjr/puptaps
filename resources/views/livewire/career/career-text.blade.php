@@ -22,7 +22,7 @@
                     <hr class="mb-3 mt-3">
 
                     <h5 class="fw-bold mb-3">Job Details</h5>
-                    <p class=""> {{ $career->description }}</p>
+                    <p class="" style="white-space: pre-wrap;"> {{ $career->description }}</p>
                     <p class="fw-bold mb-0">
                         Salary:
                         <span class="fw-normal">{{ $career->salary }}</span>

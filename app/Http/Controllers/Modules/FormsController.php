@@ -29,6 +29,7 @@ class FormsController extends Controller
 
         $users = Alumni::where("alumni_id", "=", Auth::user()->alumni_id)->get();
         $forms = Forms::all();
+        $title = "Required Forms";
         $pdsAnswer = PdsAnswers::where("alumni_id", "=", Auth::user()->alumni_id)->get();
         $eifAnswer = EifAnswers::where("alumni_id", "=", Auth::user()->alumni_id)->get();
         $sasAnswer = SasAnswers::where("alumni_id", "=", Auth::user()->alumni_id)->get();
@@ -41,6 +42,7 @@ class FormsController extends Controller
                 "pdsAnswer",
                 "eifAnswer",
                 "sasAnswer",
+                "title",
             ]
         ));
     }

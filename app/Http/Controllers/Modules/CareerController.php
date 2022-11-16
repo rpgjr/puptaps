@@ -28,13 +28,15 @@ class CareerController extends Controller
                               ->withQueryString();
 
         return view('user.career.index',
-            compact([
+        compact(
+            [
                 'users',
                 'applicants',
                 'posts',
                 'alumni',
                 'title'
-            ]), $data);
+            ]
+        ), $data);
     }
 
     public function addTextCareer(Request $request) {
