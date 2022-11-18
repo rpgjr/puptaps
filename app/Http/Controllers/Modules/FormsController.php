@@ -48,17 +48,38 @@ class FormsController extends Controller
     }
 
     public function getPDS() {
+        $title = "Personal Data Sheet";
         $users = Alumni::where('alumni_id', '=', Auth::user()->alumni_id)->get();
-        return view('user.forms.formPDS', compact(['users']));
+        return view('user.forms.formPDS',
+        compact(
+            [
+                'users',
+                'title',
+            ]
+        ));
     }
 
     public function getExiteInterview() {
+        $title = "Exit Interview Form";
         $users = Alumni::where('alumni_id', '=', Auth::user()->alumni_id)->get();
-        return view('user.forms.formExitInterview', compact(['users']));
+        return view('user.forms.formExitInterview',
+        compact(
+            [
+                'users',
+                'title',
+            ]
+        ));
     }
 
     public function getSAS() {
+        $title = "Student Affairs and Services Form";
         $users = Alumni::where('alumni_id', '=', Auth::user()->alumni_id)->get();
-        return view('user.forms.formSAS', compact(['users']));
+        return view('user.forms.formSAS',
+        compact(
+            [
+                'users',
+                'title',
+            ]
+        ));
     }
 }

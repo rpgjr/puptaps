@@ -5,18 +5,17 @@
 
 @section('content')
 
-    <div class="container my-3">
-        <div class="row my-5">
-            <div class="col-md-6">
-                <h3>Exit Interview Form</h3>
-            </div>
-        </div>
+    <section class="mt-4 mt-sm-4 mt-md-4 mt-lg-5 mt-xl-5">
+        <div class="container-fluid my-3">
+            <!-- Page Title Text H1 -->
+            <livewire:components.page-title :title="$title"/>
 
-        <div class="row mx-4 justify-content-center">
-            <div class="col-md-10 box-forms">
-                @livewire('forms.form-exit-interview')
+            <div class="row justify-content-center g-0">
+                <div class="col-11 col-sm-9 col-md-9 col-lg-9 col-xl-9">
+                    <livewire:forms.form-exit-interview />
+                </div>
             </div>
         </div>
-    </div>
+    </section>
 
 @endsection

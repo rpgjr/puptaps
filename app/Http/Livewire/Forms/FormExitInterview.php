@@ -16,6 +16,7 @@ class FormExitInterview extends Component
     public $currentPage = 1;
     public $totalPage = 17;
     public $countNull = 1;
+    public $progressBar = -5.88;
 
     public function render() {
         $this->addNullAnswers();
@@ -38,6 +39,7 @@ class FormExitInterview extends Component
         foreach($categories as $category) {
             if($this->currentPage == $category->category_id) {
                 if($this->countNull == $this->currentPage) {
+                    $this->progressBar = $this->progressBar + 5.88;
                     foreach($questions as $question) {
                         if($question->category_id == $category->category_id) {
                             array_push($this->arrayAnswers, [
@@ -62,6 +64,7 @@ class FormExitInterview extends Component
 
     public function mount() {
         $this->currentPage = 1;
+        $this->progressBar = -5.88;
     }
 
     public function previousPage() {

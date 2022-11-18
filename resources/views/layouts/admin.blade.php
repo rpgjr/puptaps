@@ -11,10 +11,11 @@
     <main>
         <div class="px-0 py-0 container-fluid">
             <div class="row g-0" style="height: 100vh;">
-                <div class="col-2">
+                <div class="col-0 col-sm-0 col-md-0 col-lg-0 col-xl-2 d-none d-sm-none d-md-none d-lg-none d-xl-block">
                     <livewire:admin.admin-sidebar />
                 </div>
-                <div class="col-10">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-10">
+                    <livewire:admin.admin-sidebar-offcanvas />
                     <div class="row g-0 w-100">
                         <div class="col-12">
                             <livewire:admin.admin-navbar />

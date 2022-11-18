@@ -16,6 +16,7 @@ class FormSas extends Component
     public $totalPage = 15;
     public $currentPage = 1;
     public $countNull = 1;
+    public $progressBar = -6.67;
 
     public function render() {
         $this->addNullAnswers();
@@ -39,6 +40,7 @@ class FormSas extends Component
         foreach($categories as $category) {
             if($this->currentPage == $category->category_id) {
                 if($this->countNull == $this->currentPage) {
+                    $this->progressBar = $this->progressBar + 6.67;
                     foreach($questions as $question) {
                         if($question->category_id == $category->category_id) {
                             array_push($this->arrayAnswers, [
@@ -63,6 +65,7 @@ class FormSas extends Component
 
     public function mount() {
         $this->currentPage = 1;
+        $this->progressBar = -6.67;
     }
 
     public function previousPage() {

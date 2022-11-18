@@ -84,7 +84,7 @@ return new class extends Migration
                 ],
                 [
                     "form_id"       => "3",
-                    "category_name" => "Waiver",
+                    "category_name" => "Date and Signature",
                 ],
             )
         );

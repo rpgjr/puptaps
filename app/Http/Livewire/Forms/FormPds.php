@@ -16,6 +16,8 @@ class FormPds extends Component
     public $totalPage = 5;
     public $currentPage = 1;
     public $countNull = 1;
+    public $progressBar = -20;
+    public $form_name = "PDS";
 
     public function render() {
         $this->addNullAnswers();
@@ -39,6 +41,7 @@ class FormPds extends Component
         foreach($categories as $category) {
             if($this->currentPage == $category->category_id) {
                 if($this->countNull == $this->currentPage) {
+                    $this->progressBar = $this->progressBar + 20;
                     foreach($questions as $question) {
                         if($question->category_id == $category->category_id) {
                             array_push($this->arrayAnswers, [
@@ -63,6 +66,7 @@ class FormPds extends Component
 
     public function mount() {
         $this->currentPage = 1;
+        $this->progressBar = -20;
     }
 
     public function previousPage() {
@@ -76,8 +80,8 @@ class FormPds extends Component
 
     public function nextPage() {
         $this->resetErrorBag();
-        $this->addNullAnswers();
         $this->validate();
+        $this->addNullAnswers();
         $this->currentPage++;
         if($this->currentPage > $this->totalPage) {
             $this->currentPage = $this->totalPage;

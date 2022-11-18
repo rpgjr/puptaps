@@ -13,6 +13,10 @@ body {
     font-weight: normal;
 }
 
+nav {
+    min-height: 80px;
+}
+
 .auth-card {
     border-radius: 1rem;
 }
@@ -49,7 +53,7 @@ body {
 }
 
 .footer-design {
-    margin-top: 100px;
+    margin-top: 200px;
 }
 /* End: Styles */
 
