@@ -10,7 +10,7 @@ const CONTROLLER_FORMS = 'App\Http\Controllers\Modules\FormsController';
 const CONTROLLER_FORM_PDF = 'App\Http\Controllers\Modules\FormPDFController';
 const CONTROLLER_TRACER= 'App\Http\Controllers\Modules\TracerController';
 
-const CONTROLLER_ADMIN_ALUMNILIST = 'App\Http\Controllers\Admin\AlumniListController';
+const CONTROLLER_ADMIN_USER_MANAGER = 'App\Http\Controllers\Admin\UserManagerController';
 const CONTROLLER_ADMIN_CAREER = 'App\Http\Controllers\Admin\CareerController';
 
 /*
@@ -180,19 +180,19 @@ Route::group(
 // Admin - User Management
 Route::group(
     [
-        'controller' => CONTROLLER_ADMIN_ALUMNILIST,
+        'controller' => CONTROLLER_ADMIN_USER_MANAGER,
         'prefix' => 'admin/user-management',
         'as' => 'adminUserManagement.',
         'middleware' => ['isUser', 'auth']
     ], function() {
-        Route::get('alumni-list', 'alumniListIndex')
-            ->name('alumniList');
+        Route::get('alumni-manager', 'getAlumniManager')
+               ->name('getAlumniManager');
 
         Route::post('add-alumni-list', 'addAlumniList')
-            ->name('addAlumniList');
+               ->name('addAlumniList');
 
         Route::post('add-alumni-list', 'addAlumniList')
-            ->name('addAlumniList');
+               ->name('addAlumniList');
 });
 
 Route::group(

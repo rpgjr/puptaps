@@ -8,12 +8,13 @@ use App\Models\AlumniList;
 use Illuminate\Http\Request;
 use Excel;
 
-class AlumniListController extends Controller
+class UserManagerController extends Controller
 {
-    public function alumniListIndex(Request $request) {
+    public function getAlumniManager(Request $request) {
         $data['q'] = $request->get('q');
         $data['alumni'] = AlumniList::where('last_name', 'like', '%' . $data['q'] . '%')->paginate(15)->withQueryString();
-        return view('admin.user_management.alumni_list', $data);
+        $title = "Alumni Manager";
+        return view('admin.user_management.user_manager',$data , compact(['title']));
     }
 
     public function addAlumniList(Request $request)

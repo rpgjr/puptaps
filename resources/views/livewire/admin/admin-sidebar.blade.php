@@ -101,7 +101,7 @@
                 </a>
                 <div class="mt-1">
                     <div class="collapse show ms-4" id="userManager">
-                        <a type="button" href="{{ route('adminUserManagement.alumniList') }}" class="btn btn-sm btn-dark w-100 text-start py-2 @yield('active-alumni-manager')">
+                        <a type="button" href="{{ route('adminUserManagement.getAlumniManager') }}" class="btn btn-sm btn-dark w-100 text-start py-2 @yield('active-alumni-manager')">
                             <i class="fa-solid fa-user-graduate me-1"></i>
                             Alumni Manager
                         </a>
@@ -125,7 +125,7 @@
                             <i class="fa-solid fa-gauge me-1"></i>
                             Career Dashboard
                         </a>
-                        <a type="button" href="" class="btn btn-sm btn-dark w-100 text-start py-2">
+                        <a type="button" href="{{ route('adminCareer.getCareerRequest') }}" class="btn btn-sm btn-dark w-100 text-start py-2 @yield('active-career-approval')">
                             <i class="fa-solid fa-circle-check me-1"></i>
                             Posting Approval
                         </a>

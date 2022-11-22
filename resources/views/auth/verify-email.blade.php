@@ -25,7 +25,7 @@
                                 <button type="submit" class="btn btn-primary float-start">Resend Verification</button>
                             </form>
 
-                            <form action="{{ route('logout') }}">
+                            <form action="{{ route('logout') }}" method="post">
                                 @csrf
                                 <button type="submit" class="btn btn-secondary float-end">Logout</button>
                             </form>

@@ -7,7 +7,7 @@
     <div class="container-fluid">
         <div class="row mx-1">
             <div class="col-12 mt-5">
-                <h3>Statistics Summary</h3>
+                <h3>Summary</h3>
             </div>
 
             <!-- Start: Cards -->

@@ -12,7 +12,8 @@ class CareerController extends Controller
     public function getCareerRequest() {
         $careers = Careers::all();
         $users = Alumni::all();
-        return view('admin.careers.request', compact(['careers', 'users']));
+        $title = "Posting Approval";
+        return view('admin.careers.career-approval', compact(['careers', 'users', 'title']));
     }
 
     public function approveCareer($career_id) {
