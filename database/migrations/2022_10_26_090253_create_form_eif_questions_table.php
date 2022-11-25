@@ -290,6 +290,11 @@ return new class extends Migration
 
                 [
                     "category_id"   => "17",
+                    "question_text" => "Give your comments/suggestions/recommendations for the improvement of PUP Taguig",
+                    "question_type" => "textarea",
+                ],
+                [
+                    "category_id"   => "17",
                     "question_text" => "Date Signed",
                     "question_type" => "date",
                 ],

@@ -145,7 +145,7 @@ return new class extends Migration
                     "question_type" => "radio",
                 ],
                 [
-                    "category_id"   => "4",
+                    "category_id"   => "3",
                     "question_text" => "Rewards and incentives for excellence in SAS.",
                     "question_type" => "radio",
                 ],

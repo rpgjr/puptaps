@@ -229,11 +229,11 @@
                         <tbody>
 
                                 @foreach ($questions as $key => $value)
-                                @if (($value->category_id) == ($category->category_id))
+                                @if (($value->category_id) == ($category->category_id) && ($value->question_type) != 'textarea')
                                 <tr>
                                     <td>
                                         {{ $value->question_text }}
-                                        <span class="text-danger">@error('arrayAnswers.' . $key . '.answer'){{ $message }}@enderror</span>
+                                        <span class="text-danger error-message">@error('arrayAnswers.' . $key . '.answer'){{ $message }}@enderror</span>
                                     </td>
                                     <td>
                                         <div class="form-check">
@@ -293,9 +293,16 @@
                         <div class="col-md-12 mb-3">
                             <div class="form-group">
                                 <div>
-                                    <label class="form-label">{{ $value->question_text }}</label>
-                                    <input type="{{ $value->question_type }}" class="form-control @error('arrayAnswers.' . $key . '.answer') is-invalid @enderror" wire:model="arrayAnswers.{{ $key }}.answer">
-                                    <span class="text-danger error-message">@error('arrayAnswers.' . $key . '.answer'){{ $message }}@enderror</span>
+                                    @if ($value->question_type != 'textarea')
+                                        <label class="form-label">{{ $value->question_text }}</label>
+                                        <input type="{{ $value->question_type }}" class="form-control @error('arrayAnswers.' . $key . '.answer') is-invalid @enderror" wire:model="arrayAnswers.{{ $key }}.answer">
+                                        <span class="text-danger error-message">@error('arrayAnswers.' . $key . '.answer'){{ $message }}@enderror</span>
+                                    @endif
+                                    @if ($value->question_type == 'textarea')
+                                        <label class="form-label">{{ $value->question_text }}</label>
+                                        <textarea class="form-control @error('arrayAnswers.' . $key . '.answer') is-invalid @enderror" wire:model="arrayAnswers.{{ $key }}.answer"></textarea>
+                                        <span class="text-danger error-message">@error('arrayAnswers.' . $key . '.answer'){{ $message }}@enderror</span>
+                                    @endif
                                 </div>
                             </div>
                         </div>

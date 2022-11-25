@@ -141,7 +141,7 @@
                 </a>
                 <div class="mt-1">
                     <div class="collapse show ms-4" id="reportsManager">
-                        <a type="button" href="" class="btn btn-sm btn-dark w-100 text-start py-2">
+                        <a type="button" href="{{ route("adminReports.getFormReports") }}" class="btn btn-sm btn-dark w-100 text-start py-2 @yield('active-form-reports')">
                             <i class="fa-solid fa-file-lines me-1"></i>
                             Form Reports
                         </a>

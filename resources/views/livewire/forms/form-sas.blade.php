@@ -156,7 +156,7 @@
                             <tr>
                                 <td>
                                     {{ $value->question_text }}
-                                    <span class="text-danger">@error('arrayAnswers.' . $key . '.answer'){{ $message }}@enderror</span>
+                                    <span class="text-danger error-message">@error('arrayAnswers.' . $key . '.answer'){{ $message }}@enderror</span>
                                 </td>
                                 <td>
                                     <div class="form-check">

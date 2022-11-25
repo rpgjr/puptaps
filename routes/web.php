@@ -6,12 +6,16 @@ use Illuminate\Http\Request;
 
 const CONTROLLER_CAREER = 'App\Http\Controllers\Modules\CareerController';
 const CONTROLLER_PROFILE = 'App\Http\Controllers\Modules\ProfileController';
-const CONTROLLER_FORMS = 'App\Http\Controllers\Modules\FormsController';
-const CONTROLLER_FORM_PDF = 'App\Http\Controllers\Modules\FormPDFController';
 const CONTROLLER_TRACER= 'App\Http\Controllers\Modules\TracerController';
+
+const CONTROLLER_FORMS = 'App\Http\Controllers\Modules\FormsController';
+const CONTROLLER_PDS_TO_PDF = 'App\Http\Controllers\Modules\PdsToPdfController';
+const CONTROLLER_EIF_TO_PDF = 'App\Http\Controllers\Modules\EifToPdfController';
+const CONTROLLER_SAS_TO_PDF = 'App\Http\Controllers\Modules\SasToPdfController';
 
 const CONTROLLER_ADMIN_USER_MANAGER = 'App\Http\Controllers\Admin\UserManagerController';
 const CONTROLLER_ADMIN_CAREER = 'App\Http\Controllers\Admin\CareerController';
+const CONTROLLER_ADMIN_REPORTS = "App\Http\Controllers\Admin\ReportsController";
 
 /*
 |--------------------------------------------------------------------------
@@ -139,22 +143,40 @@ Route::group(
             ->name('getSAS');
 });
 
-// User - Forms - Download to PDF
+// User - PDS - Download to PDF
 Route::group(
     [
-        'controller' => CONTROLLER_FORM_PDF,
+        'controller' => CONTROLLER_PDS_TO_PDF,
         'prefix' => 'downloads',
         'as' => 'userForm.',
         'middleware' => ['isAdmin', 'auth']
     ], function() {
-        Route::post('PDS-form', 'downloadPDS')
-            ->name('downloadPDS');
+        Route::post('PDS_to_PDF', 'PDS_to_PDF')
+            ->name('PDS_to_PDF');
+});
 
-        Route::post('SAS-form', 'downloadSAS')
-            ->name('downloadSAS');
+// User - EIF - Download to PDF
+Route::group(
+    [
+        'controller' => CONTROLLER_EIF_TO_PDF,
+        'prefix' => 'downloads',
+        'as' => 'userForm.',
+        'middleware' => ['isAdmin', 'auth']
+    ], function() {
+        Route::post('EIF_TO_PDF', 'EIF_TO_PDF')
+            ->name('EIF_TO_PDF');
+});
 
-        Route::post('Exit-Interview-form', 'downloadEI')
-            ->name('downloadEI');
+// User - SAS - Download to PDF
+Route::group(
+    [
+        'controller' => CONTROLLER_SAS_TO_PDF,
+        'prefix' => 'downloads',
+        'as' => 'userForm.',
+        'middleware' => ['isAdmin', 'auth']
+    ], function() {
+        Route::post('SAS_TO_PDF', 'SAS_TO_PDF')
+            ->name('SAS_TO_PDF');
 });
 
 // User - Tracer
@@ -195,6 +217,7 @@ Route::group(
                ->name('addAlumniList');
 });
 
+// Admin - Career Controller
 Route::group(
     [
         'controller' => CONTROLLER_ADMIN_CAREER,
@@ -207,5 +230,17 @@ Route::group(
 
         Route::patch('approve-career/{career_id}', 'approveCareer')
             ->name('approveCareer');
+});
+
+// Admin - Reports Controller
+Route::group(
+    [
+        'controller' => CONTROLLER_ADMIN_REPORTS,
+        'prefix' => 'admin/reports',
+        'as' => 'adminReports.',
+        'middleware' => ['isUser', 'auth']
+    ], function() {
+        Route::get('reports', 'getFormReports')
+               ->name('getFormReports');
 });
 // ========== End of Route ========================================================================================
