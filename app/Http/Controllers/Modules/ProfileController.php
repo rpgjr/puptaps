@@ -14,7 +14,8 @@ class ProfileController extends Controller
     public function getProfileIndex() {
         $courses = Courses::all();
         $users = Alumni::where('alumni_id', '=', Auth::user()->alumni_id)->get();
-        return view('user.profile.index', compact(['courses', 'users']));
+        $title = "Profile Settings";
+        return view('user.profile.index', compact(['courses', 'users', "title"]));
     }
 
     public function updateProfile(Request $request, $alumni_id) {
@@ -51,12 +52,30 @@ class ProfileController extends Controller
             'religion' => $request->input('religion'),
             'civil_status' => $request->input('civil_status'),
             'stud_number' => $request->input('stud_number'),
+            'username' => $request->input('username'),
             'email' => $request->input('email'),
             'number' => $request->input('number'),
             'city_address' => $request->input('city_address'),
             'provincial_address' => $request->input('provincial_address'),
         ]);
 
-        return redirect(route('userProfile.index'));
+        if($account) {
+            return back()
+                   ->with(
+                        'success',
+                        'Thank you for posting. Kindly wait for the admin to Approve your Job Posting.'
+                    );
+        }
+        // elseif(Session()->get('loginAdminID')) {
+        //     return redirect(route('admin.careerIndex'));
+        // }
+        else {
+            return back()
+                   ->with(
+                        'fail',
+                        'There is an Error Occured'
+                    );
+        }
+        // return redirect(route('userProfile.index'));
     }
 }

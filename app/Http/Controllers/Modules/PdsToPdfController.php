@@ -109,20 +109,17 @@ class PdsToPdfController extends Controller
             $pdf->AddPage();
             $pdf->SetFont('times', 'B', 14);
             $pdf->ln(20);
-            $pdf->Cell(0, 0, 'Personal Data Sheet', 0, 1, 'C', 0, '', 0);
+            $pdf->Cell(0, 0, 'PERSONAL DATA SHEET', 0, 1, 'C', 0, '', 0);
 
             $pdf->ln(10);
             $pdf->SetFont('times', '', 13);
             $html = <<<EOF
               <table style="width:100%">
                 <tr>
-                    <th colspan="1" style="width: 9%; font-weight: bold;">Name: </th>
-                    <td colspan="1" style="text-align: center; width: 20%">$user->last_name </td>
-                    <td colspan="1" style="text-align: center; width: 20%">$user->first_name $user->suffix </td>
-                    <td colspan="1" style="text-align: center; width: 20%">$user->middle_name </td>
-                    <td colspan="1" style="width: 5%"></td>
-                    <th colspan="1" style="width: 11%; font-weight: bold;">Gender: </th>
-                    <td colspan="1" style="width: 15%;"> $user->gender </td>
+                    <th colspan="1" style="width: 10%; font-weight: bold;">Name: </th>
+                    <td colspan="1" style="text-align: center; width: 30%">$user->last_name </td>
+                    <td colspan="1" style="text-align: center; width: 30%">$user->first_name $user->suffix </td>
+                    <td colspan="1" style="text-align: center; width: 30%">$user->middle_name </td>
                 </tr>
                 <tr>
                     <td></td>
@@ -143,11 +140,23 @@ class PdsToPdfController extends Controller
               <table style="width:100%; margin-top: 300px;">
                 <tr>
                     <th colspan="1" style="width: 17%; font-weight: bold;">Date of Birth: </th>
-                    <td colspan="1" style="border-bottom: 1px solid black; width: 23%;"> $bday </td>
-                    <td colspan="1" style="width: 4%;"></td>
+                    <td colspan="1" style="border-bottom: 1px solid black; width: 25%;"> $bday </td>
+                    <td colspan="1" style="width: 10%;"></td>
                     <th colspan="1" style="width: 7%; font-weight: bold;">Age: </th>
-                    <td colspan="1" style="border-bottom: 1px solid black; width: 6%;"> $user->age </td>
-                    <td colspan="1" style="width: 4%;"></td>
+                    <td colspan="1" style="border-bottom: 1px solid black; width: 32%;"> $user->age </td>
+                </tr>
+              </table>
+            EOF;
+            $pdf->writeHTML($html, true, 0, true, 0);
+
+            $pdf->Ln(-1);
+            $bday = date('F d, Y', strtotime($user->birthday));
+            $html = <<<EOF
+              <table style="width:100%; margin-top: 300px;">
+                <tr>
+                    <th colspan="1" style="width: 11%; font-weight: bold;">Gender: </th>
+                    <td colspan="1" style="border-bottom: 1px solid black; width: 31%;"> $user->gender </td>
+                    <td colspan="1" style="width: 10%;"></td>
                     <th colspan="1" style="width: 12%; font-weight: bold;">Religion: </th>
                     <td colspan="1" style="border-bottom: 1px solid black; width: 27%;"> $user->religion </td>
                 </tr>
@@ -172,7 +181,7 @@ class PdsToPdfController extends Controller
               <table style="width:100%; margin-top: 10px;">
                 <tr>
                     <th colspan="1" style="width: 20%; font-weight: bold;">Year Graduated: </th>
-                    <td colspan="1" style="border-bottom: 1px solid black; width: 10%;"> $user->batch </td>
+                    <td colspan="1" style="border-bottom: 1px solid black; width: 22%;"> $user->batch </td>
                 </tr>
               </table>
             EOF;
@@ -301,16 +310,16 @@ class PdsToPdfController extends Controller
                     <p></p>
                     <table style="width:100%;">
                         <tr>
-                            <td colspan="1" style="width: 40%; text-align: center; text-transform: uppercase;">$signature_date</td>
+                            <td colspan="1" style="width: 20%; text-align: center; text-transform: uppercase;"></td>
                             <td style="width: 20%"></td>
-                            <td colspan="1" style="width: 40%; text-align: center; text-transform: uppercase;">$signature</td>
+                            <td colspan="1" style="width: 60%; text-align: center; text-transform: uppercase;">$signature</td>
                         </tr>
                         <tr>
-                            <td colspan="1" style="width: 40%; text-align: center; border-top: 1px solid black;">
-                                Date
+                            <td colspan="1" style="width: 20%; text-align: center;">
+
                             </td>
                             <td style="width: 20%"></td>
-                            <td colspan="1" style="width: 40%; text-align: center; border-top: 1px solid black;">
+                            <td colspan="1" style="width: 60%; text-align: center; border-top: 1px solid black;">
                                 Signature over Printed Name
                             </td>
                         </tr>
@@ -328,16 +337,16 @@ class PdsToPdfController extends Controller
                     <p></p>
                     <table style="width:100%;">
                         <tr>
-                            <td colspan="1" style="width: 40%; text-align: center; text-transform: uppercase;">$signature_date</td>
+                            <td colspan="1" style="width: 30%; text-align: center; text-transform: uppercase;">$signature_date</td>
                             <td style="width: 10%"></td>
-                            <td colspan="1" style="width: 50%; text-align: center; text-transform: uppercase;">$signature</td>
+                            <td colspan="1" style="width: 60%; text-align: center; text-transform: uppercase;">$signature</td>
                         </tr>
                         <tr>
-                            <td colspan="1" style="width: 40%; text-align: center; border-top: 1px solid black;">
+                            <td colspan="1" style="width: 30%; text-align: center; border-top: 1px solid black;">
                                 Date
                             </td>
                             <td style="width: 10%"></td>
-                            <td colspan="1" style="width: 50%; text-align: center; border-top: 1px solid black;">
+                            <td colspan="1" style="width: 60%; text-align: center; border-top: 1px solid black;">
                                 Signature over Printed Name
                             </td>
                         </tr>

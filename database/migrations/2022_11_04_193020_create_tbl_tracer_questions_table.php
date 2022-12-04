@@ -29,17 +29,22 @@ return new class extends Migration
             array(
                 [
                     "category_id"   => "1",
+                    "question_text" => "Job Position",
+                    "question_type" => "text",
+                ],
+                [
+                    "category_id"   => "1",
+                    "question_text" => "Company Name",
+                    "question_type" => "text",
+                ],
+                [
+                    "category_id"   => "1",
                     "question_text" => "Employment Start Date",
                     "question_type" => "date",
                 ],
                 [
                     "category_id"   => "1",
                     "question_text" => "Nature of Work / Job Description",
-                    "question_type" => "text",
-                ],
-                [
-                    "category_id"   => "1",
-                    "question_text" => "Job Position",
                     "question_type" => "text",
                 ],
                 [
@@ -70,17 +75,22 @@ return new class extends Migration
 
                 [
                     "category_id"   => "2",
+                    "question_text" => "Job Position",
+                    "question_type" => "text",
+                ],
+                [
+                    "category_id"   => "2",
+                    "question_text" => "Company Name",
+                    "question_type" => "text",
+                ],
+                [
+                    "category_id"   => "2",
                     "question_text" => "Employment Start Date",
                     "question_type" => "date",
                 ],
                 [
                     "category_id"   => "2",
                     "question_text" => "Nature of Work / Job Description",
-                    "question_type" => "text",
-                ],
-                [
-                    "category_id"   => "2",
-                    "question_text" => "Job Position",
                     "question_type" => "text",
                 ],
                 [

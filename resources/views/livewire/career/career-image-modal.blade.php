@@ -1,58 +1,4 @@
-{{-- <div class="sub-container-box mb-4">
-    <table class="table table-borderless align-middle">
-        @foreach ($alumni as $alum)
-            @if (($alum->alumni_id) == ($career->alumni_id))
-                <!-- Start: Getting Job Listing Author -->
-                <tr>
-                    <td rowspan="2" style="width: 5%;">
-                        @if ($alum->user_profile == null)
-                            <img src="{{ asset('Uploads/Profiles/user-no-profile.png') }}" class="career-post-profile" data-bs-toggle="dropdown" aria-expanded="false">
-                        @else
-                            <img src="/Uploads/Profiles/{{ $alum->user_profile }}" class="career-post-profile" data-bs-toggle="dropdown" aria-expanded="false">
-                        @endif
-                    </td>
-                    <th style="width: 95%">{{ $alum->username }}</th>
-                </tr>
-                <tr>
-                    <td>{{ date('F d, Y h:m:a', strtotime($career->created_at)) }}</td>
-                </tr>
-                <!-- End: Getting Job Listing Author -->
-                <!-- Start: Getting Joblisting Data/Images -->
-                <tr>
-                    <td class="d-sm-none d-md-none d-lg-inline d-xl-inline"><!-- Blank column --></td>
-                    <td>
-                        <!-- Button trigger modal -->
-                        <a type="button" class="w-100" data-bs-toggle="modal" data-bs-target="#careerModalImage{{ $career->career_id }}">
-                            <div class="career-post-image-box">
-                                <img src="{{ asset('Uploads/Career/' . $career->job_ad_image) }}" alt="" class="career-post-image">
-                            </div>
-                        </a>
-
-                        <!-- Modal -->
-                        <div class="modal fade" id="careerModalImage{{ $career->career_id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-                                    <img src="{{ asset('Uploads/Career/' . $career->job_ad_image) }}" alt="Job Image" class="career-post-image">
-                                </div>
-                            </div>
-                        </div>
-                        <!-- <div class="career-post-image-box">
-                            <img src="/Uploads/Career/{{ $career->job_ad_image }}" alt="" class="career-post-image">
-                        </div> -->
-                    </td>
-                </tr>
-                <!-- End: Getting Joblisting Data/Images -->
-            @endif
-        @endforeach
-    </table>
-</div>
- --}}
-
-<div class="sub-container-box mb-4">
+<div class="sub-container-box mb-4 pt-4">
     @foreach ($alumni as $alum)
         @if (($alum->alumni_id) == ($career->alumni_id))
             <div class="row align-items-center text-start m-0">
@@ -63,9 +9,15 @@
                         <img src="/Uploads/Profiles/{{ $alum->user_profile }}" class="career-post-profile">
                     @endif
                 </div>
-                <div class="col-9 col-sm-10 col-md-10 col-lg-10 col-xl-10">
+                <div class="col-8 col-sm-9 col-md-9 col-lg-9 col-xl-9">
                     <p class="mb-0 fw-bold">{{ $alum->username }}</p>
                     <p class="mb-0 career-date">{{ date('F d, Y h:m:a', strtotime($career->created_at)) }}</p>
+                </div>
+                <div class="col-1 text-end ms-0 ms-sm-0 ms-md-0 ms-lg-3 ms-xl-5">
+                    <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteCareer">
+                        <i class="fa-regular fa-trash-can"></i>
+                    </button>
+                    <livewire:career.delete-career-post :career_id="$career->career_id"/>
                 </div>
             </div>
             <div class="row align-items-center text-start m-0">

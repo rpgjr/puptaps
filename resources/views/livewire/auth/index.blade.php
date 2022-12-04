@@ -6,9 +6,6 @@
 
     <section class="mt-4 mt-sm-4 mt-md-4 mt-lg-5 mt-xl-5">
         <div class="container-fluid my-3">
-            @if(Session::has('success') || Session::has('fail'))
-                <livewire:components.alert-notification />
-            @endif
             <!-- Page Title Text H1 -->
             <livewire:components.page-title :title="$title"/>
 

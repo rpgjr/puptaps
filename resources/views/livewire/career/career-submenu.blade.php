@@ -8,7 +8,7 @@
 </div>
 
 <div class="collapse d-lg-block d-xl-block sub-container-box mb-4" id="careerSubmenu">
-    <div class="row">
+    <div class="row pt-3">
         <div class="col-12">
             <h5>Categories</h5>
         </div>

@@ -191,6 +191,8 @@ Route::group(
             ->name('getTracerIndex');
         Route::get('answer', 'getAnswerPage')
             ->name('getAnswerPage');
+        Route::get('update', 'getUpdatePage')
+            ->name('getUpdatePage');
 });
 
 // ========== End of User Route ======================================================================================
