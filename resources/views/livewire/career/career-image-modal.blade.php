@@ -14,10 +14,12 @@
                     <p class="mb-0 career-date">{{ date('F d, Y h:m:a', strtotime($career->created_at)) }}</p>
                 </div>
                 <div class="col-1 text-end ms-0 ms-sm-0 ms-md-0 ms-lg-3 ms-xl-5">
-                    <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteCareer">
-                        <i class="fa-regular fa-trash-can"></i>
-                    </button>
-                    <livewire:career.delete-career-post :career_id="$career->career_id"/>
+                    @if (Auth::user()->alumni_id == $career->alumni_id)
+                        <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteCareer{{ $career->career_id }}">
+                            <i class="fa-regular fa-trash-can"></i>
+                        </button>
+                        <livewire:career.delete-career-post :career_id="$career->career_id"/>
+                    @endif
                 </div>
             </div>
             <div class="row align-items-center text-start m-0">

@@ -6,9 +6,7 @@
 
     <section class="mt-4 mt-sm-4 mt-md-4 mt-lg-5 mt-xl-5">
         <div class="container-fluid my-3">
-            @if(Session::has('success') || Session::has('fail'))
-                <livewire:components.alert-notification />
-            @endif
+            <livewire:components.alert-status-message :message="$message" />
             <!-- Page Title Text H1 -->
             <livewire:components.page-title :title="$title"/>
 
@@ -56,14 +54,24 @@
                                         </div>
                                         <div class="row">
                                             <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 my-2">
-                                                <label class="form-label">Password</label>
-                                                <input type="text" class="form-control" name="email" value="{{ $user->email }}">
-                                                <span class="text-danger">@error('email') {{$message}} @enderror</span>
+                                                <label class="form-label">New Password <span class="text-danger">*</span></label>
+                                                <div class="input-group">
+                                                    <input type="password" name="password" id="password" class="form-control @error('password') is-invalid @enderror">
+                                                    <button class="btn btn-outline-secondary" type="button" id="togglePassword">
+                                                        <i id="eye_icon" class="fa-solid fa-eye" ></i>
+                                                    </button>
+                                                </div>
+                                                <span class="text-danger error-message">@error('password') {{$message}} @enderror</span>
                                             </div>
                                             <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 my-2">
-                                                <label class="form-label">Confirm Password</label>
-                                                <input type="text" class="form-control" name="email" value="{{ $user->email }}">
-                                                <span class="text-danger">@error('email') {{$message}} @enderror</span>
+                                                <label class="form-label">Confirm New Password <span class="text-danger">*</span></label>
+                                                <div class="input-group">
+                                                    <input type="password" name="password_confirmation" id="password_confirmation" class="form-control @error('password') is-invalid @enderror">
+                                                    <button class="btn btn-outline-secondary" type="button" id="toggleConfirmPassword">
+                                                        <i id="eye_icon_confirm" class="fa-solid fa-eye" ></i>
+                                                    </button>
+                                                </div>
+                                                <span class="text-danger error-message">@error('password') {{$message}} @enderror</span>
                                             </div>
                                         </div>
                                     </div>
@@ -159,7 +167,7 @@
                             </div>
                             <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 my-2">
                                 <label class="form-label">Student Number</label>
-                                <input type="text" class="form-control" name="stud_number" value="{{ $user->stud_number }}">
+                                <input type="text" class="form-control" name="stud_number" value="{{ $user->stud_number }}" disabled>
                                 <span class="text-danger">@error('stud_number') {{$message}} @enderror</span>
                             </div>
                             <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 my-2">

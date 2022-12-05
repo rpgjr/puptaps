@@ -41,7 +41,8 @@
                                                     @include('admin.components.viewCareer')
                                                     <button type="button" class="btn btn-success my-1" data-bs-toggle="modal" data-bs-target="#approveCareer{{ $career->career_id }}">Approve</button>
                                                     @include('admin.components.approveCareer')
-                                                    <button type="button" class="btn btn-danger my-1">Delete</button>
+                                                    <button type="button" class="btn btn-danger my-1" data-bs-toggle="modal" data-bs-target="#rejectCareer{{ $career->career_id }}">Reject</button>
+                                                    @include('admin.components.reject-career')
                                                 </td>
                                             </tr>
                                         @endif

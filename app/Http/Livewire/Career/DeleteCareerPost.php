@@ -16,5 +16,7 @@ class DeleteCareerPost extends Component
     public function deletePost() {
         $post = Careers::find($this->career_id);
         $post->delete();
+
+        return redirect(route('userCareer.index'));
     }
 }

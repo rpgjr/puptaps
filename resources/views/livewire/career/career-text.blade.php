@@ -9,9 +9,17 @@
                         <img src="/Uploads/Profiles/{{ $alum->user_profile }}" class="career-post-profile">
                     @endif
                 </div>
-                <div class="col-9 col-sm-10 col-md-10 col-lg-10 col-xl-10">
+                <div class="col-8 col-sm-9 col-md-9 col-lg-9 col-xl-9">
                     <p class="mb-0 fw-bold">{{ $alum->username }}</p>
                     <p class="mb-0 career-date">{{ date('F d, Y h:m:a', strtotime($career->created_at)) }}</p>
+                </div>
+                <div class="col-1 text-end ms-0 ms-sm-0 ms-md-0 ms-lg-3 ms-xl-5">
+                    @if (Auth::user()->alumni_id == $career->alumni_id)
+                        <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteCareer{{ $career->career_id }}">
+                            <i class="fa-regular fa-trash-can"></i>
+                        </button>
+                        <livewire:career.delete-career-post :career_id="$career->career_id"/>
+                    @endif
                 </div>
             </div>
             <div class="row align-items-center text-start m-0 pt-2">

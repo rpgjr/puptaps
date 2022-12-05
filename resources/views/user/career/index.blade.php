@@ -7,7 +7,7 @@
         <div class="container-fluid">
 
             <!-- Alert Status -->
-            <livewire:career.alert-status-message />
+            <livewire:components.alert-status-message :message="$message" />
 
             <!-- Page Title Text H1 -->
             <livewire:components.page-title :title="$title"/>

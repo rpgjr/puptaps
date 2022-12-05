@@ -5,8 +5,11 @@ namespace App\Http\Controllers\Modules;
 use App\Http\Controllers\Controller;
 use App\Models\Alumni;
 use App\Models\Courses;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rules;
 
 class ProfileController extends Controller
 {
@@ -15,7 +18,8 @@ class ProfileController extends Controller
         $courses = Courses::all();
         $users = Alumni::where('alumni_id', '=', Auth::user()->alumni_id)->get();
         $title = "Profile Settings";
-        return view('user.profile.index', compact(['courses', 'users', "title"]));
+        $message = "Profile successfully updated.";
+        return view('user.profile.index', compact(['courses', 'users', "title", "message"]));
     }
 
     public function updateProfile(Request $request, $alumni_id) {
@@ -39,6 +43,23 @@ class ProfileController extends Controller
             ]);
         }
 
+        $request->validate([
+            'last_name'     => 'required',
+            'first_name'    => 'required',
+            'middle_name'   => 'required',
+            'course_id'     => 'required',
+            'batch'         => 'required',
+            'gender'        => 'required',
+            'birthday'      => 'required',
+            'username'      => 'required',
+        ]);
+
+        if(($request->input('password')) != null ) {
+            $request->validate([
+                'password'  => ['required', 'confirmed', Rules\Password::defaults()],
+            ]);
+        }
+
         $account = Alumni::where('alumni_id', '=', $alumni_id)->update([
             'last_name' => $request->input('last_name'),
             'first_name' => $request->input('first_name'),
@@ -51,24 +72,25 @@ class ProfileController extends Controller
             'age' => $request->input('age'),
             'religion' => $request->input('religion'),
             'civil_status' => $request->input('civil_status'),
-            'stud_number' => $request->input('stud_number'),
-            'username' => $request->input('username'),
-            'email' => $request->input('email'),
             'number' => $request->input('number'),
             'city_address' => $request->input('city_address'),
             'provincial_address' => $request->input('provincial_address'),
+            'username' => $request->input('username'),
+            'password' => Hash::make($request->input('password')),
+        ]);
+
+        $users = User::where('alumni_id', '=', Auth::user()->alumni_id)->update([
+            'username' => $request->input('username'),
+            'password' => Hash::make($request->input('password')),
         ]);
 
         if($account) {
             return back()
                    ->with(
                         'success',
-                        'Thank you for posting. Kindly wait for the admin to Approve your Job Posting.'
+                        ''
                     );
         }
-        // elseif(Session()->get('loginAdminID')) {
-        //     return redirect(route('admin.careerIndex'));
-        // }
         else {
             return back()
                    ->with(
@@ -76,6 +98,5 @@ class ProfileController extends Controller
                         'There is an Error Occured'
                     );
         }
-        // return redirect(route('userProfile.index'));
     }
 }

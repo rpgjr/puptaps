@@ -26,6 +26,7 @@ class CareerController extends Controller
                               ->where('category', 'like', '%' . $data['query'] . '%')
                               ->paginate(15)
                               ->withQueryString();
+        $message = "Thank you for posting. Kindly wait for the admins to approve your post.";
 
         return view('user.career.index',
         compact(
@@ -34,7 +35,8 @@ class CareerController extends Controller
                 'applicants',
                 'posts',
                 'alumni',
-                'title'
+                'title',
+                'message',
             ]
         ), $data);
     }

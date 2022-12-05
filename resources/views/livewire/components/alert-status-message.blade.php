@@ -11,7 +11,7 @@
                     </div>
                     <div class="modal-body">
                         <div class="alert alert-success mb-0" role="alert">
-                            Thank you for posting. Kindly wait for the admins to approve your post.
+                            {{ $message }}
                         </div>
                     </div>
                     <div class="modal-footer">

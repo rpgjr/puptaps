@@ -1,5 +1,5 @@
 <!-- Modal -->
-<div class="modal fade" id="deleteCareer" tabindex="-1" aria-hidden="true">
+<div class="modal fade" id="deleteCareer{{ $career_id }}" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
@@ -9,7 +9,7 @@
             <form wire:submit.prevent="deletePost">
                 <div class="modal-body">
                     <div class="alert alert-danger text-start" role="alert">
-                        Are you sure you want to delete your post?
+                        Are you sure you want to delete your post? {{ $career_id }}
                     </div>
                 </div>
                 <div class="modal-footer p-0">

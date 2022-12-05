@@ -21,4 +21,11 @@ class CareerController extends Controller
 
         return redirect(route('adminCareer.getCareerRequest'));
     }
+
+    public function rejectCareer($career_id) {
+        $career = Careers::where('career_id', '=', $career_id)->first();
+        $career->delete();
+
+        return redirect(route('adminCareer.getCareerRequest'));
+    }
 }
