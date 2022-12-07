@@ -15,4 +15,5 @@ class TracerAnswers extends Model
         "question_id",
         "answer",
     ];
+    public $timestamps  = false;
 }

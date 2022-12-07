@@ -109,3 +109,30 @@ class Answer extends Component
         return redirect(route("userTracer.getTracerIndex"));
     }
 }
+
+// protected $rules = [
+//     "job_position" => "required",
+//     "company_name" => "required",
+//     "start_date" => "required",
+//     "job_description" => "required",
+//     "employment_type" => "required",
+//     "income" => "required",
+//     "company_email" => "required",
+//     "company_number" => "required",
+//     "related_to_course" => "required",
+//     //"arrayAnswers.*.answer" => "required|string",
+// ];
+
+// protected $messages = [
+//     "job_position" => "This is required.",
+//     "company_name" => "This is required.",
+//     "start_date" => "This is required.",
+//     "job_description" => "This is required.",
+//     "employment_type" => "This is required.",
+//     "income" => "This is required.",
+//     "company_email" => "This is required.",
+//     "company_number" => "This is required.",
+//     "related_to_course" => "This is required.",
+//     // "arrayAnswers.*.answer.required" => "This is required.",
+//     // "arrayAnswers.*.answer.string"   => "This is required.",
+// ];
