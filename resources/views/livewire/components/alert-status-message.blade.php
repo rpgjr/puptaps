@@ -10,7 +10,7 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <div class="alert alert-success pb-3" role="alert">
+                        <div class="alert alert-success pb-3 mb-1" role="alert">
                             {{ $message }}
                         </div>
                     </div>
@@ -29,7 +29,7 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <div class="alert alert-danger pb-1" role="alert">
+                        <div class="alert alert-danger pb-1 mb-1" role="alert">
                             @foreach ($errors->all() as $error)
                                 <p class="text-center">{{ $error }}</p>
                             @endforeach

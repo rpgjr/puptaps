@@ -144,7 +144,7 @@ class SasToPdfController extends Controller
 
             // set document information
             $pdf->SetCreator(PDF_CREATOR);
-            $pdf->SetTitle('PDS_' . $user->stud_number);
+            $pdf->SetTitle('SAS_' . $user->stud_number);
 
             // set default monospaced font
             $pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
@@ -188,22 +188,17 @@ class SasToPdfController extends Controller
             $html = <<<EOF
               <table style="width:100%">
                 <tr>
-                    <th colspan="1" style="width: 9%; font-weight: bold;">Name: </th>
-                    <td colspan="1" style="text-align: center; width: 20%">$user->last_name </td>
-                    <td colspan="1" style="text-align: center; width: 20%">$user->first_name $user->suffix </td>
-                    <td colspan="1" style="text-align: center; width: 20%">$user->middle_name </td>
-                    <td colspan="1" style="width: 5%"></td>
-                    <th colspan="1" style="width: 11%; font-weight: bold;">Gender: </th>
-                    <td colspan="1" style="width: 15%;"> $user->gender </td>
+                    <th colspan="1" style="width: 10%; font-weight: bold;">Name: </th>
+                    <td colspan="1" style="text-align: center; width: 30%">$user->last_name </td>
+                    <td colspan="1" style="text-align: center; width: 30%">$user->first_name $user->suffix </td>
+                    <td colspan="1" style="text-align: center; width: 30%">$user->middle_name </td>
+
                 </tr>
                 <tr>
                     <td></td>
                     <td style="text-align: center; font-size:13px; border-top: 1px solid black;">Surname</td>
                     <td style="text-align: center; font-size:13px; border-top: 1px solid black;">First Name</td>
                     <td style="text-align: center; font-size:13px; border-top: 1px solid black;">Middle Name</td>
-                    <td></td>
-                    <td></td>
-                    <td style="border-top: 1px solid black;"></td>
                 </tr>
               </table>
             EOF;
@@ -225,11 +220,14 @@ class SasToPdfController extends Controller
             $html = <<<EOF
               <table style="width:100%; margin-top: 300px;">
                 <tr>
+                    <th colspan="1" style="width: 11%; font-weight: bold;">Gender: </th>
+                    <td colspan="1" style="border-bottom: 1px solid black; width: 15%;"> $user->gender </td>
+                    <td colspan="1" style="width: 5%;"></td>
                     <th colspan="1" style="width: 7%; font-weight: bold;">Age: </th>
-                    <td colspan="1" style="border-bottom: 1px solid black; width: 10%;"> $user->age </td>
+                    <td colspan="1" style="border-bottom: 1px solid black; width: 15%;"> $user->age </td>
                     <td colspan="1" style="width: 5%;"></td>
                     <th colspan="1" style="width: 29%; font-weight: bold;">No. of Semesters in PUP: </th>
-                    <td colspan="1" style="border-bottom: 1px solid black; width: 10%;"> $semesters </td>
+                    <td colspan="1" style="border-bottom: 1px solid black; width: 13%;"> $semesters </td>
                 </tr>
               </table>
             EOF;
@@ -246,11 +244,10 @@ class SasToPdfController extends Controller
             $pdf->ln(10);
             $html = <<<EOF
                 <div style="text-align: center; font-weight: bold;">
-                    <span>5 - Outstanding</span>
-                    <span>  4 - Very Satisfactory </span>
-                    <span>  3 - Satisfactory</span>
-                    <span>  2 - Fair</span>
-                    <span>  1 - Poor</span>
+                    <span>  1 - Very Satisfactory</span>
+                    <span>  2 - Satisfactory</span>
+                    <span>  3 - Unsatisfactory</span>
+                    <span>  4 - Very Unsatisfactory</span>
                 </div>
             EOF;
             $pdf->writeHTML($html, true, 0, true, 0);

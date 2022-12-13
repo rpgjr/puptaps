@@ -93,7 +93,7 @@ class EifToPdfController extends Controller
 
             // set document information
             $pdf->SetCreator(PDF_CREATOR);
-            $pdf->SetTitle('PDS_' . $user->stud_number);
+            $pdf->SetTitle('EIF_' . $user->stud_number);
 
             // set default monospaced font
             $pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
