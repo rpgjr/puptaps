@@ -6,7 +6,12 @@
           <h5 class="modal-title" id="exampleModalLabel">Job Ad</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <form action="{{ route('userCareer.addTextCareer') }}" method="post">
+
+        @if (Auth::user()->user_role == "Admin")
+            <form action="{{ route('adminCareer.addTextCareer') }}" method="post">
+        @else
+            <form action="{{ route('userCareer.addTextCareer') }}" method="post">
+        @endif
         @csrf
             <div class="modal-body text-start">
                 <div class="row">
@@ -44,18 +49,6 @@
                         <input type="text" class="form-control" name="number">
                     </div>
                 </div>
-                <input type="hidden" name="alumni_id" value="{{ Auth::user()->alumni_id }}">
-                <input type="hidden" name="approval" value="0">
-                {{-- @if (Session()->get('loginID'))
-                    <input type="hidden" name="username" value="{{ $data }}">
-                    <input type="hidden" name="carRequest" value="0">
-
-
-                @elseif (Session()->get('loginAdminID'))
-                    <input type="hidden" name="username" value="{{ Session()->get('loginAdminID') }}">
-                    <input type="hidden" name="carRequest" value="1">
-                @endif --}}
-
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

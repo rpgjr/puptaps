@@ -12,6 +12,8 @@ class Alumni extends Model
 
     protected $table = 'tbl_alumni';
 
+    // public $timestamps = true;
+
     protected $fillable = [
         'stud_number',
         'last_name',

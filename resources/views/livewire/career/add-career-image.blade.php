@@ -6,7 +6,11 @@
           <h5 class="modal-title">Select Image file to upload</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <form action="{{ route('userCareer.addImageCareer') }}" method="post" enctype="multipart/form-data">
+        @if (Auth::user()->user_role == "Admin")
+            <form action="{{ route('adminCareer.addImageCareer') }}" method="post" enctype="multipart/form-data">
+        @else
+            <form action="{{ route('userCareer.addImageCareer') }}" method="post" enctype="multipart/form-data">
+        @endif
         @csrf
             <div class="modal-body text-start">
                 <div class="mb-3">
@@ -22,10 +26,6 @@
                         <option value="Accounting">Accounting</option>
                     </select>
                 </div>
-
-                <input type="hidden" name="alumni_id" value="{{ Auth::user()->alumni_id }}">
-                <input type="hidden" name="approval" value="0">
-
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

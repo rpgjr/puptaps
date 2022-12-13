@@ -3,6 +3,7 @@
 <head>
     {{-- Headings --}}
     <livewire:components.header />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <title>@yield('page-title')</title>
     @livewireStyles
 </head>

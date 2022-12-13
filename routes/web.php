@@ -46,10 +46,6 @@ Route::group(
         Route::get('/home', 'getUserHomepage')
             ->middleware(['auth', 'verified', 'isAdmin'])
             ->name('user.homepage');
-
-        Route::get('/admin', 'getAdminHomepage')
-            ->middleware(['auth', 'isLoggedIn', 'isUser'])
-            ->name('admin.homepage');
 });
 
 Route::group(
@@ -201,6 +197,17 @@ Route::group(
 
 // ========== Admin Route ===========================================================================================
 
+// Group for Homepage and Landing Page
+Route::group(
+    [
+        'controller' => 'App\Http\Controllers\Admin\DashboardController'
+    ], function() {
+
+        Route::get('/admin', 'getAdminHomepage')
+            ->middleware(['auth', 'isLoggedIn', 'isUser'])
+            ->name('admin.homepage');
+});
+
 // Admin - User Management
 Route::group(
     [
@@ -209,14 +216,17 @@ Route::group(
         'as' => 'adminUserManagement.',
         'middleware' => ['isUser', 'auth']
     ], function() {
+        Route::get('alumni-list', 'getAlumniList')
+               ->name('getAlumniList');
+
+        Route::post('add-alumni-list', 'addAlumniList')
+               ->name('addAlumniList');
+
         Route::get('alumni-manager', 'getAlumniManager')
                ->name('getAlumniManager');
 
-        Route::post('add-alumni-list', 'addAlumniList')
-               ->name('addAlumniList');
-
-        Route::post('add-alumni-list', 'addAlumniList')
-               ->name('addAlumniList');
+        Route::post('remove-alumni-account', 'removeAlumniAccount')
+               ->name('removeAlumniAccount');
 });
 
 // Admin - Career Controller
@@ -227,6 +237,9 @@ Route::group(
         'as' => 'adminCareer.',
         'middleware' => ['isUser', 'auth']
     ], function() {
+        Route::get('career-dashboard', 'getAdminCareerIndex')
+            ->name('getAdminCareerIndex');
+
         Route::get('requests', 'getCareerRequest')
             ->name('getCareerRequest');
 
@@ -235,6 +248,12 @@ Route::group(
 
         Route::delete('reject-career/{career_id}', 'rejectCareer')
             ->name('rejectCareer');
+
+        Route::post('add/text-career', 'addTextCareer')
+            ->name('addTextCareer');
+
+        Route::post('add/image-career', 'addImageCareer')
+            ->name('addImageCareer');
 });
 
 // Admin - Reports Controller
@@ -245,7 +264,7 @@ Route::group(
         'as' => 'adminReports.',
         'middleware' => ['isUser', 'auth']
     ], function() {
-        Route::get('reports', 'getFormReports')
+        Route::get('form-reports', 'getFormReports')
                ->name('getFormReports');
 });
 // ========== End of Route ========================================================================================

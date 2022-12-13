@@ -27,13 +27,13 @@
                 </a>
                 <div class="mt-1">
                     <div class="collapse show ms-4" id="userManager">
+                        <a type="button" href="{{ route('adminUserManagement.getAlumniList') }}" class="btn btn-sm btn-dark w-100 text-start py-2 @yield('active-alumni-list')">
+                            <i class="fa-solid fa-file-arrow-up me-1"></i>
+                            Upload Alumni List
+                        </a>
                         <a type="button" href="{{ route('adminUserManagement.getAlumniManager') }}" class="btn btn-sm btn-dark w-100 text-start py-2 @yield('active-alumni-manager')">
                             <i class="fa-solid fa-user-graduate me-1"></i>
                             Alumni Manager
-                        </a>
-                        <a type="button" href="" class="btn btn-sm btn-dark w-100 text-start py-2">
-                            <i class="fa-solid fa-user-tie me-1"></i>
-                            Admin Manager
                         </a>
                     </div>
                 </div>
@@ -47,7 +47,7 @@
                 </a>
                 <div class="mt-1">
                     <div class="collapse show ms-4" id="careerManagement">
-                        <a type="button" href="" class="btn btn-sm btn-dark w-100 text-start py-2">
+                        <a type="button" href="{{ route('adminCareer.getAdminCareerIndex') }}" class="btn btn-sm btn-dark w-100 text-start py-2 @yield('active-career-index')">
                             <i class="fa-solid fa-gauge me-1"></i>
                             Career Dashboard
                         </a>

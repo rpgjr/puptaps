@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('middle_name')->nullable();
             $table->string('suffix')->nullable();
             $table->string('course_id');
+            $table->string('batch');
             $table->timestamps();
         });
     }

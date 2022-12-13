@@ -1,49 +1,62 @@
 @extends('layouts.admin')
-@section('page-title', 'Admin-Career')
-@section('careers-status', 'active')
-@section('careers-collapse', 'show')
-@section('admin.careerRequest', 'active')
+@section('page-title', 'Careers')
+@section('active-career-index', 'active')
+@section('page-name', 'Careers Management')
 
 @section('content')
 
-    <div class="container-fluid box-content">
-        <div class="row">
-            <div class="col-md-12">
-                <h3 class="mb-4">Requests for Job Advertisements</h3>
-            </div>
+    <section class="mt-4 mt-sm-4 mt-md-4 mt-lg-5 mt-xl-5 mb-5">
+        <div class="container-fluid box-content">
 
-            <div class="col-md-12">
-                <table class="table align-middle">
-                    <thead>
-                      <tr>
-                        <th scope="col" style="width: 80%;">Posted By</th>
-                        <th scope="col" style="width: 20%;">Action</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($careers as $career)
-                            @if (($career->approval) == 0)
-                                <tr>
-                                    <th scope="row">
-                                        @foreach ($users as $user)
-                                            @if (($user->alumni_id) == ($career->alumni_id))
-                                                <p class="mt-3">{{ $user->first_name }} {{ $user->last_name }}</p>
-                                            @endif
-                                        @endforeach
-                                    </th>
-                                    <td>
-                                        <button type="button" class="btn btn-primary my-1" data-bs-toggle="modal" data-bs-target="#viewCareer{{ $career->career_id }}">View</button>
-                                        @include('admin.components.viewCareer')
-                                        <button type="button" class="btn btn-success my-1" data-bs-toggle="modal" data-bs-target="#approveCareer{{ $career->career_id }}">Approve</button>
-                                        @include('admin.components.approveCareer')
-                                        <button type="button" class="btn btn-danger my-1">Delete</button>
-                                    </td>
-                                </tr>
+            <!-- Alert Status -->
+            <livewire:components.alert-status-message :message="session()->get('success')" />
+
+            <livewire:admin.page-title :title="$title"/>
+
+            <div class="row justify-content-center">
+                <!-- Start: Body -->
+                <div class="col-11">
+                    <div class="row g-0 g-sm-0 g-md-0 g-lg-4 g-xl-4">
+
+                        <!-- Career Search bar -->
+                        <div class="col-12">
+                            <div class="row sub-container-box py-3 mx-1">
+                                <livewire:career.career-searchbar :query="$query" />
+                            </div>
+                        </div>
+
+                        <!-- Career Submenu - Left Side -->
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-3">
+                            <livewire:career.career-submenu :query="$query" />
+                        </div>
+
+                        <!-- Career Contents -->
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-8 col-xl-9">
+
+                            <!-- If Post/Query has no data -->
+                            @if (count($careers) == 0)
+                                <div class="alert alert-danger" role="alert">
+                                    There is no available data.
+                                </div>
+
+                            <!-- If Post/Query has data -->
+                            @else
+                                @foreach ($careers as $career)
+                                    @if (($career->job_ad_image == null))
+                                        <!-- If Post was Text -->
+                                        <livewire:career.career-text :career="$career" :alumni="$alumni" :admin="$admin" />
+                                    @elseif (($career->job_ad_image != null))
+                                        <!-- If Post was Image -->
+                                        <livewire:career.career-image-modal :career="$career" :alumni="$alumni" :admin="$admin"/>
+                                    @endif
+                                @endforeach
                             @endif
-                        @endforeach
-                    </tbody>
-                </table>
+                        </div>
+
+                    </div>
+                </div>
+                <!-- End: Body -->
             </div>
         </div>
-    </div>
+    </section>
 @endsection

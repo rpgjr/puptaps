@@ -3,13 +3,13 @@
     @csrf
         <div class="input-group">
             <input type="text" class="form-control" placeholder="Category..." name="query" value="{{ $query }}">
-            <button class="btn btn-primary" type="submit">
-                <i class="fa-solid fa-magnifying-glass"></i>
-                <span class="d-none d-sm-none d-md-none d-lg-inline d-xl-inline">Search</span>
-            </button>
             <button  type="submit" name="query" value="" class="btn btn-secondary">
                 <i class="fa-solid fa-rotate-left"></i>
                 <span class="d-none d-sm-none d-md-none d-lg-inline d-xl-inline">Reset</span>
+            </button>
+            <button class="btn btn-primary" type="submit">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <span class="d-none d-sm-none d-md-none d-lg-inline d-xl-inline">Search</span>
             </button>
         </div>
     </form>

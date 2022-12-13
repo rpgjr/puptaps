@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Modules;
 
 use App\Http\Controllers\Controller;
+use App\Models\Admin;
 use App\Models\Alumni;
 use App\Models\CareerApplicant;
 use App\Models\Careers;
@@ -17,6 +18,7 @@ class CareerController extends Controller
         $users              = Alumni::where('alumni_id', '=', Auth::user()
                               ->alumni_id)->get();
         $alumni             = Alumni::all();
+        $admin              = Admin::all();
         $applicants         = CareerApplicant::where('alumni_id', '=', Auth::user()
                               ->alumni_id)->get();
         $posts              = Alumni::all();
@@ -26,7 +28,7 @@ class CareerController extends Controller
                               ->where('category', 'like', '%' . $data['query'] . '%')
                               ->paginate(15)
                               ->withQueryString();
-        $message = "Thank you for posting. Kindly wait for the admins to approve your post.";
+        //$message = "Thank you for posting. Kindly wait for the admins to approve your post.";
 
         return view('user.career.index',
         compact(
@@ -35,15 +37,14 @@ class CareerController extends Controller
                 'applicants',
                 'posts',
                 'alumni',
+                'admin',
                 'title',
-                'message',
             ]
         ), $data);
     }
 
     public function addTextCareer(Request $request) {
         $this->validate($request,[
-            'alumni_id'     => 'required',
             'job_name'      => 'required',
             'company'       => 'required',
             'salary'        => 'required',
@@ -51,11 +52,10 @@ class CareerController extends Controller
             'category'      => 'required',
             'email'         => 'required',
             'number'        => 'required',
-            'approval'      => 'required',
         ]);
 
         $career = new Careers();
-        $career->alumni_id      = $request->input('alumni_id');
+        $career->alumni_id  = Auth::user()->alumni_id;
         $career->job_name       = $request->input('job_name');
         $career->company        = $request->input('company');
         $career->salary         = $request->input('salary');
@@ -63,7 +63,7 @@ class CareerController extends Controller
         $career->category       = $request->input('category');
         $career->email          = $request->input('email');
         $career->number         = $request->input('number');
-        $career->approval       = $request->input('approval');
+        $career->approval   = 0;
 
         $career->save();
 
@@ -74,9 +74,6 @@ class CareerController extends Controller
                         'Thank you for posting. Kindly wait for the admin to Approve your Job Posting.'
                     );
         }
-        // elseif(Session()->get('loginAdminID')) {
-        //     return redirect(route('admin.careerIndex'));
-        // }
         else {
             return back()
                    ->with(
@@ -93,8 +90,8 @@ class CareerController extends Controller
         ]);
 
         $career = new Careers();
-        $career->alumni_id  = $request->input('alumni_id');
-        $career->approval   = $request->input('approval');
+        $career->alumni_id  = Auth::user()->alumni_id;
+        $career->approval   = 0;
         $career->category   = $request->input('category');
 
         if($request->hasFile('job_ad_image')) {
@@ -118,9 +115,6 @@ class CareerController extends Controller
                         'Thank you for posting. Kindly wait for the admin to Approve your Job Posting.'
                     );
         }
-        // elseif(Session()->get('loginAdminID')) {
-        //     return redirect(route('admin.careerIndex'));
-        // }
         else {
             return back()
                    ->with(

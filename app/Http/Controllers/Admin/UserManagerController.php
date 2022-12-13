@@ -4,33 +4,53 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Imports\UsersImport;
+use App\Models\Alumni;
 use App\Models\AlumniList;
+use App\Models\Courses;
+use App\Models\Forms\Eif\EifAnswers;
+use App\Models\Forms\Pds\PdsAnswers;
+use App\Models\Forms\Sas\SasAnswers;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Excel;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx\Rels;
 
 class UserManagerController extends Controller
 {
-    public function getAlumniManager(Request $request) {
-        $data['q'] = $request->get('q');
-        $data['alumni'] = AlumniList::where('last_name', 'like', '%' . $data['q'] . '%')->paginate(15)->withQueryString();
-        $title = "Alumni Manager";
-        return view('admin.user_management.user_manager',$data , compact(['title']));
-    }
+  public function getAlumniList(Request $request) {
+    $data['q'] = $request->get('q');
+    $data['alumni'] = AlumniList::where('last_name', 'like', '%' . $data['q'] . '%')->paginate(15)->withQueryString();
+    $title = "List of Alumni";
 
-    public function addAlumniList(Request $request)
-    {
-        $request->validate([
-            'excel_file' => 'required|mimes:xlsx,csv',
-        ]);
+    return view('admin.user_management.upload_list',$data , compact(['title']));
+  }
 
-        Excel::import(new UsersImport, $request->file('excel_file'));
-        return redirect()->back();
-    }
+  public function getAlumniManager(Request $request) {
+    $data['q'] = $request->get('q');
+    $data['alumni'] = Alumni::where('last_name', 'like', '%' . $data['q'] . '%')->paginate(15)->withQueryString();
+    $courses = Courses::all();
+    $title = "Alumni Manager";
+    $PDS = PdsAnswers::all();
+    $EIF = EifAnswers::all();
+    $SAS = SasAnswers::all();
+    return view('admin.user_management.alumni_manager', $data, compact(['title', 'courses', 'PDS', 'EIF', 'SAS']));
+  }
 
-    // public function deleteAlumniList($studNumber) {
-    //     $alumni = AlumniList::where('studnumber', '=', $studnumber);
-    //     $alumni->delete();
+  public function addAlumniList(Request $request)
+  {
+    $request->validate([
+        'excel_file' => 'required|mimes:xlsx,csv',
+    ]);
 
-    //     return redirect(route('admin.alumniList'));
-    // }
+    Excel::import(new UsersImport, $request->file('excel_file'));
+    return redirect()->back();
+  }
+
+  public function removeAlumniAccount(Request $request) {
+
+    $findUser = User::where('alumni_id', '=', $request->alumni_id)->value('user_id');
+    $user = User::find($findUser);
+    $user->delete();
+    return back()->with('success', 'Alumni Account Successfully Deleted.');
+  }
 }

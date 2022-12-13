@@ -7,7 +7,7 @@
         <div class="container-fluid">
 
             <!-- Alert Status -->
-            <livewire:components.alert-status-message :message="$message" />
+            <livewire:components.alert-status-message :message="session()->get('success')" />
 
             <!-- Page Title Text H1 -->
             <livewire:components.page-title :title="$title"/>
@@ -19,7 +19,7 @@
 
                         <!-- Career Search bar -->
                         <div class="col-12">
-                            <div class="row sub-container-box py-3 mx-1">
+                            <div class="row sub-container-box px-3 mx-1">
                                 <livewire:career.career-searchbar :query="$query" />
                             </div>
                         </div>
@@ -43,10 +43,10 @@
                                 @foreach ($careers as $career)
                                     @if (($career->job_ad_image == null))
                                         <!-- If Post was Text -->
-                                        <livewire:career.career-text :career="$career" :alumni="$alumni" />
+                                        <livewire:career.career-text :career="$career" :alumni="$alumni" :admin="$admin"/>
                                     @elseif (($career->job_ad_image != null))
                                         <!-- If Post was Image -->
-                                        <livewire:career.career-image-modal :career="$career" :alumni="$alumni" />
+                                        <livewire:career.career-image-modal :career="$career" :alumni="$alumni" :admin="$admin"/>
                                     @endif
                                 @endforeach
                             @endif

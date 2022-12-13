@@ -8,6 +8,9 @@
     <section class="mt-4 mt-sm-4 mt-md-4 mt-lg-5 mt-xl-5 mb-5">
         <div class="container-fluid box-content">
 
+            <!-- Alert Status -->
+            <livewire:components.alert-status-message :message="session()->get('success')" />
+
             <livewire:admin.page-title :title="$title"/>
 
             <div class="row justify-content-center g-0">
@@ -18,8 +21,8 @@
                                 <thead class="table-dark">
                                   <tr>
                                     <th scope="col">Posted By</th>
-                                    <th scope="col">Date</th>
-                                    <th scope="col">Category</th>
+                                    <th scope="col">Date Created</th>
+                                    <th scope="col" class="text-center">Category</th>
                                     <th scope="col" class="text-center">Action</th>
                                   </tr>
                                 </thead>
@@ -34,8 +37,8 @@
                                                         @endif
                                                     @endforeach
                                                 </th>
-                                                <td>{{ $career->created_at }}</td>
-                                                <td>{{ $career->category }}</td>
+                                                <td>{{ date('F d, Y', strtotime($career->created_at)) }}</td>
+                                                <td class="text-center">{{ $career->category }}</td>
                                                 <td class="text-center">
                                                     <button type="button" class="btn btn-primary my-1" data-bs-toggle="modal" data-bs-target="#viewCareer{{ $career->career_id }}">View</button>
                                                     @include('admin.components.viewCareer')

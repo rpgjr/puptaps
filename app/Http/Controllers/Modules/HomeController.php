@@ -19,8 +19,4 @@ class HomeController extends Controller
     public function getLandingPage() {
         return view('landingPage');
     }
-
-    public function getAdminHomepage() {
-        return  view('admin.homepage');
-    }
 }

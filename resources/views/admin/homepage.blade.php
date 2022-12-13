@@ -4,42 +4,22 @@
 @section('page-name', 'Dashboard')
 @section('content')
 
-    <div class="container-fluid">
-        <div class="row mx-1">
-            <div class="col-12 mt-5">
-                <h3>Summary</h3>
-            </div>
+    <section class="mt-4 mt-sm-4 mt-md-4 mt-lg-5 mt-xl-5 mb-5">
+        <div class="container-fluid box-content">
 
-            <!-- Start: Cards -->
-            <div class="col-12">
-                <div class="row mt-3">
-                    <div class="col-4">
-                        <div class="bg-primary text-white rounded px-3 pt-4 pb-3">
-                            <h4>Registered Alumni (2023)</h4>
-                            <hr>
-                            <p>Card Text</p>
-                        </div>
-                    </div>
+            <livewire:admin.page-title :title="$title"/>
 
-                    <div class="col-4">
-                        <div class="bg-warning text-dark rounded px-3 pt-4 pb-3">
-                            <h4>Tracer Answers</h4>
-                            <hr>
-                            <p>Card Text</p>
-                        </div>
-                    </div>
-
-                    <div class="col-4">
-                        <div class="bg-danger text-white rounded px-3 pt-4 pb-3">
-                            <h4>Batch 2023 - Forms</h4>
-                            <hr>
-                            <p>Card Text</p>
+            <div class="row justify-content-center">
+                <div class="col-11">
+                    <div class="row">
+                        <div class="col-12">
+                            <livewire:admin.admin-cards :totalRegisteredUser="$totalRegisteredUser"/>
                         </div>
                     </div>
                 </div>
+
             </div>
-            <!-- End: Cards -->
         </div>
-    </div>
+    </section>
 
 @endsection

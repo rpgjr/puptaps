@@ -48,16 +48,16 @@ return new class extends Migration
 
         DB::table('users')->insert(
             array(
+                // [
+                //     'admin_id' => '1',
+                //     'email' => 'pupt.alumniportalsystem@gmail.com',
+                //     'username' => 'IT_admin',
+                //     'email_verified_at' => '2022-09-16 23:20:57',
+                //     'password' => '$2y$10$4T6QsO9Exkivcm7iAQijCuOVoRY.AN91gghpnsrFTINY.Z14Ed7A2',
+                //     'user_role' => 'IT Admin',
+                // ],
                 [
                     'admin_id' => '1',
-                    'email' => 'pupt.alumniportalsystem@gmail.com',
-                    'username' => 'IT_admin',
-                    'email_verified_at' => '2022-09-16 23:20:57',
-                    'password' => '$2y$10$4T6QsO9Exkivcm7iAQijCuOVoRY.AN91gghpnsrFTINY.Z14Ed7A2',
-                    'user_role' => 'IT Admin',
-                ],
-                [
-                    'admin_id' => '2',
                     'email' => 'pupt.alumniportalsystem@gmail.com',
                     'username' => 'Admin',
                     'email_verified_at' => '2022-09-16 23:20:57',

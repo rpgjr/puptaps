@@ -8,6 +8,7 @@ class CareerText extends Component
 {
     public $career;
     public $alumni;
+    public $admin;
     public function render()
     {
         return view('livewire.career.career-text');
