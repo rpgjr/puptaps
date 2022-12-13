@@ -12,6 +12,10 @@ body {
     font-weight: normal;
 }
 
+.user-body {
+    background: #F8F9F9;
+}
+
 nav {
     min-height: 80px;
 }
@@ -28,12 +32,14 @@ nav {
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     padding: 30px;
     border-radius: 8px;
+    background: #ffffff;
 }
 
 .sub-container-box {
     box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
     padding: 10px 20px;
     border-radius: 5px;
+    background: #ffffff;
 }
 
 .container-blur {

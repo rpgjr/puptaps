@@ -19,7 +19,7 @@
 
             <div class="row justify-content-center">
                 <div class="col-11">
-                    <div class="row sub-container-box py-3 px-2">
+                    <div class="row sub-container-box py-4 px-2">
                         <div class="col-3">
                             <label class="form-label">Form Name</label>
                             <select class="form-select @error('form') is-invalid @enderror" name="form">
@@ -41,7 +41,7 @@
                             <span class="text-danger error-message">@error('form') {{$message}} @enderror</span>
                         </div>
                         <div class="col-3">
-                            <label class="form-label">Batch</label>
+                            <label class="form-label">For Batch</label>
                             <select class="form-select @error('form') is-invalid @enderror" name="form">
                                 <option value="" hidden selected>Please select one...</option>
                                 @for ($i = date('Y'); $i >= 2022; $i--)

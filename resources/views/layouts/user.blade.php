@@ -6,7 +6,7 @@
     <title>@yield('page-title')</title>
     @livewireStyles
 </head>
-<body id="go-to-top">
+<body id="go-to-top" class="user-body">
     {{-- NavBar --}}
     <livewire:components.user-navbar :users="$users"/>
 

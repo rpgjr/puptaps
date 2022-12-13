@@ -19,8 +19,6 @@ class CareerController extends Controller
                               ->alumni_id)->get();
         $alumni             = Alumni::all();
         $admin              = Admin::all();
-        $applicants         = CareerApplicant::where('alumni_id', '=', Auth::user()
-                              ->alumni_id)->get();
         $posts              = Alumni::all();
         $title              = "Careers";
         $data['query']      = $request->get('query');
@@ -34,7 +32,6 @@ class CareerController extends Controller
         compact(
             [
                 'users',
-                'applicants',
                 'posts',
                 'alumni',
                 'admin',
@@ -122,16 +119,5 @@ class CareerController extends Controller
                         'There is an Error Occured'
                     );
         }
-    }
-
-    public function applyCareer(Request $request) {
-        $applicant = new CareerApplicant();
-
-        $applicant->alumni_id = $request->alumni_id;
-        $applicant->course_id = $request->course_id;
-
-        $applicant->save();
-
-        return back()->with('success', 'Thank you for applying. Hope you get the Job!!!');
     }
 }

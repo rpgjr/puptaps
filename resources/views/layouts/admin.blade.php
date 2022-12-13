@@ -7,8 +7,7 @@
     <title>@yield('page-title')</title>
     @livewireStyles
 </head>
-<body>
-
+<body class="admin-body">
     <main>
         <div class="px-0 py-0 container-fluid">
             <div class="row g-0" style="height: 100vh;">
