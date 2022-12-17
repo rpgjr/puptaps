@@ -61,6 +61,10 @@
 
                 <hr class="my-1">
                 <!-- Start: Reports -->
+                {{-- <a type="button" href="{{ route('adminReports.getReportIndex') }}" class="btn btn-sm btn-dark w-100 text-start py-2 @yield('active-reports-index')">
+                    <i class="fa-solid fa-chart-pie me-1"></i>
+                    Generate Reports
+                </a> --}}
                 <a type="button" href="" class="btn btn-sm btn-dark w-100 text-start dropdown-toggle py-2" data-bs-toggle="collapse" data-bs-target="#reportsManager" aria-expanded="false">
                     <i class="fa-solid fa-chart-pie me-1"></i>
                     Reports
@@ -75,13 +79,21 @@
                             <i class="fa-solid fa-business-time me-1"></i>
                             Tracer Reports
                         </a>
-                        <a type="button" href="" class="btn btn-sm btn-dark w-100 text-start py-2">
+                        <a type="button" href="{{ route("adminReports.getUserReports") }}" class="btn btn-sm btn-dark w-100 text-start py-2 @yield('active-user-reports')">
                             <i class="fa-solid fa-clipboard-user me-1"></i>
                             User Reports
                         </a>
                     </div>
                 </div>
                 <!-- End: Reports -->
+
+                <hr class="my-1">
+                <!-- Start: Forms -->
+                <a type="button" href="" class="btn btn-sm btn-dark w-100 text-start py-2">
+                    <i class="fa-solid fa-file-lines me-1"></i>
+                    Form Settings
+                </a>
+                <!-- End: Forms -->
 
                 <hr class="my-1">
                 <!-- Start: News and Events -->

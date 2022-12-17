@@ -15,7 +15,9 @@ const CONTROLLER_SAS_TO_PDF = 'App\Http\Controllers\Modules\SasToPdfController';
 
 const CONTROLLER_ADMIN_USER_MANAGER = 'App\Http\Controllers\Admin\UserManagerController';
 const CONTROLLER_ADMIN_CAREER = 'App\Http\Controllers\Admin\CareerController';
+
 const CONTROLLER_ADMIN_REPORTS = "App\Http\Controllers\Admin\ReportsController";
+const CONTROLLER_ADMIN_USER_REPORTS = "App\Http\Controllers\Admin\UserReportsController";
 
 /*
 |--------------------------------------------------------------------------
@@ -264,7 +266,28 @@ Route::group(
         'as' => 'adminReports.',
         'middleware' => ['isUser', 'auth']
     ], function() {
+        Route::get('reports-index', 'getReportIndex')
+               ->name('getReportIndex');
+
         Route::get('form-reports', 'getFormReports')
                ->name('getFormReports');
+
+        Route::get('user-reports', 'getUserReports')
+               ->name('getUserReports');
+});
+
+// Admin - User Reports and PDF
+Route::group(
+    [
+        'controller' => CONTROLLER_ADMIN_USER_REPORTS,
+        'prefix' => 'admin/reports',
+        'as' => 'adminReports.',
+        'middleware' => ['isUser', 'auth']
+    ], function() {
+        Route::post('generated-report', 'generateUserReport')
+               ->name('generateUserReport');
+
+        Route::post('user-pdf-report', 'USER_REPORT_PDF')
+               ->name('USER_REPORT_PDF');
 });
 // ========== End of Route ========================================================================================
