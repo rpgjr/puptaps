@@ -20,9 +20,12 @@
                                 <label class="form-label">Report Type</label>
                                 <select class="form-select @error('type') is-invalid @enderror" name="type">
                                     <option value="" hidden selected>Please select one...</option>
-                                    <option value="1">List of Students</option>
-                                    <option value="2">Summarized Students Information</option>
-                                    <option value="3">Students Form Status</option>
+                                    <option value="1">List of Students - by Course</option>
+                                    <option value="2">List of Students - by Gender</option>
+                                    <option value="3">Summarized Students Information</option>
+                                    <option value="4">Students Form Status - General</option>
+                                    <option value="5">Students Form Status - by Course</option>
+                                    <option value="6">Students Form Status - by Gender</option>
                                 </select>
                                 <span class="text-danger error-message">@error('type') {{$message}} @enderror</span>
                             </div>

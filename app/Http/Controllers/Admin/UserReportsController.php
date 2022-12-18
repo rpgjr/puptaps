@@ -54,46 +54,6 @@ class MYPDF extends TCPDF {
         $this->Line(10, 288, 200, 288, $style3);
         $this->Cell(0, 10, 'Page '.$this->getAliasNumPage().'/'.$this->getAliasNbPages(), 0, false, 'C', 0, '', 0, false, 'T', 'M');
     }
-
-    // Load table data from file
-    public function LoadData($file) {
-        // Read file lines
-        $data = $file;
-        return $data;
-    }
-
-    // Colored table
-    public function ColoredTable($header,$data) {
-        // Colors, line width and bold font
-        $this->SetFillColor(255, 0, 0);
-        $this->SetTextColor(255);
-        $this->SetDrawColor(128, 0, 0);
-        $this->SetLineWidth(0.3);
-        $this->SetFont('', 'B');
-        // Header
-        $w = array(45, 30, 30, 30, 45);
-        $num_headers = count($header);
-        for($i = 0; $i < $num_headers; ++$i) {
-            $this->Cell($w[$i], 7, $header[$i], 1, 0, 'C', 1);
-        }
-        $this->Ln();
-        // Color and font restoration
-        $this->SetFillColor(224, 235, 255);
-        $this->SetTextColor(0);
-        $this->SetFont('');
-        // Data
-        $fill = 0;
-        foreach($data as $row) {
-            $this->Cell($w[0], 10, $row->last_name, 'LR', 0, 'L', $fill, '', 0);
-            $this->Cell($w[1], 10, $row->last_name, 'LR', 0, 'L', $fill, '', 0);
-            $this->Cell($w[2], 10, $row->course_id, 'LR', 0, 'L', $fill, '', 0);
-            $this->Cell($w[3], 10, $row->city_address, 'LR', 0, 'L', $fill, '', 0);
-            $this->Cell($w[4], 10, $row->city_address, 'LR', 0, 'L', $fill, '', 0);
-            $this->Ln();
-            $fill=!$fill;
-        }
-        $this->Cell(array_sum($w), 0, '', 'T');
-    }
 }
 
 class UserReportsController extends Controller
@@ -116,7 +76,7 @@ class UserReportsController extends Controller
         $batch = $request->batch;
         $sort_by = $request->sort_by;
         $courses = Courses::all();
-        $genders = collect(["male", "female"]);
+        $genders = collect(["Male", "Female"]);
 
         if($type == 1) {
             $list = Alumni::where("batch", "=", $batch)->get();
@@ -137,9 +97,9 @@ class UserReportsController extends Controller
         $pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
 
         // set margins
-        $pdf->SetMargins(PDF_MARGIN_LEFT, PDF_MARGIN_TOP, PDF_MARGIN_RIGHT);
+        $pdf->SetMargins(PDF_MARGIN_LEFT, PDF_MARGIN_TOP + 15, PDF_MARGIN_RIGHT);
         $pdf->SetHeaderMargin(PDF_MARGIN_HEADER);
-        $pdf->SetFooterMargin(PDF_MARGIN_FOOTER);
+        $pdf->SetFooterMargin(PDF_MARGIN_FOOTER );
 
         // set auto page breaks
         $pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
@@ -148,28 +108,294 @@ class UserReportsController extends Controller
         $pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
         // ---------------------------------------------------------
 
-        // set font
-        // add a page
-        $pdf->AddPage();
+        $type = $request->type;
+        $batch = $request->batch;
+        $sort_by = $request->sort_by;
+
+        if($sort_by == "course_id") {
+            $this->List_Course($request);
+            // $courses = Courses::all();
+            // $list = Alumni::where("batch", "=", $batch)->get();
+            // $listOfStudents = $list->sortBy($sort_by);
+
+            // foreach($courses as $course) {
+            //     if ($listOfStudents->contains('course_id', $course->course_id)) {
+            //         $pdf->AddPage();
+
+            //         $pdf->SetFont('helvetica', 'B', 15);
+            //         $pdf->Write(0, $course->course_Desc, '', 0, 'C', true, 0, false, false, 0);
+            //         $pdf->Ln(2);
+            //         $pdf->SetFont('helvetica', 'B', 12);
+            //         $pdf->Write(0, 'List of Alumni from Batch ' . $batch, '', 0, 'C', true, 0, false, false, 0);
+
+            //         $pdf->SetFont('helvetica', '', 11);
+
+            //         $pdf->Ln(10);
+            //         $table = '<style>
+            //             table, th, td {
+            //                     border: 1px solid black;
+            //                     border-collapse: collapse;
+            //                     padding-top: 8px;
+            //                     padding-bottom: 8px;
+            //                     text-align: center;
+            //             }
+            //             .table-data {
+            //                 padding-right: 10px;
+            //             }
+            //             .table-head {
+
+            //                 font-weight: bold;
+            //                 padding: 20px;
+            //             }
+            //             .tr-th {
+            //                 padding: 10px;
+            //                 background-color: #5D6D7E;
+            //                 color: #ffffff;
+            //             }
+            //         </style>
+            //         <table>
+            //             <thead>
+            //                 <tr class="tr-th">
+            //                     <th style="width: 25%; height: 30%;" class="table-head"><span>Full Name</span></th>
+            //                     <th style="width: 18%; height: 30%;" class="table-head">Email</th>
+            //                     <th style="width: 17%; height: 30%;" class="table-head">Number</th>
+            //                     <th style="width: 15%; height: 30%;" class="table-head">Date of Birth</th>
+            //                     <th style="width: 25%; height: 30%;" class="table-head">Address</th>
+            //                 </tr>
+            //             </thead>
+            //             <tbody>';
+
+            //         foreach($listOfStudents as $student) {
+            //             if ($student->course_id == $course->course_id) {
+            //                 $table .= '<tr>
+            //                                 <td style="width: 25%;" class="table-data">'
+            //                                     . $student->last_name . ', ' . $student->first_name . ' ' . $student->suffix . ' ' . $student->middle_name .
+            //                                 '</td>
+            //                                 <td style="width: 18%;" class="table-data">' . $student->email . '</td>
+            //                                 <td style="width: 17%;" class="table-data">' . $student->number . '</td>
+            //                                 <td style="width: 15%;" class="table-data">' . date("F d, Y", strtotime($student->birthday)) . '</td>
+            //                                 <td style="width: 25%;" class="table-data">' .  $student->city_address . '</td>
+            //                             </tr>';
+            //             }
+            //         }
+
+            //         $table .= '</tbody>
+            //         </table>';
+
+            //         $pdf->writeHTML($table, true, false, false, false, '');
+
+            //     }
+            // }
+
+            // //Close and output PDF document
+            // $pdf->Output('Batch_' . $batch . '_sortedBy_' . $sort_by . '_List.pdf', 'I');
+        }
+        elseif($sort_by == "gender") {
+            $this->List_Gender($request);
+        }
+    }
+
+    public function List_Course($request) {
+        $pdf = new MYPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
+
+        // set document information
+        $pdf->SetCreator(PDF_CREATOR);
+        $pdf->SetTitle('USER REPORT');
+
+        // set default monospaced font
+        $pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
+
+        // set margins
+        $pdf->SetMargins(PDF_MARGIN_LEFT, PDF_MARGIN_TOP + 15, PDF_MARGIN_RIGHT);
+        $pdf->SetHeaderMargin(PDF_MARGIN_HEADER);
+        $pdf->SetFooterMargin(PDF_MARGIN_FOOTER );
+
+        // set auto page breaks
+        $pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
+
+        // set image scale factor
+        $pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
+        // ---------------------------------------------------------
 
         $type = $request->type;
         $batch = $request->batch;
         $sort_by = $request->sort_by;
 
-        if($type == 1) {
-            $list = Alumni::where("batch", "=", $batch)->get();
-            $listOfStudents = $list->sortBy($sort_by);
+        $courses = Courses::all();
+        $list = Alumni::where("batch", "=", $batch)->get();
+        $listOfStudents = $list->sortBy($sort_by);
+
+        foreach($courses as $course) {
+            if ($listOfStudents->contains('course_id', $course->course_id)) {
+                $pdf->AddPage();
+
+                $pdf->SetFont('helvetica', 'B', 15);
+                $pdf->Write(0, $course->course_Desc, '', 0, 'C', true, 0, false, false, 0);
+                $pdf->Ln(2);
+                $pdf->SetFont('helvetica', 'B', 12);
+                $pdf->Write(0, 'List of Alumni from Batch ' . $batch, '', 0, 'C', true, 0, false, false, 0);
+
+                $pdf->SetFont('helvetica', '', 11);
+
+                $pdf->Ln(10);
+                $table = '<style>
+                    table, th, td {
+                            border: 1px solid black;
+                            border-collapse: collapse;
+                            padding-top: 8px;
+                            padding-bottom: 8px;
+                            text-align: center;
+                    }
+                    .table-data {
+                        padding-right: 10px;
+                    }
+                    .table-head {
+
+                        font-weight: bold;
+                        padding: 20px;
+                    }
+                    .tr-th {
+                        padding: 10px;
+                        background-color: #5D6D7E;
+                        color: #ffffff;
+                    }
+                </style>
+                <table>
+                    <thead>
+                        <tr class="tr-th">
+                            <th style="width: 25%; height: 30%;" class="table-head"><span>Full Name</span></th>
+                            <th style="width: 18%; height: 30%;" class="table-head">Email</th>
+                            <th style="width: 17%; height: 30%;" class="table-head">Number</th>
+                            <th style="width: 15%; height: 30%;" class="table-head">Date of Birth</th>
+                            <th style="width: 25%; height: 30%;" class="table-head">Address</th>
+                        </tr>
+                    </thead>
+                    <tbody>';
+
+                foreach($listOfStudents as $student) {
+                    if ($student->course_id == $course->course_id) {
+                        $table .= '<tr>
+                                        <td style="width: 25%;" class="table-data">'
+                                            . $student->last_name . ', ' . $student->first_name . ' ' . $student->suffix . ' ' . $student->middle_name .
+                                        '</td>
+                                        <td style="width: 18%;" class="table-data">' . $student->email . '</td>
+                                        <td style="width: 17%;" class="table-data">' . $student->number . '</td>
+                                        <td style="width: 15%;" class="table-data">' . date("F d, Y", strtotime($student->birthday)) . '</td>
+                                        <td style="width: 25%;" class="table-data">' .  $student->city_address . '</td>
+                                    </tr>';
+                    }
+                }
+
+                $table .= '</tbody>
+                </table>';
+
+                $pdf->writeHTML($table, true, false, false, false, '');
+            }
         }
 
-        $data = $pdf->LoadData($listOfStudents);
+        //Close and output PDF document
+        $pdf->Output('Batch_' . $batch . '_sortedBy_' . $sort_by . '_List.pdf', 'I');
+    }
 
-        $pdf->ln(20);
-        // print colored table
-        $header = array('Full Name', 'Email', 'Number', 'Date of Birth', 'Address');
-        $pdf->ColoredTable($header, $data);
+    public function List_Gender($request) {
+        $pdf = new MYPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
 
+        // set document information
+        $pdf->SetCreator(PDF_CREATOR);
+        $pdf->SetTitle('USER REPORT');
+
+        // set default monospaced font
+        $pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
+
+        // set margins
+        $pdf->SetMargins(PDF_MARGIN_LEFT, PDF_MARGIN_TOP + 15, PDF_MARGIN_RIGHT);
+        $pdf->SetHeaderMargin(PDF_MARGIN_HEADER);
+        $pdf->SetFooterMargin(PDF_MARGIN_FOOTER );
+
+        // set auto page breaks
+        $pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
+
+        // set image scale factor
+        $pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
+        // ---------------------------------------------------------
+
+        $type = $request->type;
+        $batch = $request->batch;
+        $sort_by = $request->sort_by;
+
+        $courses = Courses::all();
+        $list = Alumni::where("batch", "=", $batch)->get();
+        $listOfStudents = $list->sortBy($sort_by);
+
+        foreach($courses as $course) {
+            if ($listOfStudents->contains('course_id', $course->course_id)) {
+                $pdf->AddPage();
+
+                $pdf->SetFont('helvetica', 'B', 15);
+                $pdf->Write(0, $course->course_Desc, '', 0, 'C', true, 0, false, false, 0);
+                $pdf->Ln(2);
+                $pdf->SetFont('helvetica', 'B', 12);
+                $pdf->Write(0, 'List of Alumni from Batch ' . $batch, '', 0, 'C', true, 0, false, false, 0);
+
+                $pdf->SetFont('helvetica', '', 11);
+
+                $pdf->Ln(10);
+                $table = '<style>
+                    table, th, td {
+                            border: 1px solid black;
+                            border-collapse: collapse;
+                            padding-top: 8px;
+                            padding-bottom: 8px;
+                            text-align: center;
+                    }
+                    .table-data {
+                        padding-right: 10px;
+                    }
+                    .table-head {
+
+                        font-weight: bold;
+                        padding: 20px;
+                    }
+                    .tr-th {
+                        padding: 10px;
+                        background-color: #5D6D7E;
+                        color: #ffffff;
+                    }
+                </style>
+                <table>
+                    <thead>
+                        <tr class="tr-th">
+                            <th style="width: 25%; height: 30%;" class="table-head"><span>Full Name</span></th>
+                            <th style="width: 18%; height: 30%;" class="table-head">Email</th>
+                            <th style="width: 17%; height: 30%;" class="table-head">Number</th>
+                            <th style="width: 15%; height: 30%;" class="table-head">Date of Birth</th>
+                            <th style="width: 25%; height: 30%;" class="table-head">Address</th>
+                        </tr>
+                    </thead>
+                    <tbody>';
+
+                foreach($listOfStudents as $student) {
+                    if ($student->course_id == $course->course_id) {
+                        $table .= '<tr>
+                                        <td style="width: 25%;" class="table-data">'
+                                            . $student->last_name . ', ' . $student->first_name . ' ' . $student->suffix . ' ' . $student->middle_name .
+                                        '</td>
+                                        <td style="width: 18%;" class="table-data">' . $student->email . '</td>
+                                        <td style="width: 17%;" class="table-data">' . $student->number . '</td>
+                                        <td style="width: 15%;" class="table-data">' . date("F d, Y", strtotime($student->birthday)) . '</td>
+                                        <td style="width: 25%;" class="table-data">' .  $student->city_address . '</td>
+                                    </tr>';
+                    }
+                }
+
+                $table .= '</tbody>
+                </table>';
+
+                $pdf->writeHTML($table, true, false, false, false, '');
+            }
+        }
 
         //Close and output PDF document
-        $pdf->Output('PDS_.pdf', 'I');
+        $pdf->Output('Batch_' . $batch . '_sortedBy_' . $sort_by . '_List.pdf', 'I');
     }
 }

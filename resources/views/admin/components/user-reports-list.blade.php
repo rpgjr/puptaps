@@ -35,7 +35,7 @@
             </table>
         </div>
     </div>
-    @else
+    {{-- @else
         <div class="row sub-container-box mt-5 pt-4 pb-4">
             <div class="col-12">
                 <h3 class="mt-3 text-center">{{ $course->course_Desc }}</h3>
@@ -44,16 +44,17 @@
                     No data
                 </div>
             </div>
-        </div>
+        </div> --}}
     @endif
     @endforeach
 
 @elseif ($sort_by == "gender")
     @foreach ($genders as $gender)
+    @if ($listOfStudents->contains('gender', $gender))
     <div class="row sub-container-box mt-5 pt-4 pb-4">
         <div class="col-12">
-            <h3 class="mt-3 text-center text-uppercase">{{ $gender }}</h3>
-            <h4 class="mb-5 text-center">PUP Taguig Alumni Batch of {{ $batch }}</h4>
+            <h3 class="mt-3 text-center">PUP Taguig Alumni Batch of {{ $batch }}</h3>
+            <h4 class="mb-5 text-center text-uppercase">{{ $gender }}</h4>
             <table class="table table-striped align-middle">
                 <thead class="table-dark">
                     <tr class="text-center">
@@ -84,6 +85,7 @@
             </table>
         </div>
     </div>
+    @endif
     @endforeach
 
 @endif
