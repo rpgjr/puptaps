@@ -19,10 +19,16 @@
                                 @csrf
                                     <input type="hidden" name="type" value="{{ $type }}">
                                     <input type="hidden" name="batch" value="{{ $batch }}">
-                                    <input type="hidden" name="sort_by" value="{{ $sort_by }}">
+                                    <input type="hidden" name="action" value="I">
                                     <button type="submit" class="btn btn-primary me-2">View Report in PDF</button>
                                 </form>
-                                <button class="btn btn-success me-2">Download Report in PDF</button>
+                                <form action="{{ route('adminReports.DOWNLOAD_USER_REPORT_PDF') }}" method="post" target="__blank">
+                                    @csrf
+                                        <input type="hidden" name="type" value="{{ $type }}">
+                                        <input type="hidden" name="batch" value="{{ $batch }}">
+                                        <input type="hidden" name="action" value="D">
+                                        <button type="submit" class="btn btn-success me-2">Download Report in PDF</button>
+                                    </form>
                                 <a href="{{ route('adminReports.getUserReports') }}" class="btn btn-secondary">Return to Menu</a>
                             </div>
                         </div>

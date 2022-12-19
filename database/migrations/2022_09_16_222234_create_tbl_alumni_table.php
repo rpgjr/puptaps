@@ -43,19 +43,20 @@ return new class extends Migration
         DB::table('tbl_alumni')->insert(
             array(
                 'stud_number' => '2019-00432-TG-0',
-                'last_name' => 'Geneta',
-                'first_name' => 'Rodrigo',
-                'middle_name' => 'Pilariza',
+                'last_name' => 'Last Name',
+                'first_name' => 'First Name',
+                'middle_name' => 'Middle Name',
                 'course_id' => 'BSIT',
                 'batch' => '2022',
                 'gender' => 'Male',
                 'birthday' => '2001-01-31',
-                'city_address' => 'Sample St., Sample City',
-                'email' => 'lickmyballpen@gmail.com',
+                'age' => '21',
+                'city_address' => 'Sample St.,Sample Barangay, Sample City',
+                'email' => 'sample@gmail.com',
                 'email_verified_at' => '2022-09-16 23:20:57',
                 'number' => '0909090909',
-                'username' => 'rodgeneta',
-                'password' => '$2y$10$4T6QsO9Exkivcm7iAQijCuOVoRY.AN91gghpnsrFTINY.Z14Ed7A2',
+                'username' => 'thisIsSample',
+                'password' => '$2y$10$5EufXamveYAtaaaHrrxfHuhkp0qeTL3e/9hq7AMv/yfdEmj2NWWla',
                 'user_role' => 'Alumni',
             )
         );

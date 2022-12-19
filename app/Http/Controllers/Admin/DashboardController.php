@@ -16,7 +16,13 @@ class DashboardController extends Controller
             return [$item ->course_id => $item->id];
         });
 
+        $listOfNewAccounts = DB::table("tbl_alumni")->orderBy("alumni_id", "desc")->take(5)->get();
+
+        $list = Alumni::where("batch", "=", date("Y"))->get();
+        $listOfStudents = $list->sortBy("course_id");
+        $totalStudents = count($listOfStudents);
+
         $title = "Dashboard";
-        return  view('admin.homepage', compact(["title", "totalRegisteredUser"]));
+        return  view('admin.homepage', compact(["title", "totalRegisteredUser", "totalStudents", "listOfNewAccounts"]));
     }
 }

@@ -1,22 +1,23 @@
-var registeredStudents;
+
+var chartStudentAges;
 
 (function($) {
   $(document).ready(function() {
-    var labels = Object.keys(totalData);
-    var values = Object.values(totalData);
+    var labels = Object.keys(alumniPerAge);
+    var values = Object.values(alumniPerAge);
 
-    const ctx = document.getElementById('myChart');
-    registeredStudents.ChartData(ctx, 'bar', labels, values);
+    const ctx = document.getElementById('userReport-chart2');
+    chartStudentAges.ChartData(ctx, 'pie', labels, values);
   });
 
-  registeredStudents = {
+  chartStudentAges = {
     ChartData:function(ctx, type, labels, values) {
       new Chart(ctx, {
         type: type,
         data: {
           labels: labels,
           datasets: [{
-            label: '# of Votes',
+            label: '# Students per Age',
             data: values,
             backgroundColor: [
               'rgba(255, 99, 132, 0.2)',
@@ -44,8 +45,8 @@ var registeredStudents;
             y: {
               beginAtZero: true
             }
-          }
-        }
+          },
+        },
       });
     }
   }

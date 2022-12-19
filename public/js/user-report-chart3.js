@@ -1,22 +1,22 @@
-var registeredStudents;
+var chartStudentGender;
 
 (function($) {
   $(document).ready(function() {
-    var labels = Object.keys(totalData);
-    var values = Object.values(totalData);
+    var labels = Object.keys(alumniPerGender);
+    var values = Object.values(alumniPerGender);
 
-    const ctx = document.getElementById('myChart');
-    registeredStudents.ChartData(ctx, 'bar', labels, values);
+    const ctx = document.getElementById('userReport-chart3');
+    chartStudentGender.ChartData(ctx, 'pie', labels, values);
   });
 
-  registeredStudents = {
+  chartStudentGender = {
     ChartData:function(ctx, type, labels, values) {
       new Chart(ctx, {
         type: type,
         data: {
           labels: labels,
           datasets: [{
-            label: '# of Votes',
+            label: '# Students per Gender',
             data: values,
             backgroundColor: [
               'rgba(255, 99, 132, 0.2)',
@@ -40,12 +40,12 @@ var registeredStudents;
           }]
         },
         options: {
-          scales: {
-            y: {
-              beginAtZero: true
-            }
-          }
-        }
+            scales: {
+              y: {
+                beginAtZero: true
+              }
+            },
+        },
       });
     }
   }

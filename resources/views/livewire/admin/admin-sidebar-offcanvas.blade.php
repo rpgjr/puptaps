@@ -86,22 +86,6 @@
                     </div>
                 </div>
                 <!-- End: Reports -->
-
-                <hr class="my-1">
-                <!-- Start: Forms -->
-                <a type="button" href="" class="btn btn-sm btn-dark w-100 text-start py-2">
-                    <i class="fa-solid fa-file-lines me-1"></i>
-                    Form Settings
-                </a>
-                <!-- End: Forms -->
-
-                <hr class="my-1">
-                <!-- Start: News and Events -->
-                <a type="button" href="" class="btn btn-sm btn-dark w-100 text-start py-2">
-                    <i class="fa-solid fa-bullhorn me-1"></i>
-                    News and Events
-                </a>
-                <!-- End: New and Events -->
             </div>
         </div>
     </div>

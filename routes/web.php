@@ -289,5 +289,9 @@ Route::group(
 
         Route::post('user-pdf-report', 'USER_REPORT_PDF')
                ->name('USER_REPORT_PDF');
+
+        Route::post('user-pdf-report/download', 'DOWNLOAD_USER_REPORT_PDF')
+               ->name('DOWNLOAD_USER_REPORT_PDF');
+
 });
 // ========== End of Route ========================================================================================

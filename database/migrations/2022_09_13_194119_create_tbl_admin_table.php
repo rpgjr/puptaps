@@ -31,21 +31,12 @@ return new class extends Migration
         });
 
         $accounts = array (
-            // [
-            //     'last_name' => 'Admin',
-            //     'first_name' => 'IT',
-            //     'email' => 'pupt.alumniportalsystem@gmail.com',
-            //     'username' => 'IT_admin',
-            //     'password' => '$2y$10$4T6QsO9Exkivcm7iAQijCuOVoRY.AN91gghpnsrFTINY.Z14Ed7A2',
-            //     'user_role' => 'IT Admin',
-            // ],
-
             [
                 'last_name' => 'Admin',
                 'first_name' => 'Regular',
                 'email' => 'pupt.alumniportalsystem@gmail.com',
                 'username' => 'Admin',
-                'password' => '$2y$10$4T6QsO9Exkivcm7iAQijCuOVoRY.AN91gghpnsrFTINY.Z14Ed7A2',
+                'password' => '$2y$10$5EufXamveYAtaaaHrrxfHuhkp0qeTL3e/9hq7AMv/yfdEmj2NWWla',
                 'user_role' => 'Admin',
             ],
         );
@@ -61,15 +52,6 @@ return new class extends Migration
 
             $admin->save();
         }
-
-        // DB::table('tbl_admin')->insert(
-        //     array(
-        //         'username' => 'IT_admin',
-        //         'email' => 'pupt.alumniportalsystem@gmail.com',
-        //         'password' => '$2y$10$4T6QsO9Exkivcm7iAQijCuOVoRY.AN91gghpnsrFTINY.Z14Ed7A2',
-        //         'accessType' => 'IT Admin',
-        //     )
-        // );
     }
 
     /**

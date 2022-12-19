@@ -20,12 +20,9 @@
                                 <label class="form-label">Report Type</label>
                                 <select class="form-select @error('type') is-invalid @enderror" name="type">
                                     <option value="" hidden selected>Please select one...</option>
-                                    <option value="1">List of Students - by Course</option>
-                                    <option value="2">List of Students - by Gender</option>
-                                    <option value="3">Summarized Students Information</option>
-                                    <option value="4">Students Form Status - General</option>
-                                    <option value="5">Students Form Status - by Course</option>
-                                    <option value="6">Students Form Status - by Gender</option>
+                                    <option value="1">Summarized Students Information by Demograph</option>
+                                    <option value="2">List of Students - by Course</option>
+                                    <option value="3">List of Students - by Gender</option>
                                 </select>
                                 <span class="text-danger error-message">@error('type') {{$message}} @enderror</span>
                             </div>
@@ -38,17 +35,6 @@
                                     @endfor
                                 </select>
                                 <span class="text-danger error-message">@error('batch') {{$message}} @enderror</span>
-                            </div>
-                            <div class="col-5 mb-3">
-                                <label class="form-label">Sort By</label>
-                                <select class="form-select @error('sort_by') is-invalid @enderror" name="sort_by">
-                                    <option value="" hidden selected>Please select one...</option>
-                                    <option value="N/A">Not Applicable</option>
-                                    <option value="course_id">Course</option>
-                                    <option value="gender">Gender</option>
-                                    <option value="age">Age</option>
-                                </select>
-                                <span class="text-danger error-message">@error('sort_by') {{$message}} @enderror</span>
                             </div>
                             <div class="col-12">
                                 <button type="submit" class="btn btn-primary">Generate Report <i class="fa-solid fa-file-lines ms-1"></i></button>

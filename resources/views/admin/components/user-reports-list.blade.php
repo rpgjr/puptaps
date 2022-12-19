@@ -1,4 +1,72 @@
-@if ($sort_by == "course_id")
+@if ($type == 1)
+    <div class="row sub-container-box mt-5 pt-4 pb-4 gx-5">
+        <div class="col-5">
+            {{-- Students pie chart - courses --}}
+            <canvas id="userReport-chart1"></canvas>
+            <script>
+                var alumniPerCourses = @json($alumniPerCourses);
+            </script>
+        </div>
+        <div class="col-7">
+            <h3 class="my-3">Number of Students per Course batch {{ $batch }}</h3>
+            <div class="row my-2">
+                @foreach ($courses as $course)
+                    @if ($listOfStudents->contains('course_id', $course->course_id))
+                        <div class="col-6 mb-3">
+                            <p class="my-0 fw-bold">{{ $course->course_id }}</p>
+                            <p class="my-0">Total: {{ $numPerCourse = $listOfStudents->where("course_id", "=", $course->course_id)->count() }}</p>
+                            <p class="my-0">Percentage: {{ $percentage = round($numPerCourse / $totalStudents * 100, 2) }}%</p>
+                        </div>
+
+                    @endif
+                @endforeach
+            </div>
+        </div>
+    </div>
+    <div class="row sub-container-box mt-5 pt-4 pb-4 gx-5">
+        <div class="col-5">
+            {{-- Students pie chart - courses --}}
+            <canvas id="userReport-chart2"></canvas>
+            <script>
+                var alumniPerAge = @json($alumniPerAge);
+            </script>
+        </div>
+        <div class="col-7">
+            <h3 class="my-3">Number of Students per Age batch {{ $batch }}</h3>
+            <div class="row my-2">
+                @foreach ($alumniPerAge as $key => $value)
+                    <div class="col-6 mb-3">
+                        <p class="my-0 fw-bold">Age of {{ $key }}</p>
+                        <p class="my-0">Total: {{ $value }}</p>
+                        <p class="my-0">Percentage: {{ $percentage = round($value / $totalStudents * 100, 2) }}%</p>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+    </div>
+    <div class="row sub-container-box mt-5 pt-4 pb-4 gx-5">
+        <div class="col-5">
+            {{-- Students pie chart - courses --}}
+            <canvas id="userReport-chart3"></canvas>
+            <script>
+                var alumniPerGender = @json($alumniPerGender);
+            </script>
+        </div>
+        <div class="col-7">
+            <h3 class="my-3">Number of Students per Gender batch {{ $batch }}</h3>
+            <div class="row my-2">
+                @foreach ($alumniPerGender as $key => $value)
+                    <div class="col-6 mb-3">
+                        <p class="my-0 fw-bold">{{ $key }}</p>
+                        <p class="my-0">Total: {{ $value }}</p>
+                        <p class="my-0">Percentage: {{ $percentage = round($value / $totalStudents * 100, 2) }}%</p>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+    </div>
+
+@elseif ($type == 2)
     @foreach ($courses as $course)
     @if ($listOfStudents->contains('course_id', $course->course_id))
     <div class="row sub-container-box mt-5 pt-4 pb-4">
@@ -25,7 +93,7 @@
                             </td>
                             <td class="text-center">{{ $student->email }}</td>
                             <td class="text-center">{{ $student->number }}</td>
-                            <td class="text-center">{{ date("F d, Y", strtotime($student->number)) }}</td>
+                            <td class="text-center">{{ date("F d, Y", strtotime($student->birthday)) }}</td>
                             <td class="text-center">{{ $student->city_address }}</td>
                         </tr>
                     @endif
@@ -48,7 +116,7 @@
     @endif
     @endforeach
 
-@elseif ($sort_by == "gender")
+@elseif ($type == 3)
     @foreach ($genders as $gender)
     @if ($listOfStudents->contains('gender', $gender))
     <div class="row sub-container-box mt-5 pt-4 pb-4">
@@ -75,7 +143,7 @@
                             </td>
                             <td class="text-center">{{ $student->email }}</td>
                             <td class="text-center">{{ $student->number }}</td>
-                            <td class="text-center">{{ date("F d, Y", strtotime($student->number)) }}</td>
+                            <td class="text-center">{{ date("F d, Y", strtotime($student->birthday)) }}</td>
                             <td class="text-center">{{ $student->city_address }}</td>
                         </tr>
                     @endif

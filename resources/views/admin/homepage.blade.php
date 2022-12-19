@@ -13,7 +13,7 @@
                 <div class="col-11">
                     <div class="row">
                         <div class="col-12">
-                            <livewire:admin.admin-cards :totalRegisteredUser="$totalRegisteredUser"/>
+                            <livewire:admin.admin-cards :totalRegisteredUser="$totalRegisteredUser" :totalStudents="$totalStudents" :listOfNewAccounts="$listOfNewAccounts" />
                         </div>
                     </div>
                 </div>
