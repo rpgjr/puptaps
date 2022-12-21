@@ -22,6 +22,7 @@
     padding: 20px;
     border-radius: 8px;
     margin-bottom: 30px;
+    background: #ffffff;
 }
 
 .form-box-content {
@@ -32,10 +33,12 @@
     padding-right: 30px;
     border-radius: 8px;
     margin-bottom: 20px;
+    background: #ffffff;
 }
 
 .form-box-buttons {
     box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
     padding: 20px;
     border-radius: 8px;
+    background: #ffffff;
 }

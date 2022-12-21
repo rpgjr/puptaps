@@ -12,10 +12,10 @@
 
             <div class="row justify-content-center">
                 <div class="col-11">
-                    <form action="" method="post">
+                    <form action="{{ route('adminReports.generateFormReport') }}" method="post">
                     @csrf
                         <div class="row sub-container-box py-4 px-2">
-                            <div class="col-5 mb-3">
+                            <div class="col-4 mb-3">
                                 <label class="form-label">Form Name</label>
                                 <select class="form-select @error('form') is-invalid @enderror" name="form">
                                     <option value="" hidden selected>Please select one...</option>
@@ -25,35 +25,27 @@
                                 </select>
                                 <span class="text-danger error-message">@error('form') {{$message}} @enderror</span>
                             </div>
-                            <div class="col-5 mb-3">
+                            <div class="col-4 mb-3">
                                 <label class="form-label">Report Type</label>
-                                <select class="form-select @error('form') is-invalid @enderror" name="form">
+                                <select class="form-select @error('type') is-invalid @enderror" name="type">
                                     <option value="" hidden selected>Please select one...</option>
-                                    <option value="1">Full Summary - Table Form</option>
-                                    <option value="2">Full Summary - Pie Chart Form</option>
-                                    <option value="3">Pie Chart Only</option>
+                                    <option value="1">Summary Report General</option>
+                                    <option value="2">Summary Report - by Course</option>
+                                    <option value="3">Summary Report - by Gender</option>
+                                    <option value="4">Students Form Status General</option>
+                                    <option value="5">Students Form Status - by Course</option>
                                 </select>
-                                <span class="text-danger error-message">@error('form') {{$message}} @enderror</span>
+                                <span class="text-danger error-message">@error('type') {{$message}} @enderror</span>
                             </div>
-                            <div class="col-5 mb-3">
+                            <div class="col-4 mb-3">
                                 <label class="form-label">For Batch</label>
-                                <select class="form-select @error('form') is-invalid @enderror" name="form">
+                                <select class="form-select @error('batch') is-invalid @enderror" name="batch">
                                     <option value="" hidden selected>Please select one...</option>
                                     @for ($i = date('Y'); $i >= 2022; $i--)
                                             <option value="{{ $i }}">{{ $i }}</option>
                                     @endfor
                                 </select>
-                                <span class="text-danger error-message">@error('form') {{$message}} @enderror</span>
-                            </div>
-                            <div class="col-5 mb-3">
-                                <label class="form-label">Sort By</label>
-                                <select class="form-select @error('form') is-invalid @enderror" name="form">
-                                    <option value="" hidden selected>Please select one...</option>
-                                    <option value="Course">Course</option>
-                                    <option value="Gender">Gender</option>
-                                    <option value="Age">Age</option>
-                                </select>
-                                <span class="text-danger error-message">@error('form') {{$message}} @enderror</span>
+                                <span class="text-danger error-message">@error('batch') {{$message}} @enderror</span>
                             </div>
                             <div class="col-12">
                                 <button type="submit" class="btn btn-primary">Generate Report <i class="fa-solid fa-file-lines ms-1"></i></button>

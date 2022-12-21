@@ -60,7 +60,7 @@ class CareerController extends Controller
         $career->category       = $request->input('category');
         $career->email          = $request->input('email');
         $career->number         = $request->input('number');
-        $career->approval   = 0;
+        $career->approval       = 0;
 
         $career->save();
 

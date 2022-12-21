@@ -17,7 +17,7 @@
                             <i class="fa-solid fa-circle-question text-primary"></i>
                         </div>
                         <div class="card-body">
-                            <p class="card-text text-justify">Mula sayo... para sa bayan. Ang iyong aral, diwa, adhikaing taglay pup aming gabay PAARALAAAAAAAAANG DAKILAAAAAAAA.</p>
+                            <p class="card-text text-justify">The Alumni Tracer helps the institution to gather valuable feedback and insights. Alumni can provide valuable perspective on the quality of education they received, the impact of the institution on their career development, and any areas for improvement. This feedback can be used to inform decision-making and continuously improve the quality of education and support offered to current and future students.</p>
                             <div class="text-center mt-4">
                                 @if (count($tracer_answers) > 0)
                                     <a href="{{ route('userTracer.getUpdatePage') }}" type="button" class="btn btn-primary px-4 py-2">Update Tracer Form</a>

@@ -38,7 +38,7 @@
                                     <span class="text-danger error-message">@error('password') {{$message}} @enderror</span>
                                 </div>
                                 <p class="small mb-5 pb-lg-2">
-                                    <a class="text-white fw-bold" href="#!">Forgot password?</a>
+                                    {{-- <a class="text-white fw-bold" href="#!">Forgot password?</a> --}}
                                 </p>
                                 <div class="text-center my-0">
                                     <button class="btn btn-outline-light px-5" type="submit">Login</button>

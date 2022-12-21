@@ -21,9 +21,9 @@
                 <div class="mb-3">
                     <label class="form-label">Category</label>
                     <select class="form-select" aria-label="Default select example" name="category">
-                        <option value="IT">IT</option>
-                        <option value="Engineering">Engineering</option>
-                        <option value="Accounting">Accounting</option>
+                        @foreach ($careerCategories as $category)
+                            <option value="{{ $category->career_category }}">{{ $category->career_category }}</option>
+                        @endforeach
                     </select>
                 </div>
             </div>

@@ -1,5 +1,5 @@
 {{-- NavBar --}}
-<nav class="navbar navbar-expand-md bg-light sticky-top">
+<nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-top">
     <div class="container-fluid">
         <a class="navbar-brand" href="{{ route('user.homepage') }}">
             <img src="{{ asset('img/pupLogo.png') }}" style="height: 50px">
@@ -35,7 +35,6 @@
                     @endif
                     @endforeach
                     <ul class="dropdown-menu dropdown-menu-end">
-                        <li><a class="dropdown-item @yield('setting-active')" aria-current="page" href="">Account Settings</a></li>
                         <li><a class="dropdown-item" href="#">Feedback</a></li>
                         <li><a class="dropdown-item" href="#">Report a Problem</a></li>
                         <li><hr class="dropdown-divider"></li>

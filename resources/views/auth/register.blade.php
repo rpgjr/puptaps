@@ -104,7 +104,7 @@
                             <hr class="my-5">
                             <h4 class="text-center mb-4">Account Information</h4>
                             <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 form-outline  mb-4">
-                                <label class="form-label">Email Address <span class="text-danger">*</span></label>
+                                <label class="form-label">Personal Email Address <span class="text-danger">*</span></label>
                                 <input type="text" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old("email") }}"/>
                                 <span class="text-danger error-message">@error('email') {{$message}} @enderror</span>
                             </div>

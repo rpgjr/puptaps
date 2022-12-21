@@ -34,7 +34,7 @@
                         </div>
                     </div>
 
-                    @include('admin.components.user-reports-list')
+                    @include('admin.components.user-reports')
                 </div>
             </div>
         </div>

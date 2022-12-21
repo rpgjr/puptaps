@@ -14,6 +14,7 @@
 <link rel="stylesheet" href="{{ asset('css/forms.css') }}">
 <link rel="stylesheet" href="{{ asset('css/tracer.css') }}">
 <link rel="stylesheet" href="{{ asset('css/reports.css') }}">
+<link rel="stylesheet" href="{{ asset('css/user-homepage.css') }}">
 
 {{-- Fontawesome --}}
 <link rel="stylesheet" href="{{ asset('fontawesome/css/all.css') }}">

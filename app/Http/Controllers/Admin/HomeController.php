@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 
-class DashboardController extends Controller
+class HomeController extends Controller
 {
     public function getAdminHomepage() {
         $registeredUser = Alumni::select('course_id', DB::raw('count(alumni_id) as id'))->groupBy('course_id')->get();
@@ -18,7 +18,7 @@ class DashboardController extends Controller
 
         $listOfNewAccounts = DB::table("tbl_alumni")->orderBy("alumni_id", "desc")->take(5)->get();
 
-        $list = Alumni::where("batch", "=", date("Y"))->get();
+        $list = Alumni::all();
         $listOfStudents = $list->sortBy("course_id");
         $totalStudents = count($listOfStudents);
 

@@ -181,7 +181,9 @@ class UserReportsController extends Controller
 
                 $pdf->SetFont('helvetica', '', 11);
 
-                $pdf->Ln(10);
+                $pdf->Ln(12);
+                $pdf->Write(0, 'Date Generated: ' . date("M. d, Y"), '', 0, 'R', true, 0, false, false, 0);
+                $pdf->Ln(1);
                 $table = '<style>
                     table, th, td {
                             border: 1px solid black;
@@ -274,7 +276,9 @@ class UserReportsController extends Controller
 
                 $pdf->SetFont('helvetica', '', 11);
 
-                $pdf->Ln(5);
+                $pdf->Ln(12);
+                $pdf->Write(0, 'Date Generated: ' . date("M. d, Y"), '', 0, 'R', true, 0, false, false, 0);
+                $pdf->Ln(1);
                 $table = '<style>
                     table, th, td {
                             border: 1px solid black;

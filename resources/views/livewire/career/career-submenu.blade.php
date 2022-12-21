@@ -22,6 +22,22 @@
                             @endif
                         " value="" name="query">All</button>
                     </li>
+                    @foreach ($careerCategories as $category)
+                        <li>
+                            <button type="submit" class="btn btn-light w-100 text-start my-1
+                                @if ($query == $category->career_category)
+                                    active
+                                @endif
+                            " value="{{ $category->career_category }}" name="query">{{ $category->career_category }}</button>
+                        </li>
+                    @endforeach
+                    {{-- <li>
+                        <button type="submit" class="btn btn-light w-100 text-start mb-1
+                            @if ($query == null)
+                                active
+                            @endif
+                        " value="" name="query">All</button>
+                    </li>
                     <li>
                         <button type="submit" class="btn btn-light w-100 text-start mb-1
                             @if ($query == "IT")
@@ -42,7 +58,7 @@
                                 active
                             @endif
                         " value="Accounting" name="query">Accounting</button>
-                    </li>
+                    </li> --}}
                 </ul>
             </form>
         </div>

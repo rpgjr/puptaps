@@ -27,7 +27,7 @@ class CareerController extends Controller
     }
 
     public function getCareerRequest() {
-        $careers = Careers::all();
+        $careers = Careers::where("approval", "=", 0)->get();
         $users = Alumni::all();
         $title = "Posting Approval";
         return view('admin.careers.career-approval', compact(['careers', 'users', 'title']));
@@ -74,7 +74,7 @@ class CareerController extends Controller
             return back()
                    ->with(
                         'success',
-                        'Thank you for posting. Kindly wait for the admin to Approve your Job Posting.'
+                        'Thank you for posting.'
                     );
         }
         else {
@@ -115,7 +115,7 @@ class CareerController extends Controller
             return back()
                    ->with(
                         'success',
-                        'Thank you for posting. Kindly wait for the admin to Approve your Job Posting.'
+                        'Thank you for posting.'
                     );
         }
         else {

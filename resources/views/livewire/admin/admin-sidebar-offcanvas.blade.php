@@ -61,10 +61,6 @@
 
                 <hr class="my-1">
                 <!-- Start: Reports -->
-                {{-- <a type="button" href="{{ route('adminReports.getReportIndex') }}" class="btn btn-sm btn-dark w-100 text-start py-2 @yield('active-reports-index')">
-                    <i class="fa-solid fa-chart-pie me-1"></i>
-                    Generate Reports
-                </a> --}}
                 <a type="button" href="" class="btn btn-sm btn-dark w-100 text-start dropdown-toggle py-2" data-bs-toggle="collapse" data-bs-target="#reportsManager" aria-expanded="false">
                     <i class="fa-solid fa-chart-pie me-1"></i>
                     Reports
@@ -75,7 +71,7 @@
                             <i class="fa-solid fa-file-lines me-1"></i>
                             Form Reports
                         </a>
-                        <a type="button" href="" class="btn btn-sm btn-dark w-100 text-start py-2">
+                        <a type="button" href="{{ route("adminReports.getTracerReports") }}" class="btn btn-sm btn-dark w-100 text-start py-2 @yield('active-tracer-reports')">
                             <i class="fa-solid fa-business-time me-1"></i>
                             Tracer Reports
                         </a>
@@ -86,6 +82,13 @@
                     </div>
                 </div>
                 <!-- End: Reports -->
+
+                <hr class="my-1">
+                <!-- Start: Account Settings -->
+                <a type="button" href="{{ route("adminSettings.getAccountSettings") }}" class="btn btn-sm btn-dark w-100 text-start py-2 @yield('active-account-settings')">
+                    <i class="fa-solid fa-gear me-1"></i>
+                    Account Settings
+                </a>
             </div>
         </div>
     </div>

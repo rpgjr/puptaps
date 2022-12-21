@@ -7,85 +7,6 @@
             </a>
         </div>
         <div class="col-12 mt-4">
-            {{-- <div class="w-100">
-                <!-- Dashboard -->
-                <a type="button" href="{{ route('admin.homepage') }}" class="btn btn-dark w-100 text-start @yield('active-homepage')">
-                    <i class="fa-solid fa-house me-1"></i>
-                    Dashboard
-                </a>
-
-                <hr class="my-1">
-                <!-- Start: User Manager -->
-                <a type="button" href="" class="btn btn-dark w-100 text-start dropdown-toggle" data-bs-toggle="collapse" data-bs-target="#userManager" aria-expanded="false">
-                    <i class="fa-solid fa-user-group me-1"></i>
-                    User Management
-                </a>
-                <div class="mt-1">
-                    <div class="collapse show ms-4" id="userManager">
-                        <a type="button" href="" class="btn btn-dark w-100 text-start">
-                            <i class="fa-solid fa-user-graduate me-1"></i>
-                            Alumni Manager
-                        </a>
-                        <a type="button" href="" class="btn btn-dark w-100 text-start">
-                            <i class="fa-solid fa-user-tie me-1"></i>
-                            Admin Manager
-                        </a>
-                    </div>
-                </div>
-                <!-- End: User Manager -->
-
-                <hr class="my-1">
-                <!-- Start: Career Management -->
-                <a type="button" href="" class="btn btn-dark w-100 text-start dropdown-toggle" data-bs-toggle="collapse" data-bs-target="#careerManagement" aria-expanded="false">
-                    <i class="fa-solid fa-briefcase me-1"></i>
-                    Careers Management
-                </a>
-                <div class="mt-1">
-                    <div class="collapse show ms-4" id="careerManagement">
-                        <a type="button" href="" class="btn btn-dark w-100 text-start">
-                            <i class="fa-solid fa-gauge me-1"></i>
-                            Career Dashboard
-                        </a>
-                        <a type="button" href="" class="btn btn-dark w-100 text-start">
-                            <i class="fa-solid fa-circle-check me-1"></i>
-                            Posting Approval
-                        </a>
-                    </div>
-                </div>
-                <!-- End: Career Management -->
-
-                <hr class="my-1">
-                <!-- Start: Reports -->
-                <a type="button" href="" class="btn btn-dark w-100 text-start dropdown-toggle" data-bs-toggle="collapse" data-bs-target="#reportsManager" aria-expanded="false">
-                    <i class="fa-solid fa-chart-pie me-1"></i>
-                    Reports
-                </a>
-                <div class="mt-1">
-                    <div class="collapse show ms-4" id="reportsManager">
-                        <a type="button" href="" class="btn btn-dark w-100 text-start">
-                            <i class="fa-solid fa-file-lines me-1"></i>
-                            Form Reports
-                        </a>
-                        <a type="button" href="" class="btn btn-dark w-100 text-start">
-                            <i class="fa-solid fa-business-time me-1"></i>
-                            Tracer Reports
-                        </a>
-                        <a type="button" href="" class="btn btn-dark w-100 text-start">
-                            <i class="fa-solid fa-clipboard-user me-1"></i>
-                            User Reports
-                        </a>
-                    </div>
-                </div>
-                <!-- End: Reports -->
-
-                <hr class="my-1">
-                <!-- Start: News and Events -->
-                <a type="button" href="" class="btn btn-dark w-100 text-start ">
-                    <i class="fa-solid fa-bullhorn me-1"></i>
-                    News and Events
-                </a>
-                <!-- End: New and Events -->
-            </div> --}}
             <div class="w-100">
                 <!-- Dashboard -->
                 <a type="button" href="{{ route('admin.homepage') }}" class="btn btn-sm btn-dark w-100 text-start @yield('active-homepage') py-2">
@@ -135,10 +56,6 @@
 
                 <hr class="my-1">
                 <!-- Start: Reports -->
-                {{-- <a type="button" href="{{ route('adminReports.getReportIndex') }}" class="btn btn-sm btn-dark w-100 text-start py-2 @yield('active-reports-index')">
-                    <i class="fa-solid fa-chart-pie me-1"></i>
-                    Generate Reports
-                </a> --}}
                 <a type="button" href="" class="btn btn-sm btn-dark w-100 text-start dropdown-toggle py-2" data-bs-toggle="collapse" data-bs-target="#reportsManager" aria-expanded="false">
                     <i class="fa-solid fa-chart-pie me-1"></i>
                     Reports
@@ -149,7 +66,7 @@
                             <i class="fa-solid fa-file-lines me-1"></i>
                             Form Reports
                         </a>
-                        <a type="button" href="" class="btn btn-sm btn-dark w-100 text-start py-2">
+                        <a type="button" href="{{ route("adminReports.getTracerReports") }}" class="btn btn-sm btn-dark w-100 text-start py-2 @yield('active-tracer-reports')">
                             <i class="fa-solid fa-business-time me-1"></i>
                             Tracer Reports
                         </a>
@@ -160,6 +77,14 @@
                     </div>
                 </div>
                 <!-- End: Reports -->
+
+                <hr class="my-1">
+                <!-- Start: Account Settings -->
+                <a type="button" href="{{ route("adminSettings.getAccountSettings") }}" class="btn btn-sm btn-dark w-100 text-start py-2 @yield('active-account-settings')">
+                    <i class="fa-solid fa-gear me-1"></i>
+                    Account Settings
+                </a>
+                <!-- End: Account Settings -->
             </div>
         </div>
     </div>

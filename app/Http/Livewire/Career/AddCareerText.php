@@ -2,12 +2,14 @@
 
 namespace App\Http\Livewire\Career;
 
+use App\Models\CareerCategories;
 use Livewire\Component;
 
 class AddCareerText extends Component
 {
     public function render()
     {
-        return view('livewire.career.add-career-text');
+        $careerCategories = CareerCategories::all();
+        return view('livewire.career.add-career-text', compact("careerCategories"));
     }
 }

@@ -17,11 +17,12 @@ return new class extends Migration
             $table->string('stud_number');
             $table->string('last_name');
             $table->string('first_name');
-            $table->string('middle_name')->nullable();
-            $table->string('suffix')->nullable();
+            $table->string('middle_name')
+                  ->nullable();
+            $table->string('suffix')
+                  ->nullable();
             $table->string('course_id');
             $table->string('batch');
-            $table->timestamps();
         });
     }
 

@@ -18,6 +18,9 @@ const CONTROLLER_ADMIN_CAREER = 'App\Http\Controllers\Admin\CareerController';
 
 const CONTROLLER_ADMIN_REPORTS = "App\Http\Controllers\Admin\ReportsController";
 const CONTROLLER_ADMIN_USER_REPORTS = "App\Http\Controllers\Admin\UserReportsController";
+const CONTROLLER_ADMIN_FORM_REPORTS = "App\Http\Controllers\Admin\FormReportsController";
+
+const CONTROLLER_ADMIN_ACCOUNT_SETTINGS = "App\Http\Controllers\Admin\AccountSettingsController";
 
 /*
 |--------------------------------------------------------------------------
@@ -202,7 +205,7 @@ Route::group(
 // Group for Homepage and Landing Page
 Route::group(
     [
-        'controller' => 'App\Http\Controllers\Admin\DashboardController'
+        'controller' => 'App\Http\Controllers\Admin\HomeController'
     ], function() {
 
         Route::get('/admin', 'getAdminHomepage')
@@ -266,14 +269,14 @@ Route::group(
         'as' => 'adminReports.',
         'middleware' => ['isUser', 'auth']
     ], function() {
-        Route::get('reports-index', 'getReportIndex')
-               ->name('getReportIndex');
-
         Route::get('form-reports', 'getFormReports')
                ->name('getFormReports');
 
         Route::get('user-reports', 'getUserReports')
                ->name('getUserReports');
+
+        Route::get('tracer-reports', 'getTracerReports')
+               ->name('getTracerReports');
 });
 
 // Admin - User Reports and PDF
@@ -284,7 +287,7 @@ Route::group(
         'as' => 'adminReports.',
         'middleware' => ['isUser', 'auth']
     ], function() {
-        Route::post('generated-report', 'generateUserReport')
+        Route::post('generated-user-report', 'generateUserReport')
                ->name('generateUserReport');
 
         Route::post('user-pdf-report', 'USER_REPORT_PDF')
@@ -294,4 +297,54 @@ Route::group(
                ->name('DOWNLOAD_USER_REPORT_PDF');
 
 });
+
+// Admin - User Reports and PDF
+Route::group(
+    [
+        'controller' => CONTROLLER_ADMIN_FORM_REPORTS,
+        'prefix' => 'admin/reports',
+        'as' => 'adminReports.',
+        'middleware' => ['isUser', 'auth']
+    ], function() {
+        Route::post('generated-form-report', 'generateFormReport')
+               ->name('generateFormReport');
+
+        // Route::post('user-pdf-report', 'USER_REPORT_PDF')
+        //        ->name('USER_REPORT_PDF');
+
+        // Route::post('user-pdf-report/download', 'DOWNLOAD_USER_REPORT_PDF')
+        //        ->name('DOWNLOAD_USER_REPORT_PDF');
+
+});
+
+// Admin - Account Settings
+Route::group(
+    [
+        'controller' => CONTROLLER_ADMIN_ACCOUNT_SETTINGS,
+        'prefix' => 'admin/settings',
+        'as' => 'adminSettings.',
+        'middleware' => ['isUser', 'auth']
+    ], function() {
+        Route::get('account', 'getAccountSettings')
+               ->name('getAccountSettings');
+
+        Route::post('account/update', 'updateAccount')
+               ->name('updateAccount');
+
+});
 // ========== End of Route ========================================================================================
+
+// ====== Super Admin Route ===========================================================================================
+
+// Group for Homepage and Landing Page
+Route::group(
+    [
+        'controller' => 'App\Http\Controllers\SuperAdmin\HomeController'
+    ], function() {
+
+        Route::get('/super-admin', 'getSuperAdminIndex')
+            ->middleware(['auth', 'isLoggedIn', 'isUser'])
+            ->name('superAdmin.getSuperAdminIndex');
+});
+
+// ====== Super Admin Route ===========================================================================================

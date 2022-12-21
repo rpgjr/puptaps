@@ -17,19 +17,26 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->increments('user_id');
 
-            $table->unsignedInteger('alumni_id')->nullable();
-            $table->foreign('alumni_id')->references('alumni_id')->on('tbl_alumni');
+            $table->unsignedInteger('alumni_id')
+                  ->nullable();
+            $table->foreign('alumni_id')
+                  ->references('alumni_id')
+                  ->on('tbl_alumni');
 
-            $table->unsignedInteger('admin_id')->nullable();
-            $table->foreign('admin_id')->references('admin_id')->on('tbl_admin');
+            $table->unsignedInteger('admin_id')
+                  ->nullable();
+            $table->foreign('admin_id')
+                  ->references('admin_id')
+                  ->on('tbl_admin');
 
-            $table->string('stud_number')->nullable();
+            $table->string('stud_number')
+                  ->nullable();
             $table->string('email');
-            $table->timestamp('email_verified_at')->nullable();
+            $table->timestamp('email_verified_at')
+                  ->nullable();
             $table->string('username');
             $table->string('password');
             $table->string('user_role');
-            $table->timestamps();
         });
 
         DB::table('users')->insert(
@@ -55,6 +62,14 @@ return new class extends Migration
                     'email_verified_at' => '2022-09-16 23:20:57',
                     'password' => '$2y$10$5EufXamveYAtaaaHrrxfHuhkp0qeTL3e/9hq7AMv/yfdEmj2NWWla',
                     'user_role' => 'Admin',
+                ],
+                [
+                    'admin_id' => '2',
+                    'email' => 'superadmin@gmail.com',
+                    'username' => 'SuperAdmin',
+                    'email_verified_at' => '2022-09-16 23:20:57',
+                    'password' => '$2y$10$5EufXamveYAtaaaHrrxfHuhkp0qeTL3e/9hq7AMv/yfdEmj2NWWla',
+                    'user_role' => 'Super_Admin',
                 ],
             )
         );
