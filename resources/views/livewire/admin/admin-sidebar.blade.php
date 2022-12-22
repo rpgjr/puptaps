@@ -3,7 +3,8 @@
         <div class="col-12 text-center mt-4">
             <a href="{{ route('admin.homepage') }}" class="text-decoration-none text-white align-items-center">
                 <img src="{{ asset('img/pupLogo.png') }}" style="height: 50px;">
-                <p class="mt-2 fs-4 fw-bold">PUPTAPS</p>
+                <p class="mt-2 fs-4 fw-bold mb-0">PUPTAPS</p>
+                <p class="fw-bold mt-0">ADMIN</p>
             </a>
         </div>
         <div class="col-12 mt-4">

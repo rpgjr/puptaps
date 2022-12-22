@@ -8,9 +8,9 @@
     <div class="container-fluid my-3">
         <div class="row justify-content-center g-0">
             <div class="col-11 col-sm-9 col-md-9 col-lg-9 col-xl-9">
-                <div class="row sub-container-box">
+                <div class="row sub-container-box pb-3 pt-4">
                     <div class="col-12">
-
+                        <h4>Announcement <i class="fa-solid fa-bell ms-1 text-primary"></i></h4>
                     </div>
                 </div>
             </div>

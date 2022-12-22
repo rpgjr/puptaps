@@ -17,8 +17,8 @@
 <div class="col-1 col-sm-3 col-md-3 col-lg-5 col-xl-5">
     <div class="dropdown text-end">
         <button class="btn btn-primary dropdown" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-            <i class="fa-solid fa-plus"></i>
-            <span class="d-none d-sm-none d-md-none d-lg-inline d-xl-inline">Add Job Add</span>
+            <i class="fa-solid fa-plus me-1"></i>
+            <span class="d-none d-sm-none d-md-none d-lg-inline d-xl-inline">Job Ad</span>
         </button>
         <ul class="dropdown-menu dropdown-menu-md-start">
             <li>

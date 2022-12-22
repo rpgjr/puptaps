@@ -51,6 +51,9 @@
                 </div>
 
                 <div class="col-12 form-box-content">
+                    <div class="alert alert-warning text-center" role="alert">
+                        If you want to update your personal information, you can go to the <a href="{{ route("userProfile.index") }}" class="text-dark text-decoration-none"><b>Profiles tab.</b></a>
+                    </div>
                     <fieldset disabled>
                         <div class="row">
                             @foreach ($users as $user)

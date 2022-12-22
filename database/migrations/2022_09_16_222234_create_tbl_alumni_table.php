@@ -53,10 +53,10 @@ return new class extends Migration
         Alumni::insert(
             array(
                 'stud_number'       => '2019-00432-TG-0',
-                'last_name'         => 'Last Name',
-                'first_name'        => 'First Name',
-                'middle_name'       => 'Middle Name',
-                'course_id'         => 'null',
+                'last_name'         => 'Last',
+                'first_name'        => 'First',
+                'middle_name'       => 'Middle',
+                'course_id'         => 'BSIT',
                 'batch'             => '1950',
                 'gender'            => 'Male',
                 'birthday'          => '2001-01-31',
