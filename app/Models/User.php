@@ -20,7 +20,7 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $primaryKey = 'user_id';
 
     protected $table = 'users';
-    // public $timestamps = true;
+    public $timestamps = false;
 
     protected $fillable = [
         'alumni_id',

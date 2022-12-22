@@ -10,7 +10,7 @@ class Alumni extends Model
     use HasFactory;
     protected $primaryKey = 'alumni_id';
     protected $table = 'tbl_alumni';
-    // public $timestamps = true;
+    public $timestamps = false;
 
     protected $fillable = [
         'stud_number',
