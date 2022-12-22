@@ -91,18 +91,11 @@
             <div class="row">
               <div class="col-6 fw-bold">Personal Data Sheet</div>
               <div class="col-6 text-center">
-                @if (empty(count($PDS)))
-                  <i class="fa-regular fa-circle-xmark me-1 text-danger"></i><span class="text-danger">No Record</span>
-                @endif
-                @foreach ($PDS as $answerPDS)
-                  @if ($answerPDS->alumni_id == $alum->alumni_id)
+                  @if ($PDS->contains('alumni_id', $alum->alumni_id))
                     <i class="fa-regular fa-circle-check me-1 text-success"></i><span class="text-success">Completed</span>
-                    @break
                   @else
                     <i class="fa-regular fa-circle-xmark me-1 text-danger"></i><span class="text-danger">No Record</span>
-                    @break
                   @endif
-                @endforeach
               </div>
             </div>
 
@@ -110,18 +103,11 @@
             <div class="row">
               <div class="col-6 fw-bold">Exit Interview Form</div>
               <div class="col-6 text-center">
-                @if (empty(count($EIF)))
-                  <i class="fa-regular fa-circle-xmark me-1 text-danger"></i><span class="text-danger">No Record</span>
-                @endif
-                @foreach ($EIF as $answerEIF)
-                  @if ($answerEIF->alumni_id == $alum->alumni_id)
+                  @if ($EIF->contains('alumni_id', $alum->alumni_id))
                     <i class="fa-regular fa-circle-check me-1 text-success"></i><span class="text-success">Completed</span>
-                    @break
                   @else
                     <i class="fa-regular fa-circle-xmark me-1 text-danger"></i><span class="text-danger">No Record</span>
-                    @break
                   @endif
-                @endforeach
               </div>
             </div>
 
@@ -129,18 +115,11 @@
             <div class="row">
               <div class="col-6 fw-bold">Student Affairs and Services Form</div>
               <div class="col-6 text-center">
-                @if (empty(count($SAS)))
-                  <i class="fa-regular fa-circle-xmark me-1 text-danger"></i><span class="text-danger">No Record</span>
-                @endif
-                @foreach ($SAS as $answerSAS)
-                  @if ($answerSAS->alumni_id == $alum->alumni_id)
+                  @if ($SAS->contains('alumni_id', $alum->alumni_id))
                     <i class="fa-regular fa-circle-check me-1 text-success"></i><span class="text-success">Completed</span>
-                    @break
                   @else
                     <i class="fa-regular fa-circle-xmark me-1 text-danger"></i><span class="text-danger">No Record</span>
-                    @break
                   @endif
-                @endforeach
               </div>
             </div>
           </div>
