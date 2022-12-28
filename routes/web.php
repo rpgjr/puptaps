@@ -22,6 +22,10 @@ const CONTROLLER_ADMIN_FORM_REPORTS = "App\Http\Controllers\Admin\FormReportsCon
 
 const CONTROLLER_ADMIN_ACCOUNT_SETTINGS = "App\Http\Controllers\Admin\AccountSettingsController";
 
+const CONTROLLER_SUPERADMIN_ANNOUNCEMENT_SETTINGS = "App\Http\Controllers\SuperAdmin\AnnouncementController";
+const CONTROLLER_SUPERADMIN_NEWS_SETTINGS = "App\Http\Controllers\SuperAdmin\NewsController";
+const CONTROLLER_SUPERADMIN_ADMIN_MANAGEMENT = "App\Http\Controllers\SuperAdmin\AdminManagementController";
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -272,9 +276,6 @@ Route::group(
         Route::get('form-reports', 'getFormReports')
                ->name('getFormReports');
 
-        Route::get('user-reports', 'getUserReports')
-               ->name('getUserReports');
-
         Route::get('tracer-reports', 'getTracerReports')
                ->name('getTracerReports');
 });
@@ -287,18 +288,12 @@ Route::group(
         'as' => 'adminReports.',
         'middleware' => ['isUser', 'auth']
     ], function() {
-        Route::post('generated-user-report', 'generateUserReport')
-               ->name('generateUserReport');
-
-        Route::post('user-pdf-report', 'USER_REPORT_PDF')
-               ->name('USER_REPORT_PDF');
-
-        Route::post('user-pdf-report/download', 'DOWNLOAD_USER_REPORT_PDF')
-               ->name('DOWNLOAD_USER_REPORT_PDF');
+        Route::get('user-report', 'getUserReports')
+               ->name('getUserReports');
 
 });
 
-// Admin - User Reports and PDF
+// Admin - Form Reports and PDF
 Route::group(
     [
         'controller' => CONTROLLER_ADMIN_FORM_REPORTS,
@@ -347,4 +342,63 @@ Route::group(
             ->name('superAdmin.getSuperAdminIndex');
 });
 
+// Super Admin - Announcement Settings
+Route::group(
+    [
+        'controller' => CONTROLLER_SUPERADMIN_ANNOUNCEMENT_SETTINGS,
+        'prefix' => 'super-admin/news-events',
+        'as' => 'superAdmin.',
+        'middleware' => ['isUser', 'auth']
+    ], function() {
+
+        Route::get('announcement', 'getAnnouncementSettings')
+               ->name('getAnnouncementSettings');
+
+        Route::post('add-announcement', 'postAnnouncement')
+               ->name('postAnnouncement');
+
+        Route::post('delete-announcement', 'deleteAnnouncement')
+               ->name('deleteAnnouncement');
+});
+
+// Super Admin - News Settings
+Route::group(
+    [
+        'controller' => CONTROLLER_SUPERADMIN_NEWS_SETTINGS,
+        'prefix' => 'super-admin/news-events',
+        'as' => 'superAdmin.',
+        'middleware' => ['isUser', 'auth']
+    ], function() {
+
+        Route::get('news', 'getNewsSettings')
+               ->name('getNewsSettings');
+
+        Route::post('add-news', 'postNews')
+               ->name('postNews');
+
+        Route::post('delete-news', 'deleteNews')
+               ->name('deleteNews');
+});
+
+// Super Admin - News Settings
+Route::group(
+    [
+        'controller' => CONTROLLER_SUPERADMIN_ADMIN_MANAGEMENT,
+        'prefix' => 'super-admin/admin-management',
+        'as' => 'superAdmin.',
+        'middleware' => ['isUser', 'auth']
+    ], function() {
+
+        Route::get('add-admin', 'getAddNewAdmin')
+               ->name('getAddNewAdmin');
+
+        Route::post('save-admin', 'saveNewAdmin')
+               ->name('saveNewAdmin');
+
+        Route::get('admin-manager', 'getAdminManager')
+               ->name('getAdminManager');
+
+        Route::post('delete-admin', 'deleteAdmin')
+               ->name('deleteAdmin');
+});
 // ====== Super Admin Route ===========================================================================================

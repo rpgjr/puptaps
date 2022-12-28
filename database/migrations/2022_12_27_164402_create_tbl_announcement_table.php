@@ -13,12 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('tbl_news', function (Blueprint $table) {
-            $table->increments("news_id");
-            $table->string('news_image')
-                  ->nullable();
-            $table->string("news_title");
-            $table->timestamps();
+        Schema::create('tbl_announcement', function (Blueprint $table) {
+            $table->increments("announcement_id");
+            $table->string("announcement_image");
+            $table->string("announcement_title");
+            $table->longText("announcement_text");
         });
     }
 
@@ -29,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tbl_news');
+        Schema::dropIfExists('tbl_announcement');
     }
 };

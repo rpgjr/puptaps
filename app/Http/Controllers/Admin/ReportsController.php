@@ -18,12 +18,6 @@ class ReportsController extends Controller
         return view("admin.reports.form-index", compact(["title", "forms"]));
     }
 
-    public function getUserReports() {
-        $title = "User Reports";
-
-        return view("admin.reports.user-index", compact(["title"]));
-    }
-
     public function getTracerReports() {
         $title = "Tracer Reports";
 

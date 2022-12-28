@@ -16,32 +16,44 @@
                 </a>
 
                 <hr class="my-1">
-                <!-- Start: User Manager -->
-                <a type="button" href="" class="btn btn-sm btn-dark w-100 text-start dropdown-toggle py-2" data-bs-toggle="collapse" data-bs-target="#userManager" aria-expanded="false">
+                <!-- Start: Admin Manager -->
+                <a type="button" href="" class="btn btn-sm btn-dark w-100 text-start dropdown-toggle py-2" data-bs-toggle="collapse" data-bs-target="#adminManager" aria-expanded="false">
                     <i class="fa-solid fa-user-tie me-1"></i>
                     Admin Management
                 </a>
                 <div class="mt-1">
-                    <div class="collapse show ms-4" id="userManager">
-                        <a type="button" href="" class="btn btn-sm btn-dark w-100 text-start py-2 @yield('active-alumni-list')">
+                    <div class="collapse show ms-4" id="adminManager">
+                        <a type="button" href="{{ route("superAdmin.getAdminManager") }}" class="btn btn-sm btn-dark w-100 text-start py-2 @yield('active-admin-manager')">
                             <i class="fa-solid fa-user-pen me-1"></i>
                             Admin Manager
                         </a>
-                        <a type="button" href="" class="btn btn-sm btn-dark w-100 text-start py-2 @yield('active-alumni-manager')">
+                        <a type="button" href="{{ route("superAdmin.getAddNewAdmin") }}" class="btn btn-sm btn-dark w-100 text-start py-2 @yield('active-add-new-admin')">
                             <i class="fa-solid fa-user-plus me-1"></i>
                             Add new Admin
                         </a>
                     </div>
                 </div>
-                <!-- End: User Manager -->
+                <!-- End: Admin Manager -->
 
                 <hr class="my-1">
-                <!-- Start: Account Settings -->
-                <a type="button" href="" class="btn btn-sm btn-dark w-100 text-start py-2 @yield('active-account-settings')">
-                    <i class="fa-solid fa-newspaper me-1"></i>
-                    News and Events
+                <!-- Start: News and Events -->
+                <a type="button" href="" class="btn btn-sm btn-dark w-100 text-start dropdown-toggle py-2" data-bs-toggle="collapse" data-bs-target="#userHomepage" aria-expanded="false">
+                    <i class="fa-solid fa-house-user me-1"></i>
+                    User Homepage
                 </a>
-                <!-- End: Account Settings -->
+                <div class="mt-1">
+                    <div class="collapse show ms-4" id="userHomepage">
+                        <a type="button" href="{{ route("superAdmin.getAnnouncementSettings") }}" class="btn btn-sm btn-dark w-100 text-start py-2 @yield('active-announcement-settings')">
+                            <i class="fa-solid fa-bullhorn me-1"></i>
+                            Announcements
+                        </a>
+                        <a type="button" href="{{ route("superAdmin.getNewsSettings") }}" class="btn btn-sm btn-dark w-100 text-start py-2 @yield('active-news-settings')">
+                            <i class="fa-solid fa-newspaper me-1"></i>
+                            News
+                        </a>
+                    </div>
+                </div>
+                <!-- End: News and Events -->
             </div>
         </div>
     </div>
