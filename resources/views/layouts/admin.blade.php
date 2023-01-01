@@ -3,7 +3,7 @@
 <head>
     {{-- Headings --}}
     <livewire:components.header />
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://www.gstatic.com/charts/loader.js"></script>
     <title>@yield('page-title')</title>
     @livewireStyles
 </head>

@@ -196,13 +196,23 @@
                             </div>
                             <div class="col-12 my-2">
                                 <label class="form-label">City Address</label>
-                                <input type="text" class="form-control" name="city_address" value="{{ $user->city_address }}">
+                                <input type="text" class="form-control" name="city_address" value="{{ $user->city_address }}" id="cityAddress">
                                 <span class="text-danger">@error('city_address') {{$message}} @enderror</span>
                             </div>
+
                             <div class="col-12 my-2">
                                 <label class="form-label">Provincial Address</label>
-                                <input type="text" class="form-control" placeholder="Provincial Address" name="provincial_address" value="{{ $user->provincial_address }}">
+                                <input type="text" class="form-control" placeholder="Provincial Address" name="provincial_address" value="{{ $user->provincial_address }}" id="provincialAddress">
                                 <span class="text-danger">@error('provincial_address') {{$message}} @enderror</span>
+                            </div>
+
+                            <div class="col-12">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="sameAddress">
+                                    <label class="form-check-label">
+                                    Same as City Address
+                                    </label>
+                                </div>
                             </div>
 
                             <div class="col-md-12 text-center mt-5 mb-2">

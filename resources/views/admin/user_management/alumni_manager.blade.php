@@ -36,21 +36,47 @@
                     <table class="table table-striped align-middle table-hover">
                         <thead class="table-dark">
                             <tr>
-                            <th scope="col" class="col-3">Student Number</th>
-                            <th scope="col" class="col-4">Last Name</th>
-                            <th scope="col" class="col-3">Course</th>
-                            <th scope="col" class="col-2">Batch</th>
+                                <th scope="col" class="col-1"></th>
+                                <th scope="col" class="col-2">Student Number</th>
+                                <th scope="col" class="col-2">Last Name</th>
+                                <th scope="col" class="col-1">Course</th>
+                                <th scope="col" class="col-1">Batch</th>
+                                <th scope="col" class="col-1 text-center">PDS</th>
+                                <th scope="col" class="col-1 text-center">EIF</th>
+                                <th scope="col" class="col-1 text-center">SAS</th>
                             </tr>
                         </thead>
                         <tbody>
                             @if (count($alumni))
                             @foreach ($alumni as $alum)
-                              <tr data-bs-toggle="modal" data-bs-target="#viewAlumniDetails{{ $alum->alumni_id }}">
-                                  <th class="py-3">{{ $alum->stud_number }}</th>
-                                  <td class="py-3">{{ $alum->last_name }}</td>
-                                  <td class="py-3">{{ $alum->course_id }}</td>
-                                  <td class="py-3">{{ $alum->batch }}</td>
-                              </tr>
+                                <tr>
+                                    <th class="text-center"><button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#viewAlumniDetails{{ $alum->alumni_id }}"><i class="fa-solid fa-eye"></i></button></th>
+                                    <th>{{ $alum->stud_number }}</th>
+                                    <td>{{ $alum->last_name }}</td>
+                                    <td>{{ $alum->course_id }}</td>
+                                    <td>{{ $alum->batch }}</td>
+                                    <td class="text-center">
+                                        @if ($PDS->contains('alumni_id', $alum->alumni_id))
+                                            <a href="" class="btn btn-success px-2">PDS <i class="fa-solid fa-file-pdf"></i></a>
+                                        @else
+                                            <i class="fa-regular fa-circle-xmark me-1 text-danger"></i><span class="text-danger">PDS</span>
+                                        @endif
+                                    </td>
+                                    <td class="text-center">
+                                        @if ($EIF->contains('alumni_id', $alum->alumni_id))
+                                            <button class="btn btn-success">EIF <i class="fa-solid fa-file-pdf"></i></button>
+                                        @else
+                                            <i class="fa-regular fa-circle-xmark me-1 text-danger"></i><span class="text-danger">EIF</span>
+                                        @endif
+                                    </td>
+                                    <td class="text-center">
+                                        @if ($SAS->contains('alumni_id', $alum->alumni_id))
+                                            <button class="btn btn-success">SAS <i class="fa-solid fa-file-pdf"></i></button>
+                                        @else
+                                            <i class="fa-regular fa-circle-xmark me-1 text-danger"></i><span class="text-danger">SAS</span>
+                                        @endif
+                                    </td>
+                                </tr>
                               @include('admin.components.view-alumni-details')
                             @endforeach
                             @else

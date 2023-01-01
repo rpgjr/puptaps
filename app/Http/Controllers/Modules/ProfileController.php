@@ -58,6 +58,29 @@ class ProfileController extends Controller
             $request->validate([
                 'password'  => ['required', 'confirmed', Rules\Password::defaults()],
             ]);
+
+            $account = Alumni::where('alumni_id', '=', $alumni_id)->update([
+                'password' => Hash::make($request->input('password'))
+            ]);
+
+            $users = User::where('alumni_id', '=', Auth::user()->alumni_id)->update([
+                'password' => Hash::make($request->input('password'))
+            ]);
+
+            if($account) {
+                return back()
+                       ->with(
+                            'success',
+                            ''
+                        );
+            }
+            else {
+                return back()
+                       ->with(
+                            'fail',
+                            'There is an Error Occured'
+                        );
+            }
         }
 
         $account = Alumni::where('alumni_id', '=', $alumni_id)->update([
@@ -76,12 +99,10 @@ class ProfileController extends Controller
             'city_address' => $request->input('city_address'),
             'provincial_address' => $request->input('provincial_address'),
             'username' => $request->input('username'),
-            'password' => Hash::make($request->input('password')),
         ]);
 
         $users = User::where('alumni_id', '=', Auth::user()->alumni_id)->update([
             'username' => $request->input('username'),
-            'password' => Hash::make($request->input('password')),
         ]);
 
         if($account) {

@@ -1,17 +1,27 @@
 <?php
 
+use App\Http\Controllers\admin\AccountSettingsController;
+use App\Http\Controllers\Admin\CareerController as AdminCareerController;
+use App\Http\Controllers\admin\FormReportsController;
+use App\Http\Controllers\Admin\HomeController;
+use App\Http\Controllers\Admin\ReportsController;
+use App\Http\Controllers\Admin\UserManagerController;
+use App\Http\Controllers\Admin\UserReportsController;
+use App\Http\Controllers\Modules\CareerController;
+use App\Http\Controllers\Modules\EifToPdfController;
+use App\Http\Controllers\Modules\FormsController;
+use App\Http\Controllers\modules\HomeController as ModulesHomeController;
+use App\Http\Controllers\Modules\PdsToPdfController;
+use App\Http\Controllers\Modules\ProfileController;
+use App\Http\Controllers\Modules\SasToPdfController;
+use App\Http\Controllers\Modules\TracerController;
+use App\Http\Controllers\SuperAdmin\AdminManagementController;
+use App\Http\Controllers\SuperAdmin\AnnouncementController;
+use App\Http\Controllers\SuperAdmin\HomeController as SuperAdminHomeController;
+use App\Http\Controllers\SuperAdmin\NewsController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
-
-const CONTROLLER_CAREER = 'App\Http\Controllers\Modules\CareerController';
-const CONTROLLER_PROFILE = 'App\Http\Controllers\Modules\ProfileController';
-const CONTROLLER_TRACER= 'App\Http\Controllers\Modules\TracerController';
-
-const CONTROLLER_FORMS = 'App\Http\Controllers\Modules\FormsController';
-const CONTROLLER_PDS_TO_PDF = 'App\Http\Controllers\Modules\PdsToPdfController';
-const CONTROLLER_EIF_TO_PDF = 'App\Http\Controllers\Modules\EifToPdfController';
-const CONTROLLER_SAS_TO_PDF = 'App\Http\Controllers\Modules\SasToPdfController';
 
 const CONTROLLER_ADMIN_USER_MANAGER = 'App\Http\Controllers\Admin\UserManagerController';
 const CONTROLLER_ADMIN_CAREER = 'App\Http\Controllers\Admin\CareerController';
@@ -42,7 +52,7 @@ const CONTROLLER_SUPERADMIN_ADMIN_MANAGEMENT = "App\Http\Controllers\SuperAdmin\
 // Group for Homepage and Landing Page
 Route::group(
     [
-        'controller' => 'App\Http\Controllers\Modules\HomeController'
+        'controller' => ModulesHomeController::class
     ], function() {
 
         //App\Http\Controllers\Modules\
@@ -94,7 +104,7 @@ require __DIR__.'/auth.php';
 // User - Career
 Route::group(
     [
-        'controller' => CONTROLLER_CAREER,
+        'controller' => CareerController::class,
         'prefix' => 'career',
         'as' => 'userCareer.',
         'middleware' => ['isAdmin', 'auth']
@@ -115,7 +125,7 @@ Route::group(
 // User - Profile
 Route::group(
     [
-        'controller' => CONTROLLER_PROFILE,
+        'controller' => ProfileController::class,
         'prefix' => 'profile',
         'as' => 'userProfile.',
         'middleware' => ['isAdmin', 'auth']
@@ -130,7 +140,7 @@ Route::group(
 // User - Forms
 Route::group(
     [
-        'controller' => CONTROLLER_FORMS,
+        'controller' => FormsController::class,
         'prefix' => 'form',
         'as' => 'userForm.',
         'middleware' => ['isAdmin', 'auth']
@@ -151,7 +161,7 @@ Route::group(
 // User - PDS - Download to PDF
 Route::group(
     [
-        'controller' => CONTROLLER_PDS_TO_PDF,
+        'controller' => PdsToPdfController::class,
         'prefix' => 'downloads',
         'as' => 'userForm.',
         'middleware' => ['isAdmin', 'auth']
@@ -163,7 +173,7 @@ Route::group(
 // User - EIF - Download to PDF
 Route::group(
     [
-        'controller' => CONTROLLER_EIF_TO_PDF,
+        'controller' => EifToPdfController::class,
         'prefix' => 'downloads',
         'as' => 'userForm.',
         'middleware' => ['isAdmin', 'auth']
@@ -175,7 +185,7 @@ Route::group(
 // User - SAS - Download to PDF
 Route::group(
     [
-        'controller' => CONTROLLER_SAS_TO_PDF,
+        'controller' => SasToPdfController::class,
         'prefix' => 'downloads',
         'as' => 'userForm.',
         'middleware' => ['isAdmin', 'auth']
@@ -187,7 +197,7 @@ Route::group(
 // User - Tracer
 Route::group(
     [
-        'controller' => CONTROLLER_TRACER,
+        'controller' => TracerController::class,
         'prefix' => 'tracer',
         'as' => 'userTracer.',
         'middleware' => ['isAdmin', 'auth']
@@ -209,7 +219,7 @@ Route::group(
 // Group for Homepage and Landing Page
 Route::group(
     [
-        'controller' => 'App\Http\Controllers\Admin\HomeController'
+        'controller' => HomeController::class
     ], function() {
 
         Route::get('/admin', 'getAdminHomepage')
@@ -220,7 +230,7 @@ Route::group(
 // Admin - User Management
 Route::group(
     [
-        'controller' => CONTROLLER_ADMIN_USER_MANAGER,
+        'controller' => UserManagerController::class,
         'prefix' => 'admin/user-management',
         'as' => 'adminUserManagement.',
         'middleware' => ['isUser', 'auth']
@@ -236,12 +246,15 @@ Route::group(
 
         Route::post('remove-alumni-account', 'removeAlumniAccount')
                ->name('removeAlumniAccount');
+
+        Route::get('download-template', 'downloadListTemplate')
+               ->name('downloadListTemplate');
 });
 
 // Admin - Career Controller
 Route::group(
     [
-        'controller' => CONTROLLER_ADMIN_CAREER,
+        'controller' => AdminCareerController::class,
         'prefix' => 'admin/career',
         'as' => 'adminCareer.',
         'middleware' => ['isUser', 'auth']
@@ -268,7 +281,7 @@ Route::group(
 // Admin - Reports Controller
 Route::group(
     [
-        'controller' => CONTROLLER_ADMIN_REPORTS,
+        'controller' => ReportsController::class,
         'prefix' => 'admin/reports',
         'as' => 'adminReports.',
         'middleware' => ['isUser', 'auth']
@@ -283,7 +296,7 @@ Route::group(
 // Admin - User Reports and PDF
 Route::group(
     [
-        'controller' => CONTROLLER_ADMIN_USER_REPORTS,
+        'controller' => UserReportsController::class,
         'prefix' => 'admin/reports',
         'as' => 'adminReports.',
         'middleware' => ['isUser', 'auth']
@@ -296,7 +309,7 @@ Route::group(
 // Admin - Form Reports and PDF
 Route::group(
     [
-        'controller' => CONTROLLER_ADMIN_FORM_REPORTS,
+        'controller' => FormReportsController::class,
         'prefix' => 'admin/reports',
         'as' => 'adminReports.',
         'middleware' => ['isUser', 'auth']
@@ -315,7 +328,7 @@ Route::group(
 // Admin - Account Settings
 Route::group(
     [
-        'controller' => CONTROLLER_ADMIN_ACCOUNT_SETTINGS,
+        'controller' => AccountSettingsController::class,
         'prefix' => 'admin/settings',
         'as' => 'adminSettings.',
         'middleware' => ['isUser', 'auth']
@@ -334,7 +347,7 @@ Route::group(
 // Group for Homepage and Landing Page
 Route::group(
     [
-        'controller' => 'App\Http\Controllers\SuperAdmin\HomeController'
+        'controller' => SuperAdminHomeController::class
     ], function() {
 
         Route::get('/super-admin', 'getSuperAdminIndex')
@@ -345,7 +358,7 @@ Route::group(
 // Super Admin - Announcement Settings
 Route::group(
     [
-        'controller' => CONTROLLER_SUPERADMIN_ANNOUNCEMENT_SETTINGS,
+        'controller' => AnnouncementController::class,
         'prefix' => 'super-admin/news-events',
         'as' => 'superAdmin.',
         'middleware' => ['isUser', 'auth']
@@ -364,7 +377,7 @@ Route::group(
 // Super Admin - News Settings
 Route::group(
     [
-        'controller' => CONTROLLER_SUPERADMIN_NEWS_SETTINGS,
+        'controller' => NewsController::class,
         'prefix' => 'super-admin/news-events',
         'as' => 'superAdmin.',
         'middleware' => ['isUser', 'auth']
@@ -383,7 +396,7 @@ Route::group(
 // Super Admin - News Settings
 Route::group(
     [
-        'controller' => CONTROLLER_SUPERADMIN_ADMIN_MANAGEMENT,
+        'controller' => AdminManagementController::class,
         'prefix' => 'super-admin/admin-management',
         'as' => 'superAdmin.',
         'middleware' => ['isUser', 'auth']

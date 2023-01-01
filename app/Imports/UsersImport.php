@@ -16,7 +16,7 @@ class UsersImport implements ToModel, WithHeadingRow
     public function model(array $row)
     {
         return new AlumniList([
-            'stud_number'    => $row['studnumber'],
+            'stud_number'    => $row['studentnumber'],
             'last_name'      => $row['lastname'],
             'first_name'     => $row['firstname'],
             'middle_name'    => $row['middlename'],

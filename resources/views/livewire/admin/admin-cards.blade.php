@@ -5,6 +5,25 @@
     3. Show number of students responded in those forms
 -->
 <div class="row">
+    <div class="col-12">
+        <div class="sub-container-box mb-4 py-3">
+            <div class="registered-user-chart">
+                <div class="d-flex justify-content-between align-items-center">
+                    <p class="fs-4 fw-bold mb-2">Registered Users</p>
+                    <p class="mb-2">Total: {{ $totalStudents }}</p>
+                </div>
+                <p class="text-secondary">As of {{ date('F d, Y') }}</p>
+            </div>
+            <div class="registered-user-bar">
+                <script>
+                    var totalRegisteredUser = <?php echo $totalRegisteredUser; ?>
+                </script>
+                <div>
+                    <div id="registered-user-bar" style="width: 900px; height: 500px;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="col-8">
         <div class="sub-container-box py-3 h-100">
             <div class="registered-user-chart">
@@ -14,11 +33,12 @@
                 </div>
                 <p class="text-secondary">As of {{ date('F d, Y') }}</p>
             </div>
-            <div class="registeredUser">
-                <canvas id="registeredUserChart"></canvas>
+            <div class="text-center">
                 <script>
-                    var registeredUserData = @json($totalRegisteredUser);
+                    var totalRegisteredUserGender = <?php echo $totalRegisteredUserGender; ?>
                 </script>
+                <div id="registered-user-gender" class="registered-user-gender">
+                </div>
             </div>
         </div>
     </div>

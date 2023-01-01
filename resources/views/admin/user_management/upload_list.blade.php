@@ -13,21 +13,21 @@
             <div class="row justify-content-center g-0">
                 <div class="col-11">
 
-                    <div class="row sub-container-box mb-4 py-3 px-2">
+                    <div class="row sub-container-box mb-3 pt-3 pb-0 px-2">
                         <div class="col-6">
                             <form class="row g-3" method="post" enctype="multipart/form-data" action="{{ route('adminUserManagement.addAlumniList') }}">
-                                @csrf
-                                <div class="col-9">
+                            @csrf
+                                <div class="col-12 input-group">
                                     <input class="form-control" type="file" id="formFile" name="excel_file">
-                                    @error('excel_file')
-                                        <span class="text-danger">{{ $message }}</span>
-                                    @enderror
-                                </div>
-                                <div class="col-3">
                                     <button type="submit" class="btn btn-primary">
                                         <i class="fa-solid fa-arrow-up-from-bracket me-1"></i>
                                         <span>Upload</span>
                                     </button>
+                                </div>
+                                <div class="col-12">
+                                    @error('excel_file')
+                                        <p class="text-danger mt-0">{{ $message }}</p>
+                                    @enderror
                                 </div>
                             </form>
                         </div>
@@ -35,12 +35,26 @@
                             <form class="row g-3">
                                 @csrf
                                 <div class="input-group">
-                                    <input type="text" class="form-control" placeholder="Last Name" name="q" value="{{ $q }}">
+                                    {{-- <input type="text" class="form-control" placeholder="Last Name" name="q" value="{{ $q }}"> --}}
+                                    <select class="form-select" name="batch">
+                                        <option hidden value="">Select Batch</option>
+                                        <option value="">All</option>
+                                        @for ($i = 2022; $i <= date('Y'); $i++)
+                                            <option value="{{ $i }}">{{ $i }}</option>
+                                        @endfor
+                                    </select>
                                     <button class="btn btn-primary" type="submit" id="button-addon2">
-                                    <i class="fa-solid fa-magnifying-glass me-1"></i>
-                                    <span>Search</span></button>
+                                        <i class="fa-solid fa-magnifying-glass me-1"></i>
+                                        <span>Search</span>
+                                    </button>
                                 </div>
                             </form>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-12 text-end">
+                            <a href="{{ route("adminUserManagement.downloadListTemplate") }}" class="btn btn-success">Download Template<i class="fa-solid fa-file-csv ms-2"></i></a>
                         </div>
                     </div>
 

@@ -9,4 +9,7 @@
   object-fit: cover;
 }
 
-
+.registered-user-bar {
+    display: flex;
+    justify-content: center;
+}
