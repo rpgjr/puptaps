@@ -28,7 +28,7 @@
                         @csrf
                         <div class="row">
                             <div class="col-6 mb-3">
-                                <label class="form-label">sex</label>
+                                <label class="form-label">Sex</label>
                                 <select class="form-select" name="sex">
                                     <option value="">All</option>
                                     <option value="Male">Male</option>

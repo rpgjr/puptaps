@@ -38,8 +38,8 @@ return new class extends Migration
                     'course_Desc'   => 'Bachelor of Science in Information Technology',
                 ],
                 [
-                    'course_id'     => 'BSBA-HRDM',
-                    'course_Desc'   => 'Bachelor of Science in Business Administration Major in Human Resource Development Managementy',
+                    'course_id'     => 'BSBA-HRM',
+                    'course_Desc'   => 'Bachelor of Science in Business Administration Major in Human Resource Management',
                 ],
                 [
                     'course_id'     => 'BSBA-MM',
@@ -54,12 +54,12 @@ return new class extends Migration
                     'course_Desc'   => 'Bachelor of Science in Mechanical Engineering',
                 ],
                 [
-                    'course_id'     => 'DOMT-LOM',
-                    'course_Desc'   => 'Diploma in Office Management Technology with specialization in Legal Office Management',
+                    'course_id'     => 'DOMT',
+                    'course_Desc'   => 'Diploma in Office Management Technology',
                 ],
                 [
-                    'course_id'     => 'BSOA-LT',
-                    'course_Desc'   => 'Bachelor of Science in Office Administration Major in Legal Transcription',
+                    'course_id'     => 'BSOA',
+                    'course_Desc'   => 'Bachelor of Science in Office Administration',
                 ],
                 [
                     'course_id'     => 'BSA',

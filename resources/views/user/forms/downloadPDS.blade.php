@@ -5,58 +5,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Download PDS Form</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
     <style>
         body {
-            font-family: "Consolas", monospace, monospace;
-            margin: 20px;
+            font-family: "Times New Roman", Times, serif;
         }
-
         .pup-logo {
             float: left;
             width: 75px;
             height: 75px;
-            margin-left: 25px;
-        }
-
-        .title {
-            margin-top: 15px;
-            margin-left: 30px;
-            margin-right: 30px;
-        }
-
-        .title p {
-            font-size: 20px;
-            margin: 0;
-            text-align: center;
-        }
-
-        .title-pds {
-            font-size: 20px;
-            text-align: center;
-            margin-top: 40px;
-        }
-
-        table, th, td {
-            text-align: left;
-            border-collapse: collapse;
-        }
-
-        .table-work, .th-work, .td-work {
-            border: 1px solid black;
-            border-collapse: collapse;
-            padding: 5px;
-        }
-
-        .user {
-            font-size: 18px;
-            margin-top: 50px;
+            margin-right: 10px;
         }
     </style>
 </head>
 <body>
 
-    <div class="title">
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-6">
+                <img src="{{ public_path('img/pupLogo.png') }}" class="pup-logo">
+            </div>
+            <div class="col-6 fw-bold">
+                <p class="my-1">Polytechnic University of the Philippines</p>
+                <p class="my-1">Office of the Vice President for Student Services</p>
+                <p class="my-1">CAREER DEVELOPMENT AND PLACEMENT OFFICE</p>
+            </div>
+        </div>
+    </div>
+
+    {{-- <div class="title">
         <div class="logo">
             <img src="{{ public_path('img/pupLogo.png') }}" class="pup-logo">
         </div>
@@ -65,63 +44,77 @@
             <p>Office of the Vice President for Student Services</p>
             <p>CAREER DEVELOPMENT AND PLACEMENT OFFICE</p>
         </div>
-    </div>
+    </div> --}}
 
-    <h4 class="title-pds"><u>PERSONAL DATA SHEET</u></h4>
+    <h4 class="mt-4 text-center"><u>PERSONAL DATA SHEET</u></h4>
 
     <div class="user">
         @foreach ($users as $user)
         <table style="width:100%">
             <tr>
-                <th colspan="1" style="width: 55px;">Name: </th>
-                <td colspan="1" style="text-align: center;">{{ $user->last_name }}</td>
-                <td colspan="1" style="text-align: center;">{{ $user->first_name }} {{ $user->suffix }}</td>
-                <td colspan="1" style="text-align: center;">{{ $user->middle_name }}</td>
-                <td colspan="1" style="width: 30px;"></td>
-                <th colspan="1" style="width: 70px;">Gender: </th>
-                <td colspan="1" style="width: 70px;">{{ $user->gender }}</td>
-            </tr>
-            <tr>
-                <td></td>
-                <td style="text-align: center; font-size:13px; border-top: 1px solid black;">Surname</td>
-                <td style="text-align: center; font-size:13px; border-top: 1px solid black;">First Name</td>
-                <td style="text-align: center; font-size:13px; border-top: 1px solid black;">Middle Name</td>
-                <td></td>
-                <td></td>
-                <td style="border-top: 1px solid black;"></td>
+                <tr>
+                    <th colspan="1" style="width: 7%; font-weight: bold;">Name: </th>
+                    <td colspan="1" style="text-align: center; width: 31%">{{$user->last_name}}</td>
+                    <td colspan="1" style="text-align: center; width: 31%">{{$user->first_name}} {{$user->suffix}}</td>
+                    <td colspan="1" style="text-align: center; width: 31%">{{$user->middle_name}}</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td style="text-align: center; font-size:13px; border-top: 1px solid black;">Surname</td>
+                    <td style="text-align: center; font-size:13px; border-top: 1px solid black;">First Name</td>
+                    <td style="text-align: center; font-size:13px; border-top: 1px solid black;">Middle Name</td>
+                </tr>
             </tr>
         </table>
         <table style="width:100%; margin-top: 10px;">
             <tr>
-                <th colspan="1" style="width: 15%">Date of Birth: </th>
-                <td colspan="1" style="border-bottom: 1px solid black; width: 20%;">{{ date('F d, Y', strtotime($user->birthday)) }}</td>
-                <td colspan="1" style="width: 5%;"></td>
-                <th colspan="1" style="width: 6%;">Age: </th>
-                <td colspan="1" style="border-bottom: 1px solid black; width: 7%;">{{ $user->age }}</td>
-                <td colspan="1" style="width: 5%;"></td>
-                <th colspan="1" style="width: 10%;">Religion: </th>
-                <td colspan="1" style="border-bottom: 1px solid black; width: 25%;">{{ $user->religion }}</td>
+                <th colspan="1" style="width: 15%; font-weight: bold;">Date of Birth: </th>
+                <td colspan="1" style="border-bottom: 1px solid black; width: 27%;">{{ date('F d, Y', strtotime($user->birthday)) }}</td>
+                <td colspan="1" style="width: 10%;"></td>
+                <th colspan="1" style="width: 6%; font-weight: bold;">Age: </th>
+                <td colspan="1" style="border-bottom: 1px solid black; width: 33%;">{{ $user->age }} years old</td>
             </tr>
         </table>
         <table style="width:100%; margin-top: 10px;">
             <tr>
-                <th colspan="1" style="width: 19%">Degree/Course: </th>
-                <td colspan="1" style="border-bottom: 1px solid black; width: 50%;">{{ $user->course_id }}</td>
-                <td colspan="1" style="width: 5%;"></td>
-                <th colspan="1" style="width: 21%;">Year Graduated: </th>
+                <th colspan="1" style="width: 5%; font-weight: bold;">Sex: </th>
+                <td colspan="1" style="border-bottom: 1px solid black; width: 37%;">{{ $user->sex }}</td>
+                <td colspan="1" style="width: 10%;"></td>
+                <th colspan="1" style="width: 10%; font-weight: bold;">Religion: </th>
+                <td colspan="1" style="border-bottom: 1px solid black; width: 29%;">{{ $user->religion }}</td>
+            </tr>
+        </table>
+        <?php
+            $course_text = $user->course_id;
+            foreach ($courses as $course) {
+                if($course->course_id == $user->course_id) {
+                    $course_text = $course->course_Desc;
+                }
+            }
+        ?>
+        <table style="width:100%; margin-top: 10px;">
+            <tr>
+                <th colspan="1" style="width: 18%; font-weight: bold;">Degree/Course: </th>
+                <td colspan="1" style="border-bottom: 1px solid black; width: 82%;">{{ $course_text }}</td>
+            </tr>
+        </table>
+        <table style="width:100%; margin-top: 10px;">
+            <tr>
+                <th colspan="1" style="width: 20%; font-weight: bold;">Year Graduated: </th>
                 <td colspan="1" style="border-bottom: 1px solid black; width: 10%;">{{ $user->batch }}</td>
+                <td style="width: 70%;  "></td>
             </tr>
         </table>
         <table style="width:100%; margin-top: 10px;">
             <tr>
-                <th colspan="1" style="width: 20%">City Address: </th>
-                <td colspan="1" style="border-bottom: 1px solid black; width: 105%;">{{ $user->city_address }}</td>
+                <th colspan="1" style="width: 16%">City Address: </th>
+                <td colspan="1" style="border-bottom: 1px solid black; width: 84%;">{{ $user->city_address }}</td>
             </tr>
         </table>
         <table style="width:100%; margin-top: 10px;">
             <tr>
-                <th colspan="1" style="width: 30%">Provincial Address: </th>
-                <td colspan="1" style="border-bottom: 1px solid black; width: 105%;">{{ $user->provincial_address }}</td>
+                <th colspan="1" style="width: 23%">Provincial Address: </th>
+                <td colspan="1" style="border-bottom: 1px solid black; width: 77%;">{{ $user->provincial_address }}</td>
             </tr>
         </table>
         <table style="width:100%; margin-top: 10px;">
@@ -140,49 +133,39 @@
                 @foreach ($userAnswers as $answers)
                     @if (($answers->question_id) == ($question->question_id))
                         @if (($question->category_id) != 1 && ($question->category_id) == 2)
-                            <div>{{ $question->question_text }}:</div>
-                            <div>{{ $answers->answer }}</div>
+                        <table style="width:100%; margin-top: 10px;">
+                            <tr>
+                                <th colspan="1" style="width: 19%">{{ $question->question_text }}: </th>
+                                <td colspan="1" style="width: 19%">{{ $answers->answer }}</td>
+                            </tr>
+                        </table>
                         @endif
                     @endif
                 @endforeach
             @endforeach
         </div>
 
-        {{-- @foreach ($userPDS as $pds)
-        <table style="width:100%; margin-top: 10px;">
-            <tr>
-                <th colspan="1" style="width: 19%">Father's Name: </th>
-                <td colspan="1" style="border-bottom: 1px solid black; width: 45%;">{{ $pds->fathers_name }}</td>
-                <td colspan="1" style="width: 5%;"></td>
-                <th colspan="1" style="width: 16%;">Father's No.: </th>
-                <td colspan="1" style="border-bottom: 1px solid black; width: 20%;">{{ $pds->fathers_number }}</td>
-            </tr>
-        </table>
-        <table style="width:100%; margin-top: 10px;">
-            <tr>
-                <th colspan="1" style="width: 19%">Mother's Name: </th>
-                <td colspan="1" style="border-bottom: 1px solid black; width: 45%;">{{ $pds->mothers_name }}</td>
-                <td colspan="1" style="width: 5%;"></td>
-                <th colspan="1" style="width: 16%;">Mother's No.: </th>
-                <td colspan="1" style="border-bottom: 1px solid black; width: 20%;">{{ $pds->mothers_number }}</td>
-            </tr>
-        </table>
+        @foreach ($formQuestions as $question)
+        @foreach ($userAnswers as $answers)
+            {{-- @if ($question->category_id == 3)
+                <h3 style="margin-bottom: 5px; margin-top: 30px;">Work Experience/s:</h3>
+                <table class="table-work" style="width:100%;">
+                    <tr>
 
-        <h3 style="margin-bottom: 5px; margin-top: 30px;">Work Experience/s:</h3>
-        <table class="table-work" style="width:100%;">
-            <tr>
-                <th class="th-work" colspan="1">Department / Agency / Office</th>
-                <th class="th-work" colspan="1">Position</th>
-                <th class="th-work" colspan="1">Inclusive Dates</th>
-            </tr>
-            <tr>
-                <td class="td-work">{{ $pds->office }}</td>
-                <td class="td-work">{{ $pds->position }}</td>
-                <td class="td-work">{{ $pds->office_dates }}</td>
-            </tr>
-        </table>
+                        <th class="th-work" colspan="1">Department / Agency / Office</th>
+                        <th class="th-work" colspan="1">Position</th>
+                        <th class="th-work" colspan="1">Inclusive Dates</th>
+                    </tr>
+                    <tr>
+                        <td class="td-work">{{ $answers->answer }}</td>
+                        <td class="td-work">{{ $answers->answer }}</td>
+                        <td class="td-work">{{ $answers->answer }}</td>
+                    </tr>
+                </table>
+            @endif --}}
 
-        <h3 style="margin-bottom: 5px; margin-top: 10px;">Trainings / Seminars Attended:</h3>
+
+        {{-- <h3 style="margin-bottom: 5px; margin-top: 10px;">Trainings / Seminars Attended:</h3>
         <table class="table-work" style="width:100%;">
             <tr>
                 <th class="th-work" colspan="1">Title of Seminar / Conference / Workshop</th>
@@ -244,8 +227,10 @@
                     </td>
                 </tr>
             </table>
-        </div>
-        @endforeach --}}
+        </div> --}}
+        @endforeach
+        @endforeach
     </div>
+
 </body>
 </html>

@@ -159,6 +159,12 @@ Route::group(
             ->name('getSAS');
 });
 
+Route::group(['controller' => 'App\Http\Controllers\Modules\FormPDFController', 'prefix' => 'downloads', 'as' => 'userForm.', 'middleware' => ['isAdmin', 'auth']], function() {
+    Route::post('PDS-form', 'downloadPDS')->name('downloadPDS');
+    Route::post('SAS-form', 'downloadSAS')->name('downloadSAS');
+    Route::post('Exit-Interview-form', 'downloadEI')->name('downloadEI');
+});
+
 // User - PDS - Download to PDF
 Route::group(
     [
