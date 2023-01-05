@@ -25,25 +25,35 @@ class AccountSettingsController extends Controller
             "email"     => "required|email",
         ]);
 
+        $change_password = false;
+
         if(($request->input('password')) != null ) {
             $request->validate([
                 'password'  => ['required', 'confirmed', Rules\Password::defaults()],
             ]);
+
+            $account = Admin::where('admin_id', '=', Auth::user()->admin_id)->update([
+                'password'  => Hash::make($request->input('password')),
+            ]);
+
+            $users = User::where('admin_id', '=', Auth::user()->admin_id)->update([
+                'password'  => Hash::make($request->input('password')),
+            ]);
+
+            $change_password = true;
         }
 
         $account = Admin::where('admin_id', '=', Auth::user()->admin_id)->update([
             'email'     => $request->input('email'),
             'username'  => $request->input('username'),
-            'password'  => Hash::make($request->input('password')),
         ]);
 
         $users = User::where('admin_id', '=', Auth::user()->admin_id)->update([
             'email'     => $request->input('email'),
             'username'  => $request->input('username'),
-            'password'  => Hash::make($request->input('password')),
         ]);
 
-        if($account && $users) {
+        if($account && $users || $change_password) {
             return back()
                    ->with(
                         'success',

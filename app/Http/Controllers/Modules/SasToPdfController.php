@@ -220,8 +220,8 @@ class SasToPdfController extends Controller
             $html = <<<EOF
               <table style="width:100%; margin-top: 300px;">
                 <tr>
-                    <th colspan="1" style="width: 11%; font-weight: bold;">Gender: </th>
-                    <td colspan="1" style="border-bottom: 1px solid black; width: 15%;"> $user->gender </td>
+                    <th colspan="1" style="width: 11%; font-weight: bold;">Sex: </th>
+                    <td colspan="1" style="border-bottom: 1px solid black; width: 15%;"> $user->sex </td>
                     <td colspan="1" style="width: 5%;"></td>
                     <th colspan="1" style="width: 7%; font-weight: bold;">Age: </th>
                     <td colspan="1" style="border-bottom: 1px solid black; width: 15%;"> $user->age </td>
@@ -626,7 +626,7 @@ class SasToPdfController extends Controller
                     </tr>
                     <tr>
                         <td class="td-form number">61.</td>
-                        <td class="td-form">Dissemination of gender sensitive rules and regulations.</td>
+                        <td class="td-form">Dissemination of sex sensitive rules and regulations.</td>
                         <td class="td-form" style="text-align: center;"> $arraySection_10[0] </td>
                     </tr>
                     <tr>

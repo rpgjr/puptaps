@@ -35,9 +35,9 @@
             </div>
             <div class="text-center">
                 <script>
-                    var totalRegisteredUserGender = <?php echo $totalRegisteredUserGender; ?>
+                    var totalregisteredUserSex = <?php echo $totalregisteredUserSex; ?>
                 </script>
-                <div id="registered-user-gender" class="registered-user-gender">
+                <div id="registered-user-sex" class="registered-user-sex">
                 </div>
             </div>
         </div>

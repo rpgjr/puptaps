@@ -106,18 +106,18 @@
                                 <span class="text-danger">@error('suffix') {{$message}} @enderror</span>
                             </div>
                             <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 my-2">
-                                <label class="form-label">Gender:</label>
+                                <label class="form-label">Sex:</label>
                                 <div class="text-center border rounded py-1">
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="gender" value="Male"
-                                            @if ('Male' == $user->gender)
+                                        <input class="form-check-input" type="radio" name="sex" value="Male"
+                                            @if ('Male' == $user->sex)
                                                 checked
                                             @endif>
                                         <label class="form-check-label">Male</label>
                                     </div>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="gender" value="Female"
-                                            @if ('Female' == $user->gender)
+                                        <input class="form-check-input" type="radio" name="sex" value="Female"
+                                            @if ('Female' == $user->sex)
                                                 checked
                                             @endif>
                                         <label class="form-check-label">Female</label>

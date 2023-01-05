@@ -9,6 +9,6 @@
 <script src="{{ asset('js/jquery-3.6.1.min.js') }}"></script>
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
-<script src="{{ asset('js/registered-users-gender-pie.js') }}"></script>
+<script src="{{ asset('js/registered-users-sex-pie.js') }}"></script>
 <script src="{{ asset('js/registered-users-bar.js') }}"></script>
 

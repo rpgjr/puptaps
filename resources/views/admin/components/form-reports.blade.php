@@ -50,13 +50,13 @@
                 {{-- Students pie chart - courses --}}
                 <canvas id="userReport-chart3"></canvas>
                 <script>
-                    var alumniPerGender = @json($alumniPerGender);
+                    var alumniPerSex = @json($alumniPerSex);
                 </script>
             </div>
             <div class="col-7">
-                <h3 class="my-3">Number of Students per Gender batch {{ $batch }}</h3>
+                <h3 class="my-3">Number of Students per sex batch {{ $batch }}</h3>
                 <div class="row my-2">
-                    @foreach ($alumniPerGender as $key => $value)
+                    @foreach ($alumniPerSex as $key => $value)
                         <div class="col-6 mb-3">
                             <p class="my-0 fw-bold">{{ $key }}</p>
                             <p class="my-0">Total: {{ $value }}</p>
@@ -120,12 +120,12 @@
     @endforeach
 
 @elseif ($type == 3)
-    @foreach ($genders as $gender)
-    @if ($listOfStudents->contains('gender', $gender))
+    @foreach ($sexs as $sex)
+    @if ($listOfStudents->contains('sex', $sex))
     <div class="row sub-container-box mt-5 pt-4 pb-4">
         <div class="col-12">
             <h3 class="mt-3 text-center">PUP Taguig Alumni Batch of {{ $batch }}</h3>
-            <h4 class="mb-5 text-center text-uppercase">{{ $gender }}</h4>
+            <h4 class="mb-5 text-center text-uppercase">{{ $sex }}</h4>
             <table class="table table-striped align-middle">
                 <thead class="table-dark">
                     <tr class="text-center">
@@ -139,7 +139,7 @@
                 <tbody>
 
                     @foreach ($listOfStudents as $student)
-                    @if ($student->gender == $gender)
+                    @if ($student->sex == $sex)
                         <tr>
                             <td class="text-uppercase">
                                 {{ $student->last_name }}, {{ $student->first_name }} {{ $student->suffix }} {{ $student->middle_name }}

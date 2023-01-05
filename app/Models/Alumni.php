@@ -20,7 +20,7 @@ class Alumni extends Model
         'suffix',
         'course_id',
         'batch',
-        'gender',
+        'sex',
         'birthday',
         'age',
         'religion',

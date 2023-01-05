@@ -77,7 +77,7 @@ class FormReportsController extends Controller
         $type = $request->type;
         $batch = $request->batch;
         $courses = Courses::all();
-        $genders = collect(["Male", "Female"]);
+        $sex = collect(["Male", "Female"]);
 
         switch ($form) {
             case 1:
@@ -98,12 +98,12 @@ class FormReportsController extends Controller
                             return [$item ->age => $item->id];
                         });
 
-                        $totalGenderofStudents = Alumni::select('gender', DB::raw('count(alumni_id) as id'))->groupBy('gender')->get();
-                        $alumniPerGender = $totalGenderofStudents->mapWithKeys(function ($item, $key) {
-                            return [$item ->gender => $item->id];
+                        $totalSexofStudents = Alumni::select('sex', DB::raw('count(alumni_id) as id'))->groupBy('sex')->get();
+                        $alumniPerSex = $totalSexofStudents->mapWithKeys(function ($item, $key) {
+                            return [$item ->sex => $item->id];
                         });
 
-                        return view("admin.reports.form-report", compact(["listOfStudents", "totalStudents", "alumniPerCourses", "alumniPerAge", "alumniPerGender", "title", "courses", "form", "type", "batch"]));
+                        return view("admin.reports.form-report", compact(["listOfStudents", "totalStudents", "alumniPerCourses", "alumniPerAge", "alumniPerSex", "title", "courses", "form", "type", "batch"]));
                         break;
                     default:
                         return back();
@@ -113,12 +113,12 @@ class FormReportsController extends Controller
             case 2:
                 $list = Alumni::where("batch", "=", $batch)->get();
                 $listOfStudents = $list->sortBy("course_id");
-                return view("admin.reports.form-report", compact(["genders", "title", 'courses', "type", "batch", "listOfStudents"]));
+                return view("admin.reports.form-report", compact(["sex", "title", 'courses', "type", "batch", "listOfStudents"]));
                 break;
             case 3:
                 $list = Alumni::where("batch", "=", $batch)->get();
-                $listOfStudents = $list->sortBy("gender");
-                return view("admin.reports.form-report", compact(["genders", "title", 'courses', "type", "batch", "listOfStudents"]));
+                $listOfStudents = $list->sortBy("sex");
+                return view("admin.reports.form-report", compact(["sex", "title", 'courses', "type", "batch", "listOfStudents"]));
                 break;
 
             default:

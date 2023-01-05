@@ -20,10 +20,10 @@ class HomeController extends Controller
             $totalRegisteredUser[++$key] = [$value->course_id, $value->id];
         }
 
-        $totalRegisteredUserGender[] = ["Course", "Number of Students"];
-        $registeredUserGender = Alumni::select('gender', DB::raw('count(alumni_id) as id'))->groupBy('gender')->get();
-        foreach($registeredUserGender as $key => $value) {
-            $totalRegisteredUserGender[++$key] = [$value->gender, $value->id];
+        $totalregisteredUserSex[] = ["Course", "Number of Students"];
+        $registeredUserSex = Alumni::select('sex', DB::raw('count(alumni_id) as id'))->groupBy('sex')->get();
+        foreach($registeredUserSex as $key => $value) {
+            $totalregisteredUserSex[++$key] = [$value->sex, $value->id];
         }
         // dd($totalRegisteredUser2);
 
@@ -34,6 +34,6 @@ class HomeController extends Controller
         $totalStudents = count($listOfStudents);
 
         $title = "Dashboard";
-        return  view('admin.homepage', compact(["title", "totalStudents", "listOfNewAccounts"]))->with('totalRegisteredUser', json_encode($totalRegisteredUser))->with('totalRegisteredUserGender', json_encode($totalRegisteredUserGender));
+        return  view('admin.homepage', compact(["title", "totalStudents", "listOfNewAccounts"]))->with('totalRegisteredUser', json_encode($totalRegisteredUser))->with('totalregisteredUserSex', json_encode($totalregisteredUserSex));
     }
 }

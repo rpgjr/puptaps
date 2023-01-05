@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\ReportsController;
 use App\Http\Controllers\Admin\UserManagerController;
 use App\Http\Controllers\Admin\UserReportsController;
+use App\Http\Controllers\Admin\UserReportToPdfController;
 use App\Http\Controllers\Modules\CareerController;
 use App\Http\Controllers\Modules\EifToPdfController;
 use App\Http\Controllers\Modules\FormsController;
@@ -293,7 +294,7 @@ Route::group(
                ->name('getTracerReports');
 });
 
-// Admin - User Reports and PDF
+// Admin - User Reports
 Route::group(
     [
         'controller' => UserReportsController::class,
@@ -303,6 +304,19 @@ Route::group(
     ], function() {
         Route::get('user-report', 'getUserReports')
                ->name('getUserReports');
+
+});
+
+// Admin - User Reports
+Route::group(
+    [
+        'controller' => UserReportToPdfController::class,
+        'prefix' => 'admin/user-reports',
+        'as' => 'adminReports.',
+        'middleware' => ['isUser', 'auth']
+    ], function() {
+        Route::post('pdf', 'getUserReportPdf')
+               ->name('getUserReportPdf');
 
 });
 

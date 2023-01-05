@@ -10,6 +10,7 @@ class AlumniList extends Model
     use HasFactory;
 
     protected $table = 'tbl_alumni_list';
+    protected $primaryKey = 'alumni_list_id';
 
     public $timestamps = false;
 

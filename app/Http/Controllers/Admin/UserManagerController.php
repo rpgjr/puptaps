@@ -13,6 +13,7 @@ use App\Models\Forms\Sas\SasAnswers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Excel;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Response;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx\Rels;
 
@@ -49,8 +50,19 @@ class UserManagerController extends Controller
             'excel_file' => 'required|mimes:xlsx,csv',
         ]);
 
-        Excel::import(new UsersImport, $request->file('excel_file'));
-        return redirect()->back();
+        try {
+            Excel::import(new UsersImport, $request->file('excel_file'));
+        } catch (\Throwable $th) {
+            return back()->with(
+                'failed',
+                'An Error Occured. Check for duplications.'
+            );
+
+        }
+        return back()->with(
+            'success',
+            'List Added.'
+        );
     }
 
     public function removeAlumniAccount(Request $request) {

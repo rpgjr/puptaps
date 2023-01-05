@@ -31,7 +31,7 @@
                                     <option value="" hidden selected>Please select one...</option>
                                     <option value="1">Summary Report General</option>
                                     <option value="2">Summary Report - by Course</option>
-                                    <option value="3">Summary Report - by Gender</option>
+                                    <option value="3">Summary Report - by sex</option>
                                     <option value="4">Students Form Status General</option>
                                     <option value="5">Students Form Status - by Course</option>
                                 </select>

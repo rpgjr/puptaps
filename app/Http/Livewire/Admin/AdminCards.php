@@ -7,7 +7,7 @@ use Livewire\Component;
 class AdminCards extends Component
 {
     public $totalRegisteredUser;
-    public $totalRegisteredUserGender;
+    public $totalregisteredUserSex;
     public $totalStudents;
     public $listOfNewAccounts;
     public function render()

@@ -25,7 +25,7 @@ return new class extends Migration
                   ->nullable();
             $table->string('course_id');
             $table->integer('batch');
-            $table->string('gender')
+            $table->string('sex')
                   ->nullable();
             $table->date('birthday')
                   ->nullable();
@@ -58,7 +58,7 @@ return new class extends Migration
                 'middle_name'       => 'Middle',
                 'course_id'         => 'BSIT',
                 'batch'             => '1950',
-                'gender'            => 'Male',
+                'sex'               => 'Male',
                 'birthday'          => '2001-01-31',
                 'age'               => '21',
                 'city_address'      => 'Sample St.,Sample Barangay, Sample City',

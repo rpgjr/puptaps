@@ -49,10 +49,12 @@ class ProfileController extends Controller
             'middle_name'   => 'required',
             'course_id'     => 'required',
             'batch'         => 'required',
-            'gender'        => 'required',
+            'sex'           => 'required',
             'birthday'      => 'required',
             'username'      => 'required',
         ]);
+
+        $change_password = false;
 
         if(($request->input('password')) != null ) {
             $request->validate([
@@ -67,20 +69,7 @@ class ProfileController extends Controller
                 'password' => Hash::make($request->input('password'))
             ]);
 
-            if($account) {
-                return back()
-                       ->with(
-                            'success',
-                            ''
-                        );
-            }
-            else {
-                return back()
-                       ->with(
-                            'fail',
-                            'There is an Error Occured'
-                        );
-            }
+            $change_password = true;
         }
 
         $account = Alumni::where('alumni_id', '=', $alumni_id)->update([
@@ -90,7 +79,7 @@ class ProfileController extends Controller
             'suffix' => $request->input('suffix'),
             'course_id' => $request->input('course_id'),
             'batch' => $request->input('batch'),
-            'gender' => $request->input('gender'),
+            'sex' => $request->input('sex'),
             'birthday' => $request->input('birthday'),
             'age' => $request->input('age'),
             'religion' => $request->input('religion'),
@@ -105,7 +94,7 @@ class ProfileController extends Controller
             'username' => $request->input('username'),
         ]);
 
-        if($account) {
+        if($account || $change_password) {
             return back()
                    ->with(
                         'success',

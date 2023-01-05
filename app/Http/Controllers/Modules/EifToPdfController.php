@@ -149,8 +149,8 @@ class EifToPdfController extends Controller
             $html = <<<EOF
               <table style="width:100%; margin-top: 300px;">
                 <tr>
-                    <th colspan="1" style="width: 11%; font-weight: bold;">Gender: </th>
-                    <td colspan="1" style="border-bottom: 1px solid black; width: 15%;"> $user->gender </td>
+                    <th colspan="1" style="width: 11%; font-weight: bold;">Sex: </th>
+                    <td colspan="1" style="border-bottom: 1px solid black; width: 15%;"> $user->sex </td>
                     <td colspan="1" style="width: 10%;"></td>
                     <th colspan="1" style="width: 7%; font-weight: bold;">Age: </th>
                     <td colspan="1" style="border-bottom: 1px solid black; width: 6%;"> $user->age </td>

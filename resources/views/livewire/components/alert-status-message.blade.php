@@ -20,7 +20,7 @@
                     </div>
                 </div>
             </div>
-        @elseif($errors->any())
+        @elseif($errors->any() || Session::has('failed'))
             <div id="myModal" class="modal fade" tabindex="-1">
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
@@ -33,6 +33,9 @@
                             @foreach ($errors->all() as $error)
                                 <p class="text-center">{{ $error }}</p>
                             @endforeach
+                            @if (Session::has('failed'))
+                                <p class="text-center">{{ Session::get('failed') }}</p>
+                            @endif
                         </div>
                     </div>
                     <div class="modal-footer">

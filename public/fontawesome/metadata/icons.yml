@@ -11643,7 +11643,7 @@ gem:
     - regular
   unicode: f3a5
   voted: false
-genderless:
+sexless:
   aliases:
     unicodes:
       secondary:
@@ -11654,7 +11654,7 @@ genderless:
     - 5.11.0
     - 5.11.1
     - 6.0.0-beta1
-  label: Genderless
+  label: sexless
   search:
     terms: []
   styles:
@@ -25415,10 +25415,10 @@ train-tram:
     - solid
   unicode: e5b4
   voted: false
-transgender:
+transsex:
   aliases:
     names:
-      - transgender-alt
+      - transsex-alt
     unicodes:
       composite:
         - 26a7
@@ -25428,7 +25428,7 @@ transgender:
     - 4.3.0
     - 5.0.0
     - 6.0.0-beta1
-  label: Transgender
+  label: Transsex
   search:
     terms: []
   styles:

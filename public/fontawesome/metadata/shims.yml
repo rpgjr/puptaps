@@ -319,10 +319,10 @@ thumbs-o-down:
 thumbs-o-up:
   name: thumbs-up
   prefix: far
-transgender:
+transsex:
   name: mars-and-venus
-transgender-alt:
-  name: transgender
+transsex-alt:
+  name: transsex
 trash:
   name: trash-can
 trash-o:
