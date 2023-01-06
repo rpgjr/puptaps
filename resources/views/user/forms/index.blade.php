@@ -100,7 +100,7 @@
                             <div class="col-4 col-sm-4 col-md-3 col-lg-3 col-xl-2">
                                 <div class="text-center">
                                     @if (count($sasAnswer) > 0)
-                                        <form action="{{ route('userForm.SAS_TO_PDF') }}" method="post" target="__blank">
+                                        <form action="{{ route('userForm.downloadSAS') }}" method="post" target="__blank">
                                             @csrf
                                             <button type="submit" class="btn btn-success">Print</button>
                                         </form>

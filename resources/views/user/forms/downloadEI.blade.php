@@ -507,30 +507,6 @@
                 </tr>
             </table>
         </div>
-        {{--
-        <div class="fifth-item" style="margin-top: 20px;">
-            <p><b>5.</b> Give your comments/suggestions/recommendations for the improvement of PUP Taguig.</p>
-            <table style="width:100%;">
-                <tr>
-                    <td colspan="1" style="word-spacing: 5px; line-height: 25px; text-indent: 50px; text-align: justify;">{{ $exit->comment }}</td>
-                </tr>
-            </table>
-            <table style="width:100%; margin-top: 60px;">
-                <tr>
-                    <td></td>
-                    <td colspan="1" style="width: 40%; text-align: center; text-transform: uppercase;">
-                        {{ $exit->signature }}
-                    </td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td colspan="1" style="width: 40%; text-align: center; border-top: 1px solid black;">
-                        Signature over Printed Name
-                    </td>
-                </tr>
-            </table>
-        </div>
-        @endforeach --}}
     </div>
 
 

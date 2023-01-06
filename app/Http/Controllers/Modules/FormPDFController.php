@@ -10,6 +10,7 @@ use App\Models\Forms\Eif\EifQuestions;
 use App\Models\Forms\Pds\PdsAnswers;
 use App\Models\Forms\Pds\PdsQuestions;
 use App\Models\Forms\Sas\SasAnswers;
+use App\Models\Forms\Sas\SasQuestions;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use PDF;
@@ -38,8 +39,8 @@ class FormPDFController extends Controller
     }
 
     public function downloadSAS() {
-        $formQuestions  = EifQuestions::all();
-        $userAnswers    = EifAnswers::where('alumni_id', '=', Auth::user()->alumni_id)
+        $formQuestions  = SasQuestions::all();
+        $userAnswers    = SasAnswers::where('alumni_id', '=', Auth::user()->alumni_id)
                           ->get();
         $users          = Alumni::where('alumni_id', '=', Auth::user()->alumni_id)
                           ->get();
@@ -52,7 +53,7 @@ class FormPDFController extends Controller
         ];
 
         $pdf = PDF::loadView(
-                                'user.forms.downloadEIF',
+                                'user.forms.downloadSAS',
                                 $data,
                             )->setPaper('letter', 'portrait');
         return $pdf->stream();
