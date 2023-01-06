@@ -57,21 +57,36 @@
                                     <td>{{ $alum->batch }}</td>
                                     <td class="text-center">
                                         @if ($PDS->contains('alumni_id', $alum->alumni_id))
-                                            <a href="" class="btn btn-success px-2">PDS <i class="fa-solid fa-file-pdf"></i></a>
+                                            <form action="{{ route("adminGetPdf.downloadPDS") }}" method="POST" target="_blank">
+                                                @csrf
+
+                                                <input type="hidden" name="alumni_id" value="{{ $alum->alumni_id }}">
+                                                <button type="submit" class="btn btn-success px-2">PDS <i class="fa-solid fa-file-pdf"></i></button>
+                                            </form>
                                         @else
                                             <i class="fa-regular fa-circle-xmark me-1 text-danger"></i><span class="text-danger">PDS</span>
                                         @endif
                                     </td>
                                     <td class="text-center">
                                         @if ($EIF->contains('alumni_id', $alum->alumni_id))
-                                            <button class="btn btn-success">EIF <i class="fa-solid fa-file-pdf"></i></button>
+                                            <form action="{{ route("adminGetPdf.downloadEI") }}" method="POST" target="_blank">
+                                                @csrf
+
+                                                <input type="hidden" name="alumni_id" value="{{ $alum->alumni_id }}">
+                                                <button type="submit" class="btn btn-success px-2">EIF <i class="fa-solid fa-file-pdf"></i></button>
+                                            </form>
                                         @else
                                             <i class="fa-regular fa-circle-xmark me-1 text-danger"></i><span class="text-danger">EIF</span>
                                         @endif
                                     </td>
                                     <td class="text-center">
                                         @if ($SAS->contains('alumni_id', $alum->alumni_id))
-                                            <button class="btn btn-success">SAS <i class="fa-solid fa-file-pdf"></i></button>
+                                            <form action="{{ route("adminGetPdf.downloadSAS") }}" method="POST" target="_blank">
+                                                @csrf
+
+                                                <input type="hidden" name="alumni_id" value="{{ $alum->alumni_id }}">
+                                                <button class="btn btn-success px-2">SAS <i class="fa-solid fa-file-pdf"></i></button>
+                                            </form>
                                         @else
                                             <i class="fa-regular fa-circle-xmark me-1 text-danger"></i><span class="text-danger">SAS</span>
                                         @endif

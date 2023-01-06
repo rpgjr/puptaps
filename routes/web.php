@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\admin\AccountSettingsController;
+use App\Http\Controllers\Admin\AlumniPdfController;
 use App\Http\Controllers\Admin\CareerController as AdminCareerController;
 use App\Http\Controllers\admin\FormReportsController;
 use App\Http\Controllers\Admin\HomeController;
@@ -256,6 +257,24 @@ Route::group(
 
         Route::get('download-template', 'downloadListTemplate')
                ->name('downloadListTemplate');
+});
+
+// Admin - Get Alumni PDF Form
+Route::group(
+    [
+        'controller' => AlumniPdfController::class,
+        'prefix' => 'admin/alumni-pdf',
+        'as' => 'adminGetPdf.',
+        'middleware' => ['isUser', 'auth']
+    ], function() {
+        Route::post('pds-pdf', 'downloadPDS')
+               ->name('downloadPDS');
+
+        Route::post('eif-pdf', 'downloadEI')
+               ->name('downloadEI');
+
+        Route::post('sas-pdf', 'downloadSAS')
+               ->name('downloadSAS');
 });
 
 // Admin - Career Controller
