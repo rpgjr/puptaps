@@ -71,7 +71,7 @@
                             <div class="col-4 col-sm-4 col-md-3 col-lg-3 col-xl-2">
                                 <div class="text-center">
                                     @if (count($eifAnswer) > 0)
-                                        <form action="{{ route('userForm.EIF_TO_PDF') }}" method="post" target="__blank">
+                                        <form action="{{ route('userForm.downloadEI') }}" method="post" target="__blank">
                                             @csrf
                                             <button type="submit" class="btn btn-success">Print</button>
                                         </form>

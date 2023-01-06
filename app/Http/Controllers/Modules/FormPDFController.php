@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Alumni;
 use App\Models\Courses;
 use App\Models\Forms\Eif\EifAnswers;
+use App\Models\Forms\Eif\EifQuestions;
 use App\Models\Forms\Pds\PdsAnswers;
 use App\Models\Forms\Pds\PdsQuestions;
 use App\Models\Forms\Sas\SasAnswers;
@@ -33,32 +34,48 @@ class FormPDFController extends Controller
                                 'user.forms.downloadPDS',
                                 $data,
                             )->setPaper('letter', 'portrait');
-
-        // $pdf = PDF::loadView(
-        //                         'user.forms.downloadPDS',
-        //                         array('users'           => $users),
-        //                         array('formCategories'  => $formCategories),
-        //                         array('formQuestions'   => $formQuestions),
-        //                         array('userAnswers'      => $userAnswers),
-        //                     )->setPaper('letter', 'portrait');
         return $pdf->stream();
     }
 
     public function downloadSAS() {
-        $getUserAnswer = SasAnswers::where('alumni_id', '=', Auth::user()->alumni_id)->get();
-        $users = Alumni::where('alumni_id', '=', Auth::user()->alumni_id)->get();
+        $formQuestions  = EifQuestions::all();
+        $userAnswers    = EifAnswers::where('alumni_id', '=', Auth::user()->alumni_id)
+                          ->get();
+        $users          = Alumni::where('alumni_id', '=', Auth::user()->alumni_id)
+                          ->get();
+        $courses        = Courses::all();
+        $data = [
+            'users'           => $users,
+            'formQuestions'   => $formQuestions,
+            'userAnswers'     => $userAnswers,
+            'courses'         => $courses,
+        ];
 
-        $pdf = PDF::loadView('user.forms.downloadSAS', array('getUserAnswer' => $getUserAnswer), array('users' => $users))->setPaper('letter', 'portrait');
-
+        $pdf = PDF::loadView(
+                                'user.forms.downloadEIF',
+                                $data,
+                            )->setPaper('letter', 'portrait');
         return $pdf->stream();
     }
 
     public function downloadEI() {
-        $getUserAnswer = EifAnswers::where('alumni_id', '=', Auth::user()->alumni_id)->get();
-        $users = Alumni::where('alumni_id', '=', Auth::user()->alumni_id)->get();
+        $formQuestions  = EifQuestions::all();
+        $userAnswers    = EifAnswers::where('alumni_id', '=', Auth::user()->alumni_id)
+                          ->get();
+        $users          = Alumni::where('alumni_id', '=', Auth::user()->alumni_id)
+                          ->get();
+        $courses        = Courses::all();
+        $data = [
+            'users'           => $users,
+            'formQuestions'   => $formQuestions,
+            'userAnswers'     => $userAnswers,
+            'courses'         => $courses,
+        ];
 
-        $pdf = PDF::loadView('user.forms.downloadEI', array('getUserAnswer' => $getUserAnswer), array('users' => $users),)->setPaper('letter', 'portrait');
-
+        $pdf = PDF::loadView(
+                                'user.forms.downloadEI',
+                                $data,
+                            )->setPaper('letter', 'portrait');
         return $pdf->stream();
     }
 }
