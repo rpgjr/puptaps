@@ -13,3 +13,7 @@
     display: flex;
     justify-content: center;
 }
+
+.registered-user-sex {
+    height: 300px;
+}

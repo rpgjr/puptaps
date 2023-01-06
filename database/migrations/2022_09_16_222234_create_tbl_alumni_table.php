@@ -50,26 +50,26 @@ return new class extends Migration
                   ->nullable();
         });
 
-        Alumni::insert(
-            array(
-                'stud_number'       => '2019-00432-TG-0',
-                'last_name'         => 'Last',
-                'first_name'        => 'First',
-                'middle_name'       => 'Middle',
-                'course_id'         => 'BSIT',
-                'batch'             => '1950',
-                'sex'               => 'Male',
-                'birthday'          => '2001-01-31',
-                'age'               => '21',
-                'city_address'      => 'Sample St.,Sample Barangay, Sample City',
-                'email'             => 'sample@gmail.com',
-                'email_verified_at' => '2022-09-16 23:20:57',
-                'number'            => '0909090909',
-                'username'          => 'thisIsSample',
-                'password'          => '$2y$10$5EufXamveYAtaaaHrrxfHuhkp0qeTL3e/9hq7AMv/yfdEmj2NWWla',
-                'user_role'         => 'Alumni',
-            )
-        );
+        // Alumni::insert(
+        //     array(
+        //         'stud_number'       => '2019-00432-TG-0',
+        //         'last_name'         => 'Last',
+        //         'first_name'        => 'First',
+        //         'middle_name'       => 'Middle',
+        //         'course_id'         => 'BSIT',
+        //         'batch'             => '1950',
+        //         'sex'               => 'Male',
+        //         'birthday'          => '2001-01-31',
+        //         'age'               => '21',
+        //         'city_address'      => 'Sample St.,Sample Barangay, Sample City',
+        //         'email'             => 'sample@gmail.com',
+        //         'email_verified_at' => '2022-09-16 23:20:57',
+        //         'number'            => '0909090909',
+        //         'username'          => 'thisIsSample',
+        //         'password'          => '$2y$10$5EufXamveYAtaaaHrrxfHuhkp0qeTL3e/9hq7AMv/yfdEmj2NWWla',
+        //         'user_role'         => 'Alumni',
+        //     )
+        // );
     }
 
     /**

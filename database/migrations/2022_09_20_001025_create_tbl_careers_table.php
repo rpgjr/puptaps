@@ -34,7 +34,7 @@ return new class extends Migration
                   ->nullable();
             $table->string('company')
                   ->nullable();
-            $table->integer('salary')
+            $table->string('salary')
                   ->nullable();
             $table->longText('description')
                   ->nullable();

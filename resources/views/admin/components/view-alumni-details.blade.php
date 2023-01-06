@@ -57,7 +57,7 @@
             <p><b>Age: </b>{{ $alum->age }}</p>
           </div>
           <div class="col-6">
-            <p><b>sex: </b>{{ $alum->sex }}</p>
+            <p><b>Sex: </b>{{ $alum->sex }}</p>
           </div>
           <div class="col-6">
             <p><b>Religion: </b>{{ $alum->religion }}</p>

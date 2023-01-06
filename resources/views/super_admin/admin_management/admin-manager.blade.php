@@ -30,13 +30,15 @@
                         </thead>
                         <tbody>
                             @foreach ($admins as $admin)
-                                <tr>
-                                    <th>{{ $admin->username }}</th>
-                                    <td>{{ $admin->last_name }}, {{ $admin->first_name }}</td>
-                                    <td>{{ $admin->user_role }}</td>
-                                    <td class="text-center"><button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteAdmin{{ $admin->admin_id }}"><i class="fa-solid fa-trash-can"></i></button></td>
-                                    @include("super_admin.components.delete-admin")
-                                </tr>
+                                @if ($admin->user_role == 'Admin')
+                                    <tr>
+                                        <th>{{ $admin->username }}</th>
+                                        <td>{{ $admin->last_name }}, {{ $admin->first_name }}</td>
+                                        <td>{{ $admin->user_role }}</td>
+                                        <td class="text-center"><button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteAdmin{{ $admin->admin_id }}"><i class="fa-solid fa-trash-can"></i></button></td>
+                                        @include("super_admin.components.delete-admin")
+                                    </tr>
+                                @endif
                             @endforeach
                         </tbody>
                     </table>

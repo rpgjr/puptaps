@@ -1,7 +1,7 @@
 <div class="container-fluid text-white bg-dark pt-3 pb-2 px-2 h-100">
     <div class="row align-items-center">
         <div class="col-12 text-center mt-4">
-            <a href="{{ route('admin.homepage') }}" class="text-decoration-none text-white align-items-center">
+            <a href="{{ route('superAdmin.getSuperAdminIndex') }}" class="text-decoration-none text-white align-items-center">
                 <img src="{{ asset('img/pupLogo.png') }}" style="height: 50px;">
                 <p class="mt-2 mb-0 fs-4 fw-bold">PUPTAPS</p>
                 <p class="mt-0 fw-bold">SUPER ADMIN</p>

@@ -39,36 +39,36 @@ return new class extends Migration
             $table->string('user_role');
         });
 
-        DB::table('users')->insert(
-            array(
-                [
-                    'alumni_id' => '1',
-                    'stud_number' => '2019-00432-TG-0',
-                    'email' => 'sample@gmail.com',
-                    'email_verified_at' => '2022-09-16 23:20:57',
-                    'username' => 'thisIsSample',
-                    'password' => '$2y$10$5EufXamveYAtaaaHrrxfHuhkp0qeTL3e/9hq7AMv/yfdEmj2NWWla',
-                    'user_role' => 'Alumni',
-                ],
-            )
-        );
+        // DB::table('users')->insert(
+        //     array(
+        //         [
+        //             'alumni_id' => '1',
+        //             'stud_number' => '2019-00432-TG-0',
+        //             'email' => 'sample@gmail.com',
+        //             'email_verified_at' => '2022-09-16 23:20:57',
+        //             'username' => 'thisIsSample',
+        //             'password' => '$2y$10$5EufXamveYAtaaaHrrxfHuhkp0qeTL3e/9hq7AMv/yfdEmj2NWWla',
+        //             'user_role' => 'Alumni',
+        //         ],
+        //     )
+        // );
 
         DB::table('users')->insert(
             array(
+                // [
+                //     'admin_id' => '1',
+                //     'email' => 'pupt.alumniportalsystem@gmail.com',
+                //     'username' => 'Admin',
+                //     'email_verified_at' => '2022-09-16 23:20:57',
+                //     'password' => '$2y$10$5EufXamveYAtaaaHrrxfHuhkp0qeTL3e/9hq7AMv/yfdEmj2NWWla',
+                //     'user_role' => 'Admin',
+                // ],
                 [
                     'admin_id' => '1',
-                    'email' => 'pupt.alumniportalsystem@gmail.com',
-                    'username' => 'Admin',
-                    'email_verified_at' => '2022-09-16 23:20:57',
-                    'password' => '$2y$10$5EufXamveYAtaaaHrrxfHuhkp0qeTL3e/9hq7AMv/yfdEmj2NWWla',
-                    'user_role' => 'Admin',
-                ],
-                [
-                    'admin_id' => '2',
                     'email' => 'superadmin@gmail.com',
                     'username' => 'SuperAdmin',
                     'email_verified_at' => '2022-09-16 23:20:57',
-                    'password' => '$2y$10$5EufXamveYAtaaaHrrxfHuhkp0qeTL3e/9hq7AMv/yfdEmj2NWWla',
+                    'password' => '$2y$10$aAQswT/9Wnj1cChgKdfWEObtDZj.5GMUQkikFkd4ouy2QfawrF6..',
                     'user_role' => 'Super_Admin',
                 ],
             )

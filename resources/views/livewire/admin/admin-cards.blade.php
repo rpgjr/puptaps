@@ -28,8 +28,7 @@
         <div class="sub-container-box py-3 h-100">
             <div class="registered-user-chart">
                 <div class="d-flex justify-content-between align-items-center">
-                    <p class="fs-4 fw-bold mb-2">Registered Users</p>
-                    <p class="mb-2">Total: {{ $totalStudents }}</p>
+                    <p class="fs-4 fw-bold mb-2">Registered Users by Sex</p>
                 </div>
                 <p class="text-secondary">As of {{ date('F d, Y') }}</p>
             </div>
