@@ -17,3 +17,65 @@
 .registered-user-sex {
     height: 300px;
 }
+
+.admin-sidebar {
+    background: #F4F6F6;
+    width: 260px;
+    margin-top: 30px;
+}
+
+.sidebar-buttons a {
+    font-size: 14px;
+}
+
+.admin-navbar {
+    background: #7B241C;
+    color: #ffffff;
+}
+
+.sidebar-button {
+    background: #F4F6F6;
+    text-decoration: none;
+    color: #800000;
+    padding: 10px;
+    transition: all 0.3s ease-in-out;
+}
+
+.sidebar-button:hover {
+    background: #A93226;
+    color: #E5E7E9;
+    font-weight: bold;
+}
+
+.hr-color {
+    border: 1px solid #7B241C;
+    width: 92%;
+    margin: 0 auto;
+}
+
+.active {
+    background: #7B241C;
+    color: #ffffff;
+}
+
+.admin-logout-button {
+    text-decoration: none;
+    color: #800000;
+    padding: 10px;
+    width: 260px;
+    transition: all 0.3s ease-in-out;
+    border: none;
+    background: none;
+    font-size: 14px;
+}
+
+.admin-logout-button:hover {
+    color: #800000;
+    font-weight: bold;
+    transform: scale(1.2);
+}
+
+.admin-profile-picture {
+    color: #ffffff;
+    width: 40px;
+}

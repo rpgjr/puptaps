@@ -2,7 +2,7 @@
 @section('page-title', 'Registration')
 @section('content')
 
-<section>
+{{-- <section>
     <div class="container py-5 h-100">
         <div class="row d-flex justify-content-center align-items-center h-100">
             <div class="col-sm-12 col-md-8 col-lg-9 col-xl-9">
@@ -155,6 +155,19 @@
                         </div>
 
                         </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section> --}}
+
+<section>
+    <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-sm-12 col-md-8 col-lg-9 col-xl-9">
+                <div class="card bg-light auth-card">
+                    <div class="card-body p-5">
                     </div>
                 </div>
             </div>

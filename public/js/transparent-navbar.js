@@ -1,10 +1,10 @@
-let nav = document.querySelector('nav');
+// let nav = document.querySelector('nav');
 
-window.addEventListener('scroll', function() {
-    if(window.pageYOffset > 500) {
-        nav.classList.add('bg-dark', 'shadow');
-    }
-    else {
-        nav.classList.remove('bg-dark', 'shadow');
-    }
-});
+// window.addEventListener('scroll', function() {
+//     if(window.pageYOffset > 500) {
+//         nav.classList.add('navbar-landingpage', 'shadow');
+//     }
+//     else {
+//         nav.classList.remove('navbar-landingpage', 'shadow');
+//     }
+// });

@@ -3,12 +3,7 @@
   <div class="modal-dialog modal-dialog-centered modal-lg">
     <div class="modal-content">
       <div class="modal-header align-items-center">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">{{ $alum->stud_number }}</h1>
-        <div>
-            {{-- <button class="btn btn-primary me-1">Edit <i class="fa-solid fa-pen-to-square ms-1"></i></button> --}}
-            <button type="button" class="btn btn-danger me-1 delete-collapse" data-bs-toggle="collapse" data-bs-target="#deleteAlumniCollapse{{ $alum->alumni_id }}" aria-expanded="false" aria-controls="collapseExample">Delete Account <i class="fa-solid fa-trash-can ms-1"></i></button>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
+        <h1 class="modal-title fs-5">{{ $alum->stud_number }}</h1>
       </div>
       <div class="modal-body text-start mt-3 mb-1 mx-3">
         <div class="mt-0 mb-0">

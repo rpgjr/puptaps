@@ -12,6 +12,18 @@ body {
     font-weight: normal;
 }
 
+.color-pup {
+    color: #800000;
+}
+
+p {
+    font-size: 14px;
+}
+
+th, td {
+    font-size: 14px;
+}
+
 .user-body {
     background: #EAECEE;
 }

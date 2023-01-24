@@ -1,5 +1,10 @@
 .pupt-title {
     color: #ffffff;
+    font-size: 20px;
+}
+
+.landing-navbar {
+    background-color: #7B241C;
 }
 
 .container-greetings {
@@ -23,7 +28,7 @@
 }
 
 .icon-socials:hover {
-    color: #C0392B;
+    color: #7B241C;
 }
 
 .img-features {
@@ -45,4 +50,54 @@
 
 footer {
     margin-top: 100px;
+}
+
+.footer-icon-links {
+    font-size: 36px;
+}
+
+
+/* Login and Registration */
+
+.auth-navbar {
+    background-color: #7B241C;
+    color: #ffffff;
+    padding: 0;
+    margin: 0;
+}
+
+.auth-login-button {
+    background: #ffffff;
+    text-decoration: none;
+    color: #7B241C;
+    padding: 6px;
+    width: 110px;
+    text-align: center;
+    transition: all 0.3s ease-in-out;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.auth-login-button:hover {
+    transform: scale(1.2);
+    background: #ffffff;
+    color: #7B241C;
+    border-radius: 5px;
+    font-weight: bold;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+}
+
+
+
+@media only screen and (max-width: 1200px) {
+    .login-box-border {
+        border-radius: 8px;
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    .login-box-border {
+        border-top-right-radius: 7px;
+        border-bottom-right-radius: 7px;
+    }
 }
