@@ -33,6 +33,6 @@ class Alumni extends Model
         'username',
         'password',
         'user_role',
-        'user_profile',
+        'user_pfp',
     ];
 }

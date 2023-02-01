@@ -165,7 +165,7 @@ class PdsToPdfController extends Controller
             $pdf->writeHTML($html, true, 0, true, 0);
 
             $pdf->Ln(-1);
-            $course = Courses::where('course_id', '=', $user->course_id)->value('course_Desc');
+            $course = Courses::where('course_id', '=', $user->course_id)->value('course_desc');
             $html = <<<EOF
               <table style="width:100%; margin-top: 10px;">
                 <tr>

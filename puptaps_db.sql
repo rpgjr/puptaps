@@ -5127,14 +5127,14 @@ CREATE TABLE `tbl_alumni` (
   `username` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `user_role` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `user_profile` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL
+  `user_pfp` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `tbl_alumni`
 --
 
-INSERT INTO `tbl_alumni` (`alumni_id`, `stud_number`, `last_name`, `first_name`, `middle_name`, `suffix`, `course_id`, `batch`, `sex`, `birthday`, `age`, `religion`, `civil_status`, `city_address`, `provincial_address`, `email`, `email_verified_at`, `number`, `username`, `password`, `user_role`, `user_profile`) VALUES
+INSERT INTO `tbl_alumni` (`alumni_id`, `stud_number`, `last_name`, `first_name`, `middle_name`, `suffix`, `course_id`, `batch`, `sex`, `birthday`, `age`, `religion`, `civil_status`, `city_address`, `provincial_address`, `email`, `email_verified_at`, `number`, `username`, `password`, `user_role`, `user_pfp`) VALUES
 (1, '2019-00432-TG-0', 'Last', 'First', 'Middle', NULL, 'BSIT', 1950, 'Male', '2001-01-31', 21, NULL, NULL, 'Sample St.,Sample Barangay, Sample City', NULL, 'sample@gmail.com', '2022-09-16 15:20:57', '0909090909', 'thisIsSample', '$2y$10$5EufXamveYAtaaaHrrxfHuhkp0qeTL3e/9hq7AMv/yfdEmj2NWWla', 'Alumni', NULL),
 (2, '2018-00360-TG-0', 'Nadera', 'Wilma', 'Valerio', NULL, 'BSECE', 2022, 'Female', '1999-09-11', 23, 'Roman Catholic', 'single', '116, Aimee St., Phase 4, Gatchalian Subd., Manuyo Dos, Las Piñas City', NULL, 'wilmanadera@gmail.com', '2022-09-15 10:10:00', '9153881737', '2018-00360-TG-0', '$2y$10$aAQswT/9Wnj1cChgKdfWEObtDZj.5GMUQkikFkd4ouy2QfawrF6.', 'Alumni', NULL),
 (3, '2018-00356-TG-0', 'Jacinto', 'Jibrael', 'Gutierrez', NULL, 'BSECE', 2022, 'Male', '1999-08-11', 23, 'Roman Catholic', 'single', 'B16 L22 J Barrera St. Katarungan Village', 'Metropolitan Manila', 'gutierrezjib@gmail.com', '2022-09-15 15:21:00', '9953767276', '2018-00356-TG-0', '$2y$10$aAQswT/9Wnj1cChgKdfWEObtDZj.5GMUQkikFkd4ouy2QfawrF6.', 'Alumni', NULL),
@@ -5249,14 +5249,14 @@ INSERT INTO `tbl_career_categories` (`career_category_id`, `career_category`) VA
 
 CREATE TABLE `tbl_courses` (
   `course_id` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `course_Desc` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
+  `course_desc` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `tbl_courses`
 --
 
-INSERT INTO `tbl_courses` (`course_id`, `course_Desc`) VALUES
+INSERT INTO `tbl_courses` (`course_id`, `course_desc`) VALUES
 ('BSEd-English', 'Bachelor in Secondary Education Major in English'),
 ('BSEd-Mathematics', 'Bachelor in Secondary Education Major in Mathematics'),
 ('DICT', 'Diploma in Information Communication Technology'),

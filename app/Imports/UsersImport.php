@@ -2,7 +2,8 @@
 
 namespace App\Imports;
 
-use App\Models\AlumniList;
+use App\Models\Alumni;
+use App\Models\User;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 
@@ -15,14 +16,42 @@ class UsersImport implements ToModel, WithHeadingRow
     */
     public function model(array $row)
     {
-        return new AlumniList([
-            'stud_number'    => $row['studentnumber'],
-            'last_name'      => $row['lastname'],
-            'first_name'     => $row['firstname'],
-            'middle_name'    => $row['middlename'],
-            'suffix'         => $row['suffix'],
-            'course_id'      => $row['course'],
-            'batch'          => $row['batch'],
-        ]);
+        Alumni::insert (
+            array (
+                'stud_number'    => $row['studentnumber'],
+                'last_name'      => $row['lastname'],
+                'first_name'     => $row['firstname'],
+                'middle_name'    => $row['middlename'],
+                'suffix'         => $row['suffix'],
+                'course_id'      => $row['course'],
+                'batch'          => $row['batch'],
+                'email'          => '',
+                'number'         => '',
+                'profile_status' => 'Incomplete',
+            )
+        );
+
+        $alumni = Alumni::where('stud_number', '=', $row['studentnumber'])->first();
+        User::insert(
+            array (
+                'alumni_id'         => $alumni['alumni_id'],
+                'email'             => '',
+                'username'          => $alumni['stud_number'],
+                'password'          => 'Not Set',
+                'user_role'         => 'Alumni',
+                'account_status'    => 'Inactive',
+            )
+        );
+
+
+        // return new Alumni([
+        //     'stud_number'    => $row['studentnumber'],
+        //     'last_name'      => $row['lastname'],
+        //     'first_name'     => $row['firstname'],
+        //     'middle_name'    => $row['middlename'],
+        //     'suffix'         => $row['suffix'],
+        //     'course_id'      => $row['course'],
+        //     'batch'          => $row['batch'],
+        // ]);
     }
 }

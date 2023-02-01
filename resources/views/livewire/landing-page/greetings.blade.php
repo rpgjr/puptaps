@@ -1,7 +1,7 @@
 <!-- Landing Page Section: Greetings -->
 <section class="py-5 section-greetings"
 style="
-    background: url({{ asset('img/pup-bg-black.png') }}) no-repeat center center fixed;
+    background: url({{ asset('img/pup-bg-white.png') }}) no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -11,7 +11,7 @@ style="
     <div class="container-fluid container-greetings">
         <div class="row align-items-center justify-content-end">
             <div class="col-md-6 mb-4">
-                <p class="welcome-title text-center mb-4">PUP Taguig Alumni Portal System</p>
+                <p class="welcome-title text-center mb-4 color-pup">PUP Taguig Alumni Portal System</p>
 
                 <p class="mb-4 text-center mb-5 normal">Providing the best care and experience for our beloved alumni. Hop in and relish, give opportunities to your co-alumni, and reminisce your life here at PUP Taguig.</p>
 

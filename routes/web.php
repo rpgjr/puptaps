@@ -65,7 +65,7 @@ Route::group(
 
         // Route for HomePage View
         Route::get('/home', 'getUserHomepage')
-            ->middleware(['auth', 'verified', 'isAdmin'])
+            ->middleware(['auth', 'isAdmin'])
             ->name('user.homepage');
 });
 

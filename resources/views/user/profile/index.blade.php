@@ -25,7 +25,7 @@
                                         <div class="row mb-3">
                                             <div class="col-12 text-center mb-2">
                                                 <label class="profilepic" for="uploadProfile">
-                                                    <img class="profilepic__image" src="/Uploads/Profiles/{{ $user->user_profile }}" id="uploadPreview"/>
+                                                    <img class="profilepic__image" src="/Uploads/Profiles/{{ $user->user_pfp }}" id="uploadPreview"/>
                                                     <div class="profilepic__content">
                                                     <span class="profilepic__icon"><i class="fas fa-camera"></i></span>
                                                     <span class="profilepic__text">Edit Profile</span>
@@ -33,7 +33,7 @@
                                                 </label>
                                             </div>
                                             <div class="col-12 text-center">
-                                                <input type="file" class="form-control" name="user_profile" id="uploadProfile" onchange="PreviewImage();" hidden />
+                                                <input type="file" class="form-control" name="user_pfp" id="uploadProfile" onchange="PreviewImage();" hidden />
 
                                                 <label class="btn btn-primary" for="uploadProfile">Change Profile Picture</label>
                                             </div>

@@ -74,7 +74,7 @@
     @if ($listOfStudents->contains('course_id', $course->course_id))
     <div class="row sub-container-box mt-5 pt-4 pb-4">
         <div class="col-12">
-            <h3 class="mt-3 text-center">{{ $course->course_Desc }}</h3>
+            <h3 class="mt-3 text-center">{{ $course->course_desc }}</h3>
             <h4 class="mb-5 text-center">PUP Taguig Alumni Batch of {{ $batch }}</h4>
             <table class="table table-striped align-middle">
                 <thead class="table-dark">
@@ -109,7 +109,7 @@
     {{-- @else
         <div class="row sub-container-box mt-5 pt-4 pb-4">
             <div class="col-12">
-                <h3 class="mt-3 text-center">{{ $course->course_Desc }}</h3>
+                <h3 class="mt-3 text-center">{{ $course->course_desc }}</h3>
                 <h4 class="mb-5 text-center">PUP Taguig Alumni Batch of {{ $batch }}</h4>
                 <div class="alert alert-warning mb-0 text-center fs-5">
                     No data

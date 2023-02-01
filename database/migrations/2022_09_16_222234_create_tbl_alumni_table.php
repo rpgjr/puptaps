@@ -16,7 +16,8 @@ return new class extends Migration
     {
         Schema::create('tbl_alumni', function (Blueprint $table) {
             $table->increments('alumni_id');
-            $table->string('stud_number');
+            $table->string('stud_number')
+                  ->unique();
             $table->string('last_name');
             $table->string('first_name');
             $table->string('middle_name')
@@ -40,14 +41,10 @@ return new class extends Migration
             $table->string('provincial_address')
                   ->nullable();
             $table->string('email');
-            $table->timestamp('email_verified_at')
-                  ->nullable();
             $table->string('number');
-            $table->string('username');
-            $table->string('password');
-            $table->string('user_role');
-            $table->string('user_profile')
+            $table->string('user_pfp')
                   ->nullable();
+            $table->string('profile_status');
         });
 
         // Alumni::insert(

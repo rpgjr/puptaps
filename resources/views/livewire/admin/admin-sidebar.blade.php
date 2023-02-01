@@ -92,10 +92,14 @@
                 <!-- Start: Account Settings -->
                 <form action="{{ route('logout') }}" method="post">
                     @csrf
-                    <button class="text-center admin-logout-button text-start pb-0 mb-3 fixed-bottom">
-                        <i class="fa-solid fa-gear me-1"></i>
-                        Logout
-                    </button>
+                    <div class="fixed-bottom">
+                        <button class="text-center pb-0 mb-3 admin-logout-button">
+                            <span class="admin-logout-button">
+                                <i class="fa-solid fa-gear me-1"></i>
+                                Logout
+                            </span>
+                        </button>
+                    </div>
                 </form>
                 {{-- <a type="button" href="{{ route("logout") }}" class="text-center admin-logout-button text-start py-2 fixed-bottom">
                     <i class="fa-solid fa-gear me-1"></i>

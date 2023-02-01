@@ -7,7 +7,7 @@
     <title>@yield('page-title')</title>
     @livewireStyles
 </head>
-<body class="admin-body">
+<body class="admin-body" id="admin-back-to-top">
     <main>
         <div class="px-0 py-0 container-fluid">
             <div class="row g-0" style="height: 100vh;">
@@ -24,6 +24,9 @@
                             @yield('content')
                         </div>
                     </div>
+                </div>
+                <div class="col-12 text-end">
+                    <a type="button" href="#admin-back-to-top" class="btn btn-danger admin-back-to-top"><i class="fa-solid fa-angle-up"></i></a>
                 </div>
             </div>
         </div>

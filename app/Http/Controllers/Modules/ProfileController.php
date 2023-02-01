@@ -24,22 +24,22 @@ class ProfileController extends Controller
 
     public function updateProfile(Request $request, $alumni_id) {
 
-        if($request->hasFile('user_profile')) {
+        if($request->hasFile('user_pfp')) {
             $alumni = Alumni::where('alumni_id', '=', Auth::user()->alumni_id)->get();
             foreach($alumni as $image) {
-                if(!($image->user_profile) == null) {
-                    unlink("Uploads/Profiles/".$image->user_profile);
+                if(!($image->user_pfp) == null) {
+                    unlink("Uploads/Profiles/".$image->user_pfp);
                 }
             }
 
 
-            $file = $request->file('user_profile');
+            $file = $request->file('user_pfp');
             $extension = $file->getClientOriginalExtension();
             date_default_timezone_set('Asia/Manila');
             $fileName = date('m_d_Y [H-i-s]') . '.' . $extension;
             $file->move('Uploads/Profiles/', $fileName);
             $account = Alumni::where('alumni_id', '=', $alumni_id)->update([
-                'user_profile' => $fileName,
+                'user_pfp' => $fileName,
             ]);
         }
 

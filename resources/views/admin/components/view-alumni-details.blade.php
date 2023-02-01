@@ -12,10 +12,10 @@
 
         <div class="row align-items-center g-0 mt-2">
           <div class="col-2">
-            @if ($alum->user_profile == null)
+            @if ($alum->user_pfp == null)
               <img src="{{ asset('Uploads/Profiles/user-no-profile.png') }}" class="user-profile-picture">
             @else
-              <img src="/Uploads/Profiles/{{ $alum->user_profile }}" class="user-profile-picture">
+              <img src="/Uploads/Profiles/{{ $alum->user_pfp }}" class="user-profile-picture">
             @endif
           </div>
           <div class="col-10">
@@ -32,7 +32,7 @@
           <div class="col-12">
             @foreach ($courses as $course)
               @if ($course->course_id == $alum->course_id)
-                <p><b>Course:</b> {{ $course->course_Desc }}</p>
+                <p><b>Course:</b> {{ $course->course_desc }}</p>
               @endif
             @endforeach
           </div>

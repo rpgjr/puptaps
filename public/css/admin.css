@@ -2,6 +2,14 @@
     background: #EAECEE;
 }
 
+.admin-back-to-top {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    background: #7B241C;
+    border: none;
+}
+
 .user-profile-picture {
   height: 100px;
   width: 100px;
@@ -78,4 +86,13 @@
 .admin-profile-picture {
     color: #ffffff;
     width: 40px;
+}
+
+.admin-logout-dropdown {
+    transition: all 0.3s ease;
+}
+
+.admin-logout-dropdown:hover {
+    font-weight: bold;
+    transform: scale(1.1);
 }

@@ -28,10 +28,10 @@
             <div class="d-flex">
                 <div class="dropdown">
                     @foreach ($users as $user)
-                    @if ($user->user_profile == null)
+                    @if ($user->user_pfp == null)
                         <img src="{{ asset('Uploads/Profiles/user-no-profile.png') }}" class="user-profile-button" data-bs-toggle="dropdown" aria-expanded="false">
                     @else
-                        <img src="/Uploads/Profiles/{{ $user->user_profile }}" class="user-profile-button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img src="/Uploads/Profiles/{{ $user->user_pfp }}" class="user-profile-button" data-bs-toggle="dropdown" aria-expanded="false">
                     @endif
                     @endforeach
                     <ul class="dropdown-menu dropdown-menu-end">

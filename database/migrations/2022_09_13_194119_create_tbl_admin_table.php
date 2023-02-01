@@ -32,14 +32,14 @@ return new class extends Migration
         });
 
         $accounts = array (
-            // [
-            //     'last_name'     => 'Admin',
-            //     'first_name'    => 'Regular',
-            //     'email'         => 'pupt.alumniportalsystem@gmail.com',
-            //     'username'      => 'Admin',
-            //     'password'      => '$2y$10$5EufXamveYAtaaaHrrxfHuhkp0qeTL3e/9hq7AMv/yfdEmj2NWWla',
-            //     'user_role'     => 'Admin',
-            // ],
+            [
+                'last_name'     => 'Admin',
+                'first_name'    => 'Regular',
+                'email'         => 'pupt.alumniportalsystem@gmail.com',
+                'username'      => 'Admin',
+                'password'      => '$2y$10$5EufXamveYAtaaaHrrxfHuhkp0qeTL3e/9hq7AMv/yfdEmj2NWWla',
+                'user_role'     => 'Admin',
+            ],
             [
                 'last_name'     => 'Admin',
                 'first_name'    => 'Super',

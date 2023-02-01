@@ -14,7 +14,22 @@
 
         <div class="row justify-content-center g-0">
             <div class="col-11">
-              <div class="row sub-container-box mb-4 py-3 px-2 justify-content-end">
+              <div class="row sub-container-box mb-4 py-3 px-2">
+                <div class="col-6">
+                    <form class="row g-3" method="post" enctype="multipart/form-data" action="{{ route('adminUserManagement.addAlumniList') }}">
+                    @csrf
+                        <div class="col-12 input-group">
+                            <input class="form-control" type="file" id="formFile" name="excel_file">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fa-solid fa-arrow-up-from-bracket me-1"></i>
+                                <span>Upload</span>
+                            </button>
+                        </div>
+                        @error('excel_file')
+                            <p class="text-danger mt-2 mb-0 py-0">{{ $message }}</p>
+                        @enderror
+                    </form>
+                </div>
                 <div class="col-6">
                   <form class="g-3">
                     @csrf

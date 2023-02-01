@@ -50,15 +50,15 @@ class UserManagerController extends Controller
             'excel_file' => 'required|mimes:xlsx,csv',
         ]);
 
-        try {
+        // try {
             Excel::import(new UsersImport, $request->file('excel_file'));
-        } catch (\Throwable $th) {
+        // } catch (\Throwable $th) {
             return back()->with(
                 'failed',
                 'An Error Occured. Check for duplications.'
             );
 
-        }
+        // }
         return back()->with(
             'success',
             'List Added.'

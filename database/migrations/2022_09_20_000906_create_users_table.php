@@ -29,23 +29,18 @@ return new class extends Migration
                   ->references('admin_id')
                   ->on('tbl_admin');
 
-            $table->string('stud_number')
-                  ->nullable();
             $table->string('email');
-            $table->timestamp('email_verified_at')
-                  ->nullable();
             $table->string('username');
             $table->string('password');
             $table->string('user_role');
+            $table->string('account_status');
         });
 
         // DB::table('users')->insert(
         //     array(
         //         [
         //             'alumni_id' => '1',
-        //             'stud_number' => '2019-00432-TG-0',
         //             'email' => 'sample@gmail.com',
-        //             'email_verified_at' => '2022-09-16 23:20:57',
         //             'username' => 'thisIsSample',
         //             'password' => '$2y$10$5EufXamveYAtaaaHrrxfHuhkp0qeTL3e/9hq7AMv/yfdEmj2NWWla',
         //             'user_role' => 'Alumni',
@@ -55,21 +50,21 @@ return new class extends Migration
 
         DB::table('users')->insert(
             array(
-                // [
-                //     'admin_id' => '1',
-                //     'email' => 'pupt.alumniportalsystem@gmail.com',
-                //     'username' => 'Admin',
-                //     'email_verified_at' => '2022-09-16 23:20:57',
-                //     'password' => '$2y$10$5EufXamveYAtaaaHrrxfHuhkp0qeTL3e/9hq7AMv/yfdEmj2NWWla',
-                //     'user_role' => 'Admin',
-                // ],
                 [
                     'admin_id' => '1',
+                    'email' => 'pupt.alumniportalsystem@gmail.com',
+                    'username' => 'Admin',
+                    'password' => '$2y$10$5EufXamveYAtaaaHrrxfHuhkp0qeTL3e/9hq7AMv/yfdEmj2NWWla',
+                    'user_role' => 'Admin',
+                    'account_status' => 'Activated',
+                ],
+                [
+                    'admin_id' => '2',
                     'email' => 'superadmin@gmail.com',
                     'username' => 'SuperAdmin',
-                    'email_verified_at' => '2022-09-16 23:20:57',
                     'password' => '$2y$10$aAQswT/9Wnj1cChgKdfWEObtDZj.5GMUQkikFkd4ouy2QfawrF6..',
                     'user_role' => 'Super_Admin',
+                    'account_status' => 'Activated',
                 ],
             )
         );

@@ -12,10 +12,10 @@
                         @if (($alum->alumni_id) == ($career->alumni_id))
                             <tr>
                                 <td rowspan="2" style="width: 5%;">
-                                    @if ($alum->user_profile == null)
+                                    @if ($alum->user_pfp == null)
                                         <img src="{{ asset('Uploads/Profiles/user-no-profile.png') }}" class="career-post-profile" data-bs-toggle="dropdown" aria-expanded="false">
                                     @else
-                                        <img src="/Uploads/Profiles/{{ $alum->user_profile }}" class="career-post-profile" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <img src="/Uploads/Profiles/{{ $alum->user_pfp }}" class="career-post-profile" data-bs-toggle="dropdown" aria-expanded="false">
                                     @endif
                                 </td>
                                 <th style="width: 95%">{{ $alum->username }}</th>

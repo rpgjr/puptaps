@@ -36,10 +36,10 @@
 
                     <div class="row align-items-center">
                         <div class="col-12 col-sm-12 col-md-2 col-lg-2 col-xl-2 text-center text-sm-center text-md-end text-lg-end text-xl-end">
-                            @if ($user->user_profile == null)
+                            @if ($user->user_pfp == null)
                                 <img src="{{ asset('Uploads/Profiles/user-no-profile.png') }}" class="user-profile-tracer">
                             @else
-                                <img src="/Uploads/Profiles/{{ $user->user_profile }}" class="user-profile-tracer">
+                                <img src="/Uploads/Profiles/{{ $user->user_pfp }}" class="user-profile-tracer">
                             @endif
                         </div>
 
@@ -58,7 +58,7 @@
                             <h4 class="fw-bold">Polytechnic University of the Philippines - Taguig Branch</h4>
                             @foreach ($courses as $course)
                             @if (($user->course_id) == ($course->course_id))
-                                <p class="mb-1"><b>Course:</b> {{ $course->course_Desc }}</p>
+                                <p class="mb-1"><b>Course:</b> {{ $course->course_desc }}</p>
                             @endif
                             @endforeach
                             <p class="mb-1"><b>Year Graduated: </b> {{ $user->batch }}</p>

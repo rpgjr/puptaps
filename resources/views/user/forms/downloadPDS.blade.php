@@ -90,7 +90,7 @@
         $course_text = $user->course_id;
         foreach ($courses as $course) {
             if($course->course_id == $user->course_id) {
-                $course_text = $course->course_Desc;
+                $course_text = $course->course_desc;
             }
         }
     ?>

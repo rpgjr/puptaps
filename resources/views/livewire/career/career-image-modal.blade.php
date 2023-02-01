@@ -4,10 +4,10 @@
             @if (($alum->alumni_id) == ($career->alumni_id))
                 <div class="row align-items-center text-start m-0">
                     <div class="col-2 col-sm-1 col-md-1 col-lg-1 col-xl-1 me-3 me-sm-4 me-md-3 me-lg-3 me-xl-1">
-                        @if ($alum->user_profile == null)
+                        @if ($alum->user_pfp == null)
                             <img src="{{ asset('Uploads/Profiles/user-no-profile.png') }}" class="career-post-profile">
                         @else
-                            <img src="/Uploads/Profiles/{{ $alum->user_profile }}" class="career-post-profile">
+                            <img src="/Uploads/Profiles/{{ $alum->user_pfp }}" class="career-post-profile">
                         @endif
                     </div>
                     <div class="col-8 col-sm-9 col-md-9 col-lg-9 col-xl-9">
@@ -104,10 +104,10 @@
         @if (($alum->alumni_id) == ($career->alumni_id))
             <div class="row align-items-center text-start m-0">
                 <div class="col-2 col-sm-1 col-md-1 col-lg-1 col-xl-1 me-3 me-sm-4 me-md-3 me-lg-3 me-xl-1">
-                    @if ($alum->user_profile == null)
+                    @if ($alum->user_pfp == null)
                         <img src="{{ asset('Uploads/Profiles/user-no-profile.png') }}" class="career-post-profile">
                     @else
-                        <img src="/Uploads/Profiles/{{ $alum->user_profile }}" class="career-post-profile">
+                        <img src="/Uploads/Profiles/{{ $alum->user_pfp }}" class="career-post-profile">
                     @endif
                 </div>
                 <div class="col-8 col-sm-9 col-md-9 col-lg-9 col-xl-9">

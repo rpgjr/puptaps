@@ -27,6 +27,9 @@ return new class extends Migration
                 [
                     "category_name" => "First Job / Career Details"
                 ],
+                [
+                    "category_name" => "Board Exam"
+                ],
             )
         );
     }
