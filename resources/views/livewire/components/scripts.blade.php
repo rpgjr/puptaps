@@ -6,6 +6,8 @@
 <script src="{{ asset('js/preview-profile.js') }}"></script>
 <script src="{{ asset('js/same-address.js') }}"></script>
 
+<script src="{{ asset('js/password-generator.js') }}"></script>
+
 <script src="{{ asset('js/jquery-3.6.1.min.js') }}"></script>
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 

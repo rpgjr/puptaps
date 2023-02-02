@@ -20,6 +20,23 @@
     font-weight: 600;
 }
 
+.button-learn-more {
+    border: none;
+    background: #7B241C;
+    color: #ffffff;
+    padding: 10px 25px;
+    border-radius: 5px;
+    font-size: 18px;
+    transition: all 0.3s ease-in-out;
+}
+
+.button-learn-more:hover {
+    transform: scale(1.2);
+    background: #ffffff;
+    color: #7B241C;
+    font-weight: bold;
+}
+
 .icon-socials {
     color: #ffffff;
     text-decoration: none;
@@ -71,7 +88,7 @@ footer {
     text-decoration: none;
     color: #7B241C;
     padding: 6px;
-    width: 110px;
+    width: 100px;
     text-align: center;
     transition: all 0.3s ease-in-out;
     border-radius: 5px;
@@ -79,7 +96,7 @@ footer {
 }
 
 .auth-login-button:hover {
-    transform: scale(1.2);
+    transform: scale(1.1);
     background: #ffffff;
     color: #7B241C;
     border-radius: 5px;
@@ -87,7 +104,20 @@ footer {
     box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
 }
 
+.card-login {
+    background: #ffffff;
+    padding: 15px 0px;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
 
+.card-login-title {
+    background: #7B241C;
+    color: #ffffff;
+    padding: 15px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
 
 @media only screen and (max-width: 1200px) {
     .login-box-border {

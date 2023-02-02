@@ -9,6 +9,8 @@ use App\Http\Controllers\Admin\ReportsController;
 use App\Http\Controllers\Admin\UserManagerController;
 use App\Http\Controllers\Admin\UserReportsController;
 use App\Http\Controllers\Admin\UserReportToPdfController;
+use App\Http\Controllers\Auth\LoginMailController;
+use App\Http\Controllers\Auth\TemporaryPassoword;
 use App\Http\Controllers\Modules\CareerController;
 use App\Http\Controllers\Modules\EifToPdfController;
 use App\Http\Controllers\Modules\FormsController;
@@ -93,6 +95,28 @@ Route::group(
 
             return back()->with('message', 'Verification link sent!');
         })->middleware(['throttle:6,1'])->name('send');
+});
+
+// Login Mail
+Route::group(
+    [
+        'controller' => LoginMailController::class,
+        'prefix' => 'mail',
+        'as' => 'mail.',
+    ], function() {
+        Route::get('sendTemporaryPassword/{email}/{stud_number}', 'sendTemporaryPassword')
+            ->name('sendTemporaryPassword');
+});
+
+// Temporary Password
+Route::group(
+    [
+        'controller' => TemporaryPassoword::class,
+        'prefix' => 'login',
+        'as' => 'login.',
+    ], function() {
+        Route::get('getTemporaryPassword', 'getTemporaryPassword')
+            ->name('getTemporaryPassword');
 });
 
 // Login - Registration

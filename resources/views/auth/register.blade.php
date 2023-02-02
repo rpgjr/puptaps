@@ -162,12 +162,55 @@
     </div>
 </section> --}}
 
-<section>
+<section class="mt-4">
     <div class="container py-5 h-100">
         <div class="row d-flex justify-content-center align-items-center h-100">
-            <div class="col-sm-12 col-md-8 col-lg-9 col-xl-9">
-                <div class="card bg-light auth-card">
-                    <div class="card-body p-5">
+            <div class="col-12 col-sm-12 col-md-7 col-lg-6 col-xl-5">
+                <div class="card-login-title">
+                    <div class="row gx-3 gy-0 align-items-center">
+                        <div class="col-3 text-end">
+                            <a href="{{ route('landingPage') }}">
+                                <img src="{{ asset('img/pupLogo.png') }}" style="height: 70px;" class="">
+                            </a>
+                        </div>
+                        <div class="col-9 text-start">
+                            <h4 class="">PUPT - Alumni Portal System</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-login">
+                    <div class="card-body px-4">
+
+                        <form action="{{ route('register') }}" method="post">
+                        @if(Session::has('fail'))
+                            <div class="alert alert-danger">{{ Session::get('fail') }}</div>
+                        @endif
+                        @csrf
+
+                        <div class="mb-md-5 mt-4">
+                            <div class="mb-5 px-3">
+                                <h5>Registration</h5>
+                                <p><i class="fa-solid fa-circle-info text-primary"></i> <span class="text-secondary">After entering your Email Address and Student Number, an email will be sent to you for your password confirmation.</span></p>
+                            </div>
+                            <div class="mb-4 px-3">
+                                <p class="form-label">Email<span class="text-danger">*</span></p>
+                                <input type="text" class="form-control @error('email') border border-danger border-3 @enderror" name="email" value="{{ old("email") }}"/>
+                                <span class="text-danger error-message">@error('email') {{$message}} @enderror</span>
+                            </div>
+                            <div class="mb-4 px-3">
+                                <p class="form-label">Student Number<span class="text-danger">*</span></p>
+                                <input type="text" class="form-control @error('stud_number') border border-danger border-3 @enderror" name="stud_number" value="{{ old("stud_number") }}"/>
+                                <span class="text-danger error-message">@error('stud_number') {{$message}} @enderror</span>
+                            </div>
+                            <div class="text-center my-0">
+                                <button class="btn btn-primary px-5" type="submit" onclick=”genPassword()>Register</button>
+                            </div>
+                        </div>
+                        <div class="text-center mb-4">
+                            <p class="mt-5 mb-3">Already have an account? <a href="{{ route('login') }}" class="text-primary fw-bold">Login here.</a>
+                            </p>
+                        </div>
+                        </form>
                     </div>
                 </div>
             </div>

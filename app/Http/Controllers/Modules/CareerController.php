@@ -52,7 +52,7 @@ class CareerController extends Controller
         ]);
 
         $career = new Careers();
-        $career->alumni_id  = Auth::user()->alumni_id;
+        $career->alumni_id      = Auth::user()->alumni_id;
         $career->job_name       = $request->input('job_name');
         $career->company        = $request->input('company');
         $career->salary         = $request->input('salary');
