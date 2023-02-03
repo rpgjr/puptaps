@@ -154,7 +154,7 @@ Route::group(
         'controller' => CareerController::class,
         'prefix' => 'career',
         'as' => 'userCareer.',
-        'middleware' => ['isAdmin', 'auth']
+        'middleware' => ['isAdmin', 'auth', 'hasCompleteProfile']
     ], function() {
         Route::get('index', 'getCareerIndex')
             ->name('index');
@@ -178,13 +178,16 @@ Route::group(
         'middleware' => ['isAdmin', 'auth']
     ], function() {
         Route::get('settings', 'getProfileIndex')
-            ->name('index');
+            ->name('index')->middleware('hasCompleteProfile');
 
         Route::get('getProfileSetup', 'getProfileSetup')
-            ->name('getProfileSetup');
+            ->name('getProfileSetup')->middleware('hasIncompleteProfile');
 
-        Route::patch('settings/update-profile/{alumni_id}', 'updateProfile')
+        Route::post('setup-profile', 'updateProfile')
             ->name('updateProfile');
+
+        Route::post('updateUserAccount', 'updateUserAccount')
+            ->name('updateUserAccount');
 });
 
 // User - Forms
@@ -193,7 +196,7 @@ Route::group(
         'controller' => FormsController::class,
         'prefix' => 'form',
         'as' => 'userForm.',
-        'middleware' => ['isAdmin', 'auth']
+        'middleware' => ['isAdmin', 'auth', 'hasCompleteProfile']
     ], function() {
         Route::get('index', 'getFormIndex')
             ->name('index');
@@ -208,10 +211,19 @@ Route::group(
             ->name('getSAS');
 });
 
-Route::group(['controller' => 'App\Http\Controllers\Modules\FormPDFController', 'prefix' => 'downloads', 'as' => 'userForm.', 'middleware' => ['isAdmin', 'auth']], function() {
-    Route::post('PDS-form', 'downloadPDS')->name('downloadPDS');
-    Route::post('SAS-form', 'downloadSAS')->name('downloadSAS');
-    Route::post('Exit-Interview-form', 'downloadEI')->name('downloadEI');
+Route::group(
+    [
+        'controller' => 'App\Http\Controllers\Modules\FormPDFController',
+        'prefix' => 'downloads',
+        'as' => 'userForm.',
+        'middleware' => ['isAdmin', 'auth', '']
+    ], function() {
+        Route::post('PDS-form', 'downloadPDS')
+            ->name('downloadPDS');
+        Route::post('SAS-form', 'downloadSAS')
+            ->name('downloadSAS');
+        Route::post('Exit-Interview-form', 'downloadEI')
+            ->name('downloadEI');
 });
 
 // User - PDS - Download to PDF
@@ -220,7 +232,7 @@ Route::group(
         'controller' => PdsToPdfController::class,
         'prefix' => 'downloads',
         'as' => 'userForm.',
-        'middleware' => ['isAdmin', 'auth']
+        'middleware' => ['isAdmin', 'auth', 'hasCompleteProfile']
     ], function() {
         Route::post('PDS_to_PDF', 'PDS_to_PDF')
             ->name('PDS_to_PDF');
@@ -232,7 +244,7 @@ Route::group(
         'controller' => EifToPdfController::class,
         'prefix' => 'downloads',
         'as' => 'userForm.',
-        'middleware' => ['isAdmin', 'auth']
+        'middleware' => ['isAdmin', 'auth', 'hasCompleteProfile']
     ], function() {
         Route::post('EIF_TO_PDF', 'EIF_TO_PDF')
             ->name('EIF_TO_PDF');
@@ -244,7 +256,7 @@ Route::group(
         'controller' => SasToPdfController::class,
         'prefix' => 'downloads',
         'as' => 'userForm.',
-        'middleware' => ['isAdmin', 'auth']
+        'middleware' => ['isAdmin', 'auth', 'hasCompleteProfile']
     ], function() {
         Route::post('SAS_TO_PDF', 'SAS_TO_PDF')
             ->name('SAS_TO_PDF');
@@ -256,7 +268,7 @@ Route::group(
         'controller' => TracerController::class,
         'prefix' => 'tracer',
         'as' => 'userTracer.',
-        'middleware' => ['isAdmin', 'auth']
+        'middleware' => ['isAdmin', 'auth', 'hasCompleteProfile']
     ], function() {
         Route::get('index', 'getTracerIndex')
             ->name('getTracerIndex');

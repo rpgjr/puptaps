@@ -107,12 +107,12 @@ return new class extends Migration
                 [
                     "category_id"   => "3",
                     "question_text" => "Are you a Board passer?",
-                    "question_type" => "text",
+                    "question_type" => "radio",
                 ],
                 [
                     "category_id"   => "3",
                     "question_text" => "When did you take your Board Exam?",
-                    "question_type" => "date",
+                    "question_type" => "date/null",
                 ],
 
             )

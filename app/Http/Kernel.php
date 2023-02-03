@@ -70,6 +70,7 @@ class Kernel extends HttpKernel
         'isAdmin' => \App\Http\Middleware\IsAdmin::class,
         'isUser' => \App\Http\Middleware\IsUser::class,
         'hasCompleteProfile' => \App\Http\Middleware\FinishedRegistration::class,
+        'hasIncompleteProfile' => \App\Http\Middleware\UnfinishedRegistration::class,
         'checkAccountStatus' => \App\Http\Middleware\UserAccountStatus::class,
     ];
 }

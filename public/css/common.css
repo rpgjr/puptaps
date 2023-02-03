@@ -18,9 +18,10 @@ body {
 
 label {
     font-size: 14px;
+    margin-bottom: 0;
 }
 
-input[type="text"], input[type="date"], option, .form-select {
+input[type="text"], input[type="password"], input[type="date"], option, .form-select {
     font-size: 14px;
 }
 
@@ -78,6 +79,7 @@ th, td {
 
 .error-message {
     font-size: 13px;
+    font-weight: bold;
     text-transform: uppercase;
 }
 

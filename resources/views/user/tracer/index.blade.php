@@ -3,13 +3,13 @@
 @section('tracer-active', 'user-active')
 @section('content')
 
-    <section class="mt-4 mt-sm-4 mt-md-4 mt-lg-5 mt-xl-5">
+    <section class="mt-4 mt-sm-4 mt-md-4 mt-lg-5 mt-xl-5 mb-5">
         <div class="container-fluid">
 
             <!-- Page Title Text H1 -->
             <livewire:components.page-title :title="$title"/>
 
-            <div class="row justify-content-center">
+            {{-- <div class="row justify-content-center">
                 <div class="col-11 col-sm-9 col-md-9 col-lg-9 col-xl-9 mb-5">
                     <div class="card">
                         <div class="card-header fs-5 fw-bold">
@@ -28,7 +28,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
 
             <div class="row justify-content-center">
                 <div class="col-11 col-sm-9 col-md-9 col-lg-9 col-xl-9 container-box pb-3 px-5">
@@ -43,9 +43,29 @@
                             @endif
                         </div>
 
-                        <div class="col-12 col-sm-12 col-md-10 col-lg-10 col-xl-10 text-center text-sm-center text-md-start text-lg-start text-xl-start">
-                            <h3 class="mt-3">{{ $user->first_name }} {{ $user->middle_name }} {{ $user->last_name }} {{ $user->suffix }}</h3>
-                            <p>{{ $user->email }}</p>
+                        <div class="col-12 col-sm-12 col-md-7 col-lg-7 col-xl-7 text-center text-sm-center text-md-start text-lg-start text-xl-start">
+                            <h3 class="mt-3 mb-1">{{ $user->first_name }} {{ $user->middle_name }} {{ $user->last_name }} {{ $user->suffix }}</h3>
+                            <p class="mt-1 mb-1"><span class="fw-bold">Email: </span>{{ $user->email }}</p>
+                            <p class="mt-1"><span class="fw-bold">Tel. No.: </span>{{ $user->number }}</p>
+                        </div>
+
+                        <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3">
+                            <div class="text-center text-md-end">
+                                @if (count($tracer_answers) > 0)
+                                    <a href="{{ route('userTracer.getUpdatePage') }}" type="button" class="btn btn-primary px-3 fs-7">Update Form</a>
+                                @else
+                                    <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                                        <a href="{{ route('userTracer.getAnswerPage') }}" type="button" class="btn btn-primary px-3 fs-7">Answer Form</a>
+                                        <button type="button" class="btn btn-secondary fs-7 px-2" data-bs-toggle="collapse" data-bs-target="#whyTracer"><i class="fa-solid fa-circle-question text-light"></i></button>
+                                    </div>
+                                    {{-- <a href="{{ route('userTracer.getAnswerPage') }}" type="button" class="btn btn-primary px-3 fs-7">Answer Form</a> --}}
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="col-12 collapse mt-3 mb-0 border border-secondary-subtle rounded pt-3 pb-2" id="whyTracer">
+                            <h5 class="fw-bold">Why we need need to answer this form</h5>
+                            <p class="text-justify pb-0 px-0 mb-2">The Alumni Tracer helps the institution to gather valuable feedback and insights. Alumni can provide valuable perspective on the quality of education they received, the impact of the institution on their career development, and any areas for improvement. This feedback can be used to inform decision-making and continuously improve the quality of education and support offered to current and future students.</p>
                         </div>
 
                         <div class="col-12 mt-0 mb-2">
@@ -94,7 +114,7 @@
                             @else
                                 <div class="col-12">
                                     <div class="alert alert-warning mt-5 text-center" role="alert">
-                                        No data to display. Please answer the form.
+                                        No data to display yet.
                                     </div>
                                 </div>
                             @endif
@@ -128,7 +148,7 @@
                             @else
                                 <div class="col-12">
                                     <div class="alert alert-warning mt-5 text-center" role="alert">
-                                        No data to display. Please answer the form.
+                                        No data to display yet.
                                     </div>
                                 </div>
                             @endif
@@ -139,7 +159,6 @@
                             <hr>
                         </div>
                     </div>
-
                     @endforeach
                 </div>
             </div>

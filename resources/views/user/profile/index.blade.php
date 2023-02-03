@@ -4,7 +4,7 @@
 
 @section('content')
 
-    <section class="mt-4 mt-sm-4 mt-md-4 mt-lg-5 mt-xl-5">
+    <section class="mt-4 mt-sm-4 mt-md-4 mt-lg-5 mt-xl-5 mb-5">
         <div class="container-fluid my-3">
             <livewire:components.alert-status-message :message="session()->get('success')" />
             <!-- Page Title Text H1 -->
@@ -13,15 +13,17 @@
             <div class="row justify-content-center g-0">
                 <div class="col-11 col-sm-9 col-md-9 col-lg-9 col-xl-9 container-box">
                     @foreach ($users as $user)
-                    {!! Form::model($user, [ 'method' => 'patch','route' => ['userProfile.updateProfile', $user->alumni_id], 'enctype' => 'multipart/form-data']) !!}
+                    <form action="{{ route('userProfile.updateUserAccount') }}" method="post" enctype="multipart/form-data">
+                    @csrf
                         <div  iv class="row align-items-center px-0 px-sm-0 px-md-0 px-lg-3 px-xl-3">
-                            <div class="col-12 my-3">
-                                <h3>Account Information</h3>
+                            <div class="col-12 mt-1 mb-4">
+                                <h3>Profile Settings</h3>
+                                <p><i class="fa-solid fa-circle-info text-primary me-1"></i><span class="text-secondary">Edit your username, password and profile picture here.</span></p>
                             </div>
 
                             <div class="col-12">
                                 <div class="row align-items-center">
-                                    <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4">
+                                    <div class="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3">
                                         <div class="row mb-3">
                                             <div class="col-12 text-center mb-2">
                                                 <label class="profilepic" for="uploadProfile">
@@ -35,11 +37,11 @@
                                             <div class="col-12 text-center">
                                                 <input type="file" class="form-control" name="user_pfp" id="uploadProfile" onchange="PreviewImage();" hidden />
 
-                                                <label class="btn btn-primary" for="uploadProfile">Change Profile Picture</label>
+                                                <label class="btn btn-primary fs-7" for="uploadProfile">Change Profile Picture</label>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8">
+                                    <div class="col-12 col-sm-12 col-md-12 col-lg-9 col-xl-9">
                                         <div class="row">
                                             <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 my-2">
                                                 <label class="form-label">Username</label>
@@ -78,8 +80,6 @@
                                 </div>
                             </div>
                         </div>
-
-                        <hr class="my-4">
 
                         {{-- <div  iv class="row align-items-center px-0 px-sm-0 px-md-0 px-lg-3 px-xl-3">
                             <div class="col-12 my-3">
@@ -214,12 +214,11 @@
                                     </label>
                                 </div>
                             </div>
-
-                            <div class="col-md-12 text-center mt-5 mb-2">
-                                <button type="submit" class="btn btn-primary" style="width: 200px">Save</button>
-                            </div>
                         </div> --}}
-                    {!! Form::close() !!}
+                        <div class="col-12 text-center mt-4 mb-0">
+                            <button type="submit" class="btn btn-primary fs-7" style="width: 150px">Save Changes</button>
+                        </div>
+                    </form>
                     @endforeach
                 </div>
             </div>

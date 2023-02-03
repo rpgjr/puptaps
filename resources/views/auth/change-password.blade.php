@@ -30,11 +30,11 @@
                             <div class="mb-md-5 mt-4">
                                 <div class="mb-4 px-3">
                                     <h5>Reset your password</h5>
-                                    <p><i class="fa-solid fa-circle-info text-primary"></i> <span class="text-secondary">Please remember your password this time.</span></p>
+                                    <p><i class="fa-solid fa-circle-info text-primary"></i> <span class="text-secondary">Please enter your new password. Just a reminder that remeber your password.</span></p>
                                 </div>
                                 <input type="hidden" value="{{ $email }}" name="email">
                                 <div class="mb-4 px-3">
-                                    <p class="form-label">Password<span class="text-danger">*</span></p>
+                                    <p class="form-label">New Password<span class="text-danger">*</span></p>
                                     <div class="input-group">
                                         <input type="password" name="password" id="password" class="form-control @error('password') border border-danger border-3 @enderror">
                                         <button class="btn btn-outline-secondary" type="button" id="togglePassword">
