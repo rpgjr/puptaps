@@ -49,9 +49,6 @@ class RegisteredUserController extends Controller
                 'email.required'        => 'Email is required',
             ]);
 
-            // event(new Registered($user));
-            // Auth::login($user);
-
             $hasPassword = User::where('username', '=', $request->stud_number)->first();
             $email = $request->email;
             $stud_number = $request->stud_number;
@@ -62,8 +59,6 @@ class RegisteredUserController extends Controller
             else {
                 return redirect(route('landingPage'));
             }
-            // return redirect(route('login'));
-            // return redirect(RouteServiceProvider::HOME);
         }
         else {
             return back()->with('fail', 'You are not allowed to create an Account yet. Contact the Administrator for more information. Thank you.');

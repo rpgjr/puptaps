@@ -14,76 +14,11 @@
                 <div class="col-11 col-sm-9 col-md-9 col-lg-9 col-xl-9 container-box">
                     @foreach ($users as $user)
                     {!! Form::model($user, [ 'method' => 'patch','route' => ['userProfile.updateProfile', $user->alumni_id], 'enctype' => 'multipart/form-data']) !!}
+
                         <div  iv class="row align-items-center px-0 px-sm-0 px-md-0 px-lg-3 px-xl-3">
                             <div class="col-12 my-3">
-                                <h3>Account Information</h3>
-                            </div>
-
-                            <div class="col-12">
-                                <div class="row align-items-center">
-                                    <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4">
-                                        <div class="row mb-3">
-                                            <div class="col-12 text-center mb-2">
-                                                <label class="profilepic" for="uploadProfile">
-                                                    <img class="profilepic__image" src="/Uploads/Profiles/{{ $user->user_pfp }}" id="uploadPreview"/>
-                                                    <div class="profilepic__content">
-                                                    <span class="profilepic__icon"><i class="fas fa-camera"></i></span>
-                                                    <span class="profilepic__text">Edit Profile</span>
-                                                    </div>
-                                                </label>
-                                            </div>
-                                            <div class="col-12 text-center">
-                                                <input type="file" class="form-control" name="user_pfp" id="uploadProfile" onchange="PreviewImage();" hidden />
-
-                                                <label class="btn btn-primary" for="uploadProfile">Change Profile Picture</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8">
-                                        <div class="row">
-                                            <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 my-2">
-                                                <label class="form-label">Username</label>
-                                                <input type="text" class="form-control" name="username" value="{{ Auth::user()->username }}">
-                                                <span class="text-danger">@error('username') {{$message}} @enderror</span>
-                                            </div>
-                                            <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 my-2">
-                                                <label class="form-label">Email <i class="fa-solid fa-lock"></i></label>
-                                                <input type="text" class="form-control" name="email" value="{{ $user->email }}" disabled>
-                                                <span class="text-danger">@error('email') {{$message}} @enderror</span>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 my-2">
-                                                <label class="form-label">New Password <span class="text-danger">*</span></label>
-                                                <div class="input-group">
-                                                    <input type="password" name="password" id="password" class="form-control @error('password') is-invalid @enderror">
-                                                    <button class="btn btn-outline-secondary" type="button" id="togglePassword">
-                                                        <i id="eye_icon" class="fa-solid fa-eye" ></i>
-                                                    </button>
-                                                </div>
-                                                <span class="text-danger error-message">@error('password') {{$message}} @enderror</span>
-                                            </div>
-                                            <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 my-2">
-                                                <label class="form-label">Confirm New Password <span class="text-danger">*</span></label>
-                                                <div class="input-group">
-                                                    <input type="password" name="password_confirmation" id="password_confirmation" class="form-control @error('password') is-invalid @enderror">
-                                                    <button class="btn btn-outline-secondary" type="button" id="toggleConfirmPassword">
-                                                        <i id="eye_icon_confirm" class="fa-solid fa-eye" ></i>
-                                                    </button>
-                                                </div>
-                                                <span class="text-danger error-message">@error('password') {{$message}} @enderror</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <hr class="my-4">
-
-                        {{-- <div  iv class="row align-items-center px-0 px-sm-0 px-md-0 px-lg-3 px-xl-3">
-                            <div class="col-12 my-3">
                                 <h3>Personal Information</h3>
+                                <p><i class="fa-solid fa-circle-info text-primary me-1"></i>Please Finish setting up your account.</p>
                             </div>
                             <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 my-2">
                                 <label class="form-label">Last Name</label>
@@ -218,7 +153,7 @@
                             <div class="col-md-12 text-center mt-5 mb-2">
                                 <button type="submit" class="btn btn-primary" style="width: 200px">Save</button>
                             </div>
-                        </div> --}}
+                        </div>
                     {!! Form::close() !!}
                     @endforeach
                 </div>

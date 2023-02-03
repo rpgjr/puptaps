@@ -18,8 +18,14 @@ class ProfileController extends Controller
         $courses = Courses::all();
         $users = Alumni::where('alumni_id', '=', Auth::user()->alumni_id)->get();
         $title = "Profile Settings";
-        $message = "Profile successfully updated.";
-        return view('user.profile.index', compact(['courses', 'users', "title", "message"]));
+        return view('user.profile.index', compact(['courses', 'users', "title"]));
+    }
+
+    public function getProfileSetup() {
+        $courses = Courses::all();
+        $users = Alumni::where('alumni_id', '=', Auth::user()->alumni_id)->get();
+        $title = "Profile Settings";
+        return view('user.profile.setup-profile', compact(['users', 'title', 'courses']));
     }
 
     public function updateProfile(Request $request, $alumni_id) {

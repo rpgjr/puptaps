@@ -1,7 +1,6 @@
 @extends('layouts.user')
-
 @section('page-title', 'Form - Student Affairs and Services')
-@section('form-active', 'active')
+@section('form-active', 'user-active')
 
 @section('content')
 

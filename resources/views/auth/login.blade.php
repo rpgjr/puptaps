@@ -7,8 +7,8 @@
             <div class="row d-flex justify-content-center align-items-center">
                 <div class="col-12 col-sm-12 col-md-7 col-lg-6 col-xl-5">
                     <div class="card-login-title">
-                        <div class="row gx-3 gy-0 align-items-center">
-                            <div class="col-3 text-end">
+                        <div class="row gx-1 gy-0 align-items-center">
+                            <div class="col-3 text-center">
                                 <a href="{{ route('landingPage') }}">
                                     <img src="{{ asset('img/pupLogo.png') }}" style="height: 70px;" class="">
                                 </a>
@@ -55,7 +55,7 @@
                                 </p>
                             </div>
                             <div class="text-center mb-4">
-                                <p class="mt-3">Forgot your password? <a href="{{ route('register') }}" class="text-primary fw-bold">Reset here.</a>
+                                <p class="mt-3">Forgot your password? <a href="{{ route('login.getResetPassword') }}" class="text-primary fw-bold">Reset here.</a>
                                 </p>
                             </div>
 

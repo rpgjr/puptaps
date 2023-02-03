@@ -1,11 +1,12 @@
 @component('mail::message')
-    Hello {{ $stud_number }}<br>
+    Username: {{ $stud_number }}<br>
     Email: {{ $email }}<br>
     Password: {{ $password }}
 
-@component('mail::button', ['url' => 'https://getbootstrap.com/docs/5.3/utilities/colors/#colors'])
+    <a href="{{ route('login') }}">Click this</a>
+
+@component('mail::button', ['url' => route('login')])
     Button
 @endcomponent
 
 @endcomponent
-

@@ -1,7 +1,6 @@
 @extends('layouts.user')
-
 @section('page-title', 'Form - Exit Interview')
-@section('form-active', 'active')
+@section('form-active', 'user-active')
 
 @section('content')
 

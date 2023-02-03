@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\UserManagerController;
 use App\Http\Controllers\Admin\UserReportsController;
 use App\Http\Controllers\Admin\UserReportToPdfController;
 use App\Http\Controllers\Auth\LoginMailController;
+use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\Auth\TemporaryPassoword;
 use App\Http\Controllers\Modules\CareerController;
 use App\Http\Controllers\Modules\EifToPdfController;
@@ -67,7 +68,7 @@ Route::group(
 
         // Route for HomePage View
         Route::get('/home', 'getUserHomepage')
-            ->middleware(['auth', 'isAdmin'])
+            ->middleware(['auth', 'isAdmin', 'checkAccountStatus', 'hasCompleteProfile'])
             ->name('user.homepage');
 });
 
@@ -119,6 +120,26 @@ Route::group(
             ->name('getTemporaryPassword');
 });
 
+// Reset Password
+Route::group(
+    [
+        'controller' => ResetPasswordController::class,
+        'prefix' => 'login',
+        'as' => 'login.',
+    ], function() {
+        Route::get('getResetPassword', 'getResetPassword')
+            ->name('getResetPassword');
+
+        Route::post('sendResetPassword', 'sendResetPassword')
+            ->name('sendResetPassword');
+
+        Route::get('changePassword/{email}', 'changePassword')
+            ->name('changePassword');
+
+        Route::post('changingPassword', 'changingPassword')
+            ->name('changingPassword');
+});
+
 // Login - Registration
 require __DIR__.'/auth.php';
 // ========== End of Module Route =======================================================================================
@@ -158,6 +179,9 @@ Route::group(
     ], function() {
         Route::get('settings', 'getProfileIndex')
             ->name('index');
+
+        Route::get('getProfileSetup', 'getProfileSetup')
+            ->name('getProfileSetup');
 
         Route::patch('settings/update-profile/{alumni_id}', 'updateProfile')
             ->name('updateProfile');

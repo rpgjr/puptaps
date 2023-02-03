@@ -12,6 +12,9 @@
 
 
     @yield('content')
+    <div class="text-end">
+        <a type="button" href="#go-to-top" class="btn btn-danger user-back-to-top"><i class="fa-solid fa-angle-up"></i></a>
+    </div>
 
     <livewire:components.footer />
 

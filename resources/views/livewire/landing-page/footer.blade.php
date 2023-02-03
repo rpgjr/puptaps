@@ -1,4 +1,4 @@
-<footer class="text-secondary text-center text-lg-start" style="background-color: #F4F6F6">
+<footer class="footer-landing text-secondary text-center text-lg-start">
     <div class="container p-4 pb-0">
         <section class="">
             <div class="row">

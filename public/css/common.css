@@ -13,7 +13,15 @@ body {
 }
 
 .color-pup {
-    color: #800000;
+    color: #78281F;
+}
+
+label {
+    font-size: 14px;
+}
+
+input[type="text"], input[type="date"], option, .form-select {
+    font-size: 14px;
 }
 
 p {
@@ -32,9 +40,9 @@ th, td {
     background: #EAECEE;
 }
 
-nav {
+/* nav {
     min-height: 80px;
-}
+} */
 
 .auth-card {
     border-radius: 1rem;
@@ -73,8 +81,5 @@ nav {
     text-transform: uppercase;
 }
 
-.footer-design {
-    margin-top: 200px;
-}
 /* End: Styles */
 

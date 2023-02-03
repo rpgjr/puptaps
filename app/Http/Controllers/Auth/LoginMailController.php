@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Mail\TemporaryPassword;
+use App\Models\Alumni;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -28,6 +29,10 @@ class LoginMailController extends Controller
         $user = User::where('username', '=', $stud_number)->update([
             'email' => $email,
             'password' => Hash::make($password),
+        ]);
+
+        $userProfile = Alumni::where('stud_number', '=', $stud_number)->update([
+            'email' => $email,
         ]);
 
 

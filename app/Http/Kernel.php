@@ -69,5 +69,7 @@ class Kernel extends HttpKernel
         'isSuperAdmin' => \App\Http\Middleware\IsSuperAdmin::class,
         'isAdmin' => \App\Http\Middleware\IsAdmin::class,
         'isUser' => \App\Http\Middleware\IsUser::class,
+        'hasCompleteProfile' => \App\Http\Middleware\FinishedRegistration::class,
+        'checkAccountStatus' => \App\Http\Middleware\UserAccountStatus::class,
     ];
 }

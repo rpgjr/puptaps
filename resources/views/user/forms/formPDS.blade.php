@@ -1,6 +1,6 @@
 @extends('layouts.user')
 @section('page-title', 'Form - Personal Data Sheet')
-@section('form-active', 'active')
+@section('form-active', 'user-active')
 
 @section('content')
 
