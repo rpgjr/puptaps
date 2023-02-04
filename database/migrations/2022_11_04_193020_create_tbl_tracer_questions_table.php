@@ -103,18 +103,6 @@ return new class extends Migration
                     "question_text" => "Company Number",
                     "question_type" => "text",
                 ],
-
-                [
-                    "category_id"   => "3",
-                    "question_text" => "Are you a Board passer?",
-                    "question_type" => "radio",
-                ],
-                [
-                    "category_id"   => "3",
-                    "question_text" => "When did you take your Board Exam?",
-                    "question_type" => "date/null",
-                ],
-
             )
         );
     }

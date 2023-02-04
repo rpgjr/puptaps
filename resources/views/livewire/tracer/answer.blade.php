@@ -4,7 +4,6 @@
             @if (($currentPage == $category->category_id) && ($currentPage == $category->category_id))
 
             <div class="row justify-content-center">
-
                 <div class="col-12 form-box-title pb-2">
                     <div class="row g-0">
                         <div class="col-12 mt-1">
@@ -26,7 +25,7 @@
                                 <div class="form-group">
                                     @if (($value->question_type == "text") || ($value->question_type == "date"))
                                         <div>
-                                            <label class="form-label">{{ $value->question_text }}</label>
+                                            <label class="form-label">{{ $value->question_text }} <span class="text-danger">*</span></label>
                                             <span class="text-danger error-message">
                                                 @error('arrayAnswers.' . $key . '.answer')
                                                 <i class="fa-solid fa-circle-exclamation ml-5"></i>
@@ -37,7 +36,7 @@
                                         </div>
                                     @elseif ($value->question_type == "select")
                                         <div>
-                                            <label class="form-label">{{ $value->question_text }}</label>
+                                            <label class="form-label">{{ $value->question_text }} <span class="text-danger">*</span></label>
                                             <span class="text-danger error-message">
                                                 @error('arrayAnswers.' . $key . '.answer')
                                                 <i class="fa-solid fa-circle-exclamation ml-5"></i>
@@ -70,7 +69,7 @@
                                         </div>
                                     @elseif ($value->question_type == "radio")
                                         <div>
-                                            <label class="form-label">{{ $value->question_text }}</label>
+                                            <label class="form-label">{{ $value->question_text }} <span class="text-danger">*</span></label>
                                             <span class="text-danger error-message">
                                                 @error('arrayAnswers.' . $key . '.answer')
                                                 <i class="fa-solid fa-circle-exclamation ml-5"></i>
@@ -96,13 +95,40 @@
                                                 {{ $message }}
                                                 @enderror
                                             </span>
-                                            <input type="{{ $value->question_type }}" class="form-control @error('arrayAnswers.' . $key . '.answer') is-invalid @enderror" wire:model="arrayAnswers.{{ $key }}.answer">
+                                            <input type="date" class="form-control @error('arrayAnswers.' . $key . '.answer') is-invalid @enderror" wire:model="arrayAnswers.{{ $key }}.answer">
                                         </div>
                                     @endif
                                 </div>
                             </div>
                         @endif
                         @endforeach
+                        <div class="col-12 mt-0">
+                            <div class="row">
+                                @if ($currentPage == 1)
+                                    <div class="col-6 text-start">
+                                        <button href="#go-to-top" class="btn btn-secondary px-3 fs-7" type="button" wire:click="previousPage()" disabled><i class="fa-solid fa-caret-left"></i> Back</button>
+                                    </div>
+                                @endif
+
+                                @if ($currentPage <= $totalPage && $currentPage != 1)
+                                    <div class="col-6 text-start">
+                                        <a href="#go-to-top" class="btn btn-secondary px-3 fs-7" type="button" wire:click="previousPage()"><i class="fa-solid fa-caret-left"></i> Back</a>
+                                    </div>
+                                @endif
+
+                                @if ($currentPage < $totalPage && $currentPage != $totalPage)
+                                    <div class="col-6 text-end">
+                                        <a href="#go-to-top" class="btn btn-primary px-3 fs-7" type="button" wire:click="nextPage()">Next <i class="fa-solid fa-caret-right"></i></a>
+                                    </div>
+                                @endif
+
+                                @if ($currentPage == $totalPage)
+                                    <div class="col-6 text-end">
+                                        <button class="btn btn-success px-3 fs-7" type="submit">Submit <i class="fa-solid fa-file-export"></i></button>
+                                    </div>
+                                @endif
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -111,7 +137,7 @@
         @endforeach
 
         {{-- Buttons --}}
-        <div class="row form-box-buttons d-flex justify-content-between">
+        {{-- <div class="row form-box-buttons d-flex justify-content-between">
             @if ($currentPage == 1)
                 <div class="col-6"></div>
             @endif
@@ -133,6 +159,6 @@
                     <button class="btn btn-success px-4" type="submit">Submit</button>
                 </div>
             @endif
-        </div>
+        </div> --}}
     </form>
 </div>

@@ -52,10 +52,13 @@
                         <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3">
                             <div class="text-center text-md-end">
                                 @if (count($tracer_answers) > 0)
-                                    <a href="{{ route('userTracer.getUpdatePage') }}" type="button" class="btn btn-primary px-3 fs-7">Update Form</a>
+                                    <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                                        <a href="{{ route('userTracer.getUpdatePage') }}" type="button" class="btn btn-primary px-3 fs-7">Update Form</a>
+                                        <button type="button" class="btn btn-secondary fs-7 px-2" data-bs-toggle="collapse" data-bs-target="#whyTracer"><i class="fa-solid fa-circle-question text-light"></i></button>
+                                    </div>
                                 @else
                                     <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                                        <a href="{{ route('userTracer.getAnswerPage') }}" type="button" class="btn btn-primary px-3 fs-7">Answer Form</a>
+                                        <a href="{{ route('userTracer.getAnswerModal') }}" type="button" class="btn btn-primary px-3 fs-7">Answer Form</a>
                                         <button type="button" class="btn btn-secondary fs-7 px-2" data-bs-toggle="collapse" data-bs-target="#whyTracer"><i class="fa-solid fa-circle-question text-light"></i></button>
                                     </div>
                                     {{-- <a href="{{ route('userTracer.getAnswerPage') }}" type="button" class="btn btn-primary px-3 fs-7">Answer Form</a> --}}

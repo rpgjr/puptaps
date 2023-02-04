@@ -68,7 +68,7 @@ Route::group(
 
         // Route for HomePage View
         Route::get('/home', 'getUserHomepage')
-            ->middleware(['auth', 'isAdmin', 'checkAccountStatus', 'hasCompleteProfile'])
+            ->middleware(['auth', 'isAdmin', 'checkAccountStatus', 'hasCompleteProfile', 'hasAnswerTracer'])
             ->name('user.homepage');
 });
 
@@ -154,7 +154,7 @@ Route::group(
         'controller' => CareerController::class,
         'prefix' => 'career',
         'as' => 'userCareer.',
-        'middleware' => ['isAdmin', 'auth', 'hasCompleteProfile']
+        'middleware' => ['isAdmin', 'auth', 'hasCompleteProfile', 'hasAnswerTracer']
     ], function() {
         Route::get('index', 'getCareerIndex')
             ->name('index');
@@ -175,7 +175,7 @@ Route::group(
         'controller' => ProfileController::class,
         'prefix' => 'profile',
         'as' => 'userProfile.',
-        'middleware' => ['isAdmin', 'auth']
+        'middleware' => ['isAdmin', 'auth', 'hasAnswerTracer']
     ], function() {
         Route::get('settings', 'getProfileIndex')
             ->name('index')->middleware('hasCompleteProfile');
@@ -196,7 +196,7 @@ Route::group(
         'controller' => FormsController::class,
         'prefix' => 'form',
         'as' => 'userForm.',
-        'middleware' => ['isAdmin', 'auth', 'hasCompleteProfile']
+        'middleware' => ['isAdmin', 'auth', 'hasCompleteProfile', 'hasAnswerTracer']
     ], function() {
         Route::get('index', 'getFormIndex')
             ->name('index');
@@ -271,11 +271,13 @@ Route::group(
         'middleware' => ['isAdmin', 'auth', 'hasCompleteProfile']
     ], function() {
         Route::get('index', 'getTracerIndex')
-            ->name('getTracerIndex');
-        Route::get('answer', 'getAnswerPage')
-            ->name('getAnswerPage');
+            ->name('getTracerIndex')->middleware('hasAnswerTracer');
         Route::get('update', 'getUpdatePage')
-            ->name('getUpdatePage');
+            ->name('getUpdatePage')->middleware('hasAnswerTracer');
+        Route::get('answer', 'getAnswerPage')
+            ->name('getAnswerPage')->middleware('hasUnanswerTracer');
+        Route::get('getAnswerModal', 'getAnswerModal')
+            ->name('getAnswerModal')->middleware('hasUnanswerTracer');
 });
 
 // ========== End of User Route ======================================================================================
@@ -303,8 +305,8 @@ Route::group(
         'as' => 'adminUserManagement.',
         'middleware' => ['isUser', 'auth']
     ], function() {
-        Route::get('alumni-list', 'getAlumniList')
-               ->name('getAlumniList');
+        // Route::get('alumni-list', 'getAlumniList')
+        //        ->name('getAlumniList');
 
         Route::post('add-alumni-list', 'addAlumniList')
                ->name('addAlumniList');

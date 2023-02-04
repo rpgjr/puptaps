@@ -28,11 +28,8 @@ class Alumni extends Model
         'city_address',
         'provincial_address',
         'email',
-        'email_verified_at',
         'number',
-        'username',
-        'password',
-        'user_role',
         'user_pfp',
+        'profile_status',
     ];
 }

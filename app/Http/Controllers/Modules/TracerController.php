@@ -30,4 +30,9 @@ class TracerController extends Controller
         $title = "Update Tracer Form";
         return view('user.tracer.update', compact(['users', 'title']));
     }
+
+    public function getAnswerModal() {
+        $users = Alumni::where('alumni_id', '=', Auth::user()->alumni_id)->get();
+        return view('user.tracer.answer-modal', compact(['users']));
+    }
 }
