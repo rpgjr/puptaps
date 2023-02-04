@@ -16,7 +16,7 @@ class FormExitInterview extends Component
     public $currentPage = 1;
     public $totalPage = 17;
     public $countNull = 1;
-    public $progressBar = -5.88;
+    public $progressBar = 0;
 
     public function render() {
         $this->addNullAnswers();
@@ -64,12 +64,10 @@ class FormExitInterview extends Component
 
     public function mount() {
         $this->currentPage = 1;
-        $this->progressBar = -5.88;
     }
 
     public function previousPage() {
         $this->resetErrorBag();
-        $this->validate();
         $this->currentPage--;
         if($this->currentPage < 1) {
             $this->currentPage = 1;
@@ -79,7 +77,10 @@ class FormExitInterview extends Component
     public function nextPage() {
         $this->resetErrorBag();
         $this->addNullAnswers();
-        $this->validate();
+        $temp_null = $this->countNull - 1;
+        if($temp_null == $this->currentPage) {
+            $this->validate();
+        }
         $this->currentPage++;
         if($this->currentPage > $this->totalPage) {
             $this->currentPage = $this->totalPage;

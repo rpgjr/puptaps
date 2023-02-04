@@ -26,12 +26,12 @@
                 <div class="row align-items-center text-start m-0 pt-2">
                     <div class="col-12 col-sm-12 col-md-12 col-lg-11 offset-lg-1 col-xl-11 offset-xl-1 mt-2 mt-sm-2 mt-md-2 mt-lg-1 mt-xl-0">
                         <h4 class="mb-0 mt-2 fw-bold">{{ $career->job_name }}</h4>
-                        <p class="fs-6 mb-1">{{ $career->company }}</p>
+                        <p class="fs-6 mb-1 mt-0">{{ $career->company }}</p>
 
                         <hr class="mb-3 mt-3">
 
-                        <h5 class="fw-bold mb-3">Job Details</h5>
-                        <p class="" style="white-space: pre-wrap;"> {{ $career->description }}</p>
+                        <h5 class="fw-bold mb-2">Job Details</h5>
+                        <p class="mb-1" style="white-space: pre-wrap;">{{ $career->description }}</p>
                         <p class="fw-bold mb-0">
                             Salary:
                             <span class="fw-normal">{{ $career->salary }}</span>
@@ -39,8 +39,8 @@
 
                         <hr class="mb-3 mt-3">
 
-                        <h5 class="fw-bold mb-3">Company Details</h5>
-                        <p class="fw-bold">
+                        <h5 class="fw-bold mb-2">Company Details</h5>
+                        <p class="fw-bold mb-1">
                             Email:
                             <span class="fw-normal">{{ $career->email }}</span>
                         </p>
@@ -76,12 +76,12 @@
                 <div class="row align-items-center text-start m-0 pt-2">
                     <div class="col-12 col-sm-12 col-md-12 col-lg-11 offset-lg-1 col-xl-11 offset-xl-1 mt-2 mt-sm-2 mt-md-2 mt-lg-1 mt-xl-0">
                         <h4 class="mb-0 mt-2 fw-bold">{{ $career->job_name }}</h4>
-                        <p class="fs-6 mb-1">{{ $career->company }}</p>
+                        <p class="fs-6 mb-1 mt-0">{{ $career->company }}</p>
 
                         <hr class="mb-3 mt-3">
 
-                        <h5 class="fw-bold mb-3">Job Details</h5>
-                        <p class="" style="white-space: pre-wrap;"> {{ $career->description }}</p>
+                        <h5 class="fw-bold mb-2">Job Details</h5>
+                        <p class="mb-1" style="white-space: pre-wrap;">{{ $career->description }}</p>
                         <p class="fw-bold mb-0">
                             Salary:
                             <span class="fw-normal">{{ $career->salary }}</span>
@@ -89,8 +89,8 @@
 
                         <hr class="mb-3 mt-3">
 
-                        <h5 class="fw-bold mb-3">Company Details</h5>
-                        <p class="fw-bold">
+                        <h5 class="fw-bold mb-2">Company Details</h5>
+                        <p class="fw-bold mb-1">
                             Email:
                             <span class="fw-normal">{{ $career->email }}</span>
                         </p>

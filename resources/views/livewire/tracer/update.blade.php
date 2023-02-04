@@ -2,20 +2,22 @@
     <form wire:submit.prevent="saveAnswer">
 
         <div class="row justify-content-center">
-
-            <div class="col-12 form-box-title pb-2">
-                <div class="row g-0">
-                    <div class="col-12 text-center">
-                        <h5>Current Job / Career Details</h5>
+            <div class="col-12 form-box-content mt-0 pt-4 pb-3">
+                <div class="row g-0 align-items-center mb-3">
+                    <div class="my-1 col-12 col-sm-12 col-md-9 col-lg-9 col-xl-9 text-center text-md-start">
+                        <h5 class="mb-0">Update for Current Job / Career Details</h5>
+                    </div>
+                    <div class="my-1 col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3 text-center text-md-end">
+                        <button class="btn btn-success px-3 fs-7" type="submit">Submit <i class="fa-solid fa-file-export ms-1"></i></button>
                     </div>
                 </div>
-            </div>
 
-            <div class="col-12 form-box-content">
+                <hr>
+
                 <div class="row">
                     <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 mb-3">
                         <div class="form-group">
-                            <label class="form-label">Job Position</label>
+                            <label class="form-label">Job Position <span class="text-danger">*</span></label>
                             <span class="text-danger error-message">
                                 @error('job_position')
                                     <i class="fa-solid fa-circle-exclamation ml-5"></i>
@@ -147,15 +149,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-
-        {{-- Buttons --}}
-        <div class="row form-box-buttons d-flex justify-content-between">
-            <div class="col-6"></div>
-
-            <div class="col-6 text-end">
-                <button class="btn btn-success px-4" type="submit">Submit</button>
             </div>
         </div>
     </form>

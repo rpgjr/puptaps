@@ -16,7 +16,7 @@ class Answer extends Component
     public $arrayAnswers = [];
     public $totalPage = 2;
     public $currentPage = 1;
-    public $progressBar = 50;
+    public $progressBar = 0;
     public $countNull = 1;
 
     public function render() {
@@ -41,6 +41,7 @@ class Answer extends Component
         foreach($categories as $category) {
             if($this->currentPage == $category->category_id) {
                 if($this->countNull == $this->currentPage) {
+                    $this->progressBar = $this->progressBar + 50;
                     foreach($questions as $question) {
                         if($question->category_id == $category->category_id) {
                             array_push($this->arrayAnswers, [
@@ -70,7 +71,6 @@ class Answer extends Component
     public function previousPage() {
         $this->resetErrorBag();
         $this->currentPage--;
-        $this->progressBar -= 50;
         if($this->currentPage < 1) {
             $this->currentPage = 1;
         }

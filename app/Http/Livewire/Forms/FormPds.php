@@ -16,7 +16,7 @@ class FormPds extends Component
     public $totalPage = 5;
     public $currentPage = 1;
     public $countNull = 1;
-    public $progressBar = -20;
+    public $progressBar = 0;
     public $form_name = "PDS";
 
     public function render() {
@@ -66,12 +66,10 @@ class FormPds extends Component
 
     public function mount() {
         $this->currentPage = 1;
-        $this->progressBar = -20;
     }
 
     public function previousPage() {
         $this->resetErrorBag();
-        $this->validate();
         $this->currentPage--;
         if($this->currentPage < 1) {
             $this->currentPage = 1;
@@ -80,8 +78,11 @@ class FormPds extends Component
 
     public function nextPage() {
         $this->resetErrorBag();
-        $this->validate();
         $this->addNullAnswers();
+        $temp_null = $this->countNull - 1;
+        if($temp_null == $this->currentPage) {
+            $this->validate();
+        }
         $this->currentPage++;
         if($this->currentPage > $this->totalPage) {
             $this->currentPage = $this->totalPage;

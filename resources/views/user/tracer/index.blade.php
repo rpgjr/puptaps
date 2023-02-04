@@ -88,27 +88,27 @@
                         </div>
                     </div>
 
-                    <div class="row mt-5">
+                    <div class="row mt-4">
                         <div class="col-12 col-sm-12 col-md-10 col-lg-5 col-xl-5 offset-0 offset-sm-0 offset-md-2 offset-lg-2 offset-xl-2">
-                            <h4 class="mb-2 fw-bold">Current Job / Career</h4>
+                            <h4 class="mb-0 fw-bold">Current Job / Career</h4>
                             @if (count($tracer_answers) > 0)
                                 @foreach ($tracer_answers as $answers)
                                     @if ($answers->question_id == 1)
-                                        <p class="mb-1 fs-5"><b>{{ $answers->answer }}</b></p>
+                                        <p class="mb-2 fs-5"><b>{{ $answers->answer }}</b></p>
                                     @endif
                                     @if ($answers->question_id == 2)
-                                        <p class="mb-1">At <b>{{ $answers->answer }}</b></p>
+                                        <p class="mb-0">At <b>{{ $answers->answer }}</b></p>
                                     @endif
                                     @if ($answers->question_id == 3)
                                         <p>Since <b>{{ date('F d, Y', strtotime($answers->answer)) }}</b></p>
                                     @endif
                                     @if ($answers->question_id == 4)
-                                        <p class="mb-1 fw-bold">Job Description: </p>
+                                        <p class="mb-0 fw-bold">Job Description: </p>
                                         <p class="text-justify">{{ $answers->answer }}</p>
                                     @endif
                                     @if ($answers->question_id == 7)
-                                        <p class="fw-bold mb-1">Company Details: </p>
-                                        <p class="mb-1">{{ $answers->answer }}</p>
+                                        <p class="fw-bold mb-0">Company Details: </p>
+                                        <p class="mb-0">{{ $answers->answer }}</p>
                                     @endif
                                     @if ($answers->question_id == 8)
                                         <p>{{ $answers->answer }}</p>
@@ -124,25 +124,25 @@
                         </div>
 
                         <div class="col-12 col-sm-12 col-md-10 col-lg-5 col-xl-5 offset-0 offset-sm-0 offset-md-2 offset-lg-0 offset-xl-0">
-                            <h4 class="mb-2 fw-bold">First Job / Career</h4>
+                            <h4 class="mb-0 fw-bold">First Job / Career</h4>
                             @if (count($tracer_answers) > 0)
                                 @foreach ($tracer_answers as $answers)
                                     @if ($answers->question_id == 10)
-                                        <p class="mb-1 fs-5"><b>{{ $answers->answer }}</b></p>
+                                        <p class="mb-2 fs-5"><b>{{ $answers->answer }}</b></p>
                                     @endif
                                     @if ($answers->question_id == 11)
-                                        <p class="mb-1">At <b>{{ $answers->answer }}</b></p>
+                                        <p class="mb-0">At <b>{{ $answers->answer }}</b></p>
                                     @endif
                                     @if ($answers->question_id == 12)
                                         <p>Employed on <b>{{ date('F d, Y', strtotime($answers->answer)) }}</b></p>
                                     @endif
                                     @if ($answers->question_id == 13)
-                                        <p class="mb-1 fw-bold">Job Description: </p>
+                                        <p class="mb-0 fw-bold">Job Description: </p>
                                         <p class="text-justify">{{ $answers->answer }}</p>
                                     @endif
                                     @if ($answers->question_id == 14)
-                                        <p class="fw-bold mb-1">Company Details: </p>
-                                        <p class="mb-1">{{ $answers->answer }}</p>
+                                        <p class="fw-bold mb-0">Company Details: </p>
+                                        <p class="mb-0">{{ $answers->answer }}</p>
                                     @endif
                                     @if ($answers->question_id == 15)
                                         <p>{{ $answers->answer }}</p>

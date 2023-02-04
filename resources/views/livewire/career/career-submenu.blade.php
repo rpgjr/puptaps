@@ -16,7 +16,7 @@
             <form>
                 <ul class="list-unstyled">
                     <li>
-                        <button type="submit" class="btn btn-light w-100 text-start mb-1
+                        <button type="submit" class="fs-7 btn btn-light w-100 text-start mb-1
                             @if ($query == null)
                                 active
                             @endif
@@ -24,7 +24,7 @@
                     </li>
                     @foreach ($careerCategories as $category)
                         <li>
-                            <button type="submit" class="btn btn-light w-100 text-start my-1
+                            <button type="submit" class="fs-7 btn btn-light w-100 text-start my-1
                                 @if ($query == $category->career_category)
                                     active
                                 @endif

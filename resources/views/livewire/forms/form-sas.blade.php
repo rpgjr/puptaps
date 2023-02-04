@@ -1,23 +1,23 @@
 <div>
     <form wire:submit.prevent="saveAnswer">
-        @foreach ($categories as $category)
-        {{-- Page 1 --}}
-        @if (($currentPage == 1) && ($currentPage == $category->category_id))
         <div class="row justify-content-center">
-
-            <div class="col-12 form-box-title pb-2">
-                <div class="row g-0">
-                    <div class="col-12 mt-1">
-                        <div class="progress progress-style">
-                            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-label="Animated striped example" aria-valuenow="{{ $progressBar }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ $progressBar }}%">{{ $progressBar }}%</div>
+            @foreach ($categories as $category)
+                @if (($currentPage == $category->category_id))
+                    <div class="col-12 form-box-title pb-2">
+                        <div class="row g-0">
+                            <div class="col-12 mt-1">
+                                <div class="progress progress-style">
+                                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-label="Animated striped example" aria-valuenow="{{ $progressBar }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ $progressBar }}%">{{ $progressBar }}%</div>
+                                </div>
+                            </div>
+                            <div class="col-12 text-center mt-3">
+                                <h5>Page {{ $currentPage }} of {{ $totalPage }} - {{ $category->category_name }}</h5>
+                            </div>
                         </div>
                     </div>
-                    <div class="col-12 text-center mt-3">
-                        <h5>Page {{ $currentPage }} of {{ $totalPage }} - {{ $category->category_name }}</h5>
-                    </div>
-                </div>
-            </div>
-
+                @endif
+            {{-- Page 1 --}}
+            @if (($currentPage == 1) && ($currentPage == $category->category_id))
             <div class="col-12 form-box-content">
                 <livewire:forms.data-privacy />
 
@@ -25,36 +25,31 @@
                 @if (($value->category_id) == ($category->category_id))
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" value="Agree" wire:model="arrayAnswers.{{ $key }}.answer" />
-                        <label class="form-check-label">Agree</label>
+                        <label class="form-check-label">Agree <span class="text-danger">*</span></label>
                     </div>
                 <span class="text-danger error-message">@error('arrayAnswers.' . $key . '.answer'){{ $message }}@enderror</span>
                 @endif
                 @endforeach
-            </div>
-        </div>
-
-        {{-- Page 2 --}}
-        @elseif (($currentPage == 2) && ($currentPage == $category->category_id))
-        <div class="row justify-content-center">
-
-            <div class="col-12 form-box-title pb-2">
-                <div class="row g-0">
-                    <div class="col-12 mt-1">
-                        <div class="progress progress-style">
-                            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-label="Animated striped example" aria-valuenow="{{ $progressBar }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ $progressBar }}%">{{ $progressBar }}%</div>
+                <div class="row mt-3">
+                    @if ($currentPage == 1)
+                        <div class="col-6 text-start">
+                            <button href="#go-to-top" class="btn btn-secondary px-3 fs-7" type="button" wire:click="previousPage()" disabled><i class="fa-solid fa-caret-left"></i> Back</button>
                         </div>
-                    </div>
-                    <div class="col-12 text-center mt-3">
-                        <h5>Page {{ $currentPage }} of {{ $totalPage }} - {{ $category->category_name }}</h5>
-                    </div>
+                    @endif
+
+                    @if ($currentPage < $totalPage && $currentPage != $totalPage)
+                        <div class="col-6 text-end">
+                            <a href="#go-to-top" class="btn btn-primary px-3 fs-7" type="button" wire:click="nextPage()">Next <i class="fa-solid fa-caret-right"></i></a>
+                        </div>
+                    @endif
                 </div>
             </div>
 
+
+            {{-- Page 2 --}}
+            @elseif (($currentPage == 2) && ($currentPage == $category->category_id))
             <div class="col-12 form-box-content">
                 <fieldset disabled>
-                    <div class="alert alert-warning text-center" role="alert">
-                        If you want to update your personal information, you can go to the <a href="{{ route("userProfile.index") }}" class="text-dark text-decoration-none"><b>Profiles tab.</b></a>
-                    </div>
                     <div class="row">
                         @foreach ($users as $user)
 
@@ -112,7 +107,7 @@
                         <div class="col-md-6 mb-3">
                             <div class="form-group">
                                 <div>
-                                    <label class="form-label">{{ $value->question_text }}</label>
+                                    <label class="form-label">{{ $value->question_text }} <span class="text-danger">*</span></label>
                                     <select class="form-select @error('arrayAnswers.' . $key . '.answer') is-invalid @enderror" wire:model="arrayAnswers.{{ $key }}.answer">
                                         <option selected hidden value="">Please select one..</option>
                                         <option value="Less than 1">Less than 1</option>
@@ -126,27 +121,24 @@
                         </div>
                     @endif
                     @endforeach
-                </div>
-            </div>
-        </div>
+                    <div class="row mt-3">
+                        @if ($currentPage <= $totalPage && $currentPage != 1)
+                            <div class="col-6 text-start">
+                                <a href="#go-to-top" class="btn btn-secondary px-3 fs-7" type="button" wire:click="previousPage()"><i class="fa-solid fa-caret-left"></i> Back</a>
+                            </div>
+                        @endif
 
-        {{-- Pages 3 to 14 --}}
-        @elseif (($currentPage != 1) && ($currentPage != 2) && ($currentPage != 15) && ($currentPage == $category->category_id))
-        <div class="row justify-content-center">
-
-            <div class="col-12 form-box-title pb-2">
-                <div class="row g-0">
-                    <div class="col-12 mt-1">
-                        <div class="progress progress-style">
-                            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-label="Animated striped example" aria-valuenow="{{ $progressBar }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ $progressBar }}%">{{ $progressBar }}%</div>
-                        </div>
-                    </div>
-                    <div class="col-12 text-center mt-3">
-                        <h5>Page {{ $currentPage }} of {{ $totalPage }} - {{ $category->category_name }}</h5>
+                        @if ($currentPage < $totalPage && $currentPage != $totalPage)
+                            <div class="col-6 text-end">
+                                <a href="#go-to-top" class="btn btn-primary px-3 fs-7" type="button" wire:click="nextPage()">Next <i class="fa-solid fa-caret-right"></i></a>
+                            </div>
+                        @endif
                     </div>
                 </div>
             </div>
 
+            {{-- Pages 3 to 14 --}}
+            @elseif (($currentPage != 1) && ($currentPage != 2) && ($currentPage != 15) && ($currentPage == $category->category_id))
             <div class="col-12 form-box-content">
                 <div class="row">
                     <div class="card text-center mb-3">
@@ -173,7 +165,7 @@
                             @if (($value->category_id) == ($category->category_id))
                             <tr>
                                 <td>
-                                    {{ $value->question_text }}
+                                    {{ $value->question_text }} <span class="text-danger">*</span>
                                     <span class="text-danger error-message">@error('arrayAnswers.' . $key . '.answer'){{ $message }}@enderror</span>
                                 </td>
                                 <td>
@@ -202,26 +194,23 @@
                         </tbody>
                     </table>
                 </div>
-            </div>
-        </div>
-
-        {{-- Page 15 --}}
-        @elseif (($currentPage == 15) && ($currentPage == $category->category_id))
-        <div class="row justify-content-center">
-
-            <div class="col-12 form-box-title pb-2">
-                <div class="row g-0">
-                    <div class="col-12 mt-1">
-                        <div class="progress progress-style">
-                            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-label="Animated striped example" aria-valuenow="{{ $progressBar }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ $progressBar }}%">{{ $progressBar }}%</div>
+                <div class="row mt-3">
+                    @if ($currentPage <= $totalPage && $currentPage != 1)
+                        <div class="col-6 text-start">
+                            <a href="#go-to-top" class="btn btn-secondary px-3 fs-7" type="button" wire:click="previousPage()"><i class="fa-solid fa-caret-left"></i> Back</a>
                         </div>
-                    </div>
-                    <div class="col-12 text-center mt-3">
-                        <h5>Page {{ $currentPage }} of {{ $totalPage }} - {{ $category->category_name }}</h5>
-                    </div>
+                    @endif
+
+                    @if ($currentPage < $totalPage && $currentPage != $totalPage)
+                        <div class="col-6 text-end">
+                            <a href="#go-to-top" class="btn btn-primary px-3 fs-7" type="button" wire:click="nextPage()">Next <i class="fa-solid fa-caret-right"></i></a>
+                        </div>
+                    @endif
                 </div>
             </div>
 
+            {{-- Page 15 --}}
+            @elseif (($currentPage == 15) && ($currentPage == $category->category_id))
             <div class="col-12 form-box-content">
                 <div class="row justify-content-center">
                     @foreach ($questions as $key => $value)
@@ -229,7 +218,7 @@
                         <div class="col-md-12 mb-3">
                             <div class="form-group">
                                 <div>
-                                    <label class="form-label">{{ $value->question_text }}</label>
+                                    <label class="form-label">{{ $value->question_text }} <span class="text-danger">*</span></label>
                                     <input type="{{ $value->question_type }}" class="form-control @error('arrayAnswers.' . $key . '.answer') is-invalid @enderror" wire:model="arrayAnswers.{{ $key }}.answer" placeholder="{{ $value->question_placeholder }}">
                                     <span class="text-danger error-message">@error('arrayAnswers.' . $key . '.answer'){{ $message }}@enderror</span>
                                 </div>
@@ -238,35 +227,23 @@
                     @endif
                     @endforeach
                 </div>
+                <div class="row mt-3">
+                    @if ($currentPage <= $totalPage && $currentPage != 1)
+                        <div class="col-6 text-start">
+                            <a href="#go-to-top" class="btn btn-secondary px-3 fs-7" type="button" wire:click="previousPage()"><i class="fa-solid fa-caret-left"></i> Back</a>
+                        </div>
+                    @endif
+
+                    @if ($currentPage == $totalPage)
+                        <div class="col-6 text-end">
+                            <button class="btn btn-success px-3 fs-7" type="submit">Submit <i class="fa-solid fa-file-export"></i></button>
+                        </div>
+                    @endif
+                </div>
             </div>
-        </div>
-        @endif
-
-        @endforeach
-
-        {{-- Buttons --}}
-        <div class="row form-box-buttons d-flex justify-content-between">
-            @if ($currentPage == 1)
-                <div class="col-6"></div>
             @endif
 
-            @if ($currentPage <= $totalPage && $currentPage != 1)
-                <div class="col-6 text-start">
-                    <a href="#go-to-top" class="btn btn-secondary px-4" type="button" wire:click="previousPage()">Back</a>
-                </div>
-            @endif
-
-            @if ($currentPage < $totalPage && $currentPage != $totalPage)
-                <div class="col-6 text-end">
-                    <a href="#go-to-top" class="btn btn-primary px-4" type="button" wire:click="nextPage()">Next</a>
-                </div>
-            @endif
-
-            @if ($currentPage == $totalPage)
-                <div class="col-6 text-end">
-                    <button class="btn btn-success px-4" type="submit">Submit</button>
-                </div>
-            @endif
+            @endforeach
         </div>
     </form>
 </div>
