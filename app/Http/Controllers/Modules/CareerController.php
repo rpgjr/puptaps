@@ -7,6 +7,7 @@ use App\Models\Admin;
 use App\Models\Alumni;
 use App\Models\CareerApplicant;
 use App\Models\Careers;
+use App\Models\User;
 use Illuminate\Auth\Events\Validated;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -17,6 +18,7 @@ class CareerController extends Controller
     public function getCareerIndex(Request $request) {
         $users              = Alumni::where('alumni_id', '=', Auth::user()
                               ->alumni_id)->get();
+        $username           = User::all();
         $alumni             = Alumni::all();
         $admin              = Admin::all();
         $posts              = Alumni::all();
@@ -36,6 +38,7 @@ class CareerController extends Controller
                 'alumni',
                 'admin',
                 'title',
+                'username',
             ]
         ), $data);
     }

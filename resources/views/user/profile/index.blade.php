@@ -44,7 +44,7 @@
                                     <div class="col-12 col-sm-12 col-md-12 col-lg-9 col-xl-9">
                                         <div class="row">
                                             <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 my-2">
-                                                <label class="form-label">Username</label>
+                                                <label class="form-label">Username <span class="text-danger">*</span></label>
                                                 <input type="text" class="form-control" name="username" value="{{ Auth::user()->username }}">
                                                 <span class="text-danger">@error('username') {{$message}} @enderror</span>
                                             </div>

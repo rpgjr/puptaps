@@ -7,6 +7,7 @@
     @livewireStyles
 </head>
 <body id="go-to-top" class="user-body">
+    {{-- oncontextmenu="return false;" it will disable right click --}}
     {{-- NavBar --}}
     <livewire:components.user-navbar :users="$users"/>
 

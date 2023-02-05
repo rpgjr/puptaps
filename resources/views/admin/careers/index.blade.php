@@ -35,7 +35,7 @@
 
                             <!-- If Post/Query has no data -->
                             @if (count($careers) == 0)
-                                <div class="alert alert-danger" role="alert">
+                                <div class="alert alert-danger fs-7" role="alert">
                                     There is no available data.
                                 </div>
 
@@ -44,10 +44,10 @@
                                 @foreach ($careers as $career)
                                     @if (($career->job_ad_image == null))
                                         <!-- If Post was Text -->
-                                        <livewire:career.career-text :career="$career" :alumni="$alumni" :admin="$admin" />
+                                        <livewire:career.career-text :career="$career" :alumni="$alumni" :admin="$admin" :username="$username" />
                                     @elseif (($career->job_ad_image != null))
                                         <!-- If Post was Image -->
-                                        <livewire:career.career-image-modal :career="$career" :alumni="$alumni" :admin="$admin"/>
+                                        <livewire:career.career-image-modal :career="$career" :alumni="$alumni" :admin="$admin" :username="$username" />
                                     @endif
                                 @endforeach
                             @endif

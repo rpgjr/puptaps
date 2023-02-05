@@ -16,6 +16,8 @@
 <link rel="stylesheet" href="{{ asset('css/reports.css') }}">
 <link rel="stylesheet" href="{{ asset('css/user-homepage.css') }}">
 
+<link rel="stylesheet" href="{{ asset('css/check_error.css') }}">
+
 {{-- Fontawesome --}}
 <link rel="stylesheet" href="{{ asset('fontawesome/css/all.css') }}">
 

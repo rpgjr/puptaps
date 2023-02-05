@@ -12,12 +12,32 @@ use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
-    public function getUserHomepage()
+    public function getUserHomepage(Request $request)
     {
-        $announcements = Announcements::all();
-        $news = News::all();
         $users = Alumni::where('alumni_id', '=', Auth::user()->alumni_id)->get();
-        return view('user.homepage', compact(["users", "announcements", "news"]));
+
+        $data['query'] = $request->get('query');
+
+        if ($data['query'] == 'Announcements') {
+            $data['announcements'] = Announcements::all();
+            $data['news'] = [];
+        }
+
+        elseif ($data['query'] == 'News') {
+            $data['news'] = News::all();
+            $data['announcements'] = [];
+        }
+
+        elseif ($data['query'] == 'All') {
+            $data['announcements'] = Announcements::all();
+            $data['news'] = News::all();
+        }
+        elseif ($data['query'] == null) {
+            $data['query'] = "All";
+            $data['announcements'] = Announcements::all();
+            $data['news'] = News::all();
+        }
+        return view('user.homepage', compact(["users"]), $data);
     }
 
     public function getLandingPage() {

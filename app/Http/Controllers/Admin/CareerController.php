@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Admin;
 use App\Models\Alumni;
 use App\Models\Careers;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -17,13 +18,14 @@ class CareerController extends Controller
                               ->alumni_id)->get();
         $alumni             = Alumni::all();
         $admin              = Admin::all();
+        $username           = User::all();
         $data['query']      = $request->get('query');
         $data['careers']    = Careers::where('approval', '=', 1)
                               ->where('category', 'like', '%' . $data['query'] . '%')
                               ->paginate(15)
                               ->withQueryString();
 
-        return view('admin.careers.index', compact(['title', 'users', 'alumni', 'admin']), $data);
+        return view('admin.careers.index', compact(['title', 'users', 'alumni', 'admin', 'username']), $data);
     }
 
     public function getCareerRequest() {

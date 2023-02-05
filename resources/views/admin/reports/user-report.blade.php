@@ -14,7 +14,7 @@
                 <div class="col-11 d-flex justify-content-end">
                     <form action="{{ route("adminReports.getUserReportPdf") }}" method="POST" target="_blank">
                     @csrf
-                        <button type="submit" class="btn btn-danger me-2" disabled>Download as PDF <i class="fa-solid fa-file-pdf ms-1"></i></button>
+                        <button type="submit" class="btn btn-danger me-2">Download as PDF <i class="fa-solid fa-file-pdf ms-1"></i></button>
                     </form>
                     <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#showFilter">
                         Filter <i class="fa-solid fa-filter me-0"></i>
@@ -112,6 +112,7 @@
             </div>
         </div>
     </section>
+
 
 
 @endsection

@@ -2,11 +2,10 @@
     font-size: 12px;
 }
 .career-post-profile {
-    height: 50px;
-    width: 50px;
+    height: 40px;
+    width: 40px;
     border-radius: 50%;
     object-fit: cover;
-    margin-right: 5px;
 }
 
 .career-post-image-box {
