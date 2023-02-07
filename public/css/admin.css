@@ -96,3 +96,8 @@
     font-weight: bold;
     transform: scale(1.1);
 }
+
+.tbl-head {
+    background: #7B241C;
+    color: #ffffff;
+}

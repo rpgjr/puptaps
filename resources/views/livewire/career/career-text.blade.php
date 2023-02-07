@@ -1,5 +1,5 @@
 <div class="sub-container-box mb-3 py-4">
-    @if ($career->alumni_id != Null)
+    @if ($career->alumni_id != null)
         @foreach ($alumni as $alum)
             @if (($alum->alumni_id) == ($career->alumni_id))
                 <div class="row align-items-center text-start m-0">
@@ -35,29 +35,36 @@
                 </div>
                 <div class="row align-items-center text-start m-0 pt-2">
                     <div class="col-12 col-sm-12 col-md-12 col-lg-11 offset-lg-1 col-xl-11 offset-xl-1 mt-2 mt-sm-2 mt-md-2 mt-lg-1 mt-xl-0">
-                        <h4 class="mb-0 mt-2 fw-bold">{{ $career->job_name }}</h4>
-                        <p class="fs-6 mb-1 mt-0">{{ $career->company }}</p>
+                        <div class="row align-items-center justify-content-between text-break">
+                            <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-7">
+                                <h4 class="mb-0 mt-2 fw-bold">{{ $career->job_name }}</h4>
+                                <p class="fs-6 mb-0 mt-0"><i>{{ $career->company }}</i></p>
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-5">
+                                <p class="fw-bold mt-0 mb-0">
+                                    Email:
+                                    <span class="fw-normal">{{ $career->email }}</span>
+                                </p>
+                                <p class="fw-bold mt-0 mb-0">
+                                    Tel. No.:
+                                    <span class="fw-normal">{{ $career->number }}</span>
+                                </p>
+                                <p class="fw-bold mb-0 mt-0">
+                                    Salary:
+                                    <span class="fw-normal">{{ $career->salary }}</span>
+                                </p>
+                            </div>
+                        </div>
 
                         <hr class="mb-3 mt-3">
 
-                        <h5 class="fw-bold mb-2">Job Details</h5>
-                        <p class="mb-1" style="white-space: pre-wrap;">{{ $career->description }}</p>
-                        <p class="fw-bold mb-0">
-                            Salary:
-                            <span class="fw-normal">{{ $career->salary }}</span>
-                        </p>
-
-                        <hr class="mb-3 mt-3">
-
-                        <h5 class="fw-bold mb-2">Company Details</h5>
-                        <p class="fw-bold mb-1">
-                            Email:
-                            <span class="fw-normal">{{ $career->email }}</span>
-                        </p>
-                        <p class="fw-bold">
-                            Contact Number:
-                            <span class="fw-normal">{{ $career->number }}</span>
-                        </p>
+                        <div class="w-100 d-flex align-items-center justify-content-between">
+                            <h5 class="fw-bold mb-2">Job Details</h5>
+                            <a class="fs-7 text-decoration-none collapse show" href="#seeJobDetails{{ $career->career_id }}" data-bs-toggle="collapse" id="seeJobDetails{{ $career->career_id }}">See more...</a>
+                        </div>
+                        <div hidden>{{ $text = $career->description }}</div>
+                        <div class="fs-7 mb-1 collapse" id="seeJobDetails{{ $career->career_id }}" style="white-space: pre-wrap;">@php echo $text @endphp</div>
+                        <a class="fs-7 text-decoration-none collapse mt-0" href="#seeJobDetails{{ $career->career_id }}" data-bs-toggle="collapse" id="seeJobDetails{{ $career->career_id }}">See less</a>
                     </div>
                 </div>
             @endif
@@ -95,30 +102,36 @@
                 </div>
                 <div class="row align-items-center text-start m-0 pt-2">
                     <div class="col-12 col-sm-12 col-md-12 col-lg-11 offset-lg-1 col-xl-11 offset-xl-1 mt-2 mt-sm-2 mt-md-2 mt-lg-1 mt-xl-0">
-                        <h4 class="mb-0 mt-2 fw-bold">{{ $career->job_name }}</h4>
-                        <p class="fs-6 mb-1 mt-0">{{ $career->company }}</p>
+                        <div class="row align-items-center justify-content-between text-break">
+                            <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-7">
+                                <h4 class="mb-0 mt-2 fw-bold">{{ $career->job_name }}</h4>
+                                <p class="fs-6 mb-0 mt-0"><i>{{ $career->company }}</i></p>
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-5">
+                                <p class="fw-bold mt-0 mb-0">
+                                    Email:
+                                    <span class="fw-normal">{{ $career->email }}</span>
+                                </p>
+                                <p class="fw-bold mt-0 mb-0">
+                                    Tel. No.:
+                                    <span class="fw-normal">{{ $career->number }}</span>
+                                </p>
+                                <p class="fw-bold mb-0 mt-0">
+                                    Salary:
+                                    <span class="fw-normal">{{ $career->salary }}</span>
+                                </p>
+                            </div>
+                        </div>
 
                         <hr class="mb-3 mt-3">
 
-                        <h5 class="fw-bold mb-2">Job Details</h5>
+                        <div class="w-100 d-flex align-items-center justify-content-between">
+                            <h5 class="fw-bold mb-2">Job Details</h5>
+                            <a class="fs-7 text-decoration-none collapse show" href="#seeJobDetails{{ $career->career_id }}" data-bs-toggle="collapse" id="seeJobDetails{{ $career->career_id }}">See more...</a>
+                        </div>
                         <div hidden>{{ $text = $career->description }}</div>
-                        <div class="fs-7 mb-1" style="white-space: pre-wrap; text-align: justify; text-justify: inter-word;">@php echo $text @endphp</div>
-                        <p class="fw-bold mb-0">
-                            Salary:
-                            <span class="fw-normal">{{ $career->salary }}</span>
-                        </p>
-
-                        <hr class="mb-3 mt-3">
-
-                        <h5 class="fw-bold mb-2">Company Details</h5>
-                        <p class="fw-bold mb-1">
-                            Email:
-                            <span class="fw-normal">{{ $career->email }}</span>
-                        </p>
-                        <p class="fw-bold">
-                            Contact Number:
-                            <span class="fw-normal">{{ $career->number }}</span>
-                        </p>
+                        <div class="fs-7 mb-1 collapse" id="seeJobDetails{{ $career->career_id }}" style="white-space: pre-wrap;">@php echo $text @endphp</div>
+                        <a class="fs-7 text-decoration-none collapse mt-0" href="#seeJobDetails{{ $career->career_id }}" data-bs-toggle="collapse" id="seeJobDetails{{ $career->career_id }}">See less</a>
                     </div>
                 </div>
             @endif

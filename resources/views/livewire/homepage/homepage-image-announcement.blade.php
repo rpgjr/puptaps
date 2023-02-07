@@ -15,13 +15,13 @@
 
             <div class="col-12 col-sm-12 col-md-12 col-lg-11 offset-lg-1 col-xl-11 offset-xl-1 mt-2 mb-0 d-flex align-items-center justify-content-between">
                 <h5 class="mb-1">{{ $announcement->announcement_title }}</h5>
-                <a class="fs-7 text-decoration-none collapse show" id="showMoreAnnouncement{{ $announcement->announcement_id }}" type="button" data-bs-toggle="collapse" data-bs-target="#showMoreAnnouncement{{ $announcement->announcement_id }}">Read More</a>
+                <a class="fs-7 text-decoration-none collapse show" id="showMoreAnnouncement{{ $announcement->announcement_id }}" type="button" data-bs-toggle="collapse" data-bs-target="#showMoreAnnouncement{{ $announcement->announcement_id }}">Read more</a>
             </div>
             <div class="col-12 col-sm-12 col-md-12 col-lg-11 offset-lg-1 col-xl-11 offset-xl-1 mt-0 mb-1">
                 <div class="collapse" id="showMoreAnnouncement{{ $announcement->announcement_id }}">
                     <div hidden>{{ $text = $announcement->announcement_text }}</div>
                     <div class="fs-7 text-break" style="white-space: pre-wrap; text-align:">@php echo $text @endphp</div>
-                    <a class="fs-7 text-decoration-none mt-3" type="button" data-bs-toggle="collapse" data-bs-target="#showMoreAnnouncement{{ $announcement->announcement_id }}">Read Less</a>
+                    <a class="fs-7 text-decoration-none mt-3" type="button" data-bs-toggle="collapse" data-bs-target="#showMoreAnnouncement{{ $announcement->announcement_id }}">Read less</a>
                 </div>
             </div>
         </div>

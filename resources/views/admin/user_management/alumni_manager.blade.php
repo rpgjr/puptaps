@@ -19,8 +19,8 @@
                     <form class="row g-3" method="post" enctype="multipart/form-data" action="{{ route('adminUserManagement.addAlumniList') }}">
                     @csrf
                         <div class="col-12 input-group">
-                            <input class="form-control" type="file" id="formFile" name="excel_file">
-                            <button type="submit" class="btn btn-primary">
+                            <input class="form-control fs-7" type="file" id="formFile" name="excel_file">
+                            <button type="submit" class="btn btn-primary fs-7">
                                 <i class="fa-solid fa-arrow-up-from-bracket me-1"></i>
                                 <span>Upload</span>
                             </button>
@@ -34,13 +34,11 @@
                   <form class="g-3">
                     @csrf
                     <div class="input-group">
-                      <input type="text" class="form-control" placeholder="Last Name" name="q" value="{{ $q }}">
-                      <a href="{{ route('adminUserManagement.getAlumniManager') }}" class="btn btn-secondary" type="button" id="button-addon2">
-                        <i class="fa-solid fa-rotate-right me-1"></i>
-                      <span>Reset</span></a>
-                      <button class="btn btn-primary" type="submit" id="button-addon2">
-                      <i class="fa-solid fa-magnifying-glass me-1"></i>
-                      <span>Search</span></button>
+                      <input type="text" class="form-control fs-7" placeholder="Last Name" name="q" value="{{ $q }}">
+                      <a href="{{ route('adminUserManagement.getAlumniManager') }}" class="fs-7 btn btn-secondary" type="button" id="button-addon2">
+                        <i class="fa-solid fa-rotate-right me-1"></i></a>
+                      <button class="fs-7 btn btn-primary" type="submit" id="button-addon2">
+                      <i class="fa-solid fa-magnifying-glass me-1"></i></button>
                     </div>
                   </form>
                 </div>
@@ -49,7 +47,7 @@
             <div class="row sub-container-box pb-0 pt-4 px-3">
                 <div class="col-12">
                     <table class="table table-striped align-middle table-hover">
-                        <thead class="table-dark">
+                        <thead class="tbl-head">
                             <tr>
                                 <th scope="col" class="col-1"></th>
                                 <th scope="col" class="col-2">Student Number</th>
@@ -65,7 +63,7 @@
                             @if (count($alumni))
                             @foreach ($alumni as $alum)
                                 <tr>
-                                    <th class="text-center"><button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#viewAlumniDetails{{ $alum->alumni_id }}"><i class="fa-solid fa-eye"></i></button></th>
+                                    <th class="text-center"><button class="fs-7 btn btn-primary" data-bs-toggle="modal" data-bs-target="#viewAlumniDetails{{ $alum->alumni_id }}"><i class="fa-solid fa-eye"></i></button></th>
                                     <th>{{ $alum->stud_number }}</th>
                                     <td>{{ $alum->last_name }}</td>
                                     <td>{{ $alum->course_id }}</td>
@@ -76,7 +74,7 @@
                                                 @csrf
 
                                                 <input type="hidden" name="alumni_id" value="{{ $alum->alumni_id }}">
-                                                <button type="submit" class="btn btn-success px-2">PDS <i class="fa-solid fa-file-pdf"></i></button>
+                                                <button type="submit" class="fs-7 btn btn-success px-2">PDS <i class="fa-solid fa-file-pdf"></i></button>
                                             </form>
                                         @else
                                             <i class="fa-regular fa-circle-xmark me-1 text-danger"></i><span class="text-danger">PDS</span>
@@ -88,7 +86,7 @@
                                                 @csrf
 
                                                 <input type="hidden" name="alumni_id" value="{{ $alum->alumni_id }}">
-                                                <button type="submit" class="btn btn-success px-2">EIF <i class="fa-solid fa-file-pdf"></i></button>
+                                                <button type="submit" class="fs-7 btn btn-success px-2">EIF <i class="fa-solid fa-file-pdf"></i></button>
                                             </form>
                                         @else
                                             <i class="fa-regular fa-circle-xmark me-1 text-danger"></i><span class="text-danger">EIF</span>
@@ -100,7 +98,7 @@
                                                 @csrf
 
                                                 <input type="hidden" name="alumni_id" value="{{ $alum->alumni_id }}">
-                                                <button class="btn btn-success px-2">SAS <i class="fa-solid fa-file-pdf"></i></button>
+                                                <button class="fs-7 btn btn-success px-2">SAS <i class="fa-solid fa-file-pdf"></i></button>
                                             </form>
                                         @else
                                             <i class="fa-regular fa-circle-xmark me-1 text-danger"></i><span class="text-danger">SAS</span>

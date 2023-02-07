@@ -10,15 +10,18 @@
 
             <livewire:admin.page-title :title="$title"/>
 
-            <div class="row justify-content-center text-end mb-3">
+            <div class="row justify-content-center text-end mb-2">
                 <div class="col-11 d-flex justify-content-end">
                     <form action="{{ route("adminReports.getUserReportPdf") }}" method="POST" target="_blank">
                     @csrf
-                        <button type="submit" class="btn btn-danger me-2">Download as PDF <i class="fa-solid fa-file-pdf ms-1"></i></button>
+                        <button type="submit" class="btn btn-danger me-2 fs-7">Download as PDF <i class="fa-solid fa-file-pdf ms-1"></i></button>
                     </form>
-                    <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#showFilter">
-                        Filter <i class="fa-solid fa-filter me-0"></i>
-                    </button>
+                    <div class="btn-group" role="group" aria-label="Basic example">
+                        <button class="btn btn-primary fs-7" type="button" data-bs-toggle="collapse" data-bs-target="#showFilter">
+                            Filter <i class="fa-solid fa-filter me-0"></i>
+                        </button>
+                        <a href="{{ route('adminReports.getUserReports') }}" type="button" class="btn btn-secondary fs-7"><i class="fa-solid fa-rotate-left"></i></a>
+                    </div>
                 </div>
             </div>
 
@@ -63,7 +66,7 @@
                             </div>
 
                             <div class="col-12 mb-2 text-end">
-                                <button class="btn btn-primary" type="submit">
+                                <button class="btn btn-primary fs-7" type="submit">
                                     Filter
                                 </button>
                             </div>
@@ -82,11 +85,11 @@
                 @else
                     <div class="col-11 sub-container-box pt-4">
                         <table class="table table-striped align-middle">
-                            <thead class="table-dark">
+                            <thead class="tbl-head">
                                 <tr>
                                     <th scope="col" style="width: 20%;">Student No.</th>
                                     <th scope="col" style="width: 30%;">Full Name</th>
-                                    <th scope="col" style="width: 10%;">sex</th>
+                                    <th scope="col" style="width: 10%;">Sex</th>
                                     <th scope="col" style="width: 10%;">Course</th>
                                     <th scope="col" style="width: 10%;">Batch</th>
                                 </tr>

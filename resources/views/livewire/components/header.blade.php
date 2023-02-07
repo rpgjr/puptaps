@@ -23,5 +23,9 @@
 {{-- PUP Icon --}}
 <link rel="icon" href="{{ asset('img/pupLogo.png') }}" type="image/icon type">
 
+{{-- Rich Text Editor --}}
 <link rel="stylesheet" type="text/css" href="https://unpkg.com/trix@2.0.0/dist/trix.css">
+
+{{-- Animate on Scroll --}}
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 

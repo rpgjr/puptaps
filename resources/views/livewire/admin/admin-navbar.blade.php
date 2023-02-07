@@ -12,9 +12,13 @@
             <div class="dropdown ms-0 admin-logout-dropdown">
                 <span class="dropdown-toggle fs-7" type="button" data-bs-toggle="dropdown">{{ $admin_name }}</span>
                 <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Action</a></li>
-                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    <li><a class="fs-7 dropdown-item" href="#">Action</a></li>
+                    <li><a class="fs-7 dropdown-item" href="#">Another action</a></li>
+                    <form action="{{ route('logout') }}" method="post">
+                        @csrf
+                            <li><button class="fs-7 dropdown-item" href="#">Logout</button></li>
+                        </div>
+                    </form>
                 </ul>
             </div>
         </div>

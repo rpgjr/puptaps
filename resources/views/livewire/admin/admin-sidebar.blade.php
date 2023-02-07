@@ -78,7 +78,7 @@
                 </a>
                 <a type="button" href="{{ route("adminReports.getUserReports") }}" class="sidebar-button w-100 text-start py-2 @yield('active-user-reports')">
                     <i class="fa-solid fa-clipboard-user me-1"></i>
-                    User Reports
+                    Alumni Reports
                 </a>
                 <!-- End: Reports -->
 
@@ -91,7 +91,7 @@
                 <!-- End: Account Settings -->
 
                 <!-- Start: Account Settings -->
-                <form action="{{ route('logout') }}" method="post">
+                {{-- <form action="{{ route('logout') }}" method="post">
                     @csrf
                     <div class="fixed-bottom">
                         <button class="text-center pb-0 mb-3 admin-logout-button">
@@ -101,7 +101,7 @@
                             </span>
                         </button>
                     </div>
-                </form>
+                </form> --}}
                 {{-- <a type="button" href="{{ route("logout") }}" class="text-center admin-logout-button text-start py-2 fixed-bottom">
                     <i class="fa-solid fa-gear me-1"></i>
                     Logout
