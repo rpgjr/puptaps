@@ -1,5 +1,5 @@
-<div class="sub-container-box mb-3 py-4">
-    @foreach ($news as $new)
+@foreach ($news as $new)
+    <div class="sub-container-box mb-3 py-4">
         <div class="row align-items-center m-0">
             <div class="col-12 mb-1">
                 <div class="row justify-content-between">
@@ -13,9 +13,16 @@
                 </div>
             </div>
 
-            <div class="col-12 col-sm-12 col-md-12 col-lg-11 offset-lg-1 col-xl-11 offset-xl-1 mt-2 mb-1">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-11 offset-lg-1 col-xl-11 offset-xl-1 mt-2 mb-0 d-flex align-items-center justify-content-between">
                 <h5 class="mb-1">{{ $new->news_title }}</h5>
-                <p style="white-space: pre-wrap; text-align: justify; text-justify: inter-word;" class="m-0">{{ $new->news_text }}</p>
+                <a class="fs-7 text-decoration-none collapse show" id="showMoreNews{{ $new->news_id }}" type="button" data-bs-toggle="collapse" data-bs-target="#showMoreNews{{ $new->news_id }}">Read More</a>
+            </div>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-11 offset-lg-1 col-xl-11 offset-xl-1 mt-0 mb-1">
+                <div class="collapse" id="showMoreNews{{ $new->news_id }}">
+                    <div hidden>{{ $text = $new->news_text }}</div>
+                    <div class="fs-7" style="white-space: pre-wrap;">@php echo $text @endphp</div>
+                    <a class="fs-7 text-decoration-none mt-3" type="button" data-bs-toggle="collapse" data-bs-target="#showMoreNews{{ $new->news_id }}">Read Less</a>
+                </div>
             </div>
         </div>
         <div class="row align-items-center text-start m-0">
@@ -44,6 +51,6 @@
                 </div>
             </div>
         </div>
-    @endforeach
-</div>
+    </div>
+@endforeach
 

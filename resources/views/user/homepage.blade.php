@@ -23,9 +23,7 @@
                                     There are no announcement posted yet.
                                 </div>
                             @else
-                                @foreach ($announcements as $announcement)
-                                    <livewire:homepage.homepage-image-announcement :announcements="$announcements" />
-                                @endforeach
+                                <livewire:homepage.homepage-image-announcement :announcements="$announcements" />
                             @endif
                         @endif
                         @if ($query == "News" || $query == "All")
@@ -34,9 +32,7 @@
                                     There are no news posted yet.
                                 </div>
                             @else
-                                @foreach ($news as $new)
-                                    <livewire:homepage.homepage-image-news :news="$news" />
-                                @endforeach
+                                <livewire:homepage.homepage-image-news :news="$news" />
                             @endif
                         @endif
                     </div>

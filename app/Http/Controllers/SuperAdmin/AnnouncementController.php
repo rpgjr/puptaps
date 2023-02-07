@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Announcements;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
 
 class AnnouncementController extends Controller
 {
@@ -35,6 +36,7 @@ class AnnouncementController extends Controller
         }
         $announcement->announcement_title = $request->input("announcement_title");
         $announcement->announcement_text = $request->input("announcement_text");
+        $announcement->created_at = Carbon::now()->toDateTimeString();
 
         $announcement->save();
 

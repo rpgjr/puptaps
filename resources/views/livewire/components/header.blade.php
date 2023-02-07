@@ -15,7 +15,6 @@
 <link rel="stylesheet" href="{{ asset('css/tracer.css') }}">
 <link rel="stylesheet" href="{{ asset('css/reports.css') }}">
 <link rel="stylesheet" href="{{ asset('css/user-homepage.css') }}">
-
 <link rel="stylesheet" href="{{ asset('css/check_error.css') }}">
 
 {{-- Fontawesome --}}
@@ -23,4 +22,6 @@
 
 {{-- PUP Icon --}}
 <link rel="icon" href="{{ asset('img/pupLogo.png') }}" type="image/icon type">
+
+<link rel="stylesheet" type="text/css" href="https://unpkg.com/trix@2.0.0/dist/trix.css">
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\SuperAdmin;
 use App\Http\Controllers\Controller;
 use App\Models\News;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
 
 class NewsController extends Controller
 {
@@ -34,6 +35,7 @@ class NewsController extends Controller
         }
         $news->news_title   = $request->input("news_title");
         $news->news_text    = $request->input("news_text");
+        $news->created_at = Carbon::now()->toDateTimeString();
 
         $news->save();
 

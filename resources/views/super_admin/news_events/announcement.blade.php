@@ -36,8 +36,9 @@
                                     </div>
                                     <div class="mb-3">
                                         <label class="form-label">Announcement:</label>
-                                        <textarea class="form-control @error('announcement_text') border border-danger @enderror" rows="5" name="announcement_text"></textarea>
+                                        <textarea class="form-control @error('announcement_text') border border-danger @enderror" name="announcement_text" id="rte_announcement" hidden></textarea>
                                         <span class="text-danger error-message">@error('announcement_text') {{$message}} @enderror</span>
+                                        <trix-editor input="rte_announcement" class="fs-7 trix-content"></trix-editor>
                                     </div>
                                     <div class="mb-2 text-end">
                                         <button class="btn btn-success" type="submit">Add Announcement</button>
@@ -46,10 +47,6 @@
                             </div>
                         </div>
                     </div>
-                </div>
-
-                <div class="row">
-
                 </div>
             </div>
 
@@ -70,7 +67,8 @@
                                     </div>
                                     <div class="col-6">
                                         <h4 class="mb-3"><i class="fa-solid fa-bullhorn me-2"></i>{{ $announcement->announcement_title }}</h4>
-                                        <p style="white-space: pre-wrap; text-align: justify; text-justify: inter-word;">{{ $announcement->announcement_text }}</p>
+                                        <div hidden>{{ $text = $announcement->announcement_text }}</div>
+                                        <div class="fs-7" style="white-space: pre-wrap; text-align: justify; text-justify: inter-word;">@php echo $text @endphp</div>
                                     </div>
                                     <div class="col-1 text-center">
                                         <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteAnnouncement{{$announcement->announcement_id}}"><i class="fa-solid fa-trash-can"></i></button>

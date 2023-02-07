@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string("announcement_image");
             $table->string("announcement_title");
             $table->longText("announcement_text");
+            $table->timestamp("created_at");
         });
     }
 

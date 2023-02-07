@@ -1,10 +1,10 @@
 <div class="container-fluid pt-3 pb-2 px-0 h-100 admin-sidebar position-fixed">
-    <div class="row align-items-center mt-3 g-0">
+    <div class="row align-items-center g-0" style="margin-top: 40px;">
         <div class="col-12 text-center">
-            <div class="row align-items-center gx-3">
-                <div class="col-5 text-end">
+            <div class="row align-items-center gx-0">
+                <div class="col-5 text-center">
                     <a href="{{ route('admin.homepage') }}" class="text-decoration-none text-white align-items-center">
-                        <img src="{{ asset('img/pupLogo.png') }}" style="height: 70px;">
+                        <img src="{{ asset('img/pupLogo.png') }}" style="height: 80px;">
                     </a>
                 </div>
                 <div class="col-7 text-start">
@@ -15,9 +15,9 @@
         </div>
     </div>
 
-    <hr class="mt-3 mb-3 hr-color opacity-100">
+    {{-- <hr class="mt-3 mb-3 hr-color opacity-100"> --}}
 
-    <div class="row align-items-center g-0">
+    <div class="row align-items-center g-0" style="margin-top: 30px;">
         <div class="col-12">
             <div class="w-100 sidebar-buttons">
                 <!-- Dashboard -->
@@ -26,6 +26,7 @@
                     Dashboard
                 </a>
 
+                <hr class="mt-2 mb-3 hr-color opacity-100">
                 <!-- Start: User Manager -->
                 <a type="button" href="{{ route('adminUserManagement.getAlumniManager') }}" class="sidebar-button w-100 text-start py-2 @yield('active-alumni-manager')">
                     <i class="fa-solid fa-user-group me-1"></i>
@@ -81,7 +82,7 @@
                 </a>
                 <!-- End: Reports -->
 
-                <hr class="mt-3 mb-3 hr-color opacity-100">
+                <hr class="mt-3 mb-2 hr-color opacity-100">
                 <!-- Start: Account Settings -->
                 <a type="button" href="{{ route("adminSettings.getAccountSettings") }}" class="sidebar-button w-100 text-start py-2 @yield('active-account-settings')">
                     <i class="fa-solid fa-gear me-1"></i>

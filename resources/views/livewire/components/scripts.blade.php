@@ -14,3 +14,5 @@
 <script src="{{ asset('js/registered-users-gender-pie.js') }}"></script>
 <script src="{{ asset('js/registered-users-bar.js') }}"></script>
 
+<script type="text/javascript" src="https://unpkg.com/trix@2.0.0/dist/trix.umd.min.js"></script>
+

@@ -17,5 +17,6 @@ class Announcements extends Model
         'announcement_image',
         'announcement_title',
         'announcement_text',
+        'created_at',
     ];
 }

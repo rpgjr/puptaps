@@ -216,7 +216,7 @@ Route::group(
         'controller' => 'App\Http\Controllers\Modules\FormPDFController',
         'prefix' => 'downloads',
         'as' => 'userForm.',
-        'middleware' => ['isAdmin', 'auth', '']
+        'middleware' => ['isAdmin', 'auth']
     ], function() {
         Route::post('PDS-form', 'downloadPDS')
             ->name('downloadPDS');

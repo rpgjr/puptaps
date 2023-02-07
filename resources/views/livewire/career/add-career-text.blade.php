@@ -25,7 +25,8 @@
                     </div>
                     <div class="mb-3 col-12">
                         <label class="form-label">Description</label>
-                        <textarea class="form-control" rows="5" name="description" style="white-space: pre-wrap"></textarea>
+                        <textarea class="form-control" rows="5" name="description" style="white-space: pre-wrap" id="rte_description" hidden></textarea>
+                        <trix-editor input="rte_description" class="trix-content"></trix-editor>
                     </div>
                     <div class="mb-3 col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
                         <label class="form-label">Category</label>

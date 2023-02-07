@@ -101,7 +101,8 @@
                         <hr class="mb-3 mt-3">
 
                         <h5 class="fw-bold mb-2">Job Details</h5>
-                        <p class="mb-1" style="white-space: pre-wrap;">{{ $career->description }}</p>
+                        <div hidden>{{ $text = $career->description }}</div>
+                        <div class="fs-7 mb-1" style="white-space: pre-wrap; text-align: justify; text-justify: inter-word;">@php echo $text @endphp</div>
                         <p class="fw-bold mb-0">
                             Salary:
                             <span class="fw-normal">{{ $career->salary }}</span>

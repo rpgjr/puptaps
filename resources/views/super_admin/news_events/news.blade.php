@@ -36,8 +36,9 @@
                                     </div>
                                     <div class="mb-3">
                                         <label class="form-label">News:</label>
-                                        <textarea class="form-control @error('news_text') border border-danger @enderror" rows="5" name="news_text"></textarea>
+                                        <textarea class="form-control @error('news_text') border border-danger @enderror" rows="5" name="news_text" id="rte_news" hidden></textarea>
                                         <span class="text-danger error-message">@error('news_text') {{$message}} @enderror</span>
+                                        <trix-editor input="rte_news" class="fs-7 trix-content"></trix-editor>
                                     </div>
                                     <div class="mb-2 text-end">
                                         <button class="btn btn-success" type="submit">Add News</button>
@@ -70,7 +71,8 @@
                                     </div>
                                     <div class="col-6">
                                         <h4 class="mb-3"><i class="fa-solid fa-newspaper me-2"></i>{{ $new->news_title }}</h4>
-                                        <p style="white-space: pre-wrap; text-align: justify; text-justify: inter-word;">{{ $new->news_text }}</p>
+                                        <div hidden>{{ $text = $new->news_text }}</div>
+                                        <div class="fs-7" style="white-space: pre-wrap; text-align: justify; text-justify: inter-word;">@php echo $text @endphp</div>
                                     </div>
                                     <div class="col-1 text-center">
                                         <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteNews{{$new->news_id}}"><i class="fa-solid fa-trash-can"></i></button>

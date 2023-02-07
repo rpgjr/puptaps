@@ -19,6 +19,13 @@ class FormPds extends Component
     public $progressBar = 0;
     public $form_name = "PDS";
 
+    public $showSeminar2 = '';
+    public $showSeminar3 = '';
+    public $showButton2 = 'show';
+    public $showButton3 = 'hidden';
+
+    public $default = 'N/A';
+
     public function render() {
         $this->addNullAnswers();
         $users = Alumni::where("alumni_id", "=", Auth::user()->alumni_id)->get();
@@ -32,6 +39,17 @@ class FormPds extends Component
             "questions",
         ])
         );
+    }
+
+    public function changeToShow2() {
+        $this->showSeminar2 = 'show';
+        $this->showButton2 = 'hidden';
+        $this->showButton3 = 'show';
+    }
+
+    public function changeToShow3() {
+        $this->showSeminar3 = 'show';
+        $this->showButton3 = 'hidden';
     }
 
     public function addNullAnswers() {
@@ -66,6 +84,8 @@ class FormPds extends Component
 
     public function mount() {
         $this->currentPage = 1;
+        $this->showButton2 = 'show';
+        $this->showButton3 = 'hidden';
     }
 
     public function previousPage() {
@@ -81,6 +101,31 @@ class FormPds extends Component
         $this->addNullAnswers();
         $temp_null = $this->countNull - 1;
         if($temp_null == $this->currentPage) {
+            $this->validate();
+        }
+        $this->currentPage++;
+        if($this->currentPage > $this->totalPage) {
+            $this->currentPage = $this->totalPage;
+        }
+    }
+
+    public function nextPageSeminars() {
+        $this->resetErrorBag();
+        $this->addNullAnswers();
+        $temp_null = $this->countNull - 1;
+        if($temp_null == $this->currentPage) {
+            if ($this->arrayAnswers[10]['answer'] == null && $this->showButton2 == 'show') {
+                $this->arrayAnswers[10]['answer'] = 'N/A';
+            }
+            if ($this->arrayAnswers[11]['answer'] == null && $this->showButton2 == 'show') {
+                $this->arrayAnswers[11]['answer'] = 'N/A';
+            }
+            if ($this->arrayAnswers[12]['answer'] == null && $this->showSeminar3 == '') {
+                $this->arrayAnswers[12]['answer'] = 'N/A';
+            }
+            if ($this->arrayAnswers[13]['answer'] == null && $this->showSeminar3 == '') {
+                $this->arrayAnswers[13]['answer'] = 'N/A';
+            }
             $this->validate();
         }
         $this->currentPage++;

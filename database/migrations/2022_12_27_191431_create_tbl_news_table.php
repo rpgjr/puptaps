@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string("news_image");
             $table->string("news_title");
             $table->longText("news_text");
+            $table->timestamp("created_at");
         });
     }
 
