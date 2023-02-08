@@ -16,7 +16,7 @@
             <div class="row justify-content-center">
                 <!-- Start: Body -->
                 <div class="col-11">
-                    <div class="row g-0 g-sm-0 g-md-0 g-lg-4 g-xl-4">
+                    <div class="row g-0 g-sm-0 g-md-0 g-lg-3 g-xl-3">
 
                         <!-- Career Search bar -->
                         <div class="col-12">
@@ -36,7 +36,7 @@
                             <!-- If Post/Query has no data -->
                             @if (count($careers) == 0)
                                 <div class="alert alert-danger fs-7" role="alert">
-                                    There is no available data.
+                                    <i class="fa-solid fa-triangle-exclamation me-1 fs-6"></i>There is no available data.
                                 </div>
 
                             <!-- If Post/Query has data -->

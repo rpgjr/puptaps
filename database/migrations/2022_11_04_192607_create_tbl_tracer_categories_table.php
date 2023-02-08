@@ -22,6 +22,9 @@ return new class extends Migration
         TracerCategories::insert(
             array(
                 [
+                    "category_name" => "Licensure Examinations"
+                ],
+                [
                     "category_name" => "Current Job / Career Details"
                 ],
                 [

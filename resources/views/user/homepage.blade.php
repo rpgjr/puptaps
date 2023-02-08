@@ -19,7 +19,7 @@
                     <div class="col-12 col-sm-12 col-md-12 col-lg-8 col-xl-9">
                         @if ($query == "Announcements" || $query == "All")
                             @if (empty($announcements) || count($announcements) == 0)
-                                <div class="alert alert-warning fs-7" role="alert">
+                                <div class="alert alert-warning fs-7 mt-0 mb-2" role="alert">
                                     There are no announcement posted yet.
                                 </div>
                             @else
@@ -28,7 +28,7 @@
                         @endif
                         @if ($query == "News" || $query == "All")
                             @if (empty($news) || count($news) == 0)
-                                <div class="alert alert-warning" role="alert">
+                                <div class="alert alert-warning fs-7 my-2" role="alert">
                                     There are no news posted yet.
                                 </div>
                             @else

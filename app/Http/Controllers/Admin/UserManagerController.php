@@ -61,7 +61,7 @@ class UserManagerController extends Controller
         // }
         return back()->with(
             'success',
-            'List Added.'
+            'Alumni Added.'
         );
     }
 

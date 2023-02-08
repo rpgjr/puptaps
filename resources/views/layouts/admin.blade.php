@@ -20,7 +20,7 @@
                         <div class="col-12">
                             <livewire:admin.admin-navbar />
                         </div>
-                        <div class="col-12" style="margin-top: 70px;">
+                        <div class="col-12" style="margin-top: 80px;">
                             @yield('content')
                         </div>
                     </div>

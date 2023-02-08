@@ -356,7 +356,7 @@ Route::group(
         Route::patch('approve-career/{career_id}', 'approveCareer')
             ->name('approveCareer');
 
-        Route::delete('reject-career/{career_id}', 'rejectCareer')
+        Route::post('reject-career', 'rejectCareer')
             ->name('rejectCareer');
 
         Route::post('add/text-career', 'addTextCareer')

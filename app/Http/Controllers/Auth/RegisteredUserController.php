@@ -42,7 +42,7 @@ class RegisteredUserController extends Controller
         if($check_studNumber) {
             $request->validate([
                 'stud_number'   => ['required'],
-                'email'         => ['required', 'string', 'email', 'max:255', 'unique:tbl_alumni']
+                'email'         => ['required', 'string', 'email', 'max:255', 'unique:users']
             ],
             [
                 'stud_number.required'  => 'Student Number is required',

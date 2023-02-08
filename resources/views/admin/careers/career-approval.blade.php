@@ -57,8 +57,8 @@
                                     @else
                                         <tr>
                                             <td colspan="4">
-                                                <div class="alert alert-danger mb-0" role="alert">
-                                                    There is no available data.
+                                                <div class="alert alert-danger mb-0 fs-7" role="alert">
+                                                    <i class="fa-solid fa-triangle-exclamation me-1 fs-6"></i>There is no available data.
                                                 </div>
                                             </td>
                                         </tr>

@@ -29,47 +29,27 @@ return new class extends Migration
             array(
                 [
                     "category_id"   => "1",
-                    "question_text" => "Job Position",
-                    "question_type" => "text",
+                    "question_text" => "Are you a Board Exam Passer?",
+                    "question_type" => "radio",
                 ],
                 [
                     "category_id"   => "1",
-                    "question_text" => "Company Name",
-                    "question_type" => "text",
+                    "question_text" => "Is it related to the Program the you've graduated in PUP Taguig?",
+                    "question_type" => "radio",
                 ],
                 [
                     "category_id"   => "1",
-                    "question_text" => "Employment Start Date",
+                    "question_text" => "What licensure exam did you take?",
+                    "question_type" => "select",
+                ],
+                [
+                    "category_id"   => "1",
+                    "question_text" => "When did you take it?",
                     "question_type" => "date",
                 ],
                 [
                     "category_id"   => "1",
-                    "question_text" => "Nature of Work / Job Description",
-                    "question_type" => "text",
-                ],
-                [
-                    "category_id"   => "1",
-                    "question_text" => "Type of Employment",
-                    "question_type" => "select",
-                ],
-                [
-                    "category_id"   => "1",
-                    "question_text" => "Monthly Income",
-                    "question_type" => "select",
-                ],
-                [
-                    "category_id"   => "1",
-                    "question_text" => "Company Email",
-                    "question_type" => "text",
-                ],
-                [
-                    "category_id"   => "1",
-                    "question_text" => "Company Number",
-                    "question_type" => "text",
-                ],
-                [
-                    "category_id"   => "1",
-                    "question_text" => "Is your current Job related to your Course?",
+                    "question_text" => "Did you passed the Civil Service Examination?",
                     "question_type" => "radio",
                 ],
 
@@ -95,11 +75,57 @@ return new class extends Migration
                 ],
                 [
                     "category_id"   => "2",
+                    "question_text" => "Type of Employment",
+                    "question_type" => "select",
+                ],
+                [
+                    "category_id"   => "2",
+                    "question_text" => "Monthly Income",
+                    "question_type" => "select",
+                ],
+                [
+                    "category_id"   => "2",
                     "question_text" => "Company Email",
                     "question_type" => "text",
                 ],
                 [
                     "category_id"   => "2",
+                    "question_text" => "Company Number",
+                    "question_type" => "text",
+                ],
+                [
+                    "category_id"   => "2",
+                    "question_text" => "Is your current Job related to the Program you've graduated in PUP Taguig?",
+                    "question_type" => "radio",
+                ],
+
+                [
+                    "category_id"   => "3",
+                    "question_text" => "Job Position",
+                    "question_type" => "text",
+                ],
+                [
+                    "category_id"   => "3",
+                    "question_text" => "Company Name",
+                    "question_type" => "text",
+                ],
+                [
+                    "category_id"   => "3",
+                    "question_text" => "Employment Start Date",
+                    "question_type" => "date",
+                ],
+                [
+                    "category_id"   => "3",
+                    "question_text" => "Nature of Work / Job Description",
+                    "question_type" => "text",
+                ],
+                [
+                    "category_id"   => "3",
+                    "question_text" => "Company Email",
+                    "question_type" => "text",
+                ],
+                [
+                    "category_id"   => "3",
                     "question_text" => "Company Number",
                     "question_type" => "text",
                 ],

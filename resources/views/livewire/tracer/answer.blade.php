@@ -65,6 +65,14 @@
                                                     <option value="₱46,000 and above">₱46,000 and above</option>
                                                     <option value="Not Applicable">Not Applicable</option>
                                                 </select>
+                                            @elseif ($value->question_text == "What licensure exam did you take?")
+                                                <select class="form-select @error('arrayAnswers.' . $key . '.answer') is-invalid @enderror" wire:model="arrayAnswers.{{ $key }}.answer">
+                                                    <option selected hidden>Please select one...</option>
+                                                    <option value="Electronics Engineer Licensure Examination">Electronics Engineer Licensure Examination</option>
+                                                    <option value="Licensure Examination for Teachers">Licensure Examination for Teachers</option>
+                                                    <option value="Certified Public Accountant Board Exam">Certified Public Accountant Board Exam</option>
+                                                    <option value="Not Applicable">Not Applicable</option>
+                                                </select>
                                             @endif
                                         </div>
                                     @elseif ($value->question_type == "radio")
@@ -85,17 +93,12 @@
                                                 <input class="form-check-input" type="radio" value="No" wire:model="arrayAnswers.{{ $key }}.answer">
                                                 <label class="form-check-label">No</label>
                                             </div>
-                                        </div>
-                                    @elseif ($value->question_type == "date/null")
-                                        <div>
-                                            <label class="form-label">{{ $value->question_text }}</label>
-                                            <span class="text-danger error-message">
-                                                @error('arrayAnswers.' . $key . '.answer')
-                                                <i class="fa-solid fa-circle-exclamation ml-5"></i>
-                                                {{ $message }}
-                                                @enderror
-                                            </span>
-                                            <input type="date" class="form-control @error('arrayAnswers.' . $key . '.answer') is-invalid @enderror" wire:model="arrayAnswers.{{ $key }}.answer">
+                                            @if ($value->category_id == 1)
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="radio" value="N/A" wire:model="arrayAnswers.{{ $key }}.answer">
+                                                    <label class="form-check-label">N/A</label>
+                                                </div>
+                                            @endif
                                         </div>
                                     @endif
                                 </div>

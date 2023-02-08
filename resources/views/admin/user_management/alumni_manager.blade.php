@@ -14,35 +14,43 @@
 
         <div class="row justify-content-center g-0">
             <div class="col-11">
-              <div class="row sub-container-box mb-4 py-3 px-2">
-                <div class="col-6">
-                    <form class="row g-3" method="post" enctype="multipart/form-data" action="{{ route('adminUserManagement.addAlumniList') }}">
-                    @csrf
-                        <div class="col-12 input-group">
-                            <input class="form-control fs-7" type="file" id="formFile" name="excel_file">
-                            <button type="submit" class="btn btn-primary fs-7">
-                                <i class="fa-solid fa-arrow-up-from-bracket me-1"></i>
-                                <span>Upload</span>
-                            </button>
+                <div class="row sub-container-box mb-3 py-3 px-2 justify-content-between">
+                    <div class="col-6 d-flex">
+                        <form class="" method="post" enctype="multipart/form-data" action="{{ route('adminUserManagement.addAlumniList') }}">
+                        @csrf
+                            <div class="input-group">
+                                <input class="form-control fs-7" type="file" id="formFile" name="excel_file">
+                                <button type="submit" class="btn btn-primary fs-7">
+                                    <i class="fa-solid fa-arrow-up-from-bracket"></i>
+                                </button>
+                            </div>
+
+                            @error('excel_file')
+                                <p class="text-danger mt-2 mb-0 py-0">{{ $message }}</p>
+                            @enderror
+                        </form>
+                        <div class="ms-2">
+                            <a href="{{ route("adminUserManagement.downloadListTemplate") }}" class="btn btn-success fs-7"><span>Template</span><i class="ms-1 fa-solid fa-file-csv"></i></a>
                         </div>
-                        @error('excel_file')
-                            <p class="text-danger mt-2 mb-0 py-0">{{ $message }}</p>
-                        @enderror
-                    </form>
-                </div>
-                <div class="col-6">
-                  <form class="g-3">
-                    @csrf
-                    <div class="input-group">
-                      <input type="text" class="form-control fs-7" placeholder="Last Name" name="q" value="{{ $q }}">
-                      <a href="{{ route('adminUserManagement.getAlumniManager') }}" class="fs-7 btn btn-secondary" type="button" id="button-addon2">
-                        <i class="fa-solid fa-rotate-right me-1"></i></a>
-                      <button class="fs-7 btn btn-primary" type="submit" id="button-addon2">
-                      <i class="fa-solid fa-magnifying-glass me-1"></i></button>
                     </div>
-                  </form>
+                    <div class="col-4">
+                        <form class="g-3">
+                            @csrf
+                            <div class="input-group">
+                                <input type="text" class="form-control fs-7" placeholder="Last Name" name="q" value="{{ $q }}">
+                                <a href="{{ route('adminUserManagement.getAlumniManager') }}" class="fs-7 btn btn-secondary" type="button" id="button-addon2">
+                                    <i class="fa-solid fa-rotate-right me-1"></i></a>
+                                <button class="fs-7 btn btn-primary" type="submit" id="button-addon2">
+                                <i class="fa-solid fa-magnifying-glass me-1"></i></button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
-              </div>
+                {{-- <div class="row mb-3 mt-0">
+                    <div class="col-12 text-end">
+                        <a href="{{ route("adminUserManagement.downloadListTemplate") }}" class="btn btn-success">Download Template<i class="fa-solid fa-file-csv ms-2"></i></a>
+                    </div>
+                </div> --}}
 
             <div class="row sub-container-box pb-0 pt-4 px-3">
                 <div class="col-12">

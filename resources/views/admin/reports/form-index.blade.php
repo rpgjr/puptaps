@@ -15,8 +15,9 @@
                     <form action="{{ route('adminReports.generateFormReport') }}" method="post">
                     @csrf
                         <div class="row sub-container-box py-4 px-2">
-                            <div class="col-4 mb-3">
-                                <label class="form-label">Form Name</label>
+                            <h3 class="mb-4">Form Reports</h3>
+                            <div class="col-6 mb-3">
+                                <label class="form-label">Forms</label>
                                 <select class="form-select @error('form') is-invalid @enderror" name="form">
                                     <option value="" hidden selected>Please select one...</option>
                                     @foreach ($forms as $form)
@@ -25,30 +26,46 @@
                                 </select>
                                 <span class="text-danger error-message">@error('form') {{$message}} @enderror</span>
                             </div>
-                            <div class="col-4 mb-3">
+                            <div class="col-6 mb-3">
                                 <label class="form-label">Report Type</label>
                                 <select class="form-select @error('type') is-invalid @enderror" name="type">
                                     <option value="" hidden selected>Please select one...</option>
-                                    <option value="1">Summary Report General</option>
-                                    <option value="2">Summary Report - by Course</option>
-                                    <option value="3">Summary Report - by sex</option>
-                                    <option value="4">Students Form Status General</option>
-                                    <option value="5">Students Form Status - by Course</option>
+                                    <option value="1">Summary Report</option>
+                                    <option value="2">Status Report</option>
                                 </select>
                                 <span class="text-danger error-message">@error('type') {{$message}} @enderror</span>
                             </div>
-                            <div class="col-4 mb-3">
-                                <label class="form-label">For Batch</label>
-                                <select class="form-select @error('batch') is-invalid @enderror" name="batch">
+                            <div class="col-6 mb-3">
+                                <label class="form-label">From (Batch)</label>
+                                <select class="form-select @error('fromBatch') is-invalid @enderror" name="fromBatch">
                                     <option value="" hidden selected>Please select one...</option>
                                     @for ($i = date('Y'); $i >= 2022; $i--)
                                             <option value="{{ $i }}">{{ $i }}</option>
                                     @endfor
                                 </select>
-                                <span class="text-danger error-message">@error('batch') {{$message}} @enderror</span>
+                                <span class="text-danger error-message">@error('fromBatch') {{$message}} @enderror</span>
+                            </div>
+                            <div class="col-6 mb-3">
+                                <label class="form-label">To (Batch)</label>
+                                <select class="form-select @error('toBatch') is-invalid @enderror" name="toBatch">
+                                    <option value="" hidden selected>Please select one...</option>
+                                    @for ($i = date('Y'); $i >= 2022; $i--)
+                                            <option value="{{ $i }}">{{ $i }}</option>
+                                    @endfor
+                                </select>
+                                <span class="text-danger error-message">@error('toBatch') {{$message}} @enderror</span>
+                            </div>
+                            <div class="col-6 mb-3">
+                                <label class="form-label">Categorized by</label>
+                                <select class="form-select @error('type') is-invalid @enderror" name="type">
+                                    <option value="" hidden selected>Please select one...</option>
+                                    <option value="1">Course/Program</option>
+                                    <option value="2">Sex</option>
+                                </select>
+                                <span class="text-danger error-message">@error('type') {{$message}} @enderror</span>
                             </div>
                             <div class="col-12">
-                                <button type="submit" class="btn btn-primary">Generate Report <i class="fa-solid fa-file-lines ms-1"></i></button>
+                                <button type="submit" class="btn btn-primary fs-7">Generate Report <i class="fa-solid fa-file-lines ms-1"></i></button>
                             </div>
                         </div>
                     </form>

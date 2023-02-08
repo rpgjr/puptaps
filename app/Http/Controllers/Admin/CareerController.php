@@ -3,12 +3,14 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Mail\RejectCareerPost;
 use App\Models\Admin;
 use App\Models\Alumni;
 use App\Models\Careers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class CareerController extends Controller
 {
@@ -41,10 +43,16 @@ class CareerController extends Controller
         return back()->with('success', 'Post successfully approved!');
     }
 
-    public function rejectCareer($career_id) {
-        $career = Careers::where('career_id', '=', $career_id)->first();
-        $career->delete();
+    public function rejectCareer(Request $request) {
+        $career = Careers::where('career_id', '=', $request->career_id)->first();
+        $user = Alumni::where('alumni_id', '=', $request->alumni_id)->first();
 
+        $email = $user['email'];
+        $reason = $request->input('reason');
+
+        Mail::to($email)->send(new RejectCareerPost($email, $reason));
+
+        $career->delete();
         return back()->with('success', 'Post successfully rejected!');
     }
 
