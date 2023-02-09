@@ -93,24 +93,24 @@
                             <h4 class="mb-0 fw-bold">Current Job / Career</h4>
                             @if (count($tracer_answers) > 0)
                                 @foreach ($tracer_answers as $answers)
-                                    @if ($answers->question_id == 1)
+                                    @if ($answers->question_id == 6)
                                         <p class="mb-2 fs-5"><b>{{ $answers->answer }}</b></p>
                                     @endif
-                                    @if ($answers->question_id == 2)
+                                    @if ($answers->question_id == 7)
                                         <p class="mb-0">At <b>{{ $answers->answer }}</b></p>
                                     @endif
-                                    @if ($answers->question_id == 3)
+                                    @if ($answers->question_id == 8)
                                         <p>Since <b>{{ date('F d, Y', strtotime($answers->answer)) }}</b></p>
                                     @endif
-                                    @if ($answers->question_id == 4)
+                                    @if ($answers->question_id == 9)
                                         <p class="mb-0 fw-bold">Job Description: </p>
                                         <p class="text-justify">{{ $answers->answer }}</p>
                                     @endif
-                                    @if ($answers->question_id == 7)
+                                    @if ($answers->question_id == 12)
                                         <p class="fw-bold mb-0">Company Details: </p>
                                         <p class="mb-0">{{ $answers->answer }}</p>
                                     @endif
-                                    @if ($answers->question_id == 8)
+                                    @if ($answers->question_id == 13)
                                         <p>{{ $answers->answer }}</p>
                                     @endif
                                 @endforeach
@@ -127,24 +127,24 @@
                             <h4 class="mb-0 fw-bold">First Job / Career</h4>
                             @if (count($tracer_answers) > 0)
                                 @foreach ($tracer_answers as $answers)
-                                    @if ($answers->question_id == 10)
+                                    @if ($answers->question_id == 15)
                                         <p class="mb-2 fs-5"><b>{{ $answers->answer }}</b></p>
                                     @endif
-                                    @if ($answers->question_id == 11)
+                                    @if ($answers->question_id == 16)
                                         <p class="mb-0">At <b>{{ $answers->answer }}</b></p>
                                     @endif
-                                    @if ($answers->question_id == 12)
+                                    @if ($answers->question_id == 17)
                                         <p>Employed on <b>{{ date('F d, Y', strtotime($answers->answer)) }}</b></p>
                                     @endif
-                                    @if ($answers->question_id == 13)
+                                    @if ($answers->question_id == 18)
                                         <p class="mb-0 fw-bold">Job Description: </p>
                                         <p class="text-justify">{{ $answers->answer }}</p>
                                     @endif
-                                    @if ($answers->question_id == 14)
+                                    @if ($answers->question_id == 19)
                                         <p class="fw-bold mb-0">Company Details: </p>
                                         <p class="mb-0">{{ $answers->answer }}</p>
                                     @endif
-                                    @if ($answers->question_id == 15)
+                                    @if ($answers->question_id == 20)
                                         <p>{{ $answers->answer }}</p>
                                     @endif
                                 @endforeach
