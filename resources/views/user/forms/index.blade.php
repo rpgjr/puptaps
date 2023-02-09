@@ -57,7 +57,7 @@
                             <div class="col-4 col-sm-4 col-md-3 col-lg-3 col-xl-2">
                                 <div class="text-center">
                                     @if (count($pdsAnswer) > 0)
-                                        <form action="{{ route('userForm.downloadPDS') }}" method="post" target="__blank">
+                                        <form action="{{ route('userForm.PDS_to_PDF') }}" method="post" target="__blank">
                                             @csrf
                                             <button type="submit" class="btn btn-success fs-7">Print</button>
                                         </form>
@@ -86,7 +86,7 @@
                             <div class="col-4 col-sm-4 col-md-3 col-lg-3 col-xl-2">
                                 <div class="text-center">
                                     @if (count($eifAnswer) > 0)
-                                        <form action="{{ route('userForm.downloadEI') }}" method="post" target="__blank">
+                                        <form action="{{ route('userForm.EIF_TO_PDF') }}" method="post" target="__blank">
                                             @csrf
                                             <button type="submit" class="btn btn-success fs-7">Print</button>
                                         </form>
@@ -115,7 +115,7 @@
                             <div class="col-4 col-sm-4 col-md-3 col-lg-3 col-xl-2">
                                 <div class="text-center">
                                     @if (count($sasAnswer) > 0)
-                                        <form action="{{ route('userForm.downloadSAS') }}" method="post" target="__blank">
+                                        <form action="{{ route('userForm.SAS_TO_PDF') }}" method="post" target="__blank">
                                             @csrf
                                             <button type="submit" class="btn btn-success fs-7">Print</button>
                                         </form>

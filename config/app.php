@@ -186,6 +186,7 @@ return [
          * Package Service Providers...
          */
         Maatwebsite\Excel\ExcelServiceProvider::class,
+        Elibyy\TCPDF\ServiceProvider::class,
         /*
          * Application Service Providers...
          */

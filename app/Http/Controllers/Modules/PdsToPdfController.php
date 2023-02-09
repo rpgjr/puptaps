@@ -143,7 +143,7 @@ class PdsToPdfController extends Controller
                     <td colspan="1" style="border-bottom: 1px solid black; width: 25%;"> $bday </td>
                     <td colspan="1" style="width: 10%;"></td>
                     <th colspan="1" style="width: 7%; font-weight: bold;">Age: </th>
-                    <td colspan="1" style="border-bottom: 1px solid black; width: 32%;"> $user->age </td>
+                    <td colspan="1" style="border-bottom: 1px solid black; width: 17%;"> $user->age years old</td>
                 </tr>
               </table>
             EOF;
@@ -154,11 +154,11 @@ class PdsToPdfController extends Controller
             $html = <<<EOF
               <table style="width:100%; margin-top: 300px;">
                 <tr>
-                    <th colspan="1" style="width: 11%; font-weight: bold;">Sex: </th>
-                    <td colspan="1" style="border-bottom: 1px solid black; width: 31%;"> $user->sex </td>
-                    <td colspan="1" style="width: 10%;"></td>
                     <th colspan="1" style="width: 12%; font-weight: bold;">Religion: </th>
-                    <td colspan="1" style="border-bottom: 1px solid black; width: 27%;"> $user->religion </td>
+                    <td colspan="1" style="border-bottom: 1px solid black; width: 30%;"> $user->religion </td>
+                    <td colspan="1" style="width: 10%;"></td>
+                    <th colspan="1" style="width: 7%; font-weight: bold;">Sex: </th>
+                    <td colspan="1" style="border-bottom: 1px solid black; width: 17%;"> $user->sex </td>
                 </tr>
               </table>
             EOF;
@@ -181,7 +181,7 @@ class PdsToPdfController extends Controller
               <table style="width:100%; margin-top: 10px;">
                 <tr>
                     <th colspan="1" style="width: 20%; font-weight: bold;">Year Graduated: </th>
-                    <td colspan="1" style="border-bottom: 1px solid black; width: 22%;"> $user->batch </td>
+                    <td colspan="1" style="border-bottom: 1px solid black; width: 10%;"> $user->batch </td>
                 </tr>
               </table>
             EOF;
@@ -320,7 +320,7 @@ class PdsToPdfController extends Controller
                             </td>
                             <td style="width: 20%"></td>
                             <td colspan="1" style="width: 60%; text-align: center; border-top: 1px solid black;">
-                                Signature over Printed Name
+                                Signature
                             </td>
                         </tr>
                     </table>
@@ -347,7 +347,7 @@ class PdsToPdfController extends Controller
                             </td>
                             <td style="width: 10%"></td>
                             <td colspan="1" style="width: 60%; text-align: center; border-top: 1px solid black;">
-                                Signature over Printed Name
+                                Signature
                             </td>
                         </tr>
                     </table>

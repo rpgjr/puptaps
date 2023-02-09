@@ -149,14 +149,14 @@ class EifToPdfController extends Controller
             $html = <<<EOF
               <table style="width:100%; margin-top: 300px;">
                 <tr>
-                    <th colspan="1" style="width: 11%; font-weight: bold;">Sex: </th>
-                    <td colspan="1" style="border-bottom: 1px solid black; width: 15%;"> $user->sex </td>
-                    <td colspan="1" style="width: 10%;"></td>
+                    <th colspan="1" style="width: 6%; font-weight: bold;">Sex: </th>
+                    <td colspan="1" style="border-bottom: 1px solid black; width: 13%;"> $user->sex </td>
+                    <td colspan="1" style="width: 11%;"></td>
                     <th colspan="1" style="width: 7%; font-weight: bold;">Age: </th>
-                    <td colspan="1" style="border-bottom: 1px solid black; width: 6%;"> $user->age </td>
-                    <td colspan="1" style="width: 9%;"></td>
+                    <td colspan="1" style="border-bottom: 1px solid black; width: 17%;"> $user->age years old</td>
+                    <td colspan="1" style="width: 11%;"></td>
                     <th colspan="1" style="width: 15%; font-weight: bold;">Civil Status: </th>
-                    <td colspan="1" style="border-bottom: 1px solid black; width: 27%;"> $user->civil_status </td>
+                    <td colspan="1" style="border-bottom: 1px solid black; width: 20%;"> $user->civil_status </td>
                 </tr>
               </table>
             EOF;
@@ -476,7 +476,7 @@ class EifToPdfController extends Controller
                     <tr>
                         <td style="width: 50%;"></td>
                         <td colspan="1" style="width: 50%; text-align: center; border-top: 1px solid black;">
-                            Signature over Printed Name
+                            Signature
                         </td>
                     </tr>
                 </table>
