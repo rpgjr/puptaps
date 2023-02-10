@@ -25,14 +25,14 @@ class UserReportsController extends Controller
             $data['batch_to'] == null
             ){
                 $data['alumni'] = Alumni::orderBy('last_name', 'asc')
-                            ->paginate(25)
+                            ->paginate(20)
                             ->withQueryString();
         }
         elseif(($data['sex']) == null) {
             $data['alumni'] = Alumni::where('course_id', 'like', '%' . $data['course_id'] . '%')
                             ->whereBetween('batch', [$data['batch_from'], $data['batch_to']])
                             ->orderBy('last_name', 'asc')
-                            ->paginate(25)
+                            ->paginate(20)
                             ->withQueryString();
         }
         else {
@@ -40,7 +40,7 @@ class UserReportsController extends Controller
                             ->where('sex', "=", $data['sex'])
                             ->whereBetween('batch', [$data['batch_from'], $data['batch_to']])
                             ->orderBy('last_name', 'asc')
-                            ->paginate(25)
+                            ->paginate(20)
                             ->withQueryString();
         }
 

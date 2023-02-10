@@ -233,7 +233,7 @@ Route::group(
         'controller' => PdsToPdfController::class,
         'prefix' => 'downloads',
         'as' => 'userForm.',
-        'middleware' => ['isAdmin', 'auth', 'hasCompleteProfile']
+        'middleware' => ['auth']
     ], function() {
         Route::post('PDS_to_PDF', 'PDS_to_PDF')
             ->name('PDS_to_PDF');
@@ -245,7 +245,7 @@ Route::group(
         'controller' => EifToPdfController::class,
         'prefix' => 'downloads',
         'as' => 'userForm.',
-        'middleware' => ['isAdmin', 'auth', 'hasCompleteProfile']
+        'middleware' => ['auth']
     ], function() {
         Route::post('EIF_TO_PDF', 'EIF_TO_PDF')
             ->name('EIF_TO_PDF');
@@ -257,7 +257,7 @@ Route::group(
         'controller' => SasToPdfController::class,
         'prefix' => 'downloads',
         'as' => 'userForm.',
-        'middleware' => ['isAdmin', 'auth', 'hasCompleteProfile']
+        'middleware' => ['auth']
     ], function() {
         Route::post('SAS_TO_PDF', 'SAS_TO_PDF')
             ->name('SAS_TO_PDF');
@@ -403,7 +403,7 @@ Route::group(
         'as' => 'adminReports.',
         'middleware' => ['isUser', 'auth']
     ], function() {
-        Route::post('pdf', 'getUserReportPdf')
+        Route::post('alumni-reports', 'getUserReportPdf')
                ->name('getUserReportPdf');
 
 });

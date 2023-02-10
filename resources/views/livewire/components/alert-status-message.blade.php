@@ -35,7 +35,7 @@
                     </div>
                 </div>
             </div>
-        @elseif($errors->any() || Session::has('failed'))
+        @elseif($errors->any() || Session::has('fail'))
             <div id="myModal" class="modal fade" tabindex="-1">
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
@@ -52,7 +52,9 @@
                         </div>
                         <h3 class="text-danger text-center mt-3 mb-0">Error!</h3>
                         <p class="text-center fs-7 mb-1 mt-0" role="alert">
-                            @if ($message == null)
+                            @if (Session::has('fail'))
+                                <span>{{ Session::get('fail') }}</span>
+                            @elseif ($message == null)
                                 <span>Fields with (<span class="text-danger">*</span>) are required. It should not be empty.</span>
                             @else
                                 {{ $message }}

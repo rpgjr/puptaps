@@ -59,84 +59,84 @@ class MYPDF extends TCPDF {
 
 class SasToPdfController extends Controller
 {
-    public function SAS_TO_PDF() {
-        $users = Alumni::where('alumni_id', '=', Auth::user()->alumni_id)->get();
+    public function SAS_TO_PDF(Request $request) {
+        $users = Alumni::where('alumni_id', '=', $request->alumni_id)->get();
 
-        $semesters = SasAnswers::where([['alumni_id', '=', Auth::user()->alumni_id],['question_id', '=', 2]])->value('answer');
+        $semesters = SasAnswers::where([['alumni_id', '=', $request->alumni_id],['question_id', '=', 2]])->value('answer');
 
-        $section_1 = SasAnswers::whereIn('question_id', [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24])->where('alumni_id', '=', Auth::user()->alumni_id)->get('answer');
+        $section_1 = SasAnswers::whereIn('question_id', [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24])->where('alumni_id', '=', $request->alumni_id)->get('answer');
         $arraySection_1 = [];
         foreach($section_1 as $section1) {
             array_push($arraySection_1, $section1->answer);
         }
 
-        $section_2 = SasAnswers::whereIn('question_id', [25, 26, 27, 28])->where('alumni_id', '=', Auth::user()->alumni_id)->get('answer');
+        $section_2 = SasAnswers::whereIn('question_id', [25, 26, 27, 28])->where('alumni_id', '=', $request->alumni_id)->get('answer');
         $arraySection_2 = [];
         foreach($section_2 as $section2) {
             array_push($arraySection_2, $section2->answer);
         }
 
-        $section_3 = SasAnswers::whereIn('question_id', [29, 30, 31, 32, 33, 34])->where('alumni_id', '=', Auth::user()->alumni_id)->get('answer');
+        $section_3 = SasAnswers::whereIn('question_id', [29, 30, 31, 32, 33, 34])->where('alumni_id', '=', $request->alumni_id)->get('answer');
         $arraySection_3 = [];
         foreach($section_3 as $section3) {
             array_push($arraySection_3, $section3->answer);
         }
 
-        $section_4 = SasAnswers::whereIn('question_id', [35, 36, 37, 38])->where('alumni_id', '=', Auth::user()->alumni_id)->get('answer');
+        $section_4 = SasAnswers::whereIn('question_id', [35, 36, 37, 38])->where('alumni_id', '=', $request->alumni_id)->get('answer');
         $arraySection_4 = [];
         foreach($section_4 as $section4) {
             array_push($arraySection_4, $section4->answer);
         }
 
-        $section_5 = SasAnswers::whereIn('question_id', [39, 40, 41, 42, 43, 44])->where('alumni_id', '=', Auth::user()->alumni_id)->get('answer');
+        $section_5 = SasAnswers::whereIn('question_id', [39, 40, 41, 42, 43, 44])->where('alumni_id', '=', $request->alumni_id)->get('answer');
         $arraySection_5 = [];
         foreach($section_5 as $section5) {
             array_push($arraySection_5, $section5->answer);
         }
 
-        $section_6 = SasAnswers::whereIn('question_id', [45, 46, 47, 48, 49])->where('alumni_id', '=', Auth::user()->alumni_id)->get('answer');
+        $section_6 = SasAnswers::whereIn('question_id', [45, 46, 47, 48, 49])->where('alumni_id', '=', $request->alumni_id)->get('answer');
         $arraySection_6 = [];
         foreach($section_6 as $section6) {
             array_push($arraySection_6, $section6->answer);
         }
 
-        $section_7 = SasAnswers::whereIn('question_id', [50, 51, 52, 53, 54])->where('alumni_id', '=', Auth::user()->alumni_id)->get('answer');
+        $section_7 = SasAnswers::whereIn('question_id', [50, 51, 52, 53, 54])->where('alumni_id', '=', $request->alumni_id)->get('answer');
         $arraySection_7 = [];
         foreach($section_7 as $section7) {
             array_push($arraySection_7, $section7->answer);
         }
 
-        $section_8 = SasAnswers::whereIn('question_id', [55, 56, 57, 58, 59])->where('alumni_id', '=', Auth::user()->alumni_id)->get('answer');
+        $section_8 = SasAnswers::whereIn('question_id', [55, 56, 57, 58, 59])->where('alumni_id', '=', $request->alumni_id)->get('answer');
         $arraySection_8 = [];
         foreach($section_8 as $section8) {
             array_push($arraySection_8, $section8->answer);
         }
 
-        $section_9 = SasAnswers::whereIn('question_id', [60, 61, 62])->where('alumni_id', '=', Auth::user()->alumni_id)->get('answer');
+        $section_9 = SasAnswers::whereIn('question_id', [60, 61, 62])->where('alumni_id', '=', $request->alumni_id)->get('answer');
         $arraySection_9 = [];
         foreach($section_9 as $section9) {
             array_push($arraySection_9, $section9->answer);
         }
 
-        $section_10 = SasAnswers::whereIn('question_id', [63, 64, 65])->where('alumni_id', '=', Auth::user()->alumni_id)->get('answer');
+        $section_10 = SasAnswers::whereIn('question_id', [63, 64, 65])->where('alumni_id', '=', $request->alumni_id)->get('answer');
         $arraySection_10 = [];
         foreach($section_10 as $section10) {
             array_push($arraySection_10, $section10->answer);
         }
 
-        $section_11 = SasAnswers::whereIn('question_id', [66, 67, 68])->where('alumni_id', '=', Auth::user()->alumni_id)->get('answer');
+        $section_11 = SasAnswers::whereIn('question_id', [66, 67, 68])->where('alumni_id', '=', $request->alumni_id)->get('answer');
         $arraySection_11 = [];
         foreach($section_11 as $section11) {
             array_push($arraySection_11, $section11->answer);
         }
 
-        $section_12 = SasAnswers::whereIn('question_id', [69, 70, 71, 72, 73, 74, 75, 76])->where('alumni_id', '=', Auth::user()->alumni_id)->get('answer');
+        $section_12 = SasAnswers::whereIn('question_id', [69, 70, 71, 72, 73, 74, 75, 76])->where('alumni_id', '=', $request->alumni_id)->get('answer');
         $arraySection_12 = [];
         foreach($section_12 as $section12) {
             array_push($arraySection_12, $section12->answer);
         }
 
-        $signature = strtoupper(SasAnswers::where([['alumni_id', '=', Auth::user()->alumni_id],['question_id', '=', 78]])->value('answer'));
+        $signature = strtoupper(SasAnswers::where([['alumni_id', '=', $request->alumni_id],['question_id', '=', 78]])->value('answer'));
 
         foreach($users as $user)
         {
@@ -165,7 +165,7 @@ class SasToPdfController extends Controller
             // add a page
             $pdf->AddPage();
             $pdf->SetPrintHeader(false);
-            $pdf->SetFont('times', 'B', 14);
+            $pdf->SetFont('times', 'B', 13);
             $pdf->ln(20);
             $pdf->Cell(0, 0, 'QUESTIONNAIRE', 0, 1, 'C', 0, '', 0);
 
@@ -183,22 +183,22 @@ class SasToPdfController extends Controller
             EOF;
             $pdf->writeHTML($html, true, 0, true, 0);
 
-            $pdf->SetFont('times', '', 13);
+            $pdf->SetFont('times', '', 12);
             $pdf->ln(5);
             $html = <<<EOF
               <table style="width:100%">
                 <tr>
-                    <th colspan="1" style="width: 10%; font-weight: bold;">Name: </th>
+                    <th colspan="1" style="width: 8%; font-weight: bold;">Name: </th>
                     <td colspan="1" style="text-align: center; width: 30%">$user->last_name </td>
-                    <td colspan="1" style="text-align: center; width: 30%">$user->first_name $user->suffix </td>
+                    <td colspan="1" style="text-align: center; width: 32%">$user->first_name $user->suffix </td>
                     <td colspan="1" style="text-align: center; width: 30%">$user->middle_name </td>
 
                 </tr>
                 <tr>
                     <td></td>
-                    <td style="text-align: center; font-size:13px; border-top: 1px solid black;">Surname</td>
-                    <td style="text-align: center; font-size:13px; border-top: 1px solid black;">First Name</td>
-                    <td style="text-align: center; font-size:13px; border-top: 1px solid black;">Middle Name</td>
+                    <td style="text-align: center; font-size:12px; border-top: 1px solid black;"><i>Surname</i></td>
+                    <td style="text-align: center; font-size:12px; border-top: 1px solid black;"><i>First Name</i></td>
+                    <td style="text-align: center; font-size:12px; border-top: 1px solid black;"><i>Middle Name</i></td>
                 </tr>
               </table>
             EOF;
@@ -209,8 +209,8 @@ class SasToPdfController extends Controller
             $html = <<<EOF
               <table style="width:100%; margin-top: 10px;">
                 <tr>
-                    <th colspan="1" style="width: 19%; font-weight: bold;">Degree/Course: </th>
-                    <td colspan="1" style="border-bottom: 1px solid black; width: 81%;"> $course </td>
+                    <th colspan="1" style="width: 17%; font-weight: bold;">Degree/Course: </th>
+                    <td colspan="1" style="border-bottom: 1px solid black; width: 83%;"> $course </td>
                 </tr>
               </table>
             EOF;
@@ -222,12 +222,12 @@ class SasToPdfController extends Controller
                 <tr>
                     <th colspan="1" style="width: 6%; font-weight: bold;">Sex: </th>
                     <td colspan="1" style="border-bottom: 1px solid black; width: 13%;"> $user->sex </td>
-                    <td colspan="1" style="width: 6%;"></td>
-                    <th colspan="1" style="width: 7%; font-weight: bold;">Age: </th>
+                    <td colspan="1" style="width: 7%;"></td>
+                    <th colspan="1" style="width: 6%; font-weight: bold;">Age: </th>
                     <td colspan="1" style="border-bottom: 1px solid black; width: 17%;"> $user->age years old</td>
-                    <td colspan="1" style="width: 6%;"></td>
-                    <th colspan="1" style="width: 29%; font-weight: bold;">No. of Semesters in PUP: </th>
-                    <td colspan="1" style="border-bottom: 1px solid black; width: 16%;"> $semesters </td>
+                    <td colspan="1" style="width: 7%;"></td>
+                    <th colspan="1" style="width: 27%; font-weight: bold;">No. of Semesters in PUP: </th>
+                    <td colspan="1" style="border-bottom: 1px solid black; width: 17%;"> $semesters </td>
                 </tr>
               </table>
             EOF;
@@ -240,7 +240,7 @@ class SasToPdfController extends Controller
             EOF;
             $pdf->writeHTML($html, true, 0, true, 0);
 
-            $pdf->SetFont('times', '', 13);
+            $pdf->SetFont('times', '', 12);
             $pdf->ln(10);
             $html = <<<EOF
                 <div style="text-align: center; font-weight: bold;">
@@ -252,7 +252,7 @@ class SasToPdfController extends Controller
             EOF;
             $pdf->writeHTML($html, true, 0, true, 0);
 
-            $pdf->SetFont('times', '', 13);
+            $pdf->SetFont('times', '', 12);
             $pdf->ln(5);
             $html = <<<EOF
                 <style>
@@ -274,12 +274,12 @@ class SasToPdfController extends Controller
                 <table style="width:100%;" class="table-form">
                 <!-- Section 1 -->
                     <tr>
-                        <th colspan="2" class="th-form" style="width: 85%;">STUDENT AFFAIRS AND SERVICES (SAS) PROGRAM</th>
-                        <th colspan="1" class="th-form" style="width: 15%;">Rating</th>
+                        <th colspan="2" class="th-form" style="width: 87%;">STUDENT AFFAIRS AND SERVICES (SAS) PROGRAM</th>
+                        <th colspan="1" class="th-form" style="width: 13%;">Rating</th>
                     </tr>
                     <tr>
                         <td class="td-form number" style="width: 8%">1.</td>
-                        <td class="td-form" style="width: 77%">Clarity of objectives of the SAS program, projects and activities.</td>
+                        <td class="td-form" style="width: 79%">Clarity of objectives of the SAS program, projects and activities.</td>
                         <td class="td-form" style="text-align: center;">$arraySection_1[0]</td>
                     </tr>
                     <tr>
@@ -712,15 +712,15 @@ class SasToPdfController extends Controller
             $html = <<<EOF
                 <table style="width:100%;">
                     <tr>
-                        <td style="width: 50%"></td>
-                        <td colspan="1" style="width: 50%; text-align: center; text-transform: uppercase;">
+                        <td style="width: 45%"></td>
+                        <td colspan="1" style="width: 55%; text-align: center; text-transform: uppercase;">
                             $signature
                         </td>
                     </tr>
                     <tr>
-                        <td style="width: 50%"></td>
-                        <td colspan="1" style="width: 50%; text-align: center; border-top: 1px solid black;">
-                            Signature
+                        <td style="width: 45%"></td>
+                        <td colspan="1" style="font-size: 14px; width: 55%; text-align: center; border-top: 1px solid black;">
+                            <i>Signature</i>
                         </td>
                     </tr>
                 </table>

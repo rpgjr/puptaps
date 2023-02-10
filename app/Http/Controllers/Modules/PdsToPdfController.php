@@ -18,7 +18,7 @@ class MYPDF extends TCPDF {
         $image_file = public_path('/img/pupLogo.png');
         $this->Image($image_file, 15, 10, 20, '', 'PNG', '', 'C', false, 300, '', false, false, 0, false, false, false);
         // Title
-        $this->Ln(7);
+        $this->Ln(6);
         $this->SetFont('times', 'B', 15);
         $this->Cell(140, 0,
                     'Polytechnic University of the Philippines',
@@ -57,29 +57,29 @@ class MYPDF extends TCPDF {
 
 class PdsToPdfController extends Controller
 {
-    public function PDS_to_PDF() {
-        $users = Alumni::where('alumni_id', '=', Auth::user()->alumni_id)->get();
+    public function PDS_to_PDF(Request $request) {
+        $users = Alumni::where('alumni_id', '=', $request->alumni_id)->get();
 
-        $fathers_name = PdsAnswers::where([['alumni_id', '=', Auth::user()->alumni_id],['question_id', '=', 2]])->value('answer');
-        $fathers_number = PdsAnswers::where([['alumni_id', '=', Auth::user()->alumni_id],['question_id', '=', 3]])->value('answer');
-        $mothers_name = PdsAnswers::where([['alumni_id', '=', Auth::user()->alumni_id],['question_id', '=', 4]])->value('answer');
-        $mothers_number = PdsAnswers::where([['alumni_id', '=', Auth::user()->alumni_id],['question_id', '=', 5]])->value('answer');
+        $fathers_name = PdsAnswers::where([['alumni_id', '=', $request->alumni_id],['question_id', '=', 2]])->value('answer');
+        $fathers_number = PdsAnswers::where([['alumni_id', '=', $request->alumni_id],['question_id', '=', 3]])->value('answer');
+        $mothers_name = PdsAnswers::where([['alumni_id', '=', $request->alumni_id],['question_id', '=', 4]])->value('answer');
+        $mothers_number = PdsAnswers::where([['alumni_id', '=', $request->alumni_id],['question_id', '=', 5]])->value('answer');
 
-        $department = PdsAnswers::where([['alumni_id', '=', Auth::user()->alumni_id],['question_id', '=', 6]])->value('answer');
-        $position = PdsAnswers::where([['alumni_id', '=', Auth::user()->alumni_id],['question_id', '=', 7]])->value('answer');
-        $job_date = PdsAnswers::where([['alumni_id', '=', Auth::user()->alumni_id],['question_id', '=', 8]])->value('answer');
+        $department = PdsAnswers::where([['alumni_id', '=', $request->alumni_id],['question_id', '=', 6]])->value('answer');
+        $position = PdsAnswers::where([['alumni_id', '=', $request->alumni_id],['question_id', '=', 7]])->value('answer');
+        $job_date = PdsAnswers::where([['alumni_id', '=', $request->alumni_id],['question_id', '=', 8]])->value('answer');
 
-        $sem_1 = PdsAnswers::where([['alumni_id', '=', Auth::user()->alumni_id],['question_id', '=', 9]])->value('answer');
-        $sem_date_1 = PdsAnswers::where([['alumni_id', '=', Auth::user()->alumni_id],['question_id', '=', 10]])->value('answer');
+        $sem_1 = PdsAnswers::where([['alumni_id', '=', $request->alumni_id],['question_id', '=', 9]])->value('answer');
+        $sem_date_1 = PdsAnswers::where([['alumni_id', '=', $request->alumni_id],['question_id', '=', 10]])->value('answer');
 
-        $sem_2 = PdsAnswers::where([['alumni_id', '=', Auth::user()->alumni_id],['question_id', '=', 11]])->value('answer');
-        $sem_date_2 = PdsAnswers::where([['alumni_id', '=', Auth::user()->alumni_id],['question_id', '=', 12]])->value('answer');
+        $sem_2 = PdsAnswers::where([['alumni_id', '=', $request->alumni_id],['question_id', '=', 11]])->value('answer');
+        $sem_date_2 = PdsAnswers::where([['alumni_id', '=', $request->alumni_id],['question_id', '=', 12]])->value('answer');
 
-        $sem_3 = PdsAnswers::where([['alumni_id', '=', Auth::user()->alumni_id],['question_id', '=', 13]])->value('answer');
-        $sem_date_3 = PdsAnswers::where([['alumni_id', '=', Auth::user()->alumni_id],['question_id', '=', 14]])->value('answer');
+        $sem_3 = PdsAnswers::where([['alumni_id', '=', $request->alumni_id],['question_id', '=', 13]])->value('answer');
+        $sem_date_3 = PdsAnswers::where([['alumni_id', '=', $request->alumni_id],['question_id', '=', 14]])->value('answer');
 
-        $signature_date = date('F d, Y', strtotime(PdsAnswers::where([['alumni_id', '=', Auth::user()->alumni_id],['question_id', '=', 15]])->value('answer')));
-        $signature = strtoupper(PdsAnswers::where([['alumni_id', '=', Auth::user()->alumni_id],['question_id', '=', 16]])->value('answer'));
+        $signature_date = date('F d, Y', strtotime(PdsAnswers::where([['alumni_id', '=', $request->alumni_id],['question_id', '=', 15]])->value('answer')));
+        $signature = strtoupper(PdsAnswers::where([['alumni_id', '=', $request->alumni_id],['question_id', '=', 16]])->value('answer'));
 
         foreach($users as $user)
         {
@@ -107,25 +107,25 @@ class PdsToPdfController extends Controller
             // set font
             // add a page
             $pdf->AddPage();
-            $pdf->SetFont('times', 'B', 14);
+            $pdf->SetFont('times', 'B', 13);
             $pdf->ln(20);
             $pdf->Cell(0, 0, 'PERSONAL DATA SHEET', 0, 1, 'C', 0, '', 0);
 
             $pdf->ln(10);
-            $pdf->SetFont('times', '', 13);
+            $pdf->SetFont('times', '', 12);
             $html = <<<EOF
               <table style="width:100%">
                 <tr>
-                    <th colspan="1" style="width: 10%; font-weight: bold;">Name: </th>
+                    <th colspan="1" style="width: 8%; font-weight: bold;">Name: </th>
                     <td colspan="1" style="text-align: center; width: 30%">$user->last_name </td>
-                    <td colspan="1" style="text-align: center; width: 30%">$user->first_name $user->suffix </td>
+                    <td colspan="1" style="text-align: center; width: 32%">$user->first_name $user->suffix </td>
                     <td colspan="1" style="text-align: center; width: 30%">$user->middle_name </td>
                 </tr>
                 <tr>
                     <td></td>
-                    <td style="text-align: center; font-size:13px; border-top: 1px solid black;">Surname</td>
-                    <td style="text-align: center; font-size:13px; border-top: 1px solid black;">First Name</td>
-                    <td style="text-align: center; font-size:13px; border-top: 1px solid black;">Middle Name</td>
+                    <td style="text-align: center; font-size:12px; border-top: 1px solid black;"><i>Surname</i></td>
+                    <td style="text-align: center; font-size:12px; border-top: 1px solid black;"><i>First Name</i></td>
+                    <td style="text-align: center; font-size:12px; border-top: 1px solid black;"><i>Middle Name</i></td>
                     <td></td>
                     <td></td>
                     <td style="border-top: 1px solid black;"></td>
@@ -139,10 +139,10 @@ class PdsToPdfController extends Controller
             $html = <<<EOF
               <table style="width:100%; margin-top: 300px;">
                 <tr>
-                    <th colspan="1" style="width: 17%; font-weight: bold;">Date of Birth: </th>
+                    <th colspan="1" style="width: 16%; font-weight: bold;">Date of Birth: </th>
                     <td colspan="1" style="border-bottom: 1px solid black; width: 25%;"> $bday </td>
                     <td colspan="1" style="width: 10%;"></td>
-                    <th colspan="1" style="width: 7%; font-weight: bold;">Age: </th>
+                    <th colspan="1" style="width: 6%; font-weight: bold;">Age: </th>
                     <td colspan="1" style="border-bottom: 1px solid black; width: 17%;"> $user->age years old</td>
                 </tr>
               </table>
@@ -154,10 +154,10 @@ class PdsToPdfController extends Controller
             $html = <<<EOF
               <table style="width:100%; margin-top: 300px;">
                 <tr>
-                    <th colspan="1" style="width: 12%; font-weight: bold;">Religion: </th>
+                    <th colspan="1" style="width: 11%; font-weight: bold;">Religion: </th>
                     <td colspan="1" style="border-bottom: 1px solid black; width: 30%;"> $user->religion </td>
                     <td colspan="1" style="width: 10%;"></td>
-                    <th colspan="1" style="width: 7%; font-weight: bold;">Sex: </th>
+                    <th colspan="1" style="width: 6%; font-weight: bold;">Sex: </th>
                     <td colspan="1" style="border-bottom: 1px solid black; width: 17%;"> $user->sex </td>
                 </tr>
               </table>
@@ -169,8 +169,8 @@ class PdsToPdfController extends Controller
             $html = <<<EOF
               <table style="width:100%; margin-top: 10px;">
                 <tr>
-                    <th colspan="1" style="width: 19%; font-weight: bold;">Degree/Course: </th>
-                    <td colspan="1" style="border-bottom: 1px solid black; width: 81%;"> $course </td>
+                    <th colspan="1" style="width: 17%; font-weight: bold;">Degree/Course: </th>
+                    <td colspan="1" style="border-bottom: 1px solid black; width: 83%;"> $course </td>
                 </tr>
               </table>
             EOF;
@@ -180,7 +180,7 @@ class PdsToPdfController extends Controller
             $html = <<<EOF
               <table style="width:100%; margin-top: 10px;">
                 <tr>
-                    <th colspan="1" style="width: 20%; font-weight: bold;">Year Graduated: </th>
+                    <th colspan="1" style="width: 19%; font-weight: bold;">Year Graduated: </th>
                     <td colspan="1" style="border-bottom: 1px solid black; width: 10%;"> $user->batch </td>
                 </tr>
               </table>
@@ -191,8 +191,8 @@ class PdsToPdfController extends Controller
             $html = <<<EOF
                 <table style="width:100%; margin-top: 10px;">
                   <tr>
-                      <th colspan="1" style="width: 17%; font-weight: bold;">City Address: </th>
-                      <td colspan="1" style="border-bottom: 1px solid black; width: 83%;"> $user->city_address </td>
+                      <th colspan="1" style="width: 16%; font-weight: bold;">City Address: </th>
+                      <td colspan="1" style="border-bottom: 1px solid black; width: 84%;"> $user->city_address </td>
                   </tr>
                 </table>
             EOF;
@@ -202,8 +202,8 @@ class PdsToPdfController extends Controller
             $html = <<<EOF
                 <table style="width:100%; margin-top: 10px;">
                   <tr>
-                      <th colspan="1" style="width: 23%; font-weight: bold;">Provincial Address: </th>
-                      <td colspan="1" style="border-bottom: 1px solid black; width: 77%;"> $user->provincial_address </td>
+                      <th colspan="1" style="width: 22%; font-weight: bold;">Provincial Address: </th>
+                      <td colspan="1" style="border-bottom: 1px solid black; width: 78%;"> $user->provincial_address </td>
                   </tr>
                 </table>
             EOF;
@@ -213,11 +213,11 @@ class PdsToPdfController extends Controller
             $html = <<<EOF
                 <table style="width:100%; margin-top: 10px;">
                     <tr>
-                        <th colspan="1" style="width: 19%; font-weight: bold;">Father's Name: </th>
-                        <td colspan="1" style="border-bottom: 1px solid black; width: 38%;">$fathers_name</td>
-                        <td colspan="1" style="width: 5%;"></td>
-                        <th colspan="1" style="width: 16%; font-weight: bold;">Father's No.: </th>
-                        <td colspan="1" style="border-bottom: 1px solid black; width: 22%;">$fathers_number</td>
+                        <th colspan="1" style="width: 17%; font-weight: bold;">Father's Name: </th>
+                        <td colspan="1" style="border-bottom: 1px solid black; width: 39%;">$fathers_name</td>
+                        <td colspan="1" style="width: 6%;"></td>
+                        <th colspan="1" style="width: 15%; font-weight: bold;">Father's No.: </th>
+                        <td colspan="1" style="border-bottom: 1px solid black; width: 23%;">$fathers_number</td>
                     </tr>
                 </table>
             EOF;
@@ -227,11 +227,11 @@ class PdsToPdfController extends Controller
             $html = <<<EOF
                 <table style="width:100%; margin-top: 10px;">
                     <tr>
-                        <th colspan="1" style="width: 19%; font-weight: bold;">Mother's Name: </th>
+                        <th colspan="1" style="width: 18%; font-weight: bold;">Mother's Name: </th>
                         <td colspan="1" style="border-bottom: 1px solid black; width: 38%;">$mothers_name</td>
-                        <td colspan="1" style="width: 5%;"></td>
-                        <th colspan="1" style="width: 17%; font-weight: bold;">Mother's No.: </th>
-                        <td colspan="1" style="border-bottom: 1px solid black; width: 21%;">$mothers_number</td>
+                        <td colspan="1" style="width: 6%;"></td>
+                        <th colspan="1" style="width: 16%; font-weight: bold;">Mother's No.: </th>
+                        <td colspan="1" style="border-bottom: 1px solid black; width: 22%;">$mothers_number</td>
                     </tr>
                 </table>
             EOF;
@@ -311,16 +311,16 @@ class PdsToPdfController extends Controller
                     <table style="width:100%;">
                         <tr>
                             <td colspan="1" style="width: 20%; text-align: center; text-transform: uppercase;"></td>
-                            <td style="width: 20%"></td>
-                            <td colspan="1" style="width: 60%; text-align: center; text-transform: uppercase;">$signature</td>
+                            <td style="width: 25%"></td>
+                            <td colspan="1" style="width: 55%; text-align: center; text-transform: uppercase;">$signature</td>
                         </tr>
                         <tr>
                             <td colspan="1" style="width: 20%; text-align: center;">
 
                             </td>
-                            <td style="width: 20%"></td>
-                            <td colspan="1" style="width: 60%; text-align: center; border-top: 1px solid black;">
-                                Signature
+                            <td style="width: 25%"></td>
+                            <td colspan="1" style="font-size:14px; width: 55%; text-align: center; border-top: 1px solid black;">
+                                <i>Signature</i>
                             </td>
                         </tr>
                     </table>
@@ -337,17 +337,17 @@ class PdsToPdfController extends Controller
                     <p></p>
                     <table style="width:100%;">
                         <tr>
-                            <td colspan="1" style="width: 30%; text-align: center; text-transform: uppercase;">$signature_date</td>
-                            <td style="width: 10%"></td>
-                            <td colspan="1" style="width: 60%; text-align: center; text-transform: uppercase;">$signature</td>
+                            <td colspan="1" style="width: 25%; text-align: center; text-transform: uppercase;">$signature_date</td>
+                            <td style="width: 20%"></td>
+                            <td colspan="1" style="width: 55%; text-align: center; text-transform: uppercase;">$signature</td>
                         </tr>
                         <tr>
-                            <td colspan="1" style="width: 30%; text-align: center; border-top: 1px solid black;">
-                                Date
+                            <td colspan="1" style="font-size: 14px; width: 25%; text-align: center; border-top: 1px solid black;">
+                                <i>Date</i>
                             </td>
-                            <td style="width: 10%"></td>
-                            <td colspan="1" style="width: 60%; text-align: center; border-top: 1px solid black;">
-                                Signature
+                            <td style="width: 20%"></td>
+                            <td colspan="1" style="font-size: 14px; width: 55%; text-align: center; border-top: 1px solid black;">
+                                <i>Signature</i>
                             </td>
                         </tr>
                     </table>

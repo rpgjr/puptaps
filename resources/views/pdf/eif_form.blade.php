@@ -8,7 +8,12 @@
         .checkbox-design {
             font-size: 20rem;
             color: #000000;
-
+            padding-right: 0;
+            margin-right: 0;
+        }
+        span {
+            margin-left: 0;
+            padding-left: 0;
         }
     </style>
 </head>

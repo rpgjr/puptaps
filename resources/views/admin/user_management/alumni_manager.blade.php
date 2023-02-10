@@ -78,9 +78,8 @@
                                     <td>{{ $alum->batch }}</td>
                                     <td class="text-center">
                                         @if ($PDS->contains('alumni_id', $alum->alumni_id))
-                                            <form action="{{ route("adminGetPdf.downloadPDS") }}" method="POST" target="_blank">
+                                            <form action="{{ route("userForm.PDS_to_PDF") }}" method="POST" target="_blank">
                                                 @csrf
-
                                                 <input type="hidden" name="alumni_id" value="{{ $alum->alumni_id }}">
                                                 <button type="submit" class="fs-7 btn btn-success px-2">PDS <i class="fa-solid fa-file-pdf"></i></button>
                                             </form>
@@ -90,7 +89,7 @@
                                     </td>
                                     <td class="text-center">
                                         @if ($EIF->contains('alumni_id', $alum->alumni_id))
-                                            <form action="{{ route("adminGetPdf.downloadEI") }}" method="POST" target="_blank">
+                                            <form action="{{ route("userForm.EIF_TO_PDF") }}" method="POST" target="_blank">
                                                 @csrf
 
                                                 <input type="hidden" name="alumni_id" value="{{ $alum->alumni_id }}">
@@ -102,7 +101,7 @@
                                     </td>
                                     <td class="text-center">
                                         @if ($SAS->contains('alumni_id', $alum->alumni_id))
-                                            <form action="{{ route("adminGetPdf.downloadSAS") }}" method="POST" target="_blank">
+                                            <form action="{{ route("userForm.SAS_TO_PDF") }}" method="POST" target="_blank">
                                                 @csrf
 
                                                 <input type="hidden" name="alumni_id" value="{{ $alum->alumni_id }}">

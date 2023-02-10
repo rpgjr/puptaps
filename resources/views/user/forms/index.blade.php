@@ -59,6 +59,7 @@
                                     @if (count($pdsAnswer) > 0)
                                         <form action="{{ route('userForm.PDS_to_PDF') }}" method="post" target="__blank">
                                             @csrf
+                                            <input type="hidden" value="{{ Auth::user()->alumni_id }}" name="alumni_id">
                                             <button type="submit" class="btn btn-success fs-7">Print</button>
                                         </form>
                                     @else
@@ -88,6 +89,7 @@
                                     @if (count($eifAnswer) > 0)
                                         <form action="{{ route('userForm.EIF_TO_PDF') }}" method="post" target="__blank">
                                             @csrf
+                                            <input type="hidden" value="{{ Auth::user()->alumni_id }}" name="alumni_id">
                                             <button type="submit" class="btn btn-success fs-7">Print</button>
                                         </form>
                                     @else
@@ -117,6 +119,7 @@
                                     @if (count($sasAnswer) > 0)
                                         <form action="{{ route('userForm.SAS_TO_PDF') }}" method="post" target="__blank">
                                             @csrf
+                                            <input type="hidden" value="{{ Auth::user()->alumni_id }}" name="alumni_id">
                                             <button type="submit" class="btn btn-success fs-7">Print</button>
                                         </form>
                                     @else

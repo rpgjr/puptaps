@@ -60,32 +60,32 @@ class MYPDF extends TCPDF {
 
 class EifToPdfController extends Controller
 {
-    public function EIF_TO_PDF() {
-        $users = Alumni::where('alumni_id', '=', Auth::user()->alumni_id)->get();
+    public function EIF_TO_PDF(Request $request) {
+        $users = Alumni::where('alumni_id', '=', $request->alumni_id)->get();
 
-        $employment = EifAnswers::where([['alumni_id', '=', Auth::user()->alumni_id],['question_id', '=', 2]])->value('answer');
+        $employment = EifAnswers::where([['alumni_id', '=', $request->alumni_id],['question_id', '=', 2]])->value('answer');
 
-        $overalls = EifAnswers::whereIn('question_id', [4, 5, 6, 7, 8, 9, 10])->where('alumni_id', '=', Auth::user()->alumni_id)->get('answer');
+        $overalls = EifAnswers::whereIn('question_id', [4, 5, 6, 7, 8, 9, 10])->where('alumni_id', '=', $request->alumni_id)->get('answer');
         $arrayOverall = [];
         foreach($overalls as $overall) {
             array_push($arrayOverall, $overall->answer);
         }
 
-        $offices = EifAnswers::whereIn('question_id', [11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46])->where('alumni_id', '=', Auth::user()->alumni_id)->get('answer');
+        $offices = EifAnswers::whereIn('question_id', [11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46])->where('alumni_id', '=', $request->alumni_id)->get('answer');
         $arrayOffices = [];
         foreach($offices as $office) {
             array_push($arrayOffices, $office->answer);
         }
 
-        $PupOveralls = EifAnswers::whereIn('question_id', [47, 48, 49])->where('alumni_id', '=', Auth::user()->alumni_id)->get('answer');
+        $PupOveralls = EifAnswers::whereIn('question_id', [47, 48, 49])->where('alumni_id', '=', $request->alumni_id)->get('answer');
         $arrayPupOverall = [];
         foreach($PupOveralls as $PupOverall) {
             array_push($arrayPupOverall, $PupOverall->answer);
         }
 
-        $comment = EifAnswers::where([['alumni_id', '=', Auth::user()->alumni_id],['question_id', '=', 50]])->value('answer');
+        $comment = EifAnswers::where([['alumni_id', '=', $request->alumni_id],['question_id', '=', 50]])->value('answer');
 
-        $signature = strtoupper(EifAnswers::where([['alumni_id', '=', Auth::user()->alumni_id],['question_id', '=', 52]])->value('answer'));
+        $signature = strtoupper(EifAnswers::where([['alumni_id', '=', $request->alumni_id],['question_id', '=', 52]])->value('answer'));
 
         foreach($users as $user)
         {
@@ -114,11 +114,11 @@ class EifToPdfController extends Controller
             // add a page
             $pdf->AddPage();
             $pdf->SetPrintHeader(false);
-            $pdf->SetFont('times', 'B', 14);
+            $pdf->SetFont('times', 'B', 13);
             $pdf->ln(20);
             $pdf->Cell(0, 0, 'EXIT INTERVIEW FORM', 0, 1, 'C', 0, '', 0);
 
-            $pdf->ln(10);
+            $pdf->ln(12);
             $pdf->SetFont('times', '', 12);
             $html = <<<EOF
               <p><u><b>PERSONAL INFORMATION</b></u></p>
@@ -126,20 +126,20 @@ class EifToPdfController extends Controller
             $pdf->writeHTML($html, true, 0, true, 0);
 
             $pdf->ln(5);
-            $pdf->SetFont('times', '', 13);
+            $pdf->SetFont('times', '', 12);
             $html = <<<EOF
               <table style="width:100%">
                 <tr>
-                    <th colspan="1" style="width: 10%; font-weight: bold;">Name: </th>
+                    <th colspan="1" style="width: 8%; font-weight: bold;">Name: </th>
                     <td colspan="1" style="text-align: center; width: 30%">$user->last_name </td>
-                    <td colspan="1" style="text-align: center; width: 30%">$user->first_name $user->suffix </td>
+                    <td colspan="1" style="text-align: center; width: 32%">$user->first_name $user->suffix </td>
                     <td colspan="1" style="text-align: center; width: 30%">$user->middle_name </td>
                 </tr>
                 <tr>
                     <td></td>
-                    <td style="text-align: center; font-size:13px; border-top: 1px solid black;">Surname</td>
-                    <td style="text-align: center; font-size:13px; border-top: 1px solid black;">First Name</td>
-                    <td style="text-align: center; font-size:13px; border-top: 1px solid black;">Middle Name</td>
+                    <td style="text-align: center; font-size:12px; border-top: 1px solid black;"><i>Surname</i></td>
+                    <td style="text-align: center; font-size:12px; border-top: 1px solid black;"><i>First Name</i></td>
+                    <td style="text-align: center; font-size:12px; border-top: 1px solid black;"><i>Middle Name</i></td>
                 </tr>
               </table>
             EOF;
@@ -151,11 +151,11 @@ class EifToPdfController extends Controller
                 <tr>
                     <th colspan="1" style="width: 6%; font-weight: bold;">Sex: </th>
                     <td colspan="1" style="border-bottom: 1px solid black; width: 13%;"> $user->sex </td>
-                    <td colspan="1" style="width: 11%;"></td>
-                    <th colspan="1" style="width: 7%; font-weight: bold;">Age: </th>
+                    <td colspan="1" style="width: 12%;"></td>
+                    <th colspan="1" style="width: 6%; font-weight: bold;">Age: </th>
                     <td colspan="1" style="border-bottom: 1px solid black; width: 17%;"> $user->age years old</td>
-                    <td colspan="1" style="width: 11%;"></td>
-                    <th colspan="1" style="width: 15%; font-weight: bold;">Civil Status: </th>
+                    <td colspan="1" style="width: 12%;"></td>
+                    <th colspan="1" style="width: 14%; font-weight: bold;">Civil Status: </th>
                     <td colspan="1" style="border-bottom: 1px solid black; width: 20%;"> $user->civil_status </td>
                 </tr>
               </table>
@@ -166,10 +166,10 @@ class EifToPdfController extends Controller
             $html = <<<EOF
               <table style="width:100%; margin-top: 10px;">
                 <tr>
-                    <th colspan="1" style="width: 9%; font-weight: bold;">Email: </th>
+                    <th colspan="1" style="width: 8%; font-weight: bold;">Email: </th>
                     <td colspan="1" style="border-bottom: 1px solid black; width: 45%;"> $user->email </td>
-                    <td style="width: 5%;"></td>
-                    <th colspan="1" style="width: 21%; font-weight: bold;">Contact Number: </th>
+                    <td style="width: 8%;"></td>
+                    <th colspan="1" style="width: 19%; font-weight: bold;">Contact Number: </th>
                     <td colspan="1" style="border-bottom: 1px solid black; width: 20%;"> $user->number </td>
                 </tr>
               </table>
@@ -181,8 +181,8 @@ class EifToPdfController extends Controller
             $html = <<<EOF
               <table style="width:100%; margin-top: 10px;">
                 <tr>
-                    <th colspan="1" style="width: 19%; font-weight: bold;">Degree/Course: </th>
-                    <td colspan="1" style="border-bottom: 1px solid black; width: 81%;"> $course </td>
+                    <th colspan="1" style="width: 17%; font-weight: bold;">Degree/Course: </th>
+                    <td colspan="1" style="border-bottom: 1px solid black; width: 83%;"> $course </td>
                 </tr>
               </table>
             EOF;
@@ -192,7 +192,7 @@ class EifToPdfController extends Controller
             $html = <<<EOF
               <table style="width:100%; margin-top: 10px;">
                 <tr>
-                    <th colspan="1" style="width: 21%; font-weight: bold;">Student Number: </th>
+                    <th colspan="1" style="width: 19%; font-weight: bold;">Student Number: </th>
                     <td colspan="1" style="border-bottom: 1px solid black; width: 25%;"> $user->stud_number </td>
                 </tr>
               </table>
@@ -203,8 +203,8 @@ class EifToPdfController extends Controller
             $html = <<<EOF
                 <table style="width:100%; margin-top: 10px;">
                   <tr>
-                      <th colspan="1" style="width: 17%; font-weight: bold;">City Address: </th>
-                      <td colspan="1" style="border-bottom: 1px solid black; width: 83%;"> $user->city_address </td>
+                      <th colspan="1" style="width: 16%; font-weight: bold;">City Address: </th>
+                      <td colspan="1" style="border-bottom: 1px solid black; width: 84%;"> $user->city_address </td>
                   </tr>
                 </table>
             EOF;
@@ -214,20 +214,20 @@ class EifToPdfController extends Controller
             $html = <<<EOF
               <table style="width:100%">
                 <tr>
-                    <th colspan="1" style="width: 16%; font-weight: bold;">If Employed: </th>
-                    <td colspan="3" style="text-align: center; width: 84%"> $employment </td>
+                    <th colspan="1" style="width: 15%; font-weight: bold;">If Employed: </th>
+                    <td colspan="3" style="text-align: center; width: 85%"> $employment </td>
                 </tr>
                 <tr>
                     <td></td>
-                    <td style="text-align: center; font-size:13px; border-top: 1px solid black;">Position</td>
-                    <td style="text-align: center; font-size:13px; border-top: 1px solid black;">Company/Company Address</td>
-                    <td style="text-align: center; font-size:13px; border-top: 1px solid black;">Telephone Number</td>
+                    <td style="text-align: center; font-size:12px; border-top: 1px solid black;"><i>Position</i></td>
+                    <td style="text-align: center; font-size:12px; border-top: 1px solid black;"><i>Company/Company Address</i></td>
+                    <td style="text-align: center; font-size:12px; border-top: 1px solid black;"><i>Telephone Number</i></td>
                 </tr>
               </table>
             EOF;
             $pdf->writeHTML($html, true, 0, true, 0);
 
-            $pdf->ln(10);
+            $pdf->ln(12);
             $pdf->SetFont('times', '', 12);
             $html = <<<EOF
               <p><u><b>EXIT SURVEY</b></u></p>
@@ -235,9 +235,9 @@ class EifToPdfController extends Controller
             $pdf->writeHTML($html, true, 0, true, 0);
 
             $pdf->ln(-10);
-            $pdf->SetFont('times', '', 13);
+            $pdf->SetFont('times', '', 12);
             $data = [
-                'reason' => EifAnswers::where([['alumni_id', '=', Auth::user()->alumni_id],['question_id', '=', 3]])->value('answer'),
+                'reason' => EifAnswers::where([['alumni_id', '=', $request->alumni_id],['question_id', '=', 3]])->value('answer'),
             ];
             $view = View::make('pdf.eif_form', $data);
             $html = $view->render();
@@ -269,8 +269,8 @@ class EifToPdfController extends Controller
                 <br>
                 <table class="table-EI" style="width:100%;">
                     <tr>
-                        <td class="th-EI" colspan="1" style="width: 70%"></td>
-                        <th class="th-EI" colspan="1" style="width: 30%; text-align:center;">Ratings</th>
+                        <td class="th-EI" colspan="1" style="width: 80%"></td>
+                        <th class="th-EI" colspan="1" style="width: 20%; text-align:center;">Ratings</th>
                     </tr>
                     <tr>
                         <th class="td-EI">Academic Standard</th>
@@ -468,15 +468,15 @@ class EifToPdfController extends Controller
                 <p></p>
                 <table style="width:100%;">
                     <tr>
-                        <td style="width: 50%;"></td>
-                        <td colspan="1" style="width: 50%; text-align: center; text-transform: uppercase;">
+                        <td style="width: 45%;"></td>
+                        <td colspan="1" style="width: 55%; text-align: center; text-transform: uppercase;">
                             $signature
                         </td>
                     </tr>
                     <tr>
-                        <td style="width: 50%;"></td>
-                        <td colspan="1" style="width: 50%; text-align: center; border-top: 1px solid black;">
-                            Signature
+                        <td style="width: 45%;"></td>
+                        <td colspan="1" style="font-size: 14px; width: 55%; text-align: center; border-top: 1px solid black;">
+                            <i>Signature</i>
                         </td>
                     </tr>
                 </table>
