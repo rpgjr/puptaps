@@ -74,17 +74,24 @@ class TracerReportsController extends Controller
     }
 
     public function tracerSummaryReport($request) {
-        $courses = Courses::all();
-        $getAlumni = Alumni::select('course_id', DB::raw('count(alumni_id) as alumni_id'))
-                    ->where('course_id', 'like', '%' . $request->course_id . '%')
-                    ->whereBetween('batch', [$request->batch_from, $request->batch_to])
-                    ->groupBy('course_id')->get();
+        $totalRespondents = TracerAnswers::where('question_id', '=', 1)->join('tbl_alumni', 'tbl_alumni.alumni_id', '=', 'tbl_tracer_answers.alumni_id')->whereBetween('batch', [$request->batch_from, $request->batch_to])->get();
+        $allAlumni = Alumni::whereBetween('batch', [$request->batch_from, $request->batch_to])->get();
 
-        $total = TracerAnswers::where('question_id', '=', 1)->join('tbl_alumni', 'tbl_alumni.alumni_id', '=', 'tbl_tracer_answers.alumni_id')->whereBetween('batch', [$request->batch_from, $request->batch_to])->get();
+        $total = 0;
+        foreach ($allAlumni as $alumni) {
+            $checkAlumni = TracerAnswers::where('alumni_id', '=', $alumni->alumni_id)->get();
+            foreach ($checkAlumni as $check) {
+                if ($check->question_id == 6) {
+                    if ($check->answer != 'Unemployed') {
+                        $total++;
+                    }
+                }
+            }
+        }
 
-        if (count($total) > 0 || count($total) != null) {
-            $answer1_1 = TracerAnswers::where('question_id', '=', 1)->where('answer', '!=', 'Yes')->join('tbl_alumni', 'tbl_alumni.alumni_id', '=', 'tbl_tracer_answers.alumni_id')->whereBetween('batch', [$request->batch_from, $request->batch_to])->get();
-            $answer2_1 = TracerAnswers::where('question_id', '=', 2)->where('answer', '!=', 'Yes')->join('tbl_alumni', 'tbl_alumni.alumni_id', '=', 'tbl_tracer_answers.alumni_id')->whereBetween('batch', [$request->batch_from, $request->batch_to])->get();
+        if ($total > 0) {
+            $answer1_1 = TracerAnswers::where('question_id', '=', 1)->where('answer', '=', 'Yes')->join('tbl_alumni', 'tbl_alumni.alumni_id', '=', 'tbl_tracer_answers.alumni_id')->whereBetween('batch', [$request->batch_from, $request->batch_to])->get();
+            $answer2_1 = TracerAnswers::where('question_id', '=', 2)->where('answer', '=', 'Yes')->join('tbl_alumni', 'tbl_alumni.alumni_id', '=', 'tbl_tracer_answers.alumni_id')->whereBetween('batch', [$request->batch_from, $request->batch_to])->get();
 
             $answer3_1 = TracerAnswers::where('question_id', '=', 3)->where('answer', '=', 'Electronics Engineer Licensure Examination')->join('tbl_alumni', 'tbl_alumni.alumni_id', '=', 'tbl_tracer_answers.alumni_id')->whereBetween('batch', [$request->batch_from, $request->batch_to])->get();
             $answer3_2 = TracerAnswers::where('question_id', '=', 3)->where('answer', '=', 'Licensure Examination for Teachers')->join('tbl_alumni', 'tbl_alumni.alumni_id', '=', 'tbl_tracer_answers.alumni_id')->whereBetween('batch', [$request->batch_from, $request->batch_to])->get();
@@ -93,8 +100,8 @@ class TracerReportsController extends Controller
 
             $answer5_1 = TracerAnswers::where('question_id', '=', 5)->where('answer', '=', 'Yes')->join('tbl_alumni', 'tbl_alumni.alumni_id', '=', 'tbl_tracer_answers.alumni_id')->whereBetween('batch', [$request->batch_from, $request->batch_to])->get();
 
-            $answer10_1 = TracerAnswers::where('question_id', '=', 10)->where('answer', '!=', 'Not Applicable')->join('tbl_alumni', 'tbl_alumni.alumni_id', '=', 'tbl_tracer_answers.alumni_id')->whereBetween('batch', [$request->batch_from, $request->batch_to])->get();
-            $answer10_2 = TracerAnswers::where('question_id', '=', 10)->where('answer', '=', 'Not Applicable')->join('tbl_alumni', 'tbl_alumni.alumni_id', '=', 'tbl_tracer_answers.alumni_id')->whereBetween('batch', [$request->batch_from, $request->batch_to])->get();
+            $answer10_1 = TracerAnswers::where('question_id', '=', 10)->where('answer', '!=', 'Unemployed')->join('tbl_alumni', 'tbl_alumni.alumni_id', '=', 'tbl_tracer_answers.alumni_id')->whereBetween('batch', [$request->batch_from, $request->batch_to])->get();
+            $answer10_2 = TracerAnswers::where('question_id', '=', 10)->where('answer', '=', 'Unemployed')->join('tbl_alumni', 'tbl_alumni.alumni_id', '=', 'tbl_tracer_answers.alumni_id')->whereBetween('batch', [$request->batch_from, $request->batch_to])->get();
 
             $answer14_1 = TracerAnswers::where('question_id', '=', 14)->where('answer', '=', 'Yes')->join('tbl_alumni', 'tbl_alumni.alumni_id', '=', 'tbl_tracer_answers.alumni_id')->whereBetween('batch', [$request->batch_from, $request->batch_to])->get();
             $answer14_2 = TracerAnswers::where('question_id', '=', 14)->where('answer', '=', 'No')->join('tbl_alumni', 'tbl_alumni.alumni_id', '=', 'tbl_tracer_answers.alumni_id')->whereBetween('batch', [$request->batch_from, $request->batch_to])->get();
@@ -165,22 +172,22 @@ class TracerReportsController extends Controller
                         <tr>
                             <th class="th-EI" colspan="1" style="width: 67%;">Alumni who are currently Employed</th>
                             <td class="th-EI" colspan="1" style="width: 18%;">'. count($answer10_1) . '</td>
-                            <td class="th-EI" colspan="1" style="width: 15%;">'. number_format(count($answer10_1)/count($total)*100, 2, '.', '') . '%' .'</td>
+                            <td class="th-EI" colspan="1" style="width: 15%;">'. number_format(count($answer10_1)/count($totalRespondents)*100, 2, '.', '') . '%' .'</td>
                         </tr>
                         <tr>
                             <th class="th-EI" colspan="1" style="width: 67%;">Alumni who are currently Unemployed</th>
                             <td class="th-EI" colspan="1" style="width: 18%;">'. count($answer10_2) .'</td>
-                            <td class="th-EI" colspan="1" style="width: 15%;">'. number_format(count($answer10_2)/count($total)*100, 2, '.', '') . '%' .'</td>
+                            <td class="th-EI" colspan="1" style="width: 15%;">'. number_format(count($answer10_2)/count($totalRespondents)*100, 2, '.', '') . '%' .'</td>
                         </tr>
                         <tr>
                             <th class="th-EI" colspan="1" style="width: 67%;">Alumni whose Current Job is related to the course/program graduated in PUP Taguig</th>
                             <td class="th-EI" colspan="1" style="width: 18%;">'. count($answer14_1) .'</td>
-                            <td class="th-EI" colspan="1" style="width: 15%;">'. number_format(count($answer14_1)/count($total)*100, 2, '.', '') . '%' .'</td>
+                            <td class="th-EI" colspan="1" style="width: 15%;">'. number_format(count($answer14_1)/$total*100, 2, '.', '') . '%' .'</td>
                         </tr>
                         <tr>
                             <th class="th-EI" colspan="1" style="width: 67%;">Alumni whose Current Job is NOT related to the course/program graduated in PUP Taguig</th>
                             <td class="th-EI" colspan="1" style="width: 18%;">'. count($answer14_2) .'</td>
-                            <td class="th-EI" colspan="1" style="width: 15%;">'. number_format(count($answer14_2)/count($total)*100, 2, '.', '') . '%' .'</td>
+                            <td class="th-EI" colspan="1" style="width: 15%;">'. number_format(count($answer14_2)/$total*100, 2, '.', '') . '%' .'</td>
                         </tr>
                     </table>';
 
@@ -219,37 +226,37 @@ class TracerReportsController extends Controller
                         <tr>
                             <th class="th-EI" colspan="1" style="width: 67%;">Alumni who passed the Board Exams</th>
                             <td class="th-EI" colspan="1" style="width: 18%;">'. count($answer1_1) . '</td>
-                            <td class="th-EI" colspan="1" style="width: 15%;">'. number_format(count($answer1_1)/count($total)*100, 2, '.', '') . '%' .'</td>
+                            <td class="th-EI" colspan="1" style="width: 15%;">'. number_format(count($answer1_1)/count($totalRespondents)*100, 2, '.', '') . '%' .'</td>
                         </tr>
                         <tr>
                             <th class="th-EI" colspan="1" style="width: 67%;">Alumni who has a license related to the course/program graduated in PUP Taguig</th>
                             <td class="th-EI" colspan="1" style="width: 18%;">'. count($answer2_1) . '</td>
-                            <td class="th-EI" colspan="1" style="width: 15%;">'. number_format(count($answer2_1)/count($total)*100, 2, '.', '') . '%' .'</td>
+                            <td class="th-EI" colspan="1" style="width: 15%;">'. number_format(count($answer2_1)/count($totalRespondents)*100, 2, '.', '') . '%' .'</td>
                         </tr>
                         <tr>
                             <th class="th-EI" colspan="1" style="width: 67%;">Alumni who passed the Electronics Engineer Licensure Examination</th>
                             <td class="th-EI" colspan="1" style="width: 18%;">'. count($answer3_1) . '</td>
-                            <td class="th-EI" colspan="1" style="width: 15%;">'. number_format(count($answer3_1)/count($total)*100, 2, '.', '') . '%' .'</td>
+                            <td class="th-EI" colspan="1" style="width: 15%;">'. number_format(count($answer3_1)/count($totalRespondents)*100, 2, '.', '') . '%' .'</td>
                         </tr>
                         <tr>
                             <th class="th-EI" colspan="1" style="width: 67%;">Alumni who passed the Licensure Examination for Teachers</th>
                             <td class="th-EI" colspan="1" style="width: 18%;">'. count($answer3_2) . '</td>
-                            <td class="th-EI" colspan="1" style="width: 15%;">'. number_format(count($answer3_2)/count($total)*100, 2, '.', '') . '%' .'</td>
+                            <td class="th-EI" colspan="1" style="width: 15%;">'. number_format(count($answer3_2)/count($totalRespondents)*100, 2, '.', '') . '%' .'</td>
                         </tr>
                         <tr>
                             <th class="th-EI" colspan="1" style="width: 67%;">Alumni who passed the Certified Public Accountant Board Exam</th>
                             <td class="th-EI" colspan="1" style="width: 18%;">'. count($answer3_3) . '</td>
-                            <td class="th-EI" colspan="1" style="width: 15%;">'. number_format(count($answer3_3)/count($total)*100, 2, '.', '') . '%' .'</td>
+                            <td class="th-EI" colspan="1" style="width: 15%;">'. number_format(count($answer3_3)/count($totalRespondents)*100, 2, '.', '') . '%' .'</td>
                         </tr>
                         <tr>
                             <th class="th-EI" colspan="1" style="width: 67%;">Alumni who passed the Professional Mechanical Engineer Exam</th>
                             <td class="th-EI" colspan="1" style="width: 18%;">'. count($answer3_4)  . '</td>
-                            <td class="th-EI" colspan="1" style="width: 15%;">'. number_format(count($answer3_4)/count($total)*100, 2, '.', '') . '%' .'</td>
+                            <td class="th-EI" colspan="1" style="width: 15%;">'. number_format(count($answer3_4)/count($totalRespondents)*100, 2, '.', '') . '%' .'</td>
                         </tr>
                         <tr>
                             <th class="th-EI" colspan="1" style="width: 67%;">Alumni who passed the Civil Service Examination</th>
                             <td class="th-EI" colspan="1" style="width: 18%;">'. count($answer5_1) . '</td>
-                            <td class="th-EI" colspan="1" style="width: 15%;">'. number_format(count($answer5_1)/count($total)*100, 2, '.', '') . '%' .'</td>
+                            <td class="th-EI" colspan="1" style="width: 15%;">'. number_format(count($answer5_1)/count($totalRespondents)*100, 2, '.', '') . '%' .'</td>
                         </tr>
                     </table>';
 
@@ -581,16 +588,21 @@ class TracerReportsController extends Controller
     }
 
     public function tracerAlumniProfile($request) {
-        $allAlumni = Alumni::all();
-        $tracer_answers = TracerAnswers::all();
-        $total = TracerAnswers::where('question_id', '=', 1)->join('tbl_alumni', 'tbl_alumni.alumni_id', '=', 'tbl_tracer_answers.alumni_id')->whereBetween('batch', [$request->batch_from, $request->batch_to])->get();
+        $allAlumni = Alumni::whereBetween('batch', [$request->batch_from, $request->batch_to])->get();
 
-        // $answers = Alumni::join('tbl_tracer_answers', 'tbl_alumni.alumni_id', '=', 'tbl_tracer_answers.alumni_id')
-        //         ->whereBetween('batch', [$request->batch_from, $request->batch_to])
-        //         ->select('tbl_alumni.*', 'tbl_tracer_answers.*')
-        //         ->get();
+        $ctr = 0;
+        foreach ($allAlumni as $alumni) {
+            $checkAlumni = TracerAnswers::where('alumni_id', '=', $alumni->alumni_id)->get();
+            foreach ($checkAlumni as $check) {
+                if ($check->question_id == 6) {
+                    if ($check->answer != 'Unemployed') {
+                        $ctr++;
+                    }
+                }
+            }
+        }
 
-        if (count($total) > 0 || count($total) != null) {
+        if ($ctr > 0) {
             $pdf = new MYPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
 
             // set document information
@@ -610,11 +622,6 @@ class TracerReportsController extends Controller
 
             // set image scale factor
             $pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
-
-            // $pdf->Cell(0, 0, $answers[29]['answer'] , 0, 1, 'L', 0, '', 0);
-            // foreach ($answers as $answer) {
-            //     $pdf->Cell(0, 0, $answer->answer[0], 0, 1, 'L', 0, '', 0);
-            // }
 
             foreach ($allAlumni as $alumni) {
                 $checkAnswer = TracerAnswers::where('alumni_id', '=', $alumni->alumni_id)->get();
@@ -636,7 +643,8 @@ class TracerReportsController extends Controller
                 $fcomEmail = TracerAnswers::where('alumni_id', '=', $alumni->alumni_id)->where('question_id', '=', 19)->value('answer');
                 $fcomNumber = TracerAnswers::where('alumni_id', '=', $alumni->alumni_id)->where('question_id', '=', 20)->value('answer');
 
-                if(count($checkAnswer) > 0) {
+
+                if(count($checkAnswer) > 0 && $position != 'Unemployed' && $fposition != 'Unemployed') {
                     $pdf->SetPrintHeader(true);
                     $pdf->AddPage();
                     $pdf->SetPrintHeader(false);

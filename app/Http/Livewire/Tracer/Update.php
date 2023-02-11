@@ -50,15 +50,15 @@ class Update extends Component
     public function saveAnswer() {
         $this->validate();
 
-        $id_Q1 = TracerAnswers::where('question_id', 1)->where('alumni_id', '=', Auth::user()->alumni_id)->value('answer_id');
-        $id_Q2 = TracerAnswers::where('question_id', 2)->where('alumni_id', '=', Auth::user()->alumni_id)->value('answer_id');
-        $id_Q3 = TracerAnswers::where('question_id', 3)->where('alumni_id', '=', Auth::user()->alumni_id)->value('answer_id');
-        $id_Q4 = TracerAnswers::where('question_id', 4)->where('alumni_id', '=', Auth::user()->alumni_id)->value('answer_id');
-        $id_Q5 = TracerAnswers::where('question_id', 5)->where('alumni_id', '=', Auth::user()->alumni_id)->value('answer_id');
-        $id_Q6 = TracerAnswers::where('question_id', 6)->where('alumni_id', '=', Auth::user()->alumni_id)->value('answer_id');
-        $id_Q7 = TracerAnswers::where('question_id', 7)->where('alumni_id', '=', Auth::user()->alumni_id)->value('answer_id');
-        $id_Q8 = TracerAnswers::where('question_id', 8)->where('alumni_id', '=', Auth::user()->alumni_id)->value('answer_id');
-        $id_Q9 = TracerAnswers::where('question_id', 9)->where('alumni_id', '=', Auth::user()->alumni_id)->value('answer_id');
+        $id_Q1 = TracerAnswers::where('question_id', 6)->where('alumni_id', '=', Auth::user()->alumni_id)->value('answer_id');
+        $id_Q2 = TracerAnswers::where('question_id', 7)->where('alumni_id', '=', Auth::user()->alumni_id)->value('answer_id');
+        $id_Q3 = TracerAnswers::where('question_id', 8)->where('alumni_id', '=', Auth::user()->alumni_id)->value('answer_id');
+        $id_Q4 = TracerAnswers::where('question_id', 9)->where('alumni_id', '=', Auth::user()->alumni_id)->value('answer_id');
+        $id_Q5 = TracerAnswers::where('question_id', 10)->where('alumni_id', '=', Auth::user()->alumni_id)->value('answer_id');
+        $id_Q6 = TracerAnswers::where('question_id', 11)->where('alumni_id', '=', Auth::user()->alumni_id)->value('answer_id');
+        $id_Q7 = TracerAnswers::where('question_id', 12)->where('alumni_id', '=', Auth::user()->alumni_id)->value('answer_id');
+        $id_Q8 = TracerAnswers::where('question_id', 13)->where('alumni_id', '=', Auth::user()->alumni_id)->value('answer_id');
+        $id_Q9 = TracerAnswers::where('question_id', 14)->where('alumni_id', '=', Auth::user()->alumni_id)->value('answer_id');
 
         $update_Q1 = TracerAnswers::find($id_Q1);
         $update_Q2 = TracerAnswers::find($id_Q2);

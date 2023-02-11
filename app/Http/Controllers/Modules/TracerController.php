@@ -25,6 +25,11 @@ class TracerController extends Controller
         return view('user.tracer.answer', compact(['users', 'title']));
     }
 
+    public function getAnswerUnemployedPage() {
+        $users = Alumni::where('alumni_id', '=', Auth::user()->alumni_id)->get();
+        return view('user.tracer.answer-unemployed', compact(['users']));
+    }
+
     public function getUpdatePage() {
         $users = Alumni::where('alumni_id', '=', Auth::user()->alumni_id)->get();
         $title = "Update Tracer Form";

@@ -276,6 +276,8 @@ Route::group(
             ->name('getTracerIndex')->middleware('hasAnswerTracer');
         Route::get('update', 'getUpdatePage')
             ->name('getUpdatePage')->middleware('hasAnswerTracer');
+        Route::get('answer-tracer', 'getAnswerUnemployedPage')
+            ->name('getAnswerUnemployedPage')->middleware('hasAnswerTracer');
         Route::get('answer', 'getAnswerPage')
             ->name('getAnswerPage')->middleware('hasUnanswerTracer');
         Route::get('getAnswerModal', 'getAnswerModal')

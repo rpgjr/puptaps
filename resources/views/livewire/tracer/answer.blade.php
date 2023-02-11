@@ -1,5 +1,5 @@
 <div>
-    <form wire:submit.prevent="saveAnswer">
+    <form wire:submit.prevent="updateAnswer">
         @foreach ($categories as $category)
             @if (($currentPage == $category->category_id) && ($currentPage == $category->category_id))
 
@@ -21,15 +21,12 @@
                     <div class="row">
                         @if ($currentPage == 2)
                             <div class="col-12 mb-3">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="Unemployed" wire:model="unemployed">
-                                    <label class="form-check-label" for="flexCheckDefault">Currently Unemployed</label>
-                                </div>
+                                <button class="btn btn-light fs-7" type="button" wire:click="currentlyUnemployed()">Currently Unemployed</button>
                             </div>
                         @endif
                         @if ($currentPage == 3)
                             <div class="col-12 mb-3">
-                                <button class="btn btn-light fs-7" type="button" value="same-as-current" wire:click="sameCurrent()">Same as Current Job</button>
+                                <button class="btn btn-light fs-7" type="button" wire:click="sameCurrent()">Same as Current Job</button>
                             </div>
                         @endif
                         @foreach ($questions as $key => $value)

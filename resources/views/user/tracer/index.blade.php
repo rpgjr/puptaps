@@ -9,27 +9,6 @@
             <!-- Page Title Text H1 -->
             <livewire:components.page-title :title="$title"/>
 
-            {{-- <div class="row justify-content-center">
-                <div class="col-11 col-sm-9 col-md-9 col-lg-9 col-xl-9 mb-5">
-                    <div class="card">
-                        <div class="card-header fs-5 fw-bold">
-                            Why we need need to answer this form
-                            <i class="fa-solid fa-circle-question text-primary"></i>
-                        </div>
-                        <div class="card-body">
-                            <p class="card-text text-justify">The Alumni Tracer helps the institution to gather valuable feedback and insights. Alumni can provide valuable perspective on the quality of education they received, the impact of the institution on their career development, and any areas for improvement. This feedback can be used to inform decision-making and continuously improve the quality of education and support offered to current and future students.</p>
-                            <div class="text-center mt-4">
-                                @if (count($tracer_answers) > 0)
-                                    <a href="{{ route('userTracer.getUpdatePage') }}" type="button" class="btn btn-primary px-4 py-2">Update Tracer Form</a>
-                                @else
-                                    <a href="{{ route('userTracer.getAnswerPage') }}" type="button" class="btn btn-primary px-4 py-2">Answer Tracer Form</a>
-                                @endif
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div> --}}
-
             <div class="row justify-content-center">
                 <div class="col-11 col-sm-9 col-md-9 col-lg-9 col-xl-9 container-box pb-3 px-5">
                     @foreach ($users as $user)
@@ -52,16 +31,22 @@
                         <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3">
                             <div class="text-center text-md-end">
                                 @if (count($tracer_answers) > 0)
-                                    <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-                                        <a href="{{ route('userTracer.getUpdatePage') }}" type="button" class="btn btn-primary px-3 fs-7">Update Form</a>
-                                        <button type="button" class="btn btn-secondary fs-7 px-2" data-bs-toggle="collapse" data-bs-target="#whyTracer"><i class="fa-solid fa-circle-question text-light"></i></button>
-                                    </div>
+                                    @if ($tracer_answers[5]['answer'] == 'Unemployed')
+                                        <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                                            <a href="{{ route('userTracer.getAnswerUnemployedPage') }}" type="button" class="btn btn-primary px-3 fs-7">Answer Form</a>
+                                            <button type="button" class="btn btn-secondary fs-7 px-2" data-bs-toggle="collapse" data-bs-target="#whyTracer"><i class="fa-solid fa-circle-question text-light"></i></button>
+                                        </div>
+                                    @else
+                                        <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                                            <a href="{{ route('userTracer.getUpdatePage') }}" type="button" class="btn btn-primary px-3 fs-7">Update Form</a>
+                                            <button type="button" class="btn btn-secondary fs-7 px-2" data-bs-toggle="collapse" data-bs-target="#whyTracer"><i class="fa-solid fa-circle-question text-light"></i></button>
+                                        </div>
+                                    @endif
                                 @else
                                     <div class="btn-group" role="group" aria-label="Basic mixed styles example">
                                         <a href="{{ route('userTracer.getAnswerModal') }}" type="button" class="btn btn-primary px-3 fs-7">Answer Form</a>
                                         <button type="button" class="btn btn-secondary fs-7 px-2" data-bs-toggle="collapse" data-bs-target="#whyTracer"><i class="fa-solid fa-circle-question text-light"></i></button>
                                     </div>
-                                    {{-- <a href="{{ route('userTracer.getAnswerPage') }}" type="button" class="btn btn-primary px-3 fs-7">Answer Form</a> --}}
                                 @endif
                             </div>
                         </div>
@@ -110,28 +95,36 @@
                         <div class="col-12 col-sm-12 col-md-10 col-lg-5 col-xl-5 offset-0 offset-sm-0 offset-md-2 offset-lg-2 offset-xl-2">
                             <h4 class="mb-0 fw-bold">Current Job / Career</h4>
                             @if (count($tracer_answers) > 0)
-                                @foreach ($tracer_answers as $answers)
-                                    @if ($answers->question_id == 6)
-                                        <p class="mb-2 fs-5"><b>{{ $answers->answer }}</b></p>
-                                    @endif
-                                    @if ($answers->question_id == 7)
-                                        <p class="mb-0">At <b>{{ $answers->answer }}</b></p>
-                                    @endif
-                                    @if ($answers->question_id == 8)
-                                        <p>Since <b>{{ date('F d, Y', strtotime($answers->answer)) }}</b></p>
-                                    @endif
-                                    @if ($answers->question_id == 9)
-                                        <p class="mb-0 fw-bold">Job Description: </p>
-                                        <p class="text-justify">{{ $answers->answer }}</p>
-                                    @endif
-                                    @if ($answers->question_id == 12)
-                                        <p class="fw-bold mb-0">Company Details: </p>
-                                        <p class="mb-0">{{ $answers->answer }}</p>
-                                    @endif
-                                    @if ($answers->question_id == 13)
-                                        <p>{{ $answers->answer }}</p>
-                                    @endif
-                                @endforeach
+                                @if ($tracer_answers[5]['answer'] == 'Unemployed')
+                                    <div class="col-12">
+                                        <div class="alert alert-warning mt-5 text-center" role="alert">
+                                            No data to display yet.
+                                        </div>
+                                    </div>
+                                @else
+                                    @foreach ($tracer_answers as $answers)
+                                        @if ($answers->question_id == 6)
+                                            <p class="mb-2 fs-5"><b>{{ $answers->answer }}</b></p>
+                                        @endif
+                                        @if ($answers->question_id == 7)
+                                            <p class="mb-0">At <b>{{ $answers->answer }}</b></p>
+                                        @endif
+                                        @if ($answers->question_id == 8)
+                                            <p>Since <b>{{ date('F d, Y', strtotime($answers->answer)) }}</b></p>
+                                        @endif
+                                        @if ($answers->question_id == 9)
+                                            <p class="mb-0 fw-bold">Job Description: </p>
+                                            <p class="text-justify">{{ $answers->answer }}</p>
+                                        @endif
+                                        @if ($answers->question_id == 12)
+                                            <p class="fw-bold mb-0">Company Details: </p>
+                                            <p class="mb-0">{{ $answers->answer }}</p>
+                                        @endif
+                                        @if ($answers->question_id == 13)
+                                            <p>{{ $answers->answer }}</p>
+                                        @endif
+                                    @endforeach
+                                @endif
                             @else
                                 <div class="col-12">
                                     <div class="alert alert-warning mt-5 text-center" role="alert">
@@ -144,28 +137,36 @@
                         <div class="col-12 col-sm-12 col-md-10 col-lg-5 col-xl-5 offset-0 offset-sm-0 offset-md-2 offset-lg-0 offset-xl-0">
                             <h4 class="mb-0 fw-bold">First Job / Career</h4>
                             @if (count($tracer_answers) > 0)
-                                @foreach ($tracer_answers as $answers)
-                                    @if ($answers->question_id == 15)
-                                        <p class="mb-2 fs-5"><b>{{ $answers->answer }}</b></p>
-                                    @endif
-                                    @if ($answers->question_id == 16)
-                                        <p class="mb-0">At <b>{{ $answers->answer }}</b></p>
-                                    @endif
-                                    @if ($answers->question_id == 17)
-                                        <p>Employed on <b>{{ date('F d, Y', strtotime($answers->answer)) }}</b></p>
-                                    @endif
-                                    @if ($answers->question_id == 18)
-                                        <p class="mb-0 fw-bold">Job Description: </p>
-                                        <p class="text-justify">{{ $answers->answer }}</p>
-                                    @endif
-                                    @if ($answers->question_id == 19)
-                                        <p class="fw-bold mb-0">Company Details: </p>
-                                        <p class="mb-0">{{ $answers->answer }}</p>
-                                    @endif
-                                    @if ($answers->question_id == 20)
-                                        <p>{{ $answers->answer }}</p>
-                                    @endif
-                                @endforeach
+                                @if ($tracer_answers[5]['answer'] == 'Unemployed')
+                                    <div class="col-12">
+                                        <div class="alert alert-warning mt-5 text-center" role="alert">
+                                            No data to display yet.
+                                        </div>
+                                    </div>
+                                @else
+                                    @foreach ($tracer_answers as $answers)
+                                        @if ($answers->question_id == 15)
+                                            <p class="mb-2 fs-5"><b>{{ $answers->answer }}</b></p>
+                                        @endif
+                                        @if ($answers->question_id == 16)
+                                            <p class="mb-0">At <b>{{ $answers->answer }}</b></p>
+                                        @endif
+                                        @if ($answers->question_id == 17)
+                                            <p>Employed on <b>{{ date('F d, Y', strtotime($answers->answer)) }}</b></p>
+                                        @endif
+                                        @if ($answers->question_id == 18)
+                                            <p class="mb-0 fw-bold">Job Description: </p>
+                                            <p class="text-justify">{{ $answers->answer }}</p>
+                                        @endif
+                                        @if ($answers->question_id == 19)
+                                            <p class="fw-bold mb-0">Company Details: </p>
+                                            <p class="mb-0">{{ $answers->answer }}</p>
+                                        @endif
+                                        @if ($answers->question_id == 20)
+                                            <p>{{ $answers->answer }}</p>
+                                        @endif
+                                    @endforeach
+                                @endif
                             @else
                                 <div class="col-12">
                                     <div class="alert alert-warning mt-5 text-center" role="alert">
