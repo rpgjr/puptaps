@@ -18,6 +18,8 @@ class Answer extends Component
     public $currentPage = 1;
     public $progressBar = 0;
     public $countNull = 1;
+    public $unemployed;
+    public $sameAsCurrent;
 
     public function render() {
         $this->addNullAnswers();
@@ -84,6 +86,25 @@ class Answer extends Component
             if ($this->arrayAnswers[0]['answer'] == 'N/A' || $this->arrayAnswers[0]['answer'] == 'No') {
                 $this->arrayAnswers[3]['answer'] = 'N/A';
             }
+            if ($this->unemployed == 'Unemployed') {
+                $this->arrayAnswers[5]['answer'] = 'N/A';
+                $this->arrayAnswers[6]['answer'] = 'N/A';
+                $this->arrayAnswers[7]['answer'] = 'N/A';
+                $this->arrayAnswers[8]['answer'] = 'N/A';
+                $this->arrayAnswers[9]['answer'] = 'Not Applicable';
+                $this->arrayAnswers[10]['answer'] = 'Not Applicable';
+                $this->arrayAnswers[11]['answer'] = 'N/A';
+                $this->arrayAnswers[12]['answer'] = 'N/A';
+                $this->arrayAnswers[13]['answer'] = 'N/A';
+                $this->arrayAnswers[14]['answer'] = 'N/A';
+                $this->arrayAnswers[15]['answer'] = 'N/A';
+                $this->arrayAnswers[16]['answer'] = 'N/A';
+                $this->arrayAnswers[17]['answer'] = 'N/A';
+                $this->arrayAnswers[18]['answer'] = 'N/A';
+                $this->arrayAnswers[19]['answer'] = 'N/A';
+                $this->saveAnswer();
+            }
+
             $this->validate();
         }
         $this->currentPage++;
@@ -92,7 +113,32 @@ class Answer extends Component
         }
     }
 
+    public function sameCurrent() {
+        $this->arrayAnswers[14]['answer'] = $this->arrayAnswers[5]['answer'];
+        $this->arrayAnswers[15]['answer'] = $this->arrayAnswers[6]['answer'];
+        $this->arrayAnswers[16]['answer'] = $this->arrayAnswers[7]['answer'];
+        $this->arrayAnswers[17]['answer'] = $this->arrayAnswers[8]['answer'];
+        $this->arrayAnswers[18]['answer'] = $this->arrayAnswers[11]['answer'];
+        $this->arrayAnswers[19]['answer'] = $this->arrayAnswers[12]['answer'];
+    }
+
     public function saveAnswer() {
+        // if ($this->sameAsCurrent == 'same-as-current') {
+        //     $this->arrayAnswers[14]['answer'] = $this->arrayAnswers[5]['answer'];
+        //     $this->arrayAnswers[15]['answer'] = $this->arrayAnswers[6]['answer'];
+        //     $this->arrayAnswers[16]['answer'] = $this->arrayAnswers[7]['answer'];
+        //     $this->arrayAnswers[17]['answer'] = $this->arrayAnswers[8]['answer'];
+        //     $this->arrayAnswers[18]['answer'] = $this->arrayAnswers[11]['answer'];
+        //     $this->arrayAnswers[19]['answer'] = $this->arrayAnswers[12]['answer'];
+        // }
+        // else {
+        //     $this->arrayAnswers[14]['answer'] = '';
+        //     $this->arrayAnswers[15]['answer'] = '';
+        //     $this->arrayAnswers[16]['answer'] = '';
+        //     $this->arrayAnswers[17]['answer'] = '';
+        //     $this->arrayAnswers[18]['answer'] = '';
+        //     $this->arrayAnswers[19]['answer'] = '';
+        // }
         $this->validate();
         $questions = count(TracerQuestions::all());
         $ctr = 1;

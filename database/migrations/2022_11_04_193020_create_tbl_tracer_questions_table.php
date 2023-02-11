@@ -44,7 +44,7 @@ return new class extends Migration
                 ],
                 [
                     "category_id"   => "1",
-                    "question_text" => "When did you take it?",
+                    "question_text" => "When did you take it? (Leave blank if not applicable)",
                     "question_type" => "date",
                 ],
                 [

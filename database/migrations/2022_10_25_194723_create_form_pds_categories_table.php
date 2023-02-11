@@ -38,7 +38,7 @@ return new class extends Migration
 
                 [
                     "form_id"       => "1",
-                    "category_name" => "Work Experience/s",
+                    "category_name" => "Work/Internship Experience/s",
                 ],
 
                 [

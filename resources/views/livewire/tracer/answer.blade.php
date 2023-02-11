@@ -19,13 +19,38 @@
 
                 <div class="col-12 form-box-content">
                     <div class="row">
+                        @if ($currentPage == 2)
+                            <div class="col-12 mb-3">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="Unemployed" wire:model="unemployed">
+                                    <label class="form-check-label" for="flexCheckDefault">Currently Unemployed</label>
+                                </div>
+                            </div>
+                        @endif
+                        @if ($currentPage == 3)
+                            <div class="col-12 mb-3">
+                                <button class="btn btn-light fs-7" type="button" value="same-as-current" wire:click="sameCurrent()">Same as Current Job</button>
+                            </div>
+                        @endif
                         @foreach ($questions as $key => $value)
                         @if (($value->category_id) == ($category->category_id))
                             <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 mb-3">
                                 <div class="form-group">
                                     @if (($value->question_type == "text") || ($value->question_type == "date"))
+                                    @if ($value->category_id == 3)
                                         <div>
-                                            <label class="form-label">{{ $value->question_text }} <span class="text-danger">*</span></label>
+                                            <label class="form-label">{{ $value->question_text}} <span class="text-danger">*</span></label>
+                                            <span class="text-danger error-message">
+                                                @error('arrayAnswers.' . $key . '.answer')
+                                                <i class="fa-solid fa-circle-exclamation ml-5"></i>
+                                                {{ $message }}
+                                                @enderror
+                                            </span>
+                                            <input type="{{ $value->question_type }}" class="form-control @error('arrayAnswers.' . $key . '.answer') is-invalid @enderror" wire:model="arrayAnswers.{{ $key }}.answer" value="{{ $arrayAnswers[$key]['answer'] }}">
+                                        </div>
+                                    @else
+                                        <div>
+                                            <label class="form-label">{{ $value->question_text}} <span class="text-danger">*</span></label>
                                             <span class="text-danger error-message">
                                                 @error('arrayAnswers.' . $key . '.answer')
                                                 <i class="fa-solid fa-circle-exclamation ml-5"></i>
@@ -34,6 +59,7 @@
                                             </span>
                                             <input type="{{ $value->question_type }}" class="form-control @error('arrayAnswers.' . $key . '.answer') is-invalid @enderror" wire:model="arrayAnswers.{{ $key }}.answer">
                                         </div>
+                                    @endif
                                     @elseif ($value->question_type == "select")
                                         <div>
                                             <label class="form-label">{{ $value->question_text }} <span class="text-danger">*</span></label>
@@ -139,30 +165,5 @@
 
             @endif
         @endforeach
-
-        {{-- Buttons --}}
-        {{-- <div class="row form-box-buttons d-flex justify-content-between">
-            @if ($currentPage == 1)
-                <div class="col-6"></div>
-            @endif
-
-            @if ($currentPage <= $totalPage && $currentPage != 1)
-                <div class="col-6 text-start">
-                    <a href="#go-to-top" class="btn btn-secondary px-4" type="button" wire:click="previousPage()">Back</a>
-                </div>
-            @endif
-
-            @if ($currentPage < $totalPage && $currentPage != $totalPage)
-                <div class="col-6 text-end">
-                    <a href="#go-to-top" class="btn btn-primary px-4" type="button" wire:click="nextPage()">Next</a>
-                </div>
-            @endif
-
-            @if ($currentPage == $totalPage)
-                <div class="col-6 text-end">
-                    <button class="btn btn-success px-4" type="submit">Submit</button>
-                </div>
-            @endif
-        </div> --}}
     </form>
 </div>

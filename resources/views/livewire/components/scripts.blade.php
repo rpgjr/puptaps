@@ -5,6 +5,7 @@
 <script src="{{ asset('js/alert-message-modal.js') }}"></script>
 <script src="{{ asset('js/preview-profile.js') }}"></script>
 <script src="{{ asset('js/same-address.js') }}"></script>
+<script src="{{ asset('js/same-current-job.js') }}"></script>
 
 <script src="{{ asset('js/password-generator.js') }}"></script>
 
