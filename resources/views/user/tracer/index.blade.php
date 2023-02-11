@@ -85,6 +85,24 @@
                             @endif
                             @endforeach
                             <p class="mb-1"><b>Year Graduated: </b> {{ $user->batch }}</p>
+                            @foreach ($tracer_answers as $answers)
+                                @if ($answers->question_id == 1)
+                                    <div class="row">
+                                        @if ($answers->answer == 'N/A')
+                                            <p class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-6 mb-1"><b>Board Exam Passer:</b> {{ $answers->answer }}</p>
+
+                                        @endif
+                                @endif
+                                @if ($answers->question_id == 3)
+                                        @if ($answers->answer != "Not Applicable")
+                                            <p class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-6 mb-1"><b>Exam Taken:</b> {{ $answers->answer }}</p>
+                                        @endif
+                                    </div>
+                                @endif
+                                @if ($answers->question_id == 5)
+                                    <p class="mb-1"><b>Civil Service Exam Passer:</b> {{ $answers->answer }}</p>
+                                @endif
+                            @endforeach
                         </div>
                     </div>
 

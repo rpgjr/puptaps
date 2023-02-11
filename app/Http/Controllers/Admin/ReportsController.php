@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Alumni;
+use App\Models\Courses;
 use App\Models\Forms;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
@@ -19,8 +20,6 @@ class ReportsController extends Controller
     }
 
     public function getTracerReports() {
-        $title = "Tracer Reports";
-
-        return view("admin.reports.tracer-index", compact(["title"]));
+        return view("admin.reports.tracer-index");
     }
 }

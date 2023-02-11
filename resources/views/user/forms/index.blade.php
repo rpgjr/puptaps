@@ -19,7 +19,9 @@
                                     <i class="fa-solid fa-circle-info text-primary"></i>
                                 </h5>
                                 <div class="card-body">
-                                    <p class="card-text">These forms are the required forms needed by the <b>Office of the Vice President for Student Services.</b> This forms should have <b>Completed <i class="fa-solid fa-circle-check" style="color: #27AE60;"></i></b> status before the University releases the documents that you've requested.</p>
+                                    <p class="card-text">
+                                        These are the necessary forms needed by the <b>Office of the Vice President for Student Services.</b> Additionally, before the University releases the documents that you've requested, the forms must have a status of <b>Completed <i class="fa-solid fa-circle-check" style="color: #27AE60;"></i></b>.
+                                    </p>
                                 </div>
                             </div>
                         </div>

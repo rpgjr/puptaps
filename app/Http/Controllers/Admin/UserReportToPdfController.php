@@ -125,7 +125,7 @@ class UserReportToPdfController extends Controller
                             $pdf->AddPage();
                             $pdf->SetPrintHeader(false);
                             $pdf->SetFont('times', 'B', 13);
-                            $pdf->ln(20);
+                            $pdf->ln(17);
                             $pdf->Cell(0, 0, 'MASTER LIST', 0, 1, 'C', 0, '', 0);
 
                             $pdf->ln(5);
@@ -134,8 +134,11 @@ class UserReportToPdfController extends Controller
                             $pdf->MultiCell(180, 5, strtoupper($course->course_desc), 0, 'C', 0, 1, '', '', true);
                             $pdf->SetFont('times', '', 11);
                             $pdf->Cell(0, 0, strtoupper('Alumni Batch of ' . $batch_from), 0, 1, 'C', 0, '', 0);
-
                             $pdf->ln(5);
+                            date_default_timezone_set('Asia/Manila');
+                            $pdf->Cell(0, 0, 'Date Generated: ' . date('F d, Y'), 0, 1, 'R', 0, '', 0);
+
+                            $pdf->ln(0);
                             $html = '<style>
                                         .table-EI, .th-EI, .td-EI {
                                             border: 1px solid black;
@@ -199,7 +202,7 @@ class UserReportToPdfController extends Controller
                             $pdf->AddPage();
                             $pdf->SetPrintHeader(false);
                             $pdf->SetFont('times', 'B', 13);
-                            $pdf->ln(20);
+                            $pdf->ln(17);
                             $pdf->Cell(0, 0, 'MASTER LIST', 0, 1, 'C', 0, '', 0);
 
                             $pdf->ln(5);
@@ -208,8 +211,11 @@ class UserReportToPdfController extends Controller
                             $pdf->MultiCell(180, 5, strtoupper($course->course_desc), 0, 'C', 0, 1, '', '', true);
                             $pdf->SetFont('times', '', 11);
                             $pdf->Cell(0, 0, strtoupper('Alumni Batch of ' . $batch_from . ' - ' . $request->sex), 0, 1, 'C', 0, '', 0);
-
                             $pdf->ln(5);
+                            date_default_timezone_set('Asia/Manila');
+                            $pdf->Cell(0, 0, 'Date Generated: ' . date('F d, Y'), 0, 1, 'R', 0, '', 0);
+
+                            $pdf->ln(0);
                             $html = '<style>
                                         .table-EI, .th-EI, .td-EI {
                                             border: 1px solid black;
@@ -276,7 +282,7 @@ class UserReportToPdfController extends Controller
                                 $pdf->AddPage();
                                 $pdf->SetPrintHeader(false);
                                 $pdf->SetFont('times', 'B', 13);
-                                $pdf->ln(20);
+                                $pdf->ln(17);
                                 $pdf->Cell(0, 0, 'MASTER LIST', 0, 1, 'C', 0, '', 0);
 
                                 $pdf->ln(5);
@@ -285,8 +291,11 @@ class UserReportToPdfController extends Controller
                                 $pdf->MultiCell(180, 5, strtoupper($course->course_desc), 0, 'C', 0, 1, '', '', true);
                                 $pdf->SetFont('times', '', 11);
                                 $pdf->Cell(0, 0, strtoupper('Alumni Batch of ' . $batch_from), 0, 1, 'C', 0, '', 0);
-
                                 $pdf->ln(5);
+                                date_default_timezone_set('Asia/Manila');
+                                $pdf->Cell(0, 0, 'Date Generated: ' . date('F d, Y'), 0, 1, 'R', 0, '', 0);
+
+                                $pdf->ln(0);
                                 $html = '<style>
                                             .table-EI, .th-EI, .td-EI {
                                                 border: 1px solid black;
@@ -352,7 +361,7 @@ class UserReportToPdfController extends Controller
                                 $pdf->AddPage();
                                 $pdf->SetPrintHeader(false);
                                 $pdf->SetFont('times', 'B', 13);
-                                $pdf->ln(20);
+                                $pdf->ln(17);
                                 $pdf->Cell(0, 0, 'MASTER LIST', 0, 1, 'C', 0, '', 0);
 
                                 $pdf->ln(5);
@@ -361,8 +370,11 @@ class UserReportToPdfController extends Controller
                                 $pdf->MultiCell(180, 5, strtoupper($course->course_desc), 0, 'C', 0, 1, '', '', true);
                                 $pdf->SetFont('times', '', 11);
                                 $pdf->Cell(0, 0, strtoupper('Alumni Batch of ' . $batch_from . ' - ' . $request->sex), 0, 1, 'C', 0, '', 0);
-
                                 $pdf->ln(5);
+                                date_default_timezone_set('Asia/Manila');
+                                $pdf->Cell(0, 0, 'Date Generated: ' . date('F d, Y'), 0, 1, 'R', 0, '', 0);
+
+                                $pdf->ln(0);
                                 $html = '<style>
                                             .table-EI, .th-EI, .td-EI {
                                                 border: 1px solid black;
@@ -424,6 +436,6 @@ class UserReportToPdfController extends Controller
 
 
         //Close and output PDF document
-        $pdf->Output('Alumni_Report' . '.pdf', 'I');
+        $pdf->Output(date('m-d-y') . ' Alumni_Report' . '.pdf', 'I');
     }
 }

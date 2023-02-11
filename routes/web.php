@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\CareerController as AdminCareerController;
 use App\Http\Controllers\admin\FormReportsController;
 use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\ReportsController;
+use App\Http\Controllers\admin\TracerReportsController;
 use App\Http\Controllers\Admin\UserManagerController;
 use App\Http\Controllers\Admin\UserReportsController;
 use App\Http\Controllers\Admin\UserReportToPdfController;
@@ -406,6 +407,18 @@ Route::group(
         Route::post('alumni-reports', 'getUserReportPdf')
                ->name('getUserReportPdf');
 
+});
+
+// Admin - Tracer Reports
+Route::group(
+    [
+        'controller' => TracerReportsController::class,
+        'prefix' => 'admin/tracer-reports',
+        'as' => 'adminReports.',
+        'middleware' => ['isUser', 'auth']
+    ], function() {
+        Route::post('tracerReportToPdf', 'tracerReportToPdf')
+             ->name('tracerReportToPdf');
 });
 
 // Admin - Form Reports and PDF
