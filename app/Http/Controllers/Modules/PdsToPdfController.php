@@ -267,47 +267,85 @@ class PdsToPdfController extends Controller
             EOF;
             $pdf->writeHTML($html, true, 0, true, 0);
 
+            // $pdf->Ln(3);
+            // $html = <<<EOF
+            //     <style>
+            //         table, th, td {
+            //             text-align: left;
+            //             border-collapse: collapse;
+            //         }
+            //         .table-work, .th-work, .td-work {
+            //             border: 1px solid black;
+            //             border-collapse: collapse;
+            //             padding: 5px;
+            //         }
+            //     </style>
+            //     <h4 style="text-align: center;">Trainings / Seminars Attended:</h4>
+            //     <table class="table-work" style="width:100%;">
+            //         <tr>
+            //             <th class="th-work" colspan="1" style="width: 70%; text-align: center; font-weight: bold;">Title of Seminar / Conference / Workshop</th>
+            //             <th class="th-work" colspan="1" style="width: 30%; text-align: center; font-weight: bold;">Inclusive Dates</th>
+            //         </tr>
+            //         <tr>
+            //             <td class="td-work">$sem_1</td>
+            //             <td class="td-work">$sem_date_1</td>
+            //         </tr>
+            //         <tr>
+            //             <td class="td-work">$sem_2</td>
+            //             <td class="td-work">$sem_date_2</td>
+            //         </tr>
+            //         <tr>
+            //             <td class="td-work">$sem_3</td>
+            //             <td class="td-work">$sem_date_3</td>
+            //         </tr>
+            //     </table>
+            // EOF;
+            // $pdf->writeHTML($html, true, 0, true, 0);
+
             $pdf->Ln(3);
-            $html = <<<EOF
-                <style>
-                    table, th, td {
-                        text-align: left;
-                        border-collapse: collapse;
+                $html = '<style>
+                        table, th, td {
+                            text-align: left;
+                            border-collapse: collapse;
+                        }
+                        .table-work, .th-work, .td-work {
+                            border: 1px solid black;
+                            border-collapse: collapse;
+                            padding: 5px;
+                        }
+                    </style>
+                    <h4 style="text-align: center;">Trainings / Seminars Attended:</h4>
+                    <table class="table-work" style="width:100%;">
+                        <tr>
+                            <th class="th-work" colspan="1" style="width: 70%; text-align: center; font-weight: bold;">Title of Seminar / Conference / Workshop</th>
+                            <th class="th-work" colspan="1" style="width: 30%; text-align: center; font-weight: bold;">Inclusive Dates</th>
+                        </tr>
+                        <tr>
+                            <td class="td-work">'. $sem_1 . '</td>
+                            <td class="td-work">'. $sem_date_1 . '</td>
+                        </tr>';
+
+
+                    if ($sem_2 != 'N/A' && $sem_date_2 != 'N/A') {
+                        $html .= '<tr>
+                                <td class="td-work">'. $sem_2 . '</td>
+                                <td class="td-work">'. $sem_date_2 . '</td>
+                            </tr>';
                     }
-                    .table-work, .th-work, .td-work {
-                        border: 1px solid black;
-                        border-collapse: collapse;
-                        padding: 5px;
+                    if ($sem_3 != 'N/A' && $sem_date_3 != 'N/A') {
+                        $html .= '<tr>
+                                <td class="td-work">'. $sem_3 . '</td>
+                                <td class="td-work">'. $sem_date_3 . '</td>
+                            </tr>';
                     }
-                </style>
-                <h4 style="text-align: center;">Trainings / Seminars Attended:</h4>
-                <table class="table-work" style="width:100%;">
-                    <tr>
-                        <th class="th-work" colspan="1" style="width: 70%; text-align: center; font-weight: bold;">Title of Seminar / Conference / Workshop</th>
-                        <th class="th-work" colspan="1" style="width: 30%; text-align: center; font-weight: bold;">Inclusive Dates</th>
-                    </tr>
-                    <tr>
-                        <td class="td-work">$sem_1</td>
-                        <td class="td-work">$sem_date_1</td>
-                    </tr>
-                    <tr>
-                        <td class="td-work">$sem_2</td>
-                        <td class="td-work">$sem_date_2</td>
-                    </tr>
-                    <tr>
-                        <td class="td-work">$sem_3</td>
-                        <td class="td-work">$sem_date_3</td>
-                    </tr>
-                </table>
-            EOF;
-            $pdf->writeHTML($html, true, 0, true, 0);
+                    $html .= '</table>';
+                $pdf->writeHTML($html, true, 0, true, 0);
 
             $pdf->Ln(-10);
             $html = <<<EOF
                 <div>
                     <p style="text-align: justify; text-justify: inter-word; line-height: 1.5;">I hereby certify that all information provided are true and correct to the best of my knowledge.
                     </p>
-                    <p></p>
                     <table style="width:100%;">
                         <tr>
                             <td colspan="1" style="width: 20%; text-align: center; text-transform: uppercase;"></td>
@@ -334,7 +372,6 @@ class PdsToPdfController extends Controller
                     <h4 style="text-align: center; text-decoration: underline;">WAIVER</h4>
                     <p style="text-align: justify; text-justify: inter-word; line-height: 1.5;">This is to signify that I am willing to be subjected to company calls for placement or employment purposes. This shall also authorize the Polytechnic University of The Philippines – Career Development and Placement Office (PUP-CDPO) to include my name and contact details in the directory of graduates.
                     </p>
-                    <p></p>
                     <table style="width:100%;">
                         <tr>
                             <td colspan="1" style="width: 25%; text-align: center; text-transform: uppercase;">$signature_date</td>
