@@ -48,7 +48,7 @@
 
             <div class="row justify-content-center">
                 <div class="col-11">
-                    <form action="{{ route('adminReports.generateFormReport') }}" method="post">
+                    <form action="{{ route('adminReports.generateFormReport') }}" method="post" target="_blank">
                     @csrf
                         <div class="row sub-container-box py-4 px-2">
                             <h3 class="mb-4">Form Reports</h3>
@@ -72,33 +72,37 @@
                                 <span class="text-danger error-message">@error('type') {{$message}} @enderror</span>
                             </div>
                             <div class="col-6 mb-3">
-                                <label class="form-label">From (Batch)</label>
-                                <select class="form-select @error('fromBatch') is-invalid @enderror" name="fromBatch">
-                                    <option value="" hidden selected>Please select one...</option>
-                                    @for ($i = date('Y'); $i >= 2022; $i--)
-                                            <option value="{{ $i }}">{{ $i }}</option>
-                                    @endfor
+                                <label class="form-label">Course</label>
+                                <select class="form-select" name="course_id">
+                                    <option value="">All</option>
+                                    @foreach ($courses as $course)
+                                        <option value="{{ $course->course_id }}">{{ $course->course_id }}</option>
+                                    @endforeach
                                 </select>
-                                <span class="text-danger error-message">@error('fromBatch') {{$message}} @enderror</span>
                             </div>
                             <div class="col-6 mb-3">
-                                <label class="form-label">To (Batch)</label>
-                                <select class="form-select @error('toBatch') is-invalid @enderror" name="toBatch">
-                                    <option value="" hidden selected>Please select one...</option>
-                                    @for ($i = date('Y'); $i >= 2022; $i--)
-                                            <option value="{{ $i }}">{{ $i }}</option>
-                                    @endfor
+                                <label class="form-label">Sex</label>
+                                <select class="form-select" name="sex">
+                                    <option value="">All</option>
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option>
                                 </select>
-                                <span class="text-danger error-message">@error('toBatch') {{$message}} @enderror</span>
                             </div>
                             <div class="col-6 mb-3">
-                                <label class="form-label">Categorized by</label>
-                                <select class="form-select @error('type') is-invalid @enderror" name="type">
-                                    <option value="" hidden selected>Please select one...</option>
-                                    <option value="1">Course/Program</option>
-                                    <option value="2">Sex</option>
+                                <label class="form-label">Batch From:</label>
+                                <select class="form-select @error('batch_from') is-invalid @enderror" name="batch_from">
+                                    @for ($i = 2022; $i <= date('Y'); $i++)
+                                        <option value="{{ $i }}">{{ $i }}</option>
+                                    @endfor
                                 </select>
-                                <span class="text-danger error-message">@error('type') {{$message}} @enderror</span>
+                            </div>
+                            <div class="col-6 mb-3">
+                                <label class="form-label">Batch To:</label>
+                                <select class="form-select @error('batch_to') is-invalid @enderror" name="batch_to">
+                                    @for ($i = 2022; $i <= date('Y'); $i++)
+                                        <option value="{{ $i }}">{{ $i }}</option>
+                                    @endfor
+                                </select>
                             </div>
                             <div class="col-12">
                                 <button type="submit" class="btn btn-primary fs-7">Generate Report <i class="fa-solid fa-file-lines ms-1"></i></button>

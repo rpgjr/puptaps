@@ -13,10 +13,10 @@ use Illuminate\Support\Facades\DB;
 class ReportsController extends Controller
 {
     public function getFormReports() {
-        $title = "Form Reports";
         $forms = Forms::all();
+        $courses = Courses::all();
 
-        return view("admin.reports.form-index", compact(["title", "forms"]));
+        return view("admin.reports.form-index", compact(["forms", "courses"]));
     }
 
     public function getTracerReports() {

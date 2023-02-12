@@ -1,5 +1,5 @@
 <div>
-    <form wire:submit.prevent="saveAnswer">
+    <form wire:submit.prevent="updateAnswer">
         @foreach ($categories as $category)
             @if (($currentPage == $category->category_id) && ($currentPage == $category->category_id))
 

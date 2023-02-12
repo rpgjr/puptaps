@@ -34,7 +34,7 @@
                         <img src="/Uploads/Profiles/{{ $user->user_pfp }}" class="user-profile-button" data-bs-toggle="dropdown" aria-expanded="false">
                     @endif
                     @endforeach
-                    <ul class="dropdown-menu dropdown-menu-end">
+                    <ul class="dropdown-menu dropdown-menu-start dropdown-menu-sm-start dropdown-menu-md-end">
                         <li><a class="dropdown-item" href="#">Feedback</a></li>
                         <li><a class="dropdown-item" href="#">Report a Problem</a></li>
                         <li><hr class="dropdown-divider"></li>

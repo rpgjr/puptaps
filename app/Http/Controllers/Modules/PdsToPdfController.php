@@ -238,7 +238,7 @@ class PdsToPdfController extends Controller
             $pdf->writeHTML($html, true, 0, true, 0);
 
             $pdf->SetPrintHeader(false);
-            $pdf->Ln(15);
+            $pdf->Ln(10);
             $html = <<<EOF
                 <style>
                     table, th, td {
@@ -267,7 +267,7 @@ class PdsToPdfController extends Controller
             EOF;
             $pdf->writeHTML($html, true, 0, true, 0);
 
-            $pdf->Ln(10);
+            $pdf->Ln(3);
             $html = <<<EOF
                 <style>
                     table, th, td {
@@ -283,8 +283,8 @@ class PdsToPdfController extends Controller
                 <h4 style="text-align: center;">Trainings / Seminars Attended:</h4>
                 <table class="table-work" style="width:100%;">
                     <tr>
-                        <th class="th-work" colspan="1" style="width: 60%; text-align: center; font-weight: bold;">Title of Seminar / Conference / Workshop</th>
-                        <th class="th-work" colspan="1" style="width: 40%; text-align: center; font-weight: bold;">Inclusive Dates</th>
+                        <th class="th-work" colspan="1" style="width: 70%; text-align: center; font-weight: bold;">Title of Seminar / Conference / Workshop</th>
+                        <th class="th-work" colspan="1" style="width: 30%; text-align: center; font-weight: bold;">Inclusive Dates</th>
                     </tr>
                     <tr>
                         <td class="td-work">$sem_1</td>
@@ -328,7 +328,7 @@ class PdsToPdfController extends Controller
             EOF;
             $pdf->writeHTML($html, true, 0, true, 0);
 
-            $pdf->Ln(10);
+            $pdf->Ln(5);
             $html = <<<EOF
                 <div>
                     <h4 style="text-align: center; text-decoration: underline;">WAIVER</h4>
