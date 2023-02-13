@@ -454,7 +454,7 @@ class FormReportsController extends Controller
 
         $pdf->ln(10);
         $pdf->SetFont('times', 'B', 11);
-        $pdf->Cell(0, 0, 'TABLE I. COURSES', 0, 1, 'L', 0, '', 0);
+        $pdf->Cell(0, 0, 'TABLE 1. COURSES', 0, 1, 'L', 0, '', 0);
         $pdf->SetFont('times', '', 11);
         $html = '<style>
                 .table-EI, .th-EI, .td-EI {
@@ -540,7 +540,7 @@ class FormReportsController extends Controller
         $totalPending = 0;
         $pdf->ln(2);
         $pdf->SetFont('times', 'B', 11);
-        $pdf->Cell(0, 0, 'TABLE II. SEX', 0, 1, 'L', 0, '', 0);
+        $pdf->Cell(0, 0, 'TABLE 2. SEX', 0, 1, 'L', 0, '', 0);
         $pdf->SetFont('times', '', 11);
         $html = '<style>
                 .table-EI, .th-EI, .td-EI {
@@ -617,7 +617,7 @@ class FormReportsController extends Controller
 
         $pdf->ln(2);
         $pdf->SetFont('times', 'B', 11);
-        $pdf->Cell(0, 0, 'TABLE III. AGE', 0, 1, 'L', 0, '', 0);
+        $pdf->Cell(0, 0, 'TABLE 3. AGE', 0, 1, 'L', 0, '', 0);
         $pdf->SetFont('times', '', 11);
         $html = '<style>
                 .table-EI, .th-EI, .td-EI {
@@ -676,7 +676,7 @@ class FormReportsController extends Controller
 
         $pdf->ln(2);
         $pdf->SetFont('times', 'B', 11);
-        $pdf->Cell(0, 0, 'TABLE IV. REASON FOR LEAVING PUP TAGUIG', 0, 1, 'L', 0, '', 0);
+        $pdf->Cell(0, 0, 'TABLE 4. REASON FOR LEAVING PUP TAGUIG', 0, 1, 'L', 0, '', 0);
         $pdf->SetFont('times', '', 11);
         $html = '<style>
                 .table-EI, .th-EI, .td-EI {
@@ -736,13 +736,18 @@ class FormReportsController extends Controller
             $html .= '</table>';
         $pdf->writeHTML($html, true, 0, true, 0);
 
+        $pdf->SetPrintHeader(true);
+        $pdf->AddPage('L');
+        $pdf->SetPrintHeader(false);
+        $style3 = array('width' => .5, 'cap' => 'butt', 'join' => 'miter', 'dash' => 0, 'color' => array(0, 0, 0));
+        $pdf->Line(10, 33, 288, 33, $style3);
+        $pdf->ln(15);
         $eifQuestions = EifQuestions::where('category_id', '=', 3)->get();
-
         $numeral = 5;
         foreach ($eifQuestions as $questions) {
-            $pdf->ln(2);
+            $pdf->ln(1);
             $pdf->SetFont('times', 'B', 11);
-            $pdf->Cell(0, 0, 'TABLE ' . $this->numberToRomanRepresentation($numeral) . '. ' . strtoupper($questions->question_text), 0, 1, 'L', 0, '', 0);
+            $pdf->Cell(0, 0, 'TABLE ' . $numeral . '. ' . strtoupper($questions->question_text), 0, 1, 'L', 0, '', 0);
             $pdf->SetFont('times', '', 11);
             $html = '<style>
                     .table-EI, .th-EI, .td-EI {
@@ -753,6 +758,7 @@ class FormReportsController extends Controller
                     .theading {
                         background-color: #78281F;
                         color: #ffffff;
+                        font-size: 13px;
                     }
                     th {
                         font-weight: bold;
@@ -809,7 +815,7 @@ class FormReportsController extends Controller
                 }
 
                     $html .= '<tr>
-                        <th class="th-EI" colspan="1" style="width: 20%;">No. Of Respondents</th>
+                        <th class="th-EI" colspan="1" style="width: 20%; font-size: 13px;">No. of Respondents</th>
                         <td class="th-EI" colspan="1" style="width: 16%;">' . $legend5 . '</td>
                         <td class="th-EI" colspan="1" style="width: 16%;">' . $legend4 . '</td>
                         <td class="th-EI" colspan="1" style="width: 16%;">' . $legend3 . '</td>
@@ -817,7 +823,7 @@ class FormReportsController extends Controller
                         <td class="th-EI" colspan="1" style="width: 16%;">' . $legend1 . '</td>
                     </tr>';
                     $html .= '<tr>
-                        <th class="th-EI" colspan="1" style="width: 20%;">Percentage</th>
+                        <th class="th-EI" colspan="1" style="width: 20%; font-size: 13px;">Percentage</th>
                         <td class="th-EI" colspan="1" style="width: 16%;">' . number_format(($legend5 / count($total)) *100, 2) . '% </td>
                         <td class="th-EI" colspan="1" style="width: 16%;">' . number_format(($legend4 / count($total)) *100, 2) . '% </td>
                         <td class="th-EI" colspan="1" style="width: 16%;">' . number_format(($legend3 / count($total)) *100, 2) . '% </td>
@@ -826,70 +832,299 @@ class FormReportsController extends Controller
                     </tr>';
                 $html .= '</table>';
             $pdf->writeHTML($html, true, 0, true, 0);
-
             $numeral++;
         }
-        $pdf->ln(2);
-        $pdf->SetFont('times', 'B', 11);
-        $pdf->Cell(0, 0, 'TABLE IV. REASON FOR LEAVING PUP TAGUIG', 0, 1, 'L', 0, '', 0);
-        $pdf->SetFont('times', '', 11);
-        $html = '<style>
-                .table-EI, .th-EI, .td-EI {
-                    border: 1px solid black;
-                    border-collapse: collapse;
-                    padding: 5px;
-                }
-                .theading {
-                    background-color: #78281F;
-                    color: #ffffff;
-                }
-                th {
-                    font-weight: bold;
-                }
-                td {
-                    text-align: center;
-                }
-            </style>
-            <table class="table-EI" style="width:100%;">
-                <tr class="" style="text-align: center; font-weight: bold;">
-                    <th class="theading" colspan="1" style="width: 30%;"></th>
-                    <td class="theading" colspan="1" style="width: 20%;">No. of Respondents</td>
-                    <td class="theading" colspan="1" style="width: 20%;">Percentage</td>
-                </tr>';
+
+        $eifCategories = EifCategories::whereIn('category_id', [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15])->get();
+        $numeral = 12;
+        $q = 11;
+        $t = 12;
+        $c = 13;
+        foreach ($eifCategories as $categories) {
+            $pdf->ln(1);
+            $pdf->SetFont('times', 'B', 11);
+            $pdf->Cell(0, 0, 'TABLE ' . $numeral . '. ' . strtoupper($categories->category_name), 0, 1, 'L', 0, '', 0);
+            $pdf->SetFont('times', '', 11);
+
             $total = Alumni::join('form_eif_answers', 'tbl_alumni.alumni_id', '=', 'form_eif_answers.alumni_id')
                 ->whereBetween('tbl_alumni.batch', [$request->batch_from, $request->batch_to])
-                // ->where('course_id', 'like', '%' . $request->course_id . '%')
                 ->select('tbl_alumni.alumni_id')
                 ->distinct()
                 ->get();
-            $perAge = Alumni::join('form_eif_answers', 'tbl_alumni.alumni_id', '=', 'form_eif_answers.alumni_id')
-                ->whereBetween('tbl_alumni.batch', [$request->batch_from, $request->batch_to])
-                ->where('course_id', 'like', '%' . $request->course_id . '%')
-                ->where('tbl_alumni.sex', 'like', $request->sex . '%')
-                ->select('tbl_alumni.age')
-                ->distinct()
-                ->get();
-
-            $reasons = ['Graduation', 'Personal', 'Family', 'Academic', 'Financial', 'Work-related', 'Others'];
-
-
-            foreach ($reasons as $reason) {
-                $perReasons = Alumni::join('form_eif_answers', 'tbl_alumni.alumni_id', '=', 'form_eif_answers.alumni_id')
+            $quality = Alumni::join('form_eif_answers', 'tbl_alumni.alumni_id', '=', 'form_eif_answers.alumni_id')
                     ->whereBetween('tbl_alumni.batch', [$request->batch_from, $request->batch_to])
-                    ->where('form_eif_answers.answer', '=', $reason)
                     ->where('course_id', 'like', '%' . $request->course_id . '%')
                     ->where('tbl_alumni.sex', 'like', $request->sex . '%')
+                    ->where('form_eif_answers.question_id', '=', $q)
+                    ->select('form_eif_answers.answer')
+                    ->get();
+            $timeliness = Alumni::join('form_eif_answers', 'tbl_alumni.alumni_id', '=', 'form_eif_answers.alumni_id')
+                    ->whereBetween('tbl_alumni.batch', [$request->batch_from, $request->batch_to])
+                    ->where('course_id', 'like', '%' . $request->course_id . '%')
+                    ->where('tbl_alumni.sex', 'like', $request->sex . '%')
+                    ->where('form_eif_answers.question_id', '=', $t)
+                    ->select('form_eif_answers.answer')
+                    ->get();
+            $courtesy = Alumni::join('form_eif_answers', 'tbl_alumni.alumni_id', '=', 'form_eif_answers.alumni_id')
+                    ->whereBetween('tbl_alumni.batch', [$request->batch_from, $request->batch_to])
+                    ->where('course_id', 'like', '%' . $request->course_id . '%')
+                    ->where('tbl_alumni.sex', 'like', $request->sex . '%')
+                    ->where('form_eif_answers.question_id', '=', $c)
+                    ->select('form_eif_answers.answer')
+                    ->get();
+
+            $q_legend1 = 0;
+            $q_legend2 = 0;
+            $q_legend3 = 0;
+            $q_legend4 = 0;
+            $q_legend5 = 0;
+            foreach ($quality as $answers) {
+                if ($answers->answer == 1) {
+                    $q_legend1++;
+                }
+                elseif ($answers->answer == 2) {
+                    $q_legend2++;
+                }
+                elseif ($answers->answer == 3) {
+                    $q_legend3++;
+                }
+                elseif ($answers->answer == 4) {
+                    $q_legend4++;
+                }
+                elseif ($answers->answer == 5) {
+                    $q_legend5++;
+                }
+            }
+
+            $t_legend1 = 0;
+            $t_legend2 = 0;
+            $t_legend3 = 0;
+            $t_legend4 = 0;
+            $t_legend5 = 0;
+            foreach ($timeliness as $answers) {
+                if ($answers->answer == 1) {
+                    $t_legend1++;
+                }
+                elseif ($answers->answer == 2) {
+                    $t_legend2++;
+                }
+                elseif ($answers->answer == 3) {
+                    $t_legend3++;
+                }
+                elseif ($answers->answer == 4) {
+                    $t_legend4++;
+                }
+                elseif ($answers->answer == 5) {
+                    $t_legend5++;
+                }
+            }
+
+            $c_legend1 = 0;
+            $c_legend2 = 0;
+            $c_legend3 = 0;
+            $c_legend4 = 0;
+            $c_legend5 = 0;
+            foreach ($courtesy as $answers) {
+                if ($answers->answer == 1) {
+                    $c_legend1++;
+                }
+                elseif ($answers->answer == 2) {
+                    $c_legend2++;
+                }
+                elseif ($answers->answer == 3) {
+                    $c_legend3++;
+                }
+                elseif ($answers->answer == 4) {
+                    $c_legend4++;
+                }
+                elseif ($answers->answer == 5) {
+                    $c_legend5++;
+                }
+            }
+
+            $html = '<style>
+                    .table-EI, .th-EI, .td-EI {
+                        border: 1px solid black;
+                        border-collapse: collapse;
+                        padding: 3px;
+                    }
+                    .theading {
+                        background-color: #78281F;
+                        color: #ffffff;
+                        text-align: center;
+                    }
+                    th {
+                        font-weight: bold;
+                    }
+                    td {
+                        text-align: center;
+                    }
+                </style>
+                <table class="table-EI">
+                    <tr>
+                        <th rowspan="2" class="theading"></th>
+                        <th colspan="2" class="theading">Quality of Service</th>
+                        <th colspan="2" class="theading">Timeliness of Service</th>
+                        <th colspan="2" class="theading">Courtesy of Staff</th>
+                    </tr>
+                    <tr>
+                        <th class="th-EI" colspan="1" style="text-align: center;">No. of Respondents</th>
+                        <th class="th-EI" colspan="1" style="text-align: center;">Percentage</th>
+                        <th class="th-EI" colspan="1" style="text-align: center;">No. of Respondents</th>
+                        <th class="th-EI" colspan="1" style="text-align: center;">Percentage</th>
+                        <th class="th-EI" colspan="1" style="text-align: center;">No. of Respondents</th>
+                        <th class="th-EI" colspan="1" style="text-align: center;">Percentage</th>
+                    </tr>';
+
+                $html .= '<tr>
+                        <th class="th-EI" style="text-align: left;">1 - Poor</th>
+                        <td class="tdata td-EI">' . $q_legend1 . '</td>
+                        <td class="tdata td-EI">' . number_format($q_legend1 / count($total) * 100, 2) . '%</td>
+                        <td class="tdata td-EI">' . $t_legend1 . '</td>
+                        <td class="tdata td-EI">' . number_format($t_legend1 / count($total) * 100, 2) . '%</td>
+                        <td class="tdata td-EI">' . $c_legend1 . '</td>
+                        <td class="tdata td-EI">' . number_format($c_legend1 / count($total) * 100, 2) . '%</td>
+                    </tr>';
+
+                $html .= '<tr>
+                        <th class="th-EI" style="text-align: left;">2 - Fair</th>
+                        <td class="tdata td-EI">' . $q_legend2 . '</td>
+                        <td class="tdata td-EI">' . number_format($q_legend2 / count($total) * 100, 2) . '%</td>
+                        <td class="tdata td-EI">' . $t_legend2 . '</td>
+                        <td class="tdata td-EI">' . number_format($t_legend2 / count($total) * 100, 2) . '%</td>
+                        <td class="tdata td-EI">' . $c_legend2 . '</td>
+                        <td class="tdata td-EI">' . number_format($c_legend2 / count($total) * 100, 2) . '%</td>
+                    </tr>
+                    <tr>
+                        <th class="th-EI" style="text-align: left;">3 - Satisfactory</th>
+                        <td class="tdata td-EI">' . $q_legend3 . '</td>
+                        <td class="tdata td-EI">' . number_format($q_legend3 / count($total) * 100, 2) . '%</td>
+                        <td class="tdata td-EI">' . $t_legend3 . '</td>
+                        <td class="tdata td-EI">' . number_format($t_legend3 / count($total) * 100, 2) . '%</td>
+                        <td class="tdata td-EI">' . $c_legend3 . '</td>
+                        <td class="tdata td-EI">' . number_format($c_legend3 / count($total) * 100, 2) . '%</td>
+                    </tr>
+                    <tr>
+                        <th class="th-EI" style="text-align: left;">4 - Very Satisfactory</th>
+                        <td class="tdata td-EI">' . $q_legend4 . '</td>
+                        <td class="tdata td-EI">' . number_format($q_legend4 / count($total) * 100, 2) . '%</td>
+                        <td class="tdata td-EI">' . $t_legend4 . '</td>
+                        <td class="tdata td-EI">' . number_format($t_legend4 / count($total) * 100, 2) . '%</td>
+                        <td class="tdata td-EI">' . $c_legend4 . '</td>
+                        <td class="tdata td-EI">' . number_format($c_legend4 / count($total) * 100, 2) . '%</td>
+                    </tr>
+                    <tr>
+                        <th class="th-EI" style="text-align: left;">5 - Outstanding</th>
+                        <td class="tdata td-EI">' . $q_legend5 . '</td>
+                        <td class="tdata td-EI">' . number_format($q_legend5 / count($total) * 100, 2) . '%</td>
+                        <td class="tdata td-EI">' . $t_legend5 . '</td>
+                        <td class="tdata td-EI">' . number_format($t_legend5 / count($total) * 100, 2) . '%</td>
+                        <td class="tdata td-EI">' . $c_legend5 . '</td>
+                        <td class="tdata td-EI">' . number_format($c_legend5 / count($total) * 100, 2) . '%</td>
+                    </tr>';
+            $html .= '</table>';
+            $pdf->writeHTML($html, true, 0, true, 0);
+            $q += 3;
+            $t += 3;
+            $c += 3;
+            $numeral++;
+        }
+
+        $eifQuestions = EifQuestions::where('category_id', '=', 16)->get();
+        $numeral = 24;
+        foreach ($eifQuestions as $questions) {
+            $pdf->ln(1);
+            $pdf->SetFont('times', 'B', 11);
+            $pdf->Cell(0, 0, 'TABLE ' . $numeral . '. ' . strtoupper($questions->question_text), 0, 1, 'L', 0, '', 0);
+            $pdf->SetFont('times', '', 11);
+            $html = '<style>
+                    .table-EI, .th-EI, .td-EI {
+                        border: 1px solid black;
+                        border-collapse: collapse;
+                        padding: 5px;
+                    }
+                    .theading {
+                        background-color: #78281F;
+                        color: #ffffff;
+                        font-size: 13px;
+                    }
+                    th {
+                        font-weight: bold;
+                    }
+                    td {
+                        text-align: center;
+                    }
+                </style>
+                <table class="table-EI" style="width:100%;">
+                    <tr class="" style="text-align: center; font-weight: bold;">
+                        <th class="theading" colspan="1" style="width: 20%;"></th>
+                        <td class="theading" colspan="1" style="width: 16%;">5 - Outstanding</td>
+                        <td class="theading" colspan="1" style="width: 16%;">4 - Very Satisfactory</td>
+                        <td class="theading" colspan="1" style="width: 16%;">3 - Satisfactory</td>
+                        <td class="theading" colspan="1" style="width: 16%;">2 - Fair</td>
+                        <td class="theading" colspan="1" style="width: 16%;">1 - Poor</td>
+                    </tr>';
+                $total = Alumni::join('form_eif_answers', 'tbl_alumni.alumni_id', '=', 'form_eif_answers.alumni_id')
+                    ->whereBetween('tbl_alumni.batch', [$request->batch_from, $request->batch_to])
+                    // ->where('course_id', 'like', '%' . $request->course_id . '%')
                     ->select('tbl_alumni.alumni_id')
                     ->distinct()
                     ->get();
-                $html .= '<tr>
-                    <th class="th-EI" colspan="1" style="width: 30%;">' . $reason . '</th>
-                    <td class="th-EI" colspan="2" style="width: 20%;">' . count($perReasons) . '</td>
-                    <td class="th-EI" colspan="1" style="width: 20%;">' . number_format(count($perReasons) / count($total) * 100, 2) . '% </td>
-                </tr>';
-            }
-            $html .= '</table>';
-        $pdf->writeHTML($html, true, 0, true, 0);
+                $perAnswer = Alumni::join('form_eif_answers', 'tbl_alumni.alumni_id', '=', 'form_eif_answers.alumni_id')
+                    ->whereBetween('tbl_alumni.batch', [$request->batch_from, $request->batch_to])
+                    ->where('course_id', 'like', '%' . $request->course_id . '%')
+                    ->where('tbl_alumni.sex', 'like', $request->sex . '%')
+                    ->where('form_eif_answers.question_id', '=', $questions->question_id)
+                    ->select('form_eif_answers.answer')
+                    ->get();
+
+                $legend1 = 0;
+                $legend2 = 0;
+                $legend3 = 0;
+                $legend4 = 0;
+                $legend5 = 0;
+
+                foreach ($perAnswer as $answers) {
+                    if ($answers->answer == 1) {
+                        $legend1++;
+                    }
+                    elseif ($answers->answer == 2) {
+                        $legend2++;
+                    }
+                    elseif ($answers->answer == 3) {
+                        $legend3++;
+                    }
+                    elseif ($answers->answer == 4) {
+                        $legend4++;
+                    }
+                    elseif ($answers->answer == 5) {
+                        $legend5++;
+                    }
+                }
+
+                    $html .= '<tr>
+                        <th class="th-EI" colspan="1" style="width: 20%; font-size: 13px;">No. of Respondents</th>
+                        <td class="th-EI" colspan="1" style="width: 16%;">' . $legend5 . '</td>
+                        <td class="th-EI" colspan="1" style="width: 16%;">' . $legend4 . '</td>
+                        <td class="th-EI" colspan="1" style="width: 16%;">' . $legend3 . '</td>
+                        <td class="th-EI" colspan="1" style="width: 16%;">' . $legend2 . '</td>
+                        <td class="th-EI" colspan="1" style="width: 16%;">' . $legend1 . '</td>
+                    </tr>';
+                    $html .= '<tr>
+                        <th class="th-EI" colspan="1" style="width: 20%; font-size: 13px;">Percentage</th>
+                        <td class="th-EI" colspan="1" style="width: 16%;">' . number_format(($legend5 / count($total)) *100, 2) . '% </td>
+                        <td class="th-EI" colspan="1" style="width: 16%;">' . number_format(($legend4 / count($total)) *100, 2) . '% </td>
+                        <td class="th-EI" colspan="1" style="width: 16%;">' . number_format(($legend3 / count($total)) *100, 2) . '% </td>
+                        <td class="th-EI" colspan="1" style="width: 16%;">' . number_format(($legend2 / count($total)) *100, 2) . '% </td>
+                        <td class="th-EI" colspan="1" style="width: 16%;">' . number_format(($legend1 / count($total)) *100, 2) . '% </td>
+                    </tr>';
+                $html .= '</table>';
+            $pdf->writeHTML($html, true, 0, true, 0);
+            $numeral++;
+        }
+
+
+
         $pdf->lastPage();
         $pdf->Output('EIF_Summary_Report_' . date('m-d-y') . '.pdf', 'I');
     }
