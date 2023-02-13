@@ -25,7 +25,7 @@ return new class extends Migration
             $table->foreign('question_id')
                   ->references('question_id')
                   ->on('form_eif_questions');
-            $table->string('answer');
+            $table->longText('answer');
         });
     }
 
