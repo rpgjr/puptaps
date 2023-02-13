@@ -10,6 +10,8 @@ use App\Models\Forms\Eif\EifCategories;
 use App\Models\Forms\Eif\EifQuestions;
 use App\Models\Forms\Pds\PdsAnswers;
 use App\Models\Forms\Sas\SasAnswers;
+use App\Models\Forms\Sas\SasCategories;
+use App\Models\Forms\Sas\SasQuestions;
 use Illuminate\Http\Request;
 use TCPDF;
 use DB;
@@ -110,7 +112,7 @@ class FormReportsController extends Controller
 
         elseif ($request->form == 3) {
             if ($request->type == 1) {
-                $this->PdfSummaryReport($request);
+                $this->SasSummaryReport($request);
             }
             elseif ($request->type == 2) {
                 $this->SasStatusReport($request);
@@ -446,7 +448,7 @@ class FormReportsController extends Controller
         $pdf->SetPrintHeader(false);
         $pdf->SetFont('times', 'B', 13);
         $pdf->ln(20);
-        $pdf->Cell(0, 0, 'EXIT INTERVIEW FORM - STATUS REPORT (SUMMARY)', 0, 1, 'C', 0, '', 0);
+        $pdf->Cell(0, 0, 'EXIT INTERVIEW FORM - SUMMARY REPORT', 0, 1, 'C', 0, '', 0);
         $pdf->SetFont('times', '', 12);
         $pdf->Cell(0, 0, 'ALUMNI BATCH FROM ' . $request->batch_from . ' TO ' . $request->batch_to, 0, 1, 'C', 0, '', 0);
         $pdf->SetFont('times', '', 11);
@@ -1123,7 +1125,374 @@ class FormReportsController extends Controller
             $numeral++;
         }
 
+        $pdf->lastPage();
+        $pdf->Output('EIF_Summary_Report_' . date('m-d-y') . '.pdf', 'I');
+    }
 
+    public function SasSummaryReport($request) {
+        $totalPending = 0;
+        if ($request->sex == null || empty($request->sex)) {
+            $allAlumni = Alumni::where('course_id', 'like', '%' . $request->course_id . '%')
+                ->whereBetween('batch', [$request->batch_from, $request->batch_to])
+                ->orderBy('last_name', 'asc')
+                ->get();
+        }
+        else {
+            $allAlumni = Alumni::where('course_id', 'like', '%' . $request->course_id . '%')
+                ->where('sex', '=', $request->sex)
+                ->whereBetween('batch', [$request->batch_from, $request->batch_to])
+                ->orderBy('last_name', 'asc')
+                ->get();
+        }
+
+        $courses = Courses::where('course_id', 'like', '%' . $request->course_id . '%')->get();
+
+        $pdf = new MYPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
+        $pdf->SetCreator(PDF_CREATOR);
+        $pdf->SetTitle('SAS_STATUS_REPORTS');
+        $pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
+        $pdf->SetMargins(PDF_MARGIN_LEFT, PDF_MARGIN_TOP, PDF_MARGIN_RIGHT);
+        $pdf->SetHeaderMargin(PDF_MARGIN_HEADER);
+        $pdf->SetFooterMargin(PDF_MARGIN_FOOTER);
+        $pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
+        $pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
+
+        $pdf->SetPrintHeader(true);
+        $pdf->AddPage();
+        $pdf->SetPrintHeader(false);
+        $pdf->SetFont('times', 'B', 13);
+        $pdf->ln(20);
+        $pdf->Cell(0, 0, 'STUDENT AFFAIRS AND SERVICESS FORM - SUMMARY REPORT', 0, 1, 'C', 0, '', 0);
+        $pdf->SetFont('times', '', 12);
+        $pdf->Cell(0, 0, 'ALUMNI BATCH FROM ' . $request->batch_from . ' TO ' . $request->batch_to, 0, 1, 'C', 0, '', 0);
+        $pdf->SetFont('times', '', 11);
+        $pdf->Cell(0, 0, 'Date Generated: ' . date('F d, Y'), 0, 1, 'C', 0, '', 0);
+
+        $pdf->ln(10);
+        $pdf->SetFont('times', 'B', 11);
+        $pdf->Cell(0, 0, 'TABLE 1. COURSES', 0, 1, 'L', 0, '', 0);
+        $pdf->SetFont('times', '', 11);
+        $html = '<style>
+                .table-EI, .th-EI, .td-EI {
+                    border: 1px solid black;
+                    border-collapse: collapse;
+                    padding: 5px;
+                }
+                .theading {
+                    background-color: #78281F;
+                    color: #ffffff;
+                }
+                th {
+                    font-weight: bold;
+                }
+                td {
+                    text-align: center;
+                }
+            </style>
+            <table class="table-EI" style="width:100%;">
+                <tr class="theading" style="text-align: center; font-weight: bold;">
+                    <th class="" colspan="1" style="width: 70%;">Course</th>
+                    <td class="" colspan="1" style="width: 15%;">Complete</td>
+                    <td class="" colspan="1" style="width: 15%;">Pending</td>
+                </tr>';
+                foreach ($courses as $course) {
+                    if ($request->sex == null || empty($request->sex)) {
+                        $checkCount = Alumni::join('form_sas_answers', 'tbl_alumni.alumni_id', '=', 'form_sas_answers.alumni_id')
+                            ->where('tbl_alumni.course_id', '=', $course->course_id)
+                            ->whereBetween('tbl_alumni.batch', [$request->batch_from, $request->batch_to])
+                            ->select('tbl_alumni.alumni_id')
+                            ->distinct()
+                            ->get();
+                        $perCourse = Alumni::where('tbl_alumni.course_id', '=', $course->course_id)
+                            ->whereBetween('tbl_alumni.batch', [$request->batch_from, $request->batch_to])
+                            ->select('tbl_alumni.alumni_id')
+                            ->distinct()
+                            ->get();
+                        $total = Alumni::join('form_sas_answers', 'tbl_alumni.alumni_id', '=', 'form_sas_answers.alumni_id')
+                            ->whereBetween('tbl_alumni.batch', [$request->batch_from, $request->batch_to])
+                            ->where('course_id', 'like', '%' . $request->course_id . '%')
+                            ->select('tbl_alumni.alumni_id')
+                            ->distinct()
+                            ->get();
+                    }
+                    else {
+                        $checkCount = Alumni::join('form_sas_answers', 'tbl_alumni.alumni_id', '=', 'form_sas_answers.alumni_id')
+                            ->where('tbl_alumni.course_id', '=', $course->course_id)
+                            ->where('tbl_alumni.sex', '=', $request->sex)
+                            ->whereBetween('tbl_alumni.batch', [$request->batch_from, $request->batch_to])
+                            ->select('tbl_alumni.alumni_id')
+                            ->distinct()
+                            ->get();
+                        $perCourse = Alumni::where('tbl_alumni.course_id', '=', $course->course_id)
+                            ->where('tbl_alumni.sex', '=', $request->sex)
+                            ->whereBetween('tbl_alumni.batch', [$request->batch_from, $request->batch_to])
+                            ->select('tbl_alumni.alumni_id')
+                            ->distinct()
+                            ->get();
+                        $total = Alumni::join('form_sas_answers', 'tbl_alumni.alumni_id', '=', 'form_sas_answers.alumni_id')
+                            ->where('tbl_alumni.sex', '=', $request->sex)
+                            ->whereBetween('tbl_alumni.batch', [$request->batch_from, $request->batch_to])
+                            ->where('course_id', 'like', '%' . $request->course_id . '%')
+                            ->select('tbl_alumni.alumni_id')
+                            ->distinct()
+                            ->get();
+                    }
+                    $html .= '<tr>
+                            <th class="th-EI" colspan="1" style="width: 70%;">' . $course->course_desc . '</th>
+                            <td class="th-EI" colspan="2" style="width: 15%;">' . count($checkCount) . '</td>
+                            <td class="th-EI" colspan="1" style="width: 15%;">' . count($perCourse)-count($checkCount) . '</td>
+                        </tr>';
+
+                    $totalPending = $totalPending + (count($perCourse)-count($checkCount));
+                }
+            $html .= '<tr>
+                    <th class="th-EI" colspan="1" style="width: 70%;">TOTAL</th>
+                    <td class="th-EI" colspan="2" style="width: 15%;">' . count($total) . '</td>
+                    <td class="th-EI" colspan="1" style="width: 15%;">' . $totalPending . '</td>
+                </tr>';
+            $html .= '</table>';
+        $pdf->writeHTML($html, true, 0, true, 0);
+
+        $totalPending = 0;
+        $pdf->ln(2);
+        $pdf->SetFont('times', 'B', 11);
+        $pdf->Cell(0, 0, 'TABLE 2. SEX', 0, 1, 'L', 0, '', 0);
+        $pdf->SetFont('times', '', 11);
+        $html = '<style>
+                .table-EI, .th-EI, .td-EI {
+                    border: 1px solid black;
+                    border-collapse: collapse;
+                    padding: 5px;
+                }
+                .theading {
+                    background-color: #78281F;
+                    color: #ffffff;
+                }
+                th {
+                    font-weight: bold;
+                }
+                td {
+                    text-align: center;
+                }
+            </style>
+            <table class="table-EI" style="width:100%;">
+                <tr class="" style="text-align: center; font-weight: bold;">
+                    <th class="theading" colspan="1" style="width: 30%;"></th>
+                    <td class="theading" colspan="1" style="width: 20%;">No. of Respondents</td>
+                    <td class="theading" colspan="1" style="width: 20%;">Percentage</td>
+                </tr>';
+            $total = Alumni::join('form_sas_answers', 'tbl_alumni.alumni_id', '=', 'form_sas_answers.alumni_id')
+                ->whereBetween('tbl_alumni.batch', [$request->batch_from, $request->batch_to])
+                // ->where('course_id', 'like', '%' . $request->course_id . '%')
+                ->select('tbl_alumni.alumni_id')
+                ->distinct()
+                ->get();
+            if ($request->sex == null || empty($request->sex)) {
+                $perMale = Alumni::join('form_sas_answers', 'tbl_alumni.alumni_id', '=', 'form_sas_answers.alumni_id')
+                    ->whereBetween('tbl_alumni.batch', [$request->batch_from, $request->batch_to])
+                    ->where('course_id', 'like', '%' . $request->course_id . '%')
+                    ->where('tbl_alumni.sex', '=', 'Male')
+                    ->select('tbl_alumni.alumni_id')
+                    ->distinct()
+                    ->get();
+                $perFemale = Alumni::join('form_sas_answers', 'tbl_alumni.alumni_id', '=', 'form_sas_answers.alumni_id')
+                    ->whereBetween('tbl_alumni.batch', [$request->batch_from, $request->batch_to])
+                    ->where('course_id', 'like', '%' . $request->course_id . '%')
+                    ->where('tbl_alumni.sex', '=', 'Female')
+                    ->select('tbl_alumni.alumni_id')
+                    ->distinct()
+                    ->get();
+                $html .= '<tr>
+                    <th class="th-EI" colspan="1" style="width: 30%;">MALE</th>
+                    <td class="th-EI" colspan="2" style="width: 20%;">' . count($perMale) . '</td>
+                    <td class="th-EI" colspan="1" style="width: 20%;">' . number_format(count($perMale) / count($total) * 100, 2) . '% </td>
+                </tr>';
+                $html .= '<tr>
+                    <th class="th-EI" colspan="1" style="width: 30%;">FEMALE</th>
+                    <td class="th-EI" colspan="2" style="width: 20%;">' . count($perFemale) .  '</td>
+                    <td class="th-EI" colspan="1" style="width: 20%;">' . number_format(count($perFemale) / count($total) * 100, 2) . '% </td>
+                </tr>';
+            }
+            else {
+                $perSex = Alumni::join('form_sas_answers', 'tbl_alumni.alumni_id', '=', 'form_sas_answers.alumni_id')
+                    ->whereBetween('tbl_alumni.batch', [$request->batch_from, $request->batch_to])
+                    ->where('tbl_alumni.sex', '=', $request->sex)
+                    ->where('course_id', 'like', '%' . $request->course_id . '%')
+                    ->select('tbl_alumni.alumni_id')
+                    ->distinct()
+                    ->get();
+                $html .= '<tr>
+                    <th class="th-EI" colspan="1" style="width: 30%;">' . strtoupper($request->sex) . '</th>
+                    <td class="th-EI" colspan="2" style="width: 20%;">' . count($perSex) .  '</td>
+                    <td class="th-EI" colspan="1" style="width: 20%;">' . number_format(count($perSex) / count($total) * 100, 2) . '% </td>
+                </tr>';
+            }
+
+            $html .= '</table>';
+        $pdf->writeHTML($html, true, 0, true, 0);
+
+        $pdf->ln(2);
+        $pdf->SetFont('times', 'B', 11);
+        $pdf->Cell(0, 0, 'TABLE 3. AGE', 0, 1, 'L', 0, '', 0);
+        $pdf->SetFont('times', '', 11);
+        $html = '<style>
+                .table-EI, .th-EI, .td-EI {
+                    border: 1px solid black;
+                    border-collapse: collapse;
+                    padding: 5px;
+                }
+                .theading {
+                    background-color: #78281F;
+                    color: #ffffff;
+                }
+                th {
+                    font-weight: bold;
+                }
+                td {
+                    text-align: center;
+                }
+            </style>
+            <table class="table-EI" style="width:100%;">
+                <tr class="" style="text-align: center; font-weight: bold;">
+                    <th class="theading" colspan="1" style="width: 30%;"></th>
+                    <td class="theading" colspan="1" style="width: 20%;">No. of Respondents</td>
+                    <td class="theading" colspan="1" style="width: 20%;">Percentage</td>
+                </tr>';
+            $total = Alumni::join('form_sas_answers', 'tbl_alumni.alumni_id', '=', 'form_sas_answers.alumni_id')
+                ->whereBetween('tbl_alumni.batch', [$request->batch_from, $request->batch_to])
+                // ->where('course_id', 'like', '%' . $request->course_id . '%')
+                ->select('tbl_alumni.alumni_id')
+                ->distinct()
+                ->get();
+            $perAge = Alumni::join('form_sas_answers', 'tbl_alumni.alumni_id', '=', 'form_sas_answers.alumni_id')
+                ->whereBetween('tbl_alumni.batch', [$request->batch_from, $request->batch_to])
+                ->where('course_id', 'like', '%' . $request->course_id . '%')
+                ->select('tbl_alumni.age')
+                ->distinct()
+                ->get();
+
+
+            foreach ($perAge as $age) {
+                $perSpecificAge = Alumni::join('form_sas_answers', 'tbl_alumni.alumni_id', '=', 'form_sas_answers.alumni_id')
+                    ->whereBetween('tbl_alumni.batch', [$request->batch_from, $request->batch_to])
+                    ->where('tbl_alumni.age', '=', $age->age)
+                    ->where('tbl_alumni.sex', 'like', $request->sex . '%')
+                    ->where('course_id', 'like', '%' . $request->course_id . '%')
+                    ->select('tbl_alumni.alumni_id')
+                    ->distinct()
+                    ->get();
+                $html .= '<tr>
+                    <th class="th-EI" colspan="1" style="width: 30%;">' . $age->age . ' years old </th>
+                    <td class="th-EI" colspan="2" style="width: 20%;">' . count($perSpecificAge) . '</td>
+                    <td class="th-EI" colspan="1" style="width: 20%;">' . number_format(count($perSpecificAge) / count($total) * 100, 2) . '% </td>
+                </tr>';
+            }
+            $html .= '</table>';
+        $pdf->writeHTML($html, true, 0, true, 0);
+
+        $pdf->SetPrintHeader(true);
+        $pdf->AddPage('L');
+        $pdf->SetPrintHeader(false);
+        $style3 = array('width' => .5, 'cap' => 'butt', 'join' => 'miter', 'dash' => 0, 'color' => array(0, 0, 0));
+        $pdf->Line(10, 33, 288, 33, $style3);
+        $pdf->ln(15);
+
+        $sasCategories = SasCategories::whereIn('category_id', [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14])->get();
+        $numeral = 4;
+        foreach ($sasCategories as $categories) {
+            $pdf->ln(5);
+            $pdf->SetFont('times', 'B', 11);
+            $pdf->Cell(0, 0, 'TABLE ' . $numeral . '. ' . strtoupper($categories->category_name), 0, 1, 'L', 0, '', 0);
+            $pdf->SetFont('times', '', 11);
+
+            $total = Alumni::join('form_sas_answers', 'tbl_alumni.alumni_id', '=', 'form_sas_answers.alumni_id')
+                ->whereBetween('tbl_alumni.batch', [$request->batch_from, $request->batch_to])
+                ->select('tbl_alumni.alumni_id')
+                ->distinct()
+                ->get();
+            $sasQuestions = SasQuestions::where('category_id', '=', $categories->category_id)->get();
+
+            $html = '<style>
+                    .table-EI, .th-EI, .td-EI {
+                        border: 1px solid black;
+                        border-collapse: collapse;
+                        padding: 3px;
+                    }
+                    .theading {
+                        background-color: #78281F;
+                        color: #ffffff;
+                        text-align: center;
+                    }
+                    th {
+                        font-weight: bold;
+                    }
+                    td {
+                        text-align: center;
+                    }
+                </style>
+                <table class="table-EI">
+                    <tr>
+                        <th rowspan="2" class="theading" style="width: 28%"></th>
+                        <th colspan="2" class="theading" style="width: 18%">1 - Very Satisfactory</th>
+                        <th colspan="2" class="theading" style="width: 18%">2 - Satisfactory</th>
+                        <th colspan="2" class="theading" style="width: 18%">3 - Unsatisfactory</th>
+                        <th colspan="2" class="theading" style="width: 18%">4 - Very Unsatisfactory</th>
+                    </tr>
+                    <tr>
+                        <th class="th-EI" colspan="1" style="text-align: center;">No. of Respondents</th>
+                        <th class="th-EI" colspan="1" style="text-align: center;">Percentage</th>
+                        <th class="th-EI" colspan="1" style="text-align: center;">No. of Respondents</th>
+                        <th class="th-EI" colspan="1" style="text-align: center;">Percentage</th>
+                        <th class="th-EI" colspan="1" style="text-align: center;">No. of Respondents</th>
+                        <th class="th-EI" colspan="1" style="text-align: center;">Percentage</th>
+                        <th class="th-EI" colspan="1" style="text-align: center;">No. of Respondents</th>
+                        <th class="th-EI" colspan="1" style="text-align: center;">Percentage</th>
+                    </tr>';
+
+            foreach ($sasQuestions as $questions) {
+
+                $perAnswer = Alumni::join('form_sas_answers', 'tbl_alumni.alumni_id', '=', 'form_sas_answers.alumni_id')
+                ->whereBetween('tbl_alumni.batch', [$request->batch_from, $request->batch_to])
+                ->where('course_id', 'like', '%' . $request->course_id . '%')
+                ->where('tbl_alumni.sex', 'like', $request->sex . '%')
+                ->where('form_sas_answers.question_id', '=', $questions->question_id)
+                ->select('form_sas_answers.answer')
+                ->get();
+
+                $legend1 = 0;
+                $legend2 = 0;
+                $legend3 = 0;
+                $legend4 = 0;
+                foreach ($perAnswer as $answers) {
+                    if ($answers->answer == 1) {
+                        $legend1++;
+                    }
+                    elseif ($answers->answer == 2) {
+                        $legend2++;
+                    }
+                    elseif ($answers->answer == 3) {
+                        $legend3++;
+                    }
+                    elseif ($answers->answer == 4) {
+                        $legend4++;
+                    }
+                }
+                $html .= '<tr>
+                        <th class="th-EI" style="text-align: left;">' . $questions->question_text .'</th>
+                        <td class="tdata td-EI">' . $legend1 . '</td>
+                        <td class="tdata td-EI">' . number_format($legend1 / count($total) * 100, 2) . '%</td>
+                        <td class="tdata td-EI">' . $legend2 . '</td>
+                        <td class="tdata td-EI">' . number_format($legend2 / count($total) * 100, 2) . '%</td>
+                        <td class="tdata td-EI">' . $legend3 . '</td>
+                        <td class="tdata td-EI">' . number_format($legend3 / count($total) * 100, 2) . '%</td>
+                        <td class="tdata td-EI">' . $legend4 . '</td>
+                        <td class="tdata td-EI">' . number_format($legend4 / count($total) * 100, 2) . '%</td>
+                    </tr>';
+            }
+            $html .= '</table>';
+            $pdf->writeHTML($html, true, 0, true, 0);
+            $numeral++;
+        }
 
         $pdf->lastPage();
         $pdf->Output('EIF_Summary_Report_' . date('m-d-y') . '.pdf', 'I');

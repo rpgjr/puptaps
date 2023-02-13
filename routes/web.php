@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\AlumniPdfController;
 use App\Http\Controllers\Admin\CareerController as AdminCareerController;
 use App\Http\Controllers\admin\FormReportsController;
 use App\Http\Controllers\Admin\HomeController;
+use App\Http\Controllers\admin\PdsReportController;
 use App\Http\Controllers\Admin\ReportsController;
 use App\Http\Controllers\admin\TracerReportsController;
 use App\Http\Controllers\Admin\UserManagerController;
