@@ -42,15 +42,15 @@ class AdminManagementController extends Controller
         $admin->user_role   = "Admin";
         $admin->save();
 
-        $admin_account = Admin::where("username", "=", $request->input("username"))->get();
+        $admin_account = Admin::where("email", "=", $request->input("email"))->get();
         $user = new User();
         foreach($admin_account as $account) {
             $user->admin_id             = $account->admin_id;
             $user->email                = $account->email;
-            $user->email_verified_at    = $account->created_at;
             $user->username             = $account->username;
             $user->password             = $account->password;
             $user->user_role            = $account->user_role;
+            $user->account_status       = 'Activated';
 
             $user->save();
         }
