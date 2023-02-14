@@ -26,7 +26,7 @@ class AdminManagementController extends Controller
             'last_name'     => ['required'],
             'first_name'    => ['required'],
 
-            'email'         => ['required', 'string', 'email', 'max:255', 'unique:tbl_admin'],
+            'email'         => ['required', 'string', 'email', 'max:255', 'unique:tbl_admin', 'unique:users'],
             'username'      => ['required', 'unique:tbl_admin'],
             'password'      => ['required', 'confirmed', Rules\Password::defaults()]
         ]);

@@ -34,26 +34,36 @@
                                     @if ($tracer_answers[5]['answer'] == 'Unemployed')
                                         <div class="btn-group" role="group" aria-label="Basic mixed styles example">
                                             <a href="{{ route('userTracer.getAnswerUnemployedPage') }}" type="button" class="btn btn-primary px-3 fs-7">Answer Form</a>
-                                            <button type="button" class="btn btn-secondary fs-7 px-2" data-bs-toggle="collapse" data-bs-target="#whyTracer"><i class="fa-solid fa-circle-question text-light"></i></button>
+                                            <button type="button" class="btn btn-secondary fs-7 px-2" data-bs-toggle="modal" data-bs-target="#whyTracer"><i class="fa-solid fa-circle-question text-light"></i></button>
                                         </div>
                                     @else
                                         <div class="btn-group" role="group" aria-label="Basic mixed styles example">
                                             <a href="{{ route('userTracer.getUpdatePage') }}" type="button" class="btn btn-primary px-3 fs-7">Update Form</a>
-                                            <button type="button" class="btn btn-secondary fs-7 px-2" data-bs-toggle="collapse" data-bs-target="#whyTracer"><i class="fa-solid fa-circle-question text-light"></i></button>
+                                            <button type="button" class="btn btn-secondary fs-7 px-2" data-bs-toggle="modal" data-bs-target="#whyTracer"><i class="fa-solid fa-circle-question text-light"></i></button>
                                         </div>
                                     @endif
                                 @else
                                     <div class="btn-group" role="group" aria-label="Basic mixed styles example">
                                         <a href="{{ route('userTracer.getAnswerModal') }}" type="button" class="btn btn-primary px-3 fs-7">Answer Form</a>
-                                        <button type="button" class="btn btn-secondary fs-7 px-2" data-bs-toggle="collapse" data-bs-target="#whyTracer"><i class="fa-solid fa-circle-question text-light"></i></button>
+                                        <button type="button" class="btn btn-secondary fs-7 px-2" data-bs-toggle="modal" data-bs-target="#whyTracer"><i class="fa-solid fa-circle-question text-light"></i></button>
                                     </div>
                                 @endif
                             </div>
                         </div>
-
-                        <div class="col-12 collapse mt-3 mb-0 border border-secondary-subtle rounded pt-3 pb-2" id="whyTracer">
-                            <h5 class="fw-bold">Why we need need to answer this form</h5>
-                            <p class="text-justify pb-0 px-0 mb-2">The Alumni Tracer helps the institution to gather valuable feedback and insights. Alumni can provide valuable perspective on the quality of education they received, the impact of the institution on their career development, and any areas for improvement. This feedback can be used to inform decision-making and continuously improve the quality of education and support offered to current and future students.</p>
+                        <div class="modal fade" id="whyTracer" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-body">
+                                        <h5 class="fw-bold mt-2">Why we need need to answer this form <i class="fa-solid fa-circle-info text-primary"></i></h5>
+                                        <hr class="mt-3 mb-3">
+                                        <p class="fs-7 pb-0 px-0 mb-2 fst-italic" style="text-align: justify;
+                                        text-justify: inter-word;">The Alumni Tracer helps the institution to gather valuable feedback and insights. Alumni can provide valuable perspective on the quality of education they received, the impact of the institution on their career development, and any areas for improvement. This feedback can be used to inform decision-making and continuously improve the quality of education and support offered to current and future students.</p>
+                                    </div>
+                                    <div class="modal-footer py-1">
+                                        <button type="button" class="btn btn-secondary fs-7" data-bs-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
 
                         <div class="col-12 mt-0 mb-2">
@@ -118,10 +128,10 @@
                                         @endif
                                         @if ($answers->question_id == 12)
                                             <p class="fw-bold mb-0">Company Details: </p>
-                                            <p class="mb-0">{{ $answers->answer }}</p>
+                                            <p class="mb-0"><b>Email:</b> {{ $answers->answer }}</p>
                                         @endif
                                         @if ($answers->question_id == 13)
-                                            <p>{{ $answers->answer }}</p>
+                                            <p><b>Tel. No.:</b> {{ $answers->answer }}</p>
                                         @endif
                                     @endforeach
                                 @endif
@@ -160,10 +170,10 @@
                                         @endif
                                         @if ($answers->question_id == 19)
                                             <p class="fw-bold mb-0">Company Details: </p>
-                                            <p class="mb-0">{{ $answers->answer }}</p>
+                                            <p class="mb-0"><b>Email:</b> {{ $answers->answer }}</p>
                                         @endif
                                         @if ($answers->question_id == 20)
-                                            <p>{{ $answers->answer }}</p>
+                                            <p><b>Tel. No.:</b> {{ $answers->answer }}</p>
                                         @endif
                                     @endforeach
                                 @endif

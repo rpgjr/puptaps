@@ -183,7 +183,7 @@
 
                         <form action="{{ route('register') }}" method="post">
                         @if(Session::has('fail'))
-                            <div class="alert alert-danger">{{ Session::get('fail') }}</div>
+                            <div class="alert alert-danger fs-7">{{ Session::get('fail') }}</div>
                         @endif
                         @csrf
 

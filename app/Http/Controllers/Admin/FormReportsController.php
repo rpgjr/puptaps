@@ -435,7 +435,7 @@ class FormReportsController extends Controller
 
         $pdf = new MYPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
         $pdf->SetCreator(PDF_CREATOR);
-        $pdf->SetTitle('EIF_STATUS_REPORTS');
+        $pdf->SetTitle('EIF_SUMMARY_REPORTS');
         $pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
         $pdf->SetMargins(PDF_MARGIN_LEFT, PDF_MARGIN_TOP, PDF_MARGIN_RIGHT);
         $pdf->SetHeaderMargin(PDF_MARGIN_HEADER);
@@ -740,13 +740,19 @@ class FormReportsController extends Controller
 
         $pdf->SetPrintHeader(true);
         $pdf->AddPage('L');
-        $pdf->SetPrintHeader(false);
         $style3 = array('width' => .5, 'cap' => 'butt', 'join' => 'miter', 'dash' => 0, 'color' => array(0, 0, 0));
         $pdf->Line(10, 33, 288, 33, $style3);
         $pdf->ln(15);
         $eifQuestions = EifQuestions::where('category_id', '=', 3)->get();
         $numeral = 5;
         foreach ($eifQuestions as $questions) {
+            if ($numeral == 9) {
+                $pdf->SetPrintHeader(true);
+                $pdf->AddPage('L');
+                $style3 = array('width' => .5, 'cap' => 'butt', 'join' => 'miter', 'dash' => 0, 'color' => array(0, 0, 0));
+                $pdf->Line(10, 33, 288, 33, $style3);
+                $pdf->ln(15);
+            }
             $pdf->ln(1);
             $pdf->SetFont('times', 'B', 11);
             $pdf->Cell(0, 0, 'TABLE ' . $numeral . '. ' . strtoupper($questions->question_text), 0, 1, 'L', 0, '', 0);
@@ -842,8 +848,20 @@ class FormReportsController extends Controller
         $q = 11;
         $t = 12;
         $c = 13;
+        $pdf->SetPrintHeader(true);
+        $pdf->AddPage('L');
+        $style3 = array('width' => .5, 'cap' => 'butt', 'join' => 'miter', 'dash' => 0, 'color' => array(0, 0, 0));
+        $pdf->Line(10, 33, 288, 33, $style3);
+        $pdf->ln(20);
         foreach ($eifCategories as $categories) {
-            $pdf->ln(1);
+            if ($numeral %2 == 0) {
+                $pdf->SetPrintHeader(true);
+                $pdf->AddPage('L');
+                $style3 = array('width' => .5, 'cap' => 'butt', 'join' => 'miter', 'dash' => 0, 'color' => array(0, 0, 0));
+                $pdf->Line(10, 33, 288, 33, $style3);
+                $pdf->ln(20);
+            }
+            $pdf->ln(5);
             $pdf->SetFont('times', 'B', 11);
             $pdf->Cell(0, 0, 'TABLE ' . $numeral . '. ' . strtoupper($categories->category_name), 0, 1, 'L', 0, '', 0);
             $pdf->SetFont('times', '', 11);
@@ -1034,6 +1052,11 @@ class FormReportsController extends Controller
 
         $eifQuestions = EifQuestions::where('category_id', '=', 16)->get();
         $numeral = 24;
+        $pdf->SetPrintHeader(true);
+        $pdf->AddPage('L');
+        $style3 = array('width' => .5, 'cap' => 'butt', 'join' => 'miter', 'dash' => 0, 'color' => array(0, 0, 0));
+        $pdf->Line(10, 33, 288, 33, $style3);
+        $pdf->ln(15);
         foreach ($eifQuestions as $questions) {
             $pdf->ln(1);
             $pdf->SetFont('times', 'B', 11);
@@ -1390,17 +1413,30 @@ class FormReportsController extends Controller
             $html .= '</table>';
         $pdf->writeHTML($html, true, 0, true, 0);
 
-        $pdf->SetPrintHeader(true);
-        $pdf->AddPage('L');
-        $pdf->SetPrintHeader(false);
-        $style3 = array('width' => .5, 'cap' => 'butt', 'join' => 'miter', 'dash' => 0, 'color' => array(0, 0, 0));
-        $pdf->Line(10, 33, 288, 33, $style3);
-        $pdf->ln(15);
 
         $sasCategories = SasCategories::whereIn('category_id', [3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14])->get();
         $numeral = 4;
         foreach ($sasCategories as $categories) {
-            $pdf->ln(5);
+            if ($numeral == 11 || $numeral == 13) {
+                $pdf->SetPrintHeader(true);
+                $pdf->AddPage('L');
+                $pdf->SetPrintHeader(false);
+                $style3 = array('width' => .5, 'cap' => 'butt', 'join' => 'miter', 'dash' => 0, 'color' => array(0, 0, 0));
+                $pdf->Line(10, 33, 288, 33, $style3);
+                $pdf->ln(15);
+            }
+            elseif ($numeral == 12 || $numeral == 14) {
+                $pdf->ln(3);
+                $pdf->SetPrintHeader(true);
+            }
+            else {
+                $pdf->SetPrintHeader(true);
+                $pdf->AddPage('L');
+                $pdf->SetPrintHeader(false);
+                $style3 = array('width' => .5, 'cap' => 'butt', 'join' => 'miter', 'dash' => 0, 'color' => array(0, 0, 0));
+                $pdf->Line(10, 33, 288, 33, $style3);
+                $pdf->ln(20);
+            }
             $pdf->SetFont('times', 'B', 11);
             $pdf->Cell(0, 0, 'TABLE ' . $numeral . '. ' . strtoupper($categories->category_name), 0, 1, 'L', 0, '', 0);
             $pdf->SetFont('times', '', 11);

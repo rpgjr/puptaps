@@ -69,6 +69,7 @@ class ProfileController extends Controller
 
     public function updateUserAccount(Request $request) {
 
+        $changeProfile = false;
         if($request->hasFile('user_pfp')) {
             $alumni = Alumni::where('alumni_id', '=', Auth::user()->alumni_id)->get();
             foreach($alumni as $image) {
@@ -76,7 +77,6 @@ class ProfileController extends Controller
                     unlink("Uploads/Profiles/".$image->user_pfp);
                 }
             }
-
 
             $file = $request->file('user_pfp');
             $extension = $file->getClientOriginalExtension();
@@ -86,10 +86,12 @@ class ProfileController extends Controller
             $account = Alumni::where('alumni_id', '=', Auth::user()->alumni_id)->update([
                 'user_pfp' => $fileName,
             ]);
+
+            $changeProfile = true;
         }
 
         $request->validate([
-            'username'      => 'required',
+            'username' => 'required',
         ]);
 
         $change_password = false;
@@ -110,12 +112,16 @@ class ProfileController extends Controller
             'username' => $request->input('username'),
         ]);
 
-        if($users || $change_password) {
+        if($users || $change_password || $changeProfile) {
             return back()
                    ->with(
                         'success',
                         'Profile Successfully Updated!'
                     );
+        }
+        elseif (!($users)) {
+            return back()
+                    ->with('fail', 'Nothing to change.');
         }
         else {
             return back()

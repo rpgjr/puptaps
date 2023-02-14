@@ -45,8 +45,8 @@
                                         <div class="row">
                                             <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 my-2">
                                                 <label class="form-label">Username <span class="text-danger">*</span></label>
-                                                <input type="text" class="form-control" name="username" value="{{ Auth::user()->username }}">
-                                                <span class="text-danger">@error('username') {{$message}} @enderror</span>
+                                                <input type="text" class="form-control @error('username') is-invalid @enderror" name="username" value="{{ Auth::user()->username }}">
+                                                <span class="error-message text-danger">@error('username') {{$message}} @enderror</span>
                                             </div>
                                             <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 my-2">
                                                 <label class="form-label">Email <i class="fa-solid fa-lock"></i></label>

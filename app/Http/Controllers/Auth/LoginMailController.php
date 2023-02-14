@@ -13,7 +13,6 @@ use Illuminate\Support\Facades\Mail;
 class LoginMailController extends Controller
 {
     public function sendTemporaryPassword($email, $stud_number) {
-        $name = "Rodrigo";
 
         $chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890_#$!></-+=*%&?@';
         $pass = array();
@@ -38,6 +37,6 @@ class LoginMailController extends Controller
 
         Mail::to($email)->send(new TemporaryPassword($stud_number, $email, $password));
 
-        return redirect(route('login'));
+        return redirect()->route('login')->with('success', 'Temporary Password Successfully sent to your email address');
     }
 }

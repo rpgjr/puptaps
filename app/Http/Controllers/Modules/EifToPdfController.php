@@ -464,7 +464,9 @@ class EifToPdfController extends Controller
                         <td colspan="1" style="word-spacing: 5px; line-height: 25px; text-indent: 50px; text-align: justify;">$comment.</td>
                     </tr>
                 </table>
-                <p></p>
+            EOF;
+            $pdf->writeHTML($html, true, 0, true, 0);
+            $html = <<<EOF
                 <p></p>
                 <table style="width:100%;">
                     <tr>

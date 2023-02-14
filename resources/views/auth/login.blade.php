@@ -22,8 +22,10 @@
                         <div class="card-body px-4">
 
                             <form action="{{ route('login') }}" method="post">
-                            @if(Session::has('fail'))
-                                <div class="alert alert-danger">{{ Session::get('fail') }}</div>
+                            @if (Session::has('fail'))
+                                <div class="alert alert-danger fs-7">{{ Session::get('fail') }}</div>
+                            @elseif (Session::has('success'))
+                                <div class="alert alert-success fs-7">{{ Session::get('success') }}</div>
                             @endif
                             @csrf
 

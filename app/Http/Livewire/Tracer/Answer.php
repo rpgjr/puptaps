@@ -19,6 +19,7 @@ class Answer extends Component
     public $progressBar = 0;
     public $countNull = 1;
     public $temp = 0;
+    public $no_board_exam;
 
     public function render() {
         $this->addNullAnswers();
@@ -82,7 +83,8 @@ class Answer extends Component
         $this->addNullAnswers();
         $temp_null = $this->countNull - 1;
         if($temp_null == $this->currentPage) {
-            if ($this->arrayAnswers[0]['answer'] == 'N/A' || $this->arrayAnswers[0]['answer'] == 'No') {
+            if ($this->no_board_exam == "NO_BOARD_EXAM") {
+                $this->arrayAnswers[0]['answer'] = 'N/A';
                 $this->arrayAnswers[1]['answer'] = 'N/A';
                 $this->arrayAnswers[2]['answer'] = 'N/A';
                 $this->arrayAnswers[3]['answer'] = 'N/A';

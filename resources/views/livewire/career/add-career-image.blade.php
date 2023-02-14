@@ -14,22 +14,25 @@
         @csrf
             <div class="modal-body text-start">
                 <div class="mb-3">
-                  <label class="form-label">Job Advertisement</label>
-                  <input type="file" class="form-control" name="job_ad_image">
+                  <label class="form-label fs-7">Job Advertisement <span class="text-danger">*</span></label>
+                  <input type="file" class="form-control fs-7 @error('file') is-invalid @enderror" name="job_ad_image">
+                  <span class="error-message text-danger">@error('file') {{$message}} @enderror</span>
                 </div>
 
                 <div class="mb-3">
-                    <label class="form-label">Category</label>
-                    <select class="form-select" aria-label="Default select example" name="category">
+                    <label class="form-label fs-7">Category <span class="text-danger">*</span></label>
+                    <select class="form-select fs-7 @error('category') is-invalid @enderror" aria-label="Default select example" name="category">
+                        <option value="" hidden selected>Please select one...</option>
                         @foreach ($careerCategories as $category)
-                            <option value="{{ $category->career_category }}">{{ $category->career_category }}</option>
+                            <option class="fs-7" value="{{ $category->career_category }}">{{ $category->career_category }}</option>
                         @endforeach
                     </select>
+                    <span class="error-message text-danger">@error('category') {{$message}} @enderror</span>
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="button" class="btn btn-secondary fs-7" data-bs-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary fs-7">Submit</button>
             </div>
         </form>
       </div>

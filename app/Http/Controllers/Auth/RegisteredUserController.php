@@ -42,7 +42,7 @@ class RegisteredUserController extends Controller
         if($check_studNumber) {
             $request->validate([
                 'stud_number'   => ['required'],
-                'email'         => ['required', 'string', 'email', 'max:255', 'unique:users']
+                'email'         => ['required', 'string', 'email', 'max:255', 'unique:users', 'unique:tbl_alumni'],
             ],
             [
                 'stud_number.required'  => 'Student Number is required',
@@ -57,11 +57,11 @@ class RegisteredUserController extends Controller
                 return redirect(route('mail.sendTemporaryPassword', [$email, $stud_number]));
             }
             else {
-                return redirect(route('landingPage'));
+                return back()->with('fail', 'A temporary password has already been sent to an email address connected to your account.');
             }
         }
         else {
-            return back()->with('fail', 'You are not allowed to create an Account yet. Contact the Administrator for more information. Thank you.');
+            return back()->with('fail', 'You are not allowed to create an Account yet. Please contact the Administrator for more information. Thank you.');
         }
     }
 }
