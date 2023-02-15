@@ -2,11 +2,11 @@
     <form>
     @csrf
         <div class="input-group">
-            <input type="text" class="form-control" placeholder="Category..." name="query" value="{{ $query }}">
-            <button  type="submit" name="query" value="" class="btn btn-secondary fs-7">
+            <input type="text" class="form-control" placeholder="Search Job Position or Title..." name="query" value="{{ $query }}">
+            <a  type="button" href="{{ route($return_home) }}" class="btn btn-secondary fs-7">
                 <i class="fa-solid fa-rotate-left"></i>
                 <span class="d-none d-sm-none d-md-none d-lg-inline d-xl-inline"></span>
-            </button>
+            </a>
             <button class="btn btn-primary fs-7" type="submit">
                 <i class="fa-solid fa-magnifying-glass"></i>
                 <span class="d-none d-sm-none d-md-none d-lg-inline d-xl-inline"></span>

@@ -9,9 +9,39 @@
 
             <div class="row justify-content-center">
                 <div class="col-11">
-                    <div class="row">
+                    <div class="row g-3">
                         <div class="col-12">
-                            <livewire:admin.admin-cards :totalRegisteredUser="$totalRegisteredUser" :totalregisteredUserSex="$totalregisteredUserSex" :totalStudents="$totalStudents" :listOfNewAccounts="$listOfNewAccounts" />
+                            <div class="sub-container-box p-4">
+                                <h5>Board Exam Passers</h5>
+                                <div>
+                                    <canvas id="alumni-per-exam"></canvas>
+                                </div>
+                                <script>
+                                    var perBoardExam = @json($perBoardExam);
+                                </script>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="sub-container-box p-4 h-100">
+                                <h5>Civil Service Exam Passers</h5>
+                                <div>
+                                    <canvas id="alumni-per-civil"></canvas>
+                                </div>
+                                <script>
+                                    var perCivilService = @json($perCivilService);
+                                </script>
+                            </div>
+                        </div>
+                        <div class="col-8">
+                            <div class="sub-container-box p-4 h-100">
+                                <h5>Latest Career Posting</h5>
+                                <div>
+                                    <canvas id="alumni-per-exam"></canvas>
+                                </div>
+                                <script>
+                                    var perBoardExam = @json($perBoardExam);
+                                </script>
+                            </div>
                         </div>
                     </div>
                 </div>

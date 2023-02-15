@@ -21,13 +21,13 @@
                         <!-- Career Search bar -->
                         <div class="col-12">
                             <div class="row sub-container-box py-3 mx-1">
-                                <livewire:career.career-searchbar :query="$query" />
+                                <livewire:career.career-searchbar :query="$query" :return_home="'adminCareer.getAdminCareerIndex'"/>
                             </div>
                         </div>
 
                         <!-- Career Submenu - Left Side -->
                         <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-3">
-                            <livewire:career.career-submenu :query="$query" />
+                            <livewire:career.career-submenu :subquery="$subquery"/>
                         </div>
 
                         <!-- Career Contents -->

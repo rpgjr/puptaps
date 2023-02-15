@@ -18,7 +18,11 @@
                   <input type="file" class="form-control fs-7 @error('file') is-invalid @enderror" name="job_ad_image">
                   <span class="error-message text-danger">@error('file') {{$message}} @enderror</span>
                 </div>
-
+                <div class="mb-3">
+                    <label class="form-label">Job Name/Job Title <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control @error('job_name') is-invalid @enderror" name="job_name" value="{{ old('job_name') }}">
+                    <span class="error-message text-danger">@error('job_name') {{$message}} @enderror</span>
+                </div>
                 <div class="mb-3">
                     <label class="form-label fs-7">Category <span class="text-danger">*</span></label>
                     <select class="form-select fs-7 @error('category') is-invalid @enderror" aria-label="Default select example" name="category">

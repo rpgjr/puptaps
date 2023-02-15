@@ -36,10 +36,12 @@ class MYPDF extends TCPDF {
                     'TAGUIG BRANCH',
                     0, 1, 'C', 0, '', 0, false, 'T', 'M');
 
-        $style3 = array('width' => .5, 'cap' => 'butt', 'join' => 'miter', 'dash' => 0, 'color' => array(0, 0, 0));
+        // $style3 = array('width' => .5, 'cap' => 'butt', 'join' => 'miter', 'dash' => 0, 'color' => array(0, 0, 0));
 
-        // Line
-        $this->Line(10, 33, 200, 33, $style3);
+        // // Line
+        // $this->Line(10, 33, 200, 33, $style3);
+        $style3 = array('width' => .5, 'cap' => 'butt', 'join' => 'miter', 'dash' => 0, 'color' => array(0, 0, 0));
+        $this->Line(10, 33, 288, 33, $style3);
     }
 
     // Page footer
@@ -122,7 +124,7 @@ class UserReportToPdfController extends Controller
                         $alumniCount = Alumni::where('batch', '=', $batch_from)->where('course_id', '=', $course->course_id)->get();
                         if (count($alumniCount) > 0) {
                             $pdf->SetPrintHeader(true);
-                            $pdf->AddPage();
+                            $pdf->AddPage('L');
                             $pdf->SetPrintHeader(false);
                             $pdf->SetFont('times', 'B', 13);
                             $pdf->ln(17);
@@ -131,7 +133,7 @@ class UserReportToPdfController extends Controller
                             $pdf->ln(5);
                             $pdf->SetFont('times', 'B', 13);
                             // $pdf->Cell(0, 0, strtoupper($course->course_desc), 0, 1, 'C', 0, '', 0);
-                            $pdf->MultiCell(180, 5, strtoupper($course->course_desc), 0, 'C', 0, 1, '', '', true);
+                            $pdf->MultiCell(270, 5, strtoupper($course->course_desc), 0, 'C', 0, 1, '', '', true);
                             $pdf->SetFont('times', '', 11);
                             $pdf->Cell(0, 0, strtoupper('Alumni Batch of ' . $batch_from), 0, 1, 'C', 0, '', 0);
                             $pdf->ln(5);
@@ -143,6 +145,7 @@ class UserReportToPdfController extends Controller
                                         .table-EI, .th-EI, .td-EI {
                                             border: 1px solid black;
                                             border-collapse: collapse;
+                                            padding: 5px 8px;
                                         }
                                         .theading {
                                             background-color: #78281F;
@@ -151,33 +154,27 @@ class UserReportToPdfController extends Controller
                                         th {
                                             font-weight: bold;
                                         }
-                                        table {
-                                            padding: 5px;
-                                        }
-                                        tr:nth-child(even) {
-                                            background-color: #f2f2f2;
-                                        }
                                     </style>
                                     <table class="table-EI" style="width:100%;">
                                         <tr class="theading" style="text-align: center; font-weight: bold;">
-                                            <td class="tdHeading" colspan="1" style="width: 25%;">Name</td>
+                                            <td class="tdHeading" colspan="1" style="width: 27%;">Name</td>
                                             <td class="tdHeading" colspan="1" style="width: 20%;">Email</td>
-                                            <td class="tdHeading" colspan="1" style="width: 17%;">Number</td>
-                                            <td class="tdHeading" colspan="1" style="width: 13%;">Birthday</td>
-                                            <td class="tdHeading" colspan="1" style="width: 25%;">Address</td>
+                                            <td class="tdHeading" colspan="1" style="width: 13%;">Number</td>
+                                            <td class="tdHeading" colspan="1" style="width: 10%;">Birthday</td>
+                                            <td class="tdHeading" colspan="1" style="width: 30%;">Address</td>
                                         </tr>';
                             foreach ($getAlumni as $alumni) {
-                                if ($course->course_id == $alumni->course_id && $batch_from == $alumni->batch) {
+                                if ($course->course_id == $alumni->course_id && $batch_from == $alumni->batch && $alumni->email != null && $alumni->number != null && $alumni->city_address != null) {
                                     $html .= '<tr>
-                                                <td class="th-EI" colspan="1" style="width: 25%;">' . strtoupper($alumni->last_name) . ', ' . strtoupper($alumni->first_name) . ' ' .strtoupper($alumni->suffix) . ' ' . strtoupper($alumni->middle_name) . '</td>
+                                                <td class="th-EI" colspan="1" style="width: 27%; font-weight: bold;">' . strtoupper($alumni->last_name) . ', ' . strtoupper($alumni->first_name) . ' ' .strtoupper($alumni->suffix) . ' ' . strtoupper($alumni->middle_name) . '</td>
                                                 <td class="th-EI" colspan="1" style="width: 20%;">' . $alumni->email . '</td>
-                                                <td class="th-EI" colspan="1" style="width: 17%; text-align: center;">' . $alumni->number . '</td>
-                                                <td class="th-EI" colspan="1" style="width: 13%; text-align: center;">';
+                                                <td class="th-EI" colspan="1" style="width: 13%; text-align: center;">' . $alumni->number . '</td>
+                                                <td class="th-EI" colspan="1" style="width: 10%; text-align: center;">';
                                                 if ($alumni->birthday != '0000-00-00') {
                                                     $html .= date('m/d/Y' , strtotime($alumni->birthday));
                                                 }
                                                 $html .= '</td>
-                                                <td class="th-EI" colspan="1" style="width: 25%;">' . $alumni->city_address . '</td>
+                                                <td class="th-EI" colspan="1" style="width: 30%;">' . $alumni->city_address . '</td>
                                             </tr>';
                                 }
                             }

@@ -8,72 +8,30 @@
     <section class="mt-4 mt-sm-4 mt-md-4 mt-lg-5 mt-xl-5 mb-5">
         <div class="container-fluid box-content">
 
-            <livewire:admin.page-title :title="$title"/>
-
-            {{-- <div class="row justify-content-center text-end mb-2">
-                <div class="col-11 d-flex justify-content-end">
-                    <form action="{{ route("adminReports.getUserReportPdf") }}" method="POST" target="_blank">
-                    @csrf
-                        <button type="submit" class="btn btn-danger me-2 fs-7">Download as PDF <i class="fa-solid fa-file-pdf ms-1"></i></button>
-                    </form>
-                    <div class="btn-group" role="group" aria-label="Basic example">
-                        <button class="btn btn-primary fs-7" type="button" data-bs-toggle="collapse" data-bs-target="#showFilter">
-                            Filter <i class="fa-solid fa-filter me-0"></i>
-                        </button>
-                        <a href="{{ route('adminReports.getUserReports') }}" type="button" class="btn btn-secondary fs-7"><i class="fa-solid fa-rotate-left"></i></a>
+            <div class="row justify-content-center mt-3 gx-3" style="margin: 0 35px;">
+                <div class="col-8">
+                    <div class="sub-container-box h-100 p-4">
+                        <h5>Alumni Per Course</h5>
+                        <div>
+                            <canvas id="students-per-course"></canvas>
+                        </div>
+                        <script>
+                            var studentsPerCourse = @json($studentsPerCourse);
+                        </script>
                     </div>
                 </div>
-            </div> --}}
-
-            {{-- <div class="row justify-content-center mb-3 collapse mt-2" id="showFilter">
-                <div class="col-11 sub-container-box pt-3 mb-0 pb-2">
-                    <form>
-                        @csrf
-                        <div class="row">
-                            <div class="col-6 mb-3">
-                                <label class="form-label">Sex</label>
-                                <select class="form-select" name="sex">
-                                    <option value="">All</option>
-                                    <option value="Male">Male</option>
-                                    <option value="Female">Female</option>
-                                </select>
-                            </div>
-                            <div class="col-6 mb-3">
-                                <label class="form-label">Course</label>
-                                <select class="form-select" name="course_id">
-                                    <option value="">All</option>
-                                    @foreach ($courses as $course)
-                                        <option value="{{ $course->course_id }}">{{ $course->course_id }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-
-                            <div class="col-6 mb-3">
-                                <label class="form-label">Batch From:</label>
-                                <select class="form-select @error('batch_from') is-invalid @enderror" name="batch_from">
-                                    @for ($i = 2022; $i <= date('Y'); $i++)
-                                        <option value="{{ $i }}">{{ $i }}</option>
-                                    @endfor
-                                </select>
-                            </div>
-                            <div class="col-6 mb-3">
-                                <label class="form-label">Batch To:</label>
-                                <select class="form-select @error('batch_to') is-invalid @enderror" name="batch_to">
-                                    @for ($i = 2022; $i <= date('Y'); $i++)
-                                        <option value="{{ $i }}">{{ $i }}</option>
-                                    @endfor
-                                </select>
-                            </div>
-
-                            <div class="col-12 mb-2 text-end">
-                                <button class="btn btn-primary fs-7" type="submit">
-                                    Filter
-                                </button>
-                            </div>
+                <div class="col-4">
+                    <div class="sub-container-box h-100 p-4">
+                        <h5>Alumni Per Sex</h5>
+                        <div>
+                            <canvas id="students-per-sex"></canvas>
                         </div>
-                    </form>
+                        <script>
+                            var studentsPersex = @json($studentsPersex);
+                        </script>
+                    </div>
                 </div>
-            </div> --}}
+            </div>
 
             <div class="row justify-content-center mt-3">
                 @if (count($alumni) == 0)

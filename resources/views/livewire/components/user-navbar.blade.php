@@ -35,13 +35,13 @@
                     @endif
                     @endforeach
                     <ul class="dropdown-menu dropdown-menu-start dropdown-menu-sm-start dropdown-menu-md-end">
-                        <li><a class="dropdown-item" href="#">Feedback</a></li>
-                        <li><a class="dropdown-item" href="#">Report a Problem</a></li>
+                        <li><a class="dropdown-item fs-7" href="#">Feedback</a></li>
+                        <li><a class="dropdown-item fs-7" href="#">Report a Problem</a></li>
                         <li><hr class="dropdown-divider"></li>
                         <li>
                             <form action="{{ route('logout') }}" method="post">
                                 @csrf
-                                <button type="submit" class="dropdown-item">Logout</button>
+                                <button type="submit" class="dropdown-item fs-7">Logout</button>
                             </form>
                         </li>
                     </ul>

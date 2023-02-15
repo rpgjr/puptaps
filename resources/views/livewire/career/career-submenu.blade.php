@@ -17,18 +17,18 @@
                 <ul class="list-unstyled">
                     <li>
                         <button type="submit" class="career-submenu-button fs-7 btn btn-light w-100 text-start mb-1
-                            @if ($query == null)
+                            @if ($subquery == null)
                                 active-career
                             @endif
-                        " value="" name="query">All</button>
+                        " value="" name="subquery">All</button>
                     </li>
                     @foreach ($careerCategories as $category)
                         <li>
                             <button type="submit" class="career-submenu-button fs-7 btn btn-light w-100 text-start my-1
-                                @if ($query == $category->career_category)
+                                @if ($subquery == $category->career_category)
                                     active-career
                                 @endif
-                            " value="{{ $category->career_category }}" name="query">{{ $category->career_category }}</button>
+                            " value="{{ $category->career_category }}" name="subquery">{{ $category->career_category }}</button>
                         </li>
                     @endforeach
                 </ul>

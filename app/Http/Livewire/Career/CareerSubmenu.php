@@ -8,6 +8,7 @@ use Livewire\Component;
 class CareerSubmenu extends Component
 {
     public $query;
+    public $subquery;
     public function render()
     {
         $careerCategories = CareerCategories::all();

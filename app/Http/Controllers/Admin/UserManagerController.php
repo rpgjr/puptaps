@@ -35,7 +35,7 @@ class UserManagerController extends Controller
 
     public function getAlumniManager(Request $request) {
         $data['q'] = $request->get('q');
-        $data['alumni'] = Alumni::where('last_name', 'like', '%' . $data['q'] . '%')->paginate(15)->withQueryString();
+        $data['alumni'] = Alumni::where('last_name', 'like', '%' . $data['q'] . '%')->orwhere('stud_number', 'like', '%' . $data['q'] . '%')->paginate(15)->withQueryString();
         $courses = Courses::all();
         $title = "Alumni Manager";
         $PDS = PdsAnswers::all();

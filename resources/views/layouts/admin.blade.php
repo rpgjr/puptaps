@@ -3,7 +3,7 @@
 <head>
     {{-- Headings --}}
     <livewire:components.header />
-    <script src="https://www.gstatic.com/charts/loader.js"></script>
+
     <title>@yield('page-title')</title>
     @livewireStyles
 </head>
@@ -20,7 +20,7 @@
                         <div class="col-12">
                             <livewire:admin.admin-navbar />
                         </div>
-                        <div class="col-12" style="margin-top: 80px;">
+                        <div class="col-12" style="margin-top: 40px;">
                             @yield('content')
                         </div>
                     </div>

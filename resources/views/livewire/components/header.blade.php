@@ -8,14 +8,15 @@
 <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
 <link rel="stylesheet" href="{{ asset('css/landing.css') }}">
 <link rel="stylesheet" href="{{ asset('css/user.css') }}">
-<link rel="stylesheet" href="{{ asset('css/navbar.css') }}">
 <link rel="stylesheet" href="{{ asset('css/career.css') }}">
 <link rel="stylesheet" href="{{ asset('css/profile.css') }}">
 <link rel="stylesheet" href="{{ asset('css/forms.css') }}">
 <link rel="stylesheet" href="{{ asset('css/tracer.css') }}">
-<link rel="stylesheet" href="{{ asset('css/reports.css') }}">
 <link rel="stylesheet" href="{{ asset('css/user-homepage.css') }}">
 <link rel="stylesheet" href="{{ asset('css/check_error.css') }}">
+
+{{-- Bootstrap Icons --}}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
 
 {{-- Fontawesome --}}
 <link rel="stylesheet" href="{{ asset('fontawesome/css/all.css') }}">
@@ -28,4 +29,6 @@
 
 {{-- Animate on Scroll --}}
 <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+
 

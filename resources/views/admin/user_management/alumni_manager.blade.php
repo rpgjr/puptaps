@@ -37,7 +37,7 @@
                         <form class="g-3">
                             @csrf
                             <div class="input-group">
-                                <input type="text" class="form-control fs-7" placeholder="Last Name" name="q" value="{{ $q }}">
+                                <input type="text" class="form-control fs-7" placeholder="Last Name or Student Number" name="q" value="{{ $q }}">
                                 <a href="{{ route('adminUserManagement.getAlumniManager') }}" class="fs-7 btn btn-secondary" type="button" id="button-addon2">
                                     <i class="fa-solid fa-rotate-right me-1"></i></a>
                                 <button class="fs-7 btn btn-primary" type="submit" id="button-addon2">

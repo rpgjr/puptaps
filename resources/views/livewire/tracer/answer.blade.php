@@ -103,7 +103,7 @@
                                                     <option value="Licensure Examination for Teachers">Licensure Examination for Teachers</option>
                                                     <option value="Certified Public Accountant Board Exam">Certified Public Accountant Board Exam</option>
                                                     <option value="Professional Mechanical Engineer">Professional Mechanical Engineer</option>
-                                                    <option value="Not Applicable">Not Applicable</option>
+                                                    <option value="N/A">Not Applicable</option>
                                                 </select>
                                             @endif
                                             <span class="text-danger error-message">

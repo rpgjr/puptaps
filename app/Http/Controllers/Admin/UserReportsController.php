@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Alumni;
 use App\Models\Courses;
 use Illuminate\Http\Request;
+use DB;
 
 class UserReportsController extends Controller
 {
@@ -25,14 +26,14 @@ class UserReportsController extends Controller
             $data['batch_to'] == null
             ){
                 $data['alumni'] = Alumni::orderBy('last_name', 'asc')
-                            ->paginate(20)
+                            ->paginate(15)
                             ->withQueryString();
         }
         elseif(($data['sex']) == null) {
             $data['alumni'] = Alumni::where('course_id', 'like', '%' . $data['course_id'] . '%')
                             ->whereBetween('batch', [$data['batch_from'], $data['batch_to']])
                             ->orderBy('last_name', 'asc')
-                            ->paginate(20)
+                            ->paginate(15)
                             ->withQueryString();
         }
         else {
@@ -40,10 +41,24 @@ class UserReportsController extends Controller
                             ->where('sex', "=", $data['sex'])
                             ->whereBetween('batch', [$data['batch_from'], $data['batch_to']])
                             ->orderBy('last_name', 'asc')
-                            ->paginate(20)
+                            ->paginate(15)
                             ->withQueryString();
         }
 
-        return view("admin.reports.user-report", compact(["title", "courses"]), $data);
+        $students = Alumni::select('course_id as course_id', DB::raw('count(alumni_id) as alumniCount'))
+                ->groupBy('course_id')
+                ->get();
+        $studentsPerCourse = $students->mapWithKeys(function ($item, $key) {
+            return [$item ->course_id => $item->alumniCount];
+        });
+
+        $sex = Alumni::select('sex as sex', DB::raw('count(alumni_id) as alumniCount'))
+                ->groupBy('sex')
+                ->get();
+        $studentsPersex = $sex->mapWithKeys(function ($item, $key) {
+            return [$item ->sex => $item->alumniCount];
+        });
+
+        return view("admin.reports.user-report", compact(["title", "courses", "studentsPerCourse", "studentsPersex"]), $data);
     }
 }

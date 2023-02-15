@@ -71,6 +71,9 @@ class TracerReportsController extends Controller
         elseif ($request->report_type == 3) {
             $this->tracerAlumniProfile($request);
         }
+        elseif ($request->report_type == 4) {
+            $this->tracerBoardPassers($request);
+        }
     }
 
     public function tracerSummaryReport($request) {
@@ -907,6 +910,159 @@ class TracerReportsController extends Controller
                 }
             }
             //Close and output PDF document
+            $pdf->Output(date('m-d-y') . ' Tracer_Summary_Report' . '.pdf', 'I');
+        }
+        else {
+            $pdf = new MYPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
+
+            // set document information
+            $pdf->SetCreator(PDF_CREATOR);
+            $pdf->SetTitle('Alumni Reports');
+
+            // set default monospaced font
+            $pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
+
+            // set margins
+            $pdf->SetMargins(PDF_MARGIN_LEFT, PDF_MARGIN_TOP, PDF_MARGIN_RIGHT);
+            $pdf->SetHeaderMargin(PDF_MARGIN_HEADER);
+            $pdf->SetFooterMargin(PDF_MARGIN_FOOTER);
+
+            // set auto page breaks
+            $pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
+
+            // set image scale factor
+            $pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
+
+            $pdf->SetPrintHeader(true);
+            $pdf->AddPage();
+            $pdf->SetPrintHeader(false);
+            $pdf->SetFont('times', 'B', 13);
+            $pdf->ln(20);
+            $pdf->Cell(0, 0, 'ALUMNI TRACER - SUMMARY REPORT', 0, 1, 'C', 0, '', 0);
+            $pdf->SetFont('times', '', 12);
+            $pdf->ln(1);
+            $pdf->Cell(0, 0, 'ALUMNI BATCH FROM ' . $request->batch_from . ' TO ' . $request->batch_to, 0, 1, 'C', 0, '', 0);
+            date_default_timezone_set('Asia/Manila');
+            $pdf->Cell(0, 0, 'Date Generated: ' . date('F d, Y'), 0, 1, 'C', 0, '', 0);
+
+            $pdf->ln(20);
+            $pdf->Cell(0, 0, 'Sorry! No data available.', 0, 1, 'C', 0, '', 0);
+            $pdf->lastPage();
+            //Close and output PDF document
+            $pdf->Output(date('m-d-y') . ' Tracer_Profile_Report' . '.pdf', 'I');
+        }
+    }
+
+    public function tracerBoardPassers($request) {
+        $allAlumni = Alumni::whereBetween('batch', [$request->batch_from, $request->batch_to])->get();
+
+        $ctr = 0;
+        foreach ($allAlumni as $alumni) {
+            $checkAlumni = TracerAnswers::where('alumni_id', '=', $alumni->alumni_id)->get();
+            foreach ($checkAlumni as $check) {
+                if ($check->question_id == 1) {
+                    if ($check->answer == 'Yes') {
+                        $ctr++;
+                    }
+                }
+            }
+        }
+
+        if ($ctr > 0) {
+            $pdf = new MYPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
+
+            // set document information
+            $pdf->SetCreator(PDF_CREATOR);
+            $pdf->SetTitle('Alumni Reports');
+
+            // set default monospaced font
+            $pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
+
+            // set margins
+            $pdf->SetMargins(PDF_MARGIN_LEFT, PDF_MARGIN_TOP, PDF_MARGIN_RIGHT);
+            $pdf->SetHeaderMargin(PDF_MARGIN_HEADER);
+            $pdf->SetFooterMargin(PDF_MARGIN_FOOTER);
+
+            // set auto page breaks
+            $pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
+
+            // set image scale factor
+            $pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
+            $board_exam = ['Electronics Engineer Licensure Examination', 'Licensure Examination for Teachers', 'Certified Public Accountant Board Exam', 'Professional Mechanical Engineer'];
+
+            foreach ($board_exam as $exam) {
+
+                $checkBoardPassers = Alumni::join('tbl_tracer_answers', 'tbl_alumni.alumni_id', '=', 'tbl_tracer_answers.alumni_id')
+                ->whereBetween('tbl_alumni.batch', [$request->batch_from, $request->batch_to])
+                ->where('tbl_tracer_answers.question_id', '=', 3)
+                ->where('tbl_tracer_answers.answer', '=', $exam)
+                ->select('tbl_tracer_answers.answer',)
+                ->get();
+
+                if (count($checkBoardPassers) > 0) {
+                    $pdf->SetPrintHeader(true);
+                    $pdf->AddPage();
+                    $pdf->SetPrintHeader(false);
+                    $pdf->SetFont('times', 'B', 13);
+                    $pdf->ln(20);
+                    $pdf->Cell(0, 0, 'ALUMNI TRACER - LIST OF BOARD PASSERS', 0, 1, 'C', 0, '', 0);
+                    $pdf->SetFont('times', 'B', 12);
+                    $pdf->ln(1);
+                    $pdf->Cell(0, 0, strtoupper($exam), 0, 1, 'C', 0, '', 0);
+                    $pdf->SetFont('times', '', 12);
+                    $pdf->ln(1);
+                    $pdf->Cell(0, 0, 'ALUMNI BATCH FROM ' . $request->batch_from . ' TO ' . $request->batch_to, 0, 1, 'C', 0, '', 0);
+
+                    $pdf->ln(15);
+                    $pdf->SetFont('times', '', 11);
+                    date_default_timezone_set('Asia/Manila');
+                    $pdf->Cell(0, 0, 'Date Generated: ' . date('F d, Y'), 0, 1, 'R', 0, '', 0);
+
+                    $html = '<style>
+                        .table-EI, .th-EI, .td-EI {
+                            border: 1px solid black;
+                            border-collapse: collapse;
+                            padding: 8px;
+                        }
+                        .theading {
+                            background-color: #78281F;
+                            color: #ffffff;
+                        }
+                        td {
+                            text-align: center;
+                        }
+                        th {
+                            font-weight: bold;
+                        }
+                        table {
+                            padding: 5px;
+                        }
+                    </style>
+                    <table class="table-EI" style="width:100%;">
+                        <tr class="theading" style="text-align: center; font-weight: bold;">
+                            <th class="" colspan="1" style="width: 60%;">Name</th>
+                            <td class="" colspan="1" style="width: 30%;">Course</td>
+                            <td class="" colspan="1" style="width: 10%;">Batch</td>
+                        </tr>';
+
+                    foreach ($allAlumni as $alumni) {
+                        $checkAnswer = TracerAnswers::where('alumni_id', '=', $alumni->alumni_id)->get();
+
+                        if(count($checkAnswer) > 0 && $checkAnswer[0]['answer'] == "Yes" && $checkAnswer[2]['answer'] == $exam) {
+                            $fullname = $alumni->last_name . ', ' . $alumni->first_name . ' ' . $alumni->suffix . ' ' . $alumni->middle_name;
+
+                        $html .= '<tr>
+                                <th class="th-EI" colspan="1" style="width: 60%;">' . strtoupper($fullname) . '</th>
+                                <td class="th-EI" colspan="1" style="width: 30%;">' . $alumni->course_id . '</td>
+                                <td class="th-EI" colspan="1" style="width: 10%;">' . $alumni->batch . '</td>
+                            </tr>';
+                        }
+                    }
+                    $html .= '</table>';
+                    $pdf->writeHTML($html, true, 0, true, 0);
+                }
+            }
+            $pdf->lastPage();
             $pdf->Output(date('m-d-y') . ' Tracer_Summary_Report' . '.pdf', 'I');
         }
         else {

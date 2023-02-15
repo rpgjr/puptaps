@@ -5,16 +5,19 @@
 <script src="{{ asset('js/alert-message-modal.js') }}"></script>
 <script src="{{ asset('js/preview-profile.js') }}"></script>
 <script src="{{ asset('js/same-address.js') }}"></script>
-<script src="{{ asset('js/same-current-job.js') }}"></script>
 
-<script src="{{ asset('js/password-generator.js') }}"></script>
-
+{{-- Jquery --}}
 <script src="{{ asset('js/jquery-3.6.1.min.js') }}"></script>
-<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
-<script src="{{ asset('js/registered-users-gender-pie.js') }}"></script>
-<script src="{{ asset('js/registered-users-bar.js') }}"></script>
+{{-- Chart JS --}}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="{{ asset('js/board-passers.js') }}"></script>
+<script src="{{ asset('js/chart-student-per-course.js') }}"></script>
+<script src="{{ asset('js/chart-student-per-sex.js') }}"></script>
+<script src="{{ asset('js/chart-board-exam.js') }}"></script>
+<script src="{{ asset('js/chart-civil-service.js') }}"></script>
 
+{{-- Rich Text Editor --}}
 <script type="text/javascript" src="https://unpkg.com/trix@2.0.0/dist/trix.umd.min.js"></script>
 
 {{-- Animate on Scroll --}}

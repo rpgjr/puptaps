@@ -24,8 +24,10 @@ class CareerController extends Controller
         $posts              = Alumni::all();
         $title              = "Careers";
         $data['query']      = $request->get('query');
+        $data['subquery']      = $request->get('subquery');
         $data['careers']    = Careers::where('approval', '=', 1)
-                              ->where('category', 'like', '%' . $data['query'] . '%')
+                              ->where('job_name', 'like', '%' . $data['query'] . '%')
+                              ->where('category', 'like', '%' . $data['subquery'] . '%')
                               ->paginate(15)
                               ->withQueryString();
         //$message = "Thank you for posting. Kindly wait for the admins to approve your post.";
@@ -86,12 +88,14 @@ class CareerController extends Controller
     public function addImageCareer(Request $request) {
         $request->validate([
             'job_ad_image'  => 'required|mimes:jpg,jpeg,png',
+            'job_name'      => 'required',
             'category'      => 'required',
         ]);
 
         $career = new Careers();
         $career->alumni_id  = Auth::user()->alumni_id;
         $career->approval   = 0;
+        $career->job_name   = $request->input('job_name');
         $career->category   = $request->input('category');
 
         if($request->hasFile('job_ad_image')) {

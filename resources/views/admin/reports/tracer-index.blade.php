@@ -12,33 +12,44 @@
             <div class="col-11 px-0">
                 <div class="row justify-content-between px-0">
                     <div class="col-4">
-                        <div class="h-100 card bg-primary-subtle" style="background: #AED6F1; color:">
-                            <div class="card-body d-flex align-items-center">
-                                <div>
-                                    <h4 class="card-title mb-1">No. of Alumni: 200</h4>
-                                    <p class="card-text">as of {{ date('F d, Y') }}</p>
+                        <div class="py-0 card" style="background: #3498DB; color: #ffffff">
+                            <div class="card-body align-items-center row">
+                                <div class="col-8">
+                                    <h2 class="card-title mb-1">{{ $totalAlumni }}</h2>
+                                    <p class="card-text mb-0 mt-0 fw-bold">Number of Alumni</p>
                                 </div>
-                                <div>
-                                    <i class="fa-solid fa-graduation-cap text-primary" style="font-size: 100px;"></i>
+                                <div class="col-4 text-center p-0 m-0">
+                                    {{-- <i class="fa-solid fa-graduation-cap text-light" style="font-size: 60px;"></i> --}}
+                                    <i class="bi bi-mortarboard p-0 m-0" style="font-size: 70px;"></i>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="col-4">
-                        <div class="card" style="background: #F5B7B1;">
-                            <div class="card-header">Responses</div>
-                            <div class="card-body">
-                                <h5 class="card-title">Primary card title</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <div class="py-0 card" style="background: #CB4335; color: #ffffff">
+                            <div class="card-body align-items-center row">
+                                <div class="col-8">
+                                    <h2 class="card-title mb-1">{{ $totalTracer }}</h2>
+                                    <p class="card-text mb-0 mt-0 fw-bold">Number of Respondents</p>
+                                </div>
+                                <div class="col-4 text-center p-0 m-0">
+                                    {{-- <i class="fa-solid fa-file-circle-check text-light" style="font-size: 60px;"></i> --}}
+                                    <i class="bi bi-file-earmark-check p-0 m-0" style="font-size: 70px;"></i>
+                                </div>
                             </div>
                         </div>
                     </div>
                     <div class="col-4">
-                        <div class="card" style="background: #F9E79F;">
-                            <div class="card-header">Board Passers</div>
-                            <div class="card-body">
-                                <h5 class="card-title">Primary card title</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <div class="py-0 card" style="background: #1ABC9C; color: #ffffff">
+                            <div class="card-body align-items-center row">
+                                <div class="col-8">
+                                    <h2 class="card-title mb-1">{{ $totalPassers }}</h2>
+                                    <p class="card-text mb-0 mt-0 fw-bold">Licensed Board Passers</p>
+                                </div>
+                                <div class="col-4 text-center p-0 m-0">
+                                    {{-- <i class="fa-solid fa-id-card text-light" style="font-size: 60px;"></i> --}}
+                                    <i class="bi bi-credit-card" style="font-size: 70px;"></i>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -50,14 +61,15 @@
             <div class="col-11">
                 <form action="{{ route('adminReports.tracerReportToPdf') }}" method="post" target="_blank">
                 @csrf
-                    <div class="row sub-container-box py-4 px-2">
-                        <h3 class="mb-4">Tracer Reports</h3>
+                    <div class="row sub-container-box py-4 px-3">
+                        <h3 class="mb-4 mt-3">Tracer Reports</h3>
                         <div class="col-4 mb-3">
                             <label class="form-label">Report Type</label>
                             <select class="form-select" name="report_type">
                                 <option value="1">Summary Report</option>
                                 <option value="2">Status Report</option>
                                 <option value="3">Generate Alumni Profile</option>
+                                <option value="4">Generate List of Booard Passers</option>
                             </select>
                         </div>
                         <div class="col-4 mb-3">
@@ -76,7 +88,7 @@
                                 @endfor
                             </select>
                         </div>
-                        <div class="col-12">
+                        <div class="col-12 mb-3">
                             <button type="submit" class="btn btn-primary fs-7">Generate Report <i class="fa-solid fa-file-lines ms-1"></i></button>
                         </div>
                     </div>

@@ -22,8 +22,10 @@ class CareerController extends Controller
         $admin              = Admin::all();
         $username           = User::all();
         $data['query']      = $request->get('query');
+        $data['subquery']   = $request->get('subquery');
         $data['careers']    = Careers::where('approval', '=', 1)
-                              ->where('category', 'like', '%' . $data['query'] . '%')
+                              ->where('job_name', 'like', '%' . $data['query'] . '%')
+                              ->where('category', 'like', '%' . $data['subquery'] . '%')
                               ->paginate(15)
                               ->withQueryString();
 
@@ -99,12 +101,14 @@ class CareerController extends Controller
     public function addImageCareer(Request $request) {
         $request->validate([
             'job_ad_image'  => 'required|mimes:jpg,jpeg,png',
+            'job_name'      => 'required',
             'category'      => 'required',
         ]);
 
         $career = new Careers();
         $career->admin_id   = Auth::user()->admin_id;
         $career->approval   = 1;
+        $career->job_name   = $request->input('job_name');
         $career->category   = $request->input('category');
 
         if($request->hasFile('job_ad_image')) {
