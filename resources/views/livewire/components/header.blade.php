@@ -12,7 +12,6 @@
 <link rel="stylesheet" href="{{ asset('css/profile.css') }}">
 <link rel="stylesheet" href="{{ asset('css/forms.css') }}">
 <link rel="stylesheet" href="{{ asset('css/tracer.css') }}">
-<link rel="stylesheet" href="{{ asset('css/user-homepage.css') }}">
 <link rel="stylesheet" href="{{ asset('css/check_error.css') }}">
 
 {{-- Animate Text --}}

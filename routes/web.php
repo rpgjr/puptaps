@@ -1,12 +1,12 @@
 <?php
 
-use App\Http\Controllers\admin\AccountSettingsController;
+use App\Http\Controllers\Admin\AccountSettingsController;
 use App\Http\Controllers\Admin\AlumniPdfController;
 use App\Http\Controllers\Admin\CareerController as AdminCareerController;
-use App\Http\Controllers\admin\FormReportsController;
+use App\Http\Controllers\Admin\FormReportsController;
 use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\Admin\ReportsController;
-use App\Http\Controllers\admin\TracerReportsController;
+use App\Http\Controllers\Admin\TracerReportsController;
 use App\Http\Controllers\Admin\UserManagerController;
 use App\Http\Controllers\Admin\UserReportsController;
 use App\Http\Controllers\Admin\UserReportToPdfController;

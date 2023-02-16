@@ -20,6 +20,7 @@ class Answer extends Component
     public $countNull = 1;
     public $temp = 0;
     public $no_board_exam;
+    public $currently_unemployed;
 
     public function render() {
         $this->addNullAnswers();
@@ -89,6 +90,23 @@ class Answer extends Component
                 $this->arrayAnswers[2]['answer'] = 'N/A';
                 $this->arrayAnswers[3]['answer'] = 'N/A';
             }
+            if ($this->currently_unemployed == "CURRENTLY_UNEMPLOYED") {
+                $this->arrayAnswers[5]['answer'] = 'UNEMPLOYED';
+                $this->arrayAnswers[6]['answer'] = 'UNEMPLOYED';
+                $this->arrayAnswers[7]['answer'] = 'UNEMPLOYED';
+                $this->arrayAnswers[8]['answer'] = 'UNEMPLOYED';
+                $this->arrayAnswers[9]['answer'] = 'UNEMPLOYED';
+                $this->arrayAnswers[10]['answer'] = 'UNEMPLOYED';
+                $this->arrayAnswers[11]['answer'] = 'UNEMPLOYED';
+                $this->arrayAnswers[12]['answer'] = 'UNEMPLOYED';
+                $this->arrayAnswers[13]['answer'] = 'UNEMPLOYED';
+                $this->arrayAnswers[14]['answer'] = 'UNEMPLOYED';
+                $this->arrayAnswers[15]['answer'] = 'UNEMPLOYED';
+                $this->arrayAnswers[16]['answer'] = 'UNEMPLOYED';
+                $this->arrayAnswers[17]['answer'] = 'UNEMPLOYED';
+                $this->arrayAnswers[18]['answer'] = 'UNEMPLOYED';
+                $this->arrayAnswers[19]['answer'] = 'UNEMPLOYED';
+            }
             $this->validate();
         }
         $this->currentPage++;
@@ -107,21 +125,21 @@ class Answer extends Component
     }
 
     public function currentlyUnemployed() {
-        $this->arrayAnswers[5]['answer'] = 'Unemployed';
-        $this->arrayAnswers[6]['answer'] = 'Unemployed';
-        $this->arrayAnswers[7]['answer'] = 'Unemployed';
-        $this->arrayAnswers[8]['answer'] = 'Unemployed';
-        $this->arrayAnswers[9]['answer'] = 'Unemployed';
-        $this->arrayAnswers[10]['answer'] = 'Unemployed';
-        $this->arrayAnswers[11]['answer'] = 'Unemployed';
-        $this->arrayAnswers[12]['answer'] = 'Unemployed';
-        $this->arrayAnswers[13]['answer'] = 'Unemployed';
-        $this->arrayAnswers[14]['answer'] = 'Unemployed';
-        $this->arrayAnswers[15]['answer'] = 'Unemployed';
-        $this->arrayAnswers[16]['answer'] = 'Unemployed';
-        $this->arrayAnswers[17]['answer'] = 'Unemployed';
-        $this->arrayAnswers[18]['answer'] = 'Unemployed';
-        $this->arrayAnswers[19]['answer'] = 'Unemployed';
+        $this->arrayAnswers[5]['answer'] = 'UNEMPLOYED';
+        $this->arrayAnswers[6]['answer'] = 'UNEMPLOYED';
+        $this->arrayAnswers[7]['answer'] = 'UNEMPLOYED';
+        $this->arrayAnswers[8]['answer'] = 'UNEMPLOYED';
+        $this->arrayAnswers[9]['answer'] = 'UNEMPLOYED';
+        $this->arrayAnswers[10]['answer'] = 'UNEMPLOYED';
+        $this->arrayAnswers[11]['answer'] = 'UNEMPLOYED';
+        $this->arrayAnswers[12]['answer'] = 'UNEMPLOYED';
+        $this->arrayAnswers[13]['answer'] = 'UNEMPLOYED';
+        $this->arrayAnswers[14]['answer'] = 'UNEMPLOYED';
+        $this->arrayAnswers[15]['answer'] = 'UNEMPLOYED';
+        $this->arrayAnswers[16]['answer'] = 'UNEMPLOYED';
+        $this->arrayAnswers[17]['answer'] = 'UNEMPLOYED';
+        $this->arrayAnswers[18]['answer'] = 'UNEMPLOYED';
+        $this->arrayAnswers[19]['answer'] = 'UNEMPLOYED';
         $this->saveAnswer();
     }
 
@@ -165,29 +183,241 @@ class Answer extends Component
     }
 }
 
-// protected $rules = [
-//     "job_position" => "required",
-//     "company_name" => "required",
-//     "start_date" => "required",
-//     "job_description" => "required",
-//     "employment_type" => "required",
-//     "income" => "required",
-//     "company_email" => "required",
-//     "company_number" => "required",
-//     "related_to_course" => "required",
-//     //"arrayAnswers.*.answer" => "required|string",
-// ];
+// class Answer extends Component
+// {
+//     public $currentPage;
+//     public $totalPage;
+//     public $progressBar;
+//     public $no_board_exam;
+//     public $currently_unemployed;
+//     public $same_as_current;
+//     public $arrayAnswers = array();
 
-// protected $messages = [
-//     "job_position" => "This is required.",
-//     "company_name" => "This is required.",
-//     "start_date" => "This is required.",
-//     "job_description" => "This is required.",
-//     "employment_type" => "This is required.",
-//     "income" => "This is required.",
-//     "company_email" => "This is required.",
-//     "company_number" => "This is required.",
-//     "related_to_course" => "This is required.",
-//     // "arrayAnswers.*.answer.required" => "This is required.",
-//     // "arrayAnswers.*.answer.string"   => "This is required.",
-// ];
+//     public $board_passer;
+//     public $board_related;
+//     public $board_exam;
+//     public $board_date;
+//     public $civil_passer;
+
+//     public $cc_position;
+//     public $cc_company;
+//     public $cc_date;
+//     public $cc_description;
+//     public $cc_type;
+//     public $cc_income;
+//     public $cc_email;
+//     public $cc_number;
+//     public $cc_related;
+
+//     public $ff_position;
+//     public $ff_company;
+//     public $ff_date;
+//     public $ff_description;
+//     public $ff_email;
+//     public $ff_number;
+
+//     public function pushAnswers() {
+//         array_push($this->arrayAnswers, $this->board_passer);
+//         array_push($this->arrayAnswers, $this->board_related);
+//         array_push($this->arrayAnswers, $this->board_exam);
+//         array_push($this->arrayAnswers, $this->board_date);
+//         array_push($this->arrayAnswers, $this->civil_passer);
+
+//         array_push($this->arrayAnswers, $this->cc_position);
+//         array_push($this->arrayAnswers, $this->cc_company);
+//         array_push($this->arrayAnswers, $this->cc_date);
+//         array_push($this->arrayAnswers, $this->cc_description);
+//         array_push($this->arrayAnswers, $this->cc_type);
+//         array_push($this->arrayAnswers, $this->cc_income);
+//         array_push($this->arrayAnswers, $this->cc_email);
+//         array_push($this->arrayAnswers, $this->cc_number);
+//         array_push($this->arrayAnswers, $this->cc_related);
+
+//         array_push($this->arrayAnswers, $this->ff_position);
+//         array_push($this->arrayAnswers, $this->ff_company);
+//         array_push($this->arrayAnswers, $this->ff_date);
+//         array_push($this->arrayAnswers, $this->ff_description);
+//         array_push($this->arrayAnswers, $this->ff_email);
+//         array_push($this->arrayAnswers, $this->ff_number);
+//     }
+
+//     public function render() {
+//         $users = Alumni::where("alumni_id", "=", Auth::user()->alumni_id)->get();
+//         $categories = TracerCategories::all();
+//         $questions = TracerQuestions::all();
+
+//         return view("livewire.tracer.answer",
+//         compact([
+//             "users",
+//             "categories",
+//             "questions",
+//         ])
+//         );
+//     }
+
+//     protected $rules = [
+//         "board_passer"     => "required",
+//         "board_related"    => "required",
+//         "board_exam"       => "required",
+//         "board_date"       => "required",
+//         "civil_passer"     => "required",
+
+//         "cc_position"      => "required",
+//         "cc_company"       => "required",
+//         "cc_date"          => "required",
+//         "cc_description"   => "required",
+//         "cc_type"          => "required",
+//         "cc_income"        => "required",
+//         "cc_email"         => "required|email",
+//         "cc_number"        => "required",
+//         "cc_related"       => "required",
+
+//         "ff_position"      => "required",
+//         "ff_company"       => "required",
+//         "ff_date"          => "required",
+//         "ff_description"   => "required",
+//         "ff_email"         => "required|email",
+//         "ff_number"        => "required",
+//     ];
+
+//     protected $messages = [
+//         "board_passer.required"     => "This is required",
+//         "board_related.required"    => "This is required",
+//         "board_exam.required"       => "This is required",
+//         "board_date.required"       => "This is required",
+//         "civil_passer.required"     => "This is required",
+
+//         "cc_position.required"      => "This is required",
+//         "cc_company.required"       => "This is required",
+//         "cc_date.required"          => "This is required",
+//         "cc_description.required"   => "This is required",
+//         "cc_type.required"          => "This is required",
+//         "cc_income.required"        => "This is required",
+//         "cc_email.required"         => "This is required",
+//         "cc_email.email"            => "Company email must be a valid email",
+//         "cc_number.required"        => "This is required",
+//         "cc_related.required"       => "This is required",
+
+//         "ff_position.required"      => "This is required",
+//         "ff_company.required"       => "This is required",
+//         "ff_date.required"          => "This is required",
+//         "ff_description.required"   => "This is required",
+//         "ff_email.required"         => "This is required",
+//         "ff_email.email"            => "Company email must be a valid email",
+//         "ff_number.required"        => "This is required",
+//     ];
+
+//     public function validateData() {
+//         if ($this->currentPage == 1) {
+//             $this->validate([
+//                 "board_passer"     => "required",
+//                 "board_related"    => "required",
+//                 "board_exam"       => "required",
+//                 "board_date"       => "required",
+//                 "civil_passer"     => "required",
+//             ]);
+//         }
+//         if ($this->currentPage == 2) {
+//             $this->validate([
+//                 "cc_position"      => "required",
+//                 "cc_company"       => "required",
+//                 "cc_date"          => "required",
+//                 "cc_description"   => "required",
+//                 "cc_type"          => "required",
+//                 "cc_income"        => "required",
+//                 "cc_email"         => "required|email",
+//                 "cc_number"        => "required",
+//                 "cc_related"       => "required",
+//             ]);
+//         }
+//         if ($this->currentPage == 3) {
+//             $this->validate([
+//                 "ff_position"      => "required",
+//                 "ff_company"       => "required",
+//                 "ff_date"          => "required",
+//                 "ff_description"   => "required",
+//                 "ff_email"         => "required|email",
+//                 "ff_number"        => "required",
+//             ]);
+//         }
+//     }
+
+//     public function mount() {
+//         $this->currentPage = 1;
+//         $this->totalPage = 3;
+//         $this->progressBar = 33;
+//     }
+
+//     public function previousPage() {
+//         $this->resetErrorBag();
+//         $this->currentPage--;
+//         if($this->currentPage < 1) {
+//             $this->currentPage = 1;
+//         }
+//     }
+
+//     public function nextPage() {
+//         $this->resetErrorBag();
+//         if ($this->currentPage == 1) {
+//             if ($this->no_board_exam == 'NO_BOARD_EXAM') {
+//                 $this->board_passer     = "N/A";
+//                 $this->board_related    = "N/A";
+//                 $this->board_exam       = "N/A";
+//                 $this->board_date       = "N/A";
+//             }
+//             $this->validateData();
+//         }
+//         if ($this->currentPage == 2) {
+//             if ($this->currently_unemployed == "CURRENTLY_UNEMPLOYED") {
+//                 $this->cc_position     = "UNEMPLOYED";
+//                 $this->cc_company      = "UNEMPLOYED";
+//                 $this->cc_date         = "UNEMPLOYED";
+//                 $this->cc_description  = "UNEMPLOYED";
+//                 $this->cc_type         = "UNEMPLOYED";
+//                 $this->cc_income       = "UNEMPLOYED";
+//                 $this->cc_email        = "UNEMPLOYED";
+//                 $this->cc_number       = "UNEMPLOYED";
+//                 $this->cc_related      = "UNEMPLOYED";
+
+//                 $this->ff_position     = "UNEMPLOYED";
+//                 $this->ff_company      = "UNEMPLOYED";
+//                 $this->ff_date         = "UNEMPLOYED";
+//                 $this->ff_description  = "UNEMPLOYED";
+//                 $this->ff_email        = "UNEMPLOYED";
+//                 $this->ff_number       = "UNEMPLOYED";
+//             }
+//             $this->validateData();
+//         }
+//         $this->currentPage++;
+//         if($this->currentPage > $this->totalPage) {
+//             $this->currentPage = $this->totalPage;
+//         }
+//     }
+
+//     public function saveAnswer() {
+//         if ($this->same_as_current == "SAME_AS_CURRENT") {
+//             $this->ff_position      = $this->cc_position;
+//             $this->ff_company       = $this->cc_company;
+//             $this->ff_date          = $this->cc_date;
+//             $this->ff_description   = $this->cc_description;
+//             $this->ff_email         = $this->cc_email;
+//             $this->ff_number        = $this->cc_number;
+//         }
+//         $this->validateData();
+
+//         $q_id = 1;
+//         $this->pushAnswers();
+//         foreach ($this->arrayAnswers as $answers) {
+//             $tracer = new TracerAnswers();
+//             $tracer->alumni_id      = Auth::user()->alumni_id;
+//             $tracer->question_id    = $q_id;
+//             $tracer->answer         = $answers;
+
+//             $tracer->save();
+//             $q_id += 1;
+//         }
+
+//         return redirect(route("userTracer.getTracerIndex"));
+//     }
+// }
+

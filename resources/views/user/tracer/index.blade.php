@@ -31,7 +31,7 @@
                         <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3">
                             <div class="text-center text-md-end">
                                 @if (count($tracer_answers) > 0)
-                                    @if ($tracer_answers[5]['answer'] == 'Unemployed')
+                                    @if ($tracer_answers[5]['answer'] == 'UNEMPLOYED')
                                         <div class="btn-group" role="group" aria-label="Basic mixed styles example">
                                             <a href="{{ route('userTracer.getAnswerUnemployedPage') }}" type="button" class="btn btn-primary px-3 fs-7">Answer Form</a>
                                             <button type="button" class="btn btn-secondary fs-7 px-2" data-bs-toggle="modal" data-bs-target="#whyTracer"><i class="fa-solid fa-circle-question text-light"></i></button>
@@ -105,7 +105,7 @@
                         <div class="col-12 col-sm-12 col-md-10 col-lg-5 col-xl-5 offset-0 offset-sm-0 offset-md-2 offset-lg-2 offset-xl-2">
                             <h4 class="mb-0 fw-bold">Current Job / Career</h4>
                             @if (count($tracer_answers) > 0)
-                                @if ($tracer_answers[5]['answer'] == 'Unemployed')
+                                @if ($tracer_answers[5]['answer'] == 'UNEMPLOYED')
                                     <div class="col-12">
                                         <div class="alert alert-warning mt-5 text-center" role="alert">
                                             No data to display yet.
@@ -147,7 +147,7 @@
                         <div class="col-12 col-sm-12 col-md-10 col-lg-5 col-xl-5 offset-0 offset-sm-0 offset-md-2 offset-lg-0 offset-xl-0">
                             <h4 class="mb-0 fw-bold">First Job / Career</h4>
                             @if (count($tracer_answers) > 0)
-                                @if ($tracer_answers[5]['answer'] == 'Unemployed')
+                                @if ($tracer_answers[5]['answer'] == 'UNEMPLOYED')
                                     <div class="col-12">
                                         <div class="alert alert-warning mt-5 text-center" role="alert">
                                             No data to display yet.
