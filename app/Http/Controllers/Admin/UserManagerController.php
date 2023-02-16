@@ -19,20 +19,6 @@ use PhpOffice\PhpSpreadsheet\Writer\Xlsx\Rels;
 
 class UserManagerController extends Controller
 {
-    // public function getAlumniList(Request $request) {
-    //     $data['batch'] = $request->get('batch');
-
-    //     if($data['batch'] == null) {
-    //         $data['alumni'] = AlumniList::orderBy('last_name', 'asc')->paginate(15)->withQueryString();
-    //     }
-    //     else {
-    //         $data['alumni'] = AlumniList::where('batch', "=", $data['batch'])->paginate(15)->withQueryString();
-    //     }
-    //     $title = "List of Alumni";
-
-    //     return view('admin.user_management.upload_list', compact(['title']), $data);
-    // }
-
     public function getAlumniManager(Request $request) {
         $data['q'] = $request->get('q');
         $data['alumni'] = Alumni::where('last_name', 'like', '%' . $data['q'] . '%')->orwhere('stud_number', 'like', '%' . $data['q'] . '%')->paginate(15)->withQueryString();

@@ -5,7 +5,6 @@ use App\Http\Controllers\Admin\AlumniPdfController;
 use App\Http\Controllers\Admin\CareerController as AdminCareerController;
 use App\Http\Controllers\admin\FormReportsController;
 use App\Http\Controllers\Admin\HomeController;
-use App\Http\Controllers\admin\PdsReportController;
 use App\Http\Controllers\Admin\ReportsController;
 use App\Http\Controllers\admin\TracerReportsController;
 use App\Http\Controllers\Admin\UserManagerController;
@@ -17,7 +16,7 @@ use App\Http\Controllers\Auth\TemporaryPassoword;
 use App\Http\Controllers\Modules\CareerController;
 use App\Http\Controllers\Modules\EifToPdfController;
 use App\Http\Controllers\Modules\FormsController;
-use App\Http\Controllers\modules\HomeController as ModulesHomeController;
+use App\Http\Controllers\Modules\HomeController as ModulesHomeController;
 use App\Http\Controllers\Modules\PdsToPdfController;
 use App\Http\Controllers\Modules\ProfileController;
 use App\Http\Controllers\Modules\SasToPdfController;
@@ -27,7 +26,6 @@ use App\Http\Controllers\SuperAdmin\AnnouncementController;
 use App\Http\Controllers\SuperAdmin\HomeController as SuperAdminHomeController;
 use App\Http\Controllers\SuperAdmin\NewsController;
 use Illuminate\Support\Facades\Route;
-use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
 
 const CONTROLLER_ADMIN_USER_MANAGER = 'App\Http\Controllers\Admin\UserManagerController';
@@ -74,33 +72,7 @@ Route::group(
             ->name('user.homepage');
 });
 
-Route::group(
-    [
-        'middleware' => 'auth',
-        'prefix' => 'email',
-        'as' => 'verification.'
-    ], function() {
-
-        // After Registration Email Verification
-        Route::get('verify', function () {
-            return view('auth.verify-email');
-        })->name('notice');
-
-        //User verified using email
-        Route::get('verify/{id}/{hash}', function (EmailVerificationRequest $request) {
-            $request->fulfill();
-            return redirect('/home');
-        })->middleware(['signed'])->name('verify');
-
-        //Resending of Email Verification
-        Route::post('verification-notification', function (Request $request) {
-            $request->user()->sendEmailVerificationNotification();
-
-            return back()->with('message', 'Verification link sent!');
-        })->middleware(['throttle:6,1'])->name('send');
-});
-
-// Login Mail
+// Login Mail - Send Temporary Password
 Route::group(
     [
         'controller' => LoginMailController::class,
@@ -213,22 +185,6 @@ Route::group(
             ->name('getSAS');
 });
 
-// PDF Forms - Dompdf
-Route::group(
-    [
-        'controller' => 'App\Http\Controllers\Modules\FormPDFController',
-        'prefix' => 'downloads',
-        'as' => 'userForm.',
-        'middleware' => ['isAdmin', 'auth']
-    ], function() {
-        Route::post('PDS-form', 'downloadPDS')
-            ->name('downloadPDS');
-        Route::post('SAS-form', 'downloadSAS')
-            ->name('downloadSAS');
-        Route::post('Exit-Interview-form', 'downloadEI')
-            ->name('downloadEI');
-});
-
 // User - PDS - Download to PDF
 Route::group(
     [
@@ -310,9 +266,6 @@ Route::group(
         'as' => 'adminUserManagement.',
         'middleware' => ['isUser', 'auth']
     ], function() {
-        // Route::get('alumni-list', 'getAlumniList')
-        //        ->name('getAlumniList');
-
         Route::post('add-alumni-list', 'addAlumniList')
                ->name('addAlumniList');
 
@@ -434,13 +387,6 @@ Route::group(
     ], function() {
         Route::post('generated-form-report', 'generateFormReport')
                ->name('generateFormReport');
-
-        // Route::post('user-pdf-report', 'USER_REPORT_PDF')
-        //        ->name('USER_REPORT_PDF');
-
-        // Route::post('user-pdf-report/download', 'DOWNLOAD_USER_REPORT_PDF')
-        //        ->name('DOWNLOAD_USER_REPORT_PDF');
-
 });
 
 // Admin - Account Settings

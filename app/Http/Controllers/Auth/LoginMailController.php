@@ -37,6 +37,6 @@ class LoginMailController extends Controller
 
         Mail::to($email)->send(new TemporaryPassword($stud_number, $email, $password));
 
-        return redirect()->route('login')->with('success', 'Temporary Password Successfully sent to your email address');
+        return redirect()->route('login')->with('success', 'Temporary Password Successfully sent to your Email');
     }
 }

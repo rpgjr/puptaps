@@ -27,10 +27,11 @@ class ResetPasswordController extends Controller
         );
 
         $checkEmail = User::where('email', '=', $request->email)->first();
+        $username = User::where('email', '=', $request->email)->value('username');
 
         if ($checkEmail != null) {
             $email = $request->email;
-            Mail::to($email)->send(new ResetPassword($email));
+            Mail::to($email)->send(new ResetPassword($email, $username));
             $user = User::where('email', '=', $email)->update([
                 'account_status' => 'Inactive',
             ]);

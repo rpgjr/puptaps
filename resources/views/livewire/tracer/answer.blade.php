@@ -1,5 +1,6 @@
 <div>
-    <form wire:submit.prevent="saveAnswer">
+    <form wire:submit.prevent="saveAnswer" method="POST" enctype="multipart/form-data">
+        @csrf
         @foreach ($categories as $category)
             @if (($currentPage == $category->category_id) && ($currentPage == $category->category_id))
 
@@ -31,12 +32,12 @@
                         @endif
                         @if ($currentPage == 2)
                             <div class="col-12 mb-3">
-                                <button class="btn btn-light fs-7" type="button" wire:click="currentlyUnemployed()">Currently Unemployed</button>
+                                <button class="btn btn-primary fs-7" type="button" wire:click="currentlyUnemployed()">Are you currently unemployed?</button>
                             </div>
                         @endif
                         @if ($currentPage == 3)
                             <div class="col-12 mb-3">
-                                <button class="btn btn-light fs-7" type="button" wire:click="sameCurrent()">Same as Current Job</button>
+                                <button class="btn btn-primary fs-7" type="button" wire:click="sameCurrent()">Same as Current Job</button>
                             </div>
                         @endif
                         @foreach ($questions as $key => $value)
@@ -141,19 +142,19 @@
                             <div class="row">
                                 @if ($currentPage == 1)
                                     <div class="col-6 text-start">
-                                        <button href="#go-to-top" class="btn btn-secondary px-3 fs-7" type="button" wire:click="previousPage()" disabled><i class="fa-solid fa-caret-left"></i> Back</button>
+                                        <button class="btn btn-secondary px-3 fs-7" wire:click.prevent="previousPage()" disabled><i class="fa-solid fa-caret-left"></i> Back</button>
                                     </div>
                                 @endif
 
                                 @if ($currentPage <= $totalPage && $currentPage != 1)
                                     <div class="col-6 text-start">
-                                        <a href="#go-to-top" class="btn btn-secondary px-3 fs-7" type="button" wire:click="previousPage()"><i class="fa-solid fa-caret-left"></i> Back</a>
+                                        <button class="btn btn-secondary px-3 fs-7" wire:click.prevent="previousPage()"><i class="fa-solid fa-caret-left"></i> Back</button>
                                     </div>
                                 @endif
 
                                 @if ($currentPage < $totalPage && $currentPage != $totalPage)
                                     <div class="col-6 text-end">
-                                        <a href="#go-to-top" class="btn btn-primary px-3 fs-7" type="button" wire:click="nextPage()">Next <i class="fa-solid fa-caret-right"></i></a>
+                                        <button class="btn btn-primary px-3 fs-7" wire:click.prevent="nextPage()">Next <i class="fa-solid fa-caret-right"></i></button>
                                     </div>
                                 @endif
 

@@ -10,7 +10,7 @@ use Carbon\Carbon;
 class NewsController extends Controller
 {
     public function getNewsSettings() {
-        $news = News::all();
+        $news = News::orderby('news_id', 'desc')->get();
         return view("super_admin.news_events.news", compact(["news"]));
     }
 
@@ -55,7 +55,7 @@ class NewsController extends Controller
         $new = News::where('news_id', '=', $request->news_id)->first();
         $new->delete();
 
-        $news = News::all();
+        $news = News::orderby('news_id', 'desc')->get();
 
         return back()->with('success', 'News successfully deleted.');
     }

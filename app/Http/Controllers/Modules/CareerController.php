@@ -28,9 +28,9 @@ class CareerController extends Controller
         $data['careers']    = Careers::where('approval', '=', 1)
                               ->where('job_name', 'like', '%' . $data['query'] . '%')
                               ->where('category', 'like', '%' . $data['subquery'] . '%')
+                              ->orderby('career_id', 'desc')
                               ->paginate(15)
                               ->withQueryString();
-        //$message = "Thank you for posting. Kindly wait for the admins to approve your post.";
 
         return view('user.career.index',
         compact(

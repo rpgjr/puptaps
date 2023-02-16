@@ -19,7 +19,6 @@
                                         <p class="card-text mb-0 mt-0 fw-bold">Number of Alumni</p>
                                     </div>
                                     <div class="col-4 text-center p-0 m-0">
-                                        {{-- <i class="fa-solid fa-graduation-cap text-light" style="font-size: 60px;"></i> --}}
                                         <i class="bi bi-mortarboard p-0 m-0" style="font-size: 70px;"></i>
                                     </div>
                                 </div>
@@ -33,8 +32,6 @@
                                         <p class="card-text mb-0 mt-0 fw-bold">Respondents in PDS</p>
                                     </div>
                                     <div class="col-4 text-center p-0 m-0">
-                                        {{-- <i class="fa-solid fa-file-circle-check text-light" style="font-size: 60px;"></i> --}}
-                                        {{-- <i class="bi bi-file-earmark-check p-0 m-0" style="font-size: 70px;"></i> --}}
                                         <i class="bi bi-person-lines-fill" style="font-size: 70px;"></i>
                                     </div>
                                 </div>
@@ -45,12 +42,9 @@
                                 <div class="card-body align-items-center row">
                                     <div class="col-8">
                                         <h2 class="card-title mb-1">{{ $totalEif }}</h2>
-                                        <p class="card-text mb-0 mt-0 fw-bold">Resondents in EIF</p>
+                                        <p class="card-text mb-0 mt-0 fw-bold">Respondents in EIF</p>
                                     </div>
                                     <div class="col-4 text-center p-0 m-0">
-                                        {{-- <i class="fa-solid fa-id-card text-light" style="font-size: 60px;"></i> --}}
-                                        {{-- <i class="bi bi-credit-card" style="font-size: 70px;"></i> --}}
-                                        {{-- <i class="bi bi-file-earmark-text" style="font-size: 70px;"></i> --}}
                                         <i class="fa-solid fa-file-export" style="font-size: 70px;"></i>
                                     </div>
                                 </div>
@@ -64,8 +58,6 @@
                                         <p class="card-text mb-0 mt-0 fw-bold">Respondents in SAS</p>
                                     </div>
                                     <div class="col-4 text-center p-0 m-0">
-                                        {{-- <i class="fa-solid fa-id-card text-light" style="font-size: 60px;"></i> --}}
-                                        {{-- <i class="bi bi-credit-card" style="font-size: 70px;"></i> --}}
                                         <i class="bi bi-file-earmark-text" style="font-size: 70px;"></i>
                                     </div>
                                 </div>

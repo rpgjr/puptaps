@@ -1,5 +1,6 @@
 <div>
-    <form wire:submit.prevent="updateAnswer">
+    <form wire:submit.prevent="updateAnswer" method="POST" enctype="multipart/form-data">
+        @csrf
         @foreach ($categories as $category)
             @if (($currentPage == $category->category_id) && ($currentPage == $category->category_id))
 
@@ -22,7 +23,7 @@
                         @if ($currentPage == 1)
                             <div class="col-12 mb-2">
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="NO_BOARD_EXAM" wire:model="no_board_exam">
+                                    <input class="form-check-input" type="checkbox" value="NO_BOARD_EXAM" wire:model.defer="no_board_exam">
                                     <label class="form-check-label">
                                         My course doesn't have a Board Exam
                                     </label>
@@ -31,7 +32,7 @@
                         @endif
                         @if ($currentPage == 2)
                             <div class="col-12 mb-3">
-                                <button class="btn btn-light fs-7" type="button" wire:click="currentlyUnemployed()">Currently Unemployed</button>
+                                <button class="btn btn-primary fs-7" type="button" wire:click="currentlyUnemployed()">Are you currently unemployed?</button>
                             </div>
                         @endif
                         @if ($currentPage == 3)
@@ -51,7 +52,7 @@
                                         @if ($value->category_id == 3)
                                             <div>
                                                 <label class="form-label">{{ $value->question_text}} <span class="text-danger">*</span></label>
-                                                <input type="{{ $value->question_type }}" class="form-control @error('arrayAnswers.' . $key . '.answer') is-invalid @enderror" wire:model="arrayAnswers.{{ $key }}.answer" value="{{ $arrayAnswers[$key]['answer'] }}">
+                                                <input type="{{ $value->question_type }}" class="form-control @error('arrayAnswers.' . $key . '.answer') is-invalid @enderror" wire:model.defer="arrayAnswers.{{ $key }}.answer" value="{{ $arrayAnswers[$key]['answer'] }}">
                                                 <span class="text-danger error-message">
                                                     @error('arrayAnswers.' . $key . '.answer')
                                                     <i class="fa-solid fa-circle-exclamation ml-5"></i>
@@ -62,7 +63,7 @@
                                         @else
                                             <div>
                                                 <label class="form-label">{{ $value->question_text}} <span class="text-danger">*</span></label>
-                                                <input type="{{ $value->question_type }}" class="form-control @error('arrayAnswers.' . $key . '.answer') is-invalid @enderror" wire:model="arrayAnswers.{{ $key }}.answer">
+                                                <input type="{{ $value->question_type }}" class="form-control @error('arrayAnswers.' . $key . '.answer') is-invalid @enderror" wire:model.defer="arrayAnswers.{{ $key }}.answer">
                                                 <span class="text-danger error-message">
                                                     @error('arrayAnswers.' . $key . '.answer')
                                                     <i class="fa-solid fa-circle-exclamation ml-5"></i>
@@ -75,7 +76,7 @@
                                         <div>
                                             <label class="form-label">{{ $value->question_text }} <span class="text-danger">*</span></label>
                                             @if ($value->question_text == "Type of Employment")
-                                                <select class="form-select @error('arrayAnswers.' . $key . '.answer') is-invalid @enderror" wire:model="arrayAnswers.{{ $key }}.answer">
+                                                <select class="form-select @error('arrayAnswers.' . $key . '.answer') is-invalid @enderror" wire:model.defer="arrayAnswers.{{ $key }}.answer">
                                                     <option selected hidden>Please select one...</option>
                                                     <option value="Probitionary">Probitionary</option>
                                                     <option value="Regular">Regular</option>
@@ -84,7 +85,7 @@
                                                     <option value="Not Applicable">Not Applicable</option>
                                                 </select>
                                             @elseif ($value->question_text == "Monthly Income")
-                                                <select class="form-select @error('arrayAnswers.' . $key . '.answer') is-invalid @enderror" wire:model="arrayAnswers.{{ $key }}.answer">
+                                                <select class="form-select @error('arrayAnswers.' . $key . '.answer') is-invalid @enderror" wire:model.defer="arrayAnswers.{{ $key }}.answer">
                                                     <option selected hidden>Please select one...</option>
                                                     <option value="₱10,000 - ₱15,000">₱10,000 - ₱15,000</option>
                                                     <option value="₱16,000 - ₱20,000">₱16,000 - ₱20,000</option>
@@ -97,7 +98,7 @@
                                                     <option value="Not Applicable">Not Applicable</option>
                                                 </select>
                                             @elseif ($value->question_text == "What licensure exam did you take?")
-                                                <select class="form-select @error('arrayAnswers.' . $key . '.answer') is-invalid @enderror" wire:model="arrayAnswers.{{ $key }}.answer">
+                                                <select class="form-select @error('arrayAnswers.' . $key . '.answer') is-invalid @enderror" wire:model.defer="arrayAnswers.{{ $key }}.answer">
                                                     <option selected hidden>Please select one...</option>
                                                     <option value="Electronics Engineer Licensure Examination">Electronics Engineer Licensure Examination</option>
                                                     <option value="Licensure Examination for Teachers">Licensure Examination for Teachers</option>
@@ -118,12 +119,12 @@
                                             <label class="form-label">{{ $value->question_text }} <span class="text-danger">*</span></label>
                                             <div class="my-0"></div>
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" value="Yes" wire:model="arrayAnswers.{{ $key }}.answer">
-                                                <label class="form-check-label">Yes</label>
+                                                <input class="form-check-input" type="radio" value="Yes" wire:model.lazy="arrayAnswers.{{ $key }}.answer" id="answerRadio1">
+                                                <label class="form-check-label" for="answerRadio1">Yes</label>
                                             </div>
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" value="No" wire:model="arrayAnswers.{{ $key }}.answer">
-                                                <label class="form-check-label">No</label>
+                                                <input class="form-check-input" type="radio" value="No" wire:model.lazy ="arrayAnswers.{{ $key }}.answer" id="answerRadio2">
+                                                <label class="form-check-label" for="answerRadio2">No</label>
                                             </div>
                                         </div>
                                         <span class="text-danger error-message">

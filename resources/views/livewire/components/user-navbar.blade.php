@@ -1,8 +1,8 @@
 {{-- NavBar --}}
 <nav class="navbar navbar-expand-md sticky-top navbar-user navbar-dark">
     <div class="container-fluid nav-user-collapse">
-        <a class="navbar-brand" href="{{ route('user.homepage') }}">
-            <img src="{{ asset('img/pupLogo.png') }}" style="height: 40px">
+        <a class="navbar-brand d-flex align-items-center" href="{{ route('user.homepage') }}">
+            <img src="{{ asset('img/pupLogo.png') }}" style="height: 40px" class="me-2"><div class="fw-bold">PUPT - APS</div>
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <i class="fa-solid fa-bars nav-toggle-icon text-light"></i>
@@ -31,7 +31,7 @@
                     @if ($user->user_pfp == null)
                         <img src="{{ asset('Uploads/Profiles/user-no-profile.png') }}" class="user-profile-button" data-bs-toggle="dropdown" aria-expanded="false">
                     @else
-                        <img src="/Uploads/Profiles/{{ $user->user_pfp }}" class="user-profile-button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img src="{{ asset('Uploads/Profiles/' . $user->user_pfp) }}" class="user-profile-button" data-bs-toggle="dropdown" aria-expanded="false">
                     @endif
                     @endforeach
                     <ul class="dropdown-menu dropdown-menu-start dropdown-menu-sm-start dropdown-menu-md-end">

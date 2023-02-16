@@ -11,7 +11,7 @@ use Carbon\Carbon;
 class AnnouncementController extends Controller
 {
     public function getAnnouncementSettings() {
-        $announcements = Announcements::all();
+        $announcements = Announcements::orderby('announcement_id', 'desc')->get();
         return view("super_admin.news_events.announcement", compact(["announcements"]));
     }
 
@@ -56,7 +56,7 @@ class AnnouncementController extends Controller
         $announcement = Announcements::where('announcement_id', '=', $request->announcement_id)->first();
         $announcement->delete();
 
-        $announcements = Announcements::all();
+        $announcements = Announcements::orderby('announcement_id', 'desc')->get();
 
         return back()->with('success', 'Announcement successfully deleted!');
     }

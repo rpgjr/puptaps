@@ -11,8 +11,6 @@
             <!-- Alert Status -->
             <livewire:components.alert-status-message :message="session()->get('success')" />
 
-            <livewire:admin.page-title :title="$title"/>
-
             <div class="row justify-content-center">
                 <!-- Start: Body -->
                 <div class="col-11">

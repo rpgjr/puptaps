@@ -25,7 +25,7 @@
                     @foreach ($questions as $key => $value)
                     @if (($value->category_id) == ($category->category_id))
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="Agree" wire:model="arrayAnswers.{{ $key }}.answer" />
+                            <input class="form-check-input" type="checkbox" value="Agree" wire:model.lazy="arrayAnswers.{{ $key }}.answer" />
                             <label class="form-check-label">Agree <span class="text-danger">*</span></label>
                         </div>
                     <span class="text-danger error-message">@error('arrayAnswers.' . $key . '.answer'){{ $message }}@enderror</span>
@@ -152,35 +152,35 @@
                                     <div>
                                         <label class="form-label">{{ $value->question_text }} <span class="text-danger">*</span></label>
                                         @if ($value->question_type == "text")
-                                            <input type="text" class="form-control @error('arrayAnswers.' . $key . '.answer') is-invalid @enderror" wire:model="arrayAnswers.{{ $key }}.answer">
+                                            <input type="text" class="form-control @error('arrayAnswers.' . $key . '.answer') is-invalid @enderror" wire:model.lazy="arrayAnswers.{{ $key }}.answer">
                                             <span class="text-danger error-message">@error('arrayAnswers.' . $key . '.answer'){{ $message }}@enderror</span>
                                         @else
                                             <div class="form-check">
-                                                <input class="form-check-input" type="radio" value="Graduation" wire:model="arrayAnswers.{{ $key }}.answer">
+                                                <input class="form-check-input" type="radio" value="Graduation" wire:model.lazy="arrayAnswers.{{ $key }}.answer">
                                                 <label class="form-check-label">Graduation</label>
                                             </div>
                                             <div class="form-check">
-                                                <input class="form-check-input" type="radio" value="Personal" wire:model="arrayAnswers.{{ $key }}.answer">
+                                                <input class="form-check-input" type="radio" value="Personal" wire:model.lazy="arrayAnswers.{{ $key }}.answer">
                                                 <label class="form-check-label">Personal</label>
                                             </div>
                                             <div class="form-check">
-                                                <input class="form-check-input" type="radio" value="Family" wire:model="arrayAnswers.{{ $key }}.answer">
+                                                <input class="form-check-input" type="radio" value="Family" wire:model.lazy="arrayAnswers.{{ $key }}.answer">
                                                 <label class="form-check-label">Family</label>
                                             </div>
                                             <div class="form-check">
-                                                <input class="form-check-input" type="radio" value="Academic" wire:model="arrayAnswers.{{ $key }}.answer">
+                                                <input class="form-check-input" type="radio" value="Academic" wire:model.lazy="arrayAnswers.{{ $key }}.answer">
                                                 <label class="form-check-label">Academic</label>
                                             </div>
                                             <div class="form-check">
-                                                <input class="form-check-input" type="radio" value="Financial" wire:model="arrayAnswers.{{ $key }}.answer">
+                                                <input class="form-check-input" type="radio" value="Financial" wire:model.lazy="arrayAnswers.{{ $key }}.answer">
                                                 <label class="form-check-label">Financial</label>
                                             </div>
                                             <div class="form-check">
-                                                <input class="form-check-input" type="radio" value="Work-related" wire:model="arrayAnswers.{{ $key }}.answer">
+                                                <input class="form-check-input" type="radio" value="Work-related" wire:model.lazy="arrayAnswers.{{ $key }}.answer">
                                                 <label class="form-check-label">Work-related</label>
                                             </div>
                                             <div class="form-check">
-                                                <input class="form-check-input" type="radio" value="Others" wire:model="arrayAnswers.{{ $key }}.answer">
+                                                <input class="form-check-input" type="radio" value="Others" wire:model.lazy="arrayAnswers.{{ $key }}.answer">
                                                 <label class="form-check-label">Others</label>
                                             </div>
                                             <span class="text-danger error-message">@error('arrayAnswers.' . $key . '.answer'){{ $message }}@enderror</span>
@@ -242,27 +242,27 @@
                                         </td>
                                         <td>
                                             <div class="form-check">
-                                                <input class="form-check-input" type="radio" value="5" wire:model="arrayAnswers.{{ $key }}.answer">
+                                                <input class="form-check-input" type="radio" value="5" wire:model.lazy="arrayAnswers.{{ $key }}.answer">
                                             </div>
                                         </td>
                                         <td>
                                             <div class="form-check">
-                                                <input class="form-check-input" type="radio" value="4" wire:model="arrayAnswers.{{ $key }}.answer">
+                                                <input class="form-check-input" type="radio" value="4" wire:model.lazy="arrayAnswers.{{ $key }}.answer">
                                             </div>
                                         </td>
                                         <td>
                                             <div class="form-check">
-                                                <input class="form-check-input" type="radio" value="3" wire:model="arrayAnswers.{{ $key }}.answer">
+                                                <input class="form-check-input" type="radio" value="3" wire:model.lazy="arrayAnswers.{{ $key }}.answer">
                                             </div>
                                         </td>
                                         <td>
                                             <div class="form-check">
-                                                <input class="form-check-input" type="radio" value="2" wire:model="arrayAnswers.{{ $key }}.answer">
+                                                <input class="form-check-input" type="radio" value="2" wire:model.lazy="arrayAnswers.{{ $key }}.answer">
                                             </div>
                                         </td>
                                         <td>
                                             <div class="form-check">
-                                                <input class="form-check-input" type="radio" value="1" wire:model="arrayAnswers.{{ $key }}.answer">
+                                                <input class="form-check-input" type="radio" value="1" wire:model.lazy="arrayAnswers.{{ $key }}.answer">
                                             </div>
                                         </td>
                                     </tr>
@@ -297,12 +297,12 @@
                                     <div>
                                         @if ($value->question_type != 'textarea')
                                             <label class="form-label">{{ $value->question_text }} <span class="text-danger">*</span></label>
-                                            <input type="{{ $value->question_type }}" class="form-control @error('arrayAnswers.' . $key . '.answer') is-invalid @enderror" wire:model="arrayAnswers.{{ $key }}.answer" placeholder="{{ $value->question_placeholder }}">
+                                            <input type="{{ $value->question_type }}" class="form-control @error('arrayAnswers.' . $key . '.answer') is-invalid @enderror" wire:model.lazy="arrayAnswers.{{ $key }}.answer" placeholder="{{ $value->question_placeholder }}">
                                             <span class="text-danger error-message">@error('arrayAnswers.' . $key . '.answer'){{ $message }}@enderror</span>
                                         @endif
                                         @if ($value->question_type == 'textarea')
                                             <label class="form-label">{{ $value->question_text }} <span class="text-danger">*</span></label>
-                                            <textarea class="form-control @error('arrayAnswers.' . $key . '.answer') is-invalid @enderror" wire:model="arrayAnswers.{{ $key }}.answer"></textarea>
+                                            <textarea class="form-control @error('arrayAnswers.' . $key . '.answer') is-invalid @enderror" wire:model.lazy="arrayAnswers.{{ $key }}.answer"></textarea>
                                             <span class="text-danger error-message">@error('arrayAnswers.' . $key . '.answer'){{ $message }}@enderror</span>
                                         @endif
                                     </div>

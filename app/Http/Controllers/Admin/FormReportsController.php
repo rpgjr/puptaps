@@ -370,6 +370,7 @@ class FormReportsController extends Controller
                                         <td style="width: 20%"></td>
                                         <td colspan="1" style="width: 55%; text-align: center; text-transform: uppercase;">' . strtoupper($psdAnswers[15]['answer']) . '</td>
                                     </tr>
+
                                     <tr>
                                         <td colspan="1" style="font-size: 14px; width: 25%; text-align: center; border-top: 1px solid black;">
                                             <i>Date</i>
@@ -392,7 +393,7 @@ class FormReportsController extends Controller
                                     <tr>
                                         <td colspan="1" style="width: 25%; text-align: center; text-transform: uppercase;">' . date('F d, Y', strtotime($psdAnswers[14]['answer'])) . '</td>
                                         <td style="width: 20%"></td>
-                                        <td colspan="1" style="width: 55%; text-align: center; text-transform: uppercase;">' . strtoupper($psdAnswers[14]['answer']) . '</td>
+                                        <td colspan="1" style="width: 55%; text-align: center; text-transform: uppercase;">' . strtoupper($psdAnswers[15]['answer']) . '</td>
                                     </tr>
                                     <tr>
                                         <td colspan="1" style="font-size: 14px; width: 25%; text-align: center; border-top: 1px solid black;">

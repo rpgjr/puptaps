@@ -10,8 +10,6 @@
 
         <livewire:components.alert-status-message :message="session()->get('success')" />
 
-        <livewire:admin.page-title :title="$title"/>
-
         <div class="row justify-content-center g-0">
             <div class="col-11">
                 <div class="row sub-container-box mb-3 py-3 px-2 justify-content-between">
@@ -46,12 +44,6 @@
                         </form>
                     </div>
                 </div>
-                {{-- <div class="row mb-3 mt-0">
-                    <div class="col-12 text-end">
-                        <a href="{{ route("adminUserManagement.downloadListTemplate") }}" class="btn btn-success">Download Template<i class="fa-solid fa-file-csv ms-2"></i></a>
-                    </div>
-                </div> --}}
-
             <div class="row sub-container-box pb-0 pt-4 px-3">
                 <div class="col-12">
                     <table class="table table-striped align-middle table-hover">

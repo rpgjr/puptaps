@@ -18,7 +18,7 @@
                             @if ($user->user_pfp == null)
                                 <img src="{{ asset('Uploads/Profiles/user-no-profile.png') }}" class="user-profile-tracer">
                             @else
-                                <img src="/Uploads/Profiles/{{ $user->user_pfp }}" class="user-profile-tracer">
+                                <img src="{{ asset('Uploads/Profiles/' . $user->user_pfp) }}" class="user-profile-tracer">
                             @endif
                         </div>
 

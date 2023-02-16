@@ -3,10 +3,14 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Admin;
 use App\Models\Alumni;
+use App\Models\Careers;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use DB;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -29,7 +33,23 @@ class HomeController extends Controller
             return [$item ->answers => $item->alumniCount];
         });
 
+        $employment = Alumni::join('tbl_tracer_answers', 'tbl_alumni.alumni_id', '=', 'tbl_tracer_answers.alumni_id')
+                ->where('tbl_tracer_answers.question_id', '=', 6)
+                ->select('tbl_tracer_answers.answer as answers', DB::raw('count(tbl_alumni.alumni_id) as alumniCount'))
+                ->groupBy('answers')
+                ->get();
+        $employedAlumni = $employment->mapWithKeys(function ($item, $key) {
+            return [$item ->answers => $item->alumniCount];
+        });
+
+        $career = Careers::orderBy('created_at', 'desc')->first();
+        $users              = Alumni::where('alumni_id', '=', Auth::user()
+                              ->alumni_id)->get();
+        $alumni             = Alumni::all();
+        $admin              = Admin::all();
+        $username           = User::all();
+
         $title = "Dashboard";
-        return  view('admin.homepage', compact(["perBoardExam", "perCivilService"]));
+        return  view('admin.homepage', compact(["perBoardExam", "perCivilService", "employedAlumni", "career", 'users', 'alumni', 'admin', 'username']));
     }
 }

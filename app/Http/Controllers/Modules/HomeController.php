@@ -19,23 +19,23 @@ class HomeController extends Controller
         $data['query'] = $request->get('query');
 
         if ($data['query'] == 'Announcements') {
-            $data['announcements'] = Announcements::all();
+            $data['announcements'] = Announcements::orderby('announcement_id', 'desc')->get();
             $data['news'] = [];
         }
 
         elseif ($data['query'] == 'News') {
-            $data['news'] = News::all();
+            $data['news'] = News::orderby('news_id', 'desc')->get();
             $data['announcements'] = [];
         }
 
         elseif ($data['query'] == 'All') {
-            $data['announcements'] = Announcements::all();
-            $data['news'] = News::all();
+            $data['announcements'] = Announcements::orderby('announcement_id', 'desc')->get();
+            $data['news'] = News::orderby('news_id', 'desc')->get();
         }
         elseif ($data['query'] == null) {
             $data['query'] = "All";
-            $data['announcements'] = Announcements::all();
-            $data['news'] = News::all();
+            $data['announcements'] = Announcements::orderby('announcement_id', 'desc')->get();
+            $data['news'] = News::orderby('news_id', 'desc')->get();
         }
         return view('user.homepage', compact(["users"]), $data);
     }

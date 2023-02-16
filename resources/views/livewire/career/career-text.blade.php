@@ -9,7 +9,7 @@
                                 @if ($alum->user_pfp == null)
                                     <img src="{{ asset('Uploads/Profiles/user-no-profile.png') }}" class="career-post-profile">
                                 @else
-                                    <img src="/Uploads/Profiles/{{ $alum->user_pfp }}" class="career-post-profile">
+                                    <img src="{{ asset('Uploads/Profiles/' . $alum->user_pfp) }}" class="career-post-profile">
                                 @endif
                             </div>
                             <div class="col-10 col-sm-10 col-md-11 col-lg-11 col-xl-11 d-flex align-items-center justify-content-between">

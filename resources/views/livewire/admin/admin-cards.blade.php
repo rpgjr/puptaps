@@ -1,9 +1,3 @@
-<!--
-    cards
-    1. Show number of students in current batch
-    2. Show Number of current active forms
-    3. Show number of students responded in those forms
--->
 <div class="row">
     <div class="col-12">
         <div class="sub-container-box mb-4 py-3">

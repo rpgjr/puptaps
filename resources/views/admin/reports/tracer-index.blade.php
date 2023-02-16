@@ -19,7 +19,6 @@
                                     <p class="card-text mb-0 mt-0 fw-bold">Number of Alumni</p>
                                 </div>
                                 <div class="col-4 text-center p-0 m-0">
-                                    {{-- <i class="fa-solid fa-graduation-cap text-light" style="font-size: 60px;"></i> --}}
                                     <i class="bi bi-mortarboard p-0 m-0" style="font-size: 70px;"></i>
                                 </div>
                             </div>
@@ -33,7 +32,6 @@
                                     <p class="card-text mb-0 mt-0 fw-bold">Number of Respondents</p>
                                 </div>
                                 <div class="col-4 text-center p-0 m-0">
-                                    {{-- <i class="fa-solid fa-file-circle-check text-light" style="font-size: 60px;"></i> --}}
                                     <i class="bi bi-file-earmark-check p-0 m-0" style="font-size: 70px;"></i>
                                 </div>
                             </div>
@@ -47,7 +45,6 @@
                                     <p class="card-text mb-0 mt-0 fw-bold">Licensed Board Passers</p>
                                 </div>
                                 <div class="col-4 text-center p-0 m-0">
-                                    {{-- <i class="fa-solid fa-id-card text-light" style="font-size: 60px;"></i> --}}
                                     <i class="bi bi-credit-card" style="font-size: 70px;"></i>
                                 </div>
                             </div>
@@ -69,7 +66,7 @@
                                 <option value="1">Summary Report</option>
                                 <option value="2">Status Report</option>
                                 <option value="3">Generate Alumni Profile</option>
-                                <option value="4">Generate List of Booard Passers</option>
+                                <option value="4">Generate List of Board Passers</option>
                             </select>
                         </div>
                         <div class="col-4 mb-3">

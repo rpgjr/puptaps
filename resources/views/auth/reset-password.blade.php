@@ -1,5 +1,5 @@
 @extends('layouts.auth')
-@section('page-title', 'Registration')
+@section('page-title', 'Reset Password')
 @section('content')
 
 <section class="mt-4">

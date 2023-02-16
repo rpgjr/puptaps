@@ -10,7 +10,7 @@
             <div class="row justify-content-center">
                 <div class="col-11">
                     <div class="row g-3">
-                        <div class="col-12">
+                        <div class="col-8">
                             <div class="sub-container-box p-4">
                                 <h5>Board Exam Passers</h5>
                                 <div>
@@ -18,6 +18,17 @@
                                 </div>
                                 <script>
                                     var perBoardExam = @json($perBoardExam);
+                                </script>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="sub-container-box p-4 h-100">
+                                <h5>Employed Alumni</h5>
+                                <div>
+                                    <canvas id="employed-alumni"></canvas>
+                                </div>
+                                <script>
+                                    var employedAlumni = @json($employedAlumni);
                                 </script>
                             </div>
                         </div>
@@ -35,12 +46,11 @@
                         <div class="col-8">
                             <div class="sub-container-box p-4 h-100">
                                 <h5>Latest Career Posting</h5>
-                                <div>
-                                    <canvas id="alumni-per-exam"></canvas>
-                                </div>
-                                <script>
-                                    var perBoardExam = @json($perBoardExam);
-                                </script>
+                                @if ($career == null)
+                                    <h4 class="text-center">There no post yet.</h4>
+                                @else
+                                    @include('admin.components.last-career')
+                                @endif
                             </div>
                         </div>
                     </div>

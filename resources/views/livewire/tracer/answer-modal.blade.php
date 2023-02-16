@@ -7,10 +7,10 @@
                     <h5 class="modal-title">Alumni Tracer</h5>
                 </div>
                 <div class="modal-body">
-                    <p class="fs-7">You need first to answer the Alumni Tracer before proceeding.</p>
+                    <p class="fs-7">Please participate in Alumni Tracer Surver before proceeding.</p>
                 </div>
                 <div class="modal-footer">
-                    <a href="{{ route('userTracer.getAnswerPage') }}" type="button" class="text-decoration-none btn btn-primary text-center w-100 text-light">Continue to Tracer Form</a>
+                    <a href="{{ route('userTracer.getAnswerPage') }}" type="button" class="text-decoration-none btn btn-primary text-center w-100 text-light">Participate</a>
                 </div>
                 </div>
             </div>

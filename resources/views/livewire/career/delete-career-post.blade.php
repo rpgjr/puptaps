@@ -2,10 +2,6 @@
 <div class="modal fade" id="deleteCareer{{ $career_id }}" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
-            {{-- <div class="modal-header">
-                <h1 class="modal-title fs-5">Delete</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div> --}}
             <form wire:submit.prevent="deletePost">
                 <div class="modal-body">
                     <div class="swal2-icon swal2-warning mb-3" style="display: flex;">

@@ -267,41 +267,6 @@ class PdsToPdfController extends Controller
             EOF;
             $pdf->writeHTML($html, true, 0, true, 0);
 
-            // $pdf->Ln(3);
-            // $html = <<<EOF
-            //     <style>
-            //         table, th, td {
-            //             text-align: left;
-            //             border-collapse: collapse;
-            //         }
-            //         .table-work, .th-work, .td-work {
-            //             border: 1px solid black;
-            //             border-collapse: collapse;
-            //             padding: 5px;
-            //         }
-            //     </style>
-            //     <h4 style="text-align: center;">Trainings / Seminars Attended:</h4>
-            //     <table class="table-work" style="width:100%;">
-            //         <tr>
-            //             <th class="th-work" colspan="1" style="width: 70%; text-align: center; font-weight: bold;">Title of Seminar / Conference / Workshop</th>
-            //             <th class="th-work" colspan="1" style="width: 30%; text-align: center; font-weight: bold;">Inclusive Dates</th>
-            //         </tr>
-            //         <tr>
-            //             <td class="td-work">$sem_1</td>
-            //             <td class="td-work">$sem_date_1</td>
-            //         </tr>
-            //         <tr>
-            //             <td class="td-work">$sem_2</td>
-            //             <td class="td-work">$sem_date_2</td>
-            //         </tr>
-            //         <tr>
-            //             <td class="td-work">$sem_3</td>
-            //             <td class="td-work">$sem_date_3</td>
-            //         </tr>
-            //     </table>
-            // EOF;
-            // $pdf->writeHTML($html, true, 0, true, 0);
-
             $pdf->Ln(3);
                 $html = '<style>
                         table, th, td {

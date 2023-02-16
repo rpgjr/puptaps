@@ -32,19 +32,6 @@
                     <i class="fa-solid fa-user-group me-1"></i>
                     Alumni Manager
                 </a>
-                {{-- <div class="mt-1">
-                    <div class="collapse show ms-4" id="userManager">
-                        <a type="button" href="{{ route('adminUserManagement.getAlumniList') }}" class="btn btn-sm btn-dark w-100 text-start py-2 @yield('active-alumni-list')">
-                            <i class="fa-solid fa-file-arrow-up me-1"></i>
-                            Upload Alumni List
-                        </a>
-                        <a type="button" href="{{ route('adminUserManagement.getAlumniManager') }}" class="btn btn-sm btn-dark w-100 text-start py-2 @yield('active-alumni-manager')">
-                            <i class="fa-solid fa-user-graduate me-1"></i>
-                            Alumni Manager
-                        </a>
-                    </div>
-                </div> --}}
-                <!-- End: User Manager -->
 
                 <!-- Start: Career Management -->
                 <a type="button" href="" class="sidebar-button w-100 text-start dropdown-toggle py-2" data-bs-toggle="collapse" data-bs-target="#careerManagement" aria-expanded="false">
@@ -88,24 +75,6 @@
                     <i class="fa-solid fa-gear me-1"></i>
                     Account Settings
                 </a>
-                <!-- End: Account Settings -->
-
-                <!-- Start: Account Settings -->
-                {{-- <form action="{{ route('logout') }}" method="post">
-                    @csrf
-                    <div class="fixed-bottom">
-                        <button class="text-center pb-0 mb-3 admin-logout-button">
-                            <span class="admin-logout-button">
-                                <i class="fa-solid fa-gear me-1"></i>
-                                Logout
-                            </span>
-                        </button>
-                    </div>
-                </form> --}}
-                {{-- <a type="button" href="{{ route("logout") }}" class="text-center admin-logout-button text-start py-2 fixed-bottom">
-                    <i class="fa-solid fa-gear me-1"></i>
-                    Logout
-                </a> --}}
                 <!-- End: Account Settings -->
             </div>
         </div>

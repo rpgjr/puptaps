@@ -14,16 +14,6 @@ class FormsController extends Controller
 {
 
     public function getFormIndex() {
-        // $userPDS = FormPDS::where('alumni_id', '=', Auth::user()->alumni_id)->get();
-        // $userSAS = FormSAS::where('alumni_id', '=', Auth::user()->alumni_id)->get();
-        // $userExitInterview = FormExitInterview::where('alumni_id', '=', Auth::user()->alumni_id)->get();
-        // $users = Alumni::where('alumni_id', '=', Auth::user()->alumni_id)->get();
-        // $pdsResult = true;
-
-        // return view('user.forms.index', compact(['users', 'userPDS', 'userExitInterview', 'userSAS']));
-
-        // return view('user.forms.index', compact('pdsResult'));
-
         $users = Alumni::where("alumni_id", "=", Auth::user()->alumni_id)->get();
         $forms = Forms::all();
         $title = "Required Forms";

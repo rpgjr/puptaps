@@ -24,7 +24,7 @@
                     @foreach ($questions as $key => $value)
                     @if (($value->category_id) == ($category->category_id))
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="Agree" wire:model="arrayAnswers.{{ $key }}.answer" />
+                            <input class="form-check-input" type="checkbox" value="Agree" wire:model.lazy="arrayAnswers.{{ $key }}.answer" />
                             <label class="form-check-label">Agree <span class="text-danger">*</span></label>
                         </div>
                     <span class="text-danger error-message">@error('arrayAnswers.' . $key . '.answer'){{ $message }}@enderror</span>
@@ -153,7 +153,7 @@
                                 <div class="form-group">
                                     <div>
                                         <label class="form-label">{{ $value->question_text }} <span class="text-danger">*</span></label>
-                                        <input type="text" class="form-control @error('arrayAnswers.' . $key . '.answer') is-invalid @enderror" wire:model="arrayAnswers.{{ $key }}.answer" placeholder="{{ $value->question_placeholder }}">
+                                        <input type="text" class="form-control @error('arrayAnswers.' . $key . '.answer') is-invalid @enderror" wire:model.lazy="arrayAnswers.{{ $key }}.answer" placeholder="{{ $value->question_placeholder }}">
                                         <span class="text-danger error-message">@error('arrayAnswers.' . $key . '.answer'){{ $message }}@enderror</span>
                                     </div>
                                 </div>
@@ -187,7 +187,7 @@
                                 <div class="form-group">
                                     <div>
                                         <label class="form-label">{{ $value->question_text }} <span class="text-danger">*</span></label>
-                                        <input type="text" class="form-control @error('arrayAnswers.' . $key . '.answer') is-invalid @enderror" wire:model="arrayAnswers.{{ $key }}.answer" placeholder="{{ $value->question_placeholder }}">
+                                        <input type="text" class="form-control @error('arrayAnswers.' . $key . '.answer') is-invalid @enderror" wire:model.lazy="arrayAnswers.{{ $key }}.answer" placeholder="{{ $value->question_placeholder }}">
                                         <span class="text-danger error-message">@error('arrayAnswers.' . $key . '.answer'){{ $message }}@enderror</span>
                                     </div>
                                 </div>
@@ -221,7 +221,7 @@
                                     <div class="form-group">
                                         <div>
                                             <label class="form-label">{{ $value->question_text }} <span class="text-danger">*</span></label>
-                                            <input type="text" class="form-control @error('arrayAnswers.' . $key . '.answer') is-invalid @enderror" wire:model="arrayAnswers.{{ $key }}.answer" placeholder="{{ $value->question_placeholder }}">
+                                            <input type="text" class="form-control @error('arrayAnswers.' . $key . '.answer') is-invalid @enderror" wire:model.lazy="arrayAnswers.{{ $key }}.answer" placeholder="{{ $value->question_placeholder }}">
                                             <span class="text-danger error-message">@error('arrayAnswers.' . $key . '.answer'){{ $message }}@enderror</span>
                                         </div>
                                     </div>
@@ -239,7 +239,7 @@
                                     <div class="form-group">
                                         <div>
                                             <label class="form-label">{{ $value->question_text }} (2<sup>nd</sup>) <span class="text-danger">*</span></label>
-                                            <input type="text" class="form-control @error('arrayAnswers.' . $key . '.answer') is-invalid @enderror" wire:model="arrayAnswers.{{ $key }}.answer" placeholder="{{ $value->question_placeholder }}">
+                                            <input type="text" class="form-control @error('arrayAnswers.' . $key . '.answer') is-invalid @enderror" wire:model.lazy="arrayAnswers.{{ $key }}.answer" placeholder="{{ $value->question_placeholder }}">
                                             <span class="text-danger error-message">@error('arrayAnswers.' . $key . '.answer'){{ $message }}@enderror</span>
                                         </div>
                                     </div>
@@ -257,7 +257,7 @@
                                     <div class="form-group">
                                         <div>
                                             <label class="form-label">{{ $value->question_text }} (3<sup>rd</sup>) <span class="text-danger">*</span></label>
-                                            <input type="text" class="form-control @error('arrayAnswers.' . $key . '.answer') is-invalid @enderror" wire:model="arrayAnswers.{{ $key }}.answer" placeholder="{{ $value->question_placeholder }}">
+                                            <input type="text" class="form-control @error('arrayAnswers.' . $key . '.answer') is-invalid @enderror" wire:model.lazy="arrayAnswers.{{ $key }}.answer" placeholder="{{ $value->question_placeholder }}">
                                             <span class="text-danger error-message">@error('arrayAnswers.' . $key . '.answer'){{ $message }}@enderror</span>
                                         </div>
                                     </div>
@@ -296,7 +296,7 @@
                                 <div class="form-group">
                                     <div>
                                         <label class="form-label">{{ $value->question_text }} <span class="text-danger">*</span></label>
-                                        <input type="{{ $value->question_type }}" class="form-control @error('arrayAnswers.' . $key . '.answer') is-invalid @enderror" wire:model="arrayAnswers.{{ $key }}.answer" placeholder="{{ $value->question_placeholder }}">
+                                        <input type="{{ $value->question_type }}" class="form-control @error('arrayAnswers.' . $key . '.answer') is-invalid @enderror" wire:model.lazy="arrayAnswers.{{ $key }}.answer" placeholder="{{ $value->question_placeholder }}">
                                         <span class="text-danger error-message">@error('arrayAnswers.' . $key . '.answer'){{ $message }}@enderror</span>
                                     </div>
                                 </div>

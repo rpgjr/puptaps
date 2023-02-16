@@ -24,7 +24,7 @@
                                     {{ $message }}
                                 @enderror
                             </span>
-                            <input type="text" class="form-control @error('job_position') is-invalid @enderror" wire:model="job_position">
+                            <input type="text" class="form-control @error('job_position') is-invalid @enderror" wire:model.lazy="job_position">
                         </div>
                     </div>
                     <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 mb-3">
@@ -36,7 +36,7 @@
                                     {{ $message }}
                                 @enderror
                             </span>
-                            <input type="text" class="form-control @error('company_name') is-invalid @enderror" wire:model="company_name">
+                            <input type="text" class="form-control @error('company_name') is-invalid @enderror" wire:model.lazy="company_name">
                         </div>
                     </div>
                     <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 mb-3">
@@ -48,7 +48,7 @@
                                     {{ $message }}
                                 @enderror
                             </span>
-                            <input type="date" class="form-control @error('start_date') is-invalid @enderror" wire:model="start_date">
+                            <input type="date" class="form-control @error('start_date') is-invalid @enderror" wire:model.lazy="start_date">
                         </div>
                     </div>
                     <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 mb-3">
@@ -60,7 +60,7 @@
                                     {{ $message }}
                                 @enderror
                             </span>
-                            <input type="text" class="form-control @error('job_description') is-invalid @enderror" wire:model="job_description">
+                            <input type="text" class="form-control @error('job_description') is-invalid @enderror" wire:model.lazy="job_description">
                         </div>
                     </div>
                     <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 mb-3">
@@ -72,7 +72,7 @@
                                     {{ $message }}
                                 @enderror
                             </span>
-                            <select class="form-select @error('employment_type') is-invalid @enderror" wire:model="employment_type">
+                            <select class="form-select @error('employment_type') is-invalid @enderror" wire:model.lazy="employment_type">
                                 <option selected hidden>Please select one...</option>
                                 <option value="Probitionary">Probitionary</option>
                                 <option value="Regular">Regular</option>
@@ -91,7 +91,7 @@
                                     {{ $message }}
                                 @enderror
                             </span>
-                            <select class="form-select @error('income') is-invalid @enderror" wire:model="income">
+                            <select class="form-select @error('income') is-invalid @enderror" wire:model.lazy="income">
                                 <option selected hidden>Please select one...</option>
                                 <option value="₱10,000 - ₱15,000">₱10,000 - ₱15,000</option>
                                 <option value="₱16,000 - ₱20,000">₱16,000 - ₱20,000</option>
@@ -114,7 +114,7 @@
                                     {{ $message }}
                                 @enderror
                             </span>
-                            <input type="text" class="form-control @error('company_email') is-invalid @enderror" wire:model="company_email">
+                            <input type="text" class="form-control @error('company_email') is-invalid @enderror" wire:model.lazy="company_email">
                         </div>
                     </div>
                     <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 mb-3">
@@ -126,7 +126,7 @@
                                     {{ $message }}
                                 @enderror
                             </span>
-                            <input type="text" class="form-control @error('company_number') is-invalid @enderror" wire:model="company_number">
+                            <input type="text" class="form-control @error('company_number') is-invalid @enderror" wire:model.lazy="company_number">
                         </div>
                     </div>
                     <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 mb-3">
@@ -139,11 +139,11 @@
                                 @enderror
                             </span>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" value="Yes" wire:model="related_to_course">
+                                <input class="form-check-input" type="radio" value="Yes" wire:model.lazy="related_to_course">
                                 <label class="form-check-label">Yes</label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" value="No" wire:model="related_to_course">
+                                <input class="form-check-input" type="radio" value="No" wire:model.lazy="related_to_course">
                                 <label class="form-check-label">No</label>
                             </div>
                         </div>

@@ -10,8 +10,6 @@
 
             <livewire:components.alert-status-message :message="session()->get('success')" />
 
-            <livewire:admin.page-title :title="$title"/>
-
             <div class="row justify-content-center g-0">
                 <div class="col-11">
 
@@ -37,7 +35,6 @@
                             <form class="row g-3">
                                 @csrf
                                 <div class="input-group">
-                                    {{-- <input type="text" class="form-control" placeholder="Last Name" name="q" value="{{ $q }}"> --}}
                                     <select class="form-select" name="batch">
                                         <option hidden value="">Select Batch</option>
                                         <option value="">All</option>

@@ -27,10 +27,6 @@
                 </a>
                 <div class="mt-1">
                     <div class="collapse show ms-4" id="userManager">
-                        {{-- <a type="button" href="{{ route('adminUserManagement.getAlumniList') }}" class="btn btn-sm btn-dark w-100 text-start py-2 @yield('active-alumni-list')">
-                            <i class="fa-solid fa-file-arrow-up me-1"></i>
-                            Upload Alumni List
-                        </a> --}}
                         <a type="button" href="{{ route('adminUserManagement.getAlumniManager') }}" class="btn btn-sm btn-dark w-100 text-start py-2 @yield('active-alumni-manager')">
                             <i class="fa-solid fa-user-graduate me-1"></i>
                             Alumni Manager

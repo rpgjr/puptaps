@@ -15,6 +15,9 @@
 <link rel="stylesheet" href="{{ asset('css/user-homepage.css') }}">
 <link rel="stylesheet" href="{{ asset('css/check_error.css') }}">
 
+{{-- Animate Text --}}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
 {{-- Bootstrap Icons --}}
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
 

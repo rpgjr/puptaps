@@ -9,8 +9,6 @@
         <div class="container-fluid box-content">
             <livewire:components.alert-status-message :message="$message" />
 
-            <livewire:admin.page-title :title="$title"/>
-
             <div class="row justify-content-center g-0">
                 <div class="col-11">
                     <div class="row">

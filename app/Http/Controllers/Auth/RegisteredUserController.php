@@ -57,7 +57,7 @@ class RegisteredUserController extends Controller
                 return redirect(route('mail.sendTemporaryPassword', [$email, $stud_number]));
             }
             else {
-                return back()->with('fail', 'A temporary password has already been sent to an email address connected to your account.');
+                return back()->with('fail', 'A temporary password has already been sent to an email connected to your account.');
             }
         }
         else {
