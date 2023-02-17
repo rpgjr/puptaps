@@ -19,6 +19,7 @@ class AnswerUnemployed extends Component
     public $countNull = 1;
     public $temp = 0;
     public $no_board_exam;
+    public $currently_unemployed;
 
     public function render() {
         $this->addNullAnswers();
@@ -88,6 +89,23 @@ class AnswerUnemployed extends Component
                 $this->arrayAnswers[2]['answer'] = 'N/A';
                 $this->arrayAnswers[3]['answer'] = 'N/A';
             }
+            if ($this->currently_unemployed == "CURRENTLY_UNEMPLOYED") {
+                $this->arrayAnswers[5]['answer'] = 'UNEMPLOYED';
+                $this->arrayAnswers[6]['answer'] = 'UNEMPLOYED';
+                $this->arrayAnswers[7]['answer'] = 'UNEMPLOYED';
+                $this->arrayAnswers[8]['answer'] = 'UNEMPLOYED';
+                $this->arrayAnswers[9]['answer'] = 'UNEMPLOYED';
+                $this->arrayAnswers[10]['answer'] = 'UNEMPLOYED';
+                $this->arrayAnswers[11]['answer'] = 'UNEMPLOYED';
+                $this->arrayAnswers[12]['answer'] = 'UNEMPLOYED';
+                $this->arrayAnswers[13]['answer'] = 'UNEMPLOYED';
+                $this->arrayAnswers[14]['answer'] = 'UNEMPLOYED';
+                $this->arrayAnswers[15]['answer'] = 'UNEMPLOYED';
+                $this->arrayAnswers[16]['answer'] = 'UNEMPLOYED';
+                $this->arrayAnswers[17]['answer'] = 'UNEMPLOYED';
+                $this->arrayAnswers[18]['answer'] = 'UNEMPLOYED';
+                $this->arrayAnswers[19]['answer'] = 'UNEMPLOYED';
+            }
             $this->validate();
         }
         $this->currentPage++;
@@ -106,21 +124,21 @@ class AnswerUnemployed extends Component
     }
 
     public function currentlyUnemployed() {
-        $this->arrayAnswers[5]['answer'] = 'Unemployed';
-        $this->arrayAnswers[6]['answer'] = 'Unemployed';
-        $this->arrayAnswers[7]['answer'] = 'Unemployed';
-        $this->arrayAnswers[8]['answer'] = 'Unemployed';
-        $this->arrayAnswers[9]['answer'] = 'Unemployed';
-        $this->arrayAnswers[10]['answer'] = 'Unemployed';
-        $this->arrayAnswers[11]['answer'] = 'Unemployed';
-        $this->arrayAnswers[12]['answer'] = 'Unemployed';
-        $this->arrayAnswers[13]['answer'] = 'Unemployed';
-        $this->arrayAnswers[14]['answer'] = 'Unemployed';
-        $this->arrayAnswers[15]['answer'] = 'Unemployed';
-        $this->arrayAnswers[16]['answer'] = 'Unemployed';
-        $this->arrayAnswers[17]['answer'] = 'Unemployed';
-        $this->arrayAnswers[18]['answer'] = 'Unemployed';
-        $this->arrayAnswers[19]['answer'] = 'Unemployed';
+        $this->arrayAnswers[5]['answer'] = 'UNEMPLOYED';
+        $this->arrayAnswers[6]['answer'] = 'UNEMPLOYED';
+        $this->arrayAnswers[7]['answer'] = 'UNEMPLOYED';
+        $this->arrayAnswers[8]['answer'] = 'UNEMPLOYED';
+        $this->arrayAnswers[9]['answer'] = 'UNEMPLOYED';
+        $this->arrayAnswers[10]['answer'] = 'UNEMPLOYED';
+        $this->arrayAnswers[11]['answer'] = 'UNEMPLOYED';
+        $this->arrayAnswers[12]['answer'] = 'UNEMPLOYED';
+        $this->arrayAnswers[13]['answer'] = 'UNEMPLOYED';
+        $this->arrayAnswers[14]['answer'] = 'UNEMPLOYED';
+        $this->arrayAnswers[15]['answer'] = 'UNEMPLOYED';
+        $this->arrayAnswers[16]['answer'] = 'UNEMPLOYED';
+        $this->arrayAnswers[17]['answer'] = 'UNEMPLOYED';
+        $this->arrayAnswers[18]['answer'] = 'UNEMPLOYED';
+        $this->arrayAnswers[19]['answer'] = 'UNEMPLOYED';
 
         $this->updateAnswer();
     }

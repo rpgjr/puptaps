@@ -1,6 +1,5 @@
 <div>
-    <form wire:submit.prevent="updateAnswer" method="POST" enctype="multipart/form-data">
-        @csrf
+    <form wire:submit.prevent="updateAnswer">
         @foreach ($categories as $category)
             @if (($currentPage == $category->category_id) && ($currentPage == $category->category_id))
 

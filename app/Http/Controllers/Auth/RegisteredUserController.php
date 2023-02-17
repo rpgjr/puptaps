@@ -39,15 +39,28 @@ class RegisteredUserController extends Controller
     {
         $check_studNumber = Alumni::where('stud_number', '=', $request->stud_number)->first();
 
+        $this->validate(request(), [
+            'stud_number' =>
+                array(
+                    'required',
+                    'regex:/^\d{4}-\d{5}-TG-0$/'
+                )
+                ],
+                [
+                    'stud_number.required'  => 'Student Number is required',
+                    'stud_number.*'  => 'Invalid Format for Student Number',
+
+                ]
+            );
+        $request->validate([
+            // 'stud_number'   => ['required|regex:/^\d{4}-\d{5}-TG-0$/'],
+            'email'         => ['required', 'email', 'max:255', 'unique:users'],
+        ],
+        [
+            // 'stud_number.required'  => 'Student Number is required',
+            'email.required'        => 'Email is required',
+        ]);
         if($check_studNumber) {
-            $request->validate([
-                'stud_number'   => ['required'],
-                'email'         => ['required', 'string', 'email', 'max:255', 'unique:users', 'unique:tbl_alumni'],
-            ],
-            [
-                'stud_number.required'  => 'Student Number is required',
-                'email.required'        => 'Email is required',
-            ]);
 
             $hasPassword = User::where('username', '=', $request->stud_number)->first();
             $email = $request->email;

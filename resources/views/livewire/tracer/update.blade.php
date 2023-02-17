@@ -1,6 +1,5 @@
 <div>
     <form wire:submit.prevent="saveAnswer">
-
         <div class="row justify-content-center">
             <div class="col-12 form-box-content mt-0 pt-4 pb-3">
                 <div class="row g-0 align-items-center mb-3">
