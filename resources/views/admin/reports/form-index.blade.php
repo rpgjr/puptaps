@@ -7,6 +7,7 @@
 
     <section class="mt-4 mt-sm-4 mt-md-4 mt-lg-5 mt-xl-5 mb-5">
         <div class="container-fluid box-content">
+            <livewire:components.alert-status-message :message="session()->get('success')" />
 
             <div class="row mb-3 justify-content-center">
                 <div class="col-11 px-0">
@@ -75,7 +76,7 @@
                             <h3 class="mb-4 mt-3">Form Reports</h3>
                             <div class="col-6 mb-3">
                                 <label class="form-label">Forms</label>
-                                <select class="form-select @error('form') is-invalid @enderror" name="form">
+                                <select id="form_name" class="form-select @error('form') is-invalid @enderror" name="form">
                                     <option value="" hidden selected>Please select one...</option>
                                     @foreach ($forms as $form)
                                         <option value="{{ $form->form_id }}">{{ $form->form_name }}</option>
@@ -85,10 +86,11 @@
                             </div>
                             <div class="col-6 mb-3">
                                 <label class="form-label">Report Type</label>
-                                <select class="form-select @error('type') is-invalid @enderror" name="type">
+                                <select id="form_type" class="form-select @error('type') is-invalid @enderror" name="type">
                                     <option value="" hidden selected>Please select one...</option>
-                                    <option value="1">Summary Report</option>
-                                    <option value="2">Status Report</option>
+                                    <option value="1">Detailed Report</option>
+                                    <option value="2">Summary Report</option>
+                                    <option value="3">Status Report</option>
                                 </select>
                                 <span class="text-danger error-message">@error('type') {{$message}} @enderror</span>
                             </div>
@@ -136,5 +138,22 @@
         </div>
     </section>
 
+    <script>
+        // get references to the select elements
+        const form_select = document.getElementById("form_name");
+        const type_select = document.getElementById("form_type");
 
+        // add an event listener to the first select element
+        form_select.addEventListener("click", function() {
+            // get the selected option value
+            const selectedValue = form_select.value;
+
+            if (selectedValue == 1) {
+                form_type.options[2].style.display = "none";
+            } else {
+                // otherwise, show all options
+                form_type.options[2].style.display = "";
+            }
+        });
+    </script>
 @endsection

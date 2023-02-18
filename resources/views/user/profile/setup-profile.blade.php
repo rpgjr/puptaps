@@ -56,22 +56,22 @@
                             </div>
                             <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 my-2">
                                 <label class="form-label">Birthday <span class="text-danger">*</span></label>
-                                <input type="date" class="form-control @error('birthday') border border-danger @enderror" name="birthday">
+                                <input type="date" id="birthday" class="form-control @error('birthday') border border-danger @enderror" name="birthday" value="{{ old('birthday') }}">
                                 <span class="text-danger error-message">@error('birthday') {{$message}} @enderror</span>
                             </div>
                             <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 my-2">
-                                <label class="form-label">Age <span class="text-danger">*</span></label>
-                                <input type="text" class="form-control @error('age') border border-danger @enderror" name="age">
+                                <label class="form-label">Age</label>
+                                <input type="number" id="age" class="fs-7 form-control @error('age') border border-danger @enderror" name="age" value="{{ old('age') }}" readonly style="background: #EAECEE;">
                                 <span class="text-danger error-message">@error('age') {{$message}} @enderror</span>
                             </div>
                             <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 my-2">
                                 <label class="form-label">Mobile Number <span class="text-danger">*</span></label>
-                                <input type="text" class="form-control @error('age') border border-danger @enderror" name="number">
+                                <input type="text" class="form-control @error('number') border border-danger @enderror" name="number" value="{{ old('number') }}">
                                 <span class="text-danger error-message">@error('number') {{$message}} @enderror</span>
                             </div>
                             <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 my-2">
                                 <label class="form-label">Religion</label>
-                                <input type="text" class="form-control" name="religion">
+                                <input type="text" class="form-control" name="religion" value="{{ old('religion') }}">
                                 <span class="text-danger">@error('religion') {{$message}} @enderror</span>
                             </div>
                             <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 my-2">
@@ -102,7 +102,7 @@
                             </div>
                             <div class="col-12 my-2">
                                 <label class="form-label">City Address <span class="text-danger">*</span></label>
-                                <input type="text" class="form-control @error('city_address') border border-danger @enderror" name="city_address" id="cityAddress">
+                                <input type="text" class="form-control @error('city_address') border border-danger @enderror" name="city_address" id="cityAddress" value="{{ old('city_address') }}">
                                 <span class="text-danger error-message">@error('city_address') {{$message}} @enderror</span>
                             </div>
 
@@ -131,5 +131,17 @@
             </div>
         </div>
     </section>
+    <script>
+        const dobInput = document.getElementById('birthday');
+        const ageInput = document.getElementById('age');
 
+        dobInput.addEventListener('input', function() {
+            const dob = Date.parse(this.value);
+            const ageInMs = Date.now() - dob;
+            const ageInYears = ageInMs / (1000 * 60 * 60 * 24 * 365.25);
+            const age = Math.floor(ageInYears);
+
+            ageInput.value  = age.toString();
+        });
+    </script>
 @endsection

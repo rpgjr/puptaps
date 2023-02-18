@@ -70,6 +70,63 @@ class AnswerUnemployed extends Component
         $this->currentPage = 1;
     }
 
+    public function board_value() {
+        if ($this->no_board_exam == "NO_BOARD_EXAM") {
+            $this->no_board_exam = '';
+            $this->arrayAnswers[0]['answer'] = '';
+            $this->arrayAnswers[1]['answer'] = '';
+            $this->arrayAnswers[2]['answer'] = '';
+            $this->arrayAnswers[3]['answer'] = '';
+            $this->validate();
+        }
+        else {
+            $this->resetErrorBag();
+            $this->no_board_exam = "NO_BOARD_EXAM";
+            $this->arrayAnswers[0]['answer'] = 'N/A';
+            $this->arrayAnswers[1]['answer'] = 'N/A';
+            $this->arrayAnswers[2]['answer'] = 'N/A';
+            $this->arrayAnswers[3]['answer'] = 'N/A';
+        }
+    }
+
+    public function unemployed_value() {
+        if ($this->currently_unemployed == 'CURRENTLY_UNEMPLOYED') {
+            $this->currently_unemployed = '';
+            $this->arrayAnswers[5]['answer'] = '';
+            $this->arrayAnswers[6]['answer'] = '';
+            $this->arrayAnswers[7]['answer'] = '';
+            $this->arrayAnswers[8]['answer'] = '';
+            $this->arrayAnswers[9]['answer'] = '';
+            $this->arrayAnswers[10]['answer'] = '';
+            $this->arrayAnswers[11]['answer'] = '';
+            $this->arrayAnswers[12]['answer'] = '';
+            $this->arrayAnswers[13]['answer'] = '';
+            $this->validate();
+        }
+        else {
+            $this->resetErrorBag();
+            $this->currently_unemployed = 'CURRENTLY_UNEMPLOYED';
+            $this->arrayAnswers[5]['answer'] = 'UNEMPLOYED';
+            $this->arrayAnswers[6]['answer'] = 'UNEMPLOYED';
+            $this->arrayAnswers[7]['answer'] = 'UNEMPLOYED';
+            $this->arrayAnswers[8]['answer'] = 'UNEMPLOYED';
+            $this->arrayAnswers[9]['answer'] = 'UNEMPLOYED';
+            $this->arrayAnswers[10]['answer'] = 'UNEMPLOYED';
+            $this->arrayAnswers[11]['answer'] = 'UNEMPLOYED';
+            $this->arrayAnswers[12]['answer'] = 'UNEMPLOYED';
+            $this->arrayAnswers[13]['answer'] = 'UNEMPLOYED';
+        }
+    }
+
+    public function sameCurrent() {
+        $this->arrayAnswers[14]['answer'] = $this->arrayAnswers[5]['answer'];
+        $this->arrayAnswers[15]['answer'] = $this->arrayAnswers[6]['answer'];
+        $this->arrayAnswers[16]['answer'] = $this->arrayAnswers[7]['answer'];
+        $this->arrayAnswers[17]['answer'] = $this->arrayAnswers[8]['answer'];
+        $this->arrayAnswers[18]['answer'] = $this->arrayAnswers[11]['answer'];
+        $this->arrayAnswers[19]['answer'] = $this->arrayAnswers[12]['answer'];
+    }
+
     public function previousPage() {
         $this->resetErrorBag();
         $this->currentPage--;
@@ -83,28 +140,14 @@ class AnswerUnemployed extends Component
         $this->addNullAnswers();
         $temp_null = $this->countNull - 1;
         if($temp_null == $this->currentPage) {
-            if ($this->no_board_exam == "NO_BOARD_EXAM") {
-                $this->arrayAnswers[0]['answer'] = 'N/A';
-                $this->arrayAnswers[1]['answer'] = 'N/A';
-                $this->arrayAnswers[2]['answer'] = 'N/A';
-                $this->arrayAnswers[3]['answer'] = 'N/A';
-            }
-            if ($this->currently_unemployed == "CURRENTLY_UNEMPLOYED") {
-                $this->arrayAnswers[5]['answer'] = 'UNEMPLOYED';
-                $this->arrayAnswers[6]['answer'] = 'UNEMPLOYED';
-                $this->arrayAnswers[7]['answer'] = 'UNEMPLOYED';
-                $this->arrayAnswers[8]['answer'] = 'UNEMPLOYED';
-                $this->arrayAnswers[9]['answer'] = 'UNEMPLOYED';
-                $this->arrayAnswers[10]['answer'] = 'UNEMPLOYED';
-                $this->arrayAnswers[11]['answer'] = 'UNEMPLOYED';
-                $this->arrayAnswers[12]['answer'] = 'UNEMPLOYED';
-                $this->arrayAnswers[13]['answer'] = 'UNEMPLOYED';
+            if ($this->currently_unemployed == 'CURRENTLY_UNEMPLOYED') {
                 $this->arrayAnswers[14]['answer'] = 'UNEMPLOYED';
                 $this->arrayAnswers[15]['answer'] = 'UNEMPLOYED';
                 $this->arrayAnswers[16]['answer'] = 'UNEMPLOYED';
                 $this->arrayAnswers[17]['answer'] = 'UNEMPLOYED';
                 $this->arrayAnswers[18]['answer'] = 'UNEMPLOYED';
                 $this->arrayAnswers[19]['answer'] = 'UNEMPLOYED';
+                $this->updateAnswer();
             }
             $this->validate();
         }
@@ -112,35 +155,6 @@ class AnswerUnemployed extends Component
         if($this->currentPage > $this->totalPage) {
             $this->currentPage = $this->totalPage;
         }
-    }
-
-    public function sameCurrent() {
-        $this->arrayAnswers[14]['answer'] = $this->arrayAnswers[5]['answer'];
-        $this->arrayAnswers[15]['answer'] = $this->arrayAnswers[6]['answer'];
-        $this->arrayAnswers[16]['answer'] = $this->arrayAnswers[7]['answer'];
-        $this->arrayAnswers[17]['answer'] = $this->arrayAnswers[8]['answer'];
-        $this->arrayAnswers[18]['answer'] = $this->arrayAnswers[11]['answer'];
-        $this->arrayAnswers[19]['answer'] = $this->arrayAnswers[12]['answer'];
-    }
-
-    public function currentlyUnemployed() {
-        $this->arrayAnswers[5]['answer'] = 'UNEMPLOYED';
-        $this->arrayAnswers[6]['answer'] = 'UNEMPLOYED';
-        $this->arrayAnswers[7]['answer'] = 'UNEMPLOYED';
-        $this->arrayAnswers[8]['answer'] = 'UNEMPLOYED';
-        $this->arrayAnswers[9]['answer'] = 'UNEMPLOYED';
-        $this->arrayAnswers[10]['answer'] = 'UNEMPLOYED';
-        $this->arrayAnswers[11]['answer'] = 'UNEMPLOYED';
-        $this->arrayAnswers[12]['answer'] = 'UNEMPLOYED';
-        $this->arrayAnswers[13]['answer'] = 'UNEMPLOYED';
-        $this->arrayAnswers[14]['answer'] = 'UNEMPLOYED';
-        $this->arrayAnswers[15]['answer'] = 'UNEMPLOYED';
-        $this->arrayAnswers[16]['answer'] = 'UNEMPLOYED';
-        $this->arrayAnswers[17]['answer'] = 'UNEMPLOYED';
-        $this->arrayAnswers[18]['answer'] = 'UNEMPLOYED';
-        $this->arrayAnswers[19]['answer'] = 'UNEMPLOYED';
-
-        $this->updateAnswer();
     }
 
     public function updateAnswer() {
