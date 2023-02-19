@@ -20,7 +20,7 @@
 
                 <form action="{{ route("superAdmin.saveNewAdmin") }}" method="POST">
                 @csrf
-                    <div class="row mt-3">
+                    <div class="row mt-3 fs-7">
                         <div class="col-6 mb-3">
                             <label class="form-label"><span class="text-danger me-1">*</span>Last Name:</label>
                             <input type="text" class="form-control @error('last_name') border border-danger @enderror" name="last_name" placeholder="Last Name">
@@ -73,7 +73,7 @@
                         </div>
 
                         <div class="col-12 text-end mt-3">
-                            <button class="btn btn-success" type="submit">Add Admin</button>
+                            <button class="btn btn-primary fs-7" type="submit">Add Admin <i class="fa-solid fa-plus"></i></button>
                         </div>
                     </div>
                 </form>

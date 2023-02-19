@@ -56,7 +56,7 @@
                 </p>
                 <p class="fs-7 pb-0 px-0 mb-2" style="text-align: justify;
                 text-justify: inter-word;">
-                    <i class="fa-solid fa-circle-check text-success"></i> <span class="fw-bold">Application Information:</span> <span class="fst-italic">Provide clear instructions on how to apply, including the application deadlinea and contact information.</span>
+                    <i class="fa-solid fa-circle-check text-success"></i> <span class="fw-bold">Application Information:</span> <span class="fst-italic">Provide clear instructions on how to apply, including the application deadline and contact information.</span>
                 </p>
                 <p class="fs-7 pb-0 px-0 mb-2" style="text-align: justify;
                 text-justify: inter-word;">

@@ -20,7 +20,7 @@
 
                 <div class="px-3 mt-3">
                     <table class="table align-middle table-striped">
-                        <thead class="table-dark">
+                        <thead class="tbl-head">
                             <tr>
                                 <th scope="col">Username</th>
                                 <th scope="col">Name</th>
@@ -35,7 +35,7 @@
                                         <th>{{ $admin->username }}</th>
                                         <td>{{ $admin->last_name }}, {{ $admin->first_name }}</td>
                                         <td>{{ $admin->user_role }}</td>
-                                        <td class="text-center"><button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteAdmin{{ $admin->admin_id }}"><i class="fa-solid fa-trash-can"></i></button></td>
+                                        <td class="text-center"><button class="btn btn-danger fs-7" data-bs-toggle="modal" data-bs-target="#deleteAdmin{{ $admin->admin_id }}"><i class="fa-solid fa-trash-can"></i></button></td>
                                         @include("super_admin.components.delete-admin")
                                     </tr>
                                 @endif

@@ -1,7 +1,8 @@
 <!-- Submenu for screen size xs - md -->
 <div class="row d-inline d-sm-inline d-md-inline d-lg-none d-xl-none">
-    <div class="col-12 text-end">
-        <button class="btn btn-outline-secondary" type="button" data-bs-toggle="collapse" data-bs-target="#careerSubmenu" aria-expanded="false" aria-controls="careerSubmenu">
+    <div class="col-12 text-end d-flex justify-content-between align-items-center">
+        <h4>Categories</h4>
+        <button class="btn btn-outline-secondary fs-7" type="button" data-bs-toggle="collapse" data-bs-target="#careerSubmenu" aria-expanded="false" aria-controls="careerSubmenu">
             <i class="fa-solid fa-bars"></i>
         </button>
     </div>
@@ -10,7 +11,7 @@
 <div class="collapse d-lg-block d-xl-block sub-container-box mb-4" id="careerSubmenu">
     <div class="row pt-3">
         <div class="col-12">
-            <h5>Categories</h5>
+            <h5 class="d-none d-sm-none d-md-none d-lg-block d-xl-block">Categories</h5>
         </div>
         <div class="col-12">
             <form>

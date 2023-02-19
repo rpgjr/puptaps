@@ -16,26 +16,32 @@ style="
                 <p class="mb-4 text-center mb-5 normal">Providing the best care and experience for our beloved alumni. Hop in and relish, give opportunities to your co-alumni, and reminisce your life here at PUP Taguig.</p>
 
                 <div class="buttons text-center mb-3">
-                    <button type="button" class="button-learn-more">Learn More</button>
+                    <a href="#learn_more" type="button" class="text-decoration-none button-learn-more">Learn More</a>
                 </div>
 
                 <div class="row mt-5">
                     <div class="col-md-12">
                         <p class="text-center">Visit our socials</p>
                     </div>
-                    <div class="col-md-12 text-center">
-                        <a href="" class="icon-socials">
-                            <i class="fa-brands fa-facebook"></i>
-                        </a>
-                        <a href="" class="icon-socials">
-                            <i class="fa-brands fa-twitter"></i>
-                        </a>
-                        <a href="" class="icon-socials">
-                            <i class="fa-brands fa-instagram"></i>
-                        </a>
-                        <a href="" class="icon-socials">
-                            <i class="fa-regular fa-envelope"></i>
-                        </a>
+                    <div class="col-md-12 d-flex justify-content-center">
+                        <div class="mx-2">
+                            <a href="https://www.facebook.com/YourCentralStudentCouncil" class="row icon-socials text-center" target="_blank">
+                                <i class="fa-brands fa-facebook" style="font-size: 35px"></i>
+                                <p>YOUR Central <br>Student Council</p>
+                            </a>
+                        </div>
+                        <div class="mx-2">
+                            <a href="https://www.facebook.com/PUPTOFFICIAL" class="row icon-socials text-center" target="_blank">
+                                <i class="fa-brands fa-facebook" style="font-size: 35px"></i>
+                                <p>PUP Taguig</p>
+                            </a>
+                        </div>
+                        <div class="mx-2">
+                            <a href="https://www.facebook.com/PUPalumniofficial" class="row icon-socials text-center" target="_blank">
+                                <i class="fa-brands fa-facebook" style="font-size: 35px"></i>
+                                <p>PUP Alumni</p>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>

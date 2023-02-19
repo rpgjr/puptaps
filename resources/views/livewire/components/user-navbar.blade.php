@@ -25,8 +25,8 @@
                     <a class="nav-link @yield('profile-active')" aria-current="page" href="{{ route('userProfile.index') }}">Profile</a>
                 </li>
             </ul>
-            <div class="d-flex">
-                <div class="dropdown pb-3 pb-lg-0">
+            <div class="d-flex align-items-center">
+                {{-- <div class="dropdown pb-3 pb-lg-0">
                     @foreach ($users as $user)
                     @if ($user->user_pfp == null)
                         <img src="{{ asset('Uploads/Profiles/user-no-profile.png') }}" class="user-profile-button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -45,6 +45,24 @@
                             </form>
                         </li>
                     </ul>
+                </div> --}}
+                {{-- <div class="dropdown pb-3 pb-lg-0 d-none d-sm-none d-md-none d-lg-block d-xl-block">
+                    @foreach ($users as $user)
+                    @if ($user->user_pfp == null)
+                        <img src="{{ asset('Uploads/Profiles/user-no-profile.png') }}" class="user-profile-button">
+                    @else
+                        <img src="{{ asset('Uploads/Profiles/' . $user->user_pfp) }}" class="user-profile-button">
+                    @endif
+                    @endforeach
+                </div> --}}
+                <div class="mb-3 mb-sm-3 mb-md-3 mb-lg-0 mb-xl-0">
+                    <form action="{{ route('logout') }}" method="post">
+                        @csrf
+                        <button class="btn btn-sm btn-outline-light px-2">
+                            <i class="fa-solid fa-right-from-bracket me-1"></i>
+                            Logout
+                        </button>
+                    </form>
                 </div>
             </div>
         </div>

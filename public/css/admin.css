@@ -102,3 +102,14 @@
     color: #ffffff;
 }
 
+.pup-mission li {
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+.pup-faculty {
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+}

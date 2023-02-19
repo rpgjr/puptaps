@@ -1,4 +1,4 @@
-<div class="sub-container-box mb-3 py-4">
+<div class="sub-container-box mb-3 py-4" data-aos="fade-down">
     @if ($career->alumni_id != null)
         @foreach ($alumni as $alum)
             @if (($alum->alumni_id) == ($career->alumni_id))

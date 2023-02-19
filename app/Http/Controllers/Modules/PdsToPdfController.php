@@ -16,6 +16,7 @@ class MYPDF extends TCPDF {
     public function Header() {
         // Logo
         $image_file = public_path('/img/pupLogo.png');
+        // $image_file = asset('img/pupLogo.png');
         $this->Image($image_file, 15, 10, 20, '', 'PNG', '', 'C', false, 300, '', false, false, 0, false, false, false);
         // Title
         $this->Ln(6);

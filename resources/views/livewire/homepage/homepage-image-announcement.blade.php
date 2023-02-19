@@ -1,5 +1,5 @@
 @foreach ($announcements as $announcement)
-    <div class="sub-container-box mb-3 py-4">
+    <div class="sub-container-box mb-3 py-4" data-aos="fade-up">
         <div class="row align-items-center m-0">
             <div class="col-12 mb-1">
                 <div class="row justify-content-between">
