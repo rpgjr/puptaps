@@ -33,20 +33,19 @@
                         <img src="{{ asset('Uploads/NewsAnnouncements/' . $announcement->announcement_image) }}" alt="" class="career-post-image">
                     </div>
                 </a>
-
-                <!-- Modal -->
-                <div class="modal fade" id="announcementMondal{{ $announcement->announcement_id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered modal-md">
-                        <div class="modal-content bg-transparent border-0">
-                            <div class="row justify-content-center">
-                                <div class="col-12">
-                                    <button type="button" class="btn btn-dark fw-bold mb-2 px-3" data-bs-dismiss="modal" style="position: fixed; top: 0; right: 0;">x</button>
-                                </div>
-                                <div class="col-12 text-center">
-                                    <img src="{{ asset('Uploads/NewsAnnouncements/' . $announcement->announcement_image) }}" alt="Job Image" class="career-img-full">
-                                </div>
-                            </div>
-                        </div>
+            </div>
+        </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="announcementMondal{{ $announcement->announcement_id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-md">
+            <div class="modal-content bg-transparent border-0">
+                <div class="row justify-content-center">
+                    <div class="col-12">
+                        <button type="button" class="btn btn-dark fw-bold mb-2 px-3" data-bs-dismiss="modal" style="position: fixed; top: 0; right: 0;">x</button>
+                    </div>
+                    <div class="col-12 text-center">
+                        <img src="{{ asset('Uploads/NewsAnnouncements/' . $announcement->announcement_image) }}" alt="Job Image" class="career-img-full">
                     </div>
                 </div>
             </div>

@@ -26,7 +26,7 @@
                                         <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteCareer{{ $career->career_id }}">
                                             <i class="fa-regular fa-trash-can"></i>
                                         </button>
-                                        <livewire:career.delete-career-post :career_id="$career->career_id"/>
+                                        {{-- <livewire:career.delete-career-post :career_id="$career->career_id"/> --}}
                                     @endif
                                 </div>
                             </div>
@@ -42,7 +42,7 @@
                             </div>
                         </a>
 
-                        <!-- Modal -->
+                        {{-- <!-- Modal -->
                         <div class="modal fade" id="careerModalImage{{ $career->career_id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered modal-lg">
                                 <div class="modal-content bg-transparent border-0">
@@ -56,7 +56,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
             @endif
@@ -84,7 +84,6 @@
                                         <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteCareer{{ $career->career_id }}">
                                             <i class="fa-regular fa-trash-can"></i>
                                         </button>
-                                        <livewire:career.delete-career-post :career_id="$career->career_id"/>
                                     @endif
                                 </div>
                             </div>
@@ -100,7 +99,7 @@
                             </div>
                         </a>
 
-                        <!-- Modal -->
+                        {{-- <!-- Modal -->
                         <div class="modal fade" id="careerModalImage{{ $career->career_id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog modal-dialog-centered modal-lg">
                                 <div class="modal-content bg-transparent border-0">
@@ -114,11 +113,27 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
             @endif
         @endforeach
     @endif
 </div>
+<livewire:career.delete-career-post :career_id="$career->career_id"/>
+    <!-- Modal -->
+    <div class="modal fade" id="careerModalImage{{ $career->career_id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content bg-transparent border-0">
+                <div class="row justify-content-center">
+                    <div class="col-12">
+                        <button type="button" class="btn btn-dark fw-bold float-end mb-2 px-3" data-bs-dismiss="modal">x</button>
+                    </div>
+                    <div class="col-12">
+                        <img src="{{ asset('Uploads/Career/' . $career->job_ad_image) }}" alt="Job Image" class="career-img-full">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
