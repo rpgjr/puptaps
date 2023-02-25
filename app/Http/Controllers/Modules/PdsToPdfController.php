@@ -19,18 +19,22 @@ class MYPDF extends TCPDF {
         // $image_file = asset('img/pupLogo.png');
         $this->Image($image_file, 15, 10, 20, '', 'PNG', '', 'C', false, 300, '', false, false, 0, false, false, false);
         // Title
-        $this->Ln(6);
+        $this->Ln(3);
+        $this->SetFont('times', '', 12);
+        $this->Cell(95, 0,
+                    'Republic of the Philippines',
+                    0, 1, 'C', 0, '', 0, false, 'T', 'M');
         $this->SetFont('times', 'B', 15);
-        $this->Cell(140, 0,
-                    'Polytechnic University of the Philippines',
+        $this->Cell(179, 0,
+                    'POLYTECHNIC UNIVERSITY OF THE PHILIPPINES',
                     0, 1, 'C', 0, '', 0, false, 'T', 'M');
         $this->SetFont('times', '', 12);
-        $this->Cell(131, 0,
-                    'Office of the Vice President for Student Services',
+        $this->Cell(158, 0,
+                    'Office of the Vice President for Branches and Satelite Campuses',
                     0, 1, 'C', 0, '', 0, false, 'T', 'M');
         $this->SetFont('times', 'B', 12);
-        $this->Cell(156, 0,
-                    'CAREER DEVELOPMENT AND PLACEMENT OFFICE',
+        $this->Cell(85, 0,
+                    'TAGUIG BRANCH',
                     0, 1, 'C', 0, '', 0, false, 'T', 'M');
 
         $style3 = array('width' => .5, 'cap' => 'butt', 'join' => 'miter', 'dash' => 0, 'color' => array(0, 0, 0));
@@ -49,12 +53,11 @@ class MYPDF extends TCPDF {
         $style3 = array('width' => .5, 'cap' => 'butt', 'join' => 'miter', 'dash' => 0, 'color' => array(0, 0, 0));
 
         // Line
-        $this->Line(10, 288, 200, 288, $style3);
+        // $this->Line(10, 288, 200, 288, $style3);
+        $this->Line(10, 320, 200, 320, $style3);
         $this->Cell(0, 10, 'Page '.$this->getAliasNumPage().'/'.$this->getAliasNbPages(), 0, false, 'C', 0, '', 0, false, 'T', 'M');
     }
 }
-
-
 
 class PdsToPdfController extends Controller
 {
@@ -84,7 +87,8 @@ class PdsToPdfController extends Controller
 
         foreach($users as $user)
         {
-            $pdf = new MYPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
+            // $pdf = new MYPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
+            $pdf = new MYPDF('P', 'mm', array(215.9, 330.2), true, 'UTF-8', false);
 
             // set document information
             $pdf->SetCreator(PDF_CREATOR);
@@ -109,10 +113,10 @@ class PdsToPdfController extends Controller
             // add a page
             $pdf->AddPage();
             $pdf->SetFont('times', 'B', 13);
-            $pdf->ln(20);
+            $pdf->ln(15);
             $pdf->Cell(0, 0, 'PERSONAL DATA SHEET', 0, 1, 'C', 0, '', 0);
 
-            $pdf->ln(10);
+            $pdf->ln(8);
             $pdf->SetFont('times', '', 12);
             $html = <<<EOF
               <table style="width:100%">
@@ -135,7 +139,7 @@ class PdsToPdfController extends Controller
             EOF;
             $pdf->writeHTML($html, true, 0, true, 0);
 
-            $pdf->Ln(-3);
+            $pdf->Ln(-5);
             $bday = date('F d, Y', strtotime($user->birthday));
             $html = <<<EOF
               <table style="width:100%; margin-top: 300px;">
@@ -150,7 +154,7 @@ class PdsToPdfController extends Controller
             EOF;
             $pdf->writeHTML($html, true, 0, true, 0);
 
-            $pdf->Ln(-1);
+            $pdf->Ln(-3);
             $bday = date('F d, Y', strtotime($user->birthday));
             $html = <<<EOF
               <table style="width:100%; margin-top: 300px;">
@@ -165,7 +169,7 @@ class PdsToPdfController extends Controller
             EOF;
             $pdf->writeHTML($html, true, 0, true, 0);
 
-            $pdf->Ln(-1);
+            $pdf->Ln(-3);
             $course = Courses::where('course_id', '=', $user->course_id)->value('course_desc');
             $html = <<<EOF
               <table style="width:100%; margin-top: 10px;">
@@ -177,7 +181,7 @@ class PdsToPdfController extends Controller
             EOF;
             $pdf->writeHTML($html, true, 0, true, 0);
 
-            $pdf->Ln(-1);
+            $pdf->Ln(-3);
             $html = <<<EOF
               <table style="width:100%; margin-top: 10px;">
                 <tr>
@@ -188,7 +192,7 @@ class PdsToPdfController extends Controller
             EOF;
             $pdf->writeHTML($html, true, 0, true, 0);
 
-            $pdf->Ln(-1);
+            $pdf->Ln(-3);
             $html = <<<EOF
                 <table style="width:100%; margin-top: 10px;">
                   <tr>
@@ -199,7 +203,7 @@ class PdsToPdfController extends Controller
             EOF;
             $pdf->writeHTML($html, true, 0, true, 0);
 
-            $pdf->Ln(-1);
+            $pdf->Ln(-3);
             $html = <<<EOF
                 <table style="width:100%; margin-top: 10px;">
                   <tr>
@@ -210,7 +214,7 @@ class PdsToPdfController extends Controller
             EOF;
             $pdf->writeHTML($html, true, 0, true, 0);
 
-            $pdf->Ln(-1);
+            $pdf->Ln(-3);
             $html = <<<EOF
                 <table style="width:100%; margin-top: 10px;">
                     <tr>
@@ -224,7 +228,7 @@ class PdsToPdfController extends Controller
             EOF;
             $pdf->writeHTML($html, true, 0, true, 0);
 
-            $pdf->Ln(-1);
+            $pdf->Ln(-3);
             $html = <<<EOF
                 <table style="width:100%; margin-top: 10px;">
                     <tr>
@@ -239,7 +243,7 @@ class PdsToPdfController extends Controller
             $pdf->writeHTML($html, true, 0, true, 0);
 
             $pdf->SetPrintHeader(false);
-            $pdf->Ln(10);
+            $pdf->Ln(3);
             $html = <<<EOF
                 <style>
                     table, th, td {
@@ -268,7 +272,7 @@ class PdsToPdfController extends Controller
             EOF;
             $pdf->writeHTML($html, true, 0, true, 0);
 
-            $pdf->Ln(3);
+            $pdf->Ln(0);
                 $html = '<style>
                         table, th, td {
                             text-align: left;
@@ -307,7 +311,7 @@ class PdsToPdfController extends Controller
                     $html .= '</table>';
                 $pdf->writeHTML($html, true, 0, true, 0);
 
-            $pdf->Ln(-10);
+            $pdf->Ln(-15);
             $html = <<<EOF
                 <div>
                     <p style="text-align: justify; text-justify: inter-word; line-height: 1.5;">I hereby certify that all information provided are true and correct to the best of my knowledge.
@@ -332,7 +336,7 @@ class PdsToPdfController extends Controller
             EOF;
             $pdf->writeHTML($html, true, 0, true, 0);
 
-            $pdf->Ln(5);
+            $pdf->Ln(-5);
             $html = <<<EOF
                 <div>
                     <h4 style="text-align: center; text-decoration: underline;">WAIVER</h4>

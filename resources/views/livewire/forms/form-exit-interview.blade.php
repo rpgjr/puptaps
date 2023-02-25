@@ -34,7 +34,7 @@
                     <div class="row mt-3">
                         @if ($currentPage == 1)
                             <div class="col-6 text-start">
-                                <button href="#go-to-top" class="btn btn-secondary px-3 fs-7" type="button" wire:click="previousPage()" disabled><i class="fa-solid fa-caret-left"></i> Back</button>
+                                {{-- <button href="#go-to-top" class="btn btn-secondary px-3 fs-7" type="button" wire:click="previousPage()" disabled><i class="fa-solid fa-caret-left"></i> Back</button> --}}
                             </div>
                         @endif
 
@@ -190,27 +190,30 @@
                             </div>
                         @endif
                         @endforeach
-                        <div class="row mt-3">
-                            @if ($currentPage <= $totalPage && $currentPage != 1)
-                                <div class="col-6 text-start">
-                                    <a href="#go-to-top" class="btn btn-secondary px-3 fs-7" type="button" wire:click="previousPage()"><i class="fa-solid fa-caret-left"></i> Back</a>
-                                </div>
-                            @endif
+                    </div>
+                    <div class="row mt-3">
+                        @if ($currentPage <= $totalPage && $currentPage != 1)
+                            <div class="col-6 text-start">
+                                <a href="#go-to-top" class="btn btn-secondary px-3 fs-7" type="button" wire:click="previousPage()"><i class="fa-solid fa-caret-left"></i> Back</a>
+                            </div>
+                        @endif
 
-                            @if ($currentPage < $totalPage && $currentPage != $totalPage)
-                                <div class="col-6 text-end">
-                                    <a href="#go-to-top" class="btn btn-primary px-3 fs-7" type="button" wire:click="nextPage()">Next <i class="fa-solid fa-caret-right"></i></a>
-                                </div>
-                            @endif
-                        </div>
+                        @if ($currentPage < $totalPage && $currentPage != $totalPage)
+                            <div class="col-6 text-end">
+                                <a href="#go-to-top" class="btn btn-primary px-3 fs-7" type="button" wire:click="nextPage()">Next <i class="fa-solid fa-caret-right"></i></a>
+                            </div>
+                        @endif
                     </div>
                 </div>
 
                 {{-- Pages 3 to 16 --}}
                 @elseif (($currentPage != 1) && ($currentPage != 2) && ($currentPage != 17) && ($currentPage == $category->category_id))
-                <div class="col-12 form-box-content ps-3 pe-3 px-md-4 px-lg-4 px-xl-4">
-                    <div class="card text-center mb-3">
-                        <div class="card-body d-block d-sm-block d-md-block d-lg-flex d-xl-flex justify-content-evenly align-items-center">
+                <div class="col-12 form-box-content ps-3 pe-3 px-md-4 px-lg-4 px-xl-4 pt-3">
+                    <div class="text-end mb-2 d-block d-sm-block d-md-block d-lg-none d-xl-none ">
+                        <button class="btn btn-primary fs-7 " type="button" data-bs-toggle="collapse" data-bs-target="#collapseScaleEIF" aria-expanded="false">Scale <i class="fs-7 fa-solid fa-caret-down"></i></button>
+                    </div>
+                    <div class="card text-center mb-3 collapse d-lg-block" id="collapseScaleEIF">
+                        <div class="card-body d-block d-sm-block d-md-block d-lg-flex d-xl-flex justify-content-between align-items-center">
                             <p class="my-0 py-0 me-2">Scale: </p>
                             <p class="my-0 py-0 mx-3 fw-bold">5 - Outstanding</p>
                             <p class="my-0 py-0 mx-3 fw-bold">4 - Very Satisfactory</p>

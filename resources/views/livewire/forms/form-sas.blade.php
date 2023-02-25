@@ -139,9 +139,21 @@
 
             {{-- Pages 3 to 14 --}}
             @elseif (($currentPage != 1) && ($currentPage != 2) && ($currentPage != 15) && ($currentPage == $category->category_id))
-            <div class="col-12 form-box-content">
+            <div class="col-12 form-box-content pt-3">
+                <div class="text-end mb-2 d-block d-sm-block d-md-block d-lg-none d-xl-none ">
+                    <button class="btn btn-primary fs-7 " type="button" data-bs-toggle="collapse" data-bs-target="#collapseScaleSAS" aria-expanded="false">Scale <i class="fs-7 fa-solid fa-caret-down"></i></button>
+                </div>
+                <div class="card text-center mb-3 collapse d-lg-block" id="collapseScaleSAS">
+                    <div class="card-body d-block d-sm-block d-md-block d-lg-flex d-xl-flex justify-content-between align-items-center">
+                        <p class="my-0 py-0 me-2">Scale: </p>
+                        <p class="my-0 py-0 mx-3 fw-bold">1 - Very Satisfactory</p>
+                        <p class="my-0 py-0 mx-3 fw-bold">2 - Satisfactory</p>
+                        <p class="my-0 py-0 mx-3 fw-bold">3 - Unsatisfactory</p>
+                        <p class="my-0 py-0 mx-3 fw-bold">4 - Very Unsatisfactory</p>
+                    </div>
+                </div>
                 <div class="row">
-                    <div class="card text-center mb-3">
+                    {{-- <div class="card text-center mb-3">
                         <div class="card-body d-block d-sm-block d-md-block d-lg-flex d-xl-flex justify-content-evenly align-items-center">
                             <p class="my-0 py-0 me-2">Scale: </p>
                             <p class="my-0 py-0 mx-3 fw-bold">1 - Very Satisfactory</p>
@@ -149,7 +161,7 @@
                             <p class="my-0 py-0 mx-3 fw-bold">3 - Unsatisfactory</p>
                             <p class="my-0 py-0 mx-3 fw-bold">4 - Very Unsatisfactory</p>
                         </div>
-                    </div>
+                    </div> --}}
                     <table class="table">
                         <thead class="thead-sticky table-dark">
                             <tr>

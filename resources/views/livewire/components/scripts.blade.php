@@ -16,6 +16,7 @@
 <script src="{{ asset('js/chart-student-per-sex.js') }}"></script>
 <script src="{{ asset('js/chart-board-exam.js') }}"></script>
 <script src="{{ asset('js/chart-civil-service.js') }}"></script>
+<script src="{{ asset('js/chart-employed-alumni.js') }}"></script>
 
 {{-- Rich Text Editor --}}
 <script type="text/javascript" src="https://unpkg.com/trix@2.0.0/dist/trix.umd.min.js"></script>

@@ -36,7 +36,7 @@
                             <input type="text" class="form-control" name="middle_name" placeholder="Middle Name">
                         </div>
                         <div class="col-6 mb-3">
-                            <label class="form-label">Extension Name:</label>
+                            <label class="form-label">Suffix:</label>
                             <input type="text" class="form-control" name="suffix" placeholder="Extension Name">
                         </div>
 

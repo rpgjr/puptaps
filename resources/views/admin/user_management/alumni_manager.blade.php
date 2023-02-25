@@ -51,7 +51,7 @@
                             <tr>
                                 <th scope="col" class="col-1"></th>
                                 <th scope="col" class="col-2">Student Number</th>
-                                <th scope="col" class="col-2">Last Name</th>
+                                <th scope="col" class="col-2">Name</th>
                                 <th scope="col" class="col-1">Course</th>
                                 <th scope="col" class="col-1">Batch</th>
                                 <th scope="col" class="col-1 text-center">PDS</th>
@@ -63,9 +63,9 @@
                             @if (count($alumni))
                             @foreach ($alumni as $alum)
                                 <tr>
-                                    <th class="text-center"><button class="fs-7 btn btn-primary" data-bs-toggle="modal" data-bs-target="#viewAlumniDetails{{ $alum->alumni_id }}"><i class="fa-solid fa-eye"></i></button></th>
+                                    <th class="text-center"><button class="fs-7 btn btn-primary" data-bs-toggle="modal" data-bs-target="#viewAlumniDetails{{ $alum->alumni_id }}"><i class=" fs-7 fa-solid fa-eye"></i></button></th>
                                     <th>{{ $alum->stud_number }}</th>
-                                    <td>{{ $alum->last_name }}</td>
+                                    <td><b>{{ strtoupper($alum->last_name) }}</b>, {{ $alum->first_name }}</td>
                                     <td>{{ $alum->course_id }}</td>
                                     <td>{{ $alum->batch }}</td>
                                     <td class="text-center">

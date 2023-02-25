@@ -1,5 +1,5 @@
 <!-- Submenu for screen size xs - md -->
-<div class="row d-inline d-sm-inline d-md-inline d-lg-none d-xl-none">
+<div class="row d-none">
     <div class="col-12 text-end d-flex justify-content-between align-items-center">
         <h4>Categories</h4>
         <button class="btn btn-outline-secondary fs-7" type="button" data-bs-toggle="collapse" data-bs-target="#careerSubmenu" aria-expanded="false" aria-controls="careerSubmenu">

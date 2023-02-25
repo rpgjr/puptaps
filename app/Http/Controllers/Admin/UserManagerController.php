@@ -30,8 +30,7 @@ class UserManagerController extends Controller
         return view('admin.user_management.alumni_manager', $data, compact(['title', 'courses', 'PDS', 'EIF', 'SAS']));
     }
 
-    public function addAlumniList(Request $request)
-    {
+    public function addAlumniList(Request $request) {
         $request->validate([
             'excel_file' => 'required|mimes:xlsx,csv',
         ]);
@@ -57,6 +56,28 @@ class UserManagerController extends Controller
         $user = User::find($findUser);
         $user->delete();
         return back()->with('success', 'Alumni Account Successfully Deleted.');
+    }
+
+    public function updateAlumniInfo(Request $request) {
+        $request->validate([
+            'last_name'             => 'required',
+            'first_name'            => 'required',
+            'middle_name'           => 'required',
+            'stud_number'           => 'required',
+            'batch'                 => 'required',
+            'course_id'             => 'required',
+            'email'                 => 'required|email',
+            'number'                => 'required',
+            'birthday'              => 'required',
+            'age'                   => 'required',
+            'sex'                   => 'required',
+            'city_address'          => 'required',
+            'provincial_address'    => 'required',
+        ],
+        [
+            '*.required'    => 'This is required',
+            'email.email'   => 'Invalid Email',
+        ]);
     }
 
     public function downloadListTemplate() {

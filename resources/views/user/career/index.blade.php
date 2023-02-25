@@ -15,13 +15,11 @@
             <div class="row justify-content-center">
                 <!-- Start: Body -->
                 <div class="col-11 col-sm-9 col-md-9 col-lg-9 col-xl-9">
-                    <div class="row g-0 g-sm-0 g-md-0 g-lg-3 g-xl-3">
+                    <div class="row g-2 g-sm-2 g-md-2 g-lg-3 g-xl-3">
 
                         <!-- Career Search bar -->
                         <div class="col-12">
-                            <div class="row sub-container-box px-2 mx-1">
-                                <livewire:career.career-searchbar :query="$query" :return_home="'userCareer.index'" />
-                            </div>
+                            <livewire:career.career-searchbar :query="$query" :return_home="'userCareer.index'" />
                         </div>
 
                         <!-- Career Submenu - Left Side -->

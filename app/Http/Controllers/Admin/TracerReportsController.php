@@ -18,23 +18,23 @@ class MYPDF extends TCPDF {
         // Logo
         $image_file = public_path('/img/pupLogo.png');
         // $image_file = asset('img/pupLogo.png');
-        $this->Image($image_file, 17, 8, 22, '', 'PNG', '', 'C', false, 300, '', false, false, 0, false, false, false);
+        $this->Image($image_file, 15, 10, 20, '', 'PNG', '', 'C', false, 300, '', false, false, 0, false, false, false);
         // Title
         $this->Ln(3);
         $this->SetFont('times', '', 12);
-        $this->Cell(120, 0,
-                    'REPUBLIC OF THE PHILIPPINES',
+        $this->Cell(95, 0,
+                    'Republic of the Philippines',
                     0, 1, 'C', 0, '', 0, false, 'T', 'M');
         $this->SetFont('times', 'B', 15);
-        $this->Cell(187, 0,
+        $this->Cell(179, 0,
                     'POLYTECHNIC UNIVERSITY OF THE PHILIPPINES',
                     0, 1, 'C', 0, '', 0, false, 'T', 'M');
-        $this->SetFont('times', '', 11);
-        $this->Cell(193, 0,
-                    'GENERAL SANTOS AVENUE, LOWER BICUTAN, TAGUIG CITY, PHILIPPINES',
+        $this->SetFont('times', '', 12);
+        $this->Cell(158, 0,
+                    'Office of the Vice President for Branches and Satelite Campuses',
                     0, 1, 'C', 0, '', 0, false, 'T', 'M');
         $this->SetFont('times', 'B', 12);
-        $this->Cell(93, 0,
+        $this->Cell(85, 0,
                     'TAGUIG BRANCH',
                     0, 1, 'C', 0, '', 0, false, 'T', 'M');
 

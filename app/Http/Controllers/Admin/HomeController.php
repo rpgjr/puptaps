@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
+    public $employed_count = 0;
     public function getAdminHomepage() {
         $boardExam = Alumni::join('tbl_tracer_answers', 'tbl_alumni.alumni_id', '=', 'tbl_tracer_answers.alumni_id')
                 ->where('tbl_tracer_answers.question_id', '=', 3)
@@ -30,7 +31,12 @@ class HomeController extends Controller
                 ->groupBy('answers')
                 ->get();
         $perCivilService = $civilService->mapWithKeys(function ($item, $key) {
-            return [$item ->answers => $item->alumniCount];
+            if ($item->answers == "Yes") {
+                return ["Passers" => $item->alumniCount];
+            }
+            else {
+                return ["Non-Passers" => $item->alumniCount];
+            }
         });
 
         $employment = Alumni::join('tbl_tracer_answers', 'tbl_alumni.alumni_id', '=', 'tbl_tracer_answers.alumni_id')
@@ -38,8 +44,16 @@ class HomeController extends Controller
                 ->select('tbl_tracer_answers.answer as answers', DB::raw('count(tbl_alumni.alumni_id) as alumniCount'))
                 ->groupBy('answers')
                 ->get();
+
         $employedAlumni = $employment->mapWithKeys(function ($item, $key) {
-            return [$item ->answers => $item->alumniCount];
+            if ($item->answer != "UNEMPLOYED") {
+                return ["Employed" => $this->employed_count = $item->alumniCount + $this->employed_count];
+            }
+            else {
+                return [$item->answers => $item->alumniCount];
+            }
+            // return [$item ->answers => $item->alumniCount];
+
         });
 
         $career = Careers::orderBy('created_at', 'desc')->first();

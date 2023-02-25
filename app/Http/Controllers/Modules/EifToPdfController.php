@@ -30,8 +30,8 @@ class MYPDF extends TCPDF {
                     'POLYTECHNIC UNIVERSITY OF THE PHILIPPINES',
                     0, 1, 'C', 0, '', 0, false, 'T', 'M');
         $this->SetFont('times', '', 12);
-        $this->Cell(131, 0,
-                    'Office of the Vice President for Student Services',
+        $this->Cell(158, 0,
+                    'Office of the Vice President for Branches and Satelite Campuses',
                     0, 1, 'C', 0, '', 0, false, 'T', 'M');
         $this->SetFont('times', 'B', 12);
         $this->Cell(85, 0,

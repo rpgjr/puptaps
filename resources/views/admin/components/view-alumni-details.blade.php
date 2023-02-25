@@ -3,8 +3,9 @@
   <div class="modal-dialog modal-dialog-centered modal-lg">
     <div class="modal-content">
       <div class="modal-header align-items-center">
-        <h1 class="modal-title fs-5 fw-bold">{{ $alum->stud_number }}</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <p class="modal-title fs-6 fw-bold">{{ $alum->stud_number }}</p>
+        <a type="button" class="btn btn-primary text-decoration-none fs-7" data-bs-toggle="modal" data-bs-target="#updateAlumni{{ $alum->alumni_id }}">Edit <i class="fa-solid fa-user-pen"></i></a>
+        {{-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> --}}
       </div>
       <div class="modal-body text-start mt-3 mb-1 mx-3">
         <div class="row align-items-center g-0 mt-0 p-0">
@@ -16,7 +17,7 @@
             @endif
           </div>
           <div class="col-10 text-break">
-            <h3 class="fw-bold mb-0">{{ $alum->last_name }}, {{ $alum->first_name }} {{ $alum->middle_name }} {{ $alum->suffix }}</h3>
+            <h3 class="fw-bold mb-0">{{ strtoupper($alum->last_name) }}, {{ $alum->first_name }} {{ $alum->middle_name }} {{ $alum->suffix }}</h3>
             {{-- <p class="mt-0 mb-0"><b>Username: </b>{{ $alum->username }}</p> --}}
             <p class="mt-0 mb-0"><b>Email Address: </b>{{ $alum->email }}</p>
             @foreach ($courses as $course)
@@ -33,7 +34,7 @@
 
         <div class="row my-1">
           <div class="col-6">
-            <p class="my-1"><b>Birthday: </b>{{ date('F d, Y', strtotime($alum->birthday)) }}</p>
+            <p class="my-1"><b>Date of Birth: </b>{{ date('F d, Y', strtotime($alum->birthday)) }}</p>
           </div>
           <div class="col-6">
             <p class="my-1"><b>Age: </b>{{ $alum->age }}</p>
@@ -110,6 +111,102 @@
       </div>
     </div>
   </div>
+</div>
+
+{{-- Modal Update --}}
+<div class="modal fade" id="updateAlumni{{ $alum->alumni_id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <form action="{{ route('adminUserManagement.updateAlumniInfo') }}" method="post">
+            <div class="modal-content">
+                <div class="modal-header align-items-center">
+                    <p class="modal-title fs-6 fw-bold">Update Alumni Information</p>
+                    <a type="submit" class="btn btn-success text-decoration-none fs-7" data-bs-toggle="modal" data-bs-target="#updateAlumni">Save <i class="fa-regular fa-floppy-disk"></i></a>
+                </div>
+                <div class="modal-body text-start mt-1 mb-1 mx-3">
+                    <h4>Student Information</h4>
+                    <div class="row align-items-center mt-0 p-0">
+                        <div class="col-6 mb-3">
+                            <label class="form-label mb-0">Last Name</label>
+                            <input type="text" name="last_name" value="{{ $alum->last_name }}" class="form-control">
+                        </div>
+                        <div class="col-6 mb-3">
+                            <label class="form-label mb-0">First Name</label>
+                            <input type="text" value="{{ $alum->first_name }}" class="form-control">
+                        </div>
+                        <div class="col-6 mb-3">
+                            <label class="form-label mb-0">Middle Name</label>
+                            <input type="text" value="{{ $alum->middle_name }}" class="form-control">
+                        </div>
+                        <div class="col-6 mb-3">
+                            <label class="form-label mb-0">Suffix</label>
+                            <input type="text" value="{{ $alum->suffix }}" class="form-control">
+                        </div>
+                        <div class="col-6 mb-3">
+                            <label class="form-label mb-0">Student Number</label>
+                            <input type="text" value="{{ $alum->stud_number }}" class="form-control">
+                        </div>
+                        <div class="col-6 mb-3">
+                            <label class="form-label mb-0">Year Graduated</label>
+                            <select class="form-select @error('batch_from') is-invalid @enderror" name="batch_from">
+                                @for ($i = 2022; $i <= date('Y'); $i++)
+                                    <option value="{{ $i }}" @if($i == $alum->batch) selected @endif>{{ $i }}</option>
+                                @endfor
+                            </select>
+                        </div>
+                        <div class="col-12 mb-3">
+                            <label class="form-label mb-0">Course</label>
+                            <select class="form-select" name="course_id">
+                                @foreach ($courses as $course)
+                                    <option value="{{ $course->course_id }}">{{ $course->course_desc }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+
+                    <hr class="mt-2 mb-3">
+
+                    <h4>Personal Information</h4>
+                    <div class="row align-items-center mt-0 p-0">
+                        <div class="col-6 mb-3">
+                            <label class="form-label mb-0">Email Address</label>
+                            <input type="text" value="{{ $alum->email }}" class="form-control">
+                        </div>
+                        <div class="col-6 mb-3">
+                            <label class="form-label mb-0">Contact Number</label>
+                            <input type="text" value="{{ $alum->number }}" class="form-control">
+                        </div>
+                        <div class="col-6 mb-3">
+                            <label class="form-label mb-0">Date of Birth</label>
+                            <input type="date" value="{{ $alum->birthday }}" class="form-control">
+                        </div>
+                        <div class="col-6 mb-3">
+                            <label class="form-label mb-0">Age</label>
+                            <input type="text" value="{{ $alum->age }}" class="form-control">
+                        </div>
+                        <div class="col-6 mb-3">
+                            <label class="form-label mb-0">Sex</label>
+                            <select class="form-select">
+                                <option value="Male" @if($alum->sex == "Male") selected @endif>Male</option>
+                                <option value="Female" @if($alum->sex == "Female") selected @endif>Female</option>
+                            </select>
+                        </div>
+                        <div class="col-6 mb-3">
+                            <label class="form-label mb-0">Religion</label>
+                            <input type="text" value="{{ $alum->religion }}" class="form-control">
+                        </div>
+                        <div class="col-12 mb-3">
+                            <label class="form-label mb-0">City Address</label>
+                            <input type="text" value="{{ $alum->city_address }}" class="form-control">
+                        </div>
+                        <div class="col-12 mb-3">
+                            <label class="form-label mb-0">Provincial Address</label>
+                            <input type="text" value="{{ $alum->provincial_address }}" class="form-control">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
 </div>
 
 

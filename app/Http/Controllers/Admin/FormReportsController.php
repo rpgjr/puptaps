@@ -17,7 +17,6 @@ use TCPDF;
 use DB;
 
 class MYPDF extends TCPDF {
-
     //Page header
     public function Header() {
         // Logo
@@ -34,13 +33,13 @@ class MYPDF extends TCPDF {
         $this->Cell(179, 0,
                     'POLYTECHNIC UNIVERSITY OF THE PHILIPPINES',
                     0, 1, 'C', 0, '', 0, false, 'T', 'M');
+        $this->SetFont('times', '', 12);
+        $this->Cell(158, 0,
+                    'Office of the Vice President for Branches and Satelite Campuses',
+                    0, 1, 'C', 0, '', 0, false, 'T', 'M');
         $this->SetFont('times', 'B', 12);
         $this->Cell(85, 0,
                     'TAGUIG BRANCH',
-                    0, 1, 'C', 0, '', 0, false, 'T', 'M');
-        $this->SetFont('times', '', 12);
-        $this->Cell(185, 0,
-                    'General Santos Avenue, Lower Bicutan, Taguig City, Metro Manila, Philippines',
                     0, 1, 'C', 0, '', 0, false, 'T', 'M');
 
         $style3 = array('width' => .5, 'cap' => 'butt', 'join' => 'miter', 'dash' => 0, 'color' => array(0, 0, 0));
@@ -59,7 +58,13 @@ class MYPDF extends TCPDF {
         $style3 = array('width' => .5, 'cap' => 'butt', 'join' => 'miter', 'dash' => 0, 'color' => array(0, 0, 0));
 
         // Line
-        $this->Line(10, 288, 200, 288, $style3);
+
+        if ($this->title == 'PDS_DETAILED_REPORTS') {
+            $this->Line(10, 320, 200, 320, $style3);
+        }
+        else {
+            $this->Line(10, 288, 200, 288, $style3);
+        }
         $this->Cell(0, 10, 'Page '.$this->getAliasNumPage().'/'.$this->getAliasNbPages(), 0, false, 'C', 0, '', 0, false, 'T', 'M');
     }
 }
@@ -160,7 +165,8 @@ class FormReportsController extends Controller
 
         $courses = Courses::where('course_id', 'like', '%' . $request->course_id . '%')->get();
 
-        $pdf = new MYPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
+        // $pdf = new MYPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
+        $pdf = new MYPDF('P', 'mm', array(215.9, 330.2), true, 'UTF-8', false);
         $pdf->SetCreator(PDF_CREATOR);
         $pdf->SetTitle('PDS_DETAILED_REPORTS');
         $pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
@@ -179,10 +185,10 @@ class FormReportsController extends Controller
                         $pdf->AddPage();
                         $pdf->SetPrintHeader(false);
                         $pdf->SetFont('times', 'B', 13);
-                        $pdf->ln(20);
+                        $pdf->ln(15);
                         $pdf->Cell(0, 0, 'PERSONAL DATA SHEET', 0, 1, 'C', 0, '', 0);
 
-                        $pdf->ln(10);
+                        $pdf->ln(8);
                         $pdf->SetFont('times', '', 12);
                         $html = <<<EOF
                             <table style="width:100%">
@@ -205,7 +211,7 @@ class FormReportsController extends Controller
                         EOF;
                         $pdf->writeHTML($html, true, 0, true, 0);
 
-                        $pdf->Ln(-3);
+                        $pdf->Ln(-5);
                         $bday = date('F d, Y', strtotime($alumni->birthday));
                         $html = <<<EOF
                             <table style="width:100%; margin-top: 300px;">
@@ -220,7 +226,7 @@ class FormReportsController extends Controller
                         EOF;
                         $pdf->writeHTML($html, true, 0, true, 0);
 
-                        $pdf->Ln(-1);
+                        $pdf->Ln(-3);
                         $bday = date('F d, Y', strtotime($alumni->birthday));
                         $html = <<<EOF
                             <table style="width:100%; margin-top: 300px;">
@@ -235,7 +241,7 @@ class FormReportsController extends Controller
                         EOF;
                         $pdf->writeHTML($html, true, 0, true, 0);
 
-                        $pdf->Ln(-1);
+                        $pdf->Ln(-3);
                         $course = Courses::where('course_id', '=', $alumni->course_id)->value('course_desc');
                         $html = <<<EOF
                             <table style="width:100%; margin-top: 10px;">
@@ -247,7 +253,7 @@ class FormReportsController extends Controller
                         EOF;
                         $pdf->writeHTML($html, true, 0, true, 0);
 
-                        $pdf->Ln(-1);
+                        $pdf->Ln(-3);
                         $html = <<<EOF
                             <table style="width:100%; margin-top: 10px;">
                                 <tr>
@@ -258,7 +264,7 @@ class FormReportsController extends Controller
                         EOF;
                         $pdf->writeHTML($html, true, 0, true, 0);
 
-                        $pdf->Ln(-1);
+                        $pdf->Ln(-3);
                         $html = <<<EOF
                             <table style="width:100%; margin-top: 10px;">
                             <tr>
@@ -269,7 +275,7 @@ class FormReportsController extends Controller
                         EOF;
                         $pdf->writeHTML($html, true, 0, true, 0);
 
-                        $pdf->Ln(-1);
+                        $pdf->Ln(-3);
                         $html = <<<EOF
                             <table style="width:100%; margin-top: 10px;">
                             <tr>
@@ -280,7 +286,7 @@ class FormReportsController extends Controller
                         EOF;
                         $pdf->writeHTML($html, true, 0, true, 0);
 
-                        $pdf->Ln(-1);
+                        $pdf->Ln(-3);
                         $html = '<table style="width:100%; margin-top: 10px;">
                                 <tr>
                                     <th colspan="1" style="width: 17%; font-weight: bold;">Father\'s Name: </th>
@@ -292,7 +298,7 @@ class FormReportsController extends Controller
                             </table>';
                         $pdf->writeHTML($html, true, 0, true, 0);
 
-                        $pdf->Ln(-1);
+                        $pdf->Ln(-3);
                         $html = '<table style="width:100%; margin-top: 10px;">
                                 <tr>
                                     <th colspan="1" style="width: 18%; font-weight: bold;">Mother\'s Name: </th>
@@ -304,7 +310,7 @@ class FormReportsController extends Controller
                             </table>';
                         $pdf->writeHTML($html, true, 0, true, 0);
 
-                        $pdf->Ln(10);
+                        $pdf->Ln(3);
                         $html = '<style>
                                 table, th, td {
                                     text-align: left;
@@ -331,7 +337,7 @@ class FormReportsController extends Controller
                             </table>';
                         $pdf->writeHTML($html, true, 0, true, 0);
 
-                        $pdf->Ln(3);
+                        $pdf->Ln(0);
                         $html = '<style>
                                 table, th, td {
                                     text-align: left;
@@ -370,7 +376,7 @@ class FormReportsController extends Controller
                             $html .= '</table>';
                         $pdf->writeHTML($html, true, 0, true, 0);
 
-                        $pdf->Ln(-10);
+                        $pdf->Ln(-15);
                         $html = '<div>
                                 <p style="text-align: justify; text-justify: inter-word; line-height: 1.5;">I hereby certify that all information provided are true and correct to the best of my knowledge.
                                 </p>
@@ -394,7 +400,7 @@ class FormReportsController extends Controller
                             </div>';
                         $pdf->writeHTML($html, true, 0, true, 0);
 
-                        $pdf->Ln(3);
+                        $pdf->Ln(-8);
                         $html = '<div>
                                 <h4 style="text-align: center; text-decoration: underline;">WAIVER</h4>
                                 <p style="text-align: justify; text-justify: inter-word; line-height: 1.5;">This is to signify that I am willing to be subjected to company calls for placement or employment purposes. This shall also authorize the Polytechnic University of The Philippines – Career Development and Placement Office (PUP-CDPO) to include my name and contact details in the directory of graduates.
@@ -1913,11 +1919,7 @@ class FormReportsController extends Controller
                 else {
                     $verbal = "Invalid Output";
                 }
-//                 <th rowspan="2" class="theading" style="width: 28%"></th>
-//                 <th colspan="2" class="theading" style="width: 18%">1 - Very Satisfactory</th>
-//                 <th colspan="2" class="theading" style="width: 18%">2 - Satisfactory</th>
-//                 <th colspan="2" class="theading" style="width: 18%">3 - Unsatisfactory</th>
-//                 <th colspan="2" class="theading" style="width: 18%">4 - Very Unsatisfactory</th>
+
                 $html .= '<tr>
                     <td class="th-EI" colspan="1" style="width: 60%; text-align: left;">' . $questions->question_text . '</td>
                     <td class="th-EI" colspan="2" style="width: 15%;">' . $mean . '</td>
@@ -2149,6 +2151,7 @@ class FormReportsController extends Controller
                             ->distinct()
                             ->get();
                         $total = Alumni::join('form_pds_answers', 'tbl_alumni.alumni_id', '=', 'form_pds_answers.alumni_id')
+                            ->where('tbl_alumni.course_id', '=', $course->course_id)
                             ->whereBetween('tbl_alumni.batch', [$request->batch_from, $request->batch_to])
                             ->select('tbl_alumni.alumni_id')
                             ->distinct()
@@ -2412,6 +2415,7 @@ class FormReportsController extends Controller
                             ->get();
                         $total = Alumni::join('form_eif_answers', 'tbl_alumni.alumni_id', '=', 'form_eif_answers.alumni_id')
                             ->whereBetween('tbl_alumni.batch', [$request->batch_from, $request->batch_to])
+                            ->where('tbl_alumni.course_id', '=', $course->course_id)
                             ->select('tbl_alumni.alumni_id')
                             ->distinct()
                             ->get();
@@ -2490,6 +2494,7 @@ class FormReportsController extends Controller
             $total = Alumni::join('form_eif_answers', 'tbl_alumni.alumni_id', '=', 'form_eif_answers.alumni_id')
                 ->whereBetween('tbl_alumni.batch', [$request->batch_from, $request->batch_to])
                 // ->where('course_id', 'like', '%' . $request->course_id . '%')
+                ->where('tbl_alumni.course_id', '=', $course->course_id)
                 ->select('tbl_alumni.alumni_id')
                 ->distinct()
                 ->get();
@@ -2528,6 +2533,7 @@ class FormReportsController extends Controller
                     <td class="theading" colspan="1" style="width: 25%;">Percentage</td>
                 </tr>';
             $total = Alumni::join('form_eif_answers', 'tbl_alumni.alumni_id', '=', 'form_eif_answers.alumni_id')
+                ->where('tbl_alumni.course_id', '=', $course->course_id)
                 ->whereBetween('tbl_alumni.batch', [$request->batch_from, $request->batch_to])
                 // ->where('course_id', 'like', '%' . $request->course_id . '%')
                 ->select('tbl_alumni.alumni_id')
@@ -2800,6 +2806,7 @@ class FormReportsController extends Controller
                             ->distinct()
                             ->get();
                         $total = Alumni::join('form_sas_answers', 'tbl_alumni.alumni_id', '=', 'form_sas_answers.alumni_id')
+                            ->where('tbl_alumni.course_id', '=', $course->course_id)
                             ->whereBetween('tbl_alumni.batch', [$request->batch_from, $request->batch_to])
                             ->select('tbl_alumni.alumni_id')
                             ->distinct()

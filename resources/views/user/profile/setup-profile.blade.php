@@ -55,7 +55,7 @@
                                 <span class="text-danger error-message">@error('sex') {{$message}} @enderror</span>
                             </div>
                             <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 my-2">
-                                <label class="form-label">Birthday <span class="text-danger">*</span></label>
+                                <label class="form-label">Date of Birth <span class="text-danger">*</span></label>
                                 <input type="date" id="birthday" class="form-control @error('birthday') border border-danger @enderror" name="birthday" value="{{ old('birthday') }}">
                                 <span class="text-danger error-message">@error('birthday') {{$message}} @enderror</span>
                             </div>

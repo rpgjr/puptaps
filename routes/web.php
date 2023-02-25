@@ -275,6 +275,9 @@ Route::group(
         Route::post('remove-alumni-account', 'removeAlumniAccount')
                ->name('removeAlumniAccount');
 
+        Route::post('updateAlumniInfo', 'updateAlumniInfo')
+               ->name('updateAlumniInfo');
+
         Route::get('download-template', 'downloadListTemplate')
                ->name('downloadListTemplate');
 });
