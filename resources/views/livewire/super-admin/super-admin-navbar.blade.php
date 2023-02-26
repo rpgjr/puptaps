@@ -6,12 +6,16 @@
             </button>
             <span class="fs-5 fw-bold ms-2 ms-sm-2 ms-md-2 ms-lg-2 ms-xl-0">Hello {{ Auth::user()->username }}!</span>
         </div>
-        <div class="col-4 text-end">
+        <div class="col-4 d-flex justify-content-end align-items-center">
             <form action="{{ route('logout') }}" method="post">
                 @csrf
-                <button class="btn btn-sm btn-outline-light px-3">
+                {{-- <button class="ms-3 btn btn-sm btn-outline-light px-3">
                     <i class="fa-solid fa-right-from-bracket me-1"></i>
                     Logout
+                </button> --}}
+                <button type="submit" class="cssbuttons-io-button fs-7"> <span class="fs-7">Logout</span>
+                    <div class="icon"><i class="fa-solid fa-right-from-bracket fs-7 text-light"></i>
+                    </div>
                 </button>
             </form>
         </div>

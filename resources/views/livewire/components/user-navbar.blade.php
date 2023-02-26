@@ -26,7 +26,7 @@
                 </li>
             </ul>
             <div class="d-flex align-items-center">
-                {{-- <div class="dropdown pb-3 pb-lg-0">
+                <div class="dropdown pb-3 pb-lg-0">
                     @foreach ($users as $user)
                     @if ($user->user_pfp == null)
                         <img src="{{ asset('Uploads/Profiles/user-no-profile.png') }}" class="user-profile-button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -35,8 +35,8 @@
                     @endif
                     @endforeach
                     <ul class="dropdown-menu dropdown-menu-start dropdown-menu-sm-start dropdown-menu-md-end">
-                        <li><a class="dropdown-item fs-7" href="#">Feedback</a></li>
-                        <li><a class="dropdown-item fs-7" href="#">Report a Problem</a></li>
+                        <li><a class="dropdown-item fs-7" href="{{ route('user.getAboutPage') }}">About</a></li>
+                        <li><a class="dropdown-item fs-7" href="{{ route('user.getContactsPage') }}">Contacts</a></li>
                         <li><hr class="dropdown-divider"></li>
                         <li>
                             <form action="{{ route('logout') }}" method="post">
@@ -45,25 +45,20 @@
                             </form>
                         </li>
                     </ul>
-                </div> --}}
-                {{-- <div class="dropdown pb-3 pb-lg-0 d-none d-sm-none d-md-none d-lg-block d-xl-block">
-                    @foreach ($users as $user)
-                    @if ($user->user_pfp == null)
-                        <img src="{{ asset('Uploads/Profiles/user-no-profile.png') }}" class="user-profile-button">
-                    @else
-                        <img src="{{ asset('Uploads/Profiles/' . $user->user_pfp) }}" class="user-profile-button">
-                    @endif
-                    @endforeach
-                </div> --}}
-                <div class="mb-3 mb-sm-3 mb-md-3 mb-lg-0 mb-xl-0">
+                </div>
+                {{-- <div class="mb-3 mb-sm-3 mb-md-3 mb-lg-0 mb-xl-0">
                     <form action="{{ route('logout') }}" method="post">
                         @csrf
                         <button class="btn btn-sm btn-outline-light px-2">
                             <i class="fa-solid fa-right-from-bracket me-1"></i>
                             Logout
                         </button>
+                        <button type="submit" class="text-decoration-none cssbuttons-io-button fs-7"> <span class="fs-7">Logout</span>
+                            <div class="icon"><i class="fa-solid fa-right-from-bracket fs-7 text-light"></i>
+                            </div>
+                        </button>
                     </form>
-                </div>
+                </div> --}}
             </div>
         </div>
     </div>

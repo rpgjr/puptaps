@@ -88,6 +88,97 @@
                     @endforeach
                 </div>
             </div>
+
+            <div class="row justify-content-center g-0 mt-4">
+                <div class="col-11 col-sm-9 col-md-9 col-lg-9 col-xl-9 container-box">
+                    @foreach ($users as $user)
+                    <fieldset disabled>
+                        <div  iv class="row align-items-center px-0 px-sm-0 px-md-0 px-lg-3 px-xl-3">
+                            <div class="col-12 my-3">
+                                <h3>Personal Information</h3>
+                                <p><i class="fa-solid fa-circle-info text-warning me-1"></i><span class="text-secondary">Your personal information cannot be edited. If there are incorrect fields please contact the admin via <a href="" class="fw-bold">email</a> to resolve the issue.</span></p>
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 my-2">
+                                <label class="form-label">Last Name</label>
+                                <input type="text" class="form-control" value="{{ $user->last_name }}">
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 my-2">
+                                <label class="form-label">First Name</label>
+                                <input type="text" class="form-control" value="{{ $user->first_name }}">
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 my-2">
+                                <label class="form-label">Middle Name</label>
+                                <input type="text" class="form-control" value="{{ $user->middle_name }}">
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 my-2">
+                                <label class="form-label">Suffix</label>
+                                <input type="text" class="form-control" value="{{ $user->suffix }}">
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 my-2">
+                                <label class="form-label">Sex</label>
+                                <div class="text-center border rounded py-1">
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" value="Male" @if($user->sex == 'Male') checked @endif>
+                                        <label class="form-check-label">Male</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" value="Female" @if($user->sex == 'Female') checked @endif>
+                                        <label class="form-check-label">Female</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 my-2">
+                                <label class="form-label">Date of Birth</label>
+                                <input type="date" class="form-control" value="{{ $user->birthday }}">
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 my-2">
+                                <label class="form-label">Age</label>
+                                <input type="number" class="fs-7 form-control" value="{{ $user->age }}">
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 my-2">
+                                <label class="form-label">Mobile Number</label>
+                                <input type="text" class="form-control" value="{{ $user->number }}">
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 my-2">
+                                <label class="form-label">Religion</label>
+                                <input type="text" class="form-control" value="{{ $user->religion }}">
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 my-2">
+                                <label class="form-label">Civil Status</label>
+                                <select class="form-select">
+                                    <option value="{{ $user->civil_status }}">{{ $user->civil_status }}</option>
+                                </select>
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 my-2">
+                                <label class="form-label">Student Number</label>
+                                <input type="text" class="form-control" value="{{ $user->stud_number }}">
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 my-2">
+                                <label class="form-label">Course</label>
+                                <select class="form-select">
+                                    <option value="{{ $user->course_id }}">{{ $user->course_id }}</option>
+                                </select>
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 my-2">
+                                <label class="form-label">Year Graduated</label>
+                                <select class="form-select">
+                                    <option value="{{ $user->batch }}">{{ $user->batch }}</option>
+                                </select>
+                            </div>
+                            <div class="col-12 my-2">
+                                <label class="form-label">City Address <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" value="{{ $user->city_address }}">
+                            </div>
+
+                            <div class="col-12 my-2">
+                                <label class="form-label">Provincial Address <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" value="{{ $user->provincial_address }}">
+                            </div>
+                        </div>
+                    </fieldset>
+                    @endforeach
+                </div>
+            </div>
         </div>
     </section>
 

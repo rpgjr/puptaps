@@ -78,7 +78,6 @@ class Update extends Component
             $this->arrayAnswers[1]['answer'] = '';
             $this->arrayAnswers[2]['answer'] = '';
             $this->arrayAnswers[3]['answer'] = '';
-            $this->validate();
         }
         else {
             $this->resetErrorBag();
@@ -104,6 +103,15 @@ class Update extends Component
         $temp_null = $this->countNull - 1;
         if($temp_null == $this->currentPage) {
             $this->validate();
+        }
+        elseif ($this->currentPage == 1) {
+            $this->validate([
+                'arrayAnswers.0.answer' => 'required',
+                'arrayAnswers.1.answer' => 'required',
+                'arrayAnswers.2.answer' => 'required',
+                'arrayAnswers.3.answer' => 'required',
+                'arrayAnswers.4.answer' => 'required',
+            ]);
         }
         $this->currentPage++;
         if($this->currentPage > $this->totalPage) {

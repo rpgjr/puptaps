@@ -77,7 +77,6 @@ class AnswerUnemployed extends Component
             $this->arrayAnswers[1]['answer'] = '';
             $this->arrayAnswers[2]['answer'] = '';
             $this->arrayAnswers[3]['answer'] = '';
-            $this->validate();
         }
         else {
             $this->resetErrorBag();
@@ -101,7 +100,6 @@ class AnswerUnemployed extends Component
             $this->arrayAnswers[11]['answer'] = '';
             $this->arrayAnswers[12]['answer'] = '';
             $this->arrayAnswers[13]['answer'] = '';
-            $this->validate();
         }
         else {
             $this->resetErrorBag();
@@ -150,6 +148,28 @@ class AnswerUnemployed extends Component
                 $this->updateAnswer();
             }
             $this->validate();
+        }
+        elseif ($this->currentPage == 1) {
+            $this->validate([
+                'arrayAnswers.0.answer' => 'required',
+                'arrayAnswers.1.answer' => 'required',
+                'arrayAnswers.2.answer' => 'required',
+                'arrayAnswers.3.answer' => 'required',
+                'arrayAnswers.4.answer' => 'required',
+            ]);
+        }
+        elseif ($this->currentPage == 2) {
+            $this->validate([
+                'arrayAnswers.5.answer' => 'required',
+                'arrayAnswers.6.answer' => 'required',
+                'arrayAnswers.7.answer' => 'required',
+                'arrayAnswers.8.answer' => 'required',
+                'arrayAnswers.9.answer' => 'required',
+                'arrayAnswers.10.answer' => 'required',
+                'arrayAnswers.11.answer' => 'required',
+                'arrayAnswers.12.answer' => 'required',
+                'arrayAnswers.13.answer' => 'required',
+            ]);
         }
         $this->currentPage++;
         if($this->currentPage > $this->totalPage) {

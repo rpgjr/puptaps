@@ -1,11 +1,11 @@
 <!-- Landing Page Section: Features -->
-<section class="features mt-5" id="learn_more">
+<section class="features mt-5" id="learn_more" data-aos="fade-up">
     <div class="container">
         <div class="row justify-content-center align-items-center gap-5">
             <div class="col-12">
-                <div class="sub-container-box pt-3 pb-2">
+                <div class="sub-container-box pt-3 pb-3">
                     <h4 class="color-pup">ABOUT PUPT ALUMNI PORTAL SYSTEM</h4>
-                    <p class="mb-0" style="text-align: justify; text-justify: inter-word;">The Polytechnic University of the Philippines-Taguig Alumni Portal System (PUPT-APS) is a project conducted to be a part of PUP-Taguig’s organizational growth. It is a new web-based system for graduating students and alumni that manages mandatory fill-up forms which are required by partner companies and documentation of the university, seeking job vacancies or posting career opportunities to help find appropriate jobs for other alumni, and tracer form to update their employment status and whereabouts. Below are the features of the system: </p>
+                    <p class="mb-0 fst-italic" style="text-align: justify; text-justify: inter-word;">The Polytechnic University of the Philippines-Taguig Alumni Portal System (PUPT-APS) is a project conducted to be a part of PUP-Taguig’s organizational growth. It is a new web-based system for graduating students and alumni that manages mandatory fill-up forms which are required by partner companies and documentation of the university, seeking job vacancies or posting career opportunities to help find appropriate jobs for other alumni, and tracer form to update their employment status and whereabouts. Below are the features of the system: </p>
                 </div>
             </div>
         </div>
@@ -15,7 +15,7 @@
 <section class="features mt-4">
     <div class="container">
         <div class="row justify-content-center align-items-center">
-            <div class="col-sm-6 col-md-6 col-lg-5 col-xl-4 my-1" data-aos="zoom-out">
+            <div class="col-sm-6 col-md-6 col-lg-5 col-xl-4 my-1" data-aos="zoom-in-left">
                 <div class="card">
                     <div class="img-features">
                         <img src="{{ asset('img/forms.jpg') }}" class="card-img-top" style="border-bottom: 1px solid #D5D8DC;">
@@ -27,7 +27,7 @@
                 </div>
             </div>
 
-            <div class="col-sm-6 col-md-6 col-lg-5 col-xl-4 my-1" data-aos="zoom-out">
+            <div class="col-sm-6 col-md-6 col-lg-5 col-xl-4 my-1" data-aos="zoom-in-right">
                 <div class="card">
                     <div class="img-features">
                         <img src="{{ asset('img/1.jpg') }}" class="card-img-top" style="border-bottom: 1px solid #D5D8DC;">
@@ -39,7 +39,7 @@
                 </div>
             </div>
 
-            <div class="col-sm-6 col-md-6 col-lg-5 col-xl-4 my-1" data-aos="zoom-out">
+            <div class="col-sm-6 col-md-6 col-lg-5 col-xl-4 my-1" data-aos="zoom-in-left">
                 <div class="card">
                     <div class="img-features">
                         <img src="{{ asset('img/career.jpg') }}" class="card-img-top" style="border-bottom: 1px solid #D5D8DC;">

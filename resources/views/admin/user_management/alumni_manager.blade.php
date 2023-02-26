@@ -63,7 +63,14 @@
                             @if (count($alumni))
                             @foreach ($alumni as $alum)
                                 <tr>
-                                    <th class="text-center"><button class="fs-7 btn btn-primary" data-bs-toggle="modal" data-bs-target="#viewAlumniDetails{{ $alum->alumni_id }}"><i class=" fs-7 fa-solid fa-eye"></i></button></th>
+                                    <th class="text-center">
+                                        <button class="fs-7 btn btn-info" data-bs-toggle="modal" data-bs-target="#updateAlumni{{ $alum->alumni_id }}">
+                                            <i class="fs-7 fa-solid fa-pen-to-square"></i>
+                                        </button>
+                                        <button class="me-1 fs-7 btn btn-primary" data-bs-toggle="modal" data-bs-target="#viewAlumniDetails{{ $alum->alumni_id }}">
+                                            <i class=" fs-7 fa-solid fa-eye"></i>
+                                        </button>
+                                    </th>
                                     <th>{{ $alum->stud_number }}</th>
                                     <td><b>{{ strtoupper($alum->last_name) }}</b>, {{ $alum->first_name }}</td>
                                     <td>{{ $alum->course_id }}</td>

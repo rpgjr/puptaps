@@ -1,4 +1,8 @@
-<section class="mt-5" data-aos="zoom-in-up">
+<div class="container-fluid mt-5 landing-banner">
+    <h4 class="text-center">Polytechnic University of the Philippines</h4>
+</div>
+
+<section class="mt-3" data-aos="zoom-in-up">
     <div class="container">
         <div class="row gy-3 gx-3">
             <div class="col-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">

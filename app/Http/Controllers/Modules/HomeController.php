@@ -12,8 +12,7 @@ use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
-    public function getUserHomepage(Request $request)
-    {
+    public function getUserHomepage(Request $request) {
         $users = Alumni::where('alumni_id', '=', Auth::user()->alumni_id)->get();
 
         $data['query'] = $request->get('query');
@@ -42,5 +41,15 @@ class HomeController extends Controller
 
     public function getLandingPage() {
         return view('landingPage');
+    }
+
+    public function getContactsPage() {
+        $users = Alumni::where('alumni_id', '=', Auth::user()->alumni_id)->get();
+        return view('user.contacts', compact('users'));
+    }
+
+    public function getAboutPage() {
+        $users = Alumni::where('alumni_id', '=', Auth::user()->alumni_id)->get();
+        return view('user.about', compact('users'));
     }
 }

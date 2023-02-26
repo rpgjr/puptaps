@@ -35,7 +35,7 @@
 }
 
 .button-learn-more:hover {
-    transform: scale(1.2);
+    transform: scale(1.1);
     background: #ffffff;
     color: #7B241C;
     font-weight: bold;
@@ -79,7 +79,6 @@ footer {
 .footer-landing {
     background: #EAECEE;
 }
-
 
 /* Login and Registration */
 
@@ -137,4 +136,13 @@ footer {
         border-top-right-radius: 7px;
         border-bottom-right-radius: 7px;
     }
+}
+
+.landing-banner {
+    background: #7B241C;
+    color: #ffffff;
+    padding-top: 10px;
+    padding-bottom: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
 }

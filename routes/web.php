@@ -70,6 +70,14 @@ Route::group(
         Route::get('/home', 'getUserHomepage')
             ->middleware(['auth', 'isAdmin', 'checkAccountStatus', 'hasCompleteProfile', 'hasAnswerTracer'])
             ->name('user.homepage');
+
+        Route::get('/contacts', 'getContactsPage')
+            ->middleware(['auth', 'isAdmin', 'checkAccountStatus', 'hasCompleteProfile', 'hasAnswerTracer'])
+            ->name('user.getContactsPage');
+
+        Route::get('/about', 'getAboutPage')
+            ->middleware(['auth', 'isAdmin', 'checkAccountStatus', 'hasCompleteProfile', 'hasAnswerTracer'])
+            ->name('user.getAboutPage');
 });
 
 // Login Mail - Send Temporary Password

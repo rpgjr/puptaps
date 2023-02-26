@@ -19,11 +19,11 @@
         <!-- Section: Greetings -->
         <livewire:landing-page.greetings />
 
-        <!-- Section: Greetings -->
-        <livewire:landing-page.about-pup />
-
         <!-- Section: Features -->
         <livewire:landing-page.features />
+
+        <!-- Section: Greetings -->
+        <livewire:landing-page.about-pup />
 
         <div class="text-end">
             <a type="button" href="#back-to-top" class="btn btn-danger user-back-to-top"><i class="fa-solid fa-angle-up"></i></a>

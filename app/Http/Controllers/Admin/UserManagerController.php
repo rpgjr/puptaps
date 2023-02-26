@@ -78,6 +78,38 @@ class UserManagerController extends Controller
             '*.required'    => 'This is required',
             'email.email'   => 'Invalid Email',
         ]);
+
+        $account = Alumni::where('alumni_id', '=', $request->alumni_id)->update([
+            'last_name'             => $request->input('last_name'),
+            'first_name'            => $request->input('first_name'),
+            'middle_name'           => $request->input('middle_name'),
+            'suffix'                => $request->input('suffix'),
+            'stud_number'           => $request->input('stud_number'),
+            'batch'                 => $request->input('batch'),
+            'course_id'             => $request->input('course_id'),
+            'email'                 => $request->input('email'),
+            'number'                => $request->input('number'),
+            'birthday'              => $request->input('birthday'),
+            'age'                   => $request->input('age'),
+            'sex'                   => $request->input('sex'),
+            'city_address'          => $request->input('city_address'),
+            'provincial_address'    => $request->input('provincial_address'),
+        ]);
+
+        if($account) {
+            return back()
+                   ->with(
+                        'success',
+                        'Alumni Information Successfully Updated.'
+                    );
+        }
+        else {
+            return back()
+                   ->with(
+                        'fail',
+                        'There is an Error Occured'
+                    );
+        }
     }
 
     public function downloadListTemplate() {

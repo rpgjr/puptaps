@@ -13,6 +13,7 @@
 <link rel="stylesheet" href="{{ asset('css/forms.css') }}">
 <link rel="stylesheet" href="{{ asset('css/tracer.css') }}">
 <link rel="stylesheet" href="{{ asset('css/check_error.css') }}">
+<link rel="stylesheet" href="{{ asset('css/button-animations.css') }}">
 
 {{-- Loader --}}
 <link rel="stylesheet" href="{{ asset('css/loader.css') }}">

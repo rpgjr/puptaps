@@ -1,11 +1,11 @@
-<!-- Modal -->
+<!-- Modal View-->
 <div class="modal fade" id="viewAlumniDetails{{ $alum->alumni_id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-lg">
     <div class="modal-content">
       <div class="modal-header align-items-center">
         <p class="modal-title fs-6 fw-bold">{{ $alum->stud_number }}</p>
-        <a type="button" class="btn btn-primary text-decoration-none fs-7" data-bs-toggle="modal" data-bs-target="#updateAlumni{{ $alum->alumni_id }}">Edit <i class="fa-solid fa-user-pen"></i></a>
-        {{-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> --}}
+        {{-- <a type="button" class="btn btn-primary text-decoration-none fs-7" data-bs-toggle="modal" data-bs-target="#updateAlumni{{ $alum->alumni_id }}">Edit <i class="fa-solid fa-user-pen"></i></a> --}}
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body text-start mt-3 mb-1 mx-3">
         <div class="row align-items-center g-0 mt-0 p-0">
@@ -117,49 +117,57 @@
 <div class="modal fade" id="updateAlumni{{ $alum->alumni_id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg">
         <form action="{{ route('adminUserManagement.updateAlumniInfo') }}" method="post">
+            @csrf
             <div class="modal-content">
                 <div class="modal-header align-items-center">
                     <p class="modal-title fs-6 fw-bold">Update Alumni Information</p>
-                    <a type="submit" class="btn btn-success text-decoration-none fs-7" data-bs-toggle="modal" data-bs-target="#updateAlumni">Save <i class="fa-regular fa-floppy-disk"></i></a>
+                    <button type="submit" class="btn btn-success text-decoration-none fs-7" data-bs-toggle="modal" data-bs-target="#updateAlumni">Save <i class="fa-regular fa-floppy-disk"></i></button>
                 </div>
                 <div class="modal-body text-start mt-1 mb-1 mx-3">
                     <h4>Student Information</h4>
+                    <input type="hidden" value="{{ $alum->alumni_id }}" name="alumni_id">
                     <div class="row align-items-center mt-0 p-0">
                         <div class="col-6 mb-3">
                             <label class="form-label mb-0">Last Name</label>
-                            <input type="text" name="last_name" value="{{ $alum->last_name }}" class="form-control">
+                            <input type="text" name="last_name" value="{{ $alum->last_name }}" class="form-control @error('last_name') border border-danger border-3 @enderror">
+                            <span class="text-danger error-message">@error('last_name') {{$message}} @enderror</span>
                         </div>
                         <div class="col-6 mb-3">
                             <label class="form-label mb-0">First Name</label>
-                            <input type="text" value="{{ $alum->first_name }}" class="form-control">
+                            <input type="text" value="{{ $alum->first_name }}" name="first_name" class="form-control @error('first_name') border border-danger border-3 @enderror">
+                            <span class="text-danger error-message">@error('first_name') {{$message}} @enderror</span>
                         </div>
                         <div class="col-6 mb-3">
                             <label class="form-label mb-0">Middle Name</label>
-                            <input type="text" value="{{ $alum->middle_name }}" class="form-control">
+                            <input type="text" value="{{ $alum->middle_name }}" name="middle_name" class="form-control @error('middle_name') border border-danger border-3 @enderror">
+                            <span class="text-danger error-message">@error('middle_name') {{$message}} @enderror</span>
                         </div>
                         <div class="col-6 mb-3">
                             <label class="form-label mb-0">Suffix</label>
-                            <input type="text" value="{{ $alum->suffix }}" class="form-control">
+                            <input type="text" value="{{ $alum->suffix }}" name="suffix" class="form-control @error('suffix') border border-danger border-3 @enderror">
                         </div>
                         <div class="col-6 mb-3">
                             <label class="form-label mb-0">Student Number</label>
-                            <input type="text" value="{{ $alum->stud_number }}" class="form-control">
+                            <input type="text" value="{{ $alum->stud_number }}" name="stud_number" class="form-control @error('stud_number') border border-danger border-3 @enderror">
+                            <span class="text-danger error-message">@error('stud_number') {{$message}} @enderror</span>
                         </div>
                         <div class="col-6 mb-3">
                             <label class="form-label mb-0">Year Graduated</label>
-                            <select class="form-select @error('batch_from') is-invalid @enderror" name="batch_from">
+                            <select class="form-select @error('batch') is-invalid @enderror" name="batch">
                                 @for ($i = 2022; $i <= date('Y'); $i++)
                                     <option value="{{ $i }}" @if($i == $alum->batch) selected @endif>{{ $i }}</option>
                                 @endfor
                             </select>
+                            <span class="text-danger error-message">@error('batch') {{$message}} @enderror</span>
                         </div>
                         <div class="col-12 mb-3">
                             <label class="form-label mb-0">Course</label>
-                            <select class="form-select" name="course_id">
+                            <select class="form-select @error('course_id') border border-danger border-3 @enderror" name="course_id">
                                 @foreach ($courses as $course)
                                     <option value="{{ $course->course_id }}">{{ $course->course_desc }}</option>
                                 @endforeach
                             </select>
+                            <span class="text-danger error-message">@error('course_id') {{$message}} @enderror</span>
                         </div>
                     </div>
 
@@ -169,26 +177,31 @@
                     <div class="row align-items-center mt-0 p-0">
                         <div class="col-6 mb-3">
                             <label class="form-label mb-0">Email Address</label>
-                            <input type="text" value="{{ $alum->email }}" class="form-control">
+                            <input type="text" value="{{ $alum->email }}" name="email" class="form-control @error('email') border border-danger border-3 @enderror">
+                            <span class="text-danger error-message">@error('email') {{$message}} @enderror</span>
                         </div>
                         <div class="col-6 mb-3">
                             <label class="form-label mb-0">Contact Number</label>
-                            <input type="text" value="{{ $alum->number }}" class="form-control">
+                            <input type="text" value="{{ $alum->number }}" name="number" class="form-control @error('number') border border-danger border-3 @enderror">
+                            <span class="text-danger error-message">@error('number') {{$message}} @enderror</span>
                         </div>
                         <div class="col-6 mb-3">
                             <label class="form-label mb-0">Date of Birth</label>
-                            <input type="date" value="{{ $alum->birthday }}" class="form-control">
+                            <input type="date" value="{{ $alum->birthday }}" name="birthday" class="form-control @error('birthday') border border-danger border-3 @enderror">
+                            <span class="text-danger error-message">@error('birthday') {{$message}} @enderror</span>
                         </div>
                         <div class="col-6 mb-3">
                             <label class="form-label mb-0">Age</label>
-                            <input type="text" value="{{ $alum->age }}" class="form-control">
+                            <input type="text" value="{{ $alum->age }}" name="age" class="form-control @error('age') border border-danger border-3 @enderror">
+                            <span class="text-danger error-message">@error('age') {{$message}} @enderror</span>
                         </div>
                         <div class="col-6 mb-3">
                             <label class="form-label mb-0">Sex</label>
-                            <select class="form-select">
+                            <select class="form-select @error('sex') border border-danger border-3 @enderror" name="sex">
                                 <option value="Male" @if($alum->sex == "Male") selected @endif>Male</option>
                                 <option value="Female" @if($alum->sex == "Female") selected @endif>Female</option>
                             </select>
+                            <span class="text-danger error-message">@error('sex') {{$message}} @enderror</span>
                         </div>
                         <div class="col-6 mb-3">
                             <label class="form-label mb-0">Religion</label>
@@ -196,11 +209,13 @@
                         </div>
                         <div class="col-12 mb-3">
                             <label class="form-label mb-0">City Address</label>
-                            <input type="text" value="{{ $alum->city_address }}" class="form-control">
+                            <input type="text" value="{{ $alum->city_address }}" name="city_address" class="form-control @error('city_address') border border-danger border-3 @enderror">
+                            <span class="text-danger error-message">@error('city_address') {{$message}} @enderror</span>
                         </div>
                         <div class="col-12 mb-3">
                             <label class="form-label mb-0">Provincial Address</label>
-                            <input type="text" value="{{ $alum->provincial_address }}" class="form-control">
+                            <input type="text" value="{{ $alum->provincial_address }}" name="provincial_address" class="form-control @error('provincial_address') border border-danger border-3 @enderror">
+                            <span class="text-danger error-message">@error('provincial_address') {{$message}} @enderror</span>
                         </div>
                     </div>
                 </div>

@@ -32,10 +32,10 @@ class HomeController extends Controller
                 ->get();
         $perCivilService = $civilService->mapWithKeys(function ($item, $key) {
             if ($item->answers == "Yes") {
-                return ["Passers" => $item->alumniCount];
+                return ["PASSERS" => $item->alumniCount];
             }
             else {
-                return ["Non-Passers" => $item->alumniCount];
+                return ["NON-PASSERS" => $item->alumniCount];
             }
         });
 
@@ -46,8 +46,8 @@ class HomeController extends Controller
                 ->get();
 
         $employedAlumni = $employment->mapWithKeys(function ($item, $key) {
-            if ($item->answer != "UNEMPLOYED") {
-                return ["Employed" => $this->employed_count = $item->alumniCount + $this->employed_count];
+            if ($item->answers != "UNEMPLOYED") {
+                return ["EMPLOYED" => $this->employed_count = $item->alumniCount + $this->employed_count];
             }
             else {
                 return [$item->answers => $item->alumniCount];
