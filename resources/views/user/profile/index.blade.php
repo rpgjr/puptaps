@@ -10,8 +10,9 @@
             <!-- Page Title Text H1 -->
             <livewire:components.page-title :title="$title"/>
 
+
             <div class="row justify-content-center g-0">
-                <div class="col-11 col-sm-9 col-md-9 col-lg-9 col-xl-9 container-box">
+                <div class="col-11 col-sm-9 col-md-9 col-lg-9 col-xl-9 container-box animate__animated animate__fadeInDown animate__fast">
                     @foreach ($users as $user)
                     <form action="{{ route('userProfile.updateUserAccount') }}" method="post" enctype="multipart/form-data">
                     @csrf
@@ -90,13 +91,13 @@
             </div>
 
             <div class="row justify-content-center g-0 mt-4">
-                <div class="col-11 col-sm-9 col-md-9 col-lg-9 col-xl-9 container-box">
+                <div class="col-11 col-sm-9 col-md-9 col-lg-9 col-xl-9 container-box animate__animated animate__fadeInUp animate__fast">
                     @foreach ($users as $user)
                     <fieldset disabled>
                         <div  iv class="row align-items-center px-0 px-sm-0 px-md-0 px-lg-3 px-xl-3">
                             <div class="col-12 my-3">
                                 <h3>Personal Information</h3>
-                                <p><i class="fa-solid fa-circle-info text-warning me-1"></i><span class="text-secondary">Your personal information cannot be edited. If there are incorrect fields please contact the admin via <a href="" class="fw-bold">email</a> to resolve the issue.</span></p>
+                                <p><i class="fa-solid fa-circle-info text-warning me-1"></i><span class="text-secondary">Your personal information cannot be edited. If there are incorrect fields please contact the admin via <a href="{{ route('user.getContactsPage') }}" class="fw-bold">email</a> to resolve the issue.</span></p>
                             </div>
                             <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 my-2">
                                 <label class="form-label">Last Name</label>

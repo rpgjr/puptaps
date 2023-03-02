@@ -36,18 +36,20 @@
                                         @if (($value->question_type == "text") || ($value->question_type == "date"))
                                             <div>
                                                 <label class="form-label">{{ $value->question_text}} <span class="text-danger">*</span></label>
-                                                <input type="{{ $value->question_type }}" class="form-control @error('arrayAnswers.' . $key . '.answer') is-invalid @enderror" wire:model="arrayAnswers.{{ $key }}.answer" @if ($no_board_exam == 'NO_BOARD_EXAM')disabled @endif>
+                                                <input type="{{ $value->question_type }}" class="form-control @if ($arrayAnswers[$key]['answer'] == null) @error('arrayAnswers.' . $key . '.answer') is-invalid @enderror @endif" wire:model="arrayAnswers.{{ $key }}.answer" @if ($no_board_exam == 'NO_BOARD_EXAM')disabled @endif>
                                                 <span class="text-danger error-message">
-                                                    @error('arrayAnswers.' . $key . '.answer')
-                                                    <i class="fa-solid fa-circle-exclamation ml-5"></i>
-                                                    {{ $message }}
-                                                    @enderror
+                                                    @if ($arrayAnswers[$key]['answer'] == null)
+                                                        @error('arrayAnswers.' . $key . '.answer')
+                                                        <i class="fa-solid fa-circle-exclamation ml-5"></i>
+                                                        {{ $message }}
+                                                        @enderror
+                                                    @endif
                                                 </span>
                                             </div>
                                         @elseif ($value->question_type == "select")
                                             <div>
                                                 <label class="form-label">{{ $value->question_text }} <span class="text-danger">*</span></label>
-                                                <select class="form-select @error('arrayAnswers.' . $key . '.answer') is-invalid @enderror" wire:model="arrayAnswers.{{ $key }}.answer" @if ($no_board_exam == 'NO_BOARD_EXAM')disabled @endif>
+                                                <select class="form-select @if ($arrayAnswers[$key]['answer'] == null) @error('arrayAnswers.' . $key . '.answer') is-invalid @enderror @endif" wire:model="arrayAnswers.{{ $key }}.answer" @if ($no_board_exam == 'NO_BOARD_EXAM')disabled @endif>
                                                     <option selected hidden>Please select one...</option>
                                                     <option value="Electronics Engineer Licensure Examination">Electronics Engineer Licensure Examination</option>
                                                     <option value="Licensure Examination for Teachers">Licensure Examination for Teachers</option>
@@ -56,10 +58,12 @@
                                                     <option value="N/A">Not Applicable</option>
                                                 </select>
                                                 <span class="text-danger error-message">
-                                                    @error('arrayAnswers.' . $key . '.answer')
-                                                    <i class="fa-solid fa-circle-exclamation ml-5"></i>
-                                                    {{ $message }}
-                                                    @enderror
+                                                    @if ($arrayAnswers[$key]['answer'] == null)
+                                                        @error('arrayAnswers.' . $key . '.answer')
+                                                        <i class="fa-solid fa-circle-exclamation ml-5"></i>
+                                                        {{ $message }}
+                                                        @enderror
+                                                    @endif
                                                 </span>
                                             </div>
                                         @elseif ($value->question_type == "radio")
@@ -91,10 +95,12 @@
                                                 </div>
                                             @endif
                                             <span class="text-danger error-message">
-                                                @error('arrayAnswers.' . $key . '.answer')
-                                                <i class="fa-solid fa-circle-exclamation ml-5"></i>
-                                                {{ $message }}
-                                                @enderror
+                                                @if ($arrayAnswers[$key]['answer'] == null)
+                                                    @error('arrayAnswers.' . $key . '.answer')
+                                                    <i class="fa-solid fa-circle-exclamation ml-5"></i>
+                                                    {{ $message }}
+                                                    @enderror
+                                                @endif
                                             </span>
                                         @endif
                                     </div>
@@ -124,19 +130,21 @@
                                         @if (($value->question_type == "text") || ($value->question_type == "date"))
                                             <div>
                                                 <label class="form-label">{{ $value->question_text}} <span class="text-danger">*</span></label>
-                                                <input type="{{ $value->question_type }}" class="form-control @error('arrayAnswers.' . $key . '.answer') is-invalid @enderror" wire:model="arrayAnswers.{{ $key }}.answer" @if($currently_unemployed == 'CURRENTLY_UNEMPLOYED')disabled @endif>
+                                                <input type="{{ $value->question_type }}" class="form-control @if ($arrayAnswers[$key]['answer'] == null) @error('arrayAnswers.' . $key . '.answer') is-invalid @enderror @endif" wire:model="arrayAnswers.{{ $key }}.answer" @if($currently_unemployed == 'CURRENTLY_UNEMPLOYED')disabled @endif>
                                                 <span class="text-danger error-message">
-                                                    @error('arrayAnswers.' . $key . '.answer')
-                                                    <i class="fa-solid fa-circle-exclamation ml-5"></i>
-                                                    {{ $message }}
-                                                    @enderror
+                                                    @if ($arrayAnswers[$key]['answer'] == null)
+                                                        @error('arrayAnswers.' . $key . '.answer')
+                                                        <i class="fa-solid fa-circle-exclamation ml-5"></i>
+                                                        {{ $message }}
+                                                        @enderror
+                                                    @endif
                                                 </span>
                                             </div>
                                         @elseif ($value->question_type == "select")
                                             <div>
                                                 <label class="form-label">{{ $value->question_text }} <span class="text-danger">*</span></label>
                                                 @if ($value->question_text == "Type of Employment")
-                                                    <select class="form-select @error('arrayAnswers.' . $key . '.answer') is-invalid @enderror" wire:model="arrayAnswers.{{ $key }}.answer" @if($currently_unemployed == 'CURRENTLY_UNEMPLOYED')disabled @endif>
+                                                    <select class="form-select @if ($arrayAnswers[$key]['answer'] == null) @error('arrayAnswers.' . $key . '.answer') is-invalid @enderror @endif" wire:model="arrayAnswers.{{ $key }}.answer" @if($currently_unemployed == 'CURRENTLY_UNEMPLOYED')disabled @endif>
                                                         <option selected hidden>Please select one...</option>
                                                         <option value="Probitionary">Probitionary</option>
                                                         <option value="Regular">Regular</option>
@@ -145,7 +153,7 @@
                                                         <option value="Not Applicable">Not Applicable</option>
                                                     </select>
                                                 @elseif ($value->question_text == "Monthly Income")
-                                                    <select class="form-select @error('arrayAnswers.' . $key . '.answer') is-invalid @enderror" wire:model="arrayAnswers.{{ $key }}.answer" @if($currently_unemployed == 'CURRENTLY_UNEMPLOYED')disabled @endif>
+                                                    <select class="form-select @if ($arrayAnswers[$key]['answer'] == null) @error('arrayAnswers.' . $key . '.answer') is-invalid @enderror @endif" wire:model="arrayAnswers.{{ $key }}.answer" @if($currently_unemployed == 'CURRENTLY_UNEMPLOYED')disabled @endif>
                                                         <option selected hidden>Please select one...</option>
                                                         <option value="₱10,000 - ₱15,000">₱10,000 - ₱15,000</option>
                                                         <option value="₱16,000 - ₱20,000">₱16,000 - ₱20,000</option>
@@ -159,10 +167,12 @@
                                                     </select>
                                                 @endif
                                                 <span class="text-danger error-message">
-                                                    @error('arrayAnswers.' . $key . '.answer')
-                                                    <i class="fa-solid fa-circle-exclamation ml-5"></i>
-                                                    {{ $message }}
-                                                    @enderror
+                                                    @if ($arrayAnswers[$key]['answer'] == null)
+                                                        @error('arrayAnswers.' . $key . '.answer')
+                                                        <i class="fa-solid fa-circle-exclamation ml-5"></i>
+                                                        {{ $message }}
+                                                        @enderror
+                                                    @endif
                                                 </span>
                                             </div>
                                         @elseif ($value->question_type == "radio")
@@ -179,10 +189,12 @@
                                                 </div>
                                             </div>
                                             <span class="text-danger error-message">
-                                                @error('arrayAnswers.' . $key . '.answer')
-                                                <i class="fa-solid fa-circle-exclamation ml-5"></i>
-                                                {{ $message }}
-                                                @enderror
+                                                @if ($arrayAnswers[$key]['answer'] == null)
+                                                    @error('arrayAnswers.' . $key . '.answer')
+                                                    <i class="fa-solid fa-circle-exclamation ml-5"></i>
+                                                    {{ $message }}
+                                                    @enderror
+                                                @endif
                                             </span>
                                         @endif
                                     </div>
@@ -207,12 +219,14 @@
                                     <div class="form-group">
                                         <div>
                                             <label class="form-label">{{ $value->question_text}} <span class="text-danger">*</span></label>
-                                            <input type="{{ $value->question_type }}" class="form-control @error('arrayAnswers.' . $key . '.answer') is-invalid @enderror" wire:model="arrayAnswers.{{ $key }}.answer" value="{{ $arrayAnswers[$key]['answer'] }}">
+                                            <input type="{{ $value->question_type }}" class="form-control @if ($arrayAnswers[$key]['answer'] == null) @error('arrayAnswers.' . $key . '.answer') is-invalid @enderror @endif" wire:model="arrayAnswers.{{ $key }}.answer" value="{{ $arrayAnswers[$key]['answer'] }}">
                                             <span class="text-danger error-message">
-                                                @error('arrayAnswers.' . $key . '.answer')
-                                                <i class="fa-solid fa-circle-exclamation ml-5"></i>
-                                                {{ $message }}
-                                                @enderror
+                                                @if ($arrayAnswers[$key]['answer'] == null)
+                                                    @error('arrayAnswers.' . $key . '.answer')
+                                                    <i class="fa-solid fa-circle-exclamation ml-5"></i>
+                                                    {{ $message }}
+                                                    @enderror
+                                                @endif
                                             </span>
                                         </div>
                                     </div>
@@ -315,7 +329,7 @@
                                         @if ($value->category_id == 3)
                                             <div>
                                                 <label class="form-label">{{ $value->question_text}} <span class="text-danger">*</span></label>
-                                                <input type="{{ $value->question_type }}" class="form-control @error('arrayAnswers.' . $key . '.answer') is-invalid @enderror" wire:model="arrayAnswers.{{ $key }}.answer" value="{{ $arrayAnswers[$key]['answer'] }}">
+                                                <input type="{{ $value->question_type }}" class="form-control @if ($arrayAnswers[$key]['answer'] == null) @error('arrayAnswers.' . $key . '.answer') is-invalid @enderror @endif" wire:model="arrayAnswers.{{ $key }}.answer" value="{{ $arrayAnswers[$key]['answer'] }}">
                                                 <span class="text-danger error-message">
                                                     @error('arrayAnswers.' . $key . '.answer')
                                                     <i class="fa-solid fa-circle-exclamation ml-5"></i>
@@ -326,7 +340,7 @@
                                         @else
                                             <div>
                                                 <label class="form-label">{{ $value->question_text}} <span class="text-danger">*</span></label>
-                                                <input type="{{ $value->question_type }}" class="form-control @error('arrayAnswers.' . $key . '.answer') is-invalid @enderror" wire:model="arrayAnswers.{{ $key }}.answer">
+                                                <input type="{{ $value->question_type }}" class="form-control @if ($arrayAnswers[$key]['answer'] == null) @error('arrayAnswers.' . $key . '.answer') is-invalid @enderror @endif" wire:model="arrayAnswers.{{ $key }}.answer">
                                                 <span class="text-danger error-message">
                                                     @error('arrayAnswers.' . $key . '.answer')
                                                     <i class="fa-solid fa-circle-exclamation ml-5"></i>
@@ -339,7 +353,7 @@
                                         <div>
                                             <label class="form-label">{{ $value->question_text }} <span class="text-danger">*</span></label>
                                             @if ($value->question_text == "Type of Employment")
-                                                <select class="form-select @error('arrayAnswers.' . $key . '.answer') is-invalid @enderror" wire:model="arrayAnswers.{{ $key }}.answer">
+                                                <select class="form-select @if ($arrayAnswers[$key]['answer'] == null) @error('arrayAnswers.' . $key . '.answer') is-invalid @enderror @endif" wire:model="arrayAnswers.{{ $key }}.answer">
                                                     <option selected hidden>Please select one...</option>
                                                     <option value="Probitionary">Probitionary</option>
                                                     <option value="Regular">Regular</option>
@@ -348,7 +362,7 @@
                                                     <option value="Not Applicable">Not Applicable</option>
                                                 </select>
                                             @elseif ($value->question_text == "Monthly Income")
-                                                <select class="form-select @error('arrayAnswers.' . $key . '.answer') is-invalid @enderror" wire:model="arrayAnswers.{{ $key }}.answer">
+                                                <select class="form-select @if ($arrayAnswers[$key]['answer'] == null) @error('arrayAnswers.' . $key . '.answer') is-invalid @enderror @endif" wire:model="arrayAnswers.{{ $key }}.answer">
                                                     <option selected hidden>Please select one...</option>
                                                     <option value="₱10,000 - ₱15,000">₱10,000 - ₱15,000</option>
                                                     <option value="₱16,000 - ₱20,000">₱16,000 - ₱20,000</option>
@@ -361,7 +375,7 @@
                                                     <option value="Not Applicable">Not Applicable</option>
                                                 </select>
                                             @elseif ($value->question_text == "What licensure exam did you take?")
-                                                <select class="form-select @error('arrayAnswers.' . $key . '.answer') is-invalid @enderror" wire:model="arrayAnswers.{{ $key }}.answer">
+                                                <select class="form-select @if ($arrayAnswers[$key]['answer'] == null) @error('arrayAnswers.' . $key . '.answer') is-invalid @enderror @endif" wire:model="arrayAnswers.{{ $key }}.answer">
                                                     <option selected hidden>Please select one...</option>
                                                     <option value="Electronics Engineer Licensure Examination">Electronics Engineer Licensure Examination</option>
                                                     <option value="Licensure Examination for Teachers">Licensure Examination for Teachers</option>

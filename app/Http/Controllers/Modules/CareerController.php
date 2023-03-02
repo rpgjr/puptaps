@@ -88,15 +88,17 @@ class CareerController extends Controller
     public function addImageCareer(Request $request) {
         $request->validate([
             'job_ad_image'  => 'required|mimes:jpg,jpeg,png',
-            'job_name'      => 'required',
-            'category'      => 'required',
+            'job_name_img'      => 'required',
+            'category_img'      => 'required',
+        ],[
+            '*.required'    => 'This is Required'
         ]);
 
         $career = new Careers();
         $career->alumni_id  = Auth::user()->alumni_id;
         $career->approval   = 0;
-        $career->job_name   = $request->input('job_name');
-        $career->category   = $request->input('category');
+        $career->job_name   = $request->input('job_name_img');
+        $career->category   = $request->input('category_img');
 
         if($request->hasFile('job_ad_image')) {
 

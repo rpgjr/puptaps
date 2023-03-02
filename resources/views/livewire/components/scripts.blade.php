@@ -5,6 +5,7 @@
 <script src="{{ asset('js/alert-message-modal.js') }}"></script>
 <script src="{{ asset('js/preview-profile.js') }}"></script>
 <script src="{{ asset('js/same-address.js') }}"></script>
+<script src="{{ asset('js/validate-inputs.js') }}"></script>
 
 {{-- Jquery --}}
 <script src="{{ asset('js/jquery-3.6.1.min.js') }}"></script>

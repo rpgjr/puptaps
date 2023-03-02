@@ -10,7 +10,7 @@
             <livewire:components.page-title :title="$title"/>
 
             <div class="row justify-content-center">
-                <div class="col-11 col-sm-9 col-md-9 col-lg-9 col-xl-9 container-box pb-3 px-5">
+                <div class="col-11 col-sm-9 col-md-9 col-lg-9 col-xl-9 container-box pb-3 px-5 animate__animated animate__fadeInDown animate__fast">
                     @foreach ($users as $user)
 
                     <div class="row align-items-center">

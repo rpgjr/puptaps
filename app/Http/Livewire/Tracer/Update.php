@@ -80,7 +80,6 @@ class Update extends Component
             $this->arrayAnswers[3]['answer'] = '';
         }
         else {
-            $this->resetErrorBag();
             $this->no_board_exam = "NO_BOARD_EXAM";
             $this->arrayAnswers[0]['answer'] = 'N/A';
             $this->arrayAnswers[1]['answer'] = 'N/A';

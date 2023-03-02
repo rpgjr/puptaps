@@ -11,8 +11,8 @@
         <livewire:components.alert-status-message :message="session()->get('success')" />
 
         <div class="row justify-content-center g-0">
-            <div class="col-11 sub-container-box pt-3 pb-2">
-                <div class="row">
+            <div class="col-11 sub-container-box pt-3 pb-md-1 pb-2">
+                <div class="row gy-1 align-items-center">
                     <div class="col-6">
                         <h3>News Settings</h3>
                     </div>
@@ -22,19 +22,19 @@
                     <div class="col-12">
                         <div class="collapse mt-3" id="addAnnouncementCollapse">
                             <div>
-                                <form action="{{ route("superAdmin.postNews") }}" enctype="multipart/form-data" method="POST">
+                                <form action="{{ route("superAdmin.postNews") }}" enctype="multipart/form-data" method="POST" class="row">
                                     @csrf
-                                    <div class="mb-3 w-50">
+                                    <div class="col-12 col-md-6 mb-3">
                                         <label class="form-label">News Image:</label>
                                         <input type="file" class="fs-7 form-control @error('news_image') border border-danger @enderror" name="news_image">
                                         <span class="text-danger error-message">@error('news_image') {{$message}} @enderror</span>
                                     </div>
-                                    <div class="mb-3">
+                                    <div class="col-12 col-md-6 mb-3">
                                         <label class="form-label">News Title:</label>
                                         <input type="text" class="form-control @error('news_title') border border-danger @enderror" name="news_title">
                                         <span class="text-danger error-message">@error('news_title') {{$message}} @enderror</span>
                                     </div>
-                                    <div class="mb-3">
+                                    <div class="col-12 mb-3">
                                         <label class="form-label">News:</label>
                                         <textarea class="form-control @error('news_text') border border-danger @enderror" rows="5" name="news_text" id="rte_news" hidden></textarea>
                                         <span class="text-danger error-message">@error('news_text') {{$message}} @enderror</span>

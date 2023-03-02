@@ -6,7 +6,7 @@
 @section('content')
 
 <section class="mt-4 mt-sm-4 mt-md-4 mt-lg-5 mt-xl-5">
-    <div class="container-fluid my-3">
+    <div class="container-fluid">
 
         <livewire:components.alert-status-message :message="session()->get('success')" />
 
@@ -24,7 +24,7 @@
                             <tr>
                                 <th scope="col">Username</th>
                                 <th scope="col">Name</th>
-                                <th scope="col">User Role</th>
+                                <th scope="col">Role</th>
                                 <th scope="col" class="text-center">Action</th>
                             </tr>
                         </thead>
@@ -33,7 +33,7 @@
                                 @if ($admin->user_role == 'Admin')
                                     <tr>
                                         <th>{{ $admin->username }}</th>
-                                        <td>{{ $admin->last_name }}, {{ $admin->first_name }}</td>
+                                        <td><b>{{ strtoupper($admin->last_name) }}</b>, {{ $admin->first_name }}</td>
                                         <td>{{ $admin->user_role }}</td>
                                         <td class="text-center"><button class="btn btn-danger fs-7" data-bs-toggle="modal" data-bs-target="#deleteAdmin{{ $admin->admin_id }}"><i class="fa-solid fa-trash-can"></i></button></td>
                                         @include("super_admin.components.delete-admin")
@@ -43,8 +43,6 @@
                         </tbody>
                     </table>
                 </div>
-
-
             </div>
         </div>
     </div>

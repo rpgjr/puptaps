@@ -15,23 +15,23 @@
             <div class="modal-body text-start">
                 <div class="mb-3">
                   <label class="form-label fs-7">Job Advertisement <span class="text-danger">*</span></label>
-                  <input type="file" class="form-control fs-7 @error('file') is-invalid @enderror" name="job_ad_image">
-                  <span class="error-message text-danger">@error('file') {{$message}} @enderror</span>
+                  <input type="file" class="form-control fs-7 @error('job_ad_image') is-invalid animate__animated animate__shakeX @enderror" name="job_ad_image">
+                  <span class="error-message text-danger">@error('job_ad_image') {{$message}} @enderror</span>
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Job Name/Job Title <span class="text-danger">*</span></label>
-                    <input type="text" class="form-control @error('job_name') is-invalid @enderror" name="job_name" value="{{ old('job_name') }}">
-                    <span class="error-message text-danger">@error('job_name') {{$message}} @enderror</span>
+                    <input type="text" class="form-control @error('job_name_img') is-invalid animate__animated animate__shakeX @enderror" name="job_name_img" value="{{ old('job_name_img') }}">
+                    <span class="error-message text-danger">@error('job_name_img') {{$message}} @enderror</span>
                 </div>
                 <div class="mb-3">
                     <label class="form-label fs-7">Category <span class="text-danger">*</span></label>
-                    <select class="form-select fs-7 @error('category') is-invalid @enderror" aria-label="Default select example" name="category">
+                    <select class="form-select fs-7 @error('category_img') is-invalid animate__animated animate__shakeX @enderror" aria-label="Default select example" name="category_img">
                         <option value="" hidden selected>Please select one...</option>
                         @foreach ($careerCategories as $category)
                             <option class="fs-7" value="{{ $category->career_category }}">{{ $category->career_category }}</option>
                         @endforeach
                     </select>
-                    <span class="error-message text-danger">@error('category') {{$message}} @enderror</span>
+                    <span class="error-message text-danger">@error('category_img') {{$message}} @enderror</span>
                 </div>
             </div>
             <div class="modal-footer">

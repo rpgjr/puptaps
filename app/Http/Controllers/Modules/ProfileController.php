@@ -33,13 +33,14 @@ class ProfileController extends Controller
             [
                 'sex'                => 'required',
                 'birthday'           => 'required',
-                'age'                => 'required',
                 'number'             => 'required',
-                'city_address'       => 'required',
-                'provincial_address' => 'required',
+                'city_address'       => 'required|min:20',
+                'provincial_address' => 'required|min:20',
             ],
             [
-                '*.required' => 'This is Required',
+                '*.required'                => 'This is Required',
+                'city_address.min'          => 'Please input complete home address',
+                'provincial_address.min'    => 'Please input complete home address',
             ]
         );
 

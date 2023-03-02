@@ -17,23 +17,23 @@
                 <div class="row">
                     <div class="mb-3 col-12">
                         <label class="form-label">Job Name/Job Title <span class="text-danger">*</span></label>
-                        <input type="text" class="form-control @error('job_name') is-invalid @enderror" name="job_name" value="{{ old('job_name') }}">
+                        <input type="text" class="form-control @error('job_name') is-invalid animate__animated animate__shakeX @enderror" name="job_name" value="{{ old('job_name') }}">
                         <span class="error-message text-danger">@error('job_name') {{$message}} @enderror</span>
                     </div>
                     <div class="mb-3 col-12">
                         <label class="form-label">Company Name <span class="text-danger">*</span></label>
-                        <input type="text" class="form-control @error('company') is-invalid @enderror" name="company" value="{{ old('company') }}">
+                        <input type="text" class="form-control @error('company') is-invalid animate__animated animate__shakeX @enderror" name="company" value="{{ old('company') }}">
                         <span class="error-message text-danger">@error('company') {{$message}} @enderror</span>
                     </div>
                     <div class="mb-3 col-12">
                         <label class="form-label">Description <span class="text-danger">*</span></label>
                         <textarea class="form-control" rows="5" name="description" style="white-space: pre-wrap" id="rte_description" hidden value="{{ old('rte_description') }}"></textarea>
-                        <trix-editor input="rte_description" class="trix-content fs-7 @error('rte_description') is-invalid @enderror" value="{{ old('rte_description') }}"></trix-editor>
+                        <trix-editor input="rte_description" class="trix-content fs-7 @error('rte_description') is-invalid animate__animated animate__shakeX @enderror" value="{{ old('rte_description') }}"></trix-editor>
                         <span class="error-message text-danger">@error('description') {{$message}} @enderror</span>
                     </div>
                     <div class="mb-3 col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
                         <label class="form-label">Category <span class="text-danger">*</span></label>
-                        <select class="form-select @error('category') is-invalid @enderror" aria-label="Default select example" name="category">
+                        <select class="form-select @error('category') is-invalid animate__animated animate__shakeX @enderror" aria-label="Default select example" name="category">
                                 <option value="" select hidden>Please select one...</option>
                             @foreach ($careerCategories as $category)
                                 <option value="{{ $category->career_category }}">{{ $category->career_category }}</option>
@@ -43,17 +43,17 @@
                     </div>
                     <div class="mb-3 col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
                         <label class="form-label">Salary <span class="text-danger">*</span></label>
-                        <input type="text" class="form-control @error('salary') is-invalid @enderror" name="salary" value="{{ old('salary') }}">
+                        <input type="text" class="form-control @error('salary') is-invalid animate__animated animate__shakeX @enderror" name="salary" value="{{ old('salary') }}">
                         <span class="error-message text-danger">@error('salary') {{$message}} @enderror</span>
                     </div>
                     <div class="mb-3 col-12">
                         <label class="form-label">Company Email <span class="text-danger">*</span></label>
-                        <input type="text" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}">
+                        <input type="text" class="form-control @error('email') is-invalid animate__animated animate__shakeX @enderror" name="email" value="{{ old('email') }}">
                         <span class="error-message text-danger">@error('email') {{$message}} @enderror</span>
                     </div>
                     <div class="mb-3 col-12">
                         <label class="form-label">Company Number <span class="text-danger">*</span></label>
-                        <input type="text" class="form-control @error('number') is-invalid @enderror" name="number" value="{{ old('number') }}">
+                        <input type="text" class="form-control @error('number') is-invalid animate__animated animate__shakeX @enderror" name="number" value="{{ old('number') }}">
                         <span class="error-message text-danger">@error('number') {{$message}} @enderror</span>
                     </div>
                 </div>

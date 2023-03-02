@@ -7,7 +7,7 @@
     <div class="container-fluid">
         <div class="row justify-content-center">
             <!-- Start: Body -->
-            <div class="col-11 col-sm-9 col-md-9 col-lg-9 col-xl-9">
+            <div class="col-11 col-sm-9 col-md-9 col-lg-9 col-xl-9 animate__animated animate__fadeInDown animate__fast">
                 <div class="row g-0 g-sm-0 g-md-0 g-lg-3 g-xl-3">
 
                     <!-- Career Submenu - Left Side -->

@@ -14,6 +14,15 @@
     >
         @yield('content')
 
+        <script>
+            if (history.scrollRestoration) {
+                history.scrollRestoration = 'manual';
+            } else {
+                window.onbeforeunload = function () {
+                    window.scrollTo(0, 0);
+                }
+            }
+        </script>
         {{-- JS --}}
         <livewire:components.scripts />
         @livewireScripts

@@ -79,7 +79,6 @@ class AnswerUnemployed extends Component
             $this->arrayAnswers[3]['answer'] = '';
         }
         else {
-            $this->resetErrorBag();
             $this->no_board_exam = "NO_BOARD_EXAM";
             $this->arrayAnswers[0]['answer'] = 'N/A';
             $this->arrayAnswers[1]['answer'] = 'N/A';
@@ -102,7 +101,6 @@ class AnswerUnemployed extends Component
             $this->arrayAnswers[13]['answer'] = '';
         }
         else {
-            $this->resetErrorBag();
             $this->currently_unemployed = 'CURRENTLY_UNEMPLOYED';
             $this->arrayAnswers[5]['answer'] = 'UNEMPLOYED';
             $this->arrayAnswers[6]['answer'] = 'UNEMPLOYED';

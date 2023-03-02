@@ -1,5 +1,10 @@
-<div class="container-fluid pt-3 pb-2 px-0 h-100 admin-sidebar position-fixed">
-    <div class="row align-items-center g-0" style="margin-top: 40px;">
+<div class="offcanvas offcanvas-start container-fluid pt-2 pb-2 px-0 h-100 admin-sidebar-offcanvas position-fixed" id="showSuperAdminMenu">
+    <div class="ms-2">
+        <button type="button" class="fs-7 rounded sidebar-button d-inline d-sm-inline d-md-inline d-lg-inline d-xl-none" data-bs-toggle="offcanvas" data-bs-target="#showSuperAdminMenu" style="border: none; padding: 8px 14px;">
+            <i class="fa-solid fa-bars fs-5"></i>
+        </button>
+    </div>
+    <div class="row align-items-center g-0" style="margin-top: 20px;">
         <div class="col-12 text-center">
             <div class="row align-items-center gx-0">
                 <div class="col-5 text-center">

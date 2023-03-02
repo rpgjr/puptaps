@@ -10,7 +10,7 @@
             <livewire:components.page-title :title="$title"/>
 
             <div class="row justify-content-center g-0">
-                <div class="col-11 col-sm-9 col-md-9 col-lg-9 col-xl-9 container-box">
+                <div class="col-11 col-sm-9 col-md-9 col-lg-9 col-xl-9 container-box @if(!($errors->any())) animate__animated animate__fadeInUpBig animate__slow @endif">
                     @foreach ($users as $user)
                     <form action="{{ route('userProfile.updateProfile') }}" method="post">
                     @csrf
@@ -42,7 +42,7 @@
                             </div>
                             <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 my-2">
                                 <label class="form-label">Sex: <span class="text-danger">*</span></label>
-                                <div class="text-center border rounded py-1 @error('sex') border border-danger @enderror">
+                                <div class="text-center border rounded py-1 @error('sex') animate__animated animate__shakeX border border-danger @enderror">
                                     <div class="form-check form-check-inline">
                                         <input class="form-check-input" type="radio" name="sex" value="Male">
                                         <label class="form-check-label">Male</label>
@@ -56,7 +56,7 @@
                             </div>
                             <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 my-2">
                                 <label class="form-label">Date of Birth <span class="text-danger">*</span></label>
-                                <input type="date" id="birthday" class="form-control @error('birthday') border border-danger @enderror" name="birthday" value="{{ old('birthday') }}">
+                                <input type="date" id="birthday" class="form-control @error('birthday') border border-danger animate__animated animate__shakeX @enderror" name="birthday" value="{{ old('birthday') }}">
                                 <span class="text-danger error-message">@error('birthday') {{$message}} @enderror</span>
                             </div>
                             <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 my-2">
@@ -65,13 +65,13 @@
                                 <span class="text-danger error-message">@error('age') {{$message}} @enderror</span>
                             </div>
                             <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 my-2">
-                                <label class="form-label">Mobile Number <span class="text-danger">*</span></label>
-                                <input type="text" class="form-control @error('number') border border-danger @enderror" name="number" value="{{ old('number') }}">
+                                <label class="form-label">Contact Number <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control @error('number') animate__animated animate__shakeX border border-danger @enderror" name="number" value="{{ old('number') }}" onkeypress="return onlyNumber(event)" maxlength="20">
                                 <span class="text-danger error-message">@error('number') {{$message}} @enderror</span>
                             </div>
                             <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 my-2">
                                 <label class="form-label">Religion</label>
-                                <input type="text" class="form-control" name="religion" value="{{ old('religion') }}">
+                                <input type="text" class="form-control" name="religion" value="{{ old('religion') }}" onkeypress="return onlyAlphabets(event)" maxlength="50">
                                 <span class="text-danger">@error('religion') {{$message}} @enderror</span>
                             </div>
                             <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-4 my-2">
@@ -102,13 +102,13 @@
                             </div>
                             <div class="col-12 my-2">
                                 <label class="form-label">City Address <span class="text-danger">*</span></label>
-                                <input type="text" class="form-control @error('city_address') border border-danger @enderror" name="city_address" id="cityAddress" value="{{ old('city_address') }}">
+                                <input type="text" class="form-control @error('city_address') animate__animated animate__shakeX border border-danger @enderror" name="city_address" id="cityAddress" value="{{ old('city_address') }}">
                                 <span class="text-danger error-message">@error('city_address') {{$message}} @enderror</span>
                             </div>
 
                             <div class="col-12 my-2">
                                 <label class="form-label">Provincial Address <span class="text-danger">*</span></label>
-                                <input type="text" class="form-control @error('provincial_address') border border-danger @enderror" placeholder="Provincial Address" name="provincial_address" id="provincialAddress">
+                                <input type="text" class="form-control @error('provincial_address') animate__animated animate__shakeX border border-danger @enderror" placeholder="Provincial Address" name="provincial_address" id="provincialAddress">
                                 <span class="text-danger error-message">@error('provincial_address') {{$message}} @enderror</span>
                             </div>
 

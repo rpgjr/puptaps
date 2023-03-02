@@ -32,6 +32,10 @@
     margin-top: 30px;
 }
 
+.admin-sidebar-offcanvas {
+    background: #F4F6F6;
+}
+
 .sidebar-buttons a {
     font-size: 14px;
 }

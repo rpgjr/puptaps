@@ -6,7 +6,7 @@
     <div class="container py-5 h-100">
         <div class="row d-flex justify-content-center align-items-center h-100">
             <div class="col-12 col-sm-12 col-md-7 col-lg-6 col-xl-5">
-                <div class="card-login-title">
+                <div class="card-login-title @if(!($errors->any())) animate__animated animate__fadeInDown animate__fast @endif">
                     <div class="row gx-1 gy-0 align-items-center">
                         <div class="col-3 text-center">
                             <a href="{{ route('landingPage') }}">
@@ -18,7 +18,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="card-login">
+                <div class="card-login @if(!($errors->any())) animate__animated animate__fadeInUp animate__fast @endif">
                     <div class="card-body px-4">
 
                         <form action="{{ route('register') }}" method="post">
@@ -34,12 +34,12 @@
                             </div>
                             <div class="mb-4 px-3">
                                 <p class="form-label">Email<span class="text-danger">*</span></p>
-                                <input type="text" class="form-control @error('email') border border-danger border-3 @enderror" name="email" value="{{ old("email") }}" placeholder="sample@email.com" />
+                                <input type="text" class="form-control @error('email') border border-danger border-3 animate__animated animate__shakeX @enderror" name="email" value="{{ old("email") }}" placeholder="sample@email.com" />
                                 <span class="text-danger error-message">@error('email') {{$message}} @enderror</span>
                             </div>
                             <div class="mb-4 px-3">
                                 <p class="form-label">Student Number<span class="text-danger">*</span></p>
-                                <input type="text" class="form-control @error('stud_number') border border-danger border-3 @enderror" name="stud_number" value="{{ old("stud_number") }}" placeholder="eg. 2019-00123-TG-0" />
+                                <input type="text" class="form-control @error('stud_number') border border-danger border-3 animate__animated animate__shakeX @enderror" name="stud_number" value="{{ old("stud_number") }}" placeholder="eg. 2019-00123-TG-0" />
                                 <span class="text-danger error-message">@error('stud_number') {{$message}} @enderror</span>
                             </div>
                             <div class="text-center my-0">

@@ -11,34 +11,34 @@
         <livewire:components.alert-status-message :message="session()->get('success')" />
 
         <div class="row justify-content-center g-0">
-            <div class="col-11 sub-container-box pt-3 pb-2">
-                <div class="row">
-                    <div class="col-6">
+            <div class="col-11 sub-container-box pt-3 pb-md-1 pb-2">
+                <div class="row gy-1 align-items-center">
+                    <div class="col-7">
                         <h3>Announcement Settings</h3>
                     </div>
-                    <div class="col-6 text-end">
+                    <div class="col-5 text-end">
                         <button class="btn btn-primary fs-7" data-bs-toggle="collapse" data-bs-target="#addAnnouncementCollapse">Create Post</button>
                     </div>
                     <div class="col-12">
                         <div class="collapse mt-3" id="addAnnouncementCollapse">
                             <div>
-                                <form action="{{ route("superAdmin.postAnnouncement") }}" enctype="multipart/form-data" method="POST">
+                                <form action="{{ route("superAdmin.postAnnouncement") }}" enctype="multipart/form-data" method="POST" class="row">
                                     @csrf
-                                    <div class="mb-3 w-50">
-                                        <label class="form-labexl">Announcement Image:</label>
+                                    <div class="col-12 col-md-6 mb-3">
+                                        <label class="form-label">Announcement Image:</label>
                                         <input type="file" class="fs-7 form-control @error('announcement_image') border border-danger @enderror" name="announcement_image">
                                         <span class="text-danger error-message">@error('announcement_image') {{$message}} @enderror</span>
                                     </div>
-                                    <div class="mb-3">
+                                    <div class="col-12 col-md-6 mb-3">
                                         <label class="form-label">Announcement Title:</label>
                                         <input type="text" class="form-control @error('announcement_title') border border-danger @enderror" name="announcement_title">
                                         <span class="text-danger error-message">@error('announcement_title') {{$message}} @enderror</span>
                                     </div>
-                                    <div class="mb-3">
+                                    <div class="col-12 mb-3">
                                         <label class="form-label">Announcement:</label>
                                         <textarea class="form-control @error('announcement_text') border border-danger @enderror" name="announcement_text" id="rte_announcement" hidden></textarea>
-                                        <span class="text-danger error-message">@error('announcement_text') {{$message}} @enderror</span>
                                         <trix-editor input="rte_announcement" class="fs-7 trix-content"></trix-editor>
+                                        <span class="text-danger error-message">@error('announcement_text') {{$message}} @enderror</span>
                                     </div>
                                     <div class="mb-2 text-end">
                                         <button class="btn btn-success fs-7" type="submit">Add <i class="fa-solid fa-plus"></i></button>

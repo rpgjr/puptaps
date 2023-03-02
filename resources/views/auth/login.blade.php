@@ -6,7 +6,7 @@
         <div class="container py-5 h-100">
             <div class="row d-flex justify-content-center align-items-center">
                 <div class="col-12 col-sm-12 col-md-7 col-lg-6 col-xl-5">
-                    <div class="card-login-title">
+                    <div class="card-login-title @if(!($errors->any())) animate__animated animate__fadeInDown animate__fast @endif">
                         <div class="row gx-1 gy-0 align-items-center">
                             <div class="col-3 text-center">
                                 <a href="{{ route('landingPage') }}">
@@ -14,11 +14,11 @@
                                 </a>
                             </div>
                             <div class="col-9 text-start">
-                                <h4 class="">PUPT - Alumni Portal System</h4>
+                                <h4 class="mt-3">PUPT - Alumni Portal System</h4>
                             </div>
                         </div>
                     </div>
-                    <div class="card-login">
+                    <div class="card-login @if(!($errors->any())) animate__animated animate__fadeInUp animate__fast @endif">
                         <div class="card-body px-4">
 
                             <form action="{{ route('login') }}" method="post">
@@ -35,12 +35,12 @@
                                 </div>
                                 <div class="mb-4 px-3">
                                     <p class="form-label" >Email<span class="text-danger">*</span></p>
-                                    <input type="text" class="form-control @error('email') border border-danger border-3 @enderror" name="email" value="{{ old("email") }}" placeholder="sample@email.com" />
+                                    <input type="text" class="form-control @error('email') animate__animated animate__shakeX border border-danger border-3 @enderror" name="email" value="{{ old("email") }}" placeholder="sample@email.com" />
                                     <span class="text-danger error-message">@error('email') {{$message}} @enderror</span>
                                 </div>
                                 <div class="mb-4 px-3">
                                     <p class="form-label">Password<span class="text-danger">*</span></p>
-                                    <div class="input-group">
+                                    <div class="input-group @error('password') animate__animated animate__shakeX @enderror">
                                         <input type="password" name="password" id="password" class="form-control @error('password') border border-danger border-3 @enderror">
                                         <button class="btn btn-outline-secondary" type="button" id="togglePassword">
                                             <i id="eye_icon" class="fa-solid fa-eye" ></i>

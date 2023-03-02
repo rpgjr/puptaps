@@ -9,7 +9,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav mx-auto mb-2 mb-lg-0" >
-                <li class="nav-item nav-user-modules">
+                <li class="nav-item nav-user-modules hover-2">
                     <a class="nav-link @yield('home-active')" aria-current="page" href="{{ route('user.homepage') }}">Home</a>
                 </li>
                 <li class="nav-item nav-user-modules">

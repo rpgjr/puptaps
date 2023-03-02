@@ -19,10 +19,13 @@
                         <div class="col-12">
                             <livewire:super-admin.super-admin-navbar />
                         </div>
-                        <div class="col-12" style="margin-top: 30px;">
+                        <div class="col-12 mt-5">
                             @yield('content')
                         </div>
                     </div>
+                </div>
+                <div class="col-0 col-sm-0 col-md-0 col-lg-0 col-xl-2 d-block d-sm-block d-md-block d-lg-block d-xl-none">
+                    <livewire:super-admin.super-admin-sidebar-offcanvas />
                 </div>
             </div>
         </div>
@@ -30,6 +33,15 @@
 
 
 
+    <script>
+        if (history.scrollRestoration) {
+            history.scrollRestoration = 'manual';
+        } else {
+            window.onbeforeunload = function () {
+                window.scrollTo(0, 0);
+            }
+        }
+    </script>
     {{-- JS --}}
     <livewire:components.scripts />
     @livewireScripts

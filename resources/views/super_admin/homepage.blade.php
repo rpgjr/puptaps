@@ -8,9 +8,9 @@
 <section class="mt-4 mt-sm-4 mt-md-4 mt-lg-5 mt-xl-5">
     <div class="container-fluid my-3">
         <div class="row justify-content-center g-0">
-            <div class="col-11">
+            <div class="col-11 animate__animated animate__fadeInUp">
                 <div class="row gy-3 gx-3">
-                    <div class="col-6">
+                    <div class="col-12 col-lg-6">
                         <div class="sub-container-box pt-3 pb-2">
                             <h4 class="color-pup">PUP VISION</h4>
                             <h5 class="text-center">PUP: The National Polytechnic University</h5>
@@ -25,7 +25,7 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="col-6">
+                    <div class="col-12 col-lg-6">
                         <div class="sub-container-box pt-3 pb-2">
                             <h4 class="color-pup">PUP MISSION</h4>
                             <p class="text-justify" style="text-align: justify; text-justify: inter-word;">Ensuring inclusive and equitable quality education and promoting lifelong learning opportunities through a re-engineered polytechnic university by committing to:</p>
@@ -63,31 +63,35 @@
                         </div>
                     </div>
                     <div class="col-12">
-                        <div class="sub-container-box pt-3 pb-3">
+                        <div class="sub-container-box pt-3 pb-4">
                             <h4 class="color-pup mb-4">FACULTY IN CHARGE</h4>
-                            <div class="row">
-                                <div class="col-6">
-                                    <div class="row align-items-center justify-content-center">
-                                        <div class="col-3 text-end">
-                                            <img src="{{ asset('img/attention.jpg') }}" alt="" class="pup-faculty">
+                            <div class="row gy-4">
+                                <div class="col-12 col-lg-6">
+                                    <div class="row align-items-center justify-content-center gy-2">
+                                        <div class="col-12 col-md-3 text-center text-md-end">
+                                            <img src="{{ asset('img/maam-liway.jpg') }}" alt="" class="pup-faculty">
                                         </div>
-                                        <div class="col-9">
-                                            <h5 class="mb-1">Name</h5>
-                                            <p class="my-1"><i>Office</i></p>
-                                            <p class="my-1"><b>Position</b></p>
+                                        <div class="col-12 col-md-9 text-center text-md-start">
+                                            <h5 class="mb-1">Ms. Liwanag L. Maliksi</h5>
+                                            <p class="my-1"><i>Admission & Guidance Council Office</i></p>
+                                            <p class="my-1"><b>Head of Admission & Guidance Counseling Office</b></p>
+                                            <p class="my-0"><span class="fw-bold">Email: </span></p>
+                                            <p class="my-0"><span class="fw-bold">Tel. No.: </span></p>
                                         </div>
                                     </div>
                                 </div>
 
-                                <div class="col-6">
-                                    <div class="row align-items-center justify-content-center">
-                                        <div class="col-3 text-end">
-                                            <img src="{{ asset('img/attention.jpg') }}" alt="" class="pup-faculty">
+                                <div class="col-12 col-lg-6">
+                                    <div class="row align-items-center justify-content-center gy-2">
+                                        <div class="col-12 col-md-3 text-center text-md-end">
+                                            <img src="{{ asset('Uploads/Profiles/user-no-profile.png') }}" alt="" class="pup-faculty">
                                         </div>
-                                        <div class="col-9">
-                                            <h5 class="mb-1">Name</h5>
-                                            <p class="my-1"><i>Office</i></p>
-                                            <p class="my-1"><b>Position</b></p>
+                                        <div class="col-12 col-md-9 text-center text-md-start">
+                                            <h5 class="mb-1">Asst. Prof Bernadette T. Canlas</h5>
+                                            <p class="my-1"><i>Alumni Office & Student Publication</i></p>
+                                            <p class="my-1"><b>Head of Student Servicess</b></p>
+                                            <p class="my-0"><span class="fw-bold">Email: </span></p>
+                                            <p class="my-0"><span class="fw-bold">Tel. No.: </span></p>
                                         </div>
                                     </div>
                                 </div>

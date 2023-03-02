@@ -4,7 +4,7 @@
 
 <section class="mt-4 mt-sm-4 mt-md-4 mt-lg-5 mt-xl-5 mb-5">
     <div class="container-fluid">
-        <div class="row justify-content-center">
+        <div class="row justify-content-center animate__animated animate__fadeInUp animate__fast">
             <!-- Start: Body -->
             <div class="col-11 col-sm-9 col-md-9 col-lg-9 col-xl-9">
                 <div class="row g-2 g-sm-2 g-md-2 g-lg-3 g-xl-3">

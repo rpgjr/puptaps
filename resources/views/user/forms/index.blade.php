@@ -10,7 +10,7 @@
             <livewire:components.page-title :title="$title"/>
 
             <div class="row justify-content-center">
-                <div class="col-11 col-sm-9 col-md-9 col-lg-9 col-xl-9 container-box">
+                <div class="col-11 col-sm-9 col-md-9 col-lg-9 col-xl-9 container-box animate__animated animate__fadeInDown animate__fast">
                     <div class="row mb-4">
                         <div class="col-12">
                             <div class="card">

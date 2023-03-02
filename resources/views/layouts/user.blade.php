@@ -17,6 +17,15 @@
         <a type="button" href="#go-to-top" class="btn btn-danger user-back-to-top"><i class="fa-solid fa-angle-up"></i></a>
     </div>
 
+    <script>
+        if (history.scrollRestoration) {
+            history.scrollRestoration = 'manual';
+        } else {
+            window.onbeforeunload = function () {
+                window.scrollTo(0, 0);
+            }
+        }
+    </script>
     {{-- JS --}}
     <livewire:components.scripts />
     @livewireScripts

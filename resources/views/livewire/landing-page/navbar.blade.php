@@ -1,6 +1,6 @@
 <!-- Landing Page Navbar -->
-<nav class="navbar navbar-expand-lg sticky-top landing-navbar py-1 animate__animated animate__fadeInLeftBig">
-    <div class="container-fluid navbar-inner">
+<nav class="navbar navbar-expand-lg sticky-top landing-navbar py-1">
+    <div class="container-fluid navbar-inner animate__animated animate__fadeInLeftBig">
         <a class="navbar-brand animate__animated animate__slideInDown" href="{{ route('landingPage') }}">
             <img src="{{ asset('img/pupLogo.png') }}" style="height: 40px">
             {{-- <p class="d-none d-sm-inline ms-2 pupt-title">PUPT - Alumni Portal System</p> --}}

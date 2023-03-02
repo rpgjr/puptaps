@@ -52,9 +52,9 @@
             <form>
                 <ul class="list-unstyled">
                     <li>
-                        <a type="button" href="https://www.facebook.com/YourCentralStudentCouncil" class="fs-7 btn btn-light w-100 text-start mb-1" style="background: #F2F4F4" target="_blank"><i class="fa-brands fa-facebook text-primary fs-6 me-1"></i>PUPT - CSC</a>
-                        <a type="button" href="https://www.facebook.com/PUPalumniofficial/" class="fs-7 btn btn-light w-100 text-start mb-1" style="background: #F2F4F4" target="_blank"><i class="fa-brands fa-facebook text-primary fs-6 me-1"></i>PUP Alumni</a>
-                        <a type="button" href="https://www.facebook.com/PUPTOFFICIAL" class="fs-7 btn btn-light w-100 text-start mb-1" style="background: #F2F4F4" target="_blank"><i class="fa-brands fa-facebook text-primary fs-6 me-1"></i>PUP Taguig Branch</a>
+                        <a type="button" href="https://www.facebook.com/YourCentralStudentCouncil" class="fs-7 btn btn-light w-100 text-start mb-1 homepage-button" target="_blank"><i class="fa-brands fa-facebook fs-5 me-1"></i>PUPT - CSC</a>
+                        <a type="button" href="https://www.facebook.com/PUPalumniofficial/" class="fs-7 btn btn-light w-100 text-start mb-1 homepage-button" target="_blank"><i class="fa-brands fa-facebook fs-5 me-1"></i>PUP Alumni</a>
+                        <a type="button" href="https://www.facebook.com/PUPTOFFICIAL" class="fs-7 btn btn-light w-100 text-start mb-1 homepage-button" target="_blank"><i class="fa-brands fa-facebook fs-5 me-1"></i>PUP Taguig Branch</a>
                     </li>
                 </ul>
             </form>
