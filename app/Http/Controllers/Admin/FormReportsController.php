@@ -62,6 +62,9 @@ class MYPDF extends TCPDF {
         if ($this->title == 'PDS_DETAILED_REPORTS') {
             $this->Line(10, 320, 200, 320, $style3);
         }
+        elseif ($this->title == 'EIF_DETAILED_REPORTS') {
+            $this->Line(10, 202, 288, 202, $style3);
+        }
         else {
             $this->Line(10, 288, 200, 288, $style3);
         }
@@ -2218,7 +2221,7 @@ class FormReportsController extends Controller
                 $pdf->AddPage();
                 $pdf->SetPrintHeader(false);
                 $pdf->SetFont('times', 'B', 13);
-                $pdf->ln(20);
+                $pdf->ln(18);
                 $pdf->Cell(0, 0, 'PERSONAL DATA SHEET - STATUS REPORT (COMPLETE)', 0, 1, 'C', 0, '', 0);
                 $pdf->SetFont('times', '', 12);
                 $pdf->MultiCell(180, 5, strtoupper($course->course_desc), 0, 'C', 0, 1, '', '', true);
@@ -3019,7 +3022,9 @@ class FormReportsController extends Controller
         $pdf->setImageScale(PDF_IMAGE_SCALE_RATIO);
 
         $pdf->SetPrintHeader(true);
-        $pdf->AddPage();
+        $pdf->AddPage('L');
+        $style3 = array('width' => .5, 'cap' => 'butt', 'join' => 'miter', 'dash' => 0, 'color' => array(0, 0, 0));
+        $pdf->Line(10, 33, 287, 33, $style3);
         $pdf->ln(20);
         $pdf->SetFont('times', 'B', 13);
         $pdf->Cell(0, 0, 'EXIT INTERVIEW FORM - DETAILED REPORT', 0, 1, 'C', 0, '', 0);
@@ -3114,10 +3119,14 @@ class FormReportsController extends Controller
         $pdf->writeHTML($html, true, 0, true, 0);
 
         $totalPending = 0;
-        $pdf->ln(2);
+        $pdf->SetPrintHeader(true);
+        $pdf->AddPage('L');
+        $style3 = array('width' => .5, 'cap' => 'butt', 'join' => 'miter', 'dash' => 0, 'color' => array(0, 0, 0));
+        $pdf->Line(10, 33, 287, 33, $style3);
+        $pdf->ln(10);
         $pdf->SetFont('times', 'B', 11);
         $pdf->MultiCell(88, 5, 'TABLE 2. AGE ', 0, 'L', 0, 0, '', '', true);
-        $pdf->MultiCell(30, 5, 'TABLE 3. SEX', 0, 'R', 0, 0, '', '', true);
+        $pdf->MultiCell(74, 5, 'TABLE 3. SEX', 0, 'R', 0, 0, '', '', true);
         $pdf->ln(5);
         $pdf->SetFont('times', '', 11);
         $html = '
@@ -3240,9 +3249,7 @@ class FormReportsController extends Controller
             </table>';
         $pdf->writeHTML($html, true, 0, true, 0);
 
-        $pdf->SetPrintHeader(true);
-        $pdf->AddPage();
-        $pdf->ln(15);
+        $pdf->ln(5);
         $pdf->SetFont('times', 'B', 11);
         $pdf->Cell(0, 0, 'TABLE 4. REASON FOR LEAVING PUP TAGUIG', 0, 1, 'L', 0, '', 0);
         $pdf->SetFont('times', '', 11);

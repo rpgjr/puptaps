@@ -13,30 +13,33 @@
         <div class="row justify-content-center g-0">
             <div class="col-11">
                 <div class="row sub-container-box mb-3 py-3 px-2 justify-content-between">
-                    <div class="col-6 d-flex">
-                        <form class="" method="post" enctype="multipart/form-data" action="{{ route('adminUserManagement.addAlumniList') }}">
-                        @csrf
-                            <div class="input-group">
-                                <input class="form-control fs-7" type="file" id="formFile" name="excel_file">
-                                <button type="submit" class="btn btn-primary fs-7">
-                                    <i class="fa-solid fa-arrow-up-from-bracket"></i>
-                                </button>
-                            </div>
+                    <div class="col-6 row gx-1 ms-2">
+                        <div class="col-10 col-md-9">
+                            <form class="" method="post" enctype="multipart/form-data" action="{{ route('adminUserManagement.addAlumniList') }}">
+                            @csrf
+                                <div class="input-group">
+                                    <input class="d-none d-md-none d-lg-block form-control fs-7" type="file" id="formFile" name="excel_file">
+                                    <label for="formFile" class="rounded-start d-block d-md-block d-lg-none btn btn-secondary form-control fs-7" type="button">File</label>
+                                    <button type="submit" class="btn btn-primary fs-7">
+                                        <i class="fa-solid fa-arrow-up-from-bracket"></i>
+                                    </button>
+                                </div>
 
-                            @error('excel_file')
-                                <p class="text-danger mt-2 mb-0 py-0">{{ $message }}</p>
-                            @enderror
-                        </form>
-                        <div class="ms-2">
-                            <a href="{{ route("adminUserManagement.downloadListTemplate") }}" class="btn btn-success fs-7"><span>Template</span><i class="ms-1 fa-solid fa-file-csv"></i></a>
+                                @error('excel_file')
+                                    <p class="text-danger mt-2 mb-0 py-0">{{ $message }}</p>
+                                @enderror
+                            </form>
+                        </div>
+                        <div class="col-2 col-md-3">
+                            <a href="{{ route("adminUserManagement.downloadListTemplate") }}" class="btn btn-success fs-7"><span class="d-none d-lg-inline me-1">Template</span><i class="fa-solid fa-file-csv"></i></a>
                         </div>
                     </div>
-                    <div class="col-4">
+                    <div class="col-5">
                         <form class="g-3">
                             @csrf
                             <div class="input-group">
                                 <input type="text" class="form-control fs-7" placeholder="Last Name or Student Number" name="q" value="{{ $q }}">
-                                <a href="{{ route('adminUserManagement.getAlumniManager') }}" class="fs-7 btn btn-secondary" type="button" id="button-addon2">
+                                <a href="{{ route('adminUserManagement.getAlumniManager') }}" class="d-none d-md-none d-lg-inline fs-7 btn btn-secondary" type="button" id="button-addon2">
                                     <i class="fa-solid fa-rotate-right me-1"></i></a>
                                 <button class="fs-7 btn btn-primary" type="submit" id="button-addon2">
                                 <i class="fa-solid fa-magnifying-glass me-1"></i></button>
@@ -49,14 +52,14 @@
                     <table class="table table-striped align-middle table-hover">
                         <thead class="tbl-head">
                             <tr>
-                                <th scope="col" class="col-1"></th>
-                                <th scope="col" class="col-2">Student Number</th>
-                                <th scope="col" class="col-2">Name</th>
-                                <th scope="col" class="col-1">Course</th>
-                                <th scope="col" class="col-1">Batch</th>
-                                <th scope="col" class="col-1 text-center">PDS</th>
-                                <th scope="col" class="col-1 text-center">EIF</th>
-                                <th scope="col" class="col-1 text-center">SAS</th>
+                                <th scope="col" class="col-1" style="width: 10%"></th>
+                                <th scope="col" class="col-2" style="width: 15%">Student Number</th>
+                                <th scope="col" class="col-2" style="width: 35%">Name</th>
+                                <th scope="col" class="col-1" style="width: 10%">Course</th>
+                                <th scope="col" class="col-1" style="width:6%">Batch</th>
+                                <th scope="col" class="col-1 text-center" style="width:8%">PDS</th>
+                                <th scope="col" class="col-1 text-center" style="width:8%">EIF</th>
+                                <th scope="col" class="col-1 text-center" style="width:8%">SAS</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -67,7 +70,7 @@
                                         <button class="fs-7 btn btn-info" data-bs-toggle="modal" data-bs-target="#updateAlumni{{ $alum->alumni_id }}">
                                             <i class="fs-7 fa-solid fa-pen-to-square"></i>
                                         </button>
-                                        <button class="me-1 fs-7 btn btn-primary" data-bs-toggle="modal" data-bs-target="#viewAlumniDetails{{ $alum->alumni_id }}">
+                                        <button class="fs-7 btn btn-primary" data-bs-toggle="modal" data-bs-target="#viewAlumniDetails{{ $alum->alumni_id }}">
                                             <i class=" fs-7 fa-solid fa-eye"></i>
                                         </button>
                                     </th>
