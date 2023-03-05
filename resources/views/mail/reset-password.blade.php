@@ -68,19 +68,20 @@ Click the button below to redirect you to the password reset page.
         }
         .header-logo {
             height: 80px;
-            width: 80px;
+            margin: 0 5px;
+            justify-content: center;
         }
         .logo {
             display: flex;
-            justify-content: center;
         }
     </style>
 </head>
 <body>
+
         <center>
             <div class="logo">
                 <img src="{{ asset('img/pupLogo.png') }}" alt="" class="header-logo">
-                <img src="{{ asset('img/pupt-aps-logo-hd.png') }}" alt="" class="header-logo">
+                <img src="{{ asset('img/puptaps-logo.png') }}" alt="" class="header-logo">
             </div>
             <p class="header">Polytechnic University of the Philippines Taguig Branch
                 <span style="font-size: 25px; font-weight: bold;"><br>Alumni Portal System</span>

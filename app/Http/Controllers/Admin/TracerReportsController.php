@@ -648,12 +648,12 @@ class TracerReportsController extends Controller
                 $fcomNumber = TracerAnswers::where('alumni_id', '=', $alumni->alumni_id)->where('question_id', '=', 20)->value('answer');
 
 
-                if(count($checkAnswer) > 0 && $position != 'Unemployed' && $fposition != 'Unemployed') {
+                if(count($checkAnswer) > 0 && $position != 'UNEMPLOYED' || $fposition != 'UNEMPLOYED') {
                     $pdf->SetPrintHeader(true);
                     $pdf->AddPage();
                     $pdf->SetPrintHeader(false);
                     $pdf->SetFont('times', 'B', 13);
-                    $pdf->ln(18);
+                    $pdf->ln(15);
                     $pdf->Cell(0, 0, 'ALUMNI TRACER - ALUMNI PROFILES', 0, 1, 'C', 0, '', 0);
                     $pdf->SetFont('times', '', 12);
                     $pdf->ln(1);
@@ -664,7 +664,7 @@ class TracerReportsController extends Controller
                     $pdf->ln(15);
                     $pdf->SetFont('times', 'B', 12);
                     $pdf->Cell(0, 0, 'PERSONAL INFORMATION', 0, 1, 'L', 0, '', 0);
-                    $pdf->ln(5);
+                    $pdf->ln(3);
 
                     $pdf->SetFont('times', '', 12);
                     $fullname = $alumni->last_name . ', ' . $alumni->first_name . ' ' . $alumni->suffix . ' ' . $alumni->middle_name;
@@ -764,10 +764,10 @@ class TracerReportsController extends Controller
                     $pdf->writeHTML($html, true, 0, true, 0);
 
                     $pdf->SetFont('times', 'B', 12);
-                    $pdf->ln(10);
+                    $pdf->ln(5);
                     $pdf->Cell(0, 0, 'CURRENT CAREER DETAILS', 0, 1, 'C', 0, '', 0);
 
-                    $pdf->ln(8);
+                    $pdf->ln(3);
                     $pdf->SetFont('times', '', 12);
                     $html = '<style>
                             .table-EI, .th-EI, .td-EI {
@@ -846,10 +846,10 @@ class TracerReportsController extends Controller
                     $pdf->writeHTML($html, true, 0, true, 0);
 
                     $pdf->SetFont('times', 'B', 12);
-                    $pdf->ln(10);
+                    $pdf->ln(5);
                     $pdf->Cell(0, 0, 'FIRST CAREER DETAILS', 0, 1, 'C', 0, '', 0);
 
-                    $pdf->ln(8);
+                    $pdf->ln(3);
                     $pdf->SetFont('times', '', 12);
                     $html = '<style>
                             .table-EI, .th-EI, .td-EI {

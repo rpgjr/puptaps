@@ -288,6 +288,15 @@ Route::group(
 
         Route::get('download-template', 'downloadListTemplate')
                ->name('downloadListTemplate');
+
+        Route::post('resetPds', 'resetPds')
+               ->name('resetPds');
+
+        Route::post('resetEif', 'resetEif')
+               ->name('resetEif');
+
+        Route::post('resetSas', 'resetSas')
+               ->name('resetSas');
 });
 
 // Admin - Get Alumni PDF Form

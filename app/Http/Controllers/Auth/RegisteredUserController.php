@@ -85,7 +85,8 @@ class RegisteredUserController extends Controller
             }
         }
         else {
-            return back()->with('fail', 'You are not allowed to create an Account yet. Please contact the Administrator for more information. Thank you.');
+            // return back()->with('fail', 'You are not allowed to create an Account yet. Please contact the Administrator for more information. Thank you.');
+            return back()->with('fail', 'Sorry, you are not allowed to create an account if you are not an official graduate of PUP-Taguig.');
         }
     }
 }

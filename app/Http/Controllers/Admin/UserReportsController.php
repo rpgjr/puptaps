@@ -49,14 +49,16 @@ class UserReportsController extends Controller
                 ->groupBy('course_id')
                 ->get();
         $studentsPerCourse = $students->mapWithKeys(function ($item, $key) {
-            return [$item ->course_id => $item->alumniCount];
+            return [$item->course_id => $item->alumniCount];
         });
 
         $sex = Alumni::select('sex as sex', DB::raw('count(alumni_id) as alumniCount'))
+                ->where('sex', 'Male')
+                ->orWhere('sex', 'Female')
                 ->groupBy('sex')
                 ->get();
         $studentsPersex = $sex->mapWithKeys(function ($item, $key) {
-            return [$item ->sex => $item->alumniCount];
+            return [$item->sex => $item->alumniCount];
         });
 
         return view("admin.reports.user-report", compact(["title", "courses", "studentsPerCourse", "studentsPersex"]), $data);

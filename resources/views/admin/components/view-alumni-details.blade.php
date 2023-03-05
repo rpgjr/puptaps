@@ -66,44 +66,66 @@
 
           <div class="col-12">
             <div class="row">
-              <p class="mb-1 col-6 fw-bold">Form</p>
-              <p class="mb-1 col-6 text-center fw-bold">Status</p>
+              <p class="mb-1 col-4 fw-bold">Form</p>
+              <p class="mb-1 col-4 text-center fw-bold">Status</p>
+              <p class="mb-1 col-4 text-center fw-bold">Action</p>
             </div>
 
             <hr class="mt-1 mb-2 fw-bold">
             <div class="row">
-              <p class="my-2 col-6 fw-bold">Personal Data Sheet</p>
-              <p class="my-2 col-6 text-center">
+              <p class="my-2 col-4 fw-bold">Personal Data Sheet</p>
+              <p class="my-2 col-4 text-center">
                   @if ($PDS->contains('alumni_id', $alum->alumni_id))
                     <i class="fa-regular fa-circle-check me-1 text-success"></i><span class="text-success">Completed</span>
                   @else
                     <i class="fa-regular fa-circle-xmark me-1 text-danger"></i><span class="text-danger">No Record</span>
                   @endif
               </p>
+              <div class="col-4 text-center">
+                <form action="{{ route('adminUserManagement.resetPds') }}" method="post">
+                    @csrf
+                    <input type="hidden" name="alumni_id" value="{{ $alum->alumni_id }}">
+                    <button class="btn btn-primary fs-7" type="submit" @if (!($PDS->contains('alumni_id', $alum->alumni_id))) disabled @endif>Reset Form</button>
+                </form>
+              </div>
             </div>
 
             <hr class="mt-2 mb-2">
             <div class="row">
-              <p class="my-2 col-6 fw-bold">Exit Interview Form</p>
-              <p class="my-2 col-6 text-center">
+              <p class="my-2 col-4 fw-bold">Exit Interview Form</p>
+              <p class="my-2 col-4 text-center">
                   @if ($EIF->contains('alumni_id', $alum->alumni_id))
                     <i class="fa-regular fa-circle-check me-1 text-success"></i><span class="text-success">Completed</span>
                   @else
                     <i class="fa-regular fa-circle-xmark me-1 text-danger"></i><span class="text-danger">No Record</span>
                   @endif
               </p>
+              <div class="col-4 text-center">
+                <form action="{{ route('adminUserManagement.resetEif') }}" method="post">
+                    @csrf
+                    <input type="hidden" name="alumni_id" value="{{ $alum->alumni_id }}">
+                    <button class="btn btn-primary fs-7" type="submit" @if (!($EIF->contains('alumni_id', $alum->alumni_id))) disabled @endif>Reset Form</button>
+                </form>
+              </div>
             </div>
 
             <hr class="mt-2 mb-2">
             <div class="row">
-              <p class="my-2 col-6 fw-bold">Student Affairs and Services Form</p>
-              <p class="my-2 col-6 text-center">
+              <p class="my-2 col-4 fw-bold">Student Affairs and Services Form</p>
+              <p class="my-2 col-4 text-center">
                   @if ($SAS->contains('alumni_id', $alum->alumni_id))
                     <i class="fa-regular fa-circle-check me-1 text-success"></i><span class="text-success">Completed</span>
                   @else
                     <i class="fa-regular fa-circle-xmark me-1 text-danger"></i><span class="text-danger">No Record</span>
                   @endif
               </p>
+              <div class="col-4 text-center">
+                <form action="{{ route('adminUserManagement.resetSas') }}" method="post">
+                    @csrf
+                    <input type="hidden" name="alumni_id" value="{{ $alum->alumni_id }}">
+                    <button class="btn btn-primary fs-7" type="submit" @if (!($SAS->contains('alumni_id', $alum->alumni_id))) disabled @endif>Reset Form</button>
+                </form>
+              </div>
             </div>
           </div>
         </div>

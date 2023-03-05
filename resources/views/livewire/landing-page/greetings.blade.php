@@ -53,7 +53,7 @@ style="
                                         <span class="side front">PUPT - CSC</span>
                                     </div>
                                 </a>
-                                <a ref="https://www.facebook.com/PUPTOFFICIAL" target="_blank" class="scene col-4 mx-1">
+                                <a href="https://www.facebook.com/PUPTOFFICIAL" target="_blank" class="scene col-4 mx-1">
                                     <div class="cube">
                                         <span class="side top">
                                             <div class="d-flex justify-content-center align-items-center" style="font-size: 14px">

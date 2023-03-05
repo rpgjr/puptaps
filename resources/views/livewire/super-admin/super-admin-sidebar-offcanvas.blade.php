@@ -8,7 +8,7 @@
         <div class="col-12 text-center">
             <div class="row align-items-center gx-0">
                 <div class="col-5 text-center">
-                    <a href="{{ route('admin.homepage') }}" class="text-decoration-none text-white align-items-center">
+                    <a href="{{ route('superAdmin.getSuperAdminIndex') }}" class="text-decoration-none text-white align-items-center">
                         <img src="{{ asset('img/pupLogo.png') }}" style="height: 75px;">
                     </a>
                 </div>
@@ -28,7 +28,7 @@
                 <!-- Dashboard -->
                 <a type="button" href="{{ route('superAdmin.getSuperAdminIndex') }}" class="fw-bold sidebar-button w-100 text-start @yield('active-homepage') py-2">
                     <i class="fa-solid fa-house me-1"></i>
-                    Dashboard
+                    Homepage
                 </a>
 
                 <hr class="mt-2 mb-2 hr-color opacity-100">

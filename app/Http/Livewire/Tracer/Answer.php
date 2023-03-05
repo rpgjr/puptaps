@@ -21,6 +21,7 @@ class Answer extends Component
     public $temp = 0;
     public $no_board_exam;
     public $currently_unemployed;
+    public $no_job_yet;
 
     public function render() {
         $this->addNullAnswers();
@@ -59,12 +60,13 @@ class Answer extends Component
     }
 
     protected $rules = [
-        "arrayAnswers.*.answer" => "required|string",
+        "arrayAnswers.*.answer" => "required",
     ];
 
     protected $messages = [
         "arrayAnswers.*.answer.required" => "This is required.",
-        "arrayAnswers.*.answer.string"   => "This is required.",
+        "arrayAnswers.*.answer.email" => "This is must be a valid email address.",
+        // "arrayAnswers.*.answer.string"   => "This is required.",
     ];
 
     public function mount() {
@@ -103,15 +105,36 @@ class Answer extends Component
         }
         else {
             $this->currently_unemployed = 'CURRENTLY_UNEMPLOYED';
-            $this->arrayAnswers[5]['answer'] = 'UNEMPLOYED';
-            $this->arrayAnswers[6]['answer'] = 'UNEMPLOYED';
-            $this->arrayAnswers[7]['answer'] = 'UNEMPLOYED';
-            $this->arrayAnswers[8]['answer'] = 'UNEMPLOYED';
-            $this->arrayAnswers[9]['answer'] = 'UNEMPLOYED';
-            $this->arrayAnswers[10]['answer'] = 'UNEMPLOYED';
-            $this->arrayAnswers[11]['answer'] = 'UNEMPLOYED';
-            $this->arrayAnswers[12]['answer'] = 'UNEMPLOYED';
-            $this->arrayAnswers[13]['answer'] = 'UNEMPLOYED';
+            $this->arrayAnswers[5]['answer'] = '---';
+            $this->arrayAnswers[6]['answer'] = '---';
+            $this->arrayAnswers[7]['answer'] = '---';
+            $this->arrayAnswers[8]['answer'] = '---';
+            $this->arrayAnswers[9]['answer'] = '---';
+            $this->arrayAnswers[10]['answer'] = '---';
+            $this->arrayAnswers[11]['answer'] = '---';
+            $this->arrayAnswers[12]['answer'] = '---';
+            $this->arrayAnswers[13]['answer'] = '---';
+        }
+    }
+
+    public function noJobYet() {
+        if ($this->no_job_yet == null) {
+            $this->no_job_yet = 'NO_JOB_YET';
+            $this->arrayAnswers[14]['answer'] = '---';
+            $this->arrayAnswers[15]['answer'] = '---';
+            $this->arrayAnswers[16]['answer'] = '---';
+            $this->arrayAnswers[17]['answer'] = '---';
+            $this->arrayAnswers[18]['answer'] = '---';
+            $this->arrayAnswers[19]['answer'] = '---';
+        }
+        else {
+            $this->no_job_yet = null;
+            $this->arrayAnswers[14]['answer'] = '';
+            $this->arrayAnswers[15]['answer'] = '';
+            $this->arrayAnswers[16]['answer'] = '';
+            $this->arrayAnswers[17]['answer'] = '';
+            $this->arrayAnswers[18]['answer'] = '';
+            $this->arrayAnswers[19]['answer'] = '';
         }
     }
 
@@ -138,13 +161,28 @@ class Answer extends Component
         $temp_null = $this->countNull - 1;
         if($temp_null == $this->currentPage) {
             if ($this->currently_unemployed == 'CURRENTLY_UNEMPLOYED') {
-                $this->arrayAnswers[14]['answer'] = 'UNEMPLOYED';
-                $this->arrayAnswers[15]['answer'] = 'UNEMPLOYED';
-                $this->arrayAnswers[16]['answer'] = 'UNEMPLOYED';
-                $this->arrayAnswers[17]['answer'] = 'UNEMPLOYED';
-                $this->arrayAnswers[18]['answer'] = 'UNEMPLOYED';
-                $this->arrayAnswers[19]['answer'] = 'UNEMPLOYED';
-                $this->saveAnswer();
+                $this->arrayAnswers[5]['answer'] = 'UNEMPLOYED';
+                $this->arrayAnswers[6]['answer'] = 'UNEMPLOYED';
+                $this->arrayAnswers[7]['answer'] = 'UNEMPLOYED';
+                $this->arrayAnswers[8]['answer'] = 'UNEMPLOYED';
+                $this->arrayAnswers[9]['answer'] = 'UNEMPLOYED';
+                $this->arrayAnswers[10]['answer'] = 'UNEMPLOYED';
+                $this->arrayAnswers[11]['answer'] = 'noemail@email.com';
+                $this->arrayAnswers[12]['answer'] = 'UNEMPLOYED';
+                $this->arrayAnswers[13]['answer'] = 'UNEMPLOYED';
+            }
+            elseif ($this->currentPage == 2) {
+                $this->validate([
+                    'arrayAnswers.5.answer' => 'required',
+                    'arrayAnswers.6.answer' => 'required',
+                    'arrayAnswers.7.answer' => 'required',
+                    'arrayAnswers.8.answer' => 'required',
+                    'arrayAnswers.9.answer' => 'required',
+                    'arrayAnswers.10.answer' => 'required',
+                    'arrayAnswers.11.answer' => 'required|email',
+                    'arrayAnswers.12.answer' => 'required',
+                    'arrayAnswers.13.answer' => 'required',
+                ]);
             }
             $this->validate();
         }
@@ -165,7 +203,7 @@ class Answer extends Component
                 'arrayAnswers.8.answer' => 'required',
                 'arrayAnswers.9.answer' => 'required',
                 'arrayAnswers.10.answer' => 'required',
-                'arrayAnswers.11.answer' => 'required',
+                'arrayAnswers.11.answer' => 'required|email',
                 'arrayAnswers.12.answer' => 'required',
                 'arrayAnswers.13.answer' => 'required',
             ]);
@@ -177,7 +215,24 @@ class Answer extends Component
     }
 
     public function saveAnswer() {
-        $this->validate();
+        if ($this->no_job_yet == "NO_JOB_YET") {
+            $this->arrayAnswers[14]['answer'] = 'UNEMPLOYED';
+            $this->arrayAnswers[15]['answer'] = 'UNEMPLOYED';
+            $this->arrayAnswers[16]['answer'] = 'UNEMPLOYED';
+            $this->arrayAnswers[17]['answer'] = 'UNEMPLOYED';
+            $this->arrayAnswers[18]['answer'] = 'noemail@email.com';
+            $this->arrayAnswers[19]['answer'] = 'UNEMPLOYED';
+        }
+        else {
+            $this->validate([
+                'arrayAnswers.14.answer' => 'required',
+                'arrayAnswers.15.answer' => 'required',
+                'arrayAnswers.16.answer' => 'required',
+                'arrayAnswers.17.answer' => 'required',
+                'arrayAnswers.18.answer' => 'required|email',
+                'arrayAnswers.19.answer' => 'required',
+            ]);
+        }
         $questions = count(TracerQuestions::all());
         $ctr = 1;
 

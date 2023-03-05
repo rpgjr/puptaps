@@ -21,8 +21,8 @@
                                             <h5 class="mb-1">Ms. Liwanag L. Maliksi</h5>
                                             <p class="my-1"><i>Admission & Guidance Council Office</i></p>
                                             <p class="my-1"><b>Head of Admission & Guidance Counseling Office</b></p>
-                                            <p class="my-0"><span class="fw-bold">Email: </span></p>
-                                            <p class="my-0"><span class="fw-bold">Tel. No.: </span></p>
+                                            <p class="my-0"><span class="fw-bold">Email: </span>liwaymaliksi@yahoo.com</p>
+                                            <p class="my-0"><span class="fw-bold">Tel. No.: </span>0919 591 1234</p>
                                         </div>
                                     </div>
                                 </div>
@@ -51,52 +51,52 @@
                                 <div class="col-12 col-lg-6">
                                     <div class="row align-items-center justify-content-center gy-2">
                                         <div class="col-12 col-md-3 text-center text-md-end">
-                                            <img src="{{ asset('Uploads/Profiles/user-no-profile.png') }}" alt="" class="pup-faculty">
+                                            <img src="{{ asset('img/geneta.jpg') }}" alt="" class="pup-faculty">
                                         </div>
                                         <div class="col-12 col-md-9 text-center text-md-start">
                                             <h5 class="mb-1">Rodrigo Geneta</h5>
                                             <p class="my-1"><i>BS Information Technology</i></p>
-                                            <p class="my-0"><span class="fw-bold">Email: </span></p>
-                                            <p class="my-0"><span class="fw-bold">Tel. No.: </span></p>
+                                            <p class="my-0"><span class="fw-bold">Email: </span>rodrigo21geneta@gmail.com</p>
+                                            <p class="my-0"><span class="fw-bold">Tel. No.: </span> 0961 197 3308</p>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-12 col-lg-6">
                                     <div class="row align-items-center justify-content-center gy-2">
                                         <div class="col-12 col-md-3 text-center text-md-end">
-                                            <img src="{{ asset('Uploads/Profiles/user-no-profile.png') }}" alt="" class="pup-faculty">
+                                            <img src="{{ asset('img/claveria.png') }}" alt="" class="pup-faculty">
                                         </div>
                                         <div class="col-12 col-md-9 text-center text-md-start">
                                             <h5 class="mb-1">Rein Andrei Claveria</h5>
                                             <p class="my-1"><i>BS Information Technology</i></p>
-                                            <p class="my-0"><span class="fw-bold">Email: </span></p>
-                                            <p class="my-0"><span class="fw-bold">Tel. No.: </span></p>
+                                            <p class="my-0"><span class="fw-bold">Email: </span>claveria.reinandrei@gmail.com</p>
+                                            <p class="my-0"><span class="fw-bold">Tel. No.: </span>0930 409 2107</p>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-12 col-lg-6">
                                     <div class="row align-items-center justify-content-center gy-2">
                                         <div class="col-12 col-md-3 text-center text-md-end">
-                                            <img src="{{ asset('Uploads/Profiles/user-no-profile.png') }}" alt="" class="pup-faculty">
+                                            <img src="{{ asset('img/gierza.jpeg') }}" alt="" class="pup-faculty">
                                         </div>
                                         <div class="col-12 col-md-9 text-center text-md-start">
                                             <h5 class="mb-1">Lougen Gierza</h5>
                                             <p class="my-1"><i>BS Information Technology</i></p>
-                                            <p class="my-0"><span class="fw-bold">Email: </span></p>
-                                            <p class="my-0"><span class="fw-bold">Tel. No.: </span></p>
+                                            <p class="my-0"><span class="fw-bold">Email: </span>gierza29@gmail.com</p>
+                                            <p class="my-0"><span class="fw-bold">Tel. No.: </span>0929 201 8511</p>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-12 col-lg-6">
                                     <div class="row align-items-center justify-content-center gy-2">
                                         <div class="col-12 col-md-3 text-center text-md-end">
-                                            <img src="{{ asset('Uploads/Profiles/user-no-profile.png') }}" alt="" class="pup-faculty">
+                                            <img src="{{ asset('img/Trinidad.jpg') }}" alt="" class="pup-faculty">
                                         </div>
                                         <div class="col-12 col-md-9 text-center text-md-start">
                                             <h5 class="mb-1">Hannah Jane Trinidad</h5>
                                             <p class="my-1"><i>BS Information Technology</i></p>
-                                            <p class="my-0"><span class="fw-bold">Email: </span></p>
-                                            <p class="my-0"><span class="fw-bold">Tel. No.: </span></p>
+                                            <p class="my-0"><span class="fw-bold">Email: </span>jaetrndd@gmail.com</p>
+                                            <p class="my-0"><span class="fw-bold">Tel. No.: </span>0946 075 1264</p>
                                         </div>
                                     </div>
                                 </div>
@@ -117,7 +117,7 @@
                                 </div>
                                 <div class="col-12 col-lg-4 text-center">
                                     <i class="fa-solid fa-phone fs-1"></i>
-                                    <p class="fs-6 mt-2">---</p>
+                                    <p class="fs-6 mt-2">(632) 5335-1787 or 5335-1777</p>
                                 </div>
                             </div>
                         </div>

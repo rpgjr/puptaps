@@ -4,7 +4,7 @@
 @section('content')
 
     <section class="mt-4 mt-sm-4 mt-md-4 mt-lg-5 mt-xl-5">
-        <div class="container-fluid animate__animated animate__fadeInDown animate__fast">
+        <div class="container-fluid">
 
             <!-- Alert Status -->
             <livewire:components.alert-status-message :message="session()->get('success')" />

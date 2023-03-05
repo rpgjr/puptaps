@@ -128,18 +128,34 @@
                                 @endif
                                     <div class="form-group">
                                         @if (($value->question_type == "text") || ($value->question_type == "date"))
-                                            <div>
-                                                <label class="form-label">{{ $value->question_text}} <span class="text-danger">*</span></label>
-                                                <input type="{{ $value->question_type }}" class="form-control @if ($arrayAnswers[$key]['answer'] == null) @error('arrayAnswers.' . $key . '.answer') is-invalid @enderror @endif" wire:model="arrayAnswers.{{ $key }}.answer" @if($currently_unemployed == 'CURRENTLY_UNEMPLOYED')disabled @endif>
-                                                <span class="text-danger error-message">
-                                                    @if ($arrayAnswers[$key]['answer'] == null)
-                                                        @error('arrayAnswers.' . $key . '.answer')
-                                                        <i class="fa-solid fa-circle-exclamation ml-5"></i>
-                                                        {{ $message }}
-                                                        @enderror
-                                                    @endif
-                                                </span>
-                                            </div>
+                                            @if ($key == 11)
+                                                <div>
+                                                    <label class="form-label">{{ $value->question_text}} <span class="text-danger">*</span></label>
+                                                    <input type="{{ $value->question_type }}" class="form-control @if ($arrayAnswers[$key]['answer'] == null || $errors->all()) @error('arrayAnswers.' . $key . '.answer') is-invalid @enderror @endif" wire:model="arrayAnswers.{{ $key }}.answer" @if($currently_unemployed == 'CURRENTLY_UNEMPLOYED')disabled @endif>
+                                                    <span class="text-danger error-message">
+                                                        @if ($arrayAnswers[$key]['answer'] == null || $errors->all())
+                                                            @error('arrayAnswers.' . $key . '.answer')
+                                                            <i class="fa-solid fa-circle-exclamation ml-5"></i>
+                                                            {{ $message }}
+                                                            @enderror
+                                                        @endif
+                                                    </span>
+                                                </div>
+                                            @else
+                                                <div>
+                                                    <label class="form-label">{{ $value->question_text}} <span class="text-danger">*</span></label>
+                                                    <input type="{{ $value->question_type }}" class="form-control @if ($arrayAnswers[$key]['answer'] == null) @error('arrayAnswers.' . $key . '.answer') is-invalid @enderror @endif" wire:model="arrayAnswers.{{ $key }}.answer" @if($currently_unemployed == 'CURRENTLY_UNEMPLOYED')disabled @endif>
+                                                    <span class="text-danger error-message">
+                                                        @if ($arrayAnswers[$key]['answer'] == null)
+                                                            @error('arrayAnswers.' . $key . '.answer')
+                                                            <i class="fa-solid fa-circle-exclamation ml-5"></i>
+                                                            {{ $message }}
+                                                            @enderror
+                                                        @endif
+                                                    </span>
+                                                </div>
+
+                                            @endif
                                         @elseif ($value->question_type == "select")
                                             <div>
                                                 <label class="form-label">{{ $value->question_text }} <span class="text-danger">*</span></label>
@@ -203,32 +219,60 @@
                             @endforeach
                         @endif
                         @if ($currentPage == 3)
-                            <div class="col-12 mb-2">
+                            @if($currently_unemployed != 'CURRENTLY_UNEMPLOYED')
                                 <div class="col-12 mb-2">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" wire:click="sameCurrent()">
-                                        <label class="form-check-label">
-                                            Same as Current Job
-                                        </label>
+                                    <div class="col-12 mb-2">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" wire:click="sameCurrent()">
+                                            <label class="form-check-label">
+                                                Same as Current Job
+                                            </label>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                            @else
+                                <div class="col-12 mb-2">
+                                    <div class="col-12 mb-2">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" wire:click="noJobYet()">
+                                            <label class="form-check-label">
+                                                No job yet.
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endif
                             @foreach ($questions as $key => $value)
                             @if (($value->category_id) == ($category->category_id))
                                 <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 mb-3">
                                     <div class="form-group">
-                                        <div>
-                                            <label class="form-label">{{ $value->question_text}} <span class="text-danger">*</span></label>
-                                            <input type="{{ $value->question_type }}" class="form-control @if ($arrayAnswers[$key]['answer'] == null) @error('arrayAnswers.' . $key . '.answer') is-invalid @enderror @endif" wire:model="arrayAnswers.{{ $key }}.answer" value="{{ $arrayAnswers[$key]['answer'] }}">
-                                            <span class="text-danger error-message">
-                                                @if ($arrayAnswers[$key]['answer'] == null)
-                                                    @error('arrayAnswers.' . $key . '.answer')
-                                                    <i class="fa-solid fa-circle-exclamation ml-5"></i>
-                                                    {{ $message }}
-                                                    @enderror
-                                                @endif
-                                            </span>
-                                        </div>
+                                        @if ($key == 18)
+                                            <div>
+                                                <label class="form-label">{{ $value->question_text}} <span class="text-danger">*</span></label>
+                                                <input type="{{ $value->question_type }}" class="form-control @if ($arrayAnswers[$key]['answer'] == null || $errors->get('email') == null) @error('arrayAnswers.' . $key . '.answer') is-invalid @enderror @endif" wire:model="arrayAnswers.{{ $key }}.answer" value="{{ $arrayAnswers[$key]['answer'] }}" @if($no_job_yet == 'NO_JOB_YET') disabled @endif>
+                                                <span class="text-danger error-message">
+                                                    @if ($arrayAnswers[$key]['answer'] == null || $errors->get('email') == null)
+                                                        @error('arrayAnswers.' . $key . '.answer')
+                                                        <i class="fa-solid fa-circle-exclamation ml-5"></i>
+                                                        {{ $message }}
+                                                        @enderror
+                                                    @endif
+                                                </span>
+                                            </div>
+                                        @else
+                                            <div>
+                                                <label class="form-label">{{ $value->question_text}} <span class="text-danger">*</span></label>
+                                                <input type="{{ $value->question_type }}" class="form-control @if ($arrayAnswers[$key]['answer'] == null) @error('arrayAnswers.' . $key . '.answer') is-invalid @enderror @endif" wire:model="arrayAnswers.{{ $key }}.answer" value="{{ $arrayAnswers[$key]['answer'] }}" @if($no_job_yet == 'NO_JOB_YET') disabled @endif>
+                                                <span class="text-danger error-message">
+                                                    @if ($arrayAnswers[$key]['answer'] == null)
+                                                        @error('arrayAnswers.' . $key . '.answer')
+                                                        <i class="fa-solid fa-circle-exclamation ml-5"></i>
+                                                        {{ $message }}
+                                                        @enderror
+                                                    @endif
+                                                </span>
+                                            </div>
+                                        @endif
                                     </div>
                                 </div>
                             @endif
@@ -347,15 +391,15 @@
                                 @endif
 
                                 @if ($currentPage < $totalPage && $currentPage != $totalPage)
-                                    @if ($currently_unemployed == 'CURRENTLY_UNEMPLOYED')
+                                    {{-- @if ($currently_unemployed == 'CURRENTLY_UNEMPLOYED')
                                         <div class="col-6 text-end">
                                             <button class="btn btn-success px-3 fs-7" wire:click.prevent="nextPage()">Submit <i class="fa-solid fa-caret-right"></i></button>
                                         </div>
-                                    @else
+                                    @else --}}
                                         <div class="col-6 text-end">
                                             <button class="btn btn-primary px-3 fs-7" wire:click.prevent="nextPage()">Next <i class="fa-solid fa-caret-right"></i></button>
                                         </div>
-                                    @endif
+                                    {{-- @endif --}}
                                 @endif
 
                                 @if ($currentPage == $totalPage)

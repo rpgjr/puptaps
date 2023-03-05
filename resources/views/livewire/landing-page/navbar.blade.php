@@ -3,6 +3,7 @@
     <div class="container-fluid navbar-inner animate__animated animate__fadeInLeftBig">
         <a class="navbar-brand animate__animated animate__slideInDown" href="{{ route('landingPage') }}">
             <img src="{{ asset('img/pupLogo.png') }}" style="height: 40px">
+            {{-- <img src="{{ asset('img/puptaps-bilog.png') }}" style="height: 40px"> --}}
             {{-- <p class="d-none d-sm-inline ms-2 pupt-title">PUPT - Alumni Portal System</p> --}}
             <span class="d-none d-sm-inline ms-2 fw-bold fs-6 text-white ">PUPT-Alumni Portal System</span>
         </a>

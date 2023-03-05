@@ -58,7 +58,7 @@
                 </div>
 
                 <div class="col-md-5 col-lg-4 ml-lg-0 text-center text-md-end">
-                    <a class="color-pup m-1 text-decoration-none" href="#">
+                    <a class="color-pup m-1 text-decoration-none" href="https://www.facebook.com/PUPTOFFICIAL" target="_blank">
                         <i class="footer-icon-links fa-brands fa-facebook"></i>
                     </a>
 

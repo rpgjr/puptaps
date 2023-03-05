@@ -113,6 +113,25 @@ class UserManagerController extends Controller
     }
 
     public function downloadListTemplate() {
-        return response()->download(public_path("files/list_template.xlsx"));
+        // return response()->download(public_path("files/list_template.xlsx"));
+        return response()->download(asset("files/list_template.xlsx"));
+    }
+
+    public function resetPds(Request $request) {
+        $deleteAll = PdsAnswers::where('alumni_id', $request->alumni_id)->delete();
+
+        return back()->with('success', 'Form Successfully reset.');
+    }
+
+    public function resetEif(Request $request) {
+        $deleteAll = EifAnswers::where('alumni_id', $request->alumni_id)->delete();
+
+        return back()->with('success', 'Form Successfully reset.');
+    }
+
+    public function resetSas(Request $request) {
+        $deleteAll = SasAnswers::where('alumni_id', $request->alumni_id)->delete();
+
+        return back()->with('success', 'Form Successfully reset.');
     }
 }

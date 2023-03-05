@@ -20,7 +20,7 @@
                                 </h5>
                                 <div class="card-body">
                                     <p class="card-text">
-                                        These are the necessary forms needed by the <b>Office of the Vice President</b> for <b>Student Services.</b> Additionally, before the University releases the documents that you've requested, the forms must have a status of <b>Completed <i class="fa-solid fa-circle-check" style="color: #27AE60;"></i></b>.
+                                        These are the necessary forms needed by the <b>Office of the Vice President</b> for <b>Student Services.</b> Additionally, before the University releases the documents that you've requested, the forms must have a status of <b>Completed <i class="fa-solid fa-circle-check" style="color: #27AE60;"></i></b>. If there is an error in your form, please reach out to the <a href="{{ route('user.getContactsPage') }}" class="fw-bold">admins</a> for support.
                                     </p>
                                 </div>
                             </div>

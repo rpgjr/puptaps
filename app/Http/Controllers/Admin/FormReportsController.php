@@ -868,7 +868,7 @@ class FormReportsController extends Controller
 
             $reasons = ['Graduation', 'Personal', 'Family', 'Academic', 'Financial', 'Work-related', 'Others'];
 
-
+            $answerOthers = count($total);
             foreach ($reasons as $reason) {
                 $perReasons = Alumni::join('form_eif_answers', 'tbl_alumni.alumni_id', '=', 'form_eif_answers.alumni_id')
                     ->whereBetween('tbl_alumni.batch', [$request->batch_from, $request->batch_to])
@@ -878,10 +878,17 @@ class FormReportsController extends Controller
                     ->select('tbl_alumni.alumni_id')
                     ->distinct()
                     ->get();
+                $answerOthers = $answerOthers - count($perReasons);
+                if ($reason == 'Others') {
+                    $perReasons = $answerOthers;
+                }
+                else {
+                    $perReasons = count($perReasons);
+                }
                 $html .= '<tr>
                     <th class="th-EI" colspan="1" style="width: 30%;">' . $reason . '</th>
-                    <td class="th-EI" colspan="2" style="width: 20%;">' . count($perReasons) . '</td>
-                    <td class="th-EI" colspan="1" style="width: 20%;">' . number_format(count($perReasons) / count($total) * 100, 2) . '% </td>
+                    <td class="th-EI" colspan="2" style="width: 20%;">' . $perReasons . '</td>
+                    <td class="th-EI" colspan="1" style="width: 20%;">' . number_format($perReasons / count($total) * 100, 2) . '% </td>
                 </tr>';
             }
             $html .= '</table>';
@@ -2154,7 +2161,7 @@ class FormReportsController extends Controller
                             ->distinct()
                             ->get();
                         $total = Alumni::join('form_pds_answers', 'tbl_alumni.alumni_id', '=', 'form_pds_answers.alumni_id')
-                            ->where('tbl_alumni.course_id', '=', $course->course_id)
+                            ->where('course_id', 'like', '%' . $request->course_id . '%')
                             ->whereBetween('tbl_alumni.batch', [$request->batch_from, $request->batch_to])
                             ->select('tbl_alumni.alumni_id')
                             ->distinct()

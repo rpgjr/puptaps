@@ -18,6 +18,7 @@ class HomeController extends Controller
     public function getAdminHomepage() {
         $boardExam = Alumni::join('tbl_tracer_answers', 'tbl_alumni.alumni_id', '=', 'tbl_tracer_answers.alumni_id')
                 ->where('tbl_tracer_answers.question_id', '=', 3)
+                ->where('tbl_tracer_answers.answer', '!=', 'N/A')
                 ->select('tbl_tracer_answers.answer as answers', DB::raw('count(tbl_alumni.alumni_id) as alumniCount'))
                 ->groupBy('answers')
                 ->get();
