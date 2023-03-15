@@ -11,10 +11,6 @@
         <div class="col-4 d-flex justify-content-end align-items-center">
             <form action="{{ route('logout') }}" method="post">
                 @csrf
-                {{-- <button class="ms-3 btn btn-sm btn-outline-light px-3">
-                    <i class="fa-solid fa-right-from-bracket me-1"></i>
-                    Logout
-                </button> --}}
                 <button type="submit" class="cssbuttons-io-button fs-7"> <span class="fs-7">Logout</span>
                     <div class="icon"><i class="fa-solid fa-right-from-bracket fs-7 text-light"></i>
                     </div>

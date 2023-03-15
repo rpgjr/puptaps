@@ -153,15 +153,6 @@
                     </div>
                 </div>
                 <div class="row">
-                    {{-- <div class="card text-center mb-3">
-                        <div class="card-body d-block d-sm-block d-md-block d-lg-flex d-xl-flex justify-content-evenly align-items-center">
-                            <p class="my-0 py-0 me-2">Scale: </p>
-                            <p class="my-0 py-0 mx-3 fw-bold">1 - Very Satisfactory</p>
-                            <p class="my-0 py-0 mx-3 fw-bold">2 - Satisfactory</p>
-                            <p class="my-0 py-0 mx-3 fw-bold">3 - Unsatisfactory</p>
-                            <p class="my-0 py-0 mx-3 fw-bold">4 - Very Unsatisfactory</p>
-                        </div>
-                    </div> --}}
                     <table class="table">
                         <thead class="thead-sticky table-dark">
                             <tr>

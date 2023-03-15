@@ -52,21 +52,22 @@ const CONTROLLER_SUPERADMIN_ADMIN_MANAGEMENT = "App\Http\Controllers\SuperAdmin\
 |
 */
 
-// ========== Module Route ==============================================================================================
 
-// Group for Homepage and Landing Page
+/*
+|--------------------------------------------------------------------------
+| Homepage
+|--------------------------------------------------------------------------
+| Homepage - Landing page Routing
+*/
 Route::group(
     [
         'controller' => ModulesHomeController::class
-    ], function() {
-
-        //App\Http\Controllers\Modules\
-        // Route for Landing Page View
+    ],
+    function () {
         Route::get('/', 'getLandingPage')
             ->middleware('isLoggedIn')
             ->name('landingPage');
 
-        // Route for HomePage View
         Route::get('/home', 'getUserHomepage')
             ->middleware(['auth', 'isAdmin', 'checkAccountStatus', 'hasCompleteProfile', 'hasAnswerTracer'])
             ->name('user.homepage');
@@ -75,112 +76,166 @@ Route::group(
             ->middleware(['auth', 'isAdmin', 'checkAccountStatus', 'hasCompleteProfile', 'hasAnswerTracer'])
             ->name('user.getContactsPage');
 
-        Route::get('/about', 'getAboutPage')
+        Route::get('/about-us', 'getAboutPage')
             ->middleware(['auth', 'isAdmin', 'checkAccountStatus', 'hasCompleteProfile', 'hasAnswerTracer'])
             ->name('user.getAboutPage');
-});
+    }
+);
 
-// Login Mail - Send Temporary Password
+/*
+|--------------------------------------------------------------------------
+| Temporary Password - Email
+|--------------------------------------------------------------------------
+|
+| Routing for sending temporary password through email
+|
+*/
 Route::group(
     [
         'controller' => LoginMailController::class,
-        'prefix' => 'mail',
-        'as' => 'mail.',
-    ], function() {
+        'prefix'     => 'mail',
+        'as'         => 'mail.',
+    ],
+    function () {
         Route::get('sendTemporaryPassword/{email}/{stud_number}', 'sendTemporaryPassword')
             ->name('sendTemporaryPassword');
-});
+    }
+);
 
-// Temporary Password
+/*
+|--------------------------------------------------------------------------
+| Temporary Password
+|--------------------------------------------------------------------------
+|
+| Routing for sending temporary password through email
+|
+*/
 Route::group(
     [
         'controller' => TemporaryPassoword::class,
-        'prefix' => 'login',
-        'as' => 'login.',
-    ], function() {
-        Route::get('getTemporaryPassword', 'getTemporaryPassword')
+        'prefix'     => 'login',
+        'as'         => 'login.',
+    ],
+    function () {
+        Route::get('temporary-password', 'getTemporaryPassword')
             ->name('getTemporaryPassword');
-});
+    }
+);
 
-// Reset Password
+/*
+|--------------------------------------------------------------------------
+| Reset Password
+|--------------------------------------------------------------------------
+|
+| Routing for reseting password
+|
+*/
 Route::group(
     [
         'controller' => ResetPasswordController::class,
-        'prefix' => 'login',
-        'as' => 'login.',
-    ], function() {
-        Route::get('getResetPassword', 'getResetPassword')
+        'prefix'     => 'login',
+        'as'         => 'login.',
+    ],
+    function () {
+        Route::get('reset-password', 'getResetPassword')
             ->name('getResetPassword');
 
-        Route::post('sendResetPassword', 'sendResetPassword')
+        Route::post('reset-password/send', 'sendResetPassword')
             ->name('sendResetPassword');
 
-        Route::get('changePassword/{email}', 'changePassword')
+        Route::get('change-password/{email}', 'changePassword')
             ->name('changePassword');
 
-        Route::post('changingPassword', 'changingPassword')
+        Route::post('changing-password', 'changingPassword')
             ->name('changingPassword');
-});
+    }
+);
 
-// Login - Registration
-require __DIR__.'/auth.php';
-// ========== End of Module Route =======================================================================================
+/*
+|--------------------------------------------------------------------------
+| Login - Registration
+|--------------------------------------------------------------------------
+|
+| Routing for Login and Registration
+|
+*/
+require __DIR__ . '/auth.php';
 
 
-
-// ========== User Route =================================================================================================
-
-// User - Career
+/*
+|--------------------------------------------------------------------------
+| Career Module
+|--------------------------------------------------------------------------
+|
+| Routing for career functions and modules of user / alumni side
+|
+*/
 Route::group(
     [
         'controller' => CareerController::class,
-        'prefix' => 'career',
-        'as' => 'userCareer.',
+        'prefix'     => 'careers',
+        'as'         => 'userCareer.',
         'middleware' => ['isAdmin', 'auth', 'hasCompleteProfile', 'hasAnswerTracer']
-    ], function() {
-        Route::get('index', 'getCareerIndex')
+    ],
+    function () {
+        Route::get('/', 'getCareerIndex')
             ->name('index');
 
-        Route::post('add/text-career', 'addTextCareer')
+        Route::post('create-text-career', 'addTextCareer')
             ->name('addTextCareer');
 
-        Route::post('add/image-career', 'addImageCareer')
+        Route::post('create-image-career', 'addImageCareer')
             ->name('addImageCareer');
+    }
+);
 
-        Route::post('application', 'applyCareer')
-            ->name('applyCareer');
-});
-
-// User - Profile
+/*
+|--------------------------------------------------------------------------
+| User Profile Module
+|--------------------------------------------------------------------------
+|
+| Routing for setting up user profile and updating user profile
+|
+*/
 Route::group(
     [
         'controller' => ProfileController::class,
-        'prefix' => 'profile',
-        'as' => 'userProfile.',
+        'prefix'     => 'profile',
+        'as'         => 'userProfile.',
         'middleware' => ['isAdmin', 'auth', 'hasAnswerTracer']
-    ], function() {
-        Route::get('settings', 'getProfileIndex')
+    ],
+    function () {
+        Route::get('/', 'getProfileIndex')
             ->name('index')->middleware('hasCompleteProfile');
 
-        Route::get('getProfileSetup', 'getProfileSetup')
+        Route::get('profile-setup', 'getProfileSetup')
             ->name('getProfileSetup')->middleware('hasIncompleteProfile');
 
         Route::post('setup-profile', 'updateProfile')
             ->name('updateProfile');
 
-        Route::post('updateUserAccount', 'updateUserAccount')
+        Route::post('update-profile', 'updateUserAccount')
             ->name('updateUserAccount');
-});
+    }
+);
 
-// User - Forms
+/*
+|--------------------------------------------------------------------------
+| Forms Module
+|--------------------------------------------------------------------------
+|
+| Routing for getting the forms module page and for getting the other forms
+|
+*/
 Route::group(
     [
         'controller' => FormsController::class,
-        'prefix' => 'form',
-        'as' => 'userForm.',
+        'prefix'     => 'forms',
+        'as'         => 'userForm.',
         'middleware' => ['isAdmin', 'auth', 'hasCompleteProfile', 'hasAnswerTracer']
-    ], function() {
-        Route::get('index', 'getFormIndex')
+    ],
+    function () {
+        Route::get('/', 'getFormIndex')
             ->name('index');
 
         Route::get('personal-data-sheet', 'getPDS')
@@ -189,143 +244,212 @@ Route::group(
         Route::get('exit-interview', 'getExiteInterview')
             ->name('getExiteInterview');
 
-        Route::get('sas', 'getSAS')
+        Route::get('sas-form', 'getSAS')
             ->name('getSAS');
-});
+    }
+);
 
-// User - PDS - Download to PDF
+/*
+|--------------------------------------------------------------------------
+| PDS Form Download
+|--------------------------------------------------------------------------
+|
+| Routing for downloading the PDS Form as PDF
+|
+*/
 Route::group(
     [
         'controller' => PdsToPdfController::class,
-        'prefix' => 'downloads',
-        'as' => 'userForm.',
+        'prefix'     => 'download',
+        'as'         => 'userForm.',
         'middleware' => ['auth']
-    ], function() {
-        Route::post('PDS_to_PDF', 'PDS_to_PDF')
+    ],
+    function () {
+        Route::post('form-pds', 'PDS_to_PDF')
             ->name('PDS_to_PDF');
-});
+    }
+);
 
-// User - EIF - Download to PDF
+/*
+|--------------------------------------------------------------------------
+| EIF Form Download
+|--------------------------------------------------------------------------
+|
+| Routing for downloading the EIF Form as PDF
+|
+*/
 Route::group(
     [
         'controller' => EifToPdfController::class,
-        'prefix' => 'downloads',
-        'as' => 'userForm.',
+        'prefix'     => 'download',
+        'as'         => 'userForm.',
         'middleware' => ['auth']
-    ], function() {
-        Route::post('EIF_TO_PDF', 'EIF_TO_PDF')
+    ],
+    function () {
+        Route::post('form-exit-interview', 'EIF_TO_PDF')
             ->name('EIF_TO_PDF');
-});
+    }
+);
 
-// User - SAS - Download to PDF
+/*
+|--------------------------------------------------------------------------
+| SAS Form Download
+|--------------------------------------------------------------------------
+|
+| Routing for downloading the SAS Form as PDF
+|
+*/
 Route::group(
     [
         'controller' => SasToPdfController::class,
-        'prefix' => 'downloads',
-        'as' => 'userForm.',
+        'prefix'     => 'download',
+        'as'         => 'userForm.',
         'middleware' => ['auth']
-    ], function() {
-        Route::post('SAS_TO_PDF', 'SAS_TO_PDF')
+    ],
+    function () {
+        Route::post('form-sas', 'SAS_TO_PDF')
             ->name('SAS_TO_PDF');
-});
+    }
+);
 
-// User - Tracer
+/*
+|--------------------------------------------------------------------------
+| Tracer Module
+|--------------------------------------------------------------------------
+|
+| Routing for Answering and Updating the Tracer form in user / alumni side
+|
+*/
 Route::group(
     [
         'controller' => TracerController::class,
-        'prefix' => 'tracer',
-        'as' => 'userTracer.',
+        'prefix'     => 'tracer',
+        'as'         => 'userTracer.',
         'middleware' => ['isAdmin', 'auth', 'hasCompleteProfile']
-    ], function() {
-        Route::get('index', 'getTracerIndex')
+    ],
+    function () {
+        Route::get('/', 'getTracerIndex')
             ->name('getTracerIndex')->middleware('hasAnswerTracer');
-        Route::get('update', 'getUpdatePage')
+
+        Route::get('update-tracer', 'getUpdatePage')
             ->name('getUpdatePage')->middleware('hasAnswerTracer');
+
         Route::get('answer-tracer', 'getAnswerUnemployedPage')
             ->name('getAnswerUnemployedPage')->middleware('hasAnswerTracer');
+
         Route::get('answer', 'getAnswerPage')
             ->name('getAnswerPage')->middleware('hasUnanswerTracer');
-        Route::get('getAnswerModal', 'getAnswerModal')
+
+        Route::get('tracer-form', 'getAnswerModal')
             ->name('getAnswerModal')->middleware('hasUnanswerTracer');
-});
+    }
+);
 
-// ========== End of User Route ======================================================================================
-
-
-
-// ========== Admin Route ===========================================================================================
-
-// Group for Homepage and Landing Page
+/*
+|--------------------------------------------------------------------------
+| Homepage
+|--------------------------------------------------------------------------
+|
+| Routing for Homepage in Admin Side
+|
+*/
 Route::group(
     [
         'controller' => HomeController::class
-    ], function() {
+    ],
+    function () {
 
         Route::get('/admin', 'getAdminHomepage')
             ->middleware(['auth', 'isLoggedIn', 'isUser'])
             ->name('admin.homepage');
-});
+    }
+);
 
-// Admin - User Management
+/*
+|--------------------------------------------------------------------------
+| User Management Module
+|--------------------------------------------------------------------------
+|
+| Routing for uploading list of graduates, update information of alumni,
+| checking the status of thier forms and viewing the answer of thier forms
+|
+*/
 Route::group(
     [
         'controller' => UserManagerController::class,
-        'prefix' => 'admin/user-management',
-        'as' => 'adminUserManagement.',
+        'prefix'     => 'admin/user-management',
+        'as'         => 'adminUserManagement.',
         'middleware' => ['isUser', 'auth']
-    ], function() {
+    ],
+    function () {
+        Route::get('/', 'getAlumniManager')
+            ->name('getAlumniManager');
+
         Route::post('add-alumni-list', 'addAlumniList')
-               ->name('addAlumniList');
+            ->name('addAlumniList');
 
-        Route::get('alumni-manager', 'getAlumniManager')
-               ->name('getAlumniManager');
-
-        Route::post('remove-alumni-account', 'removeAlumniAccount')
-               ->name('removeAlumniAccount');
-
-        Route::post('updateAlumniInfo', 'updateAlumniInfo')
-               ->name('updateAlumniInfo');
+        Route::post('update-alumni-profile', 'updateAlumniInfo')
+            ->name('updateAlumniInfo');
 
         Route::get('download-template', 'downloadListTemplate')
-               ->name('downloadListTemplate');
+            ->name('downloadListTemplate');
 
-        Route::post('resetPds', 'resetPds')
-               ->name('resetPds');
+        Route::post('reset-pds', 'resetPds')
+            ->name('resetPds');
 
-        Route::post('resetEif', 'resetEif')
-               ->name('resetEif');
+        Route::post('reset-eif', 'resetEif')
+            ->name('resetEif');
 
-        Route::post('resetSas', 'resetSas')
-               ->name('resetSas');
-});
+        Route::post('reset-sas', 'resetSas')
+            ->name('resetSas');
+    }
+);
 
-// Admin - Get Alumni PDF Form
+/*
+|--------------------------------------------------------------------------
+| Alumni Answered Forms
+|--------------------------------------------------------------------------
+|
+| Routing for viewing the alumni answered forms for checking
+|
+*/
 Route::group(
     [
         'controller' => AlumniPdfController::class,
-        'prefix' => 'admin/alumni-pdf',
-        'as' => 'adminGetPdf.',
+        'prefix'     => 'admin/alumni-form',
+        'as'         => 'adminGetPdf.',
         'middleware' => ['isUser', 'auth']
-    ], function() {
-        Route::post('pds-pdf', 'downloadPDS')
-               ->name('downloadPDS');
+    ],
+    function () {
+        Route::post('view-pds', 'downloadPDS')
+            ->name('downloadPDS');
 
-        Route::post('eif-pdf', 'downloadEI')
-               ->name('downloadEI');
+        Route::post('view-eif', 'downloadEI')
+            ->name('downloadEI');
 
-        Route::post('sas-pdf', 'downloadSAS')
-               ->name('downloadSAS');
-});
+        Route::post('view-sas', 'downloadSAS')
+            ->name('downloadSAS');
+    }
+);
 
-// Admin - Career Controller
+/*
+|--------------------------------------------------------------------------
+| Career Module
+|--------------------------------------------------------------------------
+|
+| Routing for approving career posting, creating a career posting and
+| deleting career posting
+|
+*/
 Route::group(
     [
         'controller' => AdminCareerController::class,
-        'prefix' => 'admin/career',
-        'as' => 'adminCareer.',
+        'prefix'     => 'admin/careers',
+        'as'         => 'adminCareer.',
         'middleware' => ['isUser', 'auth']
-    ], function() {
-        Route::get('career-dashboard', 'getAdminCareerIndex')
+    ],
+    function () {
+        Route::get('/', 'getAdminCareerIndex')
             ->name('getAdminCareerIndex');
 
         Route::get('requests', 'getCareerRequest')
@@ -337,165 +461,248 @@ Route::group(
         Route::post('reject-career', 'rejectCareer')
             ->name('rejectCareer');
 
-        Route::post('add/text-career', 'addTextCareer')
+        Route::post('add-text-career', 'addTextCareer')
             ->name('addTextCareer');
 
-        Route::post('add/image-career', 'addImageCareer')
+        Route::post('add-image-career', 'addImageCareer')
             ->name('addImageCareer');
-});
+    }
+);
 
-// Admin - Reports Controller
+/*
+|--------------------------------------------------------------------------
+| Form and Tracer Reports Module
+|--------------------------------------------------------------------------
+|
+| Routing for getting the form and tracer reports module page
+|
+*/
 Route::group(
     [
         'controller' => ReportsController::class,
-        'prefix' => 'admin/reports',
-        'as' => 'adminReports.',
+        'prefix'     => 'admin',
+        'as'         => 'adminReports.',
         'middleware' => ['isUser', 'auth']
-    ], function() {
+    ],
+    function () {
         Route::get('form-reports', 'getFormReports')
-               ->name('getFormReports');
+            ->name('getFormReports');
 
         Route::get('tracer-reports', 'getTracerReports')
-               ->name('getTracerReports');
-});
+            ->name('getTracerReports');
+    }
+);
 
-// Admin - User Reports
+/*
+|--------------------------------------------------------------------------
+| Alumni Reports Module
+|--------------------------------------------------------------------------
+|
+| Routing for getting the alumni reports page
+|
+*/
 Route::group(
     [
         'controller' => UserReportsController::class,
-        'prefix' => 'admin/reports',
-        'as' => 'adminReports.',
+        'as'         => 'adminReports.',
         'middleware' => ['isUser', 'auth']
-    ], function() {
-        Route::get('user-report', 'getUserReports')
-               ->name('getUserReports');
+    ],
+    function () {
+        Route::get('alumni-reports', 'getUserReports')
+            ->name('getUserReports');
+    }
+);
 
-});
-
-// Admin - User Reports
+/*
+|--------------------------------------------------------------------------
+| Alumni Reports Generation
+|--------------------------------------------------------------------------
+|
+| Routing for generating a pdf file for the alumni reports
+|
+*/
 Route::group(
     [
         'controller' => UserReportToPdfController::class,
-        'prefix' => 'admin/user-reports',
-        'as' => 'adminReports.',
+        'prefix'     => 'admin/alumni-reports',
+        'as'         => 'adminReports.',
         'middleware' => ['isUser', 'auth']
-    ], function() {
-        Route::post('alumni-reports', 'getUserReportPdf')
-               ->name('getUserReportPdf');
+    ],
+    function () {
+        Route::post('download', 'getUserReportPdf')
+            ->name('getUserReportPdf');
+    }
+);
 
-});
-
-// Admin - Tracer Reports
+/*
+|--------------------------------------------------------------------------
+| Tracer Reports Generation
+|--------------------------------------------------------------------------
+|
+| Routing for generating a pdf file for tracer reports
+|
+*/
 Route::group(
     [
         'controller' => TracerReportsController::class,
-        'prefix' => 'admin/tracer-reports',
-        'as' => 'adminReports.',
+        'prefix'     => 'admin/tracer-reports',
+        'as'         => 'adminReports.',
         'middleware' => ['isUser', 'auth']
-    ], function() {
-        Route::post('tracerReportToPdf', 'tracerReportToPdf')
-             ->name('tracerReportToPdf');
-});
+    ],
+    function () {
+        Route::post('download', 'tracerReportToPdf')
+            ->name('tracerReportToPdf');
+    }
+);
 
-// Admin - Form Reports and PDF
+/*
+|--------------------------------------------------------------------------
+| Form Reports Generation
+|--------------------------------------------------------------------------
+|
+| Routing for generating a pdf file for form reports
+|
+*/
 Route::group(
     [
         'controller' => FormReportsController::class,
-        'prefix' => 'admin/reports',
-        'as' => 'adminReports.',
+        'prefix'     => 'admin/form-reports',
+        'as'         => 'adminReports.',
         'middleware' => ['isUser', 'auth']
-    ], function() {
-        Route::post('generated-form-report', 'generateFormReport')
-               ->name('generateFormReport');
-});
+    ],
+    function () {
+        Route::post('download', 'generateFormReport')
+            ->name('generateFormReport');
+    }
+);
 
-// Admin - Account Settings
+/*
+|--------------------------------------------------------------------------
+| Account Setting Module
+|--------------------------------------------------------------------------
+|
+| Routing for updating account credentials in admin side
+|
+*/
 Route::group(
     [
         'controller' => AccountSettingsController::class,
-        'prefix' => 'admin/settings',
-        'as' => 'adminSettings.',
+        'prefix'     => 'admin/account-settings',
+        'as'         => 'adminSettings.',
         'middleware' => ['isUser', 'auth']
-    ], function() {
-        Route::get('account', 'getAccountSettings')
-               ->name('getAccountSettings');
+    ],
+    function () {
+        Route::get('/', 'getAccountSettings')
+            ->name('getAccountSettings');
 
-        Route::post('account/update', 'updateAccount')
-               ->name('updateAccount');
+        Route::post('update', 'updateAccount')
+            ->name('updateAccount');
+    }
+);
 
-});
-// ========== End of Route ========================================================================================
-
-// ====== Super Admin Route ===========================================================================================
-
-// Group for Homepage and Landing Page
+/*
+|--------------------------------------------------------------------------
+| Super Admin Homepage
+|--------------------------------------------------------------------------
+|
+| Routing for getting the super admin homepage
+|
+*/
 Route::group(
     [
         'controller' => SuperAdminHomeController::class
-    ], function() {
+    ],
+    function () {
 
         Route::get('/super-admin', 'getSuperAdminIndex')
             ->middleware(['auth', 'isLoggedIn', 'isUser'])
             ->name('superAdmin.getSuperAdminIndex');
-});
+    }
+);
 
-// Super Admin - Announcement Settings
+/*
+|--------------------------------------------------------------------------
+| Announcement Module
+|--------------------------------------------------------------------------
+|
+| Routing for creating a post regarding announcements related to PUP
+|
+*/
 Route::group(
     [
         'controller' => AnnouncementController::class,
-        'prefix' => 'super-admin/news-events',
-        'as' => 'superAdmin.',
+        'prefix'     => 'super-admin/announcement',
+        'as'         => 'superAdmin.',
         'middleware' => ['isUser', 'auth']
-    ], function() {
+    ],
+    function () {
 
-        Route::get('announcement', 'getAnnouncementSettings')
-               ->name('getAnnouncementSettings');
+        Route::get('/', 'getAnnouncementSettings')
+            ->name('getAnnouncementSettings');
 
         Route::post('add-announcement', 'postAnnouncement')
-               ->name('postAnnouncement');
+            ->name('postAnnouncement');
 
         Route::post('delete-announcement', 'deleteAnnouncement')
-               ->name('deleteAnnouncement');
-});
+            ->name('deleteAnnouncement');
+    }
+);
 
-// Super Admin - News Settings
+/*
+|--------------------------------------------------------------------------
+| News Module
+|--------------------------------------------------------------------------
+|
+| Routing for creating a post regarding news related to PUP
+|
+*/
 Route::group(
     [
         'controller' => NewsController::class,
-        'prefix' => 'super-admin/news-events',
-        'as' => 'superAdmin.',
+        'prefix'     => 'super-admin/news',
+        'as'         => 'superAdmin.',
         'middleware' => ['isUser', 'auth']
-    ], function() {
+    ],
+    function () {
 
-        Route::get('news', 'getNewsSettings')
-               ->name('getNewsSettings');
+        Route::get('/', 'getNewsSettings')
+            ->name('getNewsSettings');
 
         Route::post('add-news', 'postNews')
-               ->name('postNews');
+            ->name('postNews');
 
         Route::post('delete-news', 'deleteNews')
-               ->name('deleteNews');
-});
+            ->name('deleteNews');
+    }
+);
 
-// Super Admin - News Settings
+/*
+|--------------------------------------------------------------------------
+| Admin Management Module
+|--------------------------------------------------------------------------
+|
+| Routing for adding and removing of admins
+|
+*/
 Route::group(
     [
         'controller' => AdminManagementController::class,
-        'prefix' => 'super-admin/admin-management',
-        'as' => 'superAdmin.',
+        'prefix'     => 'super-admin/admin-management',
+        'as'         => 'superAdmin.',
         'middleware' => ['isUser', 'auth']
-    ], function() {
+    ],
+    function () {
+        Route::get('/', 'getAdminManager')
+            ->name('getAdminManager');
 
-        Route::get('add-admin', 'getAddNewAdmin')
-               ->name('getAddNewAdmin');
+        Route::get('new-admin', 'getAddNewAdmin')
+            ->name('getAddNewAdmin');
 
         Route::post('save-admin', 'saveNewAdmin')
-               ->name('saveNewAdmin');
+            ->name('saveNewAdmin');
 
-        Route::get('admin-manager', 'getAdminManager')
-               ->name('getAdminManager');
 
         Route::post('delete-admin', 'deleteAdmin')
-               ->name('deleteAdmin');
-});
-// ====== Super Admin Route ===========================================================================================
+            ->name('deleteAdmin');
+    }
+);

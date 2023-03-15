@@ -293,11 +293,6 @@
                                 @endif
 
                                 @if ($currentPage < $totalPage && $currentPage != $totalPage)
-                                    {{-- @if ($currently_unemployed == 'CURRENTLY_UNEMPLOYED')
-                                        <div class="col-6 text-end">
-                                            <button class="btn btn-success px-3 fs-7" wire:click.prevent="nextPage()">Submit <i class="fa-solid fa-caret-right"></i></button>
-                                        </div>
-                                    @else --}}
                                         <div class="col-6 text-end">
                                             <button class="btn btn-primary px-3 fs-7" wire:click.prevent="nextPage()">Next <i class="fa-solid fa-caret-right"></i></button>
                                         </div>

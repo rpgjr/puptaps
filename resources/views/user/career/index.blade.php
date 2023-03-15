@@ -1,5 +1,5 @@
 @extends('layouts.user')
-@section('page-title', 'Career Dashboard')
+@section('page-title', 'Careers')
 @section('career-active', 'user-active')
 @section('content')
 
@@ -10,7 +10,7 @@
             <livewire:components.alert-status-message :message="session()->get('success')" />
 
             <!-- Page Title Text H1 -->
-            <livewire:components.page-title :title="$title"/>
+            <livewire:components.page-title :title="$title" />
 
             <div class="row justify-content-center">
                 <!-- Start: Body -->
@@ -36,15 +36,17 @@
                                     There is no available data.
                                 </div>
 
-                            <!-- If Post/Query has data -->
+                                <!-- If Post/Query has data -->
                             @else
                                 @foreach ($careers as $career)
-                                    @if (($career->job_ad_image == null))
+                                    @if ($career->job_ad_image == null)
                                         <!-- If Post was Text -->
-                                        <livewire:career.career-text :career="$career" :alumni="$alumni" :admin="$admin" :username="$username" />
-                                    @elseif (($career->job_ad_image != null))
+                                        <livewire:career.career-text :career="$career" :alumni="$alumni" :admin="$admin"
+                                            :username="$username" />
+                                    @elseif ($career->job_ad_image != null)
                                         <!-- If Post was Image -->
-                                        <livewire:career.career-image-modal :career="$career" :alumni="$alumni" :admin="$admin" :username="$username" />
+                                        <livewire:career.career-image-modal :career="$career" :alumni="$alumni"
+                                            :admin="$admin" :username="$username" />
                                     @endif
                                 @endforeach
                             @endif

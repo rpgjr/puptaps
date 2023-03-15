@@ -50,14 +50,6 @@ class UserManagerController extends Controller
         );
     }
 
-    public function removeAlumniAccount(Request $request) {
-
-        $findUser = User::where('alumni_id', '=', $request->alumni_id)->value('user_id');
-        $user = User::find($findUser);
-        $user->delete();
-        return back()->with('success', 'Alumni Account Successfully Deleted.');
-    }
-
     public function updateAlumniInfo(Request $request) {
         $request->validate([
             'last_name'             => 'required',

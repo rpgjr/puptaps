@@ -120,26 +120,6 @@
                                 </div>
                             </div>
                         @endforeach
-
-
-                        {{-- @foreach ($news as $new)
-                            <div class="col-12">
-                                <div class="row">
-                                    <div class="col-5">
-                                        <img class="rounded w-100" src="{{ asset("Uploads/NewsAnnouncements/" . $new->news_image) }}" alt="">
-                                    </div>
-                                    <div class="col-6">
-                                        <h4 class="mb-3"><i class="fa-solid fa-newspaper me-2"></i>{{ $new->news_title }}</h4>
-                                        <div hidden>{{ $text = $new->news_text }}</div>
-                                        <div class="fs-7" style="white-space: pre-wrap; text-align: justify; text-justify: inter-word;">@php echo $text @endphp</div>
-                                    </div>
-                                    <div class="col-1 text-center">
-                                        <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteNews{{$new->news_id}}"><i class="fa-solid fa-trash-can"></i></button>
-                                        @include("super_admin.components.delete-news")
-                                    </div>
-                                </div>
-                            </div>
-                        @endforeach --}}
                     @endif
                 </div>
             </div>

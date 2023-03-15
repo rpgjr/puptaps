@@ -4,7 +4,6 @@
     <div class="modal-content">
       <div class="modal-header align-items-center">
         <p class="modal-title fs-6 fw-bold">{{ $alum->stud_number }}</p>
-        {{-- <a type="button" class="btn btn-primary text-decoration-none fs-7" data-bs-toggle="modal" data-bs-target="#updateAlumni{{ $alum->alumni_id }}">Edit <i class="fa-solid fa-user-pen"></i></a> --}}
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body text-start mt-3 mb-1 mx-3">

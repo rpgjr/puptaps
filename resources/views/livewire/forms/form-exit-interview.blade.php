@@ -34,7 +34,6 @@
                     <div class="row mt-3">
                         @if ($currentPage == 1)
                             <div class="col-6 text-start">
-                                {{-- <button href="#go-to-top" class="btn btn-secondary px-3 fs-7" type="button" wire:click="previousPage()" disabled><i class="fa-solid fa-caret-left"></i> Back</button> --}}
                             </div>
                         @endif
 

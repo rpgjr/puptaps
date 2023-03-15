@@ -84,10 +84,6 @@ class UserReportToPdfController extends Controller
                         ->orderBy('last_name', 'asc')
                         ->get();
         }
-        // $getAlumni = Alumni::where('course_id', 'like', '%' . $request->course_id . '%')
-        //                 ->whereBetween('batch', [$request->batch_from, $request->batch_to])
-        //                 ->orderBy('last_name', 'asc')
-        //                 ->get();
         $batch_to = $request->batch_to;
 
         $pdf = new MYPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
@@ -179,12 +175,6 @@ class UserReportToPdfController extends Controller
 
                             $pdf->writeHTML($html, true, 0, true, 0);
                             $pdf->lastPage();
-                            // $pdf->SetPrintHeader(true);
-                            // $pdf->AddPage();
-                            // $pdf->SetFont('times', 'B', 13);
-                            // $pdf->ln(20);
-                            // $pdf->Cell(0, 0, 'MASTER LIST', 0, 1, 'C', 0, '', 0);
-                            // $pdf->ln(10);
                         }
                     }
                 }
@@ -201,7 +191,6 @@ class UserReportToPdfController extends Controller
 
                             $pdf->ln(5);
                             $pdf->SetFont('times', 'B', 13);
-                            // $pdf->Cell(0, 0, strtoupper($course->course_desc), 0, 1, 'C', 0, '', 0);
                             $pdf->MultiCell(180, 5, strtoupper($course->course_desc), 0, 'C', 0, 1, '', '', true);
                             $pdf->SetFont('times', '', 11);
                             $pdf->Cell(0, 0, strtoupper('Alumni Batch of ' . $batch_from . ' - ' . $request->sex), 0, 1, 'C', 0, '', 0);
@@ -256,12 +245,6 @@ class UserReportToPdfController extends Controller
 
                             $pdf->writeHTML($html, true, 0, true, 0);
                             $pdf->lastPage();
-                            // $pdf->SetPrintHeader(true);
-                            // $pdf->AddPage();
-                            // $pdf->SetFont('times', 'B', 13);
-                            // $pdf->ln(20);
-                            // $pdf->Cell(0, 0, 'MASTER LIST', 0, 1, 'C', 0, '', 0);
-                            // $pdf->ln(10);
                         }
                     }
                 }
@@ -281,7 +264,6 @@ class UserReportToPdfController extends Controller
 
                                 $pdf->ln(5);
                                 $pdf->SetFont('times', 'B', 13);
-                                // $pdf->Cell(0, 0, strtoupper($course->course_desc), 0, 1, 'C', 0, '', 0);
                                 $pdf->MultiCell(180, 5, strtoupper($course->course_desc), 0, 'C', 0, 1, '', '', true);
                                 $pdf->SetFont('times', '', 11);
                                 $pdf->Cell(0, 0, strtoupper('Alumni Batch of ' . $batch_from), 0, 1, 'C', 0, '', 0);
@@ -336,12 +318,6 @@ class UserReportToPdfController extends Controller
 
                                 $pdf->writeHTML($html, true, 0, true, 0);
                                 $pdf->lastPage();
-                                // $pdf->SetPrintHeader(true);
-                                // $pdf->AddPage();
-                                // $pdf->SetFont('times', 'B', 13);
-                                // $pdf->ln(20);
-                                // $pdf->Cell(0, 0, 'MASTER LIST', 0, 1, 'C', 0, '', 0);
-                                // $pdf->ln(10);
                             }
                         }
                     }
@@ -360,7 +336,6 @@ class UserReportToPdfController extends Controller
 
                                 $pdf->ln(5);
                                 $pdf->SetFont('times', 'B', 13);
-                                // $pdf->Cell(0, 0, strtoupper($course->course_desc), 0, 1, 'C', 0, '', 0);
                                 $pdf->MultiCell(180, 5, strtoupper($course->course_desc), 0, 'C', 0, 1, '', '', true);
                                 $pdf->SetFont('times', '', 11);
                                 $pdf->Cell(0, 0, strtoupper('Alumni Batch of ' . $batch_from . ' - ' . $request->sex), 0, 1, 'C', 0, '', 0);
@@ -415,12 +390,6 @@ class UserReportToPdfController extends Controller
 
                                 $pdf->writeHTML($html, true, 0, true, 0);
                                 $pdf->lastPage();
-                                // $pdf->SetPrintHeader(true);
-                                // $pdf->AddPage();
-                                // $pdf->SetFont('times', 'B', 13);
-                                // $pdf->ln(20);
-                                // $pdf->Cell(0, 0, 'MASTER LIST', 0, 1, 'C', 0, '', 0);
-                                // $pdf->ln(10);
                             }
                         }
                     }
@@ -428,8 +397,6 @@ class UserReportToPdfController extends Controller
             }
         }
 
-
-        //Close and output PDF document
         $pdf->Output(date('m-d-y') . ' Alumni_Report' . '.pdf', 'I');
     }
 }

@@ -11,10 +11,12 @@ use Illuminate\Http\Request;
 use DB;
 use TCPDF;
 
-class MYPDF extends TCPDF {
+class MYPDF extends TCPDF
+{
 
     //Page header
-    public function Header() {
+    public function Header()
+    {
         // Logo
         $image_file = public_path('/img/pupLogo.png');
         // $image_file = asset('img/pupLogo.png');
@@ -22,21 +24,65 @@ class MYPDF extends TCPDF {
         // Title
         $this->Ln(3);
         $this->SetFont('times', '', 12);
-        $this->Cell(95, 0,
-                    'Republic of the Philippines',
-                    0, 1, 'C', 0, '', 0, false, 'T', 'M');
+        $this->Cell(
+            95,
+            0,
+            'Republic of the Philippines',
+            0,
+            1,
+            'C',
+            0,
+            '',
+            0,
+            false,
+            'T',
+            'M'
+        );
         $this->SetFont('times', 'B', 15);
-        $this->Cell(179, 0,
-                    'POLYTECHNIC UNIVERSITY OF THE PHILIPPINES',
-                    0, 1, 'C', 0, '', 0, false, 'T', 'M');
+        $this->Cell(
+            179,
+            0,
+            'POLYTECHNIC UNIVERSITY OF THE PHILIPPINES',
+            0,
+            1,
+            'C',
+            0,
+            '',
+            0,
+            false,
+            'T',
+            'M'
+        );
         $this->SetFont('times', '', 12);
-        $this->Cell(158, 0,
-                    'Office of the Vice President for Branches and Satelite Campuses',
-                    0, 1, 'C', 0, '', 0, false, 'T', 'M');
+        $this->Cell(
+            158,
+            0,
+            'Office of the Vice President for Branches and Satelite Campuses',
+            0,
+            1,
+            'C',
+            0,
+            '',
+            0,
+            false,
+            'T',
+            'M'
+        );
         $this->SetFont('times', 'B', 12);
-        $this->Cell(85, 0,
-                    'TAGUIG BRANCH',
-                    0, 1, 'C', 0, '', 0, false, 'T', 'M');
+        $this->Cell(
+            85,
+            0,
+            'TAGUIG BRANCH',
+            0,
+            1,
+            'C',
+            0,
+            '',
+            0,
+            false,
+            'T',
+            'M'
+        );
 
         $style3 = array('width' => .5, 'cap' => 'butt', 'join' => 'miter', 'dash' => 0, 'color' => array(0, 0, 0));
 
@@ -45,7 +91,8 @@ class MYPDF extends TCPDF {
     }
 
     // Page footer
-    public function Footer() {
+    public function Footer()
+    {
         // Position at 10 mm from bottom
         $this->SetY(-10);
         // Set font
@@ -55,7 +102,7 @@ class MYPDF extends TCPDF {
 
         // Line
         $this->Line(10, 288, 200, 288, $style3);
-        $this->Cell(0, 10, 'Page '.$this->getAliasNumPage().'/'.$this->getAliasNbPages(), 0, false, 'C', 0, '', 0, false, 'T', 'M');
+        $this->Cell(0, 10, 'Page ' . $this->getAliasNumPage() . '/' . $this->getAliasNbPages(), 0, false, 'C', 0, '', 0, false, 'T', 'M');
     }
 }
 
@@ -114,7 +161,7 @@ class TracerReportsController extends Controller
 
             // set document information
             $pdf->SetCreator(PDF_CREATOR);
-            $pdf->SetTitle('Alumni Reports');
+            $pdf->SetTitle('Tracer Reports');
 
             // set default monospaced font
             $pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
@@ -175,23 +222,23 @@ class TracerReportsController extends Controller
                         </tr>
                         <tr>
                             <th class="th-EI" colspan="1" style="width: 67%;">Alumni who are currently Employed</th>
-                            <td class="th-EI" colspan="1" style="width: 18%;">'. count($answer10_1) . '</td>
-                            <td class="th-EI" colspan="1" style="width: 15%;">'. number_format(count($answer10_1)/count($totalRespondents)*100, 2, '.', '') . '%' .'</td>
+                            <td class="th-EI" colspan="1" style="width: 18%;">' . count($answer10_1) . '</td>
+                            <td class="th-EI" colspan="1" style="width: 15%;">' . number_format(count($answer10_1) / count($totalRespondents) * 100, 2, '.', '') . '%' . '</td>
                         </tr>
                         <tr>
                             <th class="th-EI" colspan="1" style="width: 67%;">Alumni who are currently Unemployed</th>
-                            <td class="th-EI" colspan="1" style="width: 18%;">'. count($answer10_2) .'</td>
-                            <td class="th-EI" colspan="1" style="width: 15%;">'. number_format(count($answer10_2)/count($totalRespondents)*100, 2, '.', '') . '%' .'</td>
+                            <td class="th-EI" colspan="1" style="width: 18%;">' . count($answer10_2) . '</td>
+                            <td class="th-EI" colspan="1" style="width: 15%;">' . number_format(count($answer10_2) / count($totalRespondents) * 100, 2, '.', '') . '%' . '</td>
                         </tr>
                         <tr>
                             <th class="th-EI" colspan="1" style="width: 67%;">Alumni whose Current Job is related to the course/program graduated in PUP Taguig</th>
-                            <td class="th-EI" colspan="1" style="width: 18%;">'. count($answer14_1) .'</td>
-                            <td class="th-EI" colspan="1" style="width: 15%;">'. number_format(count($answer14_1)/$total*100, 2, '.', '') . '%' .'</td>
+                            <td class="th-EI" colspan="1" style="width: 18%;">' . count($answer14_1) . '</td>
+                            <td class="th-EI" colspan="1" style="width: 15%;">' . number_format(count($answer14_1) / $total * 100, 2, '.', '') . '%' . '</td>
                         </tr>
                         <tr>
                             <th class="th-EI" colspan="1" style="width: 67%;">Alumni whose Current Job is NOT related to the course/program graduated in PUP Taguig</th>
-                            <td class="th-EI" colspan="1" style="width: 18%;">'. count($answer14_2) .'</td>
-                            <td class="th-EI" colspan="1" style="width: 15%;">'. number_format(count($answer14_2)/$total*100, 2, '.', '') . '%' .'</td>
+                            <td class="th-EI" colspan="1" style="width: 18%;">' . count($answer14_2) . '</td>
+                            <td class="th-EI" colspan="1" style="width: 15%;">' . number_format(count($answer14_2) / $total * 100, 2, '.', '') . '%' . '</td>
                         </tr>
                     </table>';
 
@@ -229,38 +276,38 @@ class TracerReportsController extends Controller
                         </tr>
                         <tr>
                             <th class="th-EI" colspan="1" style="width: 67%;">Alumni who passed the Board Exams</th>
-                            <td class="th-EI" colspan="1" style="width: 18%;">'. count($answer1_1) . '</td>
-                            <td class="th-EI" colspan="1" style="width: 15%;">'. number_format(count($answer1_1)/count($totalRespondents)*100, 2, '.', '') . '%' .'</td>
+                            <td class="th-EI" colspan="1" style="width: 18%;">' . count($answer1_1) . '</td>
+                            <td class="th-EI" colspan="1" style="width: 15%;">' . number_format(count($answer1_1) / count($totalRespondents) * 100, 2, '.', '') . '%' . '</td>
                         </tr>
                         <tr>
                             <th class="th-EI" colspan="1" style="width: 67%;">Alumni who has a license related to the course/program graduated in PUP Taguig</th>
-                            <td class="th-EI" colspan="1" style="width: 18%;">'. count($answer2_1) . '</td>
-                            <td class="th-EI" colspan="1" style="width: 15%;">'. number_format(count($answer2_1)/count($totalRespondents)*100, 2, '.', '') . '%' .'</td>
+                            <td class="th-EI" colspan="1" style="width: 18%;">' . count($answer2_1) . '</td>
+                            <td class="th-EI" colspan="1" style="width: 15%;">' . number_format(count($answer2_1) / count($totalRespondents) * 100, 2, '.', '') . '%' . '</td>
                         </tr>
                         <tr>
                             <th class="th-EI" colspan="1" style="width: 67%;">Alumni who passed the Electronics Engineer Licensure Examination</th>
-                            <td class="th-EI" colspan="1" style="width: 18%;">'. count($answer3_1) . '</td>
-                            <td class="th-EI" colspan="1" style="width: 15%;">'. number_format(count($answer3_1)/count($totalRespondents)*100, 2, '.', '') . '%' .'</td>
+                            <td class="th-EI" colspan="1" style="width: 18%;">' . count($answer3_1) . '</td>
+                            <td class="th-EI" colspan="1" style="width: 15%;">' . number_format(count($answer3_1) / count($totalRespondents) * 100, 2, '.', '') . '%' . '</td>
                         </tr>
                         <tr>
                             <th class="th-EI" colspan="1" style="width: 67%;">Alumni who passed the Licensure Examination for Teachers</th>
-                            <td class="th-EI" colspan="1" style="width: 18%;">'. count($answer3_2) . '</td>
-                            <td class="th-EI" colspan="1" style="width: 15%;">'. number_format(count($answer3_2)/count($totalRespondents)*100, 2, '.', '') . '%' .'</td>
+                            <td class="th-EI" colspan="1" style="width: 18%;">' . count($answer3_2) . '</td>
+                            <td class="th-EI" colspan="1" style="width: 15%;">' . number_format(count($answer3_2) / count($totalRespondents) * 100, 2, '.', '') . '%' . '</td>
                         </tr>
                         <tr>
                             <th class="th-EI" colspan="1" style="width: 67%;">Alumni who passed the Certified Public Accountant Board Exam</th>
-                            <td class="th-EI" colspan="1" style="width: 18%;">'. count($answer3_3) . '</td>
-                            <td class="th-EI" colspan="1" style="width: 15%;">'. number_format(count($answer3_3)/count($totalRespondents)*100, 2, '.', '') . '%' .'</td>
+                            <td class="th-EI" colspan="1" style="width: 18%;">' . count($answer3_3) . '</td>
+                            <td class="th-EI" colspan="1" style="width: 15%;">' . number_format(count($answer3_3) / count($totalRespondents) * 100, 2, '.', '') . '%' . '</td>
                         </tr>
                         <tr>
                             <th class="th-EI" colspan="1" style="width: 67%;">Alumni who passed the Professional Mechanical Engineer Exam</th>
-                            <td class="th-EI" colspan="1" style="width: 18%;">'. count($answer3_4)  . '</td>
-                            <td class="th-EI" colspan="1" style="width: 15%;">'. number_format(count($answer3_4)/count($totalRespondents)*100, 2, '.', '') . '%' .'</td>
+                            <td class="th-EI" colspan="1" style="width: 18%;">' . count($answer3_4)  . '</td>
+                            <td class="th-EI" colspan="1" style="width: 15%;">' . number_format(count($answer3_4) / count($totalRespondents) * 100, 2, '.', '') . '%' . '</td>
                         </tr>
                         <tr>
                             <th class="th-EI" colspan="1" style="width: 67%;">Alumni who passed the Civil Service Examination</th>
-                            <td class="th-EI" colspan="1" style="width: 18%;">'. count($answer5_1) . '</td>
-                            <td class="th-EI" colspan="1" style="width: 15%;">'. number_format(count($answer5_1)/count($totalRespondents)*100, 2, '.', '') . '%' .'</td>
+                            <td class="th-EI" colspan="1" style="width: 18%;">' . count($answer5_1) . '</td>
+                            <td class="th-EI" colspan="1" style="width: 15%;">' . number_format(count($answer5_1) / count($totalRespondents) * 100, 2, '.', '') . '%' . '</td>
                         </tr>
                     </table>';
 
@@ -269,8 +316,7 @@ class TracerReportsController extends Controller
             $pdf->lastPage();
             //Close and output PDF document
             $pdf->Output(date('m-d-y') . ' Tracer_Summary_Report' . '.pdf', 'I');
-        }
-        else {
+        } else {
             $pdf = new MYPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
 
             // set document information
@@ -317,78 +363,78 @@ class TracerReportsController extends Controller
 
         if (count($total) > 0 || count($total) != null) {
             $bsed_eng = Alumni::where('course_id', '=', 'BSEd-English')
-                    ->join('tbl_tracer_answers', 'tbl_alumni.alumni_id', '=', 'tbl_tracer_answers.alumni_id')
-                    ->whereBetween('batch', [$request->batch_from, $request->batch_to])
-                    ->where('question_id', '=', 1)
-                    ->select('tbl_alumni.*')
-                    ->get();
+                ->join('tbl_tracer_answers', 'tbl_alumni.alumni_id', '=', 'tbl_tracer_answers.alumni_id')
+                ->whereBetween('batch', [$request->batch_from, $request->batch_to])
+                ->where('question_id', '=', 1)
+                ->select('tbl_alumni.*')
+                ->get();
             $bsed_math = Alumni::where('course_id', '=', 'BSEd-Mathematics')
-                    ->join('tbl_tracer_answers', 'tbl_alumni.alumni_id', '=', 'tbl_tracer_answers.alumni_id')
-                    ->whereBetween('batch', [$request->batch_from, $request->batch_to])
-                    ->where('question_id', '=', 1)
-                    ->select('tbl_alumni.*')
-                    ->get();
+                ->join('tbl_tracer_answers', 'tbl_alumni.alumni_id', '=', 'tbl_tracer_answers.alumni_id')
+                ->whereBetween('batch', [$request->batch_from, $request->batch_to])
+                ->where('question_id', '=', 1)
+                ->select('tbl_alumni.*')
+                ->get();
             $dict = Alumni::where('course_id', '=', 'DICT')
-                    ->join('tbl_tracer_answers', 'tbl_alumni.alumni_id', '=', 'tbl_tracer_answers.alumni_id')
-                    ->whereBetween('batch', [$request->batch_from, $request->batch_to])
-                    ->where('question_id', '=', 1)
-                    ->select('tbl_alumni.*')
-                    ->get();
+                ->join('tbl_tracer_answers', 'tbl_alumni.alumni_id', '=', 'tbl_tracer_answers.alumni_id')
+                ->whereBetween('batch', [$request->batch_from, $request->batch_to])
+                ->where('question_id', '=', 1)
+                ->select('tbl_alumni.*')
+                ->get();
             $bsit = Alumni::where('course_id', '=', 'BSIT')
-                    ->join('tbl_tracer_answers', 'tbl_alumni.alumni_id', '=', 'tbl_tracer_answers.alumni_id')
-                    ->whereBetween('batch', [$request->batch_from, $request->batch_to])
-                    ->where('question_id', '=', 1)
-                    ->select('tbl_alumni.*')
-                    ->get();
+                ->join('tbl_tracer_answers', 'tbl_alumni.alumni_id', '=', 'tbl_tracer_answers.alumni_id')
+                ->whereBetween('batch', [$request->batch_from, $request->batch_to])
+                ->where('question_id', '=', 1)
+                ->select('tbl_alumni.*')
+                ->get();
             $bshr = Alumni::where('course_id', '=', 'BSBA-HRM')
-                    ->join('tbl_tracer_answers', 'tbl_alumni.alumni_id', '=', 'tbl_tracer_answers.alumni_id')
-                    ->whereBetween('batch', [$request->batch_from, $request->batch_to])
-                    ->where('question_id', '=', 1)
-                    ->select('tbl_alumni.*')
-                    ->get();
+                ->join('tbl_tracer_answers', 'tbl_alumni.alumni_id', '=', 'tbl_tracer_answers.alumni_id')
+                ->whereBetween('batch', [$request->batch_from, $request->batch_to])
+                ->where('question_id', '=', 1)
+                ->select('tbl_alumni.*')
+                ->get();
             $bsmm = Alumni::where('course_id', '=', 'BSBA-MM')
-                    ->join('tbl_tracer_answers', 'tbl_alumni.alumni_id', '=', 'tbl_tracer_answers.alumni_id')
-                    ->whereBetween('batch', [$request->batch_from, $request->batch_to])
-                    ->where('question_id', '=', 1)
-                    ->select('tbl_alumni.*')
-                    ->get();
+                ->join('tbl_tracer_answers', 'tbl_alumni.alumni_id', '=', 'tbl_tracer_answers.alumni_id')
+                ->whereBetween('batch', [$request->batch_from, $request->batch_to])
+                ->where('question_id', '=', 1)
+                ->select('tbl_alumni.*')
+                ->get();
             $bsece = Alumni::where('course_id', '=', 'BSECE')
-                    ->join('tbl_tracer_answers', 'tbl_alumni.alumni_id', '=', 'tbl_tracer_answers.alumni_id')
-                    ->whereBetween('batch', [$request->batch_from, $request->batch_to])
-                    ->where('question_id', '=', 1)
-                    ->select('tbl_alumni.*')
-                    ->get();
+                ->join('tbl_tracer_answers', 'tbl_alumni.alumni_id', '=', 'tbl_tracer_answers.alumni_id')
+                ->whereBetween('batch', [$request->batch_from, $request->batch_to])
+                ->where('question_id', '=', 1)
+                ->select('tbl_alumni.*')
+                ->get();
             $bsme = Alumni::where('course_id', '=', 'BSME')
-                    ->join('tbl_tracer_answers', 'tbl_alumni.alumni_id', '=', 'tbl_tracer_answers.alumni_id')
-                    ->whereBetween('batch', [$request->batch_from, $request->batch_to])
-                    ->where('question_id', '=', 1)
-                    ->select('tbl_alumni.*')
-                    ->get();
+                ->join('tbl_tracer_answers', 'tbl_alumni.alumni_id', '=', 'tbl_tracer_answers.alumni_id')
+                ->whereBetween('batch', [$request->batch_from, $request->batch_to])
+                ->where('question_id', '=', 1)
+                ->select('tbl_alumni.*')
+                ->get();
             $domt = Alumni::where('course_id', '=', 'DOMT')
-                    ->join('tbl_tracer_answers', 'tbl_alumni.alumni_id', '=', 'tbl_tracer_answers.alumni_id')
-                    ->whereBetween('batch', [$request->batch_from, $request->batch_to])
-                    ->where('question_id', '=', 1)
-                    ->select('tbl_alumni.*')
-                    ->get();
+                ->join('tbl_tracer_answers', 'tbl_alumni.alumni_id', '=', 'tbl_tracer_answers.alumni_id')
+                ->whereBetween('batch', [$request->batch_from, $request->batch_to])
+                ->where('question_id', '=', 1)
+                ->select('tbl_alumni.*')
+                ->get();
             $bsoa = Alumni::where('course_id', '=', 'BSOA')
-                    ->join('tbl_tracer_answers', 'tbl_alumni.alumni_id', '=', 'tbl_tracer_answers.alumni_id')
-                    ->whereBetween('batch', [$request->batch_from, $request->batch_to])
-                    ->where('question_id', '=', 1)
-                    ->select('tbl_alumni.*')
-                    ->get();
+                ->join('tbl_tracer_answers', 'tbl_alumni.alumni_id', '=', 'tbl_tracer_answers.alumni_id')
+                ->whereBetween('batch', [$request->batch_from, $request->batch_to])
+                ->where('question_id', '=', 1)
+                ->select('tbl_alumni.*')
+                ->get();
             $bsa = Alumni::where('course_id', '=', 'BSA')
-                    ->join('tbl_tracer_answers', 'tbl_alumni.alumni_id', '=', 'tbl_tracer_answers.alumni_id')
-                    ->whereBetween('batch', [$request->batch_from, $request->batch_to])
-                    ->where('question_id', '=', 1)
-                    ->select('tbl_alumni.*')
-                    ->get();
+                ->join('tbl_tracer_answers', 'tbl_alumni.alumni_id', '=', 'tbl_tracer_answers.alumni_id')
+                ->whereBetween('batch', [$request->batch_from, $request->batch_to])
+                ->where('question_id', '=', 1)
+                ->select('tbl_alumni.*')
+                ->get();
 
 
             $pdf = new MYPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
 
             // set document information
             $pdf->SetCreator(PDF_CREATOR);
-            $pdf->SetTitle('Alumni Reports');
+            $pdf->SetTitle('Tracer Reports');
 
             // set default monospaced font
             $pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
@@ -449,7 +495,7 @@ class TracerReportsController extends Controller
                     <tr>
                         <th class="th-EI" colspan="1" style="width: 67%;">Number of Tracer Respondents</th>
                         <td class="th-EI" colspan="1" style="width: 18%;">' . count($total) . '</td>
-                        <td class="th-EI" colspan="1" style="width: 15%;">' . number_format(count($total)/count($totalAlumni)*100, 2, '.', '') . '% </td>
+                        <td class="th-EI" colspan="1" style="width: 15%;">' . number_format(count($total) / count($totalAlumni) * 100, 2, '.', '') . '% </td>
                     </tr>
                     <tr>
                         <th class="th-EI" colspan="1" style="width: 67%;">Number of Alumni from batch 2022 to present</th>
@@ -491,57 +537,57 @@ class TracerReportsController extends Controller
                     <tr>
                         <th class="th-EI" colspan="1" style="width: 67%;">Bachelor in Secondary Education Major in English</th>
                         <td class="th-EI" colspan="1" style="width: 18%;">' . count($bsed_eng) . '</td>
-                        <td class="th-EI" colspan="1" style="width: 15%;">' . number_format(count($bsed_eng)/count($totalAlumni)*100, 2, '.', '') . '% </td>
+                        <td class="th-EI" colspan="1" style="width: 15%;">' . number_format(count($bsed_eng) / count($totalAlumni) * 100, 2, '.', '') . '% </td>
                     </tr>
                     <tr>
                         <th class="th-EI" colspan="1" style="width: 67%;">Bachelor in Secondary Education Major in Mathematics</th>
                         <td class="th-EI" colspan="1" style="width: 18%;">' . count($bsed_math) . '</td>
-                        <td class="th-EI" colspan="1" style="width: 15%;">' . number_format(count($bsed_math)/count($totalAlumni)*100, 2, '.', '') . '% </td>
+                        <td class="th-EI" colspan="1" style="width: 15%;">' . number_format(count($bsed_math) / count($totalAlumni) * 100, 2, '.', '') . '% </td>
                     </tr>
                     <tr>
                         <th class="th-EI" colspan="1" style="width: 67%;">Diploma in Information Communication Technology</th>
                         <td class="th-EI" colspan="1" style="width: 18%;">' . count($dict) . '</td>
-                        <td class="th-EI" colspan="1" style="width: 15%;">' . number_format(count($dict)/count($totalAlumni)*100, 2, '.', '') . '% </td>
+                        <td class="th-EI" colspan="1" style="width: 15%;">' . number_format(count($dict) / count($totalAlumni) * 100, 2, '.', '') . '% </td>
                     </tr>
                     <tr>
                         <th class="th-EI" colspan="1" style="width: 67%;">Bachelor of Science in Information Technology</th>
                         <td class="th-EI" colspan="1" style="width: 18%;">' . count($bsit) . '</td>
-                        <td class="th-EI" colspan="1" style="width: 15%;">' . number_format(count($bsit)/count($totalAlumni)*100, 2, '.', '') . '% </td>
+                        <td class="th-EI" colspan="1" style="width: 15%;">' . number_format(count($bsit) / count($totalAlumni) * 100, 2, '.', '') . '% </td>
                     </tr>
                     <tr>
                         <th class="th-EI" colspan="1" style="width: 67%;">Bachelor of Science in Business Administration Major in Human Resource Management</th>
                         <td class="th-EI" colspan="1" style="width: 18%;">' . count($bshr) . '</td>
-                        <td class="th-EI" colspan="1" style="width: 15%;">' . number_format(count($bshr)/count($totalAlumni)*100, 2, '.', '') . '% </td>
+                        <td class="th-EI" colspan="1" style="width: 15%;">' . number_format(count($bshr) / count($totalAlumni) * 100, 2, '.', '') . '% </td>
                     </tr>
                     <tr>
                         <th class="th-EI" colspan="1" style="width: 67%;">Bachelor of Science in Business Administration Major in Marketing Management</th>
                         <td class="th-EI" colspan="1" style="width: 18%;">' . count($bsmm) . '</td>
-                        <td class="th-EI" colspan="1" style="width: 15%;">' . number_format(count($bsmm)/count($totalAlumni)*100, 2, '.', '') . '% </td>
+                        <td class="th-EI" colspan="1" style="width: 15%;">' . number_format(count($bsmm) / count($totalAlumni) * 100, 2, '.', '') . '% </td>
                     </tr>
                     <tr>
                         <th class="th-EI" colspan="1" style="width: 67%;">Bachelor of Science in Electronics and Communications Engineering</th>
                         <td class="th-EI" colspan="1" style="width: 18%;">' . count($bsece) . '</td>
-                        <td class="th-EI" colspan="1" style="width: 15%;">' . number_format(count($bsece)/count($totalAlumni)*100, 2, '.', '') . '% </td>
+                        <td class="th-EI" colspan="1" style="width: 15%;">' . number_format(count($bsece) / count($totalAlumni) * 100, 2, '.', '') . '% </td>
                     </tr>
                     <tr>
                         <th class="th-EI" colspan="1" style="width: 67%;">Bachelor of Science in Mechanical Engineering</th>
                         <td class="th-EI" colspan="1" style="width: 18%;">' . count($bsme) . '</td>
-                        <td class="th-EI" colspan="1" style="width: 15%;">' . number_format(count($bsme)/count($totalAlumni)*100, 2, '.', '') . '% </td>
+                        <td class="th-EI" colspan="1" style="width: 15%;">' . number_format(count($bsme) / count($totalAlumni) * 100, 2, '.', '') . '% </td>
                     </tr>
                     <tr>
                         <th class="th-EI" colspan="1" style="width: 67%;">Diploma in Office Management Technology</th>
                         <td class="th-EI" colspan="1" style="width: 18%;">' . count($domt) . '</td>
-                        <td class="th-EI" colspan="1" style="width: 15%;">' . number_format(count($domt)/count($totalAlumni)*100, 2, '.', '') . '% </td>
+                        <td class="th-EI" colspan="1" style="width: 15%;">' . number_format(count($domt) / count($totalAlumni) * 100, 2, '.', '') . '% </td>
                     </tr>
                     <tr>
                         <th class="th-EI" colspan="1" style="width: 67%;">Bachelor of Science in Office Administration</th>
                         <td class="th-EI" colspan="1" style="width: 18%;">' . count($bsoa) . '</td>
-                        <td class="th-EI" colspan="1" style="width: 15%;">' . number_format(count($bsoa)/count($totalAlumni)*100, 2, '.', '') . '% </td>
+                        <td class="th-EI" colspan="1" style="width: 15%;">' . number_format(count($bsoa) / count($totalAlumni) * 100, 2, '.', '') . '% </td>
                     </tr>
                     <tr>
                         <th class="th-EI" colspan="1" style="width: 67%;">Bachelor of Science in Accountancy</th>
                         <td class="th-EI" colspan="1" style="width: 18%;">' . count($bsa) . '</td>
-                        <td class="th-EI" colspan="1" style="width: 15%;">' . number_format(count($bsa)/count($totalAlumni)*100, 2, '.', '') . '% </td>
+                        <td class="th-EI" colspan="1" style="width: 15%;">' . number_format(count($bsa) / count($totalAlumni) * 100, 2, '.', '') . '% </td>
                     </tr>
                 </table>';
             $pdf->writeHTML($html, true, 0, true, 0);
@@ -549,8 +595,7 @@ class TracerReportsController extends Controller
             $pdf->lastPage();
             //Close and output PDF document
             $pdf->Output(date('m-d-y') . ' Tracer_Summary_Report' . '.pdf', 'I');
-        }
-        else {
+        } else {
             $pdf = new MYPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
 
             // set document information
@@ -611,7 +656,7 @@ class TracerReportsController extends Controller
 
             // set document information
             $pdf->SetCreator(PDF_CREATOR);
-            $pdf->SetTitle('Alumni Reports');
+            $pdf->SetTitle('Tracer Reports');
 
             // set default monospaced font
             $pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
@@ -648,7 +693,7 @@ class TracerReportsController extends Controller
                 $fcomNumber = TracerAnswers::where('alumni_id', '=', $alumni->alumni_id)->where('question_id', '=', 20)->value('answer');
 
 
-                if(count($checkAnswer) > 0 && $position != 'UNEMPLOYED' || $fposition != 'UNEMPLOYED') {
+                if (count($checkAnswer) > 0 && $position != 'UNEMPLOYED' || $fposition != 'UNEMPLOYED') {
                     $pdf->SetPrintHeader(true);
                     $pdf->AddPage();
                     $pdf->SetPrintHeader(false);
@@ -912,8 +957,7 @@ class TracerReportsController extends Controller
             }
             //Close and output PDF document
             $pdf->Output(date('m-d-y') . ' Tracer_Summary_Report' . '.pdf', 'I');
-        }
-        else {
+        } else {
             $pdf = new MYPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
 
             // set document information
@@ -974,7 +1018,7 @@ class TracerReportsController extends Controller
 
             // set document information
             $pdf->SetCreator(PDF_CREATOR);
-            $pdf->SetTitle('Alumni Reports');
+            $pdf->SetTitle('Tracer Reports');
 
             // set default monospaced font
             $pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
@@ -994,11 +1038,11 @@ class TracerReportsController extends Controller
             foreach ($board_exam as $exam) {
 
                 $checkBoardPassers = Alumni::join('tbl_tracer_answers', 'tbl_alumni.alumni_id', '=', 'tbl_tracer_answers.alumni_id')
-                ->whereBetween('tbl_alumni.batch', [$request->batch_from, $request->batch_to])
-                ->where('tbl_tracer_answers.question_id', '=', 3)
-                ->where('tbl_tracer_answers.answer', '=', $exam)
-                ->select('tbl_tracer_answers.answer',)
-                ->get();
+                    ->whereBetween('tbl_alumni.batch', [$request->batch_from, $request->batch_to])
+                    ->where('tbl_tracer_answers.question_id', '=', 3)
+                    ->where('tbl_tracer_answers.answer', '=', $exam)
+                    ->select('tbl_tracer_answers.answer',)
+                    ->get();
 
                 if (count($checkBoardPassers) > 0) {
                     $pdf->SetPrintHeader(true);
@@ -1049,10 +1093,10 @@ class TracerReportsController extends Controller
                     foreach ($allAlumni as $alumni) {
                         $checkAnswer = TracerAnswers::where('alumni_id', '=', $alumni->alumni_id)->get();
 
-                        if(count($checkAnswer) > 0 && $checkAnswer[0]['answer'] == "Yes" && $checkAnswer[2]['answer'] == $exam) {
+                        if (count($checkAnswer) > 0 && $checkAnswer[0]['answer'] == "Yes" && $checkAnswer[2]['answer'] == $exam) {
                             $fullname = $alumni->last_name . ', ' . $alumni->first_name . ' ' . $alumni->suffix . ' ' . $alumni->middle_name;
 
-                        $html .= '<tr>
+                            $html .= '<tr>
                                 <th class="th-EI" colspan="1" style="width: 60%;">' . strtoupper($fullname) . '</th>
                                 <td class="th-EI" colspan="1" style="width: 30%;">' . $alumni->course_id . '</td>
                                 <td class="th-EI" colspan="1" style="width: 10%;">' . $alumni->batch . '</td>
@@ -1065,8 +1109,7 @@ class TracerReportsController extends Controller
             }
             $pdf->lastPage();
             $pdf->Output(date('m-d-y') . ' Tracer_Summary_Report' . '.pdf', 'I');
-        }
-        else {
+        } else {
             $pdf = new MYPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
 
             // set document information

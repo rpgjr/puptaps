@@ -24,24 +24,6 @@ style="
                         <p class="text-center">Visit our socials</p>
                     </div>
                     <div class="col-md-12">
-                        {{-- <div class="mx-2">
-                            <a href="https://www.facebook.com/YourCentralStudentCouncil" class="row icon-socials text-center" target="_blank">
-                                <i class="fa-brands fa-facebook" style="font-size: 35px"></i>
-                                <p>YOUR Central <br>Student Council</p>
-                            </a>
-                        </div>
-                        <div class="mx-2">
-                            <a href="https://www.facebook.com/PUPTOFFICIAL" class="row icon-socials text-center" target="_blank">
-                                <i class="fa-brands fa-facebook" style="font-size: 35px"></i>
-                                <p>PUP Taguig</p>
-                            </a>
-                        </div>
-                        <div class="mx-2">
-                            <a href="https://www.facebook.com/PUPalumniofficial" class="row icon-socials text-center" target="_blank">
-                                <i class="fa-brands fa-facebook" style="font-size: 35px"></i>
-                                <p>PUP Alumni</p>
-                            </a>
-                        </div> --}}
                         <div class="row justify-content-center g-2">
                                 <a href="https://www.facebook.com/YourCentralStudentCouncil" target="_blank" class="scene col-4 mx-1">
                                     <div class="cube">

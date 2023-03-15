@@ -65,19 +65,6 @@
                         </a>
                     </div>
                 </div>
-
-                <!-- Start: Account Settings -->
-                {{-- <form action="{{ route('logout') }}" method="post">
-                    @csrf
-                    <div class="fixed-bottom">
-                        <button class="text-center pb-0 mb-3 admin-logout-button">
-                            <span class="admin-logout-button">
-                                <i class="fa-solid fa-gear me-1"></i>
-                                Logout
-                            </span>
-                        </button>
-                    </div>
-                </form> --}}
             </div>
         </div>
     </div>

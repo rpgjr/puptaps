@@ -120,33 +120,6 @@
                                 </div>
                             </div>
                         @endforeach
-
-
-                        {{-- @foreach ($announcements as $announcement)
-                        <div class="col-10">
-                            <livewire:homepage.homepage-image-announcement :announcements="$announcements" />
-                        </div> --}}
-                        {{-- <div class="col-1 text-center">
-                            <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteAnnouncement{{$announcement->announcement_id}}"><i class="fa-solid fa-trash-can"></i></button>
-                            @include("super_admin.components.delete-announcement")
-                        </div> --}}
-                            {{-- <div class="col-12">
-                                <div class="row">
-                                    <div class="col-5">
-                                        <img class="rounded w-100" src="{{ asset("Uploads/NewsAnnouncements/" . $announcement->announcement_image) }}" alt="">
-                                    </div>
-                                    <div class="col-6">
-                                        <h4 class="mb-3"><i class="fa-solid fa-bullhorn me-2"></i>{{ $announcement->announcement_title }}</h4>
-                                        <div hidden>{{ $text = $announcement->announcement_text }}</div>
-                                        <div class="fs-7" style="white-space: pre-wrap; text-align: justify; text-justify: inter-word;">@php echo $text @endphp</div>
-                                    </div>
-                                    <div class="col-1 text-center">
-                                        <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteAnnouncement{{$announcement->announcement_id}}"><i class="fa-solid fa-trash-can"></i></button>
-                                        @include("super_admin.components.delete-announcement")
-                                    </div>
-                                </div>
-                            </div> --}}
-                        {{-- @endforeach --}}
                     @endif
                 </div>
             </div>

@@ -106,16 +106,6 @@
             </table>
         </div>
     </div>
-    {{-- @else
-        <div class="row sub-container-box mt-5 pt-4 pb-4">
-            <div class="col-12">
-                <h3 class="mt-3 text-center">{{ $course->course_desc }}</h3>
-                <h4 class="mb-5 text-center">PUP Taguig Alumni Batch of {{ $batch }}</h4>
-                <div class="alert alert-warning mb-0 text-center fs-5">
-                    No data
-                </div>
-            </div>
-        </div> --}}
     @endif
     @endforeach
 

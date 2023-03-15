@@ -149,15 +149,27 @@
                     <div class="row">
                         @foreach ($questions as $key => $value)
                         @if (($value->category_id) == ($category->category_id))
-                            <div class="col-md-6 mb-3">
-                                <div class="form-group">
-                                    <div>
-                                        <label class="form-label">{{ $value->question_text }} <span class="text-danger">*</span></label>
-                                        <input type="text" class="form-control @error('arrayAnswers.' . $key . '.answer') is-invalid @enderror" wire:model.lazy="arrayAnswers.{{ $key }}.answer" placeholder="{{ $value->question_placeholder }}">
-                                        <span class="text-danger error-message">@error('arrayAnswers.' . $key . '.answer'){{ $message }}@enderror</span>
+                            @if ($key == 2 || $key == 4)
+                                <div class="col-md-6 mb-3">
+                                    <div class="form-group">
+                                        <div>
+                                            <label class="form-label">{{ $value->question_text }} <span class="text-danger">*</span></label>
+                                            <input type="text" class="form-control @error('arrayAnswers.' . $key . '.answer') is-invalid @enderror" wire:model.lazy="arrayAnswers.{{ $key }}.answer" placeholder="{{ $value->question_placeholder }}" onkeydown="return onlyNumber(event)" minlength="11" maxlength="20">
+                                            <span class="text-danger error-message">@error('arrayAnswers.' . $key . '.answer'){{ $message }}@enderror</span>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                            @else
+                                <div class="col-md-6 mb-3">
+                                    <div class="form-group">
+                                        <div>
+                                            <label class="form-label">{{ $value->question_text }} <span class="text-danger">*</span></label>
+                                            <input type="text" class="form-control @error('arrayAnswers.' . $key . '.answer') is-invalid @enderror" wire:model.lazy="arrayAnswers.{{ $key }}.answer" placeholder="{{ $value->question_placeholder }}" onkeypress="return onlyAlphabets(event)">
+                                            <span class="text-danger error-message">@error('arrayAnswers.' . $key . '.answer'){{ $message }}@enderror</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endif
                         @endif
                         @endforeach
                     </div>
@@ -292,15 +304,27 @@
                         </div>
                         @foreach ($questions as $key => $value)
                         @if (($value->category_id) == ($category->category_id))
-                            <div class="col-12 mb-3">
-                                <div class="form-group">
-                                    <div>
-                                        <label class="form-label">{{ $value->question_text }} <span class="text-danger">*</span></label>
-                                        <input type="{{ $value->question_type }}" class="form-control @error('arrayAnswers.' . $key . '.answer') is-invalid @enderror" wire:model.lazy="arrayAnswers.{{ $key }}.answer" placeholder="{{ $value->question_placeholder }}">
-                                        <span class="text-danger error-message">@error('arrayAnswers.' . $key . '.answer'){{ $message }}@enderror</span>
+                            @if ($key == 15)
+                                <div class="col-12 mb-3">
+                                    <div class="form-group">
+                                        <div>
+                                            <label class="form-label">{{ $value->question_text }} <span class="text-danger">*</span></label>
+                                            <input type="{{ $value->question_type }}" class="form-control @error('arrayAnswers.' . $key . '.answer') is-invalid @enderror" wire:model.lazy="arrayAnswers.{{ $key }}.answer" placeholder="{{ $value->question_placeholder }}" onkeypress="return onlyAlphabets(event)">
+                                            <span class="text-danger error-message">@error('arrayAnswers.' . $key . '.answer'){{ $message }}@enderror</span>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                            @else
+                                <div class="col-12 mb-3">
+                                    <div class="form-group">
+                                        <div>
+                                            <label class="form-label">{{ $value->question_text }} <span class="text-danger">*</span></label>
+                                            <input type="{{ $value->question_type }}" class="form-control @error('arrayAnswers.' . $key . '.answer') is-invalid @enderror" wire:model.lazy="arrayAnswers.{{ $key }}.answer" placeholder="{{ $value->question_placeholder }}">
+                                            <span class="text-danger error-message">@error('arrayAnswers.' . $key . '.answer'){{ $message }}@enderror</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endif
                         @endif
                         @endforeach
                     </div>
