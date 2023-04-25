@@ -3,11 +3,12 @@
 namespace App\Http\Middleware;
 
 use App\Models\Alumni;
+use App\Models\Tracer\TracerAnswers;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class FinishedRegistration
+class FinishedSetup
 {
     /**
      * Handle an incoming request.
@@ -18,11 +19,15 @@ class FinishedRegistration
      */
     public function handle(Request $request, Closure $next)
     {
-        $check_profile = Alumni::where('alumni_id', '=', Auth::user()->alumni_id)->value('profile_status');
 
-        // if ($check_profile == "Incomplete") {
-        //     return redirect(route('userProfile.set-up'));
-        // }
+        $profile_status = Alumni::where('alumni_id', '=', Auth::user()->alumni_id)->value('profile_status');
+        $tracer_answers = TracerAnswers::where('alumni_id', '=', Auth::user()->alumni_id)->first();
+
+        if($profile_status == 'Complete') {
+            if($tracer_answers != null) {
+                return back();
+            }
+        }
 
         return $next($request);
     }

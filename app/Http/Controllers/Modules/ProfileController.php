@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Modules;
 use App\Http\Controllers\Controller;
 use App\Models\Alumni;
 use App\Models\Courses;
+use App\Models\Tracer\TracerAnswers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -26,6 +27,15 @@ class ProfileController extends Controller
         $users = Alumni::where('alumni_id', '=', Auth::user()->alumni_id)->get();
         $title = "Profile Settings";
         return view('user.profile.setup-profile', compact(['users', 'title', 'courses']));
+    }
+
+    public function getPostReg() {
+        $users = Alumni::where('alumni_id', '=', Auth::user()->alumni_id)->get();
+        $tracer_answers = TracerAnswers::where('alumni_id', '=', Auth::user()->alumni_id)->get();
+        $profile_setup = Alumni::where('alumni_id', '=', Auth::user()->alumni_id)->value('profile_status');
+
+
+        return view('user.post-registration', compact(['users', 'tracer_answers', 'profile_setup']));
     }
 
     public function updateProfile(Request $request) {

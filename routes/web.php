@@ -69,15 +69,15 @@ Route::group(
             ->name('landingPage');
 
         Route::get('/home', 'getUserHomepage')
-            ->middleware(['auth', 'isAdmin', 'checkAccountStatus', 'hasCompleteProfile', 'hasAnswerTracer'])
+            ->middleware(['auth', 'isAdmin', 'checkAccountStatus', 'notFinishedSetup'])
             ->name('user.homepage');
 
         Route::get('/contacts', 'getContactsPage')
-            ->middleware(['auth', 'isAdmin', 'checkAccountStatus', 'hasCompleteProfile', 'hasAnswerTracer'])
+            ->middleware(['auth', 'isAdmin', 'checkAccountStatus', 'notFinishedSetup'])
             ->name('user.getContactsPage');
 
         Route::get('/about-us', 'getAboutPage')
-            ->middleware(['auth', 'isAdmin', 'checkAccountStatus', 'hasCompleteProfile', 'hasAnswerTracer'])
+            ->middleware(['auth', 'isAdmin', 'checkAccountStatus', 'notFinishedSetup'])
             ->name('user.getAboutPage');
     }
 );
@@ -175,7 +175,7 @@ Route::group(
         'controller' => CareerController::class,
         'prefix'     => 'careers',
         'as'         => 'userCareer.',
-        'middleware' => ['isAdmin', 'auth', 'hasCompleteProfile', 'hasAnswerTracer']
+        'middleware' => ['isAdmin', 'auth', 'notFinishedSetup']
     ],
     function () {
         Route::get('/', 'getCareerIndex')
@@ -186,6 +186,58 @@ Route::group(
 
         Route::post('create-image-career', 'addImageCareer')
             ->name('addImageCareer');
+    }
+);
+
+/*
+|--------------------------------------------------------------------------
+| Tracer Module
+|--------------------------------------------------------------------------
+|
+| Routing for Answering and Updating the Tracer form in user / alumni side
+|
+*/
+Route::group(
+    [
+        'controller' => TracerController::class,
+        'prefix'     => 'tracer',
+        'as'         => 'userTracer.',
+        'middleware' => ['isAdmin', 'auth']
+    ],
+    function () {
+        Route::get('/', 'getTracerIndex')
+            ->name('getTracerIndex')->middleware('notFinishedSetup');
+
+        Route::get('update-tracer', 'getUpdatePage')
+            ->name('getUpdatePage')->middleware('notFinishedSetup');
+
+        Route::get('answer-tracer', 'getAnswerUnemployedPage')
+            ->name('getAnswerUnemployedPage')->middleware('notFinishedSetup');
+
+        Route::get('answer', 'getAnswerPage')
+            ->name('getAnswerPage')->middleware('isFinishedSetup');
+    }
+);
+
+/*
+|--------------------------------------------------------------------------
+| User Post Registration
+|--------------------------------------------------------------------------
+|
+| Routing for the post registration requirements - Tracer and
+| Profile Setup
+|
+*/
+Route::group(
+    [
+        'controller' => ProfileController::class,
+        'as'         => 'userProfile.',
+        'prefix'     => 'profile',
+        'middleware' => ['isAdmin', 'auth', 'isFinishedSetup']
+    ],
+    function () {
+        Route::get('setting-up-account', 'getPostReg')
+            ->name('set-up');
     }
 );
 
@@ -202,20 +254,20 @@ Route::group(
         'controller' => ProfileController::class,
         'prefix'     => 'profile',
         'as'         => 'userProfile.',
-        'middleware' => ['isAdmin', 'auth', 'hasAnswerTracer']
+        'middleware' => ['isAdmin', 'auth']
     ],
     function () {
         Route::get('/', 'getProfileIndex')
-            ->name('index')->middleware('hasCompleteProfile');
+            ->name('index')->middleware('notFinishedSetup');
 
         Route::get('profile-setup', 'getProfileSetup')
-            ->name('getProfileSetup')->middleware('hasIncompleteProfile');
+            ->name('getProfileSetup')->middleware('isFinishedSetup');
 
         Route::post('setup-profile', 'updateProfile')
-            ->name('updateProfile');
+            ->name('updateProfile')->middleware('isFinishedSetup');
 
         Route::post('update-profile', 'updateUserAccount')
-            ->name('updateUserAccount');
+            ->name('updateUserAccount')->middleware('notFinishedSetup');
     }
 );
 
@@ -232,7 +284,7 @@ Route::group(
         'controller' => FormsController::class,
         'prefix'     => 'forms',
         'as'         => 'userForm.',
-        'middleware' => ['isAdmin', 'auth', 'hasCompleteProfile', 'hasAnswerTracer']
+        'middleware' => ['isAdmin', 'auth', 'notFinishedSetup']
     ],
     function () {
         Route::get('/', 'getFormIndex')
@@ -262,7 +314,7 @@ Route::group(
         'controller' => PdsToPdfController::class,
         'prefix'     => 'download',
         'as'         => 'userForm.',
-        'middleware' => ['auth']
+        'middleware' => ['auth', 'notFinishedSetup']
     ],
     function () {
         Route::post('form-pds', 'PDS_to_PDF')
@@ -283,7 +335,7 @@ Route::group(
         'controller' => EifToPdfController::class,
         'prefix'     => 'download',
         'as'         => 'userForm.',
-        'middleware' => ['auth']
+        'middleware' => ['auth', 'notFinishedSetup']
     ],
     function () {
         Route::post('form-exit-interview', 'EIF_TO_PDF')
@@ -304,44 +356,11 @@ Route::group(
         'controller' => SasToPdfController::class,
         'prefix'     => 'download',
         'as'         => 'userForm.',
-        'middleware' => ['auth']
+        'middleware' => ['auth', 'notFinishedSetup']
     ],
     function () {
         Route::post('form-sas', 'SAS_TO_PDF')
             ->name('SAS_TO_PDF');
-    }
-);
-
-/*
-|--------------------------------------------------------------------------
-| Tracer Module
-|--------------------------------------------------------------------------
-|
-| Routing for Answering and Updating the Tracer form in user / alumni side
-|
-*/
-Route::group(
-    [
-        'controller' => TracerController::class,
-        'prefix'     => 'tracer',
-        'as'         => 'userTracer.',
-        'middleware' => ['isAdmin', 'auth', 'hasCompleteProfile']
-    ],
-    function () {
-        Route::get('/', 'getTracerIndex')
-            ->name('getTracerIndex')->middleware('hasAnswerTracer');
-
-        Route::get('update-tracer', 'getUpdatePage')
-            ->name('getUpdatePage')->middleware('hasAnswerTracer');
-
-        Route::get('answer-tracer', 'getAnswerUnemployedPage')
-            ->name('getAnswerUnemployedPage')->middleware('hasAnswerTracer');
-
-        Route::get('answer', 'getAnswerPage')
-            ->name('getAnswerPage')->middleware('hasUnanswerTracer');
-
-        Route::get('tracer-form', 'getAnswerModal')
-            ->name('getAnswerModal')->middleware('hasUnanswerTracer');
     }
 );
 

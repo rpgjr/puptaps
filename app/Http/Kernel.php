@@ -74,5 +74,7 @@ class Kernel extends HttpKernel
         'checkAccountStatus' => \App\Http\Middleware\UserAccountStatus::class,
         'hasAnswerTracer' => \App\Http\Middleware\AnswerTracer::class,
         'hasUnanswerTracer' => \App\Http\Middleware\UnansweredTracer::class,
+        'isFinishedSetup' => \App\Http\Middleware\FinishedSetup::class,
+        'notFinishedSetup' => \App\Http\Middleware\NotFinishedSetup::class,
     ];
 }

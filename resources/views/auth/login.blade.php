@@ -35,13 +35,13 @@
                                 </div>
                                 <div class="mb-4 px-3">
                                     <p class="form-label" >Email<span class="text-danger">*</span></p>
-                                    <input type="text" class="form-control @error('email') animate__animated animate__shakeX border border-danger border-3 @enderror" name="email" value="{{ old("email") }}" placeholder="sample@email.com" />
+                                    <input type="email" class="fs-7 form-control @error('email') animate__animated animate__shakeX border border-danger border-3 @enderror" name="email" value="{{ old("email") }}" placeholder="sample@email.com" required/>
                                     <span class="text-danger error-message">@error('email') {{$message}} @enderror</span>
                                 </div>
                                 <div class="mb-4 px-3">
                                     <p class="form-label">Password<span class="text-danger">*</span></p>
                                     <div class="input-group @error('password') animate__animated animate__shakeX @enderror">
-                                        <input type="password" name="password" id="password" class="form-control @error('password') border border-danger border-3 @enderror">
+                                        <input type="password" name="password" id="password" class="form-control @error('password') border border-danger border-3 @enderror" required placeholder="********">
                                         <button class="btn btn-outline-secondary" type="button" id="togglePassword">
                                             <i id="eye_icon" class="fa-solid fa-eye" ></i>
                                         </button>

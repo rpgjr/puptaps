@@ -76,7 +76,7 @@
                             <h3 class="mb-4 mt-3">Form Reports</h3>
                             <div class="col-6 mb-3">
                                 <label class="form-label">Forms</label>
-                                <select id="form_name" class="form-select @error('form') is-invalid @enderror" name="form">
+                                <select id="form_name" class="form-select @error('form') is-invalid @enderror" name="form" required>
                                     <option value="" hidden selected>Please select one...</option>
                                     @foreach ($forms as $form)
                                         <option value="{{ $form->form_id }}">{{ $form->form_name }}</option>
@@ -86,7 +86,7 @@
                             </div>
                             <div class="col-6 mb-3">
                                 <label class="form-label">Report Type</label>
-                                <select id="form_type" class="form-select @error('type') is-invalid @enderror" name="type">
+                                <select id="form_type" class="form-select @error('type') is-invalid @enderror" name="type" required>
                                     <option value="" hidden selected>Please select one...</option>
                                     <option value="1">Detailed Report</option>
                                     <option value="2">Summary Report</option>
@@ -127,8 +127,9 @@
                                     @endfor
                                 </select>
                             </div>
-                            <div class="col-12 mb-3">
+                            <div class="col-12 mb-3 mt-2">
                                 <button type="submit" class="btn btn-primary fs-7">Generate Report <i class="fa-solid fa-file-lines ms-1"></i></button>
+                                <a type="button" class="btn btn-success fs-7">Generate Charts <i class="fa-solid fa-chart-pie ms-1"></i></a>
                             </div>
                         </div>
                     </form>

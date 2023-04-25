@@ -21,9 +21,9 @@ class UnfinishedRegistration
 
         $check_profile = Alumni::where('alumni_id', '=', Auth::user()->alumni_id)->value('profile_status');
 
-        if ($check_profile == "Complete") {
-            return back();
-        }
+        // if ($check_profile == "Complete") {
+        //     return back();
+        // }
 
         return $next($request);
     }

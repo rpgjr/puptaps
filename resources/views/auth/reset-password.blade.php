@@ -36,7 +36,7 @@
                             </div>
                             <div class="mb-4 px-3">
                                 <p class="form-label" >Email<span class="text-danger">*</span></p>
-                                <input type="text" class="form-control @error('email') border border-danger border-3 animate__animated animate__shakeX @enderror" name="email" value="{{ old("email") }}"/>
+                                <input type="email" class="fs-7 form-control @error('email') border border-danger border-3 animate__animated animate__shakeX @enderror" name="email" value="{{ old("email") }}" required placeholder="sample@email.com"/>
                                 <span class="text-danger error-message">@error('email') {{$message}} @enderror</span>
                             </div>
                             <div class="text-center my-0">

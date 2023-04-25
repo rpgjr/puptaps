@@ -250,7 +250,16 @@ class Answer extends Component
         $this->arrayAnswers = [];
         $this->countNull = 1;
 
-        return redirect(route("userTracer.getTracerIndex"));
+        // return redirect(route("userTracer.getTracerIndex"));
+        $users = Alumni::where('alumni_id', '=', Auth::user()->alumni_id)->first();
+
+        if($users->profile_status == 'Complete') {
+            return redirect(route('user.homepage'));
+        }
+        else {
+            // return redirect(route("userTracer.getTracerIndex"));
+            return redirect(route('userProfile.set-up'));
+        }
     }
 
     public function updateAnswer() {
@@ -267,7 +276,15 @@ class Answer extends Component
         $this->countNull = 1;
         $this->temp = 0;
 
-        return redirect(route("userTracer.getTracerIndex"));
+        $users = Alumni::where('alumni_id', '=', Auth::user()->alumni_id)->first();
+
+        if($users->profile_status == 'Complete') {
+            return redirect(route('user.homepage'));
+        }
+        else {
+            // return redirect(route("userTracer.getTracerIndex"));
+            return redirect(route('userProfile.set-up'));
+        }
     }
 }
 

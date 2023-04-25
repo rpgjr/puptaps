@@ -34,12 +34,12 @@
                             </div>
                             <div class="mb-4 px-3">
                                 <p class="form-label">Email<span class="text-danger">*</span></p>
-                                <input type="text" class="form-control @error('email') border border-danger border-3 animate__animated animate__shakeX @enderror" name="email" value="{{ old("email") }}" placeholder="sample@email.com" />
+                                <input type="email" class="fs-7 form-control @error('email') border border-danger border-3 animate__animated animate__shakeX @enderror" name="email" value="{{ old("email") }}" placeholder="sample@email.com" required/>
                                 <span class="text-danger error-message">@error('email') {{$message}} @enderror</span>
                             </div>
                             <div class="mb-4 px-3">
                                 <p class="form-label">Student Number<span class="text-danger">*</span></p>
-                                <input type="text" class="form-control @error('stud_number') border border-danger border-3 animate__animated animate__shakeX @enderror" name="stud_number" value="{{ old("stud_number") }}" placeholder="eg. 2019-00123-TG-0" />
+                                <input type="text" class="form-control @error('stud_number') border border-danger border-3 animate__animated animate__shakeX @enderror" name="stud_number" value="{{ old("stud_number") }}" placeholder="eg. 2019-00123-TG-0" required/>
                                 <span class="text-danger error-message">@error('stud_number') {{$message}} @enderror</span>
                             </div>
                             <div class="text-center my-0">

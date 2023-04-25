@@ -24,7 +24,7 @@ class AnswerTracer
 
         if ($check_profile == "Complete") {
             if (count($tracer_answers) == 0 || count($tracer_answers) == null) {
-                return redirect(route('userTracer.getAnswerModal'));
+                return redirect(route('userProfile.set-up'));
             }
         }
         return $next($request);
