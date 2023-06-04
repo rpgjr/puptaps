@@ -7,7 +7,7 @@
 4. run "copy .env.example .env"
 5. create database in xampp - puptaps_db
 6. change the DB_DATABASE in .env file to puptaps_db 
-7. ASK LOUGEN FOR THE MAIL CREDENTIALS IN .env FILE
+7. FOR THE MAIL CREDENTIALS IN .env FILE refer to GMAIL of the system
 8. run "php artisan key:generate"
 9. run "php artisan migrate"
 10. inport the courses to the courses table in the database
@@ -22,11 +22,6 @@ if there are many div inside section use the div class instead.
 4. create another css if necessary 
 5. ALL IMAGES SHOULD BE ROUTED INSIDE THE BLADE.PHP FILE NOT IN THE CSS
 
-=====Files needed to be edited=====
-1. auth.login - auth(layout)
-2. auth.register - auth(layout)
-3. homepage - homepage(layout)
-4. landing - landing(layout)
 
 =====REMINDER=====
 1. BEFORE PUSHING IN GITHUB PLEASE PULL THE FILES FIRST THEN RUN AGAIN THE SYSTEM, CHECK IF THERE IS NO ERROR, THEN PUSH.
