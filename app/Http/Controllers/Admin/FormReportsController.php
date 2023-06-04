@@ -101,40 +101,55 @@ class FormReportsController extends Controller
             ]
         );
 
-        if ($request->form == 1) {
-            if ($request->type == 1) {
-                $this->PdsDetailedReport($request);
-            }
-            elseif ($request->type == 2) {
-                return back()->with('fail', 'Personal Data Sheet doesn\'t have a Summary Report.');
-            }
-            elseif ($request->type == 3) {
-                $this->PdsStatusReport($request);
-            }
-        }
+        switch($request->form) {
+            case 1:
+                switch($request->type) {
+                    case 1:
+                        $this->PdsDetailedReport($request);
+                        break;
+                    case 2:
+                        return back()->with('fail', 'Personal Data Sheet doesn\'t have a Summary Report.');
+                        break;
+                    case 3:
+                        $this->PdsStatusReport($request);
+                        break;
+                    default:
+                        return back()->with('fail', 'Error! Please try again.');
+                }
+                break;
 
-        elseif ($request->form == 2) {
-            if ($request->type == 1) {
-                $this->EifDetailedReport($request);
-            }
-            elseif ($request->type == 2) {
-                $this->EifSummaryReport($request);
-            }
-            elseif ($request->type == 3) {
-                $this->EifStatusReport($request);
-            }
-        }
+            case 2:
+                switch($request->type) {
+                    case 1:
+                        $this->EifDetailedReport($request);
+                        break;
+                    case 2:
+                        $this->EifSummaryReport($request);
+                        break;
+                    case 3:
+                        $this->EifStatusReport($request);
+                        break;
+                }
+                break;
 
-        elseif ($request->form == 3) {
-            if ($request->type == 1) {
-                $this->SasDetailedReport($request);
-            }
-            elseif ($request->type == 2) {
-                $this->SasSummaryReport($request);
-            }
-            elseif ($request->type == 3) {
-                $this->SasStatusReport($request);
-            }
+            case 3:
+                switch($request->type) {
+                    case 1:
+                        $this->SasDetailedReport($request);
+                        break;
+                    case 2:
+                        $this->SasSummaryReport($request);
+                        break;
+                    case 3:
+                        $this->SasStatusReport($request);
+                        break;
+                    default:
+                        return back()->with('fail', 'Error! Please try again.');
+                }
+                break;
+
+            default:
+                return back()->with('fail', 'Error! Please try again.');
         }
     }
 
@@ -168,7 +183,6 @@ class FormReportsController extends Controller
 
         $courses = Courses::where('course_id', 'like', '%' . $request->course_id . '%')->get();
 
-        // $pdf = new MYPDF(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
         $pdf = new MYPDF('P', 'mm', array(215.9, 330.2), true, 'UTF-8', false);
         $pdf->SetCreator(PDF_CREATOR);
         $pdf->SetTitle('PDS_DETAILED_REPORTS');
@@ -594,7 +608,6 @@ class FormReportsController extends Controller
                 </tr>';
             $total = Alumni::join('form_eif_answers', 'tbl_alumni.alumni_id', '=', 'form_eif_answers.alumni_id')
                 ->whereBetween('tbl_alumni.batch', [$request->batch_from, $request->batch_to])
-                // ->where('course_id', 'like', '%' . $request->course_id . '%')
                 ->select('tbl_alumni.alumni_id')
                 ->distinct()
                 ->get();
@@ -634,7 +647,6 @@ class FormReportsController extends Controller
                 </tr>';
             $total = Alumni::join('form_eif_answers', 'tbl_alumni.alumni_id', '=', 'form_eif_answers.alumni_id')
                 ->whereBetween('tbl_alumni.batch', [$request->batch_from, $request->batch_to])
-                // ->where('course_id', 'like', '%' . $request->course_id . '%')
                 ->select('tbl_alumni.alumni_id')
                 ->distinct()
                 ->get();
@@ -716,7 +728,6 @@ class FormReportsController extends Controller
                 </tr>';
             $total = Alumni::join('form_eif_answers', 'tbl_alumni.alumni_id', '=', 'form_eif_answers.alumni_id')
                 ->whereBetween('tbl_alumni.batch', [$request->batch_from, $request->batch_to])
-                // ->where('course_id', 'like', '%' . $request->course_id . '%')
                 ->select('tbl_alumni.alumni_id')
                 ->distinct()
                 ->get();
@@ -787,7 +798,6 @@ class FormReportsController extends Controller
                 $totalMean = 0;
                 $total = Alumni::join('form_eif_answers', 'tbl_alumni.alumni_id', '=', 'form_eif_answers.alumni_id')
                     ->whereBetween('tbl_alumni.batch', [$request->batch_from, $request->batch_to])
-                    // ->where('course_id', 'like', '%' . $request->course_id . '%')
                     ->select('tbl_alumni.alumni_id')
                     ->distinct()
                     ->get();
@@ -891,7 +901,6 @@ class FormReportsController extends Controller
                     $totalMean = 0;
                     $total = Alumni::join('form_eif_answers', 'tbl_alumni.alumni_id', '=', 'form_eif_answers.alumni_id')
                         ->whereBetween('tbl_alumni.batch', [$request->batch_from, $request->batch_to])
-                        // ->where('course_id', 'like', '%' . $request->course_id . '%')
                         ->select('tbl_alumni.alumni_id')
                         ->distinct()
                         ->get();
@@ -1123,7 +1132,6 @@ class FormReportsController extends Controller
                 </tr>';
             $total = Alumni::join('form_sas_answers', 'tbl_alumni.alumni_id', '=', 'form_sas_answers.alumni_id')
                 ->whereBetween('tbl_alumni.batch', [$request->batch_from, $request->batch_to])
-                // ->where('course_id', 'like', '%' . $request->course_id . '%')
                 ->select('tbl_alumni.alumni_id')
                 ->distinct()
                 ->get();
@@ -1164,7 +1172,6 @@ class FormReportsController extends Controller
                 </tr>';
             $total = Alumni::join('form_sas_answers', 'tbl_alumni.alumni_id', '=', 'form_sas_answers.alumni_id')
                 ->whereBetween('tbl_alumni.batch', [$request->batch_from, $request->batch_to])
-                // ->where('course_id', 'like', '%' . $request->course_id . '%')
                 ->select('tbl_alumni.alumni_id')
                 ->distinct()
                 ->get();
@@ -1319,120 +1326,6 @@ class FormReportsController extends Controller
             $pdf->writeHTML($html, true, 0, true, 0);
             $numeral++;
         }
-        // foreach ($sasCategories as $categories) {
-        //     if ($numeral == 11 || $numeral == 13) {
-        //         $pdf->SetPrintHeader(true);
-        //         $pdf->AddPage('L');
-        //         $pdf->SetPrintHeader(false);
-        //         $style3 = array('width' => .5, 'cap' => 'butt', 'join' => 'miter', 'dash' => 0, 'color' => array(0, 0, 0));
-        //         $pdf->Line(10, 33, 288, 33, $style3);
-        //         $pdf->ln(15);
-        //     }
-        //     elseif ($numeral == 12 || $numeral == 14) {
-        //         $pdf->ln(3);
-        //         $pdf->SetPrintHeader(true);
-        //     }
-        //     else {
-        //         $pdf->SetPrintHeader(true);
-        //         $pdf->AddPage('L');
-        //         $pdf->SetPrintHeader(false);
-        //         $style3 = array('width' => .5, 'cap' => 'butt', 'join' => 'miter', 'dash' => 0, 'color' => array(0, 0, 0));
-        //         $pdf->Line(10, 33, 288, 33, $style3);
-        //         $pdf->ln(20);
-        //     }
-        //     $pdf->SetFont('times', 'B', 11);
-        //     $pdf->Cell(0, 0, 'TABLE ' . $numeral . '. ' . strtoupper($categories->category_name), 0, 1, 'L', 0, '', 0);
-        //     $pdf->SetFont('times', '', 11);
-
-        //     $total = Alumni::join('form_sas_answers', 'tbl_alumni.alumni_id', '=', 'form_sas_answers.alumni_id')
-        //         ->whereBetween('tbl_alumni.batch', [$request->batch_from, $request->batch_to])
-        //         ->select('tbl_alumni.alumni_id')
-        //         ->distinct()
-        //         ->get();
-        //     $sasQuestions = SasQuestions::where('category_id', '=', $categories->category_id)->get();
-
-        //     $html = '<style>
-        //             .table-EI, .th-EI, .td-EI {
-        //                 border: 1px solid black;
-        //                 border-collapse: collapse;
-        //                 padding: 3px;
-        //             }
-        //             .theading {
-        //                 background-color: #78281F;
-        //                 color: #ffffff;
-        //                 text-align: center;
-        //             }
-        //             th {
-        //                 font-weight: bold;
-        //             }
-        //             td {
-        //                 text-align: center;
-        //             }
-        //         </style>
-        //         <table class="table-EI">
-        //             <tr>
-        //                 <th rowspan="2" class="theading" style="width: 28%"></th>
-        //                 <th colspan="2" class="theading" style="width: 18%">1 - Very Satisfactory</th>
-        //                 <th colspan="2" class="theading" style="width: 18%">2 - Satisfactory</th>
-        //                 <th colspan="2" class="theading" style="width: 18%">3 - Unsatisfactory</th>
-        //                 <th colspan="2" class="theading" style="width: 18%">4 - Very Unsatisfactory</th>
-        //             </tr>
-        //             <tr>
-        //                 <th class="th-EI" colspan="1" style="text-align: center;">No. of Respondents</th>
-        //                 <th class="th-EI" colspan="1" style="text-align: center;">Percentage</th>
-        //                 <th class="th-EI" colspan="1" style="text-align: center;">No. of Respondents</th>
-        //                 <th class="th-EI" colspan="1" style="text-align: center;">Percentage</th>
-        //                 <th class="th-EI" colspan="1" style="text-align: center;">No. of Respondents</th>
-        //                 <th class="th-EI" colspan="1" style="text-align: center;">Percentage</th>
-        //                 <th class="th-EI" colspan="1" style="text-align: center;">No. of Respondents</th>
-        //                 <th class="th-EI" colspan="1" style="text-align: center;">Percentage</th>
-        //             </tr>';
-
-        //     foreach ($sasQuestions as $questions) {
-
-        //         $perAnswer = Alumni::join('form_sas_answers', 'tbl_alumni.alumni_id', '=', 'form_sas_answers.alumni_id')
-        //         ->whereBetween('tbl_alumni.batch', [$request->batch_from, $request->batch_to])
-        //         ->where('course_id', 'like', '%' . $request->course_id . '%')
-        //         ->where('tbl_alumni.sex', 'like', $request->sex . '%')
-        //         ->where('form_sas_answers.question_id', '=', $questions->question_id)
-        //         ->select('form_sas_answers.answer')
-        //         ->get();
-
-        //         $legend1 = 0;
-        //         $legend2 = 0;
-        //         $legend3 = 0;
-        //         $legend4 = 0;
-        //         foreach ($perAnswer as $answers) {
-        //             if ($answers->answer == 1) {
-        //                 $legend1++;
-        //             }
-        //             elseif ($answers->answer == 2) {
-        //                 $legend2++;
-        //             }
-        //             elseif ($answers->answer == 3) {
-        //                 $legend3++;
-        //             }
-        //             elseif ($answers->answer == 4) {
-        //                 $legend4++;
-        //             }
-        //         }
-        //         $html .= '<tr>
-        //                 <th class="th-EI" style="text-align: left;">' . $questions->question_text .'</th>
-        //                 <td class="tdata td-EI">' . $legend1 . '</td>
-        //                 <td class="tdata td-EI">' . number_format($legend1 / count($total) * 100, 2) . '%</td>
-        //                 <td class="tdata td-EI">' . $legend2 . '</td>
-        //                 <td class="tdata td-EI">' . number_format($legend2 / count($total) * 100, 2) . '%</td>
-        //                 <td class="tdata td-EI">' . $legend3 . '</td>
-        //                 <td class="tdata td-EI">' . number_format($legend3 / count($total) * 100, 2) . '%</td>
-        //                 <td class="tdata td-EI">' . $legend4 . '</td>
-        //                 <td class="tdata td-EI">' . number_format($legend4 / count($total) * 100, 2) . '%</td>
-        //             </tr>';
-        //     }
-        //     $html .= '</table>';
-        //     $pdf->writeHTML($html, true, 0, true, 0);
-        //     $numeral++;
-        // }
-
         $pdf->lastPage();
         $pdf->Output('EIF_Summary_Report_' . date('m-d-y') . '.pdf', 'I');
     }
@@ -1858,7 +1751,6 @@ class FormReportsController extends Controller
                 </tr>';
             $total = Alumni::join('form_eif_answers', 'tbl_alumni.alumni_id', '=', 'form_eif_answers.alumni_id')
                 ->whereBetween('tbl_alumni.batch', [$request->batch_from, $request->batch_to])
-                // ->where('course_id', 'like', '%' . $request->course_id . '%')
                 ->where('tbl_alumni.course_id', '=', $course->course_id)
                 ->select('tbl_alumni.alumni_id')
                 ->distinct()
@@ -1900,7 +1792,6 @@ class FormReportsController extends Controller
             $total = Alumni::join('form_eif_answers', 'tbl_alumni.alumni_id', '=', 'form_eif_answers.alumni_id')
                 ->where('tbl_alumni.course_id', '=', $course->course_id)
                 ->whereBetween('tbl_alumni.batch', [$request->batch_from, $request->batch_to])
-                // ->where('course_id', 'like', '%' . $request->course_id . '%')
                 ->select('tbl_alumni.alumni_id')
                 ->distinct()
                 ->get();
@@ -2520,7 +2411,6 @@ class FormReportsController extends Controller
                 </tr>';
             $total = Alumni::join('form_eif_answers', 'tbl_alumni.alumni_id', '=', 'form_eif_answers.alumni_id')
                 ->whereBetween('tbl_alumni.batch', [$request->batch_from, $request->batch_to])
-                // ->where('course_id', 'like', '%' . $request->course_id . '%')
                 ->select('tbl_alumni.alumni_id')
                 ->distinct()
                 ->get();
@@ -2560,7 +2450,6 @@ class FormReportsController extends Controller
                 </tr>';
             $total = Alumni::join('form_eif_answers', 'tbl_alumni.alumni_id', '=', 'form_eif_answers.alumni_id')
                 ->whereBetween('tbl_alumni.batch', [$request->batch_from, $request->batch_to])
-                // ->where('course_id', 'like', '%' . $request->course_id . '%')
                 ->select('tbl_alumni.alumni_id')
                 ->distinct()
                 ->get();
@@ -2640,7 +2529,6 @@ class FormReportsController extends Controller
                 </tr>';
             $total = Alumni::join('form_eif_answers', 'tbl_alumni.alumni_id', '=', 'form_eif_answers.alumni_id')
                 ->whereBetween('tbl_alumni.batch', [$request->batch_from, $request->batch_to])
-                // ->where('course_id', 'like', '%' . $request->course_id . '%')
                 ->select('tbl_alumni.alumni_id')
                 ->distinct()
                 ->get();
@@ -2721,7 +2609,6 @@ class FormReportsController extends Controller
                     </tr>';
                 $total = Alumni::join('form_eif_answers', 'tbl_alumni.alumni_id', '=', 'form_eif_answers.alumni_id')
                     ->whereBetween('tbl_alumni.batch', [$request->batch_from, $request->batch_to])
-                    // ->where('course_id', 'like', '%' . $request->course_id . '%')
                     ->select('tbl_alumni.alumni_id')
                     ->distinct()
                     ->get();
@@ -3026,7 +2913,6 @@ class FormReportsController extends Controller
                     </tr>';
                 $total = Alumni::join('form_eif_answers', 'tbl_alumni.alumni_id', '=', 'form_eif_answers.alumni_id')
                     ->whereBetween('tbl_alumni.batch', [$request->batch_from, $request->batch_to])
-                    // ->where('course_id', 'like', '%' . $request->course_id . '%')
                     ->select('tbl_alumni.alumni_id')
                     ->distinct()
                     ->get();
@@ -3246,7 +3132,6 @@ class FormReportsController extends Controller
                 </tr>';
             $total = Alumni::join('form_sas_answers', 'tbl_alumni.alumni_id', '=', 'form_sas_answers.alumni_id')
                 ->whereBetween('tbl_alumni.batch', [$request->batch_from, $request->batch_to])
-                // ->where('course_id', 'like', '%' . $request->course_id . '%')
                 ->select('tbl_alumni.alumni_id')
                 ->distinct()
                 ->get();
@@ -3287,7 +3172,6 @@ class FormReportsController extends Controller
                 </tr>';
             $total = Alumni::join('form_sas_answers', 'tbl_alumni.alumni_id', '=', 'form_sas_answers.alumni_id')
                 ->whereBetween('tbl_alumni.batch', [$request->batch_from, $request->batch_to])
-                // ->where('course_id', 'like', '%' . $request->course_id . '%')
                 ->select('tbl_alumni.alumni_id')
                 ->distinct()
                 ->get();

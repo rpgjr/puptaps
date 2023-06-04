@@ -129,7 +129,6 @@
                             </div>
                             <div class="col-12 mb-3 mt-2">
                                 <button type="submit" class="btn btn-primary fs-7">Generate Report <i class="fa-solid fa-file-lines ms-1"></i></button>
-                                {{-- <a type="button" class="btn btn-success fs-7">Generate Charts <i class="fa-solid fa-chart-pie ms-1"></i></a> --}}
                             </div>
                         </div>
                     </form>

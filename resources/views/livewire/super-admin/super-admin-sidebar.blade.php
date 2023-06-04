@@ -15,8 +15,6 @@
         </div>
     </div>
 
-    {{-- <hr class="mt-4 mb-2 hr-color opacity-100"> --}}
-
     <div class="row align-items-center g-0" style="margin-top: 30px;">
         <div class="col-12">
             <div class="w-100 sidebar-buttons">

@@ -70,10 +70,6 @@
                         </a>
                     </div>
                 </div>
-                {{-- <a type="button" href="{{ route("adminReports.getFormReports") }}" class="sidebar-button w-100 text-start py-2 @yield('active-form-reports')">
-                    <i class="fa-solid fa-file-lines me-1"></i>
-                    Form Reports
-                </a> --}}
                 <a type="button" href="{{ route("adminReports.getTracerReports") }}" class="sidebar-button w-100 text-start py-2 @yield('active-tracer-reports')">
                     <i class="fa-solid fa-business-time me-1"></i>
                     Tracer Reports

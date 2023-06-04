@@ -17,7 +17,6 @@
           </div>
           <div class="col-10 text-break">
             <h3 class="fw-bold mb-0">{{ strtoupper($alum->last_name) }}, {{ $alum->first_name }} {{ $alum->middle_name }} {{ $alum->suffix }}</h3>
-            {{-- <p class="mt-0 mb-0"><b>Username: </b>{{ $alum->username }}</p> --}}
             <p class="mt-0 mb-0"><b>Email Address: </b>{{ $alum->email }}</p>
             @foreach ($courses as $course)
                 @if ($course->course_id == $alum->course_id)

@@ -46,19 +46,6 @@
                         </li>
                     </ul>
                 </div>
-                {{-- <div class="mb-3 mb-sm-3 mb-md-3 mb-lg-0 mb-xl-0">
-                    <form action="{{ route('logout') }}" method="post">
-                        @csrf
-                        <button class="btn btn-sm btn-outline-light px-2">
-                            <i class="fa-solid fa-right-from-bracket me-1"></i>
-                            Logout
-                        </button>
-                        <button type="submit" class="text-decoration-none cssbuttons-io-button fs-7"> <span class="fs-7">Logout</span>
-                            <div class="icon"><i class="fa-solid fa-right-from-bracket fs-7 text-light"></i>
-                            </div>
-                        </button>
-                    </form>
-                </div> --}}
             </div>
         </div>
     </div>

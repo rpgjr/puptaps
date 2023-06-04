@@ -42,16 +42,5 @@ class UsersImport implements ToModel, WithHeadingRow
                 'account_status'    => 'Inactive',
             )
         );
-
-
-        // return new Alumni([
-        //     'stud_number'    => $row['studentnumber'],
-        //     'last_name'      => $row['lastname'],
-        //     'first_name'     => $row['firstname'],
-        //     'middle_name'    => $row['middlename'],
-        //     'suffix'         => $row['suffix'],
-        //     'course_id'      => $row['course'],
-        //     'batch'          => $row['batch'],
-        // ]);
     }
 }

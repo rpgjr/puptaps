@@ -66,7 +66,6 @@ class Answer extends Component
     protected $messages = [
         "arrayAnswers.*.answer.required" => "This is required.",
         "arrayAnswers.*.answer.email" => "This is must be a valid email address.",
-        // "arrayAnswers.*.answer.string"   => "This is required.",
     ];
 
     public function mount() {
@@ -250,14 +249,12 @@ class Answer extends Component
         $this->arrayAnswers = [];
         $this->countNull = 1;
 
-        // return redirect(route("userTracer.getTracerIndex"));
         $users = Alumni::where('alumni_id', '=', Auth::user()->alumni_id)->first();
 
         if($users->profile_status == 'Complete') {
             return redirect(route('user.homepage'));
         }
         else {
-            // return redirect(route("userTracer.getTracerIndex"));
             return redirect(route('userProfile.set-up'));
         }
     }
@@ -282,7 +279,6 @@ class Answer extends Component
             return redirect(route('user.homepage'));
         }
         else {
-            // return redirect(route("userTracer.getTracerIndex"));
             return redirect(route('userProfile.set-up'));
         }
     }

@@ -42,13 +42,10 @@
                                                 <td class="text-center">{{ $career->category }}</td>
                                                 <td class="text-center">
                                                     <button type="button" class="fs-7 btn btn-primary my-1" data-bs-toggle="modal" data-bs-target="#viewCareer{{ $career->career_id }}">View</button>
-                                                    {{-- @include('admin.components.viewCareer') --}}
                                                     <livewire:admin.view-career-approval :career="$career" :users="$users"/>
                                                     <button type="button" class="fs-7 btn btn-success my-1" data-bs-toggle="modal" data-bs-target="#approveCareer{{ $career->career_id }}">Approve</button>
-                                                    {{-- @include('admin.components.approveCareer') --}}
                                                     <livewire:admin.approve-career-approval :career="$career" :users="$users"/>
                                                     <button type="button" class="fs-7 btn btn-danger my-1" data-bs-toggle="modal" data-bs-target="#rejectCareer{{ $career->career_id }}">Reject</button>
-                                                    {{-- @include('admin.components.reject-career') --}}
                                                     <livewire:admin.reject-career-approval :career="$career" :users="$users"/>
                                                 </td>
                                             </tr>

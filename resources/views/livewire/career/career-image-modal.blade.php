@@ -26,7 +26,6 @@
                                         <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteCareer{{ $career->career_id }}">
                                             <i class="fa-regular fa-trash-can"></i>
                                         </button>
-                                        {{-- <livewire:career.delete-career-post :career_id="$career->career_id"/> --}}
                                     @endif
                                 </div>
                             </div>

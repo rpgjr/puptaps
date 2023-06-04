@@ -35,14 +35,6 @@ class AuthenticatedSessionController extends Controller
         $request->session()->regenerate();
 
         $alumni = DB::table('tbl_alumni')->where('email', '=', $request->input('email'))->get();
-        // foreach ($alumni as $alumni_update)
-        // {
-        //     if(($alumni_update->email_verified_at) == null && Auth::check()) {
-        //         $update_alumni_table = DB::table('tbl_alumni')->where('alumni_id', '=', Auth::user()->alumni_id)->update([
-        //             'email_verified_at' => Auth::user()->email_verified_at,
-        //         ]);
-        //     }
-        // }
 
         if((Auth::user()->user_role) == 'Alumni') {
             return redirect()->intended(RouteServiceProvider::HOME);

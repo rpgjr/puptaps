@@ -53,8 +53,6 @@ class HomeController extends Controller
             } else {
                 return [$item->answers => $item->alumniCount];
             }
-            // return [$item ->answers => $item->alumniCount];
-
         });
 
         $career = Careers::orderBy('created_at', 'desc')->where('approval', 1)->first();

@@ -24,65 +24,13 @@ class MYPDF extends TCPDF
         // Title
         $this->Ln(3);
         $this->SetFont('times', '', 12);
-        $this->Cell(
-            95,
-            0,
-            'Republic of the Philippines',
-            0,
-            1,
-            'C',
-            0,
-            '',
-            0,
-            false,
-            'T',
-            'M'
-        );
+        $this->Cell(95, 0, 'Republic of the Philippines', 0, 1, 'C', 0, '', 0, false, 'T', 'M');
         $this->SetFont('times', 'B', 15);
-        $this->Cell(
-            179,
-            0,
-            'POLYTECHNIC UNIVERSITY OF THE PHILIPPINES',
-            0,
-            1,
-            'C',
-            0,
-            '',
-            0,
-            false,
-            'T',
-            'M'
-        );
+        $this->Cell(179, 0, 'POLYTECHNIC UNIVERSITY OF THE PHILIPPINES', 0, 1, 'C', 0, '', 0, false, 'T', 'M');
         $this->SetFont('times', '', 12);
-        $this->Cell(
-            158,
-            0,
-            'Office of the Vice President for Branches and Satelite Campuses',
-            0,
-            1,
-            'C',
-            0,
-            '',
-            0,
-            false,
-            'T',
-            'M'
-        );
+        $this->Cell(158, 0, 'Office of the Vice President for Branches and Satelite Campuses', 0, 1, 'C', 0, '', 0, false, 'T', 'M' );
         $this->SetFont('times', 'B', 12);
-        $this->Cell(
-            85,
-            0,
-            'TAGUIG BRANCH',
-            0,
-            1,
-            'C',
-            0,
-            '',
-            0,
-            false,
-            'T',
-            'M'
-        );
+        $this->Cell(85, 0, 'TAGUIG BRANCH', 0, 1, 'C', 0, '', 0, false, 'T', 'M');
 
         $style3 = array('width' => .5, 'cap' => 'butt', 'join' => 'miter', 'dash' => 0, 'color' => array(0, 0, 0));
 
@@ -110,17 +58,21 @@ class MYPDF extends TCPDF
 class TracerReportsController extends Controller
 {
     public function tracerReportToPdf(Request $request) {
-        if ($request->report_type == 1) {
-            $this->tracerSummaryReport($request);
-        }
-        elseif ($request->report_type == 2) {
-            $this->tracerStatusReport($request);
-        }
-        elseif ($request->report_type == 3) {
-            $this->tracerAlumniProfile($request);
-        }
-        elseif ($request->report_type == 4) {
-            $this->tracerBoardPassers($request);
+        switch($request->report_type) {
+            case 1:
+                $this->tracerSummaryReport($request);
+                break;
+            case 2:
+                $this->tracerStatusReport($request);
+                break;
+            case 3:
+                $this->tracerAlumniProfile($request);
+                break;
+            case 4:
+                $this->tracerBoardPassers($request);
+                break;
+            default:
+                return back()->with('fail', 'Error! Please try again.');
         }
     }
 
@@ -621,7 +573,7 @@ class TracerReportsController extends Controller
             $pdf->SetPrintHeader(false);
             $pdf->SetFont('times', 'B', 13);
             $pdf->ln(20);
-            $pdf->Cell(0, 0, 'ALUMNI TRACER - SUMMARY REPORT', 0, 1, 'C', 0, '', 0);
+            $pdf->Cell(0, 0, 'ALUMNI TRACER - STATUS REPORT', 0, 1, 'C', 0, '', 0);
             $pdf->SetFont('times', '', 12);
             $pdf->ln(1);
             $pdf->Cell(0, 0, 'ALUMNI BATCH FROM ' . $request->batch_from . ' TO ' . $request->batch_to, 0, 1, 'C', 0, '', 0);
@@ -632,7 +584,7 @@ class TracerReportsController extends Controller
             $pdf->Cell(0, 0, 'Sorry! No data available.', 0, 1, 'C', 0, '', 0);
             $pdf->lastPage();
             //Close and output PDF document
-            $pdf->Output(date('m-d-y') . ' Tracer_Summary_Report' . '.pdf', 'I');
+            $pdf->Output(date('m-d-y') . ' Tracer_Status_Report' . '.pdf', 'I');
         }
     }
 
@@ -983,7 +935,7 @@ class TracerReportsController extends Controller
             $pdf->SetPrintHeader(false);
             $pdf->SetFont('times', 'B', 13);
             $pdf->ln(20);
-            $pdf->Cell(0, 0, 'ALUMNI TRACER - SUMMARY REPORT', 0, 1, 'C', 0, '', 0);
+            $pdf->Cell(0, 0, 'ALUMNI TRACER - PROFILE REPORT', 0, 1, 'C', 0, '', 0);
             $pdf->SetFont('times', '', 12);
             $pdf->ln(1);
             $pdf->Cell(0, 0, 'ALUMNI BATCH FROM ' . $request->batch_from . ' TO ' . $request->batch_to, 0, 1, 'C', 0, '', 0);
@@ -1135,7 +1087,7 @@ class TracerReportsController extends Controller
             $pdf->SetPrintHeader(false);
             $pdf->SetFont('times', 'B', 13);
             $pdf->ln(20);
-            $pdf->Cell(0, 0, 'ALUMNI TRACER - SUMMARY REPORT', 0, 1, 'C', 0, '', 0);
+            $pdf->Cell(0, 0, 'ALUMNI TRACER - PASSERS REPORT', 0, 1, 'C', 0, '', 0);
             $pdf->SetFont('times', '', 12);
             $pdf->ln(1);
             $pdf->Cell(0, 0, 'ALUMNI BATCH FROM ' . $request->batch_from . ' TO ' . $request->batch_to, 0, 1, 'C', 0, '', 0);
@@ -1146,7 +1098,7 @@ class TracerReportsController extends Controller
             $pdf->Cell(0, 0, 'Sorry! No data available.', 0, 1, 'C', 0, '', 0);
             $pdf->lastPage();
             //Close and output PDF document
-            $pdf->Output(date('m-d-y') . ' Tracer_Profile_Report' . '.pdf', 'I');
+            $pdf->Output(date('m-d-y') . ' Tracer_Passers_Report' . '.pdf', 'I');
         }
     }
 }

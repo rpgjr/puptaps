@@ -36,15 +36,6 @@ class UserManagerController extends Controller
         ]);
 
         Excel::import(new UsersImport, $request->file('excel_file'));
-        // try {
-        //     Excel::import(new UsersImport, $request->file('excel_file'));
-        // } catch (\Throwable $th) {
-        //     return back()->with(
-        //         'fail',
-        //         'An Error Occured. Check for duplications.'
-        //     );
-
-        // }
         return back()->with(
             'success',
             'Alumni Added.'
