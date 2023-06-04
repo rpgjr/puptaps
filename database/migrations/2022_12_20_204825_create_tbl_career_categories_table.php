@@ -19,29 +19,6 @@ return new class extends Migration
             $table->increments("career_category_id");
             $table->string("career_category");
         });
-
-        CareerCategories::insert(
-            array(
-                [
-                    'career_category' => 'IT',
-                ],
-                [
-                    'career_category' => 'Engineering',
-                ],
-                [
-                    'career_category' => 'Education',
-                ],
-                [
-                    'career_category' => 'Accountancy',
-                ],
-                [
-                    'career_category' => 'Business Administration',
-                ],
-                [
-                    'career_category' => 'Office Administration',
-                ],
-            )
-        );
     }
 
     /**

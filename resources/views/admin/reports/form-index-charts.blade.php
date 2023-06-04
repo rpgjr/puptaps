@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('page-title', 'Form Reports')
-@section('active-form-reports', 'active')
+@section('active-form-reports-charts', 'active')
 @section('page-name', 'Reports')
 
 @section('content')
@@ -73,7 +73,7 @@
                     <form action="{{ route('adminReports.generateFormReport') }}" method="post" target="_blank">
                     @csrf
                         <div class="row sub-container-box py-4 px-3">
-                            <h3 class="mb-4 mt-3">Form Reports - PDF</h3>
+                            <h3 class="mb-4 mt-3">Form Reports - Charts</h3>
                             <div class="col-6 mb-3">
                                 <label class="form-label">Forms</label>
                                 <select id="form_name" class="form-select @error('form') is-invalid @enderror" name="form" required>
@@ -129,7 +129,6 @@
                             </div>
                             <div class="col-12 mb-3 mt-2">
                                 <button type="submit" class="btn btn-primary fs-7">Generate Report <i class="fa-solid fa-file-lines ms-1"></i></button>
-                                {{-- <a type="button" class="btn btn-success fs-7">Generate Charts <i class="fa-solid fa-chart-pie ms-1"></i></a> --}}
                             </div>
                         </div>
                     </form>

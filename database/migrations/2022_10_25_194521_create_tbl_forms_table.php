@@ -19,25 +19,6 @@ return new class extends Migration
             $table->string('form_name');
             $table->string('form_status');
         });
-
-        Forms::insert(
-            array(
-                [
-                    "form_name"     => "Personal Data Sheet",
-                    'form_status'   => "Active",
-                ],
-
-                [
-                    "form_name"     => "Exit Interview Form",
-                    'form_status'   => "Active",
-                ],
-
-                [
-                    "form_name"     => "Student Affairs and Services Form",
-                    'form_status'   => "Active",
-                ],
-            )
-        );
     }
 
     /**

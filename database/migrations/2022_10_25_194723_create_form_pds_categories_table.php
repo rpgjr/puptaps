@@ -23,35 +23,6 @@ return new class extends Migration
                   ->on('tbl_forms');
             $table->string('category_name');
         });
-
-        PdsCategories::insert(
-            array(
-                [
-                    "form_id"       => "1",
-                    "category_name" => "Data Privacy Notice",
-                ],
-
-                [
-                    "form_id"       => "1",
-                    "category_name" => "Personal Information",
-                ],
-
-                [
-                    "form_id"       => "1",
-                    "category_name" => "Work/Internship Experience/s",
-                ],
-
-                [
-                    "form_id"       => "1",
-                    "category_name" => "Trainings/Seminars Attended",
-                ],
-
-                [
-                    "form_id"       => "1",
-                    "category_name" => "Waiver",
-                ],
-            )
-        );
     }
 
     /**

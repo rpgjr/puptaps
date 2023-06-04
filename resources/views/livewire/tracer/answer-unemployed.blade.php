@@ -92,6 +92,10 @@
                                                         <input class="form-check-input" name="{{ $value->question_id }}" type="radio" value="No" wire:model="arrayAnswers.{{ $key }}.answer">
                                                         <label class="form-check-label">No</label>
                                                     </div>
+                                                    <div class="form-check form-check-inline">
+                                                        <input class="form-check-input" name="{{ $value->question_id }}" type="radio" value="Not yet taken" wire:model="arrayAnswers.{{ $key }}.answer">
+                                                        <label class="form-check-label">Not yet taken</label>
+                                                    </div>
                                                 </div>
                                             @endif
                                             <span class="text-danger error-message">

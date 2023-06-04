@@ -14,7 +14,7 @@
             <div class="col-11">
                 <div class="row sub-container-box mb-3 py-3 px-2 justify-content-between">
                     <div class="col-6 row gx-1 ms-2">
-                        <div class="col-10 col-md-9">
+                        <div class="col-8 col-md-9">
                             <form class="" method="post" enctype="multipart/form-data" action="{{ route('adminUserManagement.addAlumniList') }}">
                             @csrf
                                 <div class="input-group">
@@ -52,14 +52,14 @@
                     <table class="table table-striped align-middle table-hover">
                         <thead class="tbl-head">
                             <tr>
-                                <th scope="col" class="col-1" style="width: 10%"></th>
+                                <th scope="col" class="col-1" style="width: 13%"></th>
                                 <th scope="col" class="col-2" style="width: 15%">Student Number</th>
                                 <th scope="col" class="col-2" style="width: 35%">Name</th>
                                 <th scope="col" class="col-1" style="width: 10%">Course</th>
                                 <th scope="col" class="col-1" style="width:6%">Batch</th>
-                                <th scope="col" class="col-1 text-center" style="width:8%">PDS</th>
-                                <th scope="col" class="col-1 text-center" style="width:8%">EIF</th>
-                                <th scope="col" class="col-1 text-center" style="width:8%">SAS</th>
+                                <th scope="col" class="col-1 text-center" style="width:7%">PDS</th>
+                                <th scope="col" class="col-1 text-center" style="width:7%">EIF</th>
+                                <th scope="col" class="col-1 text-center" style="width:7%">SAS</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -67,11 +67,14 @@
                             @foreach ($alumni as $alum)
                                 <tr>
                                     <th class="text-center">
-                                        <button class="fs-7 btn btn-info" data-bs-toggle="modal" data-bs-target="#updateAlumni{{ $alum->alumni_id }}">
+                                        <button class="fs-7 btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#viewAlumniDetails{{ $alum->alumni_id }}">
+                                            <i class=" fs-7 fa-solid fa-eye"></i>
+                                        </button>
+                                        <button class="fs-7 btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#updateAlumni{{ $alum->alumni_id }}">
                                             <i class="fs-7 fa-solid fa-pen-to-square"></i>
                                         </button>
-                                        <button class="fs-7 btn btn-primary" data-bs-toggle="modal" data-bs-target="#viewAlumniDetails{{ $alum->alumni_id }}">
-                                            <i class=" fs-7 fa-solid fa-eye"></i>
+                                        <button class="fs-7 btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteAlumni{{ $alum->alumni_id }}">
+                                            <i class="fs-7 fa-solid fa-trash-can"></i>
                                         </button>
                                     </th>
                                     <th>{{ $alum->stud_number }}</th>
@@ -83,7 +86,7 @@
                                             <form action="{{ route("userForm.PDS_to_PDF") }}" method="POST" target="_blank">
                                                 @csrf
                                                 <input type="hidden" name="alumni_id" value="{{ $alum->alumni_id }}">
-                                                <button type="submit" class="fs-7 btn btn-success px-2">PDS <i class="fa-solid fa-file-pdf"></i></button>
+                                                <button type="submit" class="btn-sm fs-7 btn btn-success px-2">PDS <i class="fa-solid fa-file-pdf"></i></button>
                                             </form>
                                         @else
                                             <i class="fa-regular fa-circle-xmark me-1 text-danger"></i><span class="text-danger">PDS</span>
@@ -95,7 +98,7 @@
                                                 @csrf
 
                                                 <input type="hidden" name="alumni_id" value="{{ $alum->alumni_id }}">
-                                                <button type="submit" class="fs-7 btn btn-success px-2">EIF <i class="fa-solid fa-file-pdf"></i></button>
+                                                <button type="submit" class="btn-sm fs-7 btn btn-success px-2">EIF <i class="fa-solid fa-file-pdf"></i></button>
                                             </form>
                                         @else
                                             <i class="fa-regular fa-circle-xmark me-1 text-danger"></i><span class="text-danger">EIF</span>
@@ -107,7 +110,7 @@
                                                 @csrf
 
                                                 <input type="hidden" name="alumni_id" value="{{ $alum->alumni_id }}">
-                                                <button class="fs-7 btn btn-success px-2">SAS <i class="fa-solid fa-file-pdf"></i></button>
+                                                <button class="btn-sm fs-7 btn btn-success px-2">SAS <i class="fa-solid fa-file-pdf"></i></button>
                                             </form>
                                         @else
                                             <i class="fa-regular fa-circle-xmark me-1 text-danger"></i><span class="text-danger">SAS</span>
@@ -115,6 +118,7 @@
                                     </td>
                                 </tr>
                               @include('admin.components.view-alumni-details')
+                              @include('admin.components.delete-alumni-account')
                             @endforeach
                             @else
                                 <tr>

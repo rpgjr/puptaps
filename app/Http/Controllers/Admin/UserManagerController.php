@@ -35,15 +35,16 @@ class UserManagerController extends Controller
             'excel_file' => 'required|mimes:xlsx,csv',
         ]);
 
-        try {
-            Excel::import(new UsersImport, $request->file('excel_file'));
-        } catch (\Throwable $th) {
-            return back()->with(
-                'fail',
-                'An Error Occured. Check for duplications.'
-            );
+        Excel::import(new UsersImport, $request->file('excel_file'));
+        // try {
+        //     Excel::import(new UsersImport, $request->file('excel_file'));
+        // } catch (\Throwable $th) {
+        //     return back()->with(
+        //         'fail',
+        //         'An Error Occured. Check for duplications.'
+        //     );
 
-        }
+        // }
         return back()->with(
             'success',
             'Alumni Added.'
@@ -102,6 +103,13 @@ class UserManagerController extends Controller
                         'There is an Error Occured'
                     );
         }
+    }
+
+    public function deleteAlumniProfile(Request $request) {
+        $alumni = Alumni::find($request->alumni_id);
+        $alumni->delete();
+
+        return back();
     }
 
     public function downloadListTemplate() {

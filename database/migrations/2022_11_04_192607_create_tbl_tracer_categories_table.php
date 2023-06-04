@@ -18,20 +18,6 @@ return new class extends Migration
             $table->increments('category_id');
             $table->string('category_name');
         });
-
-        TracerCategories::insert(
-            array(
-                [
-                    "category_name" => "Licensure Examinations"
-                ],
-                [
-                    "category_name" => "Current Job / Career Details"
-                ],
-                [
-                    "category_name" => "First Job / Career Details"
-                ],
-            )
-        );
     }
 
     /**

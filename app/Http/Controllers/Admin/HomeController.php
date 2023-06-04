@@ -34,8 +34,10 @@ class HomeController extends Controller
         $perCivilService = $civilService->mapWithKeys(function ($item, $key) {
             if ($item->answers == "Yes") {
                 return ["PASSERS" => $item->alumniCount];
-            } else {
+            } elseif ($item->answers == "No") {
                 return ["NON-PASSERS" => $item->alumniCount];
+            } else {
+                return ["NON-TAKERS" => $item->alumniCount];
             }
         });
 

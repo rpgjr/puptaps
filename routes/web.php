@@ -410,6 +410,9 @@ Route::group(
         Route::post('update-alumni-profile', 'updateAlumniInfo')
             ->name('updateAlumniInfo');
 
+        Route::post('delete-alumni-profile', 'deleteAlumniProfile')
+            ->name('deleteAlumniProfile');
+
         Route::get('download-template', 'downloadListTemplate')
             ->name('downloadListTemplate');
 
@@ -506,6 +509,9 @@ Route::group(
     function () {
         Route::get('form-reports', 'getFormReports')
             ->name('getFormReports');
+
+        Route::get('form-reports-charts', 'getFormReportsCharts')
+            ->name('getFormReportsCharts');
 
         Route::get('tracer-reports', 'getTracerReports')
             ->name('getTracerReports');

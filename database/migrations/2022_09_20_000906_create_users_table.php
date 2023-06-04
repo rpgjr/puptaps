@@ -35,39 +35,6 @@ return new class extends Migration
             $table->string('user_role');
             $table->string('account_status');
         });
-
-        // DB::table('users')->insert(
-        //     array(
-        //         [
-        //             'alumni_id' => '1',
-        //             'email' => 'sample@gmail.com',
-        //             'username' => 'thisIsSample',
-        //             'password' => '$2y$10$5EufXamveYAtaaaHrrxfHuhkp0qeTL3e/9hq7AMv/yfdEmj2NWWla',
-        //             'user_role' => 'Alumni',
-        //         ],
-        //     )
-        // );
-
-        DB::table('users')->insert(
-            array(
-                [
-                    'admin_id' => '1',
-                    'email' => 'pupt.alumniportalsystem@gmail.com',
-                    'username' => 'Admin',
-                    'password' => '$2y$10$5EufXamveYAtaaaHrrxfHuhkp0qeTL3e/9hq7AMv/yfdEmj2NWWla',
-                    'user_role' => 'Admin',
-                    'account_status' => 'Activated',
-                ],
-                [
-                    'admin_id' => '2',
-                    'email' => 'superadmin@gmail.com',
-                    'username' => 'SuperAdmin',
-                    'password' => '$2y$10$aAQswT/9Wnj1cChgKdfWEObtDZj.5GMUQkikFkd4ouy2QfawrF6..',
-                    'user_role' => 'Super_Admin',
-                    'account_status' => 'Activated',
-                ],
-            )
-        );
     }
 
     /**

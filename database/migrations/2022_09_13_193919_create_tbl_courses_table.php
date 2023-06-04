@@ -18,55 +18,6 @@ return new class extends Migration
             $table->string('course_id');
             $table->string('course_desc');
         });
-
-        Courses::insert(
-            array(
-                [
-                    'course_id'     => 'BSA',
-                    'course_desc'   => 'Bachelor of Science in Accountancy',
-                ],
-                [
-                    'course_id'     => 'BSBA-HRM',
-                    'course_desc'   => 'Bachelor of Science in Business Administration Major in Human Resource Management',
-                ],
-                [
-                    'course_id'     => 'BSBA-MM',
-                    'course_desc'   => 'Bachelor of Science in Business Administration Major in Marketing Management',
-                ],
-                [
-                    'course_id'     => 'BSECE',
-                    'course_desc'   => 'Bachelor of Science in Electronics and Communications Engineering',
-                ],
-                [
-                    'course_id'     => 'BSEd-English',
-                    'course_desc'   => 'Bachelor in Secondary Education Major in English',
-                ],
-                [
-                    'course_id'     => 'BSEd-Mathematics',
-                    'course_desc'   => 'Bachelor in Secondary Education Major in Mathematics',
-                ],
-                [
-                    'course_id'     => 'BSIT',
-                    'course_desc'   => 'Bachelor of Science in Information Technology',
-                ],
-                [
-                    'course_id'     => 'BSME',
-                    'course_desc'   => 'Bachelor of Science in Mechanical Engineering',
-                ],
-                [
-                    'course_id'     => 'BSOA',
-                    'course_desc'   => 'Bachelor of Science in Office Administration',
-                ],
-                [
-                    'course_id'     => 'DICT',
-                    'course_desc'   => 'Diploma in Information Communication Technology',
-                ],
-                [
-                    'course_id'     => 'DOMT',
-                    'course_desc'   => 'Diploma in Office Management Technology',
-                ],
-            )
-        );
     }
 
     /**

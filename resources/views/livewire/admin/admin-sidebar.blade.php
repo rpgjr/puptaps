@@ -55,10 +55,25 @@
                 <p class="w-100 text-start py-0 mb-1 ms-2 fw-bold color-pup">
                     Reports
                 </p>
-                <a type="button" href="{{ route("adminReports.getFormReports") }}" class="sidebar-button w-100 text-start py-2 @yield('active-form-reports')">
+                <!-- Start: Career Management -->
+                <a type="button" href="" class="sidebar-button w-100 text-start dropdown-toggle py-2" data-bs-toggle="collapse" data-bs-target="#formReports" aria-expanded="false">
+                    <i class="fa-solid fa-file-lines me-1"></i>
+                   Form Reports
+                </a>
+                <div class="">
+                    <div class="collapse show" id="formReports">
+                        <a type="button" href="{{ route("adminReports.getFormReports") }}" class="sidebar-button w-100 text-start py-2 @yield('active-form-reports')">
+                            <span class="ms-4">Form Reports - PDF</span>
+                        </a>
+                        <a type="button" href="{{ route('adminReports.getFormReportsCharts') }}" class="sidebar-button w-100 text-start py-2 @yield('active-form-reports-charts')">
+                            <span class="ms-4">Form Reports - Charts</span>
+                        </a>
+                    </div>
+                </div>
+                {{-- <a type="button" href="{{ route("adminReports.getFormReports") }}" class="sidebar-button w-100 text-start py-2 @yield('active-form-reports')">
                     <i class="fa-solid fa-file-lines me-1"></i>
                     Form Reports
-                </a>
+                </a> --}}
                 <a type="button" href="{{ route("adminReports.getTracerReports") }}" class="sidebar-button w-100 text-start py-2 @yield('active-tracer-reports')">
                     <i class="fa-solid fa-business-time me-1"></i>
                     Tracer Reports

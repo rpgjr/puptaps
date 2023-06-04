@@ -27,6 +27,18 @@ class ReportsController extends Controller
         return view("admin.reports.form-index", compact(["forms", "courses", "totalAlumni", "totalPds", "totalEif", "totalSas"]));
     }
 
+    public function getFormReportsCharts() {
+        $forms = Forms::all();
+        $courses = Courses::all();
+        $totalAlumni = count(Alumni::all());
+        $totalPds = count(PdsAnswers::select('alumni_id')->distinct()->get());
+        $totalEif = count(EifAnswers::select('alumni_id')->distinct()->get());
+        $totalSas = count(SasAnswers::select('alumni_id')->distinct()->get());
+
+        return view("admin.reports.form-index-charts", compact(["forms", "courses", "totalAlumni", "totalPds", "totalEif", "totalSas"]));
+    }
+
+
     public function getTracerReports() {
         $totalAlumni = count(Alumni::all());
         $totalTracer = count(TracerAnswers::select('alumni_id')->distinct()->get());
