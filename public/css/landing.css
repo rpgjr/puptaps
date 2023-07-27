@@ -11,6 +11,10 @@
     background-color: #7B241C;
 }
 
+#navbar {
+    transition: .5s ease-in-out;
+}
+
 .container-greetings {
     padding-top: 100px;
     padding-bottom: 30px;

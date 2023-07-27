@@ -1,5 +1,5 @@
 <!-- Landing Page Navbar -->
-<nav class="navbar navbar-expand-lg sticky-top landing-navbar py-1">
+<nav class="navbar navbar-expand-lg sticky-top landing-navbar py-1" id="navbar">
     <div class="container-fluid navbar-inner animate__animated animate__fadeInLeftBig">
         <a class="navbar-brand animate__animated animate__slideInDown" href="{{ route('landingPage') }}">
             <img src="{{ asset('img/pupLogo.png') }}" style="height: 40px">
