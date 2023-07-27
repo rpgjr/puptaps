@@ -7,8 +7,6 @@
     <section class="mt-4 mt-sm-4 mt-md-4 mt-lg-5 mt-xl-5 mb-5">
         <div class="container-fluid my-3">
             <livewire:components.alert-status-message :message="session()->get('success')" />
-            <!-- Page Title Text H1 -->
-            <livewire:components.page-title :title="$title"/>
 
 
             <div class="row justify-content-center g-0">

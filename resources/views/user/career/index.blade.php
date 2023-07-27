@@ -9,9 +9,6 @@
             <!-- Alert Status -->
             <livewire:components.alert-status-message :message="session()->get('success')" />
 
-            <!-- Page Title Text H1 -->
-            <livewire:components.page-title :title="$title" />
-
             <div class="row justify-content-center">
                 <!-- Start: Body -->
                 <div class="col-11 col-sm-9 col-md-9 col-lg-9 col-xl-9">

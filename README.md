@@ -10,7 +10,7 @@
 7. FOR THE MAIL CREDENTIALS IN .env FILE refer to GMAIL of the system
 8. run "php artisan key:generate"
 9. run "php artisan migrate"
-10. inport the courses to the courses table in the database
+10. import the courses to the courses table in the database
 11. run "php artisan serve"
 
 =====How to comment CSS=====
