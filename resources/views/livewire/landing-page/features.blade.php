@@ -14,39 +14,37 @@
 
 <section class="features mt-4">
     <div class="container">
-        <div class="row justify-content-center align-items-center">
-            <div class="col-sm-6 col-md-6 col-lg-5 col-xl-4 my-1" data-aos="zoom-in-left">
-                <div class="card">
-                    <div class="img-features">
-                        <img src="{{ asset('img/forms.jpg') }}" class="card-img-top" style="border-bottom: 1px solid #D5D8DC;">
+        <div class="row justify-content-center align-items-center slick-feature">
+            <div class="col-12 py-3 mx-3">
+                <div class="features-card">
+                    <div class="features-header">
+                        <img src="{{ asset('img/forms.jpg') }}" class="features-img">
                     </div>
-                    <div class="card-body card-content">
-                        <h3 class="card-text-title">Forms</h3>
-                        <p class="card-text">The forms will be used by official graduating students to evaluate the university and for requesting file records which they need to print and submit to the office of the Head of the Academics.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-sm-6 col-md-6 col-lg-5 col-xl-4 my-1" data-aos="zoom-in-right">
-                <div class="card">
-                    <div class="img-features">
-                        <img src="{{ asset('img/1.jpg') }}" class="card-img-top" style="border-bottom: 1px solid #D5D8DC;">
-                    </div>
-                    <div class="card-body card-content">
-                        <h3 class="card-text-title">Tracer</h3>
-                        <p class="card-text">This feature contains the updated form that alumni can answer to update their employment status and disclose if they are a board passer or not.</p>
+                    <div class="features-body">
+                        <h3 class="features-title">Forms</h3>
+                        <p class="features-p">The forms will be used by official graduating students to evaluate the university and for requesting file records which they need to print and submit to the office of the Head of the Academics.</p>
                     </div>
                 </div>
             </div>
-
-            <div class="col-sm-6 col-md-6 col-lg-5 col-xl-4 my-1" data-aos="zoom-in-left">
-                <div class="card">
-                    <div class="img-features">
-                        <img src="{{ asset('img/career.jpg') }}" class="card-img-top" style="border-bottom: 1px solid #D5D8DC;">
+            <div class="col-12 py-3 mx-3">
+                <div class="features-card">
+                    <div class="features-header">
+                        <img src="{{ asset('img/1.jpg') }}" class="features-img">
                     </div>
-                    <div class="card-body card-content">
-                        <h3 class="card-text-title">Career</h3>
-                        <p class="card-text">A system module version in which both alumni and administrators can post job openings for other alumni to apply for. This feature includes a job description and qualifications, as well as a link to the job application or instructions on where to send a resume.</p>
+                    <div class="features-body">
+                        <h3 class="features-title">Tracer</h3>
+                        <p class="features-p">This feature contains the updated form that alumni can answer to update their employment status and disclose if they are a board passer or not.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 py-3 mx-3">
+                <div class="features-card">
+                    <div class="features-header">
+                        <img src="{{ asset('img/career.jpg') }}" class="features-img">
+                    </div>
+                    <div class="features-body">
+                        <h3 class="features-title">Career</h3>
+                        <p class="features-p">A system module version in which both alumni and administrators can post job openings for other alumni to apply for. This feature includes a job description and qualifications, as well as a link to the job application or instructions on where to send a resume.</p>
                     </div>
                 </div>
             </div>

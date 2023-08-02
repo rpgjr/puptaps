@@ -42,8 +42,12 @@
                                 <input type="text" class="form-control @error('stud_number') border border-danger border-3 animate__animated animate__shakeX @enderror" name="stud_number" value="{{ old("stud_number") }}" placeholder="eg. 2019-00123-TG-0" required/>
                                 <span class="text-danger error-message">@error('stud_number') {{$message}} @enderror</span>
                             </div>
-                            <div class="text-center my-0">
-                                <button class="btn btn-primary px-5" type="submit" onclick=”genPassword()>Register</button>
+                            <div class="d-flex justify-content-center my-0">
+                                {{-- <button class="btn btn-primary px-5" type="submit">Register</button> --}}
+                                <button type="submit" class="auth-btn fs-7"> <span class="fs-7">Register</span>
+                                    <div class="icon"><i class="fa-solid fa-user-plus fs-7"></i>
+                                    </div>
+                                </button>
                             </div>
                         </div>
                         <div class="text-center mb-4">

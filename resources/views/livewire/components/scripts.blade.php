@@ -6,10 +6,12 @@
 <script src="{{ asset('js/preview-profile.js') }}"></script>
 <script src="{{ asset('js/same-address.js') }}"></script>
 <script src="{{ asset('js/validate-inputs.js') }}"></script>
-{{-- <script src="{{ asset('js/transparent-navbar.js') }}"></script> --}}
 
 {{-- Jquery --}}
 <script src="{{ asset('js/jquery-3.6.1.min.js') }}"></script>
+
+{{-- Slick-Carousel JS --}}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
 
 {{-- Chart JS --}}
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>

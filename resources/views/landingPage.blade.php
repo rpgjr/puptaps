@@ -5,6 +5,8 @@
     <!-- CSS -->
     @livewireStyles
     <livewire:components.header />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.css">
     <title>Landing Page</title>
 
 </head>
@@ -23,7 +25,7 @@
         <livewire:landing-page.features />
 
         <!-- Section: Greetings -->
-        <livewire:landing-page.about-pup />
+        {{-- <livewire:landing-page.about-pup /> --}}
 
         <div class="text-end">
             <a type="button" href="#back-to-top" class="btn btn-danger user-back-to-top"><i class="fa-solid fa-angle-up"></i></a>
@@ -35,8 +37,9 @@
     <livewire:landing-page.footer />
 
     <!-- JS -->
-    <script src="{{ asset('js/transparent-navbar.js') }}"></script>
     <livewire:components.scripts />
+    <script src="{{ asset('js/landing-features-slick.js') }}"></script>
+    <script src="{{ asset('js/landing-greetings-slick.js') }}"></script>
     @livewireScripts
 
 </body>

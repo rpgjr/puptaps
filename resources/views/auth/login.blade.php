@@ -48,8 +48,12 @@
                                     </div>
                                     <span class="text-danger error-message">@error('password') {{$message}} @enderror</span>
                                 </div>
-                                <div class="text-center my-0">
-                                    <button class="btn btn-primary px-5" type="submit">Login</button>
+                                <div class="d-flex justify-content-center my-0">
+                                    {{-- <button class="btn btn-primary px-5" type="submit">Login</button> --}}
+                                    <button type="submit" class="auth-btn fs-7"> <span class="ms-2 fs-7">Login</span>
+                                        <div class="icon"><i class="fa-solid fa-arrow-right-to-bracket fs-7"></i>
+                                        </div>
+                                    </button>
                                 </div>
                             </div>
                             <div class="text-center">

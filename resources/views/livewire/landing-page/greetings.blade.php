@@ -9,23 +9,20 @@ style="
     height: 50%;
 ">
     <div class="container-fluid container-greetings">
-        <div class="row align-items-center justify-content-end">
-            <div class="col-md-6 mb-4 animate__animated animate__fadeInRightBig">
-                <p class="welcome-title text-center mb-4">PUP Taguig Alumni Portal System</p>
+        <div class="row align-items-center justify-content-center justify-content-lg-end">
+            <div class="col-12 col-sm-12 col-md-9 col-lg-6 col-xl-6 mb-4 animate__animated animate__fadeInRightBig">
+                <p class="welcome-title text-center mb-4 text-shadow">PUP Taguig Alumni Portal System</p>
 
                 <p class="mb-4 text-center mb-5 normal">Providing the best care and experience for our beloved alumni. Hop in and relish, give opportunities to your co-alumni, and reminisce your life here at PUP Taguig.</p>
 
-                <div class="buttons text-center mb-3">
-                    <a href="#learn_more" type="button" class="text-decoration-none button-learn-more">Learn More</a>
-                </div>
-
-                <div class="row mt-5">
+                <div class="row mt-5 justify-content-center">
                     <div class="col-md-12">
                         <p class="text-center">Visit our socials</p>
                     </div>
-                    <div class="col-md-12">
-                        <div class="row justify-content-center g-2">
-                                <a href="https://www.facebook.com/YourCentralStudentCouncil" target="_blank" class="scene col-4 mx-1">
+                    <div class="col-11 col-md-9 col-lg-9 col-xl-8">
+                        <div class="row justify-content-center slick-greetings">
+                            <div class="col-12 mx-1 d-flex justify-content-center">
+                                <a href="https://www.facebook.com/YourCentralStudentCouncil" target="_blank" class="scene mx-1">
                                     <div class="cube">
                                         <span class="side top">
                                             <div class="d-flex justify-content-center align-items-center" style="font-size: 14px">
@@ -35,7 +32,9 @@ style="
                                         <span class="side front">PUPT - CSC</span>
                                     </div>
                                 </a>
-                                <a href="https://www.facebook.com/PUPTOFFICIAL" target="_blank" class="scene col-4 mx-1">
+                            </div>
+                            <div class="col-12 mx-1 d-flex justify-content-center">
+                                <a href="https://www.facebook.com/PUPTOFFICIAL" target="_blank" class="scene mx-1">
                                     <div class="cube">
                                         <span class="side top">
                                             <div class="d-flex justify-content-center align-items-center" style="font-size: 14px">
@@ -45,7 +44,9 @@ style="
                                         <span class="side front">PUP - Taguig</span>
                                     </div>
                                 </a>
-                                <a href="https://www.facebook.com/PUPalumniofficial" target="_blank" class="scene col-4 mx-1">
+                            </div>
+                            <div class="col-12 mx-1 d-flex justify-content-center">
+                                <a href="https://www.facebook.com/PUPalumniofficial" target="_blank" class="scene mx-1">
                                     <div class="cube">
                                         <span class="side top">
                                             <div class="d-flex justify-content-center align-items-center" style="font-size: 14px">
@@ -55,6 +56,7 @@ style="
                                         <span class="side front">PUP - Alumni</span>
                                     </div>
                                 </a>
+                            </div>
                         </div>
 
                     </div>

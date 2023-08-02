@@ -39,8 +39,12 @@
                                 <input type="email" class="fs-7 form-control @error('email') border border-danger border-3 animate__animated animate__shakeX @enderror" name="email" value="{{ old("email") }}" required placeholder="sample@email.com"/>
                                 <span class="text-danger error-message">@error('email') {{$message}} @enderror</span>
                             </div>
-                            <div class="text-center my-0">
-                                <button class="btn btn-primary px-3" type="submit">Send Reset Password Link</button>
+                            <div class="d-flex justify-content-center my-0">
+                                {{-- <button class="btn btn-primary px-3" type="submit">Send Reset Password Link</button> --}}
+                                <button type="submit" class="auth-btn fs-7"> <span class="ms-1 fs-7">Submit</span>
+                                    <div class="icon"><i class="fa-regular fa-paper-plane fs-7"></i></i>
+                                    </div>
+                                </button>
                             </div>
                             <div class="text-center mt-5">
                                 <p>Return to Login page? <a href="{{ route('login') }}" class="text-primary fw-bold">Click here.</a>
