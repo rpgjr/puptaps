@@ -314,7 +314,7 @@ Route::group(
         'controller' => PdsToPdfController::class,
         'prefix'     => 'download',
         'as'         => 'userForm.',
-        'middleware' => ['auth', 'notFinishedSetup']
+        'middleware' => ['auth']
     ],
     function () {
         Route::post('form-pds', 'PDS_to_PDF')
@@ -335,7 +335,7 @@ Route::group(
         'controller' => EifToPdfController::class,
         'prefix'     => 'download',
         'as'         => 'userForm.',
-        'middleware' => ['auth', 'notFinishedSetup']
+        'middleware' => ['auth']
     ],
     function () {
         Route::post('form-exit-interview', 'EIF_TO_PDF')
@@ -356,7 +356,7 @@ Route::group(
         'controller' => SasToPdfController::class,
         'prefix'     => 'download',
         'as'         => 'userForm.',
-        'middleware' => ['auth', 'notFinishedSetup']
+        'middleware' => ['auth']
     ],
     function () {
         Route::post('form-sas', 'SAS_TO_PDF')

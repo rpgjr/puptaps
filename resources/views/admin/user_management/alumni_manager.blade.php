@@ -96,7 +96,6 @@
                                         @if ($EIF->contains('alumni_id', $alum->alumni_id))
                                             <form action="{{ route("userForm.EIF_TO_PDF") }}" method="POST" target="_blank">
                                                 @csrf
-
                                                 <input type="hidden" name="alumni_id" value="{{ $alum->alumni_id }}">
                                                 <button type="submit" class="btn-sm fs-7 btn btn-success px-2">EIF <i class="fa-solid fa-file-pdf"></i></button>
                                             </form>
@@ -108,7 +107,6 @@
                                         @if ($SAS->contains('alumni_id', $alum->alumni_id))
                                             <form action="{{ route("userForm.SAS_TO_PDF") }}" method="POST" target="_blank">
                                                 @csrf
-
                                                 <input type="hidden" name="alumni_id" value="{{ $alum->alumni_id }}">
                                                 <button class="btn-sm fs-7 btn btn-success px-2">SAS <i class="fa-solid fa-file-pdf"></i></button>
                                             </form>
