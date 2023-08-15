@@ -55,24 +55,14 @@ class RegisteredUserController extends Controller
                 ),
 
             ],
-                [
-                    'stud_number.required'  => 'Student Number is required',
-                    'stud_number.*'  => 'Invalid Format for Student Number',
-                    'email.required'        => 'Email is required',
-                    'email.email'        => 'Email format is invalid',
-
-                ]
-            );
-        // $request->validate([
-        //     // 'stud_number'   => ['required|regex:/^\d{4}-\d{5}-TG-0$/'],
-        //     'email'         => ['required', 'email', 'max:255', 'unique:users'],
-        // ],
-        // [
-        //     // 'stud_number.required'  => 'Student Number is required',
-        //     'email.required'        => 'Email is required',
-        // ]);
+            [
+                'stud_number.required'  => 'Student Number is required',
+                'stud_number.*'  => 'Invalid Format for Student Number',
+                'email.required'        => 'Email is required',
+                'email.email'        => 'Email format is invalid',
+            ]
+        );
         if($check_studNumber) {
-
             $hasPassword = User::where('username', '=', $request->stud_number)->first();
             $email = $request->email;
             $stud_number = $request->stud_number;
@@ -85,7 +75,6 @@ class RegisteredUserController extends Controller
             }
         }
         else {
-            // return back()->with('fail', 'You are not allowed to create an Account yet. Please contact the Administrator for more information. Thank you.');
             return back()->with('fail', 'Sorry, you are not allowed to create an account if you are not an official graduate of PUP-Taguig.');
         }
     }

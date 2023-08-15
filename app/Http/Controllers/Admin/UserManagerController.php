@@ -106,6 +106,7 @@ class UserManagerController extends Controller
     public function downloadListTemplate() {
         // return response()->download(public_path("files/list_template.xlsx"));
         return response()->download(asset("files/list_template.xlsx"));
+        // return response()->download(base_path('list_template.xlsx'));
     }
 
     public function resetPds(Request $request) {
