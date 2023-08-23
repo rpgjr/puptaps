@@ -24,7 +24,7 @@ class CareerController extends Controller
         $posts              = Alumni::all();
         $title              = "Careers";
         $data['query']      = $request->get('query');
-        $data['subquery']      = $request->get('subquery');
+        $data['subquery']   = $request->get('subquery');
         $data['careers']    = Careers::where('approval', '=', 1)
                               ->where('job_name', 'like', '%' . $data['query'] . '%')
                               ->where('category', 'like', '%' . $data['subquery'] . '%')

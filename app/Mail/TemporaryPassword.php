@@ -37,3 +37,4 @@ class TemporaryPassword extends Mailable
         return $this->markdown('mail.temporary-password');
     }
 }
+// https://sam-ngu.medium.com/laravel-mail-markdown-components-list-293fbca048f

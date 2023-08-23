@@ -43,5 +43,35 @@ $('.slick-feature').slick({
                     autoplaySpeed: 1500,
                 }
         },
+        {
+            breakpoint: 400,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    dots: true,
+                    autoplay: true,
+                    autoplaySpeed: 1500,
+                }
+        },
+        {
+            breakpoint: 300,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    dots: true,
+                    autoplay: true,
+                    autoplaySpeed: 1500,
+                }
+        },
+        {
+            breakpoint: 200,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    dots: true,
+                    autoplay: true,
+                    autoplaySpeed: 1500,
+                }
+        },
     ]
 });

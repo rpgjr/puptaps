@@ -282,7 +282,7 @@
                             <div class="row">
                                 @if ($currentPage == 1)
                                     <div class="col-6 text-start">
-                                        <button class="btn btn-secondary px-3 fs-7" wire:click.prevent="previousPage()" disabled><i class="fa-solid fa-caret-left"></i> Back</button>
+                                        <a href="{{ route('userProfile.set-up') }}" class="btn btn-secondary px-3 fs-7"><i class="fa-solid fa-caret-left"></i> Back</a>
                                     </div>
                                 @endif
 

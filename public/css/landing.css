@@ -11,6 +11,10 @@
     background-color: #7B241C;
 } */
 
+body {
+    overflow-x: hidden;
+  }
+
 .text-shadow {
     color: #ffffff;
     text-shadow: 6px 4px 8px rgba(0, 0, 0, 0.78);

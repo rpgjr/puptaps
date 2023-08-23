@@ -5,8 +5,8 @@
     <!-- CSS -->
     @livewireStyles
     <livewire:components.header />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.css">
+    <link rel="stylesheet" href="{{ asset('slick/slick/slick.css') }}">
+    <link rel="stylesheet" href="{{ asset('slick/slick/slick-theme.css') }}">
     <title>Landing Page</title>
 
 </head>
@@ -38,6 +38,8 @@
 
     <!-- JS -->
     <livewire:components.scripts />
+    {{-- Slick-Carousel JS --}}
+    <script src="{{ asset('slick/slick/slick.min.js') }}"></script>
     <script src="{{ asset('js/landing-features-slick.js') }}"></script>
     <script src="{{ asset('js/landing-greetings-slick.js') }}"></script>
     @livewireScripts

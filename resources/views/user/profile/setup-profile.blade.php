@@ -14,9 +14,14 @@
                     @csrf
 
                         <div  iv class="row align-items-center px-0 px-sm-0 px-md-0 px-lg-3 px-xl-3">
-                            <div class="col-12 my-3">
-                                <h3>Personal Information</h3>
-                                <p><i class="fa-solid fa-circle-info text-warning me-1"></i><span class="text-secondary">Before you proceed you need to finish setting up your account.</span></p>
+                            <div class="col-12 my-3 d-flex justify-content-between">
+                                <div>
+                                    <h3>Personal Information</h3>
+                                    <p><i class="fa-solid fa-circle-info text-warning me-1"></i><span class="text-secondary">Before you proceed you need to finish setting up your account.</span></p>
+                                </div>
+                                <div>
+                                    <a href="{{ route('userProfile.set-up') }}" class="btn btn-secondary fs-7"><i class="fa-solid fa-caret-left"></i> Back</a>
+                                </div>
                             </div>
                             <div class="col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 my-2">
                                 <label class="form-label">Last Name</label>
