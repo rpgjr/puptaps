@@ -44,7 +44,8 @@ class RegisteredUserController extends Controller
             'stud_number' =>
                 array(
                     'required',
-                    'regex:/^\d{4}-\d{5}-TG-0$/'
+                    // 'regex:/^\d{4}-\d{5}-TG-[01]$/'
+                    'regex:/^(?:\d{2}-\d{5}|\d{4}-\d{5}-TG-[01]$)$/'
                 ),
             'email' =>
                 array(

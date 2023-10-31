@@ -18,8 +18,8 @@ class MYPDF extends TCPDF
     public function Header()
     {
         // Logo
-        $image_file = public_path('/img/pupLogo.png');
-        // $image_file = asset('img/pupLogo.png');
+        // $image_file = public_path('/img/pupLogo.png');
+        $image_file = asset('img/pupLogo.png');
         $this->Image($image_file, 15, 10, 20, '', 'PNG', '', 'C', false, 300, '', false, false, 0, false, false, false);
         // Title
         $this->Ln(3);
@@ -310,7 +310,7 @@ class TracerReportsController extends Controller
     }
 
     public function tracerStatusReport($request) {
-        $totalAlumni = Alumni::all();
+        $totalAlumni = Alumni::whereBetween('batch', [$request->batch_from, $request->batch_to])->get();
         $total = TracerAnswers::where('question_id', '=', 1)->join('tbl_alumni', 'tbl_alumni.alumni_id', '=', 'tbl_tracer_answers.alumni_id')->whereBetween('batch', [$request->batch_from, $request->batch_to])->get();
 
         if (count($total) > 0 || count($total) != null) {
@@ -589,7 +589,7 @@ class TracerReportsController extends Controller
     }
 
     public function tracerAlumniProfile($request) {
-        $allAlumni = Alumni::whereBetween('batch', [$request->batch_from, $request->batch_to])->get();
+        $allAlumni = Alumni::whereBetween('batch', [$request->batch_from, $request->batch_to])->where('profile_status', 'Complete')->get();
 
         $ctr = 0;
         foreach ($allAlumni as $alumni) {
@@ -631,12 +631,23 @@ class TracerReportsController extends Controller
                 $civilService = TracerAnswers::where('alumni_id', '=', $alumni->alumni_id)->where('question_id', '=', 5)->value('answer');
 
                 $position = TracerAnswers::where('alumni_id', '=', $alumni->alumni_id)->where('question_id', '=', 6)->value('answer');
-                $company = TracerAnswers::where('alumni_id', '=', $alumni->alumni_id)->where('question_id', '=', 7)->value('answer');
-                $startDate = TracerAnswers::where('alumni_id', '=', $alumni->alumni_id)->where('question_id', '=', 8)->value('answer');
-                $empType = TracerAnswers::where('alumni_id', '=', $alumni->alumni_id)->where('question_id', '=', 10)->value('answer');
-                $comEmail = TracerAnswers::where('alumni_id', '=', $alumni->alumni_id)->where('question_id', '=', 12)->value('answer');
-                $comNumber = TracerAnswers::where('alumni_id', '=', $alumni->alumni_id)->where('question_id', '=', 13)->value('answer');
-                $relation = TracerAnswers::where('alumni_id', '=', $alumni->alumni_id)->where('question_id', '=', 14)->value('answer');
+                if ($position === 'UNEMPLOYED') {
+                    $position = 'N/A';
+                    $company = 'N/A';
+                    $startDate = 'N/A';
+                    $empType = 'N/A';
+                    $comEmail = 'N/A';
+                    $comNumber = 'N/A';
+                    $relation = 'N/A';
+                }
+                else {
+                    $company = TracerAnswers::where('alumni_id', '=', $alumni->alumni_id)->where('question_id', '=', 7)->value('answer');
+                    $startDate = TracerAnswers::where('alumni_id', '=', $alumni->alumni_id)->where('question_id', '=', 8)->value('answer');
+                    $empType = TracerAnswers::where('alumni_id', '=', $alumni->alumni_id)->where('question_id', '=', 10)->value('answer');
+                    $comEmail = TracerAnswers::where('alumni_id', '=', $alumni->alumni_id)->where('question_id', '=', 12)->value('answer');
+                    $comNumber = TracerAnswers::where('alumni_id', '=', $alumni->alumni_id)->where('question_id', '=', 13)->value('answer');
+                    $relation = TracerAnswers::where('alumni_id', '=', $alumni->alumni_id)->where('question_id', '=', 14)->value('answer');
+                }
 
                 $fposition = TracerAnswers::where('alumni_id', '=', $alumni->alumni_id)->where('question_id', '=', 15)->value('answer');
                 $fcompany = TracerAnswers::where('alumni_id', '=', $alumni->alumni_id)->where('question_id', '=', 16)->value('answer');
@@ -786,7 +797,8 @@ class TracerReportsController extends Controller
                     $pdf->writeHTML($html, true, 0, true, 0);
 
                     $pdf->ln(-1);
-                    $html = '<style>
+                    if($startDate === 'N/A') {
+                        $html = '<style>
                             .table-EI, .th-EI, .td-EI {
                                 border-collapse: collapse;
                             }
@@ -797,12 +809,32 @@ class TracerReportsController extends Controller
                         <table class="table-EI" style="width:100%;">
                             <tr>
                                 <th class="th-EI" colspan="1" style="width: 26%;">Employment Start Date: </th>
-                                <td class="td-EI" colspan="1" style="border-bottom: 1px solid black; width: 24%;">' . date('F d, Y', strtotime($startDate)) . '</td>
+                                <td class="td-EI" colspan="1" style="border-bottom: 1px solid black; width: 24%;">N/A</td>
                                 <td style="width: 5%;"></td>
                                 <th class="th-EI" colspan="1" style="width: 21%;">Employment Type: </th>
                                 <td class="td-EI" colspan="1" style="border-bottom: 1px solid black; width: 24%;">' . $empType . '</td>
                             </tr>
                         </table>';
+                    }
+                    else {
+                        $html = '<style>
+                                .table-EI, .th-EI, .td-EI {
+                                    border-collapse: collapse;
+                                }
+                                th {
+                                    font-weight: bold;
+                                }
+                            </style>
+                            <table class="table-EI" style="width:100%;">
+                                <tr>
+                                    <th class="th-EI" colspan="1" style="width: 26%;">Employment Start Date: </th>
+                                    <td class="td-EI" colspan="1" style="border-bottom: 1px solid black; width: 24%;">' . date('F d, Y', strtotime($startDate)) . '</td>
+                                    <td style="width: 5%;"></td>
+                                    <th class="th-EI" colspan="1" style="width: 21%;">Employment Type: </th>
+                                    <td class="td-EI" colspan="1" style="border-bottom: 1px solid black; width: 24%;">' . $empType . '</td>
+                                </tr>
+                            </table>';
+                    }
                     $pdf->writeHTML($html, true, 0, true, 0);
 
                     $pdf->ln(-1);

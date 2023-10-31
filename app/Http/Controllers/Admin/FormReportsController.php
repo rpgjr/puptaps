@@ -20,8 +20,8 @@ class MYPDF extends TCPDF {
     //Page header
     public function Header() {
         // Logo
-        $image_file = public_path('/img/pupLogo.png');
-        // $image_file = asset('img/pupLogo.png');
+        // $image_file = public_path('/img/pupLogo.png');
+        $image_file = asset('img/pupLogo.png');
         $this->Image($image_file, 15, 10, 20, '', 'PNG', '', 'C', false, 300, '', false, false, 0, false, false, false);
         // Title
         $this->Ln(3);
@@ -479,7 +479,7 @@ class FormReportsController extends Controller
 
         $pdf->SetPrintHeader(true);
         $pdf->AddPage();
-        $pdf->ln(20);
+        $pdf->ln(10);
         $pdf->SetFont('times', 'B', 13);
         $pdf->Cell(0, 0, 'EXIT INTERVIEW FORM - SUMMARY REPORT', 0, 1, 'C', 0, '', 0);
         $pdf->SetFont('times', '', 12);
@@ -487,7 +487,7 @@ class FormReportsController extends Controller
         $pdf->SetFont('times', '', 11);
         $pdf->Cell(0, 0, 'Date Generated: ' . date('F d, Y'), 0, 1, 'C', 0, '', 0);
 
-        $pdf->ln(10);
+        $pdf->ln(5);
         $pdf->SetFont('times', 'B', 11);
         $pdf->Cell(0, 0, 'TABLE 1. COURSES', 0, 1, 'L', 0, '', 0);
         $pdf->SetFont('times', '', 11);
@@ -527,12 +527,6 @@ class FormReportsController extends Controller
                             ->select('tbl_alumni.alumni_id')
                             ->distinct()
                             ->get();
-                        $total = Alumni::join('form_eif_answers', 'tbl_alumni.alumni_id', '=', 'form_eif_answers.alumni_id')
-                            ->whereBetween('tbl_alumni.batch', [$request->batch_from, $request->batch_to])
-                            ->where('course_id', 'like', '%' . $request->course_id . '%')
-                            ->select('tbl_alumni.alumni_id')
-                            ->distinct()
-                            ->get();
                     }
                     else {
                         $checkCount = Alumni::join('form_eif_answers', 'tbl_alumni.alumni_id', '=', 'form_eif_answers.alumni_id')
@@ -548,22 +542,20 @@ class FormReportsController extends Controller
                             ->select('tbl_alumni.alumni_id')
                             ->distinct()
                             ->get();
-                        $total = Alumni::join('form_eif_answers', 'tbl_alumni.alumni_id', '=', 'form_eif_answers.alumni_id')
-                            ->where('tbl_alumni.sex', '=', $request->sex)
-                            ->whereBetween('tbl_alumni.batch', [$request->batch_from, $request->batch_to])
-                            ->where('course_id', 'like', '%' . $request->course_id . '%')
-                            ->select('tbl_alumni.alumni_id')
-                            ->distinct()
-                            ->get();
                     }
                     $html .= '<tr>
                             <th class="th-EI" colspan="1" style="width: 70%;">' . $course->course_desc . '</th>
                             <td class="th-EI" colspan="2" style="width: 15%;">' . count($checkCount) . '</td>
                             <td class="th-EI" colspan="1" style="width: 15%;">' . count($perCourse)-count($checkCount) . '</td>
                         </tr>';
-
-                    $totalPending = $totalPending + (count($perCourse)-count($checkCount));
                 }
+            $total = Alumni::join('form_eif_answers', 'tbl_alumni.alumni_id', '=', 'form_eif_answers.alumni_id')
+                            ->whereBetween('tbl_alumni.batch', [$request->batch_from, $request->batch_to])
+                            ->select('tbl_alumni.alumni_id')
+                            ->distinct()
+                            ->get();
+            $totalStudents = Alumni::whereBetween('tbl_alumni.batch', [$request->batch_from, $request->batch_to])->get();
+            $totalPending = (count($totalStudents)-count($total));
             $html .= '<tr>
                     <th class="th-EI" colspan="1" style="width: 70%;">TOTAL</th>
                     <td class="th-EI" colspan="2" style="width: 15%; font-weight: bold;">' . count($total) . '</td>
@@ -1004,14 +996,14 @@ class FormReportsController extends Controller
         $pdf->SetPrintHeader(true);
         $pdf->AddPage();
         $pdf->SetFont('times', 'B', 13);
-        $pdf->ln(20);
+        $pdf->ln(10);
         $pdf->Cell(0, 0, 'STUDENT AFFAIRS AND SERVICESS FORM - SUMMARY REPORT', 0, 1, 'C', 0, '', 0);
         $pdf->SetFont('times', '', 12);
         $pdf->Cell(0, 0, 'ALUMNI BATCH FROM ' . $request->batch_from . ' TO ' . $request->batch_to, 0, 1, 'C', 0, '', 0);
         $pdf->SetFont('times', '', 11);
         $pdf->Cell(0, 0, 'Date Generated: ' . date('F d, Y'), 0, 1, 'C', 0, '', 0);
 
-        $pdf->ln(8);
+        $pdf->ln(5);
         $pdf->SetFont('times', 'B', 11);
         $pdf->Cell(0, 0, 'TABLE 1. COURSES', 0, 1, 'L', 0, '', 0);
         $pdf->SetFont('times', '', 11);
@@ -1051,12 +1043,6 @@ class FormReportsController extends Controller
                             ->select('tbl_alumni.alumni_id')
                             ->distinct()
                             ->get();
-                        $total = Alumni::join('form_sas_answers', 'tbl_alumni.alumni_id', '=', 'form_sas_answers.alumni_id')
-                            ->whereBetween('tbl_alumni.batch', [$request->batch_from, $request->batch_to])
-                            ->where('course_id', 'like', '%' . $request->course_id . '%')
-                            ->select('tbl_alumni.alumni_id')
-                            ->distinct()
-                            ->get();
                     }
                     else {
                         $checkCount = Alumni::join('form_sas_answers', 'tbl_alumni.alumni_id', '=', 'form_sas_answers.alumni_id')
@@ -1072,22 +1058,20 @@ class FormReportsController extends Controller
                             ->select('tbl_alumni.alumni_id')
                             ->distinct()
                             ->get();
-                        $total = Alumni::join('form_sas_answers', 'tbl_alumni.alumni_id', '=', 'form_sas_answers.alumni_id')
-                            ->where('tbl_alumni.sex', '=', $request->sex)
-                            ->whereBetween('tbl_alumni.batch', [$request->batch_from, $request->batch_to])
-                            ->where('course_id', 'like', '%' . $request->course_id . '%')
-                            ->select('tbl_alumni.alumni_id')
-                            ->distinct()
-                            ->get();
                     }
                     $html .= '<tr>
                             <th class="th-EI" colspan="1" style="width: 70%;">' . $course->course_desc . '</th>
                             <td class="th-EI" colspan="2" style="width: 15%;">' . count($checkCount) . '</td>
                             <td class="th-EI" colspan="1" style="width: 15%;">' . count($perCourse)-count($checkCount) . '</td>
                         </tr>';
-
-                    $totalPending = $totalPending + (count($perCourse)-count($checkCount));
                 }
+            $total = Alumni::join('form_sas_answers', 'tbl_alumni.alumni_id', '=', 'form_sas_answers.alumni_id')
+                        ->whereBetween('tbl_alumni.batch', [$request->batch_from, $request->batch_to])
+                        ->select('tbl_alumni.alumni_id')
+                        ->distinct()
+                        ->get();
+            $totalStudents = Alumni::whereBetween('tbl_alumni.batch', [$request->batch_from, $request->batch_to])->get();
+            $totalPending = (count($totalStudents)-count($total));
             $html .= '<tr>
                     <th class="th-EI" colspan="1" style="width: 70%;">TOTAL</th>
                     <td class="th-EI" colspan="2" style="width: 15%; font-weight: bold;">' . count($total) . '</td>
@@ -1408,12 +1392,12 @@ class FormReportsController extends Controller
                             ->select('tbl_alumni.alumni_id')
                             ->distinct()
                             ->get();
-                        $total = Alumni::join('form_pds_answers', 'tbl_alumni.alumni_id', '=', 'form_pds_answers.alumni_id')
-                            ->where('course_id', 'like', '%' . $request->course_id . '%')
-                            ->whereBetween('tbl_alumni.batch', [$request->batch_from, $request->batch_to])
-                            ->select('tbl_alumni.alumni_id')
-                            ->distinct()
-                            ->get();
+                        // $total = Alumni::join('form_pds_answers', 'tbl_alumni.alumni_id', '=', 'form_pds_answers.alumni_id')
+                        //     ->where('course_id', 'like', '%' . $request->course_id . '%')
+                        //     ->whereBetween('tbl_alumni.batch', [$request->batch_from, $request->batch_to])
+                        //     ->select('tbl_alumni.alumni_id')
+                        //     ->distinct()
+                        //     ->get();
                     }
                     else {
                         $checkCount = Alumni::join('form_pds_answers', 'tbl_alumni.alumni_id', '=', 'form_pds_answers.alumni_id')
@@ -1429,21 +1413,26 @@ class FormReportsController extends Controller
                             ->select('tbl_alumni.alumni_id')
                             ->distinct()
                             ->get();
-                        $total = Alumni::join('form_pds_answers', 'tbl_alumni.alumni_id', '=', 'form_pds_answers.alumni_id')
-                            ->where('tbl_alumni.sex', '=', $request->sex)
-                            ->whereBetween('tbl_alumni.batch', [$request->batch_from, $request->batch_to])
-                            ->select('tbl_alumni.alumni_id')
-                            ->distinct()
-                            ->get();
+                        // $total = Alumni::join('form_pds_answers', 'tbl_alumni.alumni_id', '=', 'form_pds_answers.alumni_id')
+                        //     ->where('tbl_alumni.sex', '=', $request->sex)
+                        //     ->whereBetween('tbl_alumni.batch', [$request->batch_from, $request->batch_to])
+                        //     ->select('tbl_alumni.alumni_id')
+                        //     ->distinct()
+                        //     ->get();
                     }
                     $html .= '<tr>
                             <th class="th-EI" colspan="1" style="width: 70%;">' . $course->course_desc . '</th>
                             <td class="th-EI" colspan="2" style="width: 15%;">' . count($checkCount) . '</td>
                             <td class="th-EI" colspan="1" style="width: 15%;">' . count($perCourse)-count($checkCount) . '</td>
                         </tr>';
-
-                    $totalPending = $totalPending + (count($perCourse)-count($checkCount));
                 }
+            $total = Alumni::join('form_pds_answers', 'tbl_alumni.alumni_id', '=', 'form_pds_answers.alumni_id')
+                            ->whereBetween('tbl_alumni.batch', [$request->batch_from, $request->batch_to])
+                            ->select('tbl_alumni.alumni_id')
+                            ->distinct()
+                            ->get();
+            $totalStudents = Alumni::whereBetween('tbl_alumni.batch', [$request->batch_from, $request->batch_to])->get();
+            $totalPending = (count($totalStudents)-count($total));
             $html .= '<tr>
                     <th class="th-EI" colspan="1" style="width: 70%;">TOTAL</th>
                     <td class="th-EI" colspan="2" style="width: 15%; font-weight: bold;">' . count($total) . '</td>
@@ -1626,12 +1615,12 @@ class FormReportsController extends Controller
         $pdf->AddPage();
         $pdf->SetPrintHeader(false);
         $pdf->SetFont('times', 'B', 13);
-        $pdf->ln(20);
+        $pdf->ln(10);
         $pdf->Cell(0, 0, 'EXIT INTERVIEW FORM - STATUS REPORT (SUMMARY)', 0, 1, 'C', 0, '', 0);
         $pdf->SetFont('times', '', 12);
         $pdf->Cell(0, 0, 'ALUMNI BATCH FROM ' . $request->batch_from . ' TO ' . $request->batch_to, 0, 1, 'C', 0, '', 0);
 
-        $pdf->ln(10);
+        $pdf->ln(5);
         $pdf->SetFont('times', '', 11);
         $pdf->Cell(0, 0, 'Date Generated: ' . date('F d, Y'), 0, 1, 'R', 0, '', 0);
 
@@ -1671,12 +1660,6 @@ class FormReportsController extends Controller
                             ->select('tbl_alumni.alumni_id')
                             ->distinct()
                             ->get();
-                        $total = Alumni::join('form_eif_answers', 'tbl_alumni.alumni_id', '=', 'form_eif_answers.alumni_id')
-                            ->whereBetween('tbl_alumni.batch', [$request->batch_from, $request->batch_to])
-                            ->where('tbl_alumni.course_id', '=', $course->course_id)
-                            ->select('tbl_alumni.alumni_id')
-                            ->distinct()
-                            ->get();
                     }
                     else {
                         $checkCount = Alumni::join('form_eif_answers', 'tbl_alumni.alumni_id', '=', 'form_eif_answers.alumni_id')
@@ -1692,21 +1675,21 @@ class FormReportsController extends Controller
                             ->select('tbl_alumni.alumni_id')
                             ->distinct()
                             ->get();
-                        $total = Alumni::join('form_eif_answers', 'tbl_alumni.alumni_id', '=', 'form_eif_answers.alumni_id')
-                            ->where('tbl_alumni.sex', '=', $request->sex)
-                            ->whereBetween('tbl_alumni.batch', [$request->batch_from, $request->batch_to])
-                            ->select('tbl_alumni.alumni_id')
-                            ->distinct()
-                            ->get();
                     }
                     $html .= '<tr>
                             <th class="th-EI" colspan="1" style="width: 70%;">' . $course->course_desc . '</th>
                             <td class="th-EI" colspan="2" style="width: 15%;">' . count($checkCount) . '</td>
                             <td class="th-EI" colspan="1" style="width: 15%;">' . count($perCourse)-count($checkCount) . '</td>
                         </tr>';
-
-                    $totalPending = $totalPending + (count($perCourse)-count($checkCount));
                 }
+
+            $total = Alumni::join('form_eif_answers', 'tbl_alumni.alumni_id', '=', 'form_eif_answers.alumni_id')
+                            ->whereBetween('tbl_alumni.batch', [$request->batch_from, $request->batch_to])
+                            ->select('tbl_alumni.alumni_id')
+                            ->distinct()
+                            ->get();
+            $totalStudents = Alumni::whereBetween('tbl_alumni.batch', [$request->batch_from, $request->batch_to])->get();
+            $totalPending = (count($totalStudents)-count($total));
             $html .= '<tr>
                     <th class="th-EI" colspan="1" style="width: 70%;">TOTAL</th>
                     <td class="th-EI" colspan="2" style="width: 15%;">' . count($total) . '</td>
@@ -1751,13 +1734,11 @@ class FormReportsController extends Controller
                 </tr>';
             $total = Alumni::join('form_eif_answers', 'tbl_alumni.alumni_id', '=', 'form_eif_answers.alumni_id')
                 ->whereBetween('tbl_alumni.batch', [$request->batch_from, $request->batch_to])
-                ->where('tbl_alumni.course_id', '=', $course->course_id)
                 ->select('tbl_alumni.alumni_id')
                 ->distinct()
                 ->get();
             $perAge = Alumni::join('form_eif_answers', 'tbl_alumni.alumni_id', '=', 'form_eif_answers.alumni_id')
                 ->whereBetween('tbl_alumni.batch', [$request->batch_from, $request->batch_to])
-                ->where('course_id', 'like', '%' . $request->course_id . '%')
                 ->select('tbl_alumni.age')
                 ->orderBy('tbl_alumni.age', 'asc')
                 ->distinct()
@@ -1765,7 +1746,7 @@ class FormReportsController extends Controller
 
 
             foreach ($perAge as $age) {
-                $perSpecificAge = Alumni::join('form_eif_answers', 'tbl_alumni.alumni_id', '=', 'form_eif_answers.alumni_id')
+                    $perSpecificAge = Alumni::join('form_eif_answers', 'tbl_alumni.alumni_id', '=', 'form_eif_answers.alumni_id')
                     ->whereBetween('tbl_alumni.batch', [$request->batch_from, $request->batch_to])
                     ->where('tbl_alumni.age', '=', $age->age)
                     ->where('tbl_alumni.sex', 'like', $request->sex . '%')
@@ -1776,6 +1757,7 @@ class FormReportsController extends Controller
                 $html .= '<tr>
                     <th class="th-EI" colspan="1" style="width: 35%;">' . $age->age . ' years old </th>
                     <td class="th-EI" colspan="2" style="width: 18%;">' . count($perSpecificAge) . '</td>
+
                     <td class="th-EI" colspan="1" style="width: 25%;">' . number_format(count($perSpecificAge) / count($total) * 100, 2) . '% </td>
                 </tr>';
             }
@@ -1790,7 +1772,6 @@ class FormReportsController extends Controller
                     <td class="theading" colspan="1" style="width: 25%;">Percentage</td>
                 </tr>';
             $total = Alumni::join('form_eif_answers', 'tbl_alumni.alumni_id', '=', 'form_eif_answers.alumni_id')
-                ->where('tbl_alumni.course_id', '=', $course->course_id)
                 ->whereBetween('tbl_alumni.batch', [$request->batch_from, $request->batch_to])
                 ->select('tbl_alumni.alumni_id')
                 ->distinct()
@@ -2061,12 +2042,6 @@ class FormReportsController extends Controller
                             ->select('tbl_alumni.alumni_id')
                             ->distinct()
                             ->get();
-                        $total = Alumni::join('form_sas_answers', 'tbl_alumni.alumni_id', '=', 'form_sas_answers.alumni_id')
-                            ->where('tbl_alumni.course_id', '=', $course->course_id)
-                            ->whereBetween('tbl_alumni.batch', [$request->batch_from, $request->batch_to])
-                            ->select('tbl_alumni.alumni_id')
-                            ->distinct()
-                            ->get();
                     }
                     else {
                         $checkCount = Alumni::join('form_sas_answers', 'tbl_alumni.alumni_id', '=', 'form_sas_answers.alumni_id')
@@ -2082,21 +2057,20 @@ class FormReportsController extends Controller
                             ->select('tbl_alumni.alumni_id')
                             ->distinct()
                             ->get();
-                        $total = Alumni::join('form_sas_answers', 'tbl_alumni.alumni_id', '=', 'form_sas_answers.alumni_id')
-                            ->where('tbl_alumni.sex', '=', $request->sex)
-                            ->whereBetween('tbl_alumni.batch', [$request->batch_from, $request->batch_to])
-                            ->select('tbl_alumni.alumni_id')
-                            ->distinct()
-                            ->get();
                     }
                     $html .= '<tr>
                             <th class="th-EI" colspan="1" style="width: 70%;">' . $course->course_desc . '</th>
                             <td class="th-EI" colspan="2" style="width: 15%;">' . count($checkCount) . '</td>
                             <td class="th-EI" colspan="1" style="width: 15%;">' . count($perCourse)-count($checkCount) . '</td>
                         </tr>';
-
-                    $totalPending = $totalPending + (count($perCourse)-count($checkCount));
                 }
+            $total = Alumni::join('form_sas_answers', 'tbl_alumni.alumni_id', '=', 'form_sas_answers.alumni_id')
+                            ->whereBetween('tbl_alumni.batch', [$request->batch_from, $request->batch_to])
+                            ->select('tbl_alumni.alumni_id')
+                            ->distinct()
+                            ->get();
+            $totalStudents = Alumni::whereBetween('tbl_alumni.batch', [$request->batch_from, $request->batch_to])->get();
+            $totalPending = (count($totalStudents)-count($total));
             $html .= '<tr>
                     <th class="th-EI" colspan="1" style="width: 70%;">TOTAL</th>
                     <td class="th-EI" colspan="2" style="width: 15%;">' . count($total) . '</td>
@@ -2278,7 +2252,7 @@ class FormReportsController extends Controller
         $pdf->AddPage('L');
         $style3 = array('width' => .5, 'cap' => 'butt', 'join' => 'miter', 'dash' => 0, 'color' => array(0, 0, 0));
         $pdf->Line(10, 33, 287, 33, $style3);
-        $pdf->ln(20);
+        $pdf->ln(15);
         $pdf->SetFont('times', 'B', 13);
         $pdf->Cell(0, 0, 'EXIT INTERVIEW FORM - DETAILED REPORT', 0, 1, 'C', 0, '', 0);
         $pdf->SetFont('times', '', 12);
@@ -2286,7 +2260,7 @@ class FormReportsController extends Controller
         $pdf->SetFont('times', '', 11);
         $pdf->Cell(0, 0, 'Date Generated: ' . date('F d, Y'), 0, 1, 'C', 0, '', 0);
 
-        $pdf->ln(10);
+        $pdf->ln(5);
         $pdf->SetFont('times', 'B', 11);
         $pdf->Cell(0, 0, 'TABLE 1. COURSES', 0, 1, 'L', 0, '', 0);
         $pdf->SetFont('times', '', 11);
@@ -3004,14 +2978,14 @@ class FormReportsController extends Controller
         $pdf->SetPrintHeader(true);
         $pdf->AddPage();
         $pdf->SetFont('times', 'B', 13);
-        $pdf->ln(20);
+        $pdf->ln(10);
         $pdf->Cell(0, 0, 'STUDENT AFFAIRS AND SERVICESS FORM - DETAILED REPORT', 0, 1, 'C', 0, '', 0);
         $pdf->SetFont('times', '', 12);
         $pdf->Cell(0, 0, 'ALUMNI BATCH FROM ' . $request->batch_from . ' TO ' . $request->batch_to, 0, 1, 'C', 0, '', 0);
         $pdf->SetFont('times', '', 11);
         $pdf->Cell(0, 0, 'Date Generated: ' . date('F d, Y'), 0, 1, 'C', 0, '', 0);
 
-        $pdf->ln(8);
+        $pdf->ln(2);
         $pdf->SetFont('times', 'B', 11);
         $pdf->Cell(0, 0, 'TABLE 1. COURSES', 0, 1, 'L', 0, '', 0);
         $pdf->SetFont('times', '', 11);
@@ -3051,12 +3025,6 @@ class FormReportsController extends Controller
                             ->select('tbl_alumni.alumni_id')
                             ->distinct()
                             ->get();
-                        $total = Alumni::join('form_sas_answers', 'tbl_alumni.alumni_id', '=', 'form_sas_answers.alumni_id')
-                            ->whereBetween('tbl_alumni.batch', [$request->batch_from, $request->batch_to])
-                            ->where('course_id', 'like', '%' . $request->course_id . '%')
-                            ->select('tbl_alumni.alumni_id')
-                            ->distinct()
-                            ->get();
                     }
                     else {
                         $checkCount = Alumni::join('form_sas_answers', 'tbl_alumni.alumni_id', '=', 'form_sas_answers.alumni_id')
@@ -3072,22 +3040,20 @@ class FormReportsController extends Controller
                             ->select('tbl_alumni.alumni_id')
                             ->distinct()
                             ->get();
-                        $total = Alumni::join('form_sas_answers', 'tbl_alumni.alumni_id', '=', 'form_sas_answers.alumni_id')
-                            ->where('tbl_alumni.sex', '=', $request->sex)
-                            ->whereBetween('tbl_alumni.batch', [$request->batch_from, $request->batch_to])
-                            ->where('course_id', 'like', '%' . $request->course_id . '%')
-                            ->select('tbl_alumni.alumni_id')
-                            ->distinct()
-                            ->get();
                     }
                     $html .= '<tr>
                             <th class="th-EI" colspan="1" style="width: 70%;">' . $course->course_desc . '</th>
                             <td class="th-EI" colspan="2" style="width: 15%;">' . count($checkCount) . '</td>
                             <td class="th-EI" colspan="1" style="width: 15%;">' . count($perCourse)-count($checkCount) . '</td>
                         </tr>';
-
-                    $totalPending = $totalPending + (count($perCourse)-count($checkCount));
                 }
+            $total = Alumni::join('form_sas_answers', 'tbl_alumni.alumni_id', '=', 'form_sas_answers.alumni_id')
+                            ->whereBetween('tbl_alumni.batch', [$request->batch_from, $request->batch_to])
+                            ->select('tbl_alumni.alumni_id')
+                            ->distinct()
+                            ->get();
+            $totalStudents = Alumni::whereBetween('tbl_alumni.batch', [$request->batch_from, $request->batch_to])->get();
+            $totalPending = (count($totalStudents)-count($total));
             $html .= '<tr>
                     <th class="th-EI" colspan="1" style="width: 70%;">TOTAL</th>
                     <td class="th-EI" colspan="2" style="width: 15%; font-weight: bold;">' . count($total) . '</td>
